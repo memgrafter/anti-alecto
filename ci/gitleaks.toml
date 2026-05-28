@@ -1,0 +1,11 @@
+title = "anti-alecto gitleaks config"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Allow scanner state files that contain hashes/fingerprints, not raw secrets."
+paths = [
+  '''^ci/detect-secrets\.baseline$''',
+  '''^ci/gitleaksignore$''',
+]

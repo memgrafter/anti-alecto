@@ -1,0 +1,9 @@
+# Existing reviewed false positives from the initial import.
+# Regenerate intentionally with: ci/secret-scan.sh --refresh-gitleaks-ignore
+d8037c91be02596d89f483282a7f212a9cb74c0f:digests/2026-05-03_2046950805568164168_835b3c9e.md:generic-api-key:8
+d8037c91be02596d89f483282a7f212a9cb74c0f:digests/raw/2026-04-12_fireworks-ai-litellm_767847eb.txt:curl-auth-header:167
+d8037c91be02596d89f483282a7f212a9cb74c0f:digests/raw/2026-04-12_justlovemaki-aiclient-2-api-simulates-gemini-cli-antigravity-qwen-code-and-kiro-_34119abb.txt:curl-auth-header:334
+d8037c91be02596d89f483282a7f212a9cb74c0f:digests/raw/2026-04-12_justlovemaki-aiclient-2-api-simulates-gemini-cli-antigravity-qwen-code-and-kiro-_34119abb.txt:curl-auth-header:347
+d8037c91be02596d89f483282a7f212a9cb74c0f:digests/raw/2026-04-12_mirrowel-llm-api-key-proxy-universal-llm-gateway-one-api-every-llm-openai-anthro_7fe51527.txt:curl-auth-header:133
+d8037c91be02596d89f483282a7f212a9cb74c0f:digests/raw/2026-04-19_https-github-com-skrun-dev-skrun_1d6e10a9.txt:curl-auth-header:68
+d8037c91be02596d89f483282a7f212a9cb74c0f:digests/raw/2026-04-19_https-github-com-skrun-dev-skrun_1d6e10a9.txt:curl-auth-header:157
