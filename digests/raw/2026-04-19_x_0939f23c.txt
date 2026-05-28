@@ -1,0 +1,43 @@
+X thread capture
+
+# Andrej Karpathy on X: "@jenzhuscott Yes it's the tractable form of brain upload. There's a ton of scifi on brain uploads that requires way too exotic tech (scanning and simulating brains etc), when we're about to get a lossy and approximate version of that *a lot* sooner via LLM simulators. You can easily imagine a" / X
+
+Don’t miss what’s happening
+
+People on X are the first to know.
+
+Log in
+
+Sign up
+
+# [](http://x.com/)
+
+## Post
+
+See new posts
+
+# Conversation
+
+[](http://x.com/karpathy)
+
+Andrej Karpathy
+
+@karpathy
+
+Yes it's the tractable form of brain upload. There's a ton of scifi on brain uploads that requires way too exotic tech (scanning and simulating brains etc), when we're about to get a lossy and approximate version of that *a lot* sooner via LLM simulators. You can easily imagine a "brain upload" startup - you show up for a few days to carry out detailed video interviews, then they use all that data with an LLM finetuning process to "upload" you and give you an API endpoint of your simulation that you can talk to. Look at what's already possible with HeyGen as an example, but combine it with an LLM model that has deep knowledge and personality. Trippy and admittedly kind of dystopian but in principle quite possible around now.
+
+3:32 PM · Apr 10, 2026
+
+·
+
+549.5K Views
+
+207
+
+286
+
+3.2K
+
+1.9K
+
+Read 207 replies

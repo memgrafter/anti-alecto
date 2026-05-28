@@ -1,0 +1,11 @@
+X thread capture
+
+pulkit mittal on X: "So you say you are a software engineer. Have you ever downloaded actual binaries like Kafka, Postgres, ClickHouse, Elasticsearch, Redis, or something else, and tried running them locally while exploring what those bin, lib, data, and logs, etc directories contain? And then did" / X
+
+# JavaScript is not available.
+
+We’ve detected that JavaScript is disabled in this browser. Please enable JavaScript or switch to a supported browser to continue using x.com. You can see a list of supported browsers in our Help Center.
+
+Help Center
+
+[

@@ -1,0 +1,40 @@
+Open Source
+Endowment
+Truly
+sustainable funding
+sustainable funding
+for critical OSS through a community‑driven
+endowment
+Trusted by open source creators, founders, executives, and investors
+Solving Open Source Sustainability Together
+Our world runs on open source software that is mostly built and maintained by unpaid volunteers. Unstable funding of critical OSS poses serious risks for all of us.
+software depends on OSS
+OSS dependencies in an average app
+Problem Critical but Fragile Infrastructure
+Maintainer burnout and lack of funding often lead to bugs and serious security incidents, as seen with Log4Shell, the XZ Utils backdoor, and Heartbleed. The unsustainable state of OSS financing makes critical infrastructure more fragile and puts our world at ever-growing risk.
+Solution OSS Community Endowment
+Successfully used by leading universities for centuries, endowments spend only investment returns from donations to advance their causes, weathering economic and political volatility.
+We are building a community-led endowment fund that leverages "open source alumni" to sustainably fund the most critical OSS projects. It is an open nonprofit, and everybody is welcome to join — every contribution matters.
+Next-gen Nonprofit,
+Based on Principles
+Data-Driven & SMART Goals
+Employs a data-driven, goal-based strategy, ensuring every donation makes a measurable difference.
+Global Outlook
+Supports the long-term health of the global open source supply chain, not of specific countries, companies, or ecosystems.
+Maximum Transparency
+Provides open data, public governance processes, and clear accountability in all funding decisions and operations.
+Inclusive & Diverse Governance
+Empowers the community to shape key strategic decisions with a focus on individuals over companies.
+Decentralized Funding
+A broad funding base from diverse sources makes every contribution meaningful and fosters community governance.
+Neutrality
+Remains independent from political or corporate influence, ensuring unbiased, mission-driven funding for the public good.
+How It Works
+Fundraising
+Individuals, companies, and foundations donate to the Open Source Endowment, forming its permanent principal, which is preserved in perpetuity.
+Investing
+The endowment principal is invested in a low-risk portfolio that generates sustainable annual returns. We target a ~5% spend rate, typical for U.S. universities.
+Grantmaking
+We distribute grants based on open, data-driven inputs, and our model is co-developed with the Endowment's Members and the open source community.
+Impact Tracking
+Supported projects are tracked for accountability, refining strategy, and maximizing OSE's positive impact. The grantmaking model is continuously refined.

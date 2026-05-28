@@ -1,0 +1,430 @@
+So, I wanted to take a look at this big
+Honey scandal that's going on. If you're
+not familiar with Honey, Honey is one of
+those coupon Chrome extensions, which
+means all of its code is available for
+me to look at. And so, I can take a look
+at the things that are being alleged in
+these YouTube videos, and I can actually
+see, is this happening? But more so with
+when it comes to extensions, I can
+actually look over time and see were
+these bad decisions being made and have
+software engineers made alterations to
+not only continue on, but make these bad
+behaviors even better and more robust.
+Yes. Yes, they have. And I'm going to
+show you how that's happened. But I know
+there's plenty of you that probably have
+no idea what's going on. You're not
+really even familiar with Honey. And so
+you don't you have never really been
+caught up. This actually involves a very
+specific operation of Honey that I want
+to go over. So, we're actually going to
+watch a threeinut excerpt from this
+latest Honey reveal video. And then I'm
+going to talk about going through the
+minified code and exactly what I found
+and the intent behind it, which is a bit
+surprising. Now, if there's one thing
+people hate more than deception, it's
+theft. And in my first video, I showed
+you how Honey was stealing money from
+influencers. But what I didn't tell you
+is that this behavior is in most cases
+strictly not allowed. You see, the
+companies that run this industry, the
+affiliate networks, know full well that
+coupon extensions like Honey, have a
+high probability of poaching commissions
+from influencers, bloggers, and other
+content-driven affiliates. More
+importantly, they also understand that
+this is not fair, especially under the
+last click wins policy, which has
+remained an industry standard. So, to
+prevent this type of commission theft,
+most major affiliate networks enforce
+what's known as a standown policy. Let
+me show you what that looks like on
+Honey. Let's visit newe.com first
+without an affiliate link. And as you
+can see, Honey immediately pops up
+offering cash back. But if we do this
+again, this time using my affiliate link
+for Newegg, you'll notice that Honey
+doesn't pop up at all. And if we click
+on the Honey icon, you can see that
+Honey is now disabled. So, that's how
+Honey is supposed to behave when a
+user's already clicked on someone else's
+affiliate link. So, where then is the
+alleged fraud, you ask? Well, as it
+turns out, Honey has always had a
+standown system built into their app,
+but they have been selectively choosing
+when and whom to apply the rules. Let's
+test my affiliate link for Newegg again.
+Only this time, I have two entirely
+separate Chrome browsers open at the
+same time, and each is logged into a
+different Honey account. The Honey
+account on the left has zero cash back
+points, while the Honey account on the
+right has accumulated cash back points.
+Now, watch what happens when I open the
+Newegg affiliate link on both browsers.
+The Honey account on the left stands
+down as it did the first time. But look
+at this. The account on the right, which
+has cashback points, did not stand down.
+So, why is that? So, this is the thing
+that I wanted to test. I wanted to go
+through this because this is code. I can
+understand code. I can look at the JSON
+that's coming down and I can understand
+it. Not only that, but the power of AI
+will allow me to search through minified
+code at speeds unbeknownst to me just
+throughout my entire programming
+universe. So what we did is that we
+first got a bunch of versions of Honey.
+So the ones that I kind of went through
+were starting from about February 2019
+all the way up until present day 1901.
+And with that, what I wanted to do is
+go, okay, first off, is this like user
+point kind of deciding when to and when
+not to show the standown menu? Does it
+exist? Yes, it does quite exist. But the
+real question was, had it like changed?
+Because I worked at a big I've worked at
+a big company, right? You've worked at a
+big company. I'm sure you have or some
+of you have. And you know that sometimes
+code just sticks around. You know, it's
+like whoopsie pups. It's just still
+there. No one's changed it in five
+years. That's just the way it is. And
+that's kind of what I was looking for,
+which is did the code stick around or
+has there been changes that were
+significant, not like little bug fixes.
+All right, so to avoid being
+copyrighted, cuz apparently PayPal
+lawyers will copyright hit them with the
+DMCA, anyone that actually shows the
+code. That means I have to do this weird
+charade dance on the old blackboard to
+show you what was happening. So starting
+in version 11, remember which is about
+2019, this version did have the standown
+logic. It did even have things that were
+called SSD standown logics. It matched
+the JSON file that comes down with a
+bunch of data. Here is my standown uh of
+a user that's like not logged in at all.
+The most basic stuff in here you can see
+up is user points. ADB is like add block
+last time used. There's also is account
+logged in. And there's some other fields
+that seem to crop up every now and then.
+So, what's interesting is in in 2019
+under version 11, things often looked
+like this. There's like a giant switch
+statement that ended up having these
+cases where it was just like, okay, hey,
+do we test for an email? And yes, it
+literally had a string. Does this email
+contain test? Then always stand down,
+which by the way, shady. It's avoiding
+these link testing accounts to come in
+to be have like link share test to go
+see does this actually work because
+let's just face it who here hasn't had a
+tester account that does not contain the
+test I most certainly have. But
+nonetheless, this right here was an
+explicit check. If you have the word
+test in your email anywhere, it will
+disable you. But more so that I mean
+this was already talked about but more
+so the things that were really confusing
+is it'd go through a series of checks
+and it would be like hey is the provider
+that is uh currently active equal to LS
+which is link share if it is I want you
+to apply these exact rules and then
+later on it had this check where it go
+through all the rules that it figured
+out and then it go one by one in a
+little for loop going through each one
+of these rules and checking do any of
+them fail if any of them fail it would
+stand down. So, this was a fairly kind
+of hard-coded process as you can see
+because there was like literal lines
+saying like if link share do this
+action. If we're in this other provider,
+do something else. Now, I of course have
+been on many many of projects where this
+kind of stuff just happens. This is
+totally normal. You start off where
+you're like, okay, hey, we might have
+one or two providers and that's that.
+So, I'll just put a little couple
+hardcode edge cases in here and we'll
+just make sure things get taken care of
+in a certain way. we stand down for some
+amount of duration, which by the way was
+not a very long part. You should watch
+Megal's video to find out exactly how
+just awful the rules actually were. But
+again, my goal is to go, okay, did they
+make changes to the code? Were there bug
+fixes? What happened? Well, this is
+where things get a little bit confusing
+cuz between the versions 11 through 14,
+uh, which I believe is all the way up
+until 2022. Yes, 2022, things remained
+pretty much a constant. Nothing really
+changed. A little bit of edits, nothing
+to really show much. But starting
+around, I believe in version 16, so in
+2024, there was a robust refactor made
+such that they can drive a lot of these
+decisions from an endpoint in Honey.
+Now, this endpoint sends down an object
+that looks like this that has this base
+value, then it has these values, then it
+has these values under X. So that means
+the previous version it used a bunch a
+series of if statements to kind of
+determine the type of behaviors that it
+wanted to do and then it would do rule
+evaluation to see did this rule actually
+pass. Did we actually get out a true or
+a false? But in version 16 they decided
+to go a bit more intense when it comes
+to software engineering. Now we all know
+what do you do whenever you have a bunch
+of if statements that are kind of doing
+this like wrapping of data and kind of
+doing a basic mutation on an object.
+Well, you you would want to drive it
+through some sort of config. You'd want
+to drive it through something that is a
+bit more dynamic to make it a little bit
+easier. And that's exactly what they
+did. So, if we go back here and look at
+the data that is coming down from me, a
+non-logged Honey user, you will see
+right here is that I have a base class.
+This base class will become the base
+object for how Honey determines. Right
+now, for this non-logged user base
+class, I require 65,000 user points for
+Honey to not stand down. If I have less
+than 65,000 points, remember I'm not
+logged in, so I have zero points. It
+will say, "Sorry, I'm standing down. I
+I'm avoiding this." Now, when it gets
+that base, what it then does is it
+checks how did it get here? Where was
+like where did we get here? Why did we
+get here? And it does the next check.
+Was this from one of these affiliate
+networks? And then it will start
+wrapping things. So, okay. So, if I come
+from a link share place, it will now
+only make my points required 5,01.
+It will edit this base object. It's
+actually doing the better, more
+sophisticated engineering. It's not a
+series of hard-coded if statements
+anymore. Instead, it's doing an actual,
+hey, take.base. Then, I want to say, do
+you have my provider? If you have my
+provider, I want to spread in my
+provider's values or just an empty
+object. And then it did something even
+more wild, which is all of these right
+here under X. These are all store
+specific values. Then it would check,
+hey, whatever store I'm currently in, I
+also want to put on those values as
+well. And then it would go and do the
+basic rule logic showing that it's not
+anymore under some sort of maintenance
+mode. It's showing that it's no longer
+kind of this hardcoded hacky thing
+that's been existing for like a decade.
+Instead, they went from that and in
+2024, they said, "You know what? We need
+to be more robust and we need to be able
+to make more decisions about more stores
+and more providers in a more kind of
+easier to maintain fashion. This was
+software engineering people and they did
+it." So, when I look at this, what I see
+is that over time they have made changes
+to make their system better, which means
+that there is an intent behind it. They
+want to keep whatever this system is
+doing, whether it is or is not
+fraudulent, I cannot say. That's for
+somebody else to decide. But I can at
+least say that their decisions have been
+to make it more robust and better. And
+given the fact that the general
+perception of this system as being
+pretty shady, they've made their pretty
+shady system much, much better. But
+that's not all I found. I I found
+something else that kind of piqued my
+interest. I kept seeing the word Vim
+that just kept popping up. Now I'm like,
+Vim, what what is the text editor doing?
+When I asked Claude Code about it, it
+actually said, "Hey, you're talking
+about the Vim instance manager that's
+been found inside of uh Honey." And I
+was like, "Vim instance manager? Okay,
+that's that can't be it. That is not
+it." And then as I started looking at
+this, what I ended up seeing is that
+there is an entire JavaScript in
+JavaScript engine that runs inside the
+Honey plugin. Now, this is absolutely
+the strangest thing I have ever seen. Uh
+I tried to do some reading up on it. I'm
+not a plug-in developer expert when it
+comes to Chrome, so I had no idea why
+anyone would ever run JavaScript in
+JavaScript. But what Honey does is it
+actually has Acorn, which is a
+JavaScript parser, and produces an a
+from valid JavaScript, and it takes
+this, evaluates JavaScript, and then
+feeds it into this Vim engine. Now,
+there's several references within the
+code that actually refer to this other
+object called cart ops retrieval.js and
+product ops retrieval.js, JS, which
+sometimes is not null, actually contains
+code. And it also refers to this JS
+code, which is also not null sometimes.
+Like right here, it's actual real
+JavaScript. But as far as I could tell,
+it's not actually executing any of this
+code. I tried to set some break points.
+I never actually got to the point of
+making it trigger. But nonetheless, this
+does exist. They have the apparatus set
+up to be able to execute remote code on
+your machine based on whatever it
+returns from Honey in a very, very
+obuscated way. this JavaScript in
+JavaScript. They have a JavaScript
+parser. They have a JavaScript virtual
+machine. It is actual JavaScript in the
+JavaScript. But they also have this one
+section that there's just all of these
+stringified functions. And there a bunch
+of inlined JavaScript that's just filled
+with ways in which they search through
+pages and stuff like this. But those
+ones those ones come down with the
+product. though they're not technically
+against the old uh Google terms of
+service cuz if you look at the
+additional requirements for the manifest
+v3 for anyone that's doing this is you
+should not be allowed to use JavaScript
+eval. Okay, so we're not going to do
+that. We're not going to eval. What
+we're going to do is we're going to
+hardcode some operations we don't want
+other plugins know we're doing and then
+we're going to incorporate an entire
+JavaScript engine to run them to further
+obuscate what we are doing. Which is
+funny because this V3 right here, it
+seems like it was designed for Honey
+specifically because it says building an
+interpreter to run complex commands
+fetched from a remote source even if
+those commands are fetched as data. So
+they get around it. These aren't remote
+things. These are strings that are
+actually available within the Honey uh
+extension. But man, this is some
+obuscation. This is some weird stuff. I
+cannot personally understand a single
+reason why this is actually happening.
+Like I said, apparently it's due to
+interactions with other extensions.
+Other extensions being ad blockers.
+Apparently ad blockers might ad block
+the Honey extension if it directly runs
+certain functions. But somehow through
+this weird interpreter, it's able to
+actually run stuff that is getting
+avoided to be caught. I don't know, but
+it seems like a cluster festival to me.
+And I found this to be very, very
+interesting because I've never done any
+sort of reverse engineering. I've never
+really looked through someone else's
+source code, especially minified source
+code. I just wanted to show you guys
+this. This is perhaps the most unusual
+engineering I've ever seen in my
+lifetime. I've been a part of code bases
+that have 10 plus thousand lines long of
+weird state machines and are impossible
+to work with, hard to reason about, but
+this has to take the cake. This has to
+be the most complex, weirdest
+contraption RP Goldberg level I have
+ever seen. But furthermore, the dynamic
+rules for doing the standown stuff,
+they're robust. Whatever the purpose is,
+whether it is or isn't fraudulent, it
+has been designed to be dynamic and to
+be controlled via JSON on a per store,
+per provider, and per user basis.
+Anyways, I want to give a special shout
+out to Megal. It was really awesome. I
+got to chat with him. He helped me a
+little bit kind of looking through some
+stuff. So, big shout out to him. You
+should definitely check out the video.
+It's in the description. It's super well
+done. There are multiple of them and I
+recommend you watch them all. They're
+very, very good. Also, do you do you
+like this thing that I did? Do do you
+like this format? I don't know. This is
+kind of new. This is just me spending
+some time on stream having fun and then
+reporting back to you. If you were on
+stream, you would have saw this happen
+live. Could have been a lot more fun for
+you. The name
+is I'm not a reverse engineer, but this
+was a lot of fun. I can see why people
+do it again. Hey, is that HTTP? Get that
+out of here. That's not how we order
+coffee. We order coffee via SSH
+terminal.shop. Yeah. You want a real
+experience? You want real coffee? You
+want awesome subscriptions so you never
+have to remember again? Oh, you want
+exclusive blends with exclusive coffee
+and exclusive content? Then check out
+Cron. You don't know what SSH is?
+>> Well, maybe the coffee is not for you.
+Living
+dream.

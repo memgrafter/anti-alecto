@@ -1,0 +1,460 @@
+1. What Is Micro-SaaS
+Definition
+A micro-SaaS is a software-as-a-service business targeting a narrow niche, typically run by a solo founder or a very small team (1–5 people), with minimal external funding. The defining characteristics are:
+- Narrow scope — solves one specific problem for a well-defined audience
+- Small team — usually solo or ≤5; no middle management
+- Bootstrapped — self-funded or micro-funded (no VC)
+- Recurring revenue — subscription-based (monthly/annual)
+- Low overhead — minimal infrastructure, often serverless or low-cost hosting
+- Lifestyle-compatible — designed for sustainable profit, not hypergrowth
+Micro-SaaS vs. Traditional SaaS
+| Dimension | Micro-SaaS | Traditional SaaS |
+|---|---|---|
+| Team size | 1–5 | 10–1000+ |
+| Funding | Bootstrapped | VC-backed |
+| Target market | Niche / long-tail | Large TAM |
+| Revenue target | $1K–$500K MRR | $1M+ MRR |
+| Growth rate | Steady 5–15% m/m | 3x–5x YoY |
+| Sales model | Self-serve / PLG | Sales-led / hybrid |
+| Exit path | Lifestyle / micro-PE | IPO / strategic M&A |
+| Time to profit | 3–12 months | 2–5+ years |
+2. Lifecycle Phases
+graph LR I["🔍 Ideation
+0–4 weeks"] --> V["✅ Validation
+2–8 weeks"] V --> B["🔨 Build MVP
+4–12 weeks"] B --> L["🚀 Launch
+1–2 weeks"] L --> G["📈 Growth
+6–24 months"] G --> M["⚙️ Maturity
+1–5+ years"] M --> E["🏁 Exit / Evolve"] style I fill:#dbeafe,stroke:#2563eb,color:#1e40af style V fill:#fef3c7,stroke:#d97706,color:#92400e style B fill:#f3e8ff,stroke:#7c3aed,color:#6b21a8 style L fill:#dcfce7,stroke:#16a34a,color:#166534 style G fill:#dbeafe,stroke:#2563eb,color:#1e40af style M fill:#e0f2fe,stroke:#0891b2,color:#155e75 style E fill:#fce7f3,stroke:#be185d,color:#9d174d
+Phase 1 Ideation (0–4 weeks)
+Finding a problem worth solving in a niche you can reach.
+Idea generation frameworks
+- Scratch your own itch — problems you experience in your workflow
+- Forum mining — Reddit, Indie Hackers, niche Slack/Discord communities, StackOverflow, Twitter/X complaints
+- Platform gap analysis — features missing from Shopify, WordPress, Notion, Slack, etc.
+- Workflow observation — watch people use spreadsheets for things that should be an app
+- Existing tool teardowns — find SaaS tools with 3-star ratings and read every negative review
+- Job board scanning — recurring freelance postings reveal repeatable pain
+- "Picks and shovels" — tooling for other builders (devtools, creator tools, agency tools)
+Idea scoring criteria
+| Criterion | Weight | Green flag | Red flag |
+|---|---|---|---|
+| Reachability | 25% | You know where these people gather | Need paid ads to find anyone |
+| Willingness to pay | 25% | Already paying for inferior solutions | "Should be free" |
+| Frequency of pain | 20% | Daily/weekly annoyance | Once-a-year occurrence |
+| Build feasibility | 15% | MVP in <6 weeks solo | Needs ML pipeline + team |
+| Defensibility | 15% | Data/network effects, integrations | Trivial to clone |
+Phase 2 Validation (2–8 weeks)
+Proving demand before writing code. The goal: get signal that real humans will pay real money.
+Validation methods (ranked by signal strength)
+| Method | Signal strength | Cost | Speed |
+|---|---|---|---|
+| Pre-sale / deposit | 🟢🟢🟢 Strongest | Low | 1–2 weeks |
+| Concierge MVP (manual delivery) | 🟢🟢🟢 Strongest | Time-heavy | 1–4 weeks |
+| Waitlist with payment info | 🟢🟢 Strong | Low | 1–2 weeks |
+| Landing page + email capture | 🟡 Moderate | Low | 1 week |
+| Customer interviews (problem) | 🟡 Moderate | Time | 1–2 weeks |
+| Survey / poll | 🟠 Weak | Low | Days |
+| "Would you use this?" questions | 🔴 Useless | Free | Instant |
+Validation targets
+- B2B: 5–10 verbal commitments from decision-makers, or 3+ deposits/pre-sales
+- B2C / prosumer: 100+ email signups with >20% open rate, or 50+ waitlist with payment intent
+- Developer tools: 50+ GitHub stars on a prototype, or 20+ users of a free beta within first week
+Phase 3 Build MVP (4–12 weeks)
+Ship the smallest thing that solves the core problem end-to-end.
+MVP principles
+- One core loop — identify the single workflow users need and nail it
+- Manual on the edges — automate the core, do everything else by hand (billing via Stripe link, onboarding via personal email, support via DMs)
+- Time-box brutally — if it's not shippable in 6–12 weeks, scope is too large
+- Ugly is fine — functional beats beautiful at this stage
+- Instrument everything — analytics from day 1 (PostHog, Plausible, or basic event logging)
+Recommended tech stack patterns
+| Category | Budget option | Scale-ready option |
+|---|---|---|
+| Frontend | Next.js / Nuxt / SvelteKit | Same (SSR frameworks scale) |
+| Backend | Same framework API routes | Separate API (FastAPI, Go, Node) |
+| Database | SQLite / Turso / Supabase free | Postgres (Neon, Supabase, RDS) |
+| Auth | Clerk / Supabase Auth / Lucia | Same or Auth0 |
+| Payments | Stripe + Lemon Squeezy | Stripe |
+| Resend / Postmark / SES | Same | |
+| Hosting | Vercel / Fly.io / Railway | AWS / GCP with IaC |
+| Monitoring | Sentry free + Plausible | Datadog / Grafana Cloud |
+Cost structure — typical MVP phase
+Phase 4 Launch (1–2 weeks)
+Not a single event — a coordinated sequence of channel activations.
+Launch checklist
+- ✅ Product Hunt launch (prepare 1 week ahead, launch Tuesday–Thursday)
+- ✅ Hacker News Show HN post
+- ✅ Indie Hackers milestone post
+- ✅ Niche community announcements (subreddits, Discords, Slacks)
+- ✅ Personal Twitter/X thread with story arc
+- ✅ Direct outreach to waitlist / pre-sale customers
+- ✅ "Building in public" blog post / video
+- ✅ Email to warm network asking for shares
+First 30-day targets
+- 10+ paying customers — proves payment flow + retention signal
+- $500+ MRR — initial traction milestone
+- NPS signal — at least 3 "I'd be very disappointed" responses (Sean Ellis test)
+- Support load data — categorize every ticket → roadmap signal
+Phase 5 Growth (6–24 months)
+Compounding loops that convert attention into recurring revenue.
+Growth engines for micro-SaaS
+🔍 SEO / Content
+- Programmatic landing pages
+- Long-tail keyword targeting
+- Comparison pages (vs. competitors)
+- Template galleries
+- Documentation as marketing
+Best for: tools with searchable use cases
+🔌 Platform / Integration
+- Marketplace listings (Shopify, WordPress, Zapier, etc.)
+- Native integrations as distribution
+- API-first → partner ecosystem
+- Chrome extension + upsell
+Best for: workflow tools, add-ons
+📣 Community / PLG
+- Free tier as acquisition funnel
+- Building in public (Twitter, YouTube)
+- Referral programs
+- User-generated content / templates
+- Community-led growth
+Best for: creator tools, dev tools
+Growth milestones
+Phase 6 Maturity & Optimization (1–5+ years)
+The product has found PMF. Focus shifts to efficiency, expansion revenue, and reducing founder dependency.
+Maturity levers
+- Expansion revenue — usage-based pricing tiers, add-ons, annual plan incentives
+- Churn reduction — onboarding improvements, health scoring, proactive outreach
+- Automation — self-serve support (docs, chatbot), automated billing recovery, CI/CD
+- Delegation — first hires: support → marketing → engineering (in that order for most micro-SaaS)
+- Platform moat — data accumulation, integrations, switching costs
+Phase 7 Exit / Evolve
+Exit options for micro-SaaS
+| Exit type | Typical multiple | Buyer profile | Requirements |
+|---|---|---|---|
+| Micro-PE acquisition | 3–5× ARR | Tiny Capital, XO Capital, SureSwift, etc. | $10K+ MRR, low churn, documented ops |
+| Marketplace sale (Acquire.com, MicroAcquire) | 2–5× ARR | Individual buyers, operators | Clean financials, transferable assets |
+| Strategic acquisition | 3–10× ARR | Larger SaaS wanting your niche | Complementary product, user overlap |
+| Lifestyle hold | ∞ (cash flow) | Yourself | Low maintenance, steady revenue |
+| Acqui-hire | 1–2× ARR | Companies wanting your skills/team | Strong technical talent |
+Exit readiness checklist
+- 📊 Clean P&L, 12+ months of financial history
+- 📈 Positive net revenue retention or stable/improving churn
+- 📝 Documented SOPs for all operations
+- 🔒 IP ownership clear (no employer claims, clean OSS licenses)
+- 🏗️ Transferable infrastructure (no founder-personal accounts)
+- 👥 Customer relationships not founder-dependent
+3. Unit Economics Deep Dive
+Key formulas
+Monthly Recurring Revenue:
+$$\text{MRR} = \sum_{i=1}^{n} \text{subscription}_i$$
+Customer Lifetime Value:
+$$\text{LTV} = \frac{\text{ARPU}}{\text{monthly churn rate}}$$
+Customer Acquisition Cost:
+$$\text{CAC} = \frac{\text{total acquisition spend}}{\text{new customers acquired}}$$
+Net Revenue Retention:
+$$\text{NRR} = \frac{\text{MRR}_{\text{start}} + \text{expansion} - \text{contraction} - \text{churn}}{\text{MRR}_{\text{start}}}$$
+Payback Period:
+$$\text{Months to payback} = \frac{\text{CAC}}{\text{ARPU} \times \text{gross margin}}$$
+Churn impact over time
+Starting from 100 customers — illustrates why even small churn rate differences compound dramatically.
+Revenue trajectory scenarios
+Three scenarios based on different growth + churn combinations, starting from $1K MRR.
+Benchmark unit economics by stage
+| Metric | Pre-PMF ($0–3K MRR) | Early Growth ($3K–10K MRR) | Scaling ($10K–50K MRR) | Mature ($50K+ MRR) |
+|---|---|---|---|---|
+| Monthly logo churn | 8–15% | 5–8% | 3–5% | 2–4% |
+| Net revenue retention | 70–85% | 85–100% | 95–110% | 100–120% |
+| Gross margin | 70–80% | 80–85% | 85–90% | 85–92% |
+| CAC payback (months) | 1–3 | 2–6 | 3–8 | 4–12 |
+| ARPU (typical) | $15–50 | $30–100 | $50–200 | $80–500 |
+4. Pricing Strategy
+Pricing architecture patterns
+🎯 Value metric pricing (recommended)
+Price scales with the value the customer extracts. Examples:
+- Per seat / per user
+- Per project / workspace
+- Per API call / event / record
+- Per connected account / integration
+- Per email sent / form submitted
+Best when: value metric is obvious and measurable
+📊 Tier-based pricing
+Classic good/better/best with feature gating:
+- Free / Hobby — acquisition + PLG (limited features/usage)
+- Pro — core tier, targets individuals / small teams ($9–49/mo)
+- Team / Business — collaboration features, higher limits ($49–199/mo)
+- Enterprise — SSO, audit logs, SLA, custom ($199+/mo or custom)
+Best when: distinct user segments with different needs
+Pricing psychology & tactics
+| Tactic | Mechanism | When to use |
+|---|---|---|
+| Annual discount (15–20%) | Reduces churn, improves cash flow | Always — offer from day 1 |
+| Anchor pricing | Show higher plan first to make mid-tier feel reasonable | Pricing page layout |
+| Free trial (7–14 days) | Low friction entry, time pressure to convert | Complex products needing setup |
+| Freemium | Massive top of funnel, natural upgrade path | Products with strong PLG loops |
+| Reverse trial | Start on Pro, downgrade to free after trial | When Pro features drive "aha" moment |
+| Lifetime deal (LTD) | Fast cash infusion, validation signal | Launch only — dangerous long-term |
+| Usage overage billing | Natural expansion without plan upgrades | API / volume products |
+| Grandfathering | Loyalty retention during price increases | All price increases for existing customers |
+Pricing evolution by stage
+graph TD A["Launch
+Simple flat rate
+$9–29/mo"] --> B["Traction
+2–3 tiers
+Add annual option"] B --> C["Growth
+Value metric pricing
+Usage-based expansion"] C --> D["Scale
+Custom/enterprise tier
+Add-on marketplace"] style A fill:#dbeafe,stroke:#2563eb,color:#1e40af style B fill:#fef3c7,stroke:#d97706,color:#92400e style C fill:#dcfce7,stroke:#16a34a,color:#166534 style D fill:#f3e8ff,stroke:#7c3aed,color:#6b21a8
+ARPU distribution: typical micro-SaaS pricing sweet spots
+5. Distribution & Acquisition Channels
+Channel effectiveness matrix
+Organic channels (recommended for micro-SaaS)
+SEO / Content Marketing
+- Programmatic SEO — auto-generate pages for long-tail queries (e.g., "[tool] alternative for [use case]")
+- Problem-solution content — blog posts targeting "how to [solve problem your tool solves]"
+- Comparison pages — "[Your tool] vs [Competitor]" with honest analysis
+- Template / resource pages — free assets that attract and convert
+- Technical docs as marketing — comprehensive docs rank well and build trust
+Community & social
+- Build in public — revenue milestones, learnings, failures on Twitter/X
+- Niche community participation — become known in 2–3 key communities before launching
+- Answer questions — Quora, Reddit, StackOverflow where your tool is a natural answer
+- YouTube / podcast guest appearances — founder story + product demo
+Product-led growth (PLG)
+- Free tier with natural upgrade triggers
+- Viral loops — shared outputs with "Powered by [Your Tool]" branding
+- Referral program — give both sides a benefit (double-sided)
+- Public profiles/pages — user-generated content that ranks in search
+Platform distribution (high-leverage)
+Marketplace strategies
+| Platform | Type | Revenue share | Audience quality |
+|---|---|---|---|
+| Shopify App Store | E-commerce add-ons | 0% (if Shopify billing) | 🟢 High intent |
+| WordPress plugins | CMS extensions | 0% | 🟢 Massive volume |
+| Chrome Web Store | Browser tools | 0% | 🟡 Mixed |
+| Zapier / Make | Integrations | 0% | 🟢 Automation buyers |
+| Notion / Figma | Templates/plugins | Varies | 🟡 Moderate |
+| Slack App Directory | Team tools | 0% | 🟢 B2B qualified |
+| VS Code Marketplace | Dev tools | 0% | 🟢 Devs (low WTP) |
+Paid channels (use sparingly)
+- Google Ads — only for high-intent keywords with proven conversion
+- Sponsorships — niche newsletters, podcasts, YouTube (often better ROI than ads)
+- AppSumo — for launch cash infusion only (see LTD warnings)
+- Cold email — only B2B, only highly targeted, personalized outreach
+6. Operational Patterns
+Solo operator weekly rhythm
+gantt title Ideal Solo Founder Week dateFormat X axisFormat %s hrs section Build Core feature work :0, 12 Bug fixes & tech debt :12, 16 section Grow Content / SEO :16, 20 Community engagement :20, 23 section Support Customer support :23, 27 Onboarding calls :27, 29 section Admin Metrics review :29, 30 Planning / strategy :30, 32
+Target: ~32 productive hours/week. Protect maker time (mornings). Batch reactive tasks (afternoons).
+Support scaling ladder
+| Stage | Volume | Solution |
+|---|---|---|
+| 0–50 customers | 1–5/day | Founder does everything (email/chat) |
+| 50–200 customers | 5–15/day | Docs + FAQ + canned responses |
+| 200–500 customers | 15–30/day | Help desk tool (Crisp, Intercom) + AI chatbot |
+| 500–1000 customers | 30–50/day | Part-time support hire or VA |
+| 1000+ customers | 50+/day | Dedicated support person + tier system |
+Infrastructure cost benchmarks
+Monthly infrastructure cost as % of MRR should decrease with scale.
+Key operational metrics dashboard
+The minimum set of metrics every micro-SaaS should track weekly:
+| Metric | Frequency | Tool | Action threshold |
+|---|---|---|---|
+| MRR + MRR movements (new, expansion, contraction, churn) | Weekly | Stripe / Baremetrics / ChartMogul | Any negative MRR movement trend |
+| Trial → paid conversion rate | Weekly | Product analytics | <3% needs onboarding review |
+| Logo churn rate | Monthly | Billing data | >8% monthly → emergency |
+| Support ticket volume & categories | Weekly | Help desk | Trending category → product fix |
+| Activation rate (% completing core action) | Weekly | Product analytics | <40% → onboarding broken |
+| Traffic & signups by source | Weekly | Analytics + UTMs | Channel death → diversify |
+| NPS / CSAT | Monthly | Survey tool | NPS <30 → product-market fit risk |
+| Server costs as % of MRR | Monthly | Cloud billing | >20% → optimize or reprice |
+7. Risk Model
+Micro-SaaS risk taxonomy
+High-impact risks & mitigations
+🔴 Platform dependency
+Risk: Building on a platform that changes APIs, terms, or competes with you.
+- Diversify across 2–3 platforms
+- Own your customer relationship (email list, direct billing)
+- Build switching costs (data, integrations)
+- Monitor platform changelog obsessively
+🔴 Founder burnout
+Risk: Solo founders burning out from doing everything.
+- Set hard working hours and protect them
+- Automate support and operations early
+- Join founder communities (Indie Hackers, MicroConf)
+- Take quarterly breaks — revenue should survive them
+- If revenue can't survive 2 weeks off, you have a freelancing job, not a product
+🔴 Feature creep / scope explosion
+Risk: Losing focus by building everything customers request.
+- Maintain a strict "not building" list
+- Weight feature requests by revenue impact
+- Default answer to feature requests: "no" (revisit quarterly)
+More risks & mitigations
+🟠 Competitor cloning
+Risk: Larger player or copycat builds your features.
+- Speed + niche focus is the defense
+- Build data moats and switching costs
+- Deep community relationships can't be cloned
+- Iterate faster than they can copy
+🟠 Pricing too low
+Risk: Underpricing caps growth and attracts bad-fit customers.
+- Raise prices for new customers every 6 months until conversion drops
+- Track willingness-to-pay via surveys and churn analysis
+- Price on value delivered, not cost to serve
+🟡 Technical debt
+Risk: Shortcuts in MVP becoming development bottleneck.
+- Budget 20% of dev time for tech debt reduction
+- Rewrite high-traffic paths when they become bottlenecks
+- Maintain test coverage on core workflows
+🟡 Bus factor = 1
+Risk: Solo founder illness, burnout, or disinterest kills the product.
+- Document everything from the start
+- Use standard tools and patterns (reduce esoteric knowledge)
+- Consider a co-founder or technical partner
+- Maintain exit readiness (the documented-ops discipline helps even if you never sell)
+8. Niche Selection Framework
+The niche scoring quadrant
+Plot potential niches on this matrix. Top-right is the sweet spot.
+Proven micro-SaaS niche categories
+| Category | Examples | Typical ARPU | Distribution | Defensibility |
+|---|---|---|---|---|
+| Platform add-ons | Shopify apps, WP plugins, Slack bots | $10–50/mo | Marketplace organic | 🟡 Medium (platform risk) |
+| Vertical workflow tools | CRM for dentists, invoicing for freelancers | $30–100/mo | SEO + community | 🟢 High (domain expertise) |
+| Developer tools | API monitoring, deployment helpers, code quality | $20–200/mo | PLG + content | 🟡 Medium (OSS competition) |
+| Creator economy tools | Analytics, monetization, audience management | $10–50/mo | Social + PLG | 🟡 Medium |
+| Internal tool replacements | Dashboards, approval workflows, form builders | $50–200/mo | SEO + cold outreach | 🟢 High (data lock-in) |
+| Compliance / reporting | GDPR tools, accessibility checkers, tax prep | $30–150/mo | SEO + pain-driven search | 🟢 High (regulatory moat) |
+| Integration / middleware | Zapier alternatives for specific pairs, data sync | $20–100/mo | SEO + partner | 🟠 Low-medium |
+| AI-augmented workflows | AI writing for niche, auto-categorization, extraction | $20–100/mo | PLG + content | 🟠 Low (fast-moving space) |
+9. AI-Era Micro-SaaS Considerations (2024–2026+)
+How AI changes the micro-SaaS playbook
+🚀 Tailwinds
+- 10× faster development — AI coding assistants compress build time dramatically
+- New product categories — AI-native workflows create greenfield niches
+- Reduced staffing needs — AI handles support, content, code review
+- API-powered capabilities — add sophisticated features (NLP, vision, generation) via API calls
+- Content generation at scale — programmatic SEO becomes even more powerful
+⚠️ Headwinds
+- Lower moats — if AI built it in a week, competitors can too
+- Platform risk intensified — OpenAI, Google, Anthropic may build your feature natively
+- COGS pressure — LLM API costs can destroy margins if not managed
+- User expectations rising — "just use ChatGPT" is the new "just use a spreadsheet"
+- Faster commoditization — competitive advantages erode faster
+AI-era defensibility strategies
+- Data flywheel — the more users interact, the better your product becomes (fine-tuned models, better defaults)
+- Workflow integration — embed deeply into existing tools so AI alone isn't a substitute
+- Proprietary data assets — curated datasets, domain-specific training data
+- Speed of iteration — ship improvements daily, stay ahead of generalist competitors
+- Trust & brand — in sensitive domains (legal, medical, financial), brand trust matters more than raw capability
+- Manage LLM costs — cache aggressively, use smaller models where possible, implement usage-based pricing that scales with AI costs
+AI cost structure impact
+Traditional SaaS vs AI-powered SaaS cost breakdown — key difference is variable COGS from LLM API usage.
+10. Playbook Patterns Library
+Pattern A: Platform Widget
+Low risk Fast build
+- What: Small add-on for an existing platform (Shopify, WordPress, Webflow, etc.)
+- Distribution: Platform marketplace (built-in traffic)
+- Monetization: $9–29/mo per store/site
+- Build time: 2–6 weeks
+- Ceiling: $5K–50K MRR (niche-dependent)
+- Risk: Platform dependency, policy changes
+- Example archetype: Shopify app for automated product descriptions, WordPress plugin for schema markup
+Pattern B: Vertical SaaS
+Medium risk High ceiling
+- What: All-in-one tool for a specific profession/industry
+- Distribution: SEO + niche community + word of mouth
+- Monetization: $29–149/mo per practitioner/business
+- Build time: 8–16 weeks MVP
+- Ceiling: $20K–200K+ MRR
+- Risk: Domain expertise required, slower iteration
+- Example archetype: Client portal for therapists, project management for construction contractors
+Pattern C: API / Infrastructure
+Medium risk Sticky
+- What: Developer-facing API or infrastructure service
+- Distribution: Dev content marketing, GitHub, Product Hunt
+- Monetization: Usage-based ($0.001–$0.10/call) + base tier
+- Build time: 4–12 weeks
+- Ceiling: $10K–100K+ MRR
+- Risk: OSS competition, big-tech commoditization
+- Example archetype: PDF generation API, screenshot API, email validation service
+Pattern D: Workflow Automation
+Low risk Recurring
+- What: Automates a specific multi-step business process
+- Distribution: SEO + integration directories
+- Monetization: $19–99/mo per workflow/team
+- Build time: 4–10 weeks
+- Ceiling: $10K–80K MRR
+- Risk: Zapier/Make building native equivalents
+- Example archetype: Automated social media reporting, invoice reminders + follow-ups
+Pattern E: Chrome Extension → SaaS
+Low risk Fast build
+- What: Browser extension that enhances existing tools, with cloud sync/features
+- Distribution: Chrome Web Store + social proof
+- Monetization: Freemium, $5–19/mo for pro features
+- Build time: 2–6 weeks
+- Ceiling: $5K–30K MRR
+- Risk: Chrome policy changes, low ARPU
+- Example archetype: LinkedIn automation, Gmail productivity, web clipper
+Pattern F: AI Wrapper (Niche)
+High risk Fast build
+- What: LLM/AI capabilities packaged for a specific vertical with custom prompts, UI, and workflow
+- Distribution: Content marketing + community
+- Monetization: $19–99/mo, often usage-capped tiers
+- Build time: 2–8 weeks
+- Ceiling: $5K–50K MRR (before competitive pressure)
+- Risk: Commoditization, COGS risk, platform builds it natively
+- Example archetype: AI property descriptions for realtors, AI legal document review
+11. Founder Mental Models
+Decision frameworks for micro-SaaS founders
+💰 The "1,000 × $100" frame
+To reach $100K ARR you need 1,000 customers paying $100/year, or 200 at $500/year, or 83 at $1,200/year. Higher ARPU means fewer customers needed — but usually means longer sales cycles and more support.
+| ARPU/year | Customers for $100K ARR | Sales model |
+|---|---|---|
+| $100 | 1,000 | Pure self-serve |
+| $300 | 333 | Self-serve + email nurture |
+| $600 | 167 | Low-touch sales |
+| $1,200 | 83 | Demo calls + onboarding |
+| $3,000 | 33 | Consultative sales |
+⏱️ Time leverage hierarchy
+Rank all work by leverage (output per hour invested):
+- Automation — things that work while you sleep (SEO, PLG loops, self-serve onboarding)
+- Leverage creation — building systems that multiply future effort (docs, templates, playbooks)
+- 1:many — activities reaching many people (blog posts, videos, marketplace listings)
+- 1:1 high-value — activities with one person where LTV justifies it (enterprise demos, partnerships)
+- 1:1 low-value — basic support, routine admin (delegate or automate ASAP)
+🎯 The "Default Alive" test
+At your current growth rate and burn rate, will you reach profitability before running out of runway? For bootstrapped micro-SaaS, the answer should be "yes" or "already profitable" within 6 months of launch.
+🔄 Iterate in public
+Every blog post, tweet, and changelog entry is a distribution event. Make your development process a marketing channel.
+12. Resource Index
+Communities
+- Indie Hackers — largest bootstrapper community
+- MicroConf — conference + community for self-funded SaaS
+- r/SaaS — Reddit SaaS discussion
+- r/microsaas — dedicated micro-SaaS subreddit
+- Hacker News — Show HN launches, tech discussion
+- Twitter/X #buildinpublic — founder transparency movement
+- SaaS Club — podcast + community
+Key books
+- The Mom Test — Rob Fitzpatrick (customer validation)
+- Obviously Awesome — April Dunford (positioning)
+- Deploy Empathy — Michele Hansen (customer interviews)
+- Start Small, Stay Small — Rob Walling (bootstrapping guide)
+- The SaaS Playbook — Rob Walling (updated playbook)
+- Traction — Weinberg & Mares (distribution channels)
+- Zero to Sold — Arvid Kahl (bootstrapping lifecycle)
+Tools for micro-SaaS operators
+| Need | Recommended tools |
+|---|---|
+| Analytics | Plausible, PostHog, Mixpanel |
+| Billing / subscriptions | Stripe, Lemon Squeezy, Paddle |
+| Metrics dashboard | Baremetrics, ChartMogul, ProfitWell |
+| Support | Crisp, Intercom, Plain |
+| Email marketing | ConvertKit, Buttondown, Resend |
+| SEO | Ahrefs, SEMrush, Ubersuggest |
+| Landing pages | Framer, Webflow, plain HTML |
+| Status page | Instatus, BetterStack |
+| Error tracking | Sentry, BugSnag |
+| Feature flags | PostHog, LaunchDarkly, Flipt |
+| User feedback | Canny, Featurebase |
+| Exit marketplace | Acquire.com, FE International |

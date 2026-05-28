@@ -1,0 +1,5103 @@
+Hacker Newsnew | past | comments | ask | show | jobs | submit	login
+
+
+
+	
+	Ask HN: Who is using OpenClaw?
+	336 points by misterchocolat 4 days ago | hide | past | favorite | 386 comments
+	
+I don't use it personally, and neither does anyone in my circle...even though I feel like I'm super plugged into the ai world
+
+
+	
+ help
+
+
+
+
+	
+	
+lexandstuff 3 days ago | next [–]
+
+
+I still use it and find it helpful.
+
+My OpenClaw instance uses an Obsidian project as its memory. Mainly, it's just my main day-to-day LLM that I access via WhatsApp, but instead of the memory being locked away with a specific vendor, it's stored in version control that I can read and edit. That reason alone makes it compelling to me. When a better LLM comes along, I can just switch, and my memory and system prompts come with it.
+
+However, I also use it for calorie/weight/workout tracking, to-do lists (bill, birthday, event reminders), and to support my various life admin tasks. I don't give it access to much at all, except a few skills that give it read-only access to some data.
+
+Hasn't given me a 10x productivity boost or anything. It's just handy.
+
+I wrote an article on it, if anyone is interested: https://notesbylex.com/openclaw-the-missing-piece-for-obsidi...
+
+reply
+
+
+
+	
+	
+brtkwr 3 days ago | parent | next [–]
+
+
+I’ve also found it useful for personal stuff. For example I have my OpenClaw bot in a family group on Telegram and everyday it asks my family members stories from their lives that it meticulously documents and uses as a basis for further questions in the future and has so far managed to build a rich family history spanning 50 odd family members (a project I had always been planning to do for never found the time to).
+
+reply
+
+
+
+	
+	
+nullandvoid 3 days ago | root | parent | next [–]
+
+
+I can't relate to this need to fully explore and then document everyone's history - I can have a conversation for an evening and forget everything the next day, and I'm happy with that, the truly important things (to me) will distill themselves naturally.
+
+A case of different strokes for different folks I suppose.
+
+reply
+
+
+
+	
+	
+brtkwr 3 days ago | root | parent | next [–]
+
+
+In my case, I was curious about my ancestry and Nepal doesn't currently have an equivalent of an ancestry.com therefore the best source of the information is my family themselves while they're still alive.
+
+reply
+
+
+
+	
+	
+eterm 3 days ago | root | parent | prev | next [–]
+
+
+I am weirded out but this, I find it horrific, like some kind of mind zombie, leeching humanity from your family members.
+
+Someone somewhere is thinking they're connecting with you and sharing their humanity but they're just shoveling their soul into a machine that is "meticulously documenting" them.
+
+Sorry, but ick.
+
+reply
+
+
+
+	
+	
+kaoD 3 days ago | root | parent | next [–]
+
+
+To give a different perspective: archival is important. If nobody does this job, generational knowledge is lost at some point.
+
+I talked plenty with my grandpa, but I'm sure he didn't even tell me 20% of his life.
+
+And my other grandpa died when I was still a kid, so I didn't even get to have adult conversations with him.
+
+Imagine making this available to your grandgrandgrandson.
+
+reply
+
+
+
+	
+	
+ssl-3 3 days ago | root | parent | next [–]
+
+
+Yeah, but you're kaoD. You're a bonafide person. You should talk with other people; it's good. (We're chatting right now.)
+
+That's quite different from chatting with a bot that pretends to be human. (Do you want to chat with my bot?)
+
+reply
+
+
+
+	
+	
+kaoD 3 days ago | root | parent | next [–]
+
+
+Yes. And I will die along with the memories from my grandpa. Most of them died already with him, and I don't remember all our conversations.
+
+I have no kids but, even if I did, let's say I'd pass 20% of the 20% he passed on to me, and they pass 20% of the 20% of the 20%... You get the idea.
+
+Heck, I already forgot 50% of my life since I don't have a journal!
+
+This is not an "either" situation. Archival is important.
+
+People write memories for a reason. This is automating the process, not superseding human communication.
+
+I am the sort of person that never took photos (live in the moment yadda yadda). 15 years later, I'm starting to regret it.
+
+reply
+
+
+
+	
+	
+brtkwr 3 days ago | root | parent | prev | next [–]
+
+
+Why does it have to be black and white? Why can't a bot do the exploration and notetaking along with people in the channel?
+
+reply
+
+
+
+	
+	
+ssl-3 3 days ago | root | parent | next [–]
+
+
+That's not how I interpreted it as being in this instance, but it could certainly be that way.
+
+I guess that'd be like keeping all correspondence in a shoe box (to be reviewed later -- or maybe never), or maybe the automated recording of my phone calls with others (which is completely legal where I am; I don't even have to tell them).
+
+And I suppose whether I felt that would be creepy or not depends a lot upon intent, and consent.
+
+If the intent were pure and good, and the consent both informed and granted, then I'd have no problem with any of this at all -- whether a shoebox, a tape recorder, or a bot is involved in taking the notes.
+
+reply
+
+
+
+	
+	
+Nevermark 13 hours ago | root | parent | next [–]
+
+
+It is really easy to way over think, or over feel, AI.
+
+Sometimes it's just a really good interface that matches the task well.
+
+Think of all the people that still avoided getting a computer a decade or two ago, because "online" was so unnatural and creepy to them. Obviously, the internet had and has those places. And frankly a lot of social media still is.
+
+But it can also just be wikipedia, making flight reservations, etc. When that is all it is doing, what you want it to do, that is all it is.
+
+An automated language interface can just be a really good note collector/collator.
+
+Personally, I look forward to the wise, well dressed, well spoken, waist-up robot bartenders we have been promised by movies for decades. Not creepy at all!
+
+reply
+
+
+
+	
+	
+brtkwr 3 days ago | root | parent | prev | next [–]
+
+
+I called my parents, told them about the idea, they never even had Telegram before we started this project but they especially joined when they learnt that I was trying to build a family history. They are native Nepalese speakers therefore the system promptensured that the bot always responds to their questions and answers in Nepalese.
+
+reply
+
+
+
+	
+	
+brtkwr 3 days ago | root | parent | prev | next [–]
+
+
+Btw my family know they are talking to the bot and they know that the bot is taking notes for our benefit. And I am in the channel and I enjoy reading those stories myself and would have never thought to ask those questions myself. Sometimes I ask the follow up questions myself too...
+
+reply
+
+
+
+	
+	
+eterm 3 days ago | root | parent | next [–]
+
+
+Well that makes it a lot less bad, it sounded from your post like it messages on your behalf and as you.
+
+If it identifies as a bot then I find it a lot less objectionable.
+
+I still wouldn't do it myself, but I can put the pitchfork down.
+
+reply
+
+
+
+	
+	
+HenryBemis 11 hours ago | root | parent | prev | next [–]
+
+
+hi, cool use-case! Question: do they have to type it, or one can upload an audio (old people such as me may talk for 5mins about a mini-story vs typing for 20mins, especially if they use a phone vs windows telegram application (typing on a keyboard vs the smartphone). in which case, do you got a STT 'module' that will pick up the audio, transcribe it, and then 'process' it?
+
+reply
+
+
+
+	
+	
+hypercube33 3 days ago | root | parent | prev | next [–]
+
+
+I actually think this is cool. How is this different than sitting people down with a camera every day and asking for a new random story? we won't be around forever and documenting it is one way to keep memories alive in people's minds
+
+reply
+
+
+
+	
+	
+brtkwr 3 days ago | root | parent | next [–]
+
+
+I was surprised myself how engaged my family have been with the bot. And equipped with the knowledge of our family history, it is able to ask deeply informed follow up questions! I would recommend trying it!
+
+reply
+
+
+
+	
+	
+nickthegreek 3 days ago | root | parent | prev | next [–]
+
+
+You are making a lot of assumptions.
+
+reply
+
+
+
+	
+	
+navigate8310 3 days ago | root | parent | next [–]
+
+
+I hope OP is using some self-hosted local model to document their family archives
+
+reply
+
+
+
+	
+	
+ryang2718 3 days ago | root | parent | next [–]
+
+
+This is actually a really interesting use case for a local model.
+
+The writing might be a bit mediocre but it would capture all the information.
+
+Parent post really stumbled on a great idea here.
+
+reply
+
+
+
+	
+	
+altmanaltman 1 day ago | root | parent | prev | next [–]
+
+
+Would you feel differently if it was an app that sent notifications every day to people to document their thoughts/memories?
+
+I think the ick factor you are feeling is from anthromorphizing a computer program by thinking its a "mind zombie".
+
+reply
+
+
+
+	
+	
+lexandstuff 3 days ago | root | parent | prev | next [–]
+
+
+Wow. This is a really cool idea. I am using Obsidian for family history, but I never thought to let people chat with it and update it via OpenClaw.
+
+reply
+
+
+
+	
+	
+mistercheese 2 days ago | root | parent | prev | next [–]
+
+
+This is a great idea! I’d be curious to learn more about your setup, particularly how it asks your family and follows up with further questions? Does it do it based on a graph of your family it builds real time? Or is it smart enough that you just prompt it to “follow up with more questions”? I’m having a hard time imagining it asking my family engaging questions they won’t just say, “I don’t remember”.
+
+reply
+
+
+
+	
+	
+djmips 2 days ago | root | parent | prev | next [–]
+
+
+This is to the people who are highly against this - when you read a book you are doing this - talking to others across time and space. This isn't that much different.
+
+reply
+
+
+
+	
+	
+jaybuff 3 days ago | parent | prev | next [–]
+
+
+I used it very similarly to you, but found it to be about $3.50 per day, or $100 a month. It wasn't worth that.
+
+reply
+
+
+
+	
+	
+koinedad 3 days ago | root | parent | next [–]
+
+
+My minimax has liberal usage at $10 per month, if you’re not looking for some amazing model.
+
+reply
+
+
+
+	
+	
+stingraycharles 3 days ago | root | parent | next [–]
+
+
+Minimax 2.7 gets confused too often and misses a lot of things. GLM 5.1 is better, closer to a Sonnet style model, but also significantly more pricey.
+
+reply
+
+
+
+	
+	
+nickthegreek 3 days ago | root | parent | prev | next [–]
+
+
+minimax 2.7 is great at smaller tasks. I use it for simple subagents and it is capable and I don’t come close to using the quota.
+
+reply
+
+
+
+	
+	
+osculum 3 days ago | root | parent | prev | next [–]
+
+
+Couldn't you use it with a Codex subscription? Plus is $20 per month
+
+reply
+
+
+
+	
+	
+johnzim 3 days ago | root | parent | next [–]
+
+
+I think the claude EULA has now explicitly banned this use https://www.theverge.com/ai-artificial-intelligence/907074/a...
+
+reply
+
+
+
+	
+	
+tcoff91 3 days ago | root | parent | next [–]
+
+
+That's Anthropic. Codex is OpenAI.
+
+reply
+
+
+
+	
+	
+baby_souffle 3 days ago | root | parent | next [–]
+
+
+For what it's worth, codex doesn't yet seem to be aggressively terminating accounts or invalidating auth tokens if they detect usage in a non-first party tool. Whether that will continue to be the case or not a gamble though.
+
+reply
+
+
+
+	
+	
+FergusArgyll 3 days ago | root | parent | next [–]
+
+
+https://github.com/openai/codex/discussions/8338
+
+reply
+
+
+
+	
+	
+BeetleB 3 days ago | root | parent | prev | next [–]
+
+
+Claude is not Codex.
+
+reply
+
+
+
+	
+	
+esskay 3 days ago | root | parent | prev | next [–]
+
+
+Try opencode go using kimi - its more than enough for most usecases unless you try something really stupid that you shouldn't be getting openclaw to do directly, like coding.
+
+reply
+
+
+
+	
+	
+BeetleB 3 days ago | root | parent | prev | next [–]
+
+
+Z.ai explicitly allows you to use it with OpenClaw on their plans.
+
+reply
+
+
+
+	
+	
+mx_03 3 days ago | parent | prev | next [–]
+
+
+I find it funny you call it an Obsidian project.
+
+It is just folders and MD files. You are not even locked-in with Obsidian.
+
+Or maybe OpenClaw is reading the graph view?
+
+reply
+
+
+
+	
+	
+lexandstuff 3 days ago | root | parent | next [–]
+
+
+Yeah, not locked in with Obsidian.
+
+I just use it as a Markdown viewer/editor, and it handles updating links across notes when a file is renamed. There are some handy conventions that Obsidian encourages, like Daily Notes, templates and linking across notes, enough to call it an Obsidian project, but yeah - it's just markdown. I don't even use the [[Wiki-links]] style that it uses by default.
+
+reply
+
+
+
+	
+	
+stingraycharles 3 days ago | parent | prev | next [–]
+
+
+This is roughly how I use it as well, except I made it a little bit more proactive and actively chases me whether it should track certain things in OmniFocus and chases me about completing overdue tasks or other things I would otherwise forget.
+
+I keep data collection out of the LLMs. I have separate scripts that push and pull data from external sources. So I don’t need to provide the LLM with auth keys, and the things it can do is very limited.
+
+reply
+
+
+
+	
+	
+frankdenbow 3 days ago | parent | prev | next [–]
+
+
+Interested in the calorie tracking (have done amateur bodybuilding). Are you mostly cooking your own meals? Wonder if scanning items and tracking more loosely (a more forgiving myfitnesspal) would be helpful for you? Its on the roadmap of things I'm looking to build for myself (just made this last weekend for buying tovala meals: http://brovala.site)
+
+reply
+
+
+
+	
+	
+cogogo 3 days ago | root | parent | next [–]
+
+
+Why oh why is openclaw an improvement for workouts and calorie tracking?
+
+reply
+
+
+
+	
+	
+aianus 3 days ago | root | parent | next [–]
+
+
+MyFitnessPal takes a lot of clicks to log one meal, I can just use natural language with openclaw.
+
+reply
+
+
+
+	
+	
+nicksrose7224 3 days ago | root | parent | next [–]
+
+
+What is the accuracy of this method vs manual entry?
+
+reply
+
+
+
+	
+	
+TheDong 3 days ago | root | parent | next [–]
+
+
+When I message my claw "Mark that I had 825 calories for lunch today", it has marked down 825 correctly 100% of the time so far.
+
+It shows me way fewer ads than all the popular fitness apps and loads way quicker since it doesn't have to load like 10MB of ads for me to enter one number, so it seems like a good improvement.
+
+I do not think it's an improvement over an excel sheet, but as the average openclaw user, I would rather pay anthropic $10/day in API credits than create a google sheets document.
+
+reply
+
+
+
+	
+	
+charlieflowers 3 days ago | root | parent | next [–]
+
+
+I do something similar with Claude Code. I say, "I ate a single serving of that Toasted Beef Ravioli that Aldi sells." Claude web searches, finds it, gets its nutrition info, then uses gspread to add it to the daily food log tab of my spreadsheet.
+
+So much less hassle, lower activation energy needed than with MyFitnessPal.
+
+reply
+
+
+
+	
+	
+Hardwired8976 2 days ago | root | parent | prev | next [–]
+
+
+But you need to know that the meal was 825 calories which these calorie tracker apps calculate for you with all the ingredient amounts.
+
+reply
+
+
+
+	
+	
+tiel88 3 days ago | parent | prev | next [–]
+
+
+This is basically the same setup as mine, except I built a grocery price crawler, that spits out a weekly menu along with a check-box shopping list straight into my google drive. Wife loves being able to just type "we need toothpaste" or whatever into Telegram and whenever we go to do our weekly shop we get an up to date shopping list optimised for prices and our dietary preferences.
+
+Before getting side-tracked by other projects I was also going to build a kind of family archiving function like someone in the comments also mentioned. Just to quickly be able to record small/funny family moments.
+
+reply
+
+
+
+	
+	
+seebeen 3 days ago | parent | prev | next [–]
+
+
+Thank you for this detailed writeup. If it's not a secret - what is your monthly ballpark figure. I'm planning to deploy an instance during the weekend, for light - medium usage. Can't gauge costs.
+
+reply
+
+
+
+	
+	
+wuschel 3 days ago | parent | prev | next [–]
+
+
+Hi,
+
+You mentioned switching out LLM backends. Would you think that lesser models e.g. one of the recent Qwen variants would work for your use case?
+
+reply
+
+
+
+	
+	
+towledev 3 days ago | parent | prev | next [–]
+
+
+Do you build out your own information hierarchies and tell the model to use as-is, or do you let it organize everything itself?
+
+reply
+
+
+
+	
+	
+lexandstuff 3 days ago | root | parent | next [–]
+
+
+I already had the hierarchy from years of maintaining the notes, but for new things I do collaborate with the model on how best to structure stuff and get it to refactor when needed.
+
+reply
+
+
+
+	
+	
+LelouBil 3 days ago | parent | prev | next [–]
+
+
+That's exactly what I want to use it for, thanks for writing an article about it !
+
+reply
+
+
+
+	
+	
+alexchantavy 3 days ago | parent | prev | next [–]
+
+
+Great article, thanks for sharing. How much does it run you a month roughly?
+
+reply
+
+
+
+	
+	
+lexandstuff 3 days ago | root | parent | next [–]
+
+
+I recently switched to Codex using my ChatGPT Plus subscription, so only $20 a month or so. Before that, using Opus 4.5/6 it was like $100-150.
+
+Opus was by far the best at the job, but Codex with GPT 5.4 is decent.
+
+reply
+
+
+
+	
+	
+redact207 3 days ago | prev | next [–]
+
+
+When I saw Jensen's talk about how Openclaw surpassed React and Linux in terms of GitHub stars within a few months, I knew the whole thing was manufactured bot hype.
+
+No one can tell me a compelling use case. The whole thing seems designed around getting people to burn more tokens.
+
+reply
+
+
+
+	
+	
+bdcravens 3 days ago | parent | next [–]
+
+
+Every time I've sat down to consider how it could be useful, I can't think of anything that I couldn't build as a series of cron jobs and Playwright scripts. (even using Claude Code to do the heavy lifting at first, but then the tokens are spent and I don't have ongoing cost)
+
+I can only guess it's really not for "us", but rather for those who aren't afraid of technology but aren't really engineers.
+
+reply
+
+
+
+	
+	
+snypher 3 days ago | root | parent | next [–]
+
+
+>series of cron jobs and Playwright scripts
+
+This is approximately the Dropbox reply.
+
+>I can only guess it's really not for "us"
+
+Exactly correct.
+
+reply
+
+
+
+	
+	
+bdcravens 3 days ago | root | parent | next [–]
+
+
+> >series of cron jobs and Playwright scripts
+
+> This is approximately the Dropbox reply.
+
+lol that wasn't my intent but I totally see it now.
+
+I actually don't want to be dismissive of OpenClaw; I want to believe the hype. It's just what I've heard and what I see don't add up to me. If anything, it's a calculus where I have to decide if it's worth the time of setting up a machine and the learning curve.
+
+reply
+
+
+
+	
+	
+ethbr1 3 days ago | root | parent | prev | next [–]
+
+
+numberOfProgrammersInTheWorld : numberOfPeopleInTheWorld
+
+reply
+
+
+
+	
+	
+enochthered 3 days ago | root | parent | prev | next [–]
+
+
+I’ve built a few recurring tasks with an OpenClaw. It’s fun to sit on the sofa and task it. That said, everything I’ve built with it I’ve realised would work better as a script.
+
+reply
+
+
+
+	
+	
+Bridged7756 3 days ago | parent | prev | next [–]
+
+
+My thoughts exactly. If whatever i wanted it to do was so unimportant that I can trust this thing to have full control over it and to do it successfully why even do it anyways? The risks of giving it full unparalleled API key access and control fully outweigh whatever gain.
+
+reply
+
+
+
+	
+	
+borplk 3 days ago | parent | prev | next [–]
+
+
+My observation is that people who love this stuff are not programmers so they feel like they have been empowered to automate things that they could not otherwise automate.
+
+For people who are already highly skilled in scripting/automation it's a lot less impressive.
+
+They notice all the things that could go wrong. All the non-determinism issues. And they think I could do this better with a custom script myself.
+
+The use cases I have heard all seem like gimmicks to me.
+
+reply
+
+
+
+	
+	
+ChadMoran 3 days ago | parent | prev | next [–]
+
+
+Monitors my company's support email, searches though code, GitHub etc to try and triage the issue and shoot me a message to give me a head start.
+
+Connects stripe subscription cancellation with PostHog events to see if something was frustrating.
+
+Does the same leading up to when someone subscribes to describe successful paths.
+
+Lots of novel thinking when events happen on its own being proactive.
+
+Just because people aren't talking about it doesn't mean it isn't useful. Think creatively.
+
+reply
+
+
+
+	
+	
+rvz 3 days ago | parent | prev | next [–]
+
+
+> No one can tell me a compelling use case. The whole thing seems designed around getting people to burn more tokens.
+
+Exactly. These companies are only hyping openclaw so that we continue to spend hundreds of dollars a day worth of tokens on their infrastructure.
+
+That’s why companies like Nvidia, OpenAI, Anthropic and Google and many others all want you to spend more on tokens on openclaw and they don’t care if it has no use-case.
+
+All I see is this: Almost no-one other than the hosting providers and course sellers are making money on openclaw and its clones but not those who are running openclaw itself.
+
+What a scam.
+
+reply
+
+
+
+	
+	
+jeffyaw 3 days ago | root | parent | next [–]
+
+
+didn’t Anthropic block open claw usage?
+
+reply
+
+
+
+	
+	
+mynegation 3 days ago | root | parent | next [–]
+
+
+Yes, from using flat rate subscriptions. Everyone is welcome to run it on top of the usage-billed Anthropic API
+
+reply
+
+
+
+	
+	
+Kiro 3 days ago | parent | prev | next [–]
+
+
+It's massive in China. Search for "raise a lobster" and check out the videos from the events.
+
+reply
+
+
+
+	
+	
+yorwba 3 days ago | root | parent | next [–]
+
+
+It's massive in the sense of people hyping it on social media and grifters trying to profit from it. Pure FOMO, not dissimilar from the earlier "earning a side income using ChatGPT" hype. I doubt there are many people using it successfully for any purpose other than producing social media content promoting courses promising people to teach them how to use OpenClaw, for a fee of course.
+
+reply
+
+
+
+	
+	
+raincole 3 days ago | root | parent | prev | next [–]
+
+
+Yes. OpenClaw is (weirdly) tangled with anime/gaming culture in China.
+
+reply
+
+
+
+	
+	
+ge96 3 days ago | root | parent | prev | next [–]
+
+
+Surprising seems like they'd favor Manus
+
+reply
+
+
+
+	
+	
+canadiantim 3 days ago | parent | prev | next [–]
+
+
+Openclaw simply makes the effectiveness of working with claude code and similar available to a broader audience that hadn't been exposed to it before. Sure Cowork does similar, but I believe that's still why Openclaw became so popular.
+
+reply
+
+
+
+	
+	
+datadrivenangel 3 days ago | root | parent | next [–]
+
+
+Except it's so janky and unreliable that the audience hasn't fully realized that it's not the winning move.
+
+reply
+
+
+
+	
+	
+mandeepj 3 days ago | parent | prev | next [–]
+
+
+I think it has obscure uses here and there, like this one https://www.reddit.com/r/openclaw/comments/1shutzt/openclaw_...
+
+reply
+
+
+
+	
+	
+8fingerlouie 2 days ago | root | parent | next [–]
+
+
+But did it really warrant running an openclaw machine to do that ?
+
+Claude Code, Codex or something else running on your laptop could also have done that, and with Claude Cowork / Dispatch you could leave Claude running on your laptop at home, using your phone to have it do the work.
+
+I have no doubt agentic AI exists in our future, I'm just no so sure about needing openclaw.
+
+reply
+
+
+
+	
+	
+mandeepj 2 days ago | root | parent | next [–]
+
+
+For that Reddit post, it seems OpenClaw submitted that claim at a website, which I don’t think Claude code, codex or any other model can do. It requires a skill and tool calling combination.
+
+reply
+
+
+
+	
+	
+ra 3 days ago | parent | prev | next [–]
+
+
+Yes agree, I imagine that's why NVIDIA and OpenAI jumped at them.
+
+I wouldn't touch that vibe-coded mess with a ten foot pole.
+
+reply
+
+
+
+	
+	
+nailer 3 days ago | root | parent | next [–]
+
+
+The dev uses AI to build but it's not vibe coded.
+
+reply
+
+
+
+	
+	
+nailer 3 days ago | parent | prev | next [–]
+
+
+> No one can tell me a compelling use case.
+
+I get it to run really slow unit tests and fix them, I provide it feeedbak while at lunch, walking the dog, whatever else.
+
+My developer friends also do the same.
+
+reply
+
+
+
+	
+	
+heliumtera 3 days ago | parent | prev | next [–]
+
+
+There is one usecase: you can laundry your actions and just say "oopsies, llms when rogue I guess"
+
+It's not pretty and not honest but if you're desperate I guess it's an option
+
+reply
+
+
+
+	
+	
+Avicebron 3 days ago | root | parent | next [–]
+
+
+I would prefer it if it could do my laundry. I can launder my actions on my own..
+
+reply
+
+
+
+	
+	
+satvikpendem 2 days ago | parent | prev | next [–]
+
+
+That's because it automatically stars itself when installed
+
+reply
+
+
+
+	
+	
+doctorpangloss 3 days ago | parent | prev | next [–]
+
+
+"Thing that has huge adoption is fake, they're all morons!"
+
+reply
+
+
+
+	
+	
+otabdeveloper4 3 days ago | root | parent | next [–]
+
+
+That's like saying NFTs (remember those?) has "huge adoption".
+
+reply
+
+
+
+	
+	
+somewhatgoated 3 days ago | root | parent | prev | next [–]
+
+
+Unironically yes
+
+reply
+
+
+
+	
+	
+mjsweet 3 days ago | prev | next [–]
+
+
+I’m a professional maintenance gardener and I have used NanoClaw running on my Mac to do the following:
+
+Schedule jobs on my job management tool (I vibed it) using a custom MCP. I’ll ask it questions like “what jobs are on today” etc. start the job, complete the job etc.
+
+It will watch Gmail using a MCP for work orders from local real estate agents, where it will schedule quote visits.
+
+After the quote visit I add the photos to telegram (the channel I happen to use) where I then ask it to analyse the photos.
+
+Claude in NanoClaw does a good job of figuring out what needs to be done, but it doesn’t always get it quite right, so I use intake-api which is a “session inbox” [1] that generates a form and uploads it to Cloudflare along with the images and puts a link to the form in the chat so I can make adjustments to the annotated images of the property. After I’m happy, I click submit.
+
+I’ll then go back to the telegram channel and let it know I have submitted the form. Claude will then pull the JSON payload back down into the session and integrate it into the quote.
+
+It will ask me questions about what the job will cost etc, and anything else it thinks it needs to know.
+
+It will then generate a full PDF proposal using Latex between 14 and 32 pages long depending on how many photos were taken.
+
+There are sections with terms and conditions as well as a bit of sales guff etc. as well as quite a nice cover page with their contact details and mine etc.
+
+When I’m happy I’ll ask it to create a draft email in Gmail with the attached pdf proposal.
+
+I’ll review it quickly and then send it.
+
+I also have the Xero MCP setup so I can ask it to create invoices and contacts etc.
+
+I do all of this when getting in and out of my truck.
+
+It’s freed up my home life to spend more time with my children and my Mrs.
+
+There is alot of scope for small business owners who need these sorts of agentic assistant tasks and with my Agentic CRM I’m see a glimpse of the future for guys like me I think.
+
+Intake API:
+
+https://github.com/mjsweet/intake-api
+
+reply
+
+
+
+	
+	
+azmz 1 day ago | parent | next [–]
+
+
+You're exactly the small-business-owner use case most OpenClaw/NanoClaw tutorials skip over. Built something close at atmita.com, cloud-hosted so there's no Mac running the whole time, and it can hit Gmail, Telegram, Xero, or any API with managed OAuth rather than wiring up each MCP yourself. Not based on OpenClaw, built from scratch. Won't generate 32-page Latex proposals out of the box though, that's a serious setup you've got.
+
+reply
+
+
+
+	
+	
+mjsweet 1 day ago | root | parent | next [–]
+
+
+Keep going with this hey? I think that as an old power user and an AI hawk I have managed to cobble together all the bits and bobs to make it work for me. But the next major move is an agentic computer that does all this stuff out of the box and really lowers the bar of entry for business owners... which looks like what you are doing. I would love to just chat with my agentic box all day long with my AirPods Pro... that would be amazing.
+
+reply
+
+
+
+	
+	
+tstrimple 3 days ago | parent | prev | next [–]
+
+
+I think it's great that you were able to build all of that! It sounds very useful. I'd recommend asking Claude Code to evaluate your entire setup and try to identify areas where a script running on a schedule could replace parts of this framework. You could probably get 90% of it from simple repeatable scripts which would let you save more tokens for things that actually need LLM "intelligence". But if you're happy with the ROI then it seems to be working quite well for you!
+
+reply
+
+
+
+	
+	
+mjsweet 3 days ago | root | parent | next [–]
+
+
+I actually have a /loop running scheduled tasks like syncing customer data from routeboard (my job scheduler) and a flat file (MD and JSON) agentic CRM I have created that keeps tabs on the status of all the jobs, invoicing etc. This happens at 2am every day.
+
+The great things about NanoClaw is that its actually Claude running in an Apple Container on my Mac. I gave up on OpenClaw fairly quickly because it seems like the biggest security regression ever created in the history of human kind.
+
+I have a Max 5x plan and it'm very happy to pay the money TBH, considering that proposals take only 20 minutes to build, and my conversion rate is quite high.
+
+When I send them for the first time to a new real estate agent they love them because it's easier for them to "sell" my service to their client.
+
+reply
+
+
+
+	
+	
+tstrimple 3 days ago | root | parent | next [–]
+
+
+Just be careful. By all accounts I don't believe that the subscription plans cover 3rd party harness support. You may be at risk of all of this being shut down. That's one of the reasons I haven't explored other harnesses. The main one being, I can accomplish everything they can from within CC with some extra steps I know how to do compliant with a CC Max Plan Terms of Service.
+
+reply
+
+
+
+	
+	
+mjsweet 3 days ago | root | parent | next [–]
+
+
+Yeah I know, I have experimented locally with CC channels - but it's brittle and buggy at the moment. I will give it another go in a few weeks once they iron out the kinks.
+
+reply
+
+
+
+	
+	
+tstrimple 3 days ago | root | parent | next [–]
+
+
+If you do run into any troubles you're not sure how to navigate, please feel free to reach out to me. Hell, even before that. I'm happy to collaborate on your LLM experience. But if the worst happens, I can probably get you back and running at that baseline even if Anthropic bans you. And this isn't me trying to worm my way into you paying me. Just a better understanding of what you've implemented versus how I typically use these tools and if I can close the "token" gap.
+
+reply
+
+
+
+	
+	
+nisegami 3 days ago | root | parent | prev | next [–]
+
+
+I believe that Nanoclaw uses Claude Code under the hood actually, at least in V1.
+
+reply
+
+
+
+	
+	
+mr3martinis 3 days ago | parent | prev | next [–]
+
+
+Did you transition from dev to gardener? If so, I’d be curious about your story.
+
+reply
+
+
+
+	
+	
+mjsweet 2 days ago | root | parent | next [–]
+
+
+I was in IT for 30 years when I transitioned two years ago to gardening. It's the best decision I have made for my mental, physical and spiritual health. I had been accused of being a programmer for many years and even convinced myself a few times. Funnily enough, it's been the last year that I have been able to actually build things with Claude that I would never have tackled a few years ago. For so many years I had all sorts of loose ends with clients... all the hard stuff that was difficult to deliver and I was constantly stressed out and depressed. But as of today I can honestly say, with all the personal projects I have going for my own business and a few web dev jobs for friends, I have absolutely no loose ends hanging over my head. What a time to be alive.
+
+reply
+
+
+
+	
+	
+mr3martinis 1 day ago | root | parent | next [–]
+
+
+Congrats on making the change! That sounds like a much better situation for all around.
+
+reply
+
+
+
+	
+	
+tonymet 3 days ago | parent | prev | next [–]
+
+
+how did you prompt it to continue in the loop indefinitely without needing supervision? do you have to check in on it?
+
+reply
+
+
+
+	
+	
+mjsweet 3 days ago | root | parent | next [–]
+
+
+I think I just used the /loop command to initialise it - ask it to do what you want. More docs here:
+
+https://code.claude.com/docs/en/scheduled-tasks
+
+reply
+
+
+
+	
+	
+sgallant 3 days ago | parent | prev | next [–]
+
+
+Great use-case!
+
+reply
+
+
+
+	
+	
+bigpapikite 3 days ago | prev | next [–]
+
+
+I don't personally know many people who've used it so I'm not sure if this was a me thing but here was my experience in short:
+
+I set up OpenClaw on a raspberry pi 4 that I could ssh into using my main computer. My main goal for using OpenClaw was just as a morning debriefer that could scan my google calendar, trello board, and gmail to let me know what I had happening for the day and also weekly to give me a forecast for the weeks ahead to see how busy my month was. I spent about 40-50 bucks in one week just working through kinks and having it fix itself until I stumbled onto a post that helped me optimize my model usage for price instead of just throwing Opus and Sonnet at everything.
+
+Even after making this adjustment, the morning debriefer worked maybe once or twice a week and broke every other morning, telling me that it fixed itself and it would never happen again. At a certain point I just got fed up with it and cut the cron job, it's still running on my pi but I never use it.
+
+Pretty sure Claude has something like this now but I'm pretty thrown off the whole thing, I'd rather just take the 30-45mins to plan out my day in the morning myself.
+
+reply
+
+
+
+	
+	
+littlemishka 3 days ago | parent | next [–]
+
+
+I work on something called Town (town.com) and your morning debriefer is basically a preset workflow we ship out of the box. You connect your Google Calendar and email, flip it on, and it just sends you a daily rundown. No cron jobs, no token tuning, no "I fixed myself" lies. Took us a while to get the reliability right but it genuinely doesn't break every other morning. It's free still for early tester, feel free to give it a shot!
+
+reply
+
+
+
+	
+	
+jimmygrapes 3 days ago | root | parent | next [–]
+
+
+> No X, no Y, no Z.
+
+Please, everyone, stop this.
+
+reply
+
+
+
+	
+	
+Biologist123 3 days ago | root | parent | prev | next [–]
+
+
+Well done. This is precisely what the future will look like. I’ve hacked together my own version of this using N8N whereby I feed in tasks via text or photo through telegram and it outputs a to do list. At some point I’ll link it to my personal wiki and then have it action tasks. This was just a fun project, but one design decision is to keep third party services away from commercially sensitive emails.
+
+reply
+
+
+
+	
+	
+robryan 3 days ago | parent | prev | next [–]
+
+
+I had a surprisingly large amount of issues getting it to correctly message me on discord if needed as part of heartbeat. Multiple times it broke and we fixed it. Then it was chewing through way too much usage so I set it to 6 hourly heartbeat and it stopped messaging entirely again, haven't bothered to fix.
+
+It is nice though for debugging home server things when I ask it to.
+
+reply
+
+
+
+	
+	
+haneul 3 days ago | root | parent | next [–]
+
+
+Works perfectly installed as part of a server and at mentioning you there. Direct DMs are finicky in my experience.
+
+reply
+
+
+
+	
+	
+hamasho 3 days ago | parent | prev | next [–]
+
+
+Do you just give your Google account to OpenClaw, or create a separate account with limited permission? I'm worried that OpenClaw decides to create an entire website on GCP project without asking if they see a message like "have you already developed and deployed the management dashboard?"
+
+reply
+
+
+
+	
+	
+cadamsdotcom 3 days ago | parent | prev | next [–]
+
+
+Why not use Claude to write yourself a daily briefing, and deliver it to your email or someplace you’ll receive it?
+
+reply
+
+
+
+	
+	
+SyneRyder 3 days ago | root | parent | next [–]
+
+
+That's what I ended up doing, made my daily briefing a Cron job and running it via "claude -p". Wired it up to make a podcast, with MCP tools I made to create an MP3 with OpenAI, another to upload it to one of my sites with an updated RSS feed, so I can listen in the AntennaPod podcast app each morning.
+
+reply
+
+
+
+	
+	
+cadamsdotcom 3 days ago | root | parent | next [–]
+
+
+Nice. Even better would be having your agent write code for the deterministic bits and telling the agent it should “invoke the script called blah” to do uploads (or whatever you want to have happen deterministically).
+
+reply
+
+
+
+	
+	
+SyneRyder 3 days ago | root | parent | next [–]
+
+
+Yep, I agree! My MCP tools are local compiled Go binaries, and the tool that uploads my podcast is actually a local Go CLI that Claude calls. Claude's main role / intelligence is in evaluating which of the morning's HN & Lobsters news is most relevant to me specifically, and writing the podcast script. I'm all for deterministic tools, and it saves on tokens too.
+
+One advantage of splitting it into MCP tools though, one day I'd run out of pre-paid OpenAI TTS credit, and Claude was smart enough to try using Mistral TTS instead. I could have done that fallback deterministically too, but it wasn't something I'd thought of yet.
+
+I once had a friend tell me they'd got their AI to tell them the weather every morning... and the thought of that poor AI, web researching Weather APIs & writing a new python script to call the API every morning, instead of just doing the research once and making it a binary (or even just a curl line)... drove me crazy. All that wasted time and compute. Some people just like to watch tokens burn.
+
+reply
+
+
+
+	
+	
+jpfaraco 3 days ago | parent | prev | next [–]
+
+
+Interesting. How's the performance on the Pi? I also have a Pi 4 running a few containers and thought about running Openclaw on it, but never got around to it because of performance concerns. I ended up installing Nullclaw which is simpler but much more lightweight.
+
+reply
+
+
+
+	
+	
+organsnyder 3 days ago | parent | prev | next [–]
+
+
+I have a series of skills and scripts that I manually invoke using Pi. It checks my calendar, Slack, email, etc. and keeps pretty good track of my day, to the point that I trust it enough to get a lot of noise out of my head.
+
+reply
+
+
+
+	
+	
+7thpower 3 days ago | root | parent | next [–]
+
+
+What kind of noise does it filter out for you?
+
+reply
+
+
+
+	
+	
+organsnyder 3 days ago | root | parent | next [–]
+
+
+Mainly all the tasks that I otherwise feel I have to track myself. I've found that my head feeling clearer is an indication that I trust a tool to not lose context.
+
+reply
+
+
+
+	
+	
+godot 3 days ago | parent | prev | next [–]
+
+
+I think this is a pretty common experience with setting up openclaw to do useful work. Both the unreliability as well as all the reassuring you it fixed some stuff but not really.
+
+reply
+
+
+
+	
+	
+swyx 3 days ago | parent | prev | next [–]
+
+
+agree. it breaks a lot, integrations are hard, it turns out, and openclaw can only fix itself so much before you need human intervention and it just stops
+
+reply
+
+
+
+	
+	
+superfrank 3 days ago | prev | next [–]
+
+
+I don't use OpenClaw I tried but found it fragile and it's personality off putting. I then tried NanoClaw, but found the lack of communication channels limiting and could never really get it to create skills that felt solid. I recently just switched to Hermes Agent (like last week) and it's the first one where it didn't feel like I was constantly needing to fix it, so at the moment I'm happy with it.
+
+What do I use it for? I basically just use it as a personal assistant and a way to centralize a lot of other automations that I have elsewhere.
+
+- I have an automation that rolls everything on my todo list over to the next day at 11:59pm
+
+- I have one that checks the weather and tells me if it's going to be windy in the next few days since I need to bring the lawn furniture in
+
+- I have it set up so that I can forward it email with invoices and it will extract the data from a PDF and enter it into a cost tracking sheet
+
+- I have it check my outlook calendar and tell me if there are any 1:1 meetings where the other person has declined the invite (since Outlook doesn't show that clearly and I'd often show up to meetings and sit for 5 minutes before realizing the other person cancelled)
+
+Nothing I'm doing is life changing, it all could be done using other tools, and honestly, for anything important, I want something more deterministic anyway, but I kind of love. It's just a low lift way to automate away minor annoyances through a single interface that I can access from just about anywhere. It's far from perfect, but I don't use it for anything where I need to to be perfect, so I'm happy.
+
+reply
+
+
+
+	
+	
+joshstrange 3 days ago | parent | next [–]
+
+
+> - I have an automation that rolls everything on my todo list over to the next day at 11:59pm
+
+I use Daily Notes in Obsidian as my TODO list and I roll over the unfinished tasks daily. I started doing it manually, then had NanoClaw do it, then after multiple cases of NanoClaw “forgetting” to do it or accidentally running multiple times (apparently “once a day” was too complicated for it), I vibe coded a cron job which was great unless my computer was asleep or similar, so finally I vibe coded a obsidian plugin so that the first time I open my daily note on my phone or computer it will copy over my tasks while leaving behind anything I added to the daily note (aka my scratch pad).
+
+The first 1-2 times NanoClaw did it for me it felt magical. I knew I could do it on a cron but it took me only a minute to explain what I wanted and while I knew it was massive overkill (to use an LLM to do want a simple script could do) I found it acceptable. That is, until it started messing it up.
+
+I’m not saying this is the case for you but I feel like some people see Open/Nano/WhateverClaw do something right a single time and gush about it but I have zero confidence in its ability to reliably and consistently do these things. My task for it was incredibly simple, in fact it was the ONLY thing I asked it to do really, and it failed miserably.
+
+reply
+
+
+
+	
+	
+godot 3 days ago | parent | prev | next [–]
+
+
+The personality part, wow I thought I was the only one since no one else seems to have mentioned it anywhere. I agree.
+
+During initial setup it even asked how you want its personality to be, I said upbeat and cheery. I know, I know, cliche for AI chatbots, but I kinda like it that way. But after that setup, it was nothing like it. Everything it says is just matter-of-fact-ly/stoic. That wouldn't be so bad if it didn't also have this quirk where if you point out its mistakes, it keeps saying it'll fix it, but it still does not work right the next time. It just keeps reassuring you it'll be fine, in that stoic way, and then it's not fine. That's enough to drive me nuts.
+
+I got used to it now though and I don't get mad at it or scold it. I just learned to work with its quirks and still get tasks accomplished.
+
+reply
+
+
+
+	
+	
+elkos 2 days ago | root | parent | next [–]
+
+
+You may need to add a SOUL.md as per Hermes documentation that I don't have handy right now. Ask you hermes to do it for you. It really improved my interactions with it.
+
+reply
+
+
+
+	
+	
+SunshineTheCat 4 days ago | prev | next [–]
+
+
+I see a decent number of people on social media who won't stop posting about how great it is and how much of a moron every person is for not using it.
+
+Oddly enough, rarely, if ever do they say what specific things they're using it for and how it's saving them time.
+
+I remain interested in it, however, I've still awaiting an actual use case that can't be handled by some other tool/service that does it better/faster.
+
+reply
+
+
+
+	
+	
+pxc 3 days ago | parent | next [–]
+
+
+Could this be a bit of a Dropbox moment?
+
+What it adds is making this kind of thing easy for normies, even if it's neither the best way to do things nor very difficult for hobbyists to do using existing tech.
+
+Maybe it's the wrong approach, maybe what people really want is more deterministic software that they use agents to help write. But this kind of thing can maybe serve as a prototyping phase for that. Perhaps in the future, people's assistants will offer to "solidify" frequently used workflows into software that minimizes or eliminates the LLM's role. For existing Claude Code users, its like "please just skip to that step! its cheaper and more secure and more reliable". But to many people who are interested in automation, perhaps that seems out of reach as a first step.
+
+reply
+
+
+
+	
+	
+anticorporate 3 days ago | root | parent | next [–]
+
+
+That's actually the best hypothesis I've heard to date.
+
+My immediate reaction to anything someone says they're using OpenClaw for is "That's great, but it would have taken the same amount of effort to ask your LLM to write a script to do the same thing, which would be better in every possible way."
+
+My approach to automation projects is just about the polar opposite of something like OpenClaw. How can I take this messy real-world thing and turn it into structured data? How can I build an API for the thing that doesn't have one? How can I define rules and configuration in a way that I can understand more about how something is working instead of less? How can I build a dashboard or other interface so I can see exactly the information I want to see instead of having to read a bunch of text?
+
+It wasn't really until people started building things with coding assistants that I even saw the value in LLMs, because I realized they could speed up the rate at which I can build tools for my team to get things OUT of chat and INTO structured data with clean interfaces and deterministic behavior.
+
+reply
+
+
+
+	
+	
+BeetleB 3 days ago | root | parent | next [–]
+
+
+> "That's great, but it would have taken the same amount of effort to ask your LLM to write a script to do the same thing
+
+As a no-longer-Claw-user, hard disagree. The convenience is being able to ask it to do something while I'm grocery shopping and have it automatically test it etc. Sure, I can set up Claude Code or some other tool similarly, but the majority of us aren't going to take the time to set it up to do what OpenClaw does out of the box.
+
+I had OpenClaw do a lot of stuff for me in the 2-3 weeks I used it than I have with pi/Claude since I stopped using it.
+
+reply
+
+
+
+	
+	
+girvo 3 days ago | root | parent | next [–]
+
+
+Genuine question, why did you stop using it!
+
+Edit: ah, scrolled down where you answered, thanks
+
+reply
+
+
+
+	
+	
+jimbokun 3 days ago | root | parent | prev | next [–]
+
+
+Such as?
+
+reply
+
+
+
+	
+	
+BeetleB 3 days ago | root | parent | next [–]
+
+
+Lots of simple one offs. Stuff like "Here's the URL for a forum thread that has 10 pages of messages. Go through all of them and tell me if information X is in there." Or "Here is the site to after school activities. Check it once a day and notify me if there is anything that begins in March."
+
+Also, got it to give me the weather information I always want - I've not found a weather app that does it and would always have to go to a site and click, click, click.
+
+I can add TODOs to my todo list that's sitting on my home PC (I don't have todos on the cloud or phone).
+
+All of these can be vibe coded, but each one would take more effort than just telling OpenClaw to do it.
+
+reply
+
+
+
+	
+	
+jimbokun 3 days ago | root | parent | next [–]
+
+
+Would be interesting to see an OpenClaw feature that offers to vibe code a deterministic script for scheduled or frequently repeating tasks.
+
+reply
+
+
+
+	
+	
+azmz 2 days ago | root | parent | next [–]
+
+
+Deterministic scheduled scripts for repeating tasks is where a lot of the value lives, that's basically what Atmita (atmita.com) is built around. You describe the job in plain English, pick when it runs, and it runs on a schedule. Cloud-hosted with managed OAuth to the apps you already use, API-first so you can wire anything else in directly. Not based on OpenClaw, built from scratch.
+
+reply
+
+
+
+	
+	
+anticorporate 3 days ago | root | parent | prev | next [–]
+
+
+These are actually really great examples, because I've done several similar things with a more code-based deterministic approach, still utilizing an LLM.
+
+I also have a number of sites that I query regularly with LLMs, but I use a combination of RSS and crawlers to pull the info into a RAG and query that, and have found the built-in agent loops in my LLM to be sufficient for one-offs.
+
+I also hate most weather apps, so I have a weather section on my Home Assistant dashboard that pulls exactly what I want from the sources I want that my LLM helped me configure.
+
+I also have my main todo list hosted on a computer at home, but since all of my machines including my phone are on the same virtual wireguard network, I use my editor of choice to read and write todos on any device I use as if it were a local file, and again, it's something my local LLM has access to for context.
+
+I don't think either approach is wrong, but I much prefer being able to have something to debug if it doesn't behave the way I expect it to. And maybe part of the reason I'm skeptical of the hype is that a lot of the parts of this setup aren't novel to me: I had crawlers and RSS readers and a weather dashboard and private access to a well-organized filesystem across devices before LLMs were a thing - the only difference now is that I'm asking a machine to help me configure it instead of relying on a mix of documentation, example code, and obscure Reddit posts.
+
+reply
+
+
+
+	
+	
+jimbokun 3 days ago | root | parent | prev | next [–]
+
+
+This is a good description of the role of software engineer in the age of LLMs.
+
+Most people still don’t think this way and need a software person to know enough about these things to describe them to the LLM.
+
+reply
+
+
+
+	
+	
+SunshineTheCat 3 days ago | root | parent | prev | next [–]
+
+
+No, Dropbox had a defined use case and solved a particular problem.
+
+I was a fan of Dropbox when it game out because of that fact.
+
+OpenClaw does not serve a particular problem. When/if it does, I will happily use it.
+
+But no, the two couldn't be more different. You'll notice, yet again, in your very message you failed to mention one specific use case of OpenClaw.
+
+If you asked me the same about dropbox when it first came out, I would've said, duh it helps me keep my files synced between devices.
+
+There is no such thing with OpenClaw.
+
+reply
+
+
+
+	
+	
+Jtarii 3 days ago | root | parent | next [–]
+
+
+It gives me a pleasant interface to talk to my desktop from my phone. I can just send my computer a discord message and have it execute some arbitrarily complex task for me.
+
+reply
+
+
+
+	
+	
+dplgk 3 days ago | root | parent | next [–]
+
+
+The question is what wonderful task do you need to trigger while you're at the grocery store?
+
+reply
+
+
+
+	
+	
+SunshineTheCat 3 days ago | root | parent | next [–]
+
+
+You're hitting the nail on the head with this one, a solution in search of a problem lol.
+
+reply
+
+
+
+	
+	
+azmz 7 hours ago | parent | prev | next [–]
+
+
+Fair question. The niche I keep running into is jobs that cross a few apps (Gmail, Calendar, GitHub, a DB) and need to run on a schedule. Any one tool handles a piece, but stitching them together end to end is the chore. Built atmita.com for that. Cloud hosted, managed OAuth, jobs described in plain English. Not based on OpenClaw, built from scratch.
+
+reply
+
+
+
+	
+	
+gessha 4 days ago | parent | prev | next [–]
+
+
+Are these people crypto enthusiasts by any chance?
+
+reply
+
+
+
+	
+	
+esseph 3 days ago | root | parent | next [–]
+
+
+They were, and then blockchain, and then NFT.
+
+reply
+
+
+
+	
+	
+chrisjj 4 days ago | parent | prev | next [–]
+
+
+> I see a decent number of people on social media who won't stop posting about how great it is
+
+People? Or bots.
+
+reply
+
+
+
+	
+	
+geoffmunn 3 days ago | parent | prev | next [–]
+
+
+We're using OpenClaw to do a massive number of fixes and improvements to our ERP.
+
+It takes Jira tickets, resolves them, and creates a GitHub PR, which is then reviewed by another AI agent. It can even analyse screenshots with MS Paint-style arrows.
+
+So far it's been an amazing tool - I am very impressed.
+
+reply
+
+
+
+	
+	
+drob518 3 days ago | parent | prev | next [–]
+
+
+Folks just pretending to be “influencers” and trying to cash in on the next big thing.
+
+reply
+
+
+
+	
+	
+lyfeninja 4 days ago | parent | prev | next [–]
+
+
+I see a lot of the same. I do know a couple people who do use it and I asked their take and it was kind of "meh".
+
+I'm letting it mature a little before dipping my toe in. I've seem some horror stories, like it deleting repos, system files, and whatnot.
+
+reply
+
+
+
+	
+	
+SunshineTheCat 3 days ago | root | parent | next [–]
+
+
+That's pretty much where I'm at with it.
+
+I think once I see someone post a use case that I could actually see saving me some serious time, I'll take the plunge. Until then, I'll just let people continue to say how great (or terrible) it is.
+
+reply
+
+
+
+	
+	
+xnx 3 days ago | prev | next [–]
+
+
+The main function of OpenClaw was for people to signal how advanced and cutting edge and thought-leader-y they were. All those Mac minis are sitting idle now.
+
+reply
+
+
+
+	
+	
+ratsimihah 3 days ago | parent | next [–]
+
+
+I bought a Mac mini m4 before openclaw to use as a music production machine, when it turned out not to work out I tried setting up openclaw on it after hearing all the noise, but that turned out not to work out either.
+
+I’ve found a much better use for it now. I use it as a Tailscale + ssh + tmux + Claude code machine, which gives me an always on Claude code environment with persistent sessions. I ssh from my phone using termius and from my laptop through ssh, and I can even access my projects through Tailscale with hot reloading for the most part, no deploy needed. It’s really good and my mini isn’t idle at all.
+
+reply
+
+
+
+	
+	
+jatora 3 days ago | root | parent | next [–]
+
+
+That sounds like a complete waste tbh lol. Your mac mini m4 is now doing something any computer with 16GB of RAM can do
+
+reply
+
+
+
+	
+	
+ratsimihah 3 days ago | root | parent | next [–]
+
+
+You're not wrong, but at least it's not idle. And I can use it for something else if the need arises.
+
+reply
+
+
+
+	
+	
+xstas1 3 days ago | root | parent | prev | next [–]
+
+
+I just run claude code on my phone, in termux
+
+reply
+
+
+
+	
+	
+lostmsu 3 days ago | root | parent | prev | next [–]
+
+
+Claude has Dispatch now, which should replace the tmux + CLI for you
+
+reply
+
+
+
+	
+	
+wild_egg 3 days ago | root | parent | next [–]
+
+
+That's really not remotely the same thing
+
+reply
+
+
+
+	
+	
+ratsimihah 3 days ago | root | parent | next [–]
+
+
+Yea I have to try it and see. When Claude released Remote Control I hoped on right away and it was crap, it kept disconnecting. Tailscale + SSH was much better.
+
+reply
+
+
+
+	
+	
+mv4 3 days ago | parent | prev | next [–]
+
+
+That's a fair assessment if you look at LinkedIn posts.
+
+Personally though, I am finding it incredibly useful and I use it daily to assist with operations, strategy, sales.
+
+reply
+
+
+
+	
+	
+frankdenbow 3 days ago | root | parent | next [–]
+
+
+On strategy do you ever worry that we trend towards the same patterns? This being relevant: https://www.youtube.com/watch?v=nDL3Ch7Nz8c&t=4m7s
+
+reply
+
+
+
+	
+	
+ejoso 3 days ago | root | parent | prev | next [–]
+
+
+I’d be curious to hear more about how you use it for those 3 categories. Care to share?
+
+reply
+
+
+
+	
+	
+mv4 3 days ago | root | parent | next [–]
+
+
+Operations: mostly tasks and reminders, I often think of something while on the road and send a voice message (like I would to a real PA). I use Kokoro-based TTS for local text-to-speech. Anything from "remind me to discuss X with so-and-so tomorrow" to "I have a multiple PoC projects w/ large entities starting next week - think about how I can best handle that" to "brainstorm how can I maximize upfront revenue with them", etc
+
+Sales: using Google/gemini web search API and it's best run off-peak due to rate limits 503 Service Unavailable (everyone is overbooked when it comes to AI) to see what's happening in the space, any new developments involving companies I care about - and send me a daily digest with an overview and conversation topics.
+
+reply
+
+
+
+	
+	
+rafram 3 days ago | root | parent | next [–]
+
+
+#1 is just Siri/Google Assistant with extra steps (and expense).
+
+#2 could be a scheduled task (cron job or something higher level) that calls a plain old AI provider API. IIRC most providers can even do those natively now.
+
+reply
+
+
+
+	
+	
+mv4 3 days ago | root | parent | next [–]
+
+
+#2 also provides an opinion on why a certain development is significant and how it relates so something else I am working on for that client.
+
+The process is definitely more pleasant to me than setting up cron jobs and scripting things. I have a business to run.
+
+reply
+
+
+
+	
+	
+Rzor 3 days ago | root | parent | prev | next [–]
+
+
+Your comment reminds me of the FTP/Dropbox one.
+
+reply
+
+
+
+	
+	
+rafram 3 days ago | root | parent | next [–]
+
+
+That would be valid if setting up a scheduled AI task actually took any technical knowledge, but it doesn’t. ChatGPT lets you schedule tasks natively in the UI, and I assume others do as well.
+
+(And OpenClaw is hardly nontechnical!)
+
+reply
+
+
+
+	
+	
+mv4 3 days ago | root | parent | prev | next [–]
+
+
+I mentioned the same thing and it's getting downvoted lol
+
+reply
+
+
+
+	
+	
+arppacket 3 days ago | root | parent | prev | next [–]
+
+
+#2: Gemini also has scheduled actions. You can just ask it to give you daily digests about developments in some area, or you could even be in the middle of chatting about some current events, and tell it to notify you when there is new data, etc.
+
+reply
+
+
+
+	
+	
+mv4 3 days ago | root | parent | prev | next [–]
+
+
+No recurring expense, just the hardware upfront cost. My next step is run the models locally as well. I used to work at FAANG (incl. compliance) and I would never use a cloud-based assistant of any kind.
+
+reply
+
+
+
+	
+	
+rafram 3 days ago | root | parent | next [–]
+
+
+> No recurring expense, just the hardware upfront cost. My next step is run the models locally as well.
+
+So, at the moment, yes recurring expense?
+
+reply
+
+
+
+	
+	
+ejoso 2 days ago | root | parent | prev | next [–]
+
+
+Helpful info, thank you for sharing this.
+
+reply
+
+
+
+	
+	
+smrtinsert 3 days ago | parent | prev | next [–]
+
+
+Some truth to that. I hear it thrown around the office and everyone feels obligated to out agent each other (without actually proving a great use case)
+
+For myself I don't need autonomous agents. I need a smaller version of Claude Code instead (the mcp client not the coding agent) that can run on local models that are under 24B params. I still need to try pi dev.
+
+reply
+
+
+
+	
+	
+atlgator 3 days ago | parent | prev | next [–]
+
+
+To be fair, my mac mini was sitting idle well before Openclaw arrived on the scene.
+
+reply
+
+
+
+	
+	
+apexalpha 3 days ago | parent | prev | next [–]
+
+
+This is a good point, I should scout second hand markets for Mac Minis now.
+
+reply
+
+
+
+	
+	
+ge96 3 days ago | parent | prev | next [–]
+
+
+Running neofetch equiv
+
+reply
+
+
+
+	
+	
+binyu 3 days ago | parent | prev | next [–]
+
+
+Yeah, people really took it to the extreme and made a cult out of it for no reason. Mass delusion at its finest.
+
+reply
+
+
+
+	
+	
+utkarsh_apoorva 3 days ago | prev | next [–]
+
+
+I disagree with practically every take here, and likely will get hate for this message.
+
+Personally it has been a huge unlock and here are some specific use cases.
+
+1.Context engineering for “any task”: my claw agents debate with me, and write me files to be picked up by Claude code or Claude cowork to write code/build presentations.
+
+2. Discovering this page: my personal newsfeed that took me 10 mins to setup. Never had any newsfeed before this which could be personalised like this.
+
+3. Strategy: similar to point 1 above. I set up a “tough-coach” skill. Now all my 1am ideas go through the wringer of why they suck, and what, if anything could be differentiated about them.
+
+4. Many other small-ish things that are important enough for me to spend on them, but not important enough to invest my time.
+
+I run a conversational AI startup in India working mostly in Financial inclusion space - so most of time is spent in meetings (:-/).
+
+With openclaw, the 2-3 hours before I sleep (low energy, high on ideas), convert into pretty productive sessions. No more “this is a great idea, I will do it tomorrow”. Instead “oh this sounded great but my agent just called it shit - what if I modify it a bit, and then let’s see”.
+
+reply
+
+
+
+	
+	
+PinkaDunka 3 days ago | parent | next [–]
+
+
+Seems like all of this can be done directly with chatgpt and claude? Why add complexity of running claw?
+
+reply
+
+
+
+	
+	
+utkarsh_apoorva 1 hour ago | root | parent | next [–]
+
+
+Not even close. I use all of them. My claw has max context (i maintain a personal-wiki of all my projects) and does the best job. The next best thing is Claude cowork. I use chat windows of claude.ai or chatgpt only when researching general topics, not specific ones.
+
+reply
+
+
+
+	
+	
+soundworlds 3 days ago | parent | prev | next [–]
+
+
+Honestly, the best use of AI I've found so far is also getting them to call me out on bullshit assumptions and logical fallacies. Helpful for the kind of thought exploration + planning that another human won't want to discuss at 6am.
+
+reply
+
+
+
+	
+	
+otabdeveloper4 3 days ago | parent | prev | next [–]
+
+
+> my claw agents debate with me
+
+I don't really want an imaginary friend. (Or intrusive thoughts either.)
+
+reply
+
+
+
+	
+	
+utkarsh_apoorva 1 hour ago | root | parent | next [–]
+
+
+AI is not conscious - its neither imaginary nor friend. It's a tool, like a knife that can cut an apple for me. Except this tool can generate text. Homo-habilis discovered tools 2.4 million years ago - let's keep it going.
+
+reply
+
+
+
+	
+	
+dsiegel2275 4 days ago | prev | next [–]
+
+
+I have it installed on an extra macbook pro that I had available. I'm really only using it at the moment for one use case:
+
+Nightly, I have OpenClaw pull the latest changes from a private GitHub repo that is my Obsidian notes vault. It then looks to see which new notes have been added and then runs a "create flashcard" skill to extract and author useful flashcards for spaced-repetition practice. I then gave it access to a custom web-based spaced-repetition flash card application that I built a few months ago. It uses an API to insert new cards, check to see when I last reviewed cards and optionally send me a nudge reminder if I haven't reviewed cards in a few days.
+
+It is a nice workflow that has been working well. I go to class, take notes in Obsidian and check in my changes. By the next day, when I open my flashcard app on my phone, I have new cards to review from yesterday's class.
+
+reply
+
+
+
+	
+	
+albertgoeswoof 3 days ago | parent | next [–]
+
+
+You should ask claude code to write a bash script that does this for you. Then run that as a Cronjob every night. You might not need any inference at all to create the flash cards so it would be free.
+
+reply
+
+
+
+	
+	
+gokhan 3 days ago | root | parent | next [–]
+
+
+> ...useful flashcards...
+
+How would the script do that without inference from free format md files?
+
+reply
+
+
+
+	
+	
+obsidianbases1 3 days ago | root | parent | next [–]
+
+
+Script can still run LLM inference
+
+reply
+
+
+
+	
+	
+achr2 3 days ago | parent | prev | next [–]
+
+
+Why not use Claude one single time to create a service that does this? I have this same question with 90% of the 'simple' use cases I see for these task runners, it always seems more efficient (not to mention consistent) to have it generate the service.
+
+reply
+
+
+
+	
+	
+SalimoS 3 days ago | parent | prev | next [–]
+
+
+Im curious can't your use case be done with Github self hosted runner ?
+
+reply
+
+
+
+	
+	
+valleyer 3 days ago | root | parent | next [–]
+
+
+Or, like, a cron job.
+
+reply
+
+
+
+	
+	
+razingeden 3 days ago | root | parent | next [–]
+
+
+>scripting and automation
+
+I cringe at my old boss’s handiwork in Claude and power automate sometimes and go “you know I could just do that in a script and a cron job and it would be completely bullet proof, right?”
+
+Then he just shoots back with, “yeah but now I don’t have to ask you.”
+
+This is my kludge, there are many others like it but this one is mine.
+
+reply
+
+
+
+	
+	
+valleyer 3 days ago | root | parent | next [–]
+
+
+Does the boss not understand that they could get Claude to write them a script and a crontab entry (so they don't have to ask you) -- and then run it forever (so they don't have to pay Anthropic, or risk temperature randomness)? Best of both worlds...
+
+reply
+
+
+
+	
+	
+senorrib 3 days ago | root | parent | next [–]
+
+
+Boss might not even know what Bash is, let alone a crontab.
+
+reply
+
+
+
+	
+	
+razingeden 3 days ago | root | parent | next [–]
+
+
+crontab yes, flavors of shell, no.
+
+But I actually did appreciate the one time he handed me a Cisco config that was 90% perfect and took me all of 5 minutes to fix. Sometimes the three of us make a hell of a team.
+
+reply
+
+
+
+	
+	
+jimbokun 3 days ago | root | parent | prev | next [–]
+
+
+You know that was a good answer.
+
+reply
+
+
+
+	
+	
+Sajarin 3 days ago | parent | prev | next [–]
+
+
+What flashcard app are you using? Anki?
+
+reply
+
+
+
+	
+	
+Staccks 3 days ago | root | parent | next [–]
+
+
+I use both actually. Anki for the reviews since the spaced repetition is hard to beat, but I use Norsha Notes (norshanotes.com) to generate the cards. You upload your notes or study material and it creates flashcards from them using AI, then you can export as .apkg and import straight into Anki. Saves a ton of time over making cards manually.
+
+reply
+
+
+
+	
+	
+dsiegel2275 3 days ago | root | parent | prev | next [–]
+
+
+I had used Anki for a few years but recently migrated all my cards out of it and into a custom app I built just a few months ago. It is as an Elixir/Phoenix app with a simple UI but also with a rich API for Agent integration.
+
+reply
+
+
+
+	
+	
+cpursley 3 days ago | root | parent | next [–]
+
+
+Any chance you might consider open sourcing this?
+
+reply
+
+
+
+	
+	
+maxpospischil 3 days ago | parent | prev | next [–]
+
+
+very cool :)
+
+reply
+
+
+
+	
+	
+ashwinsundar 3 days ago | parent | prev | next [–]
+
+
+You should have it also review the cards too! /s
+
+reply
+
+
+
+	
+	
+sixhobbits 3 days ago | prev | next [–]
+
+
+I set it up and had some fun but it was super janky and regularly broke, especially the whatsapp integration
+
+Now I have a separate plugged in macbook running nixos (that claude set up) and a single long-running claude code process with a channel to a Telegram bot. This means I can talk to it much like I could with OpenClaw, but it's much simpler (no weird soul.md etc). It feels more powerful than just claude code directly as it can set up software, build me throwaway websites with research etc, and "do" things, but it's a lot more stable and feels more controllable because I understand how it works and don't have to worry about it signing up to some social media platform and getting poisoned by another claw.
+
+reply
+
+
+
+	
+	
+ricardobeat 3 days ago | parent | next [–]
+
+
+> no weird soul.md
+
+The “soul document” actually originated from Claude. It’s not a prompt but embedded in its training.
+
+reply
+
+
+
+	
+	
+azmz 2 days ago | parent | prev | next [–]
+
+
+The self-hosted jank is real. atmita.com goes cloud-native instead (not based on OpenClaw, built from scratch), so there's no pi or mac mini in the loop. Managed OAuth covers the usual apps, and it's API-first so you can wire in anything else directly.
+
+reply
+
+
+
+	
+	
+lxgr 4 days ago | prev | next [–]
+
+
+I've been playing around with it. The only two real use cases I have for it for now are entertaining me on long flights where I have messaging-only Wi-Fi and sending me a personalized "morning brief".
+
+I suppose it could be a lot more useful if I actually gave it access to any of my personal data (it lives in a heavily resource-limited container), but there's absolutely no way I'm letting that hot mess of a walking, talking CVE anywhere near my data. It's somehow both horribly insecure and extremely prone to locking me out because of several competing security/permission models fighting it out and gridlocking each other.
+
+Code quality and the issue tracker of the repo are a big mess; for example, the local "memory" retrieval functionality is completely broken for some trivial reason that has been reported and auto-closed about five times (automatically, of course).
+
+In summary: Brilliant idea, terrible execution. Can't wait for the first big tech player I trust enough (or at least one that has my data already anyway) to actually make it a product. I'd use it in a heartbeat.
+
+reply
+
+
+
+	
+	
+azmz 3 days ago | parent | next [–]
+
+
+The broken memory and competing permission models really resonate. I built something called Atmita (atmita.com) specifically because fixing OpenClaw felt like the wrong approach. Cloud-native, not based on OpenClaw at all, with managed OAuth so you're not handing raw credentials to an agent. Not a big tech player by any means, but it is the \"just make it a product\" thing you're describing.
+
+reply
+
+
+
+	
+	
+all2 3 days ago | parent | prev | next [–]
+
+
+I've been working on a framework since the end of January or so. I'm on my 7th draft. As I've gone along, each draft gets markedly smaller. The overlaps between what I'm building and openclaw are significant, but I've realized the elements that make up the system are distinct, small, and modular (by design).
+
+There are only a few primitives:
+
+1. session history
+
+1a. context map + rendered context map (think of a drive partitioning scheme, but for context -- you can specify what goes into each block of context and this gets built before being sent out for inference).
+
+2. agent definition / runtime
+
+3. workflow definition / runtime
+
+4. workflow history
+
+5. runtime history (for all the stuff session and workflow history fail to capture because they are at a lower level in the stack)
+
+That's it. Everything else builds on top of these primitives, including
+
+- memory (a new context block that you add to a context map)
+
+- tool usage (which is a set of hooks on inference return and can optionally send the output straight back for inference -- this is a special case inside the inference loop and so just lives there)
+
+- anything to do with agent operating environment (this is an extension of workflows)
+
+- anything to do with governance/provenance/security (this is an extension of either workflows and/or agent operating environment... I haven't nailed this down yet).
+
+I suppose I should say something about how agents and workflows work together. I've broken up 'what to do' and 'how to think' into the two primitives of 'workflow' and 'agent' respectively. An agent's context map will have a section for system prompt and cognitive prompt, and an agent can 'bind' to a workflow. When bound, the agent has an additional field in their context map that spells out the workflow state the agent is in, the available tools, and state exit criteria. Ideally an agent can bind/unbind from a workflow at will, which means long-running workflows are durable beyond just agent activity. There's some nuance here in how session history from a workflow is stored, and I haven't figured that out yet.
+
+Generally, the idea of a workflow allows you to do things like scheduled tasks, user UI, connectors to a variety of comms interfaces, tasks requiring specific outputs, etc. The primitive lays the foundation for a huge chunk of functionality that openclaw and others expose.
+
+It's been fun reasoning through this, and I'll admit that I've had an awful lot of FOMO in the mean time, as I watch so many other harnesses come online. The majority of them look polished, and are well marketed (as far as AI hype marketing goes). But I've managed to stay the course so far.
+
+I hope you find your ideal fit. These tools have the potential to be very powerful if we can manage to build them well enough.
+
+reply
+
+
+
+	
+	
+disqard 3 days ago | root | parent | next [–]
+
+
+Wow, looks like you've put a lot of thought into this!
+
+I skimmed the breakdown, and you've inspired me try something along these lines...
+
+Thank You For Making And Sharing :)
+
+reply
+
+
+
+	
+	
+all2 3 days ago | root | parent | next [–]
+
+
+Please do! My goal with this project has been to build something that helps other people, so if I've inspired you to build, all the better!
+
+Is there a place you share this kind of stuff? I'd love to follow along.
+
+reply
+
+
+
+	
+	
+littlemishka 3 days ago | parent | prev | next [–]
+
+
+Hey, I'm an engineer on Town (town.com) -- we built the product version of this. Morning briefings, email, calendar, web research, all wired up as a hosted thing. No Mac Mini in a closet, no competing security models gridlocking each other. We spent a lot of time making the "just works" part actually work because honestly that's the hard part nobody talks about. Free right now and would genuinely love your feedback since you clearly know what you want out of this.
+
+reply
+
+
+
+	
+	
+zmmmmm 3 days ago | prev | next [–]
+
+
+It's like the rest of Agentic AI - a lot of talk, but when it comes to the crunch, very few people are actually willing to hand over full autonomy to anything where significant value / liability is in play.
+
+The truth is, a lot of the value of agentic AI in general is negated by the sheer power of agentic coding itself. If I can prompt an AI to write an actual deterministic process to solve a problem in a couple of minutes (still potentially AI assisted, just in a deterministic manner), why would I delegate it to a non-deterministic AI? You have to come up with a category of tasks where the actual process itself cannot be anticipated. Intersect that with high value processes and you whittled down to almost nothing. Not actually nothing but a far smaller category than people make out.
+
+reply
+
+
+
+	
+	
+bryan0 3 days ago | prev | next [–]
+
+
+Think about what you would want an assistant to do. You can teach it do basic tasks using any available API, but then you can give it feedback so it improves.
+
+For example my agent can control home automation via Home Assistant or any other API. My agent contributes to websites and open source projects. When you give it feedback it updates its skill files.
+
+It checks and answers email, can receive and place phone calls, and do general research and monitoring online. I was even playing around with it to create music. The list of things to try is limitless.
+
+I think just like LLMs, people get discouraged when it doesnt one-shot a problem. This technology thrives on feedback. It will make mistakes, your job is to make sure it learns from those mistakes so it doesnt repeat them.
+
+reply
+
+
+
+	
+	
+tcoff91 3 days ago | parent | next [–]
+
+
+I hope none of your accounts are associated with that email address that can be read by an LLM that has access to untrusted input.
+
+OpenClaw lives right in the prompt injection lethal trifecta.
+
+The idea of an OpenClaw instance having the ability to reset passwords on your accounts sounds sketchy as shit to me.
+
+reply
+
+
+
+	
+	
+bryan0 3 days ago | root | parent | next [–]
+
+
+Of course, you need to be careful about what access you give to your agent. I gave my agent its own email, and I can forward it emails if I need it to read anything in my inbox.
+
+Everyone will have their own threshold for what type of access they want to give their agent. some people will give it access to their personal email, bank account, etc, but I wouldn't recommend it yet! But I bet in a couple years this will be standard practice.
+
+reply
+
+
+
+	
+	
+tcoff91 3 days ago | root | parent | next [–]
+
+
+There’s a lot of humans I wouldn’t trust to be an assistant with access to my bank account. It’s bold to assume that within 2 years these things are going to be scam resistant.
+
+It’s going to be bleak when there’s articles about how “my agent fell for a scam and now my life savings are gone”.
+
+reply
+
+
+
+	
+	
+BeetleB 3 days ago | parent | prev | next [–]
+
+
+How are you handling memory? That's what makes it "not work" for most people.
+
+reply
+
+
+
+	
+	
+bryan0 3 days ago | root | parent | next [–]
+
+
+Yes memory is a key part. I’m using sqlite and markdown files. Sqlite is so it can easily search its conversation and thoughts by time and full text search. I actually always put the last 5 hours of so I’d conversation into the context. Markdown is for more standard agent instructions, skills, and lessons
+
+reply
+
+
+
+	
+	
+everlier 3 days ago | prev | next [–]
+
+
+I tried, really really hard but then I realised that I essence it's a poorly written agentic coding assistant that wastes a lot of tokens antropomorphising itself while forcing me to debug via WhatsApp instead of normal tools. So I leaned into that and made OpenCode my general assistant, it worked much better in this aspect.
+
+reply
+
+
+
+	
+	
+dgellow 3 days ago | prev | next [–]
+
+
+I’m getting those awkward emails from claw users (that’s an actual one I got recently):
+
+> Hey Sam, I'm Jarvis — $CEO_NAME's AI assistant (OpenClaw). He asked me to reach out on his behalf. $CEO is building $HYPED_STARTUP — the tool execution and MCP layer for AI agents (10K+ integrations, Series A with $FAMOUS_INVESTOR). He's looking for engineers who are deeply into the agentic coding stack — Claude Code, Codex, MCP, agent infra. Builder mindset, ships fast. Worth a quick call?
+
+>
+
+>Jarvis (on behalf of $CEO, co-founder @$HYPED_STARTUP)
+
+It’s the weirdest thing ever to receive. I generally answer politely to the claw bot, but that all feels just extremely strange.
+
+You’re reaching out to a human for a call and cannot present yourself as a human? But at the same time, it’s maybe preferable if they disclaim it was automated? I don’t know
+
+Just weird all around
+
+reply
+
+
+
+	
+	
+piotraleksander 3 days ago | prev | next [–]
+
+
+I've setup one on Hetzner. I got it a dedicated email account (via agentmail.to). Installed couple of skills, last30days and context-mode being the most useful so far (https://github.com/mvanhorn/last30days-skill and https://github.com/mksglu/context-mode).
+
+The biggest unlock was wiring it up to my agency's whatsapp group - it's now basically a multiplayer chatgpt. Not a "personal" assistant, but more of agency's assistant. It can send ad hoc mails to our clients when asked, but also tells jokes when atmosphere is tense.
+
+Each day it checks it's own inbox and once a week it sends me a kind of social listening report, but those are kind of workflows easily reproducible elsewhere.
+
+I'm actually so bullish on the potential of openclaw kind of software I've built a desktop app for it, stagewhisper.io.
+
+It's like a Granola for your OpenClaw. It listens to your system audio, records your screen (all data stays on your computer) and asks your assistant for suggestions or creates a tasks. Example: client asks for referrals during a call, StageWhisper.io picks it up and asks OpenClaw to send email with case studies.
+
+It's absurdly fun to use, mainly because the delay between when the task pops up and the work starts is approaching zero.
+
+reply
+
+
+
+	
+	
+BeetleB 3 days ago | prev | next [–]
+
+
+Used it for a few weeks. The potential of the tool is massive. The reality is that it is frustrating and unreliable. When it works, though, you really like it.
+
+I stopped because something changed on my machine that broke my VM SW, so I don't have access to it. Which is good because I was spending too much time debugging/tweaking.
+
+I recently used pi to recreate an agent that does some of the basic things I was using it for (without all the scary privacy issues). I don't think I'll go back to any Claw-like tool until they're a lot more robust.
+
+reply
+
+
+
+	
+	
+godot 3 days ago | prev | next [–]
+
+
+I use it, it works well for a certain limited category of tasks once you've set it up properly, it's not as easy and straightforward as it seems, but once you've learned its quirks you can make it work.
+
+The category of task I have it do is basically the pattern of "scrape some certain websites on a regular schedule, do some light data processing/understanding/analyzing, report the result to me [all or sometimes only when there is something worth mentioning]".
+
+You could simulate the same things with cron jobs on a server and some scripts and LLM APIs. But having Openclaw do it does make it a little bit easier to set up and make changes.
+
+The initial setup was a bit more time consuming than I thought it would be. I set it up on a VPS, I already have scripts to set up a server and tighten security normally, so I could just use that, but people who don't already have that stuff would have to do that first. Then the Openclaw setup and configuration was like a 20~30 step situation, lots of API keys to get, etc. I opted for Slack over Telegram or Discord (I don't use either of those regularly) and you pretty much have to set up a new slack bot app yourself (you follow their listed steps, but there's still hiccups here and there), you have to debug and solve issues etc. to get through it all.
+
+Then even after all the initial setup is done, it takes some time to learn and get used to its quirks and behaviors, at the beginning there's just a lot of frustration about things it can't do, or things it says it can or will do, but doesn't.
+
+reply
+
+
+
+	
+	
+hatmanstack 3 days ago | parent | next [–]
+
+
+So now all I really want to see is your setup script...you go first.
+
+reply
+
+
+
+	
+	
+godot 3 days ago | root | parent | next [–]
+
+
+Hah I don't know if your msg is a "show me the script so I know where the security holes are so I can hack it" or just genuinely want a setup script for yourself to use.
+
+But either way, nowadays it's trivial to ask Cursor/Claude Code to write you such a shell script.
+
+reply
+
+
+
+	
+	
+harish124 8 hours ago | prev | next [–]
+
+
+Tbh I had the same reaction. I keep seeing OpenClaw mentioned here and there but nobody I actually know is using it.
+
+feels like it might be one of those tools living in a very specific niche and if you’re not in that bubble you just never run into it.
+
+Would love to hear if anyone’s actually relying on it day to day vs just trying it out once.
+
+reply
+
+
+
+	
+	
+zsiddique 3 days ago | prev | next [–]
+
+
+I still use it but totally not the "This one trick will supercharge your profits" kind of way. I do use it to handle task for me for a non profit I sit on the board like handle incoming emails and execute tasks I want to delegate but honestly could have had any our AI agent handle it. There was some manual task I told myself I would automate but never got around too, Openclaw made is just easier to prompt it in to being.
+
+The next biggest thing I like is just the shared context from machine to machine and the fact its always running and I have given it yolo access to my local stack. Home Assistant crashes? Now the wife can ask the bot to restart it. I see an interesting HN blog, i can get it to add it to my obsidian make me a useful doc (I am starting to use the llm-wiki trend but Claude Cowork seems to be really killer for this). I see an Reddit post about some new service to run locally? I can ask it to spin up an lxc of it and configure it for my use case and it will do the wiring for me.
+
+I will say since the killing of Claude oAuth i am finding a lot of its magic did come from Opus just being so aggressive. An example was I had a task of someone sending me an image and I would have to turn it in to a table and then upload it to this really crappy portal for my non-profit. I threw the task at Openclaw (and at the time running Opus 4.6) and i watched in real time as it reverse engineer the sites backend API and found a way for it to post the data itself and it wrote itself a python script to make it repeatable. I dont see that same kind of killer instinct of doing whatever you need to do to get the task done with other models (Codex and now MiniMax).
+
+reply
+
+
+
+	
+	
+birdsongs 3 days ago | parent | next [–]
+
+
+> I do use it to handle task for me for a non profit I sit on the board like handle incoming emails
+
+Please don't take this the wrong way, I'm genuinely curious but also a bit in shock. Do you really let an AI agent autonomously handle and respond to incoming board-level emails for you?
+
+I feel often I'm behind the times, but this makes me feel way behind the times. I still haven't picked up AI into my daily life.
+
+How do you know what the emails said, action items, who's communicating what to you? Do you trust it to handle and make decisions for you that are nuanced and in alignment with you?
+
+reply
+
+
+
+	
+	
+zsiddique 3 days ago | root | parent | next [–]
+
+
+So I dont let it reply to any email, there is a category of emails and questions we get that I already had a mental formula that now I have given the job to AI. It can riff on things and sometimes I have caught it go off the rails (AI math is still off and saw a pretty funny reply that told someone their request was denied as they asked for 3 billion dollar, which it was right but how it got the number was wrong) buts stuff that needs fast response and I have given the AI rules it needs to abide around it.
+
+TBH they could be re-written as case statements and handled by a regular script but the AI part is half about how writing it was just a few prompts on how I regularly handle those kind of emails.
+
+reply
+
+
+
+	
+	
+ryanmcgarvey 3 days ago | prev | next [–]
+
+
+Yes. I had a spare M1 Mini so I decided to set it up. YOLOed the entire thing and connected all the integrations, though I only ever use Opus/Sonnet. I have a dedicated Discord server I use to communicate with it.
+
+It really is eye-opening how powerful it is once you connect your life to it. The biggest improvement is actually the trivial stuff — emailing contractors, accountants, etc. I no longer need to open another app, navigate six separate steps, and organize everything on the fly just to send one message. I stay in one place, organize my thoughts about what I’m trying to do, and the execution happens automatically.
+
+For example, open claw will find the relevant threads, lookup the relevant details via web search, present them to me, give me a draft, I can review it, edit it, and send. 2 minutes instead of 20.
+
+As a software engineer using AI daily, I think this is the real unlock — staying in a single context and not getting lost in the long tail of trivial details that fragment your attention before you ever get to the actual work.
+
+The mental model shift is important too. It’s not that AI does all the work and we end up with agents emailing each other. It’s that AI automates the steps required to achieve your goals, so you can focus on the substance — like actually writing the email instead of navigating to the place where you write the email.
+
+I also have GitHub and Vercel wired up, which means I can jot down an idea for a little productivity app for me and my family and it just appears a few minutes later, deployed and ready to use. That alone has been worth the setup.
+
+reply
+
+
+
+	
+	
+causal 3 days ago | parent | next [–]
+
+
+The email use case is interesting, though I feel like dictating via intermediary AI sounds more tedious to me than just using the email app on my phone.
+
+reply
+
+
+
+	
+	
+ryanmcgarvey 3 days ago | root | parent | next [–]
+
+
+It's not the dictating, it's the clicking and the finding and addressing and the formalities. For a transactional email it's a lot, especially if there's substance to it like needing to click a link and make a choice about some options.
+
+reply
+
+
+
+	
+	
+bitmasher9 3 days ago | root | parent | prev | next [–]
+
+
+I love the idea of AI agents writing emails that will only ever be read by AI agents.
+
+reply
+
+
+
+	
+	
+piazz 3 days ago | prev | next [–]
+
+
+Yes, every day.
+
+Similar to other users here, giving it access to an Obsidian vault has been the key for me. And I wouldn't discount how much the chat interface matters - Telegram is so much nicer to use for extended conversations than the Claude or ChatGPT apps, etc.
+
+You can feed these tools context about your day to day life, and make them increasingly useful and personalized, in a way that you can't with vanilla ChatGPT/Claude etc without relying on some opaque memory system.
+
+Here's a few things I'm using it for. A lot of things uses cases are fairly trivial but a bunch of small, daily QoL improvements add up:
+
+- Calorie and macro tracker.
+
+- Day to day todo list, obsidian wrangling.
+
+- Tech support for family: I have a group chat we're all part of, and I've created OpenClaw skills for frequently asked questions, a memory system to remember questions, and a periodic 'quiz' based on previously asked questions to help everyone "learn to fish", bit by bit.
+
+- Interface to Anki. Bit of a longer one here that I should write up, but it's easy to use it add cards to Anki on the go and review missed cards from today, ask clarifying questions, etc.
+
+- One off reminders.
+
+- Light mental health support for family / friends. An agent that remembers the cool things you've done lately and proactively reminds you of them, helping you zoom out a bit, has been helpful for those in my life whose brains, for whatever reason, tend towards more negative cognitive patterns. (There is definitely a more refined product here)
+
+- General questions / curiosity; stuff I would otherwise use Claude for that's simply nicer in Telegram.
+
+- Language studying support. I'm studying Japanese and OpenClaw helps me by studying whole sentences, tricky grammar concepts, kanji I commonly mix up - all backed by a well organized Obsidian vault. I add to this system constantly.
+
+reply
+
+
+
+	
+	
+williamstein 3 days ago | prev | next [–]
+
+
+This guy is: https://youtu.be/sxX8BMscce0?si=1MuE3_cCH_uDabrT
+
+reply
+
+
+
+	
+	
+BoredPositron 3 days ago | parent | next [–]
+
+
+I got the AI Slop Tai Chi ad before and thought you tried to be funny.
+
+reply
+
+
+
+	
+	
+hastily3114 3 days ago | prev | next [–]
+
+
+If your personal life is so complex that you need to "automate" it, I think you need to reduce complexity instead of throwing an AI at it.
+
+reply
+
+
+
+	
+	
+crysin 3 days ago | parent | next [–]
+
+
+Their lives are probably not that more complex than others. They’re just neurodivergent or too task oriented in how they operate and need that structure to give them comfort and confidence.
+
+reply
+
+
+
+	
+	
+lizardking 3 days ago | prev | next [–]
+
+
+I use it, but it feels half-baked. And seemingly more so with each successive release, often including changes that just break my existing setup. I don't feel like a tool that is ready for a non-developer audience.
+
+That said, it does a few things for me that are useful. I have it run a nightly scan of Hacker News and Twitter for topics that interest me, summarizing the stories and the conversations around them. It's a nice daily digest. It also reads my personal email account, reminding me of anything I need to take care of that day for my kids, bills, or whatever else I need to worry about. I also have it do nightly builds for something random, one with codex, one with a local model, and run a comparative analysis between the two implementations.
+
+reply
+
+
+
+	
+	
+littlemishka 3 days ago | parent | next [–]
+
+
+I'm an engineer at Town (town.com) -- morning briefing + email digest is literally a stock workflow we ship. You connect your accounts and it just runs. No self-hosted stack to babysit, so it doesn't break when we push updates (that was a fun problem to solve on our end tbh). Free right now if you want to try it.
+
+reply
+
+
+
+	
+	
+lizardking 3 days ago | root | parent | next [–]
+
+
+Yeah, I don't think it's a feature unique to open claw in anyway. But combined with the memory of what I have going on and the other personal/business context it ended up being a fun experiment that didn't take me long to set up.
+
+reply
+
+
+
+	
+	
+resfirestar 3 days ago | prev | next [–]
+
+
+I used it for about a week, thought it was an interesting demo of the possibilities of general purpose automation with a local model (even though most OpenClaw users use hosted models). The approach to scheduled jobs still makes more sense than anything else I've seen implemented. But like a lot of self-hosted software with passionate evangelists, it wants to be your new main hobby instead of just getting out of the way, and I lost interest because I didn't want a new hobby. It feels like a more thoughtful community could have made something useful with the concept, but as it is the community around it is too absorbed in marketing and shipping stuff for its own sake.
+
+reply
+
+
+
+	
+	
+devashish86 3 days ago | prev | next [–]
+
+
+I'm running a few instances of OpenClaw(and Zeroclaw). I use it for a few things
+
+1. Experimenting with local models. OpenClaw uses local inference on a DGX Spark machine. Helps me understand how different, newer models work and behave
+
+2. Bot 1 helps me maintain a personal project. It sits in discord channel and I throw ideas at it, ask it to log issues, give me priorities, update docs etc. Basically maintenance work to manage the repo
+
+3. Bot 2 is general purpose assistant to take notes(while driving, on a walk, etc), give me daily AI news summary from trusted sources and my relevance criteria. Give me suggestions on what should I dig deeper
+
+4. Bot 3 is setup for work environment. Sits in slack as my team's assistant. Process meeting notes automaticlaly from google and send us summary for the week/month, important notes from a project, answer questions for rest of the org and more. This is most "real" use case so far for me
+
+<plug> I build https://github.com/ric03uec/clawrium as a lightweight orchestration system to manage agents on a local network because i was having a hard time keeping tabs on these agents. all the ssh-ing and config file gymnastics was too much to handle. </plug>
+
+reply
+
+
+
+	
+	
+tstrimple 3 days ago | prev | next [–]
+
+
+Never felt a need for it. I can already replicate much of what it does in more sustainable / preferable ways. I don't want agents reacting to things and doing things. I use agents to build reliable scripts which are then automated. I do have data collection points that I use an LLM to evaluate. The last example of this is I built a job polling service using CC. It's just a normal script that hits open APIs to pull job listing results into a SQLite database. I have another report which is run that drops an update of how many new jobs are in the database. If there's enough for me to be interested in, I'll fire up CC and have it parse through the job opportunities for the ones which match the profile we've been building. I've used an agent to literally build and deploy it all and it runs on an automated schedule. It just doesn't do agent shit while I'm not looking.
+
+I could have piped the results of that search into `claude -p` and had it do the analysis "real-time" and only alert me about things I would be interested in. That's closing the loop in a similar way people use OpenClaw for. But I'm just not interested. It adds more failure points and conditions. The automated things should be as simple and predictable as possible. This may change after months or years more of LLM development or even just me refining my working config. But not yet.
+
+reply
+
+
+
+	
+	
+eranation 3 days ago | prev | next [–]
+
+
+I did, it went great until it borked my mac user to the point it's non recoverable (separate mac mini, I just created a new one)
+
+I then moved to Claude CoWork + computer use + dispatch. (before Anthropic disabled the subscription option, although that would have pushed me even more... sadly)
+
+Now use it less and use more Claude Code Remote Routines... all it needs is computer use and I'm selling my Mac Mini... (I probably won't, need something to pay with paperclip, gastown, nanoclaw and the next 100k stars FOMO hype)
+
+reply
+
+
+
+	
+	
+headcanon 3 days ago | prev | next [–]
+
+
+I tried openclaw when it was released, but I preferred the minimalism of nanoclaw and replaced it. I have it on a mac mini now
+
+For context: I have additional automation with scripts set up on the mini, some of them call LLMs to do things like summarizing today's news.
+
+I have other automations that are agentic and just run "claude -p" (mainly just checks status of other jobs and fixes them automatically). Agentic automations are great because they can handle unexpected situations (at the cost of predictability). They're all sandboxed and we have control over tools for the most part. Any files it would write to are typically git-controlled so we have change records and rollback built in.
+
+Nanoclaw acts as an agentic layer but combines it with the communication layer over telegram to make it interactive.
+
+I use it to go through my centralized task list (currently beads in my main 'wiki' monorepo), give me nudges for todos, I can also send it pictures of say, food and it will fetch a recipe and sort it into the wiki via a general "inbox" skill (claude has it as well). Every day at 12:30 it will give me a mini "standup" of all my personal projects and todos, and once in a while will give me some thoughts based on my interests.
+
+Its set up to do appropriate tasks with local models to keep token costs down, so far it doesn't seem to cost more than $10-20/mo, it would use less if I didn't drive it with sonnet.
+
+I'm still experimenting with it, and trying to go slow, one thing at a time. I don't give it access to anything super sensitive yet, and try to keep it observable.
+
+reply
+
+
+
+	
+	
+jusasiiv 3 days ago | prev | next [–]
+
+
+I see some creative usage from other people for OpenClaw. My usage basically boiled down to commanding it via WhatsApp. What I mostly used the agent was mundane tasks like fetching information, creating documents for my work etc. Being able to schedule something is great, although OpenClaw quickly got confused about the cron tasks it had. I switched to ZeroClaw as the project is much smaller in terms of features and lines of code so I felt it was much more manageable.
+
+But I realised everything I needed was cron + some basic tools to create and handle local documents + API access. The last is still a pain to manage so I built my own tool to work as an auth layer https://ohita.tech/ Basically it handles all the token refreshing, rate limiting etc. so when the scheduled task triggers it does not immediately fail because API auth failed.
+
+reply
+
+
+
+	
+	
+azmz 1 day ago | parent | next [–]
+
+
+Nice that you went and built your own auth layer. Atmita (atmita.com) is API-first so you can hit any API directly, with managed OAuth to ~1000 services layered on top for convenience. Cloud-hosted, so the auth/refresh plumbing isn't your problem.
+
+reply
+
+
+
+	
+	
+araes 3 days ago | prev | next [–]
+
+
+Personally, better way to phrase might be "Does anybody you've actually met, visually viewed, use OpenClaw? Can you verify them using the software nearby?"
+
+In a few years, it's become so easy to falsify articles, falsify comments, falsify images, difficult to really even trust responses online anyways. As far back as 2016, Microsoft already had bots deployed online that could respond 96,000 times [1] in 16 hours all over social media. Remember Tay? [1][2]
+
+[1] https://www.theverge.com/2016/3/24/11297050/tay-microsoft-ch...
+
+[2] https://en.wikipedia.org/wiki/Tay_(chatbot)
+
+Even official government responses.
+
+The British Royal family went to falsification immediately. [3] Note child's broken fingers bent sideways (lower left, didn't even get circled)
+
+[3] https://inews.co.uk/news/signs-princess-kate-royal-family-ph...
+
+The White House is posting altered arrest images of people. [4]
+
+[4] https://www.theguardian.com/us-news/2026/jan/22/white-house-...
+
+Can't trust this stuff much anymore. Obvious caveat with this post.
+
+reply
+
+
+
+	
+	
+linkregister 3 days ago | parent | next [–]
+
+
+What does this have to do with OpenClaw? The Powers That Be want us to think there's a large user base of OpenClaw?
+
+reply
+
+
+
+	
+	
+svnt 3 days ago | root | parent | next [–]
+
+
+When you have insane amounts of capital and your gpu and talent needs are more or less met, there is a capital relief valve known as growth hacking. It only works if the consumer isn’t aware they’re being hacked.
+
+reply
+
+
+
+	
+	
+Bridged7756 3 days ago | root | parent | prev | next [–]
+
+
+No. They want you to believe in the hype and that LLMs are the death of programmers and limitless. OpenClaw and other such agents are sold as a tool that "can do anything" but behind the scenes, the implication is still that big LLM is driving it. So both are conflated.
+
+reply
+
+
+
+	
+	
+linkregister 3 days ago | root | parent | next [–]
+
+
+Who's they? What does this have to do with King Charles?
+
+reply
+
+
+
+	
+	
+girvo 3 days ago | root | parent | prev | next [–]
+
+
+I mean the big AI companies are totally keen around it, wouldn’t surprise me?
+
+reply
+
+
+
+	
+	
+BeetleB 3 days ago | parent | prev | next [–]
+
+
+At my not-small-company, we have a dedicated channel where employees discuss their OpenClaw experiments.
+
+Real people do use it :-)
+
+reply
+
+
+
+	
+	
+nathan_f77 3 days ago | prev | next [–]
+
+
+I wrote a blog post about what I did with OpenClaw in the first few weeks. [1]
+
+Then I was experimenting with a fleet of OpenClaw agents for a while. I was running 14 different instances, each with their own roles (project management, software developer, personal assistant, etc.) The experiment didn't work very well. I burned through a lot of tokens and didn't end up with much to show for it. I'm back to just running one agent and am not using it very much. I'm planning to be much more careful about any work that I ask it to do, and I want to have full visibility into everything it's doing.
+
+I think we are about 6-12 months away from the AI models that would allow me to accomplish what I was trying to do with those 14 agents.
+
+[1] https://madebynathan.com/2026/02/03/everything-ive-done-with...
+
+reply
+
+
+
+	
+	
+rnxrx 3 days ago | prev | next [–]
+
+
+I've been using the NousResearch Hermes agent for the past couple of weeks and have to say it's been really good. I tend to hit multiple instances (and accounts)of Claude across three or four machines (between work and personal) and having a competent agent with constant state has been good for memorializing and organizing important info (directly into Obsidian, too), doing some amount of research and planning and it's also been helpful working out a lot of bugs with my burgeoning home automation setup. It's also been helpful dealing with management of several miscellaneous servers in the house, as it's definitely both faster and a better documenter than I am.
+
+I have it running on a cheap VPS and it's fairly locked down. Especially with all of the self-reinforcement learning and skill development it's been improving its usefulness and, overall, I've been pretty pleased. Surprised even, if I'm being honest.
+
+reply
+
+
+
+	
+	
+random3 3 days ago | parent | next [–]
+
+
+how does Hermes compare to SOTA?
+
+reply
+
+
+
+	
+	
+easygenes 3 days ago | root | parent | next [–]
+
+
+They are referring to Hermes Agent, not the Hermes model series. https://github.com/nousresearch/hermes-agent
+
+reply
+
+
+
+	
+	
+pama 3 days ago | prev | next [–]
+
+
+I use it a lot for personal stuff. Off the top of my head: Best way so far to build and use personalized/family tools for dining/recipe/movie/literature/reminder/organizer/security/notes—-in addition to robust text input, all of them have a voice and image UI via telegram without extra code via an intermediate LLM agent, and all data end up on your machine in your format of choice. More fun than codex/claude-code for hobby coding projects (though worse performance, more effort, unless you directly use codex acp). Less intrusive than ChatGPT/Claude for parallel queries while outdoors (speak, then read). Fun way to explore and understand multi-agent setups. A great way to demo the ability of current AI to friends and family.
+
+You dont have to enable scary setups to make it minimally useful. The jump in capability compared to chatbots is dramatic, and the jump in flexibility compared to coding harnesses is also dramatic.
+
+reply
+
+
+
+	
+	
+causal 3 days ago | parent | next [–]
+
+
+Thanks for sharing, can you give any specific examples of the kind of personalized tools that you find helpful?
+
+reply
+
+
+
+	
+	
+pama 3 days ago | root | parent | next [–]
+
+
+All of the ones I mentioned work great for me. You can dream up your interface and inject technical design ideas and your claw can code it up; as you test it, you fix it if you get new ideas for how it should work.)
+
+For example my recipe project is built around a relatively simple sqlite db. Input for new recipe is in arbitrary format as it goes to an agent (image snapshot on iphone; txt file, speaking it out in a telegram message; a text prompt); the model figures out what to extract and save from the projects’ documents and the context of the specific telegram thread. Output is in whatever form I ask for; rescaled for a number of people; fit in single compact paragraph; or detailed ingredients first then instructions; possibly replace missing ingredients. Query can be arbitrary complex—it almost always finds the recipe I want so far much to my surprise; once I had to followup to select a specific option from a couple ambiguous variants. By default, I like to keep the replies for my recipe queries brief, practical, projected to my cookware. Once I set up this very simple recipe project and imported a couple old datasets, I gave up all of multiple previous recipe schemes (text files or org notes with complex syncing schemes, iPhone apps…)
+
+reply
+
+
+
+	
+	
+gpjt 2 days ago | prev | next [–]
+
+
+I have it running on a Proxmox VM. It basically just sends me summaries -- it reads a bunch of RSS feeds I pointed it to (news, tech, etc) and gives me a daily summary, along with an image of the day based on that. It also sends me recommendations for times to go for a run based on the weather and my Strava activity, daily recommendations for stargazing (what's visible and when, weather, etc), and a couple of daily reminders for things I tend to forget.
+
+I'm using Claude as the model, though, so it's smart but pricey. Should configure it to use different models for different things, but it's trickier than I would have expected to do that.
+
+reply
+
+
+
+	
+	
+azmz 1 day ago | parent | next [–]
+
+
+Love the setup. Similar pattern to what atmita.com runs, scheduled jobs for summaries, weather/fitness pulls, reminders, except it's cloud-hosted so no Proxmox VM to babysit. API-first with managed OAuth, so Strava or any other service plugs in directly. Not based on OpenClaw, built from scratch.
+
+reply
+
+
+
+	
+	
+rarisma 3 days ago | prev | next [–]
+
+
+I've used claude cowork a bit, which I believe is pretty similar to claw.
+
+Can't think of much use for it at the moment but I have it just read and summarise my email, calendar events and git repo in a daily briefing format, it only has readonly access to both, as I dont trust it to do stuff for me or on my behalf.
+
+The briefing thing is nice though not super useful.
+
+reply
+
+
+
+	
+	
+bitmasher9 3 days ago | prev | next [–]
+
+
+I use it. I never recommend it to anyone, but it’s a fun project I get use out of. There’s a few really good criticisms of the project, the ones that hit home for me are the token hungry aspects and the tinkering aspects.
+
+The most common question is “what do you use it for”, so here are my answers.
+
+1. I have the Obsidian/Openclaw setup that’s so popular with the self hosted crowd. I have a ton of “cron” jobs in openclaw to fetch data and insert it into Obsidian, or to summarize obsidian items I’ve done, or to nudge me about todos in my obsidian. This is where I get the most value, interacting on the .md file layer in automated fashion. For example, I have a cron that will summarize my daily notes into weekly notes, and my weekly notes into monthly notes.
+
+2. Email inbox management. I have jobs that alert me of emails from certain people or subjects. Jobs that process emails into folders based on fuzzy LLM rules, etc.
+
+reply
+
+
+
+	
+	
+atonse 4 days ago | prev | next [–]
+
+
+I used it for a bit in Jan. And found it to be a much worse version of Claude Code.
+
+But I'm exploring setting up Hermes from scratch so my family can interact with it in a group chat.
+
+I'm running half my company with Nanoclaw. Same idea, and has some benefits, but I live in CC all day so it's marginal (except for the fact that my laptop has to be on)
+
+reply
+
+
+
+	
+	
+arjie 3 days ago | prev | next [–]
+
+
+I have a clawlike. It’s just a small agentic loop with tools that are other specialized agents. It can write things itself but I upgrade many of the things it writes to first class if I use them a lot.
+
+As an example, it has a built-in web server which I find useful. The basic agent is easy to write and it’s trivial to add a Telegram bot. Mine also uses Codex’s subscription and then swaps to other things as it burns through Codex. The Gemmas have been great and I’m heading home to buy a few RTX 6000 Pro Blackwells so I’m sure it’ll be quite good after.
+
+I outsource a lot of research and so on to it and all my flight and trip emails are forwarded to its mailbox. So it always knows where I am and things like that. I find this very useful.
+
+My wife and I are in a group chat with it and we use it to plan stuff and so on.
+
+reply
+
+
+
+	
+	
+Something1234 3 days ago | prev | next [–]
+
+
+I tried it tonight, and it's installation is frustrating to say the least.
+
+For me `openclaw init` did not work, and I've tried installing twice, and still running into issues. Also it took fairly beefy vps on my home server at 4GB of ram, so not sure how I feel about it.
+
+reply
+
+
+
+	
+	
+mark_l_watson 3 days ago | prev | next [–]
+
+
+I find OpenClaw and (more so) Hermes Agent useful for software development, research, and writing - but I refuse to run them anywhere that is not deeply-sandboxed and has no access to most of my digital life data.
+
+OK, everyone makes their own decisions re: privacy and security. Personally, I am comfortable running OpenClaw and Hermes Agent on a rented VPS (preferably in a docker container on a VPS) and allow limited access to (some of) my GitHub repos. Both tools are useful, even in such a limited mode of operation. I just don't see value vs. risk allowing access to email, messaging apps, access to my personal computer, etc.
+
+It is close to zero overhead to SSH/Mosh to a VPS, get inside a container to work. Why risk infecting your personal or corporate computer?
+
+reply
+
+
+
+	
+	
+mv4 3 days ago | prev | next [–]
+
+
+I have it installed on a dedicated M4 16GB Mac Mini with Telegram, email, and Google Docs integration (the agent has its own accounts). I can chat with it, incl. sending voice messages via Telegram (it can send voice messages back using free TTS run locally).
+
+Using google/gemma-4-31b-it as primary, google-gemini-3.1-pro-preview as secondary (I don't like how it's rate limited).
+
+It's a great personal assistant. Helps me track industry news, key clients, reminds me of important tasks, and helps brainstorm (the rubber duck effect alone is worth it). Now building other skills.
+
+Next step is to run all models locally (I think using Claude/OpenAI APIs is a huge mistake from a privacy standpoint). Since Mac Studios are sold out (and M5 Ultra is not out yet), will probably go with a GX10 or two.
+
+reply
+
+
+
+	
+	
+carimura 3 days ago | prev | next [–]
+
+
+I asked both sonnet 4.6 and gpt-5.3 to summarize the use cases in this room, looks pretty different. Chatgpt tries a lot harder to categorize whereas Claude is more straightforward about just listing out use case examples.
+
+https://chatgpt.com/share/69e0de34-4048-83ea-9704-4ea18d4b41...
+
+https://claude.ai/share/291ccf67-19d1-4187-bfb4-968d1ecc0bc1
+
+reply
+
+
+
+	
+	
+gigel82 3 days ago | prev | next [–]
+
+
+I can see some embryonic potential in the concept, almost like a little spark of genius. I'm convinced a variant of an agentic personal assistant will become commonplace within a few years and will likely gain widespread adoption.
+
+That said, OpenClaw and most of its clones are extremely brittle right now. FWIW, I also tried building my own thinking the problem is surely the vibe coded complexity but it's not that, it's in limitations of the models and their training.
+
+I do still have an OpenClaw instance running on an M1 Macbook Pro in my closet with a local ollama instance (qwen3.5:35b-a3b-coding-nvfp4). It mostly cleans up my notes in my Trilium instance and it helps monitor prices of homelab components (on eBay and Reddit) daily.
+
+reply
+
+
+
+	
+	
+milesskorpen 3 days ago | prev | next [–]
+
+
+Yes - I've set it up as an 'office manager,' where it mainly snakily interacts with the local team via Slack, and controls an office TV to show our quote board, PTO calendar, and upcoming events. The Clawe is overkill for the use case, but sometimes is fun.
+
+reply
+
+
+
+	
+	
+dividedcomet 3 days ago | prev | next [–]
+
+
+Not anymore. After the claude shut off I decided to look around since I found it heavy. I’m on Hermes now with StepFun 3.5 Flash. I mostly just use it as a glorified calendar manager over signal. That being said, it feels like it meets the cross roads “of a cheap executive assistant”. Granted it’s not wired up to my work slack or anything. StepFun is a good enough model for tool calling that so far has been incredibly cheap that I’m happy with it. I suspect I won’t crack $5 of api cost to run it. But I also don’t think the Hermes harness is good enough for development-via-text like openclaw+opus is. I still find myself in the terminal using open code for that.
+
+reply
+
+
+
+	
+	
+vassilbek 3 days ago | prev | next [–]
+
+
+This is how I analyze geopolitics with OpenClaw.
+
+I developed OpenClaw Think-Tank Intelligence, a skill that transforms complex global crises into concise, insightful think-tank memos. These memos include stakeholder maps, scenarios, policy options, tradeoffs, risks, confidence levels, and assumptions. You’ll be amazed by the quality of analytics. https://clawhub.ai/vassiliylakhonin/global-think-tank-analys...
+
+reply
+
+
+
+	
+	
+dhruvkar 3 days ago | prev | next [–]
+
+
+I'm collecting caught-in-the wild use cases at https://www.clawdrop.org
+
+I use it personally for cold outreach - specifically list building, enriching, and qualifying.
+
+reply
+
+
+
+	
+	
+mistic92 3 days ago | prev | next [–]
+
+
+Nah, I deleted VM with it. My friends did it too. There is no real usage for it.
+
+reply
+
+
+
+	
+	
+MrFiskarBengt 3 days ago | prev | next [–]
+
+
+I'm trying to. Currently there's a bug in the code that strips headers and doesn't allow me to authenticate to my AI Gateway service.
+
+The whole thing is incredibly buggy. The dashboard is horrible, with page after page with similar-looking settings and what feels like hundreds of things I will never use. The categories in the dashbaord are also unintuitive. It's the kind of thing an AI would put together if it got very vague instructions. It doesn't scream quality and thoughtfullness. Not a bit.
+
+IronClaw is much more promising imo. Trying it out right now. Much less issues so far.
+
+reply
+
+
+
+	
+	
+fny 3 days ago | prev | next [–]
+
+
+I used it, found it buggy, and quickly realized I could achieve everything it did with a long running Claude Code instance and a good mobile frontend. The joy is that you can customize everything to your hearts content just by asking Claude to build things for you.
+
+- Background jobs? Cron? Huey + SQLite
+
+- Memory? Create a job to write daily summaries to a memory/ folder
+
+- Conversation log? Use hooks to write conversations to an sqlite file with full text search enabled
+
+- SOUL.md? IDENTITY.md? USER.md? Stop wasting tokens and just use CLAUDE.md.
+
+I only haven't quite figured out how to get channels working with 3rd party frontends.
+
+reply
+
+
+
+	
+	
+mv4 3 days ago | parent | next [–]
+
+
+It is buggy. It's also good at self-diagnostics and I was able to either fix things or find working workarounds by collaborating with it.
+
+reply
+
+
+
+	
+	
+manveerc 3 days ago | prev | next [–]
+
+
+Well i built an equivalent of OpenClaw using Claude Code and hooking it up with WhatsApp. For mew I'm currently using it for following things
+
+1. Morning brief + meeting preps 2. Managing client work and action items (tracking status, deliverables, etc) 3. Executing our AI workflows on my laptop. We have built several AI workflows for our agency and this setup gives the ability to seamlessly execute and control them through both mobile and desktop
+
+Next on my to-do list is to build additional workfows for me and my wife around family logistics (travel, childcare, etc)
+
+reply
+
+
+
+	
+	
+Havoc 3 days ago | prev | next [–]
+
+
+Recently started exploring it and will likely continue. Particularly fascinated by how (fake) self aware it is on configuration and functionality. Can make changes to itself etc
+
+That said hesitant to give it access to emails etc so use will always be limited by that
+
+Found it quite hard to set up though relative to other selfhosted tools. Need for https and all the additional security measures they put in place after some security scares are well beyond what randoms could manage I think
+
+reply
+
+
+
+	
+	
+azmz 14 hours ago | parent | next [–]
+
+
+Yeah, setup and the email-access hesitation are exactly where most people bounce. That's why I built atmita.com, it's cloud-hosted so there's no https or self-hosting gauntlet, and OAuth is managed across about 1000 services so you just click to connect email or calendar. Not based on OpenClaw, built from scratch.
+
+reply
+
+
+
+	
+	
+lovehashbrowns 3 days ago | prev | next [–]
+
+
+I'm trying Hermes right now. I can't really find a good use for it. I tried to use it for research type stuff but Google Scholar literally by itself is faster, better, doesn't get rate-limited. Idk. I am pondering connecting it to my other bot I built that has more useful things like access to my thermal receipt printer and task management stuff but even that is kinda dumb because it already does everything I need, so I don't really know where I'm going with it. Honestly, I don't get the idea behind openclaw and hermes.
+
+reply
+
+
+
+	
+	
+at-fates-hands 3 days ago | prev | next [–]
+
+
+I work for a huge company and we've just gotten access to Claude Code and now all the AI folks are pushing super hard to get EIS to open up so they can start using OpenClaw with Claude.
+
+I'm the "internally screaming" meme after having been in several of these meetings where dev teams are pushing for it under the guise of getting better at utilizing AI. "Well, OpenClaw plays extremely well with Claude Code, it could really give our teams a huge boost."
+
+Oy vey the next few months are certainly going to be an adventure!
+
+reply
+
+
+
+	
+	
+tim333 3 days ago | prev | next [–]
+
+
+I've got a free hosted one from Zo Computer which sends me a daily news summary but I can't say I really use it. https://zo.computer/ if you want to try. They had $100 free credits for the promo code 'clawconlon'. Not sure if that's still going.
+
+Their talk was quite good https://youtu.be/6rSEOzWY08U?t=2246
+
+reply
+
+
+
+	
+	
+jameson 3 days ago | prev | next [–]
+
+
+Used it for a few days to summarize top 10 hacker news at scheduled time or send me a joke of the day
+
+I liked how easy I can tell it to do something for me but token usage didn't justify the cost. I 'd either had to use smarter model which could cost a lot more or cheaper model which, in one instance, stuck in a loop
+
+Product-wise, it's an awesome tool. Imagine having your own butler for anything except that the reliability with affordable isn't here yet to do anything serious
+
+reply
+
+
+
+	
+	
+senko 3 days ago | prev | next [–]
+
+
+Reading through the comments here, most use cases is running an agent with some input in a cron job.
+
+Anthropic now have Routines in Claude Code that do precisely that, and I’d bet they will bring that to Cowork. ChatGPT can’t be far behind (or maybe they already have - tbh hard to keep track of everything).
+
+Devs can already set up reliable cron jobs for cheaper. Normies will have a less brittle solution for it soon. Where does that leave the claws?
+
+reply
+
+
+
+	
+	
+lz400 3 days ago | prev | next [–]
+
+
+I use claude code everyday. Most of my friend circle have a CC max subscription and we talk about and use AI all the time. Not a single one has installed openclaw yet.
+
+For me personally I don't see that it can do a lot of things that CC/codex doesn't do and that _I_ want to do. Also I'm concerned about security.
+
+For a while I wanted some agent I could tell what to do in my PC at home from my phone, so I just vibe coded a web site that can start CC and I used tailscale to secure it.
+
+reply
+
+
+
+	
+	
+markoa 3 days ago | prev | next [–]
+
+
+For me the prerequisite for leveraging openclaw was developing function oriented repositories of markdown files tied to my roles that capture pretty much everything I know about the subject and ongoing work, and working with agents as assistants off of those as context. As a founder, product manager, for growth etc.
+
+From there it’s pretty natural that I wanted to talk to an always on agent not tied to any particular machine which has the same context plus access to google drive etc.
+
+reply
+
+
+
+	
+	
+blackmanta 3 days ago | prev | next [–]
+
+
+I have an instance that does search related to my research interests, tracks news related to viruses in the US, events happening around my area and an “urgent” news job that uses searx and for things going on around me. I used Qwen 3.5 9B and tuned some of the jobs with GPT 5.4. I recently switched to use Gemma 4 and there was seemingly no major difference. I’ve found it useful for the digest and for findings papers without much effort.
+
+reply
+
+
+
+	
+	
+incomingpain 3 days ago | prev | next [–]
+
+
+I adopted openclaw day 1 of the rename. I heavily configured and used it for awhile. If you're using old 'agentic' harnesses, you're being left behind.
+
+That said, I stopped using Openclaw for Hermes. Openclaw released a massive patch that broke openclaw to an unrepairable state. I tried Hermes and havent even considered going back.
+
+Dont use openclaw, use hermes.
+
+reply
+
+
+
+	
+	
+Aperocky 3 days ago | prev | next [–]
+
+
+At one point, it was awesome.
+
+then it became bloated.
+
+then I both found and made gateway agent for different tools that does exactly one thing - connect me to the machine and does nothing else.
+
+No, no subagents, no workflows, nothing, just be my gateway agent and the machine itself runs a whole other ecosystem. It is a nice wrapper/replacement on top of SSH, but only that. I don't need an ounce more.
+
+reply
+
+
+
+	
+	
+haneul 3 days ago | prev | next [–]
+
+
+I still use it.
+
+We have it as a data analyst that’s been trained via exemplar queries and MD about the underlying databases.
+
+It also does ad creatives analysis and overall paid marketing spend analysis, including delivering briefs and conversing with stakeholders about things such as cross-ad-platform deduplicated cost of customer acquisition.
+
+In general it is used to lower the technical bar required for cross-domain collab.
+
+reply
+
+
+
+	
+	
+rootsudo 3 days ago | prev | next [–]
+
+
+Me.
+
+It’s fun and it works. I’ve tied it to consumption on open router and the main vendors. The free llm on openrouter are interesting but get exhausted quickly. I heavily suggest making a clean slate and going from there.
+
+It’s amazing, it helps me do misc tasks I wouldn’t do so I can… be more lazy. Most of it is local file system crud but man it’s amazing for that.
+
+reply
+
+
+
+	
+	
+atlgator 3 days ago | prev | next [–]
+
+
+I like Openclaw. It's able to interact with a bunch of apps I self-host (e.g. media server, home automation, productivity) and I generally prefer communicating with it over Claude directly. I would not tell people to go out and fork over money for a mac mini to use it. I already had a mac mini sitting idle, so I'm putting it to use.
+
+reply
+
+
+
+	
+	
+nfgrep 3 days ago | prev | next [–]
+
+
+I tried it for a few days and then dropped it. The prompting/memory/context system for OpenClaw chewed tokens and performed subpar for my usecase. I was mostly interested in having AI writing little toy projects. I used pi over ssh instead, and eventually built myself a little mobile-first web UI wrapping pi.
+
+reply
+
+
+
+	
+	
+vichoiglesias 3 days ago | prev | next [–]
+
+
+I managed to run a council using OpenClaw twice a day of different models that would discuss my personal projects, and send me to telegram ideas or suggestions for the next steps. It was quite cool and got very nice insights, but was burning tokens like crazy, so I stopped it.
+
+reply
+
+
+
+	
+	
+markstos 3 days ago | prev | next [–]
+
+
+On a couple of different Ghost sites I maintain, I got suspicious sign-ups from travel-related domains that require email verification.
+
+I suspect they might have used OpenClaw to accomplish the email verification step (no evidence) and were setting themselves up for later comment spam.
+
+Even if you aren't using OpenClaw, it may be using you!
+
+reply
+
+
+
+	
+	
+brikym 3 days ago | prev | next [–]
+
+
+I've mostly been using it as a calendar interface and email drafter. I also find it useful for a daily agenda with meals, meeting, weather and so on. I find the responds slowly (10-15s) so I've probably configured it poorly. I'm just using a Hetzner node and OpenRouter but maybe local is better?
+
+reply
+
+
+
+	
+	
+joch 3 days ago | prev | next [–]
+
+
+I tried it a bit, and while the potential is huge, I mostly just use a cli agent (claude/codex) via Blink shell (iPhone/iPad) with Wireguard for technical work or https://agency.nu for any automations using integration, voice chat etc.
+
+reply
+
+
+
+	
+	
+chaosprint 3 days ago | prev | next [–]
+
+
+I think this article covers it well.
+
+https://entropytown.com/articles/2026-03-12-openclaw-sandbox...
+
+In fact, I haven't even installed it yet.
+
+reply
+
+
+
+	
+	
+browningstreet 3 days ago | prev | next [–]
+
+
+I gave up on openclaw but I’m presently installing Hermes.
+
+I liked the idea, had it doing a few novel personal things, but it was so fragile and unknowable and 15% broken at every moment. It was expensive to keep and run, but I will essentially be running Hermes for free, so I’m cautiously optimistic.
+
+reply
+
+
+
+	
+	
+sbinnee 3 days ago | parent | next [–]
+
+
+I was going to try hermes agent after hearing OpenClaw constantly breaks and this hermes buzz is a better one. I t all sounds a lot of maintenance work.
+
+reply
+
+
+
+	
+	
+john2000stp 3 days ago | prev | next [–]
+
+
+I have openclaw as a default install on all my dev servers. Pretty minimal setup with Telegram and Codex (since oauth is still supported). The setup comes in handy since openclaw can open and connect to tmux sessions and interact with them. I can pretty much do anything from telegram now.
+
+reply
+
+
+
+	
+	
+opak 3 days ago | prev | next [–]
+
+
+In general, AI agents are a good idea, but OpenClaw’s security is weak, so I use an alternative: https://github.com/opentalon/opentalon
+
+reply
+
+
+
+	
+	
+evbogue 3 days ago | prev | next [–]
+
+
+I use it. I think everyone should try the original version out before it gets too muddled so they get the spirit of the thing even if it doesn't end up being the thing -- in a safe space where you know what data you're allowing it to claw thru.
+
+reply
+
+
+
+	
+	
+seebeen 3 days ago | prev | next [–]
+
+
+Can I tag along to the main question and ask - what are some good OpenClaw guides or plugin/skill collections that you think are must-use?
+
+So much AI generated bullshit online, it's really hard to find good guides from bad ones.
+
+reply
+
+
+
+	
+	
+sputknick 4 days ago | prev | next [–]
+
+
+I tried using it for a specific web search task. I wrote a skill, got it all set up and deployed. It worked. But also, would have worked just as well as a cron job with some LLM looking at Brave API results. Like a lot of AI tools, it was a lot of work for underwhelming results.
+
+reply
+
+
+
+	
+	
+gleipnircode 3 days ago | prev | next [–]
+
+
+I used openclaw until claude released sheduled routines.
+
+Nowadays i just create a repo insert context and then run sheduled routines with claude windows app against it.
+
+For my use cases thats all i need and the most important part is that I can officially use my claude subscription instead of an API key.
+
+reply
+
+
+
+	
+	
+samxli 4 days ago | prev | next [–]
+
+
+Tried it in the earlier days and it performed badly. I didn't give it free reign on my computer due to obvious security concerns so sandboxed it to a docker container instead. I think for a lot of tasks it's probably more trouble to set this up than to just DIY it.
+
+reply
+
+
+
+	
+	
+daytonix 3 days ago | prev | next [–]
+
+
+It was very useful as an indication for who you can start ignoring in the ai hype space.
+
+I'm only half joking. Blocked everyone / everything that hyped up openclaw and have been able to find much more interesting and reasonable ai related discussions in my feeds.
+
+reply
+
+
+
+	
+	
+Openpic 3 days ago | prev | next [–]
+
+
+In Japan, it's a product targeted by the Ministry of Information and Communications, and some people without programming knowledge are touching it because it claims to automate things, but for now, I don't want to touch it.
+
+reply
+
+
+
+	
+	
+spzb 3 days ago | prev | next [–]
+
+
+The people who are using it can't post here because OpenClaw deleted their HN account.
+
+reply
+
+
+
+	
+	
+01jonny01 3 days ago | prev | next [–]
+
+
+I've used I cannot figure out the real benefit of it beyond novelty purposes.
+
+I find Chrome Claude extension more useful for automating tasks online. Before ai I was writing my own macros which basically did the same thing in a more reliable deterministic way.
+
+reply
+
+
+
+	
+	
+luxuryballs 3 days ago | prev | next [–]
+
+
+I love it, it is like Claude on steroids, I can just chat with it on my phone and iterate projects… sadly it’s really expensive now to keep using Opus, looking for alternatives that doesn’t gimp the reasoning and creativity is hard.
+
+reply
+
+
+
+	
+	
+lta 3 days ago | prev | next [–]
+
+
+I wanted to try it recently and went to their doc website. Ar first glance it looked surprisingly detailed for such a young project but why not.
+
+I didn't wanted to run a random, possibility vibe coded tool on my computer right away so I decided to run it in a container. That's an option, great ! Tu run it with docker they recommended an install script.
+
+Out of habit I downloaded the script and started skimming through it to figure roughly what it would do to my machine.
+
+The stuff was a mess. Most of it seemed overcomplicated code to do simple thing. Then I ran into inline python code in the shell script. That's not super elegant but there are some valid use cases, why not. Then there was inline JS code... WTF? Then we're back in inline python.
+
+Seriously, that's just a script to run a docker compose file ! We're not yet at setting up providers or anything.
+
+I was not to run that script on my computer, and was happy I decided to go the container way.
+
+I got back to the website to see if they have manual instructions... They did, maybe there's hope after all ? Those instructions ended up being incomplete or broken, even for someone who does devops-y stuff on a daily basis.
+
+I decided to drop the experiment there and it left me with the impression of a pile of code thrown together by an army of monkeys.
+
+reply
+
+
+
+	
+	
+gneuron 4 days ago | prev | next [–]
+
+
+This is a good example: https://www.lennysnewsletter.com/p/how-openclaw-changed-my-l...
+
+reply
+
+
+
+	
+	
+raajg 3 days ago | prev | next [–]
+
+
+Telegram -> 1 Group/agent -> OpenClaw running on an old laptop
+
+Using it for journaling and capturing ideas. Previous workflow as iPhone Memos. Now it's
+
+voice message -> openclaw -> transcribe using parakeet -> git repo
+
+reply
+
+
+
+	
+	
+syngrog66 4 days ago | prev | next [–]
+
+
+lots of modern software devs suffer from the same thing notoriously associated with teenagers: strong urge to conform and comply with peer pressure. individuals vary, obvs. but as you age this urge shrinks
+
+reply
+
+
+
+	
+	
+mholubowski 3 days ago | prev | next [–]
+
+
+Yes, at our company we are using it very extensively. I genuinely believe we're near the forefront of usage. We have multiple isolated OpenClaw instances serving as employee within Slack.
+
+reply
+
+
+
+	
+	
+psybrg-prtcls 3 days ago | parent | next [–]
+
+
+Care to share more? What specifically is it accomplishing?
+
+reply
+
+
+
+	
+	
+albertgoeswoof 3 days ago | parent | prev | next [–]
+
+
+What does your company do and what do the open claw agents do?
+
+reply
+
+
+
+	
+	
+mholubowski 3 days ago | root | parent | next [–]
+
+
+it's a venture backed software + services company. the things we use openclaw for are not specific to what our company does. It's literally being used as an additional employee(s). Think about what people do -> OpenClaw does a subset of those things. Emailing, pulling data our of our platform to putting them into PDFs because a customer requested it, updating things in our CRM, answering support tickets, internal help desk type work... "how does so and so feature work in xyz edge case"... etc etc etc.
+
+reply
+
+
+
+	
+	
+cloudking 3 days ago | prev | next [–]
+
+
+Tried it for a few weeks, was really buggy and unpredictable.
+
+Kudos for the concept though, I ended up rolling my own agentic system with Claude Code from scratch that works much more reliably for my use cases.
+
+reply
+
+
+
+	
+	
+porridgeraisin 3 days ago | parent | next [–]
+
+
+Yep. I had posted a comment earlier detailing my usecases. But I too replaced that with my own system that does those same things.
+
+It's way too bloaty, felt like operating windows start menu search.
+
+But you might have missed so far some of the ideas they have. So it's useful to try it out, see what combination of features you use in particular and then just set those up for yourself with claude code or whatever as the LLM harness. Telegram integration is dead easy.
+
+reply
+
+
+
+	
+	
+cloudking 3 days ago | root | parent | next [–]
+
+
+Definitely worth following for ideas.
+
+How did you solve memory in your system?
+
+I ended up using QMD + custom skills to keep it up to date as new data comes in. Essentially a cross-referenced set of markdown files forming a knowledge base: https://github.com/tobi/qmd
+
+reply
+
+
+
+	
+	
+porridgeraisin 3 days ago | root | parent | next [–]
+
+
+Didn't know about qmd.
+
+I use a mix of markdown notes, an sqlite database, and my image store searchable by text. I use immich.
+
+For now I do it manually by giving it skills for each data store I wanna access.
+
+My usecases are all ad-hoc I am not a "pro" user by any means. So I don't mind some manual work.
+
+reply
+
+
+
+	
+	
+kinj28 3 days ago | prev | next [–]
+
+
+I am using it as one the agent that is automating LinkedIn outreach by running a bash script & using ai wherever it needs some decision like finding first name or what message to write, etc.
+
+reply
+
+
+
+	
+	
+yanhangyhy 3 days ago | prev | next [–]
+
+
+there is a huge push in china and (tencent). but the main purpose is for the token market, to bring more users as a consumer of tokens. but i dont see any useful outcome from this yet.
+
+tencent is anxiety about it's progress about AI, as Alibaba and ByteDance is iterated much faster. so before it has strcit rules for QQ/Wechat( has 1 billon + users) for AI bot , but now it's open to openclaw (some tencent version i guess).
+
+but it's still a toy for most people.
+
+reply
+
+
+
+	
+	
+Rekindle8090 3 days ago | prev | next [–]
+
+
+OpenClaw has no use. It has functions, but none of them are useful, because LLMs are mostly not useful.
+
+Every OpenClaw "usecase" I've seen was unfalsifiable or just a function.
+
+Use case: Using a calculator to add 2+2 OpenClaw "Use Case": "Read this email, figure out what the client is asking for, look up the relevant project in my task manager, draft a response"
+
+This is unfalsifiable, and it's also something that requires general intelligence. it's also not something OpenClaw does. You do not need openclaw to do this, its not an llm. You could just paste the email and give 1 paragraph of context to chatgpt and get the same result.
+
+WITHOUT making orchestration administration your full time job.
+
+reply
+
+
+
+	
+	
+skvmb 3 days ago | prev | next [–]
+
+
+On iPhone I use ChatGPT via Shortcuts and a-Shell for tool execution and Files for memory and state. I can schedule it to run or can invoke it from the home-screen via a shortcut.
+
+reply
+
+
+
+	
+	
+docheinestages 3 days ago | prev | next [–]
+
+
+How do y'all manage conversations with OpenClaw through platforms like WhatsApp? I mean conversation history and multiple conversations in parallel.
+
+reply
+
+
+
+	
+	
+jillesvangurp 3 days ago | parent | next [–]
+
+
+I set up a matrix server. Each OpenClaw agent gets its own bot user and room. I can @tag agents, invite them to rooms, and query them. I have one agent that has admin access to matrix and can create additional agents. WhatsApp kind of half works but it's tedious and flaky and you end up chatting with yourself unless you have a lot of spare phone numbers to create bot users. Slack flat out doesn't work because they've locked it down. Other things are available. But Matrix does the job and is straightforward to integrate with OpenClaw. Also great if you want to use this with multiple users.
+
+reply
+
+
+
+	
+	
+Lowstack 3 days ago | prev | next [–]
+
+
+I still try to figure out how to use it to its full potential.
+
+I mainly run it through github-copilot/claude-sonnet-4.6 using GitHub Copilot Pro + at 39$/month
+
+Task management: My entire todo system runs through GitHub Issues. I just tell it things like "mark that done" or "add a task for X" in Slack and it handles the gh CLI calls. Sounds trivial but removing the friction of opening a browser actually changed how consistently I maintain my list.
+
+Morning/EOD briefings: Cron jobs post a structured summary to Slack every morning and evening — calendar, open GitHub issues, important emails. It pushes a RSS feed of my tasks that I can view on a widget on my phone.
+
+Server management agent: I have a different agent which acts as the server admin. It runs Jellyfin, a few *arr apps, AdGuard, mealie, etc. I don't touch config files or docker compose manually anymore. I just describe what I want changed. I have it run its own security audits frequently.
+
+I also have a personnal coach agent which tracks my weight, my weekly exercices using gcal and creates meal plans which gets pushed to mealie so I can know what to buy for grocery and what to cook.
+
+Literature reviews: I describe a research question and it runs a full pipeline — searches Semantic Scholar + Google Scholar, creates a Zotero collection with clean metadata, then tries to fetch PDFs through 9 different strategies (institutional repos, arXiv, Unpaywall, EZproxy with my university credentials, etc.). Gets about 60-65% PDF coverage automatically.
+
+I have a personal shopper agent called Betty which role is to get out there and find deals about stuff I want to buy.
+
+I also use it to run data pipelines for research project. It's instructed to use opencode with openai/gpt-5.4 for coding with beads and gastown.
+
+I still have to figure out how to manage model switching efficiently. I'm not there yet.
+
+It's the first AI setup that genuinely changed how I work rather than just being a fancy search engine.
+
+reply
+
+
+
+	
+	
+VortexLain 3 days ago | prev | next [–]
+
+
+I've tried it but after 10 minutes I found myself not comfortable running software this unpolished, specifically managing any sort of private data.
+
+reply
+
+
+
+	
+	
+arbiternoir 3 days ago | prev | next [–]
+
+
+I see the hype, but for me I don't see the value yet. It seems neat, but what exact automation brought you real benefits?
+
+reply
+
+
+
+	
+	
+unbolted3032 3 days ago | prev | next [–]
+
+
+I'm being forced to implement it at my job.
+
+The hype is real. The repository says 5k+ issues and 5k+ prs. There's no way any human being knows what's going on in the codebase. How people trust this to hit their APIs and hang onto their API keys is beyond me.
+
+This is yet another straw on the camel's back; I'm building my industry exit strategy because of AI.
+
+reply
+
+
+
+	
+	
+carimura 3 days ago | prev | next [–]
+
+
+i've been engineering things for almost 30 years and getting it wired up to Discord was worse than a root canal. Slack seemed just a tad better but it still doesn't even work.
+
+I feel like most of this can be done with the platform tools at this point or a tiny bit of wiring of your own without the mega-bloat to make something generalized for the whole world.
+
+reply
+
+
+
+	
+	
+gopher2000 3 days ago | prev | next [–]
+
+
+ITT: "I don't use it, but ..."
+
+reply
+
+
+
+	
+	
+sergiotapia 3 days ago | prev | next [–]
+
+
+openclaw was the scrum of the ai generation. lots of money made by thought leaders and such. largely irrelevant today.
+
+reply
+
+
+
+	
+	
+softwarerero 3 days ago | prev | next [–]
+
+
+I tinkered with Hermes yesterday but it still seems like a solution to a problem I don't have as a programmer.
+
+reply
+
+
+
+	
+	
+LeoDaVibeci 3 days ago | prev | next [–]
+
+
+Proactive agents are going to be a thing. OpenClaw is just an early search in the solution space.
+
+reply
+
+
+
+	
+	
+8note 3 days ago | prev | next [–]
+
+
+a friend is using it but it seems like it breaks a lot.
+
+ive got the scheduled claude-code running a couple scripts to find what events are going on round town and what food is cheap at grocery stores, but how much am i looking at the results? not super often. its publishing to a discord channel rhat makes it real hard to read
+
+reply
+
+
+
+	
+	
+franze 3 days ago | prev | next [–]
+
+
+its my remote control for claude code
+
+it whatsapps me when its done or needs input it can not resolve, i start new session which are then done when i come to my computer
+
+the reasons why i not use it more is tokens costs
+
+yeah i could use a cheaper model for openclaw but then its just stupid
+
+i am trying to run it on gamma next week
+
+reply
+
+
+
+	
+	
+aantix 3 days ago | parent | next [–]
+
+
+Claude Code already has that with channels. https://code.claude.com/docs/en/channels-reference
+
+No need for OpenClaw.
+
+reply
+
+
+
+	
+	
+acejam 3 days ago | parent | prev | next [–]
+
+
+Why not just use Claude Code's native "Remote Control" feature?
+
+https://code.claude.com/docs/en/remote-control
+
+reply
+
+
+
+	
+	
+guiambros 3 days ago | prev | next [–]
+
+
+I still use it daily, mostly for managing information consumption. It reads my twitter feed and scans HN twice per day, and sends me a digest of the discussions on Discord.
+
+The best part is that it reads the comments too, and sends me a quick blurb. For example, this is what it sent me earlier, commenting on [1]:
+
+  TL;DR: A classic essay arguing that compiler construction isn't as hard as thick textbooks suggest, pointing to Jack Crenshaw's accessible "Let's Build a Compiler" series as the real starting point.
+
+  The Vibe: HN agrees most CS textbooks are overcomplicated — developers sharing their own minimal compiler projects and alternative learning resources.
+
+I also have a few custom skills to read transcripts from YT videos and summarize the content, and store summaries in a personal wiki-style folder.
+
+It runs in an isolated vm and doesn't have access to anything other than my X account, so I'm not too worried about prompt injection. I also don't have any skills installed other the ones I developed or carefully vetted.
+
+[1] https://news.ycombinator.com/item?id=47776796
+
+reply
+
+
+
+	
+	
+therealmarv 4 days ago | prev | next [–]
+
+
+I saw some non-technical people automating or creating small great tools with it which they need for their profession. These people are not programmers.
+
+I think everybody who has basic understanding of programming and deployment better should stick to some AI coding agent like Claude Code, Codex, OpenCode etc etc.
+
+I don't think I'm missing out by not using OpenClaw & Co.
+
+reply
+
+
+
+	
+	
+Cloudly 3 days ago | prev | next [–]
+
+
+I've had success using the underlying harness - pi-mono as a data analyst in a sandbox.
+
+reply
+
+
+
+	
+	
+wateralien 3 days ago | prev | next [–]
+
+
+I tried twice and couldn’t extract value. Loaded it with ability. Still couldn’t.
+
+reply
+
+
+
+	
+	
+cdrnsf 3 days ago | prev | next [–]
+
+
+It seems a lot like paying to run malware when shell scripts and cron will do.
+
+reply
+
+
+
+	
+	
+ozten 3 days ago | parent | next [–]
+
+
+You have deterministic malware at home
+
+reply
+
+
+
+	
+	
+hparadiz 3 days ago | prev | next [–]
+
+
+I'm only using it until I can make my own TUI from scratch in C or Rust.
+
+reply
+
+
+
+	
+	
+block_dagger 3 days ago | prev | next [–]
+
+
+I bought a Mac Mini, installed OpenClaw, and was impressed with the overall design and functionality. Then the problems started. Sometimes the gateway would crash, sometimes Signal (a channel I setup) would stop working. Upgrades seemed to break stuff. I had to dip into the terminal a lot to fix various things. It's quite useful if you don't already have Claude Code or similar tools setup, but frankly I haven't found a compelling use case that I can't get done in another more mature agentic harness.
+
+reply
+
+
+
+	
+	
+newswasboring 3 days ago | prev | next [–]
+
+
+I don't use openclaw but I spent few weeks on nanobot and then this week switched to Hermes. I have simple usecases like a news brief in the morning on my areas of interest, checking my email for latest updates on things I care about right now etc.
+
+But I gave my wife access to the discord server, she burned 20% of weekly quota for codex (I use it as the provider) but created a skill which helps her practice dutch her way (she's learning it at A2 level for now). I went through the chats with her when she was showing it to me and it's amazing. She is a non technical person but she has tons of experience developing products. It was amazing (and to be frank very sexy) to see her work pretending as if she has been assigned a junior developer. The whole things a tangled mess of cron jobs, skills and scripts but her point is very simple "it maps perfectly to my learning style and keeps it fresher than flashcards or Duolingo".
+
+Edit: wording. Also she wants me to mention at the end of the lesson it also does roleplaying which no other product gave her.
+
+reply
+
+
+
+	
+	
+CSMastermind 3 days ago | prev | next [–]
+
+
+I've heard too many horror stories so I'm waiting.
+
+reply
+
+
+
+	
+	
+sneak 3 days ago | prev | next [–]
+
+
+I had it working great (and using it a ton for sweng tasks) on the Max ($200/mo) plan. Then they intentionally broke it even though my usage was completely within their stated/published usage limits for my plan. It was providing me tons of value - easily $2-3k/mo.
+
+I hate it but I caved, decided I would pay the extra usage charges, and prepaid $1k (because it came with a 30% discount). Set it up using the new sanctioned login method.
+
+It's 5x slower and 80% of the time the requests fail authentication or time out. Now it can't even do basic stuff like my medication tracking system that I had set it up to do.
+
+Fuck Anthropic. I'm a customer, ready and willing to pay whatever they ask for this, and they're treating me like a fucking mark. I'm tired of dicking around with it, jumping through hoops troubleshooting a previously working system simply because they won't just raise prices like a normal business.
+
+reply
+
+
+
+	
+	
+AndrewKemendo 3 days ago | prev | next [–]
+
+
+Everyone’s just making their own multi agent stacks now
+
+reply
+
+
+
+	
+	
+bionhoward 3 days ago | prev | next [–]
+
+
+Yeah it’s a coding beast if you get it dialed in right
+
+reply
+
+
+
+	
+	
+karraju432 3 days ago | prev | next [–]
+
+
+I use it mainly to triage daily news.
+
+reply
+
+
+
+	
+	
+gos9 3 days ago | prev | next [–]
+
+
+Context and memory storage, plus crons and tools
+
+reply
+
+
+
+	
+	
+nkotov 3 days ago | prev | next [–]
+
+
+I use it daily and also implemented it for a customer for a very specific use case. The Claude subscription change made it less desirable to use but I still enjoy it.
+
+reply
+
+
+
+	
+	
+barbaraking734 3 days ago | prev | next [–]
+
+
+Interesting read, thanks for sharing.
+
+reply
+
+
+
+	
+	
+karraju432 3 days ago | prev | next [–]
+
+
+I use it for triaging news.
+
+reply
+
+
+
+	
+	
+mattrighetti 3 days ago | prev | next [–]
+
+
+Heard too many horror stories, pass
+
+reply
+
+
+
+	
+	
+utp 3 days ago | prev | next [–]
+
+
+i use it with self hosted model, but often it's failed at using tools
+
+reply
+
+
+
+	
+	
+eternaut 3 days ago | prev | next [–]
+
+
+i switched to hermes agent. works better for me. using it on linux and mac.
+
+reply
+
+
+
+	
+	
+herve76 3 days ago | prev | next [–]
+
+
+Not using it since Opus is gone
+
+reply
+
+
+
+	
+	
+rvz 4 days ago | prev | next [–]
+
+
+…Or is anyone making money directly out of running OpenClaw other than hosted providers or selling OpenClaw courses?
+
+reply
+
+
+
+	
+	
+gneuron 4 days ago | parent | next [–]
+
+
+probably not, seems like a money suck. but could it help you coordinate a lot of different systems? i think yes based on Claire Vo's use case
+
+reply
+
+
+
+	
+	
+spartas 3 days ago | prev | next [–]
+
+
+https://openclaw.allegro.earth
+
+reply
+
+
+
+	
+	
+ayorke 3 days ago | prev | next [–]
+
+
+what is the open claw hype and also is it just more of an SF thing?
+
+reply
+
+
+
+	
+	
+zaphar 3 days ago | prev | next [–]
+
+
+Frankly everything I have seen about says that the people using LLMs to develop it can not be trusted with LLMs so no. I am not using it. I'm not anti-llm's I'm anti-stupid-llm-usage.
+
+reply
+
+
+
+	
+	
+thatxliner 3 days ago | prev | next [–]
+
+
+I'm planning to set it up as a auto-marketing and user acquisition agent, but I'm also backpedaling on the idea since (1) people can probably easily tell that it's AI (2) that will produce negative reputation as a "slop company" (3) that's feeding into the dead internet theory
+
+So in short, there's not much to do. I don't really have tasks I can just "hand off to OpenClaw"
+
+reply
+
+
+
+	
+	
+jesse_dot_id 3 days ago | prev | next [–]
+
+
+I'm waiting for it to produce the most destructive worm in the history of personal computing as soon as someone with a sufficiently large list of e-mail addresses and a zero day prompt injection technique decides they want to create some chaos. Maybe I'll trust if it if we ever see AGI, but if we ever see AGI, chances are I'm not going to need it. So. No.
+
+reply
+
+
+
+	
+	
+geor9e 3 days ago | prev | next [–]
+
+
+Nope. I spun up a few Openclaws & a Hermes but never enjoyed the end results. Now I just use a telegram plugin for Codex. And run Codex on a miniPC I found in the trash. A $20/mo Codex sub gets me a GPT-5.4 agent that can make its own Automations (cron jobs), search the web, and modify the files and apps on the NAS drive I share. Simple and cheap works for me.
+
+reply
+
+
+
+	
+	
+anishgupta 3 days ago | prev | next [–]
+
+
+The main thing why I started using it too late was the slop. it's in the end AI generated, yes it can take your tasks but i never felt in my personal use case how it can help me when it's just generating slop. I used claude cowork more than openclaw after trying once that too in a cloud container since I'm afraid of its security
+
+reply
+
+
+
+	
+	
+avicado0o 3 days ago | prev | next [–]
+
+
+eh nothing actual mission critical, however managing my home server has become a breeze and kinda fun, I've given my openclaw/nanoclaw a personality whose sole job is to tend to my server and enjoy it.
+
+I have a bunch of telegram notifiers and bot templates laid out already as well as the whole arr stack.
+
+So say a friend wants to track a tv show, I just ask openclaw to track it and setup a bot to notify them, it manages everything and sets it up cleanly (most of the time). They also have access to the public media directory so they can ask the bot when the next episode will come out or if some other show is available etc. Again, not super critical but building out this level of ux would've taken me a lonnnng time, it's pretty nice to have some company in managing my server as well which is a kinda lonely experience. Fun stuff.
+
+reply
+
+
+
+	
+	
+jillesvangurp 3 days ago | prev | next [–]
+
+
+I am but that is despite there being many very solid reasons not to. It's mainly painful until you sort out the many plumbing issues. This thread is going to be full of people telling you why not to use it. I'm not going to add more to that pile of great arguments except to acknowledge that, yes, it is super messy, insecure, dangerous, etc. I'm well aware.
+
+So, why use it anyway? The promise of agentic workflows is very real. If you have seriously used agentic coding tools, you probably have figured out that in certain contexts it is a bit magical to see these tools solve real problems and do in minutes what would take you hours or days manually. It will also have exposed you to things like skills, guard rails, etc. that help you use these tools in a way that is a bit more repeatable and less prone to hallucinated outcomes. All this ports over well to OpenClaw. And in fact, you don't actually need OpenClaw as you can get most of what you are going to do in OpenClaw in agentic coding tools instead. Same models, same cli tools, same skills, etc. Try doing that instead if you don't want to go near OpenClaw.
+
+OpenClaw only adds a few elements to this: 1) channels to communicate, 2) "agents" with memories and personalities in the form of markdown files and a feedback loop that updates these things out of the box. You can hack together stuff to add both to your agentic coding tools.
+
+My company sells coaching and consulting services to people who are not programming that are interested in making a dent in the amount of digital drudgery work that they currently have to do. And because we sell it, I need to be able to actually do this. If you are a programmer you don't need our help. However, most of this planet is stuck with tools like ChatGPT that are very limited for this. There just are not a lot of good tools for these people yet. OpenClaw is a very rough, uncut diamond that if you get beyond its scary nature can actually do useful stuff. Tools will get better later. But right now, things just are going to be messy.
+
+What I would recommend curious people: carve out some time to give this a serious try and don't give up too soon. Isolate it all you want. But focus on getting something useful going. You'll be solving lots of plumbing and configuration issues. And you'll need some imagination to make it do useful stuff because out of the box it's a bit useless and dumb until you make it actually do something useful.
+
+Example of what I did recently that is useful and probably should be baked into the product.
+
+Problem: setting up openclaw agents, hooking them up so you can talk to them, and configuring them is super tedious and fiddly in OpenClaw. Solution: an agent that does that.
+
+How? For communication channels, I set up a new self hosted matrix server. Our company is now in there; we're ditching Slack. Because Slack is so locked down that it just can't really work for this. Matrix works really well for this. A lot of SAAS tools are locked down like this and finding workarounds is most of the work with agentic workflows. Replacing them is easier and the power move to make.
+
+Synapse (the matrix server) has a cli and REST API. So, I created an admin bot user for OpenClaw to use that from an OpenClaw admin agent. That agent can create other agents, configure them with a model and a few other things. It gives them a new matrix bot user and hooks up a newly created room in matrix and then invites the team there. I didn't actually create that agent manually either; I made Codex bootstrap the admin agent for me. Because I used Codex to bootstrap the Matrix and OpenClaw vms for me earlier. So it had access already. Then I went on to create a few more agents with a few prompts. I actually made it rearrange my Matrix space and rooms as well. Because tedious and I just gave it access to that so why not. Yes, this involves giving admin access to an OpenClaw bot and this is scary.
+
+We have a slide deck agent that uses reveal.js that you can use to prompt beautiful slides together. We have an SEO agent that figures out the right seo language for us to use and updates that regularly on our website. A competitive landscape agent that crawls a range of competitor websites to stay on top of what they are doing, what they are talking about, who they are linking to as customers, partners, etc. I have loads of plans for additional agents. We focus on agents that our clients would want to have so that we can get them going with those once they ask for that.
+
+Once you get a few things like this up and running, this stuff becomes more useful quickly. It's still scary AF to give it access to all the stuff it needs. And you really really shouldn't. But it can't be useful unless you do. Classic security dilemma here. Throw out the baby with the bathwater or get things done now? Security often loses. And then people scramble to enable doing things in a more responsible way. I don't want to have to wait a few years for that to play out. But I recommend most other people to wait. It's the responsible thing to recommend. But if you don't want to, we can help you along the way and help you mitigate at least some of the risks.
+
+reply
+
+
+
+	
+	
+yakkomajuri 3 days ago | prev | next [–]
+
+
+I've been trying out Hermes this week. OpenClaw felt like too much.
+
+It was really easy to setup and I've been getting some value out of it but hasn't been the craziest thing in the world. I'm using it for:
+
+- Unstructured note-taking: I suck at notes and todos and used to have a WhatsApp chat with myself (this is really common in Brazil) where I dump stuff. Now I dump into Hermes and it sorts whatever I put in there into one of various lists like to-do, to-read, to-try, to-buy, and so on.
+
+- Briefings on a cron: I get reminded of my todos every morning and at the end of the day so I can cross stuff off. Later in the day I get reminded of my to-read list. I also get a summary of what went on from my coding orchestrator.
+
+- Some coding: I built my own remote orchestrator and have been using Hermes to manage tasks, review code, and trigger tasks when on the move. Hermes has been a nice interface to allow me to use the orchestrator on my phone.
+
+Haven't connected email or anything else yet. I feel like the security story here is lacking.
+
+Overall it's been interesting but not mind-blowing. Plus setting up was easy but it's a bit buggy at times, messing up where files were and not being able to configure itself according to its own docs.
+
+EDIT: Ah yes and voice notes via WhatsApp out-of-the-box is really nice
+
+reply
+
+
+
+	
+	
+Izmaki 3 days ago | prev | next [–]
+
+
+I still haven't found an actual, useful scenario where something like OpenClaw would be a benefit to me. I don't regularly order arbitrary airplane tickets and I don't have a cluttered Desktop that I need AI to organize into folders. I don't run a YouTube channel with a "need" to do research on competitors and I don't get emails in a volume so large that I need automation to filter and summarize it, instead of just spending literally 10 seconds to delete my newsletters that I never read anyway.
+
+I also don't trust AI which hallucinates answers 4/5 times that I ask it, for my technical work, thus I can't use it for PR reviews even if my company was OK with me feeling company property to it.
+
+I also don't go grocery shopping random items and thus don't have a need to ask an assistant for "an inspiring and tasty recipe using the following ingredients".
+
+I feel that OpenClaw and other similar "agentic" solutions are catered to me. But I also feel that I don't need any of it, because at the end of the day, it all just feels like a bunch of "Hello World" quality examples that cannot be applied to everyday life.
+
+...heck, even a "get ready for work" assistant would be pointless, because I don't wake up and get ready with 20 minutes to spare, for some AI assistant to "recommend me the ideal time to leave my home, to arrive in time". Who does that? Who would sit around and do nothing for 10-15 minutes just because an AI agent told them that they didn't need to leave early?
+
+OpenClaw & Friends feel quite useless.
+
+reply
+
+
+
+	
+	
+_pdp_ 3 days ago | prev | next [–]
+
+
+I posted this comment in another thread so reposting it here:
+
+---
+
+IMHO, the biggest problem with OpenClaw and other AI agents is that the use-cases are still being discovered. We have deployed several hundred of these to customers and I think this challenge comes from the fact that AI agents are largely perceived as workflow automation tools so when it comes to business process they are seen as a replacement for more established frameworks.
+
+They can automate but they are not reliable. I think of them as work and process augmentation tools but this is not how most customers think in my experience.
+
+However, here are a several legit use-case that we use internally which I can freely discuss.
+
+There is an experimental single-server dev infrastructure we are working on that is slightly flaky. We deployed a lightweight agent in go (single 6MB binary) that connects to our customer-facing API (we have our own agentic platform) where the real agent is sitting and can be reconfigured. The agent monitors the server for various health issues. These could be anything from stalled VMs, unexpected errors etc. It is firecracker VMs that we use in very particular way and we don't know yet the scope of the system. When such situations are detected the agent automatically corrects the problems. It keeps of log what it did in a reusable space (resource type that we have) under a folder called learnings. We use these files to correct the core issues when we have the type to work on the code.
+
+We have an AI agent called Studio Bot. It exists in Slack. It wakes up multiple times during the day. It analyses our current marketing efforts and if it finds something useful, it creates the graphics and posts to be sent out to several of our social media channels. A member of staff reviews these suggestions. Most of the time they need to follow up with subsequent request to change things and finally push the changes to buffer. I also use the agent to generate branded cover images for linkedin, x and reddit articles in various aspect ratios. It is a very useful tool that produces graphics with our brand colours and aesthetics but it is not perfect.
+
+We have a customer support agent that monitors how well we handle support request in zendesk. It does not automatically engage with customers. What it does is to supervise the backlog of support tickets and chase the team when we fall behind, which happens.
+
+We have quite a few more scattered in various places. Some of them are even public.
+
+In my mind, the trick is to think of AI agents as augmentation tools. In other words, instead of asking how can I take myself out of the equation, the better question is how can I improve the situation. Sometimes just providing more contextually relevant information is more than enough. Sometimes, you need a simple helper that own a certain part of the business.
+
+I hope this helps.
+
+reply
+
+
+
+	
+	
+WesSouza 3 days ago | prev | next [–]
+
+
+I’m not.
+
+reply
+
+
+
+	
+	
+tao-shen 3 days ago | prev | next [–]
+
+
+i am using Hermes
+
+reply
+
+
+
+	
+	
+XTXinverseXTY 4 days ago | prev | next [–]
+
+
+I noticed that Clawdbot’s initial acolytes seemed to skew towards solo founders and hustler/grifter types. The Mac minis were likely to spam leads over iMessage. The single top downloaded skill was for Twitter. The fastest way to monetize an openclaw agent is by spamming fake social proof for your product (including for openclaw itself).
+
+reply
+
+
+
+	
+	
+aeblyve 4 days ago | parent | next [–]
+
+
+Reminds me of how startups now will change their social proof marquee on the landing page from actual testimonials, to "trusted by XYZ", to just one composed of company logos (with the level of corporate engagement to be imagined up by the viewer)
+
+reply
+
+
+
+	
+	
+lyime 3 days ago | prev | next [–]
+
+
+raises hand
+
+reply
+
+
+
+	
+	
+hackerbeat 3 days ago | prev | next [–]
+
+
+Nobody. Just another flash in the pan.
+
+reply
+
+
+
+	
+	
+smcl 3 days ago | prev | next [–]
+
+
+Absolutely not
+
+reply
+
+
+
+	
+	
+asdev 4 days ago | prev | next [–]
+
+
+No it's slop and most of the hype was manufactured marketing. It has 0 utility, and any perceived utility you can build yourself easily
+
+reply
+
+
+
+	
+	
+dalemhurley 3 days ago | parent | next [–]
+
+
+I think the issue for our community is we will just create a LLM wrapper app in a few minutes to solve what we need making OpenClaw have 0 utility.
+
+reply
+
+
+
+	
+	
+bradgranath 4 days ago | prev | next [–]
+
+
+Yes. They are all lobsters.
+
+reply
+
+
+
+	
+	
+mv4 3 days ago | prev [–]
+
+
+Looking at the comments here, it appears people are trying to do too much, too soon, which inevitably backfires. The key is to put OC in a sandbox (don't give access to your real accounts, it must have ints own separate non-admin accounts for everything only "invite" with limited access as you would a contractor) and generally treat it as a new employee during a trial period. You'll be surprised by how effective it can be if you pace yourself.
+
+As for "you can easily do X,Y,Z with a cron job" we tech people often underestimate what hiding the complexity could do for UX.
+
+"For a Linux user, you can already build such a system yourself quite trivially by getting an FTP account, mounting it locally with curlftpfs, and then using SVN or CVS on the mounted filesystem." -- top comment on "Show HN, Dropbox (2007)
+
+reply
+
+
+
+
+
+
+
+Guidelines | FAQ | Lists | API | Security | Legal | Apply to YC | Contact
+
+
+Search:

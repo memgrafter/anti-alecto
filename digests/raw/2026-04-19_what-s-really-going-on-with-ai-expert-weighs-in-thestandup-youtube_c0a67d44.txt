@@ -1,0 +1,1189 @@
+Welcome everybody to the standup. We
+have an extremely special episode of the
+standup. Casey has started his own
+podcast, a competing podcast in which he
+is how could you
+uh anyways sorry he and Dmitri are
+talking about and having a real
+conversation about what is the actual
+effects of AI and all that. And you're
+probably asking, well, why would they do
+that? Well, Dimmitri turns out to be a
+legend when it comes to AI. He knows a
+lot about it, been working in it for a
+very, very long time. and just like
+Casey is significantly more competent
+than TJ and I combined. And so
+therefore, their conversations are
+actually useful and good to listen to.
+And we thought we'd bring them on and
+ask some of our own very own questions.
+Kind of a podcast melding.
+>> The podcast was actually Dimmitri's
+idea. It wasn't even my idea. I It
+should have been my idea because I agree
+that I should ditch you guys and go with
+some like some higher quality co-hosts
+here. I mean, that's obviously clear,
+but but it wasn't. Uh cuz Dimmitri, you
+know, you were actually the one who was
+kind of like, I want to talk about AI
+because I'm just basically you weren't
+happy. You were like, I I don't like
+that. I don't like what's being said. It
+feels like
+>> Did you go on Twitter by accident? Is
+that what happened? You went on Twitter.
+>> But wait a second, we need a podcast
+immediately.
+>> Let me add a little bit to what Casey
+said there.
+>> So, actually, I did not set out to uh to
+have a podcast. uh I set out so I I get
+so I've been working this a long time
+like 20 plus years uh I have lots of
+friends who are not programmers or any
+kind of like you know lawyers,
+accountants, doctors whatever and
+they're frequently asking me you know
+first of all can I use this in my job
+and other things like how is this going
+to affect like I have kids in college
+should I stop sending them to college
+right you know all of those kinds of
+questions so uh at some point I thought
+I should just try to put this stuff
+together somehow and first I started
+writing stuff but that felt awkward then
+I thought maybe I'll record something,
+but I'm not really a recording
+personality. Uh, and then Casey and I
+have been talking about AI on and off
+for uh for years. And my suggestion was,
+what if we record like one session? Uh,
+and I had a list of things that we could
+talk about. And Casey said, well,
+there's so many things here that we
+could just turn this into a podcast. So,
+that's how we ended up uh ended up here.
+Uh, but let me add one one more thing to
+that, which is uh so you know, I know
+that there are a lot of people out there
+who are, you know, I see Casec
+personalities. I am that kind of
+personality as well. So part of uh part
+of what I want to do here is to um
+facilitate having more Casey out there
+uh on stuff where I can be the wingman,
+right? Uh that Casey understand. So one
+of the things that I appreciate about
+appreciate about him quite a bit is that
+um he wants to know what he's talking
+about before he says something which you
+know puts him in the top top 20% of
+podcasters at least.
+At least
+>> at least
+>> at least top 50% of this podcast.
+>> Wait a second.
+>> Hey, is that HTTP? Get that out of here.
+That's not how we order coffee. We order
+coffee via ssh terminal.shop. Yeah, you
+want a real experience. You want real
+coffee. You want awesome subscriptions
+so you never have to remember again. Oh,
+you want exclusive blends with exclusive
+coffee and exclusive content? Then check
+out CRON. You don't know what SSH is?
+>> Well, maybe the coffee is not for you.
+terminal coffee
+in hand.
+What I hope comes uh comes out of this
+uh in total is that uh we get kind of uh
+Casey culture aligned commentary on uh
+on AI and I mean Casey can I don't want
+to put words in his mouth but uh like we
+see software in a very similar way,
+right? I'm similarly skeptical about the
+quality of anything coming out of big
+tech these days about like questionable
+ethical business practices and so on.
+So, uh on on general software, not AI
+software, Casey and I see eye on on most
+things. Uh and so what I'm hoping is
+that I can be the the wingman and uh
+like give a platform for more Casey
+culture commentary specifically on this
+crazy AI thing that's taking over
+everyone's life, including my own,
+right? As I you know in our inaugural
+episode I mentioned that uh my life used
+to be much more quiet and nobody
+believed AI would work and we were just
+quietly doing fun stuff and uh and uh in
+a way things were better. I mean it's
+good that uh that things are working now
+or sort of working. Uh and the sort of
+working actually is a big part of uh of
+what I care about uh trying to make it
+better than sort of work. Um so I don't
+know. I've gone on long enough. Maybe
+Casey you should uh put a bow on it.
+>> I think you're I think you're being way
+too generous to me. Yeah, I'm I'm the
+wingman on our podcast because I don't
+really like I just don't work with AI
+stuff. So to me it was just like a good
+opportunity to like have somebody on who
+like I trusted to give solid perspective
+on AI because like it's really hard to
+you know the only real way I thought
+otherwise that I would be able to give
+any commentary is I'd have to go spend a
+ton of time with it, right? And I just
+didn't really want to do that. So so
+it's been great. Uh and I' I've really
+enjoyed it. Obviously, Demetri and I
+have recorded a couple things that, you
+know, we haven't posted yet. So, but I
+Yeah, it's it's been really great having
+you on. So, and I I should kick it back
+to to Prime and Te. So, like we don't
+want to just talk about our podcast
+here. So, like you guys had some AI
+questions you wanted to talk about. Uh
+or I don't know,
+>> take take it wherever you guys want to
+take it. We are here. We are here at
+your disposal.
+>> I do want to start with some things
+which is Demetri, can you please uh we
+didn't give you really like an actual
+qualifying intro other than you're
+legendary. Yeah, I was just going to say
+I I appreciate the kind words like I I
+consider myself relatively competent,
+but I mean there are like big names in
+the industry who are uh either friends
+or friends of friends and it's uh useful
+for me to keep uh keep myself calibrated
+relative uh you know uh relative to
+people of uh much more at least public
+uh uh public renowned. Um so yeah I I
+don't know I guess uh in terms of
+introduction we uh I've been doing um
+broadly AI related uh research for 20
+plus years. I shipped uh shipped to many
+people my very first custom design AI in
+2025 uh at Google. It was one of their
+first
+>> uh 25
+>> uh sorry 20 2005.
+>> Yeah I was going to say like that's like
+20 years old.
+>> That's like banana nano banana if you're
+shipping that one. Okay. Okay.
+Yeah, exactly.
+>> Uh so anyway, um I've been doing this
+for a long time and seen uh lots of the
+ups and downs in the business and also I
+I study the history of the business as
+well. So I know about um you know the
+ups and downs for like the preceding 50
+years um like going back to you know
+going back to even the the 60s. Uh and
+so um one of the things that really
+interests me is how this is going to
+affect other people um like people that
+I work with for example who are now I
+mean uh in the first episode we just
+talked about the impact on junior
+engineers and separately
+>> probably should talk about the impact on
+senior engineers right because there's
+they face a different problem which is
+if you're like let's say you're whatever
+uh 45 years old now uh you've been doing
+this a long time you have a good stable
+career making good money uh and now
+you're wondering ing what happens if
+they like crack the nut and in 5 years
+I'm useless, right? And I know I know
+people who are wondering this myself.
+>> Mhm.
+>> Um and that's an especially bad time to
+be useless, right? If you're like late
+midcareer, what do I do if I'm 50 years
+old and I don't know like what do I do
+next? Right? uh and there there it's not
+anything like the the problems that the
+junior engineers face where it's I mean
+again big problem for the junior
+engineers but they have their whole
+lives ahead of them and they can't they
+have time to try to do something else uh
+but if you're 50 years old and uh don't
+have you know 15 years of uh building up
+a new career ahead of you what do you do
+uh so that's that's something that I see
+people worrying about a lot as well um
+yeah I don't I guess maybe let me not
+talk talk too much about myself.
+>> You can't talk too much. We're used to
+hanging out with Casey. All right, it's
+fine. You know,
+>> we like it when people talk. That's why
+we bring smart guests on.
+>> Uh yeah. So I guess another thing I I
+will add and this this connects back to
+kind of having a Casey style perspective
+on the industry is that
+>> um I've seen a lot of how the sausage
+get made uh both in terms of like the
+the technical side but also uh also the
+business side and this is something that
+uh we we talk about in later episodes
+about uh how how much can you take
+certain claims at face value and how to
+evaluate which claims can be taken at at
+face value and so on. Um so what I'm uh
+in the same way that um like you can't
+take whatever Microsoft claims at face
+value about improvements in Windows
+performance. Um right you can same
+>> this is going to be the best Windows yet
+that's going to be perfect and flawless
+will be safe.
+>> It was going to be the last Windows ever
+as well.
+>> Well I did I they are still working on
+making it the last Windows ever.
+>> That's a good point.
+the Linux desktop is what TJ's trying to
+say.
+>> They they put that into the AI and it
+gave them a plan back of how to make it
+the last Windows ever. They're executing
+on that flawlessly.
+>> Yeah. They're like, "We got this thing
+called Windows 11 and it will ensure
+that Windows 10 is the very last version
+of Windows."
+>> All right. And if that doesn't work, we
+have Windows 12.
+>> Yeah.
+I um so I I've just got a few topics
+that I thought would be fun. We can just
+see where uh like they lead us and what
+happens. I think there's similarly to on
+on the episode at least that I've
+listened to. Um you start on a topic and
+there's like 95 different branches that
+we can go off of. So I I'm not if we
+don't get to all of them, it's whatever.
+I I think it uh it'll be fun. But um one
+of the things I'm interested in and like
+it's just hard to get anybody's like
+unbiased
+everyone's got a biased whatever just
+like a more rational take on like this
+current state of token cost and what
+that's looking like going forward. I
+don't know if you have any thoughts
+Dimmitri about like is it going to be
+that Sam Alman was right and we're going
+to get 10x cheaper every year or
+whatever. I don't know. That's what
+Twitch chat always tells.
+>> That's what Sam Sam has it on the
+record. He said it twice now. He said it
+he said it twice and made projections
+into the future saying it's 100x
+cheaper. GP2 5.2 high will be uh 100x
+cheaper in uh two years.
+>> Okay.
+>> Uh so a lot of that is infrastructure
+development and algorithm development
+that is trade secrets that
+>> like I can't evaluate uh and even like
+even an open AI insider it would be
+illegal for them to to evaluate in
+public right. Um I I don't know what
+they're cooking up there. I mean they
+have an extremely talented team. Uh 100x
+cheaper seems hard to believe, but
+uh I guess wait and see. So I mean one
+of the thing one of the problems with
+these um with evaluating claims in this
+business is that um the timing matters
+as much as the content of the claim. So
+like uh like Musk is a good example just
+to take Sam out of this for a moment
+>> where uh MK was Musk was saying you know
+we'll have uh I mean we'll have uh you
+know reusable rockets in I think he
+first made the claim in 2005 or
+something like that and it took many
+years before that actually worked later
+you know when was the first promise of
+uh Tesla full self-driving that was like
+2016 that he was saying
+>> and then every six months after that
+>> right um so So, I would um I found it
+useful to try to separate out the
+content of the claim from the timing of
+the claim.
+>> So, I I would not be surprised um I
+would not be surprised if eventually we
+can get uh 100x cheaper token cost.
+Whether or not they can do it now, I
+that's beyond my knowledge because
+that's that's uh partly that's
+infrastructure, partly that's uh like
+custom hardware, partly that's can you
+get cheaper electricity, part like there
+so many things that go into the into the
+business that it's hard uh hard for me
+to to claim one way or another. Uh what
+I can tell you is that it has been as
+I'm sure you've seen uh it has been a um
+land rush mentality, right? So,
+everyone's building as quickly as they
+can, whatever they can. Put it out. Does
+it work? Does it barely work? Okay, move
+on to the next thing.
+>> Um, and uh some of that is
+>> uh some of that is maybe um
+recklessness, but some of that is just
+market forces, right? Because the um
+right now there are multiple really big
+players and probably there won't be as
+many big players in 10 years. And so
+they like given how much money they've
+all put into this already, they really
+don't want to be the ones caught out,
+right? And so the like the the arms race
+is uh rational from a business
+perspective whether or not it's it's
+producing um you know completely
+rational engineering artifacts. So uh
+all of that is to say uh I'm sure that
+there is very substantial um opportunity
+for uh for improving efficiency in the
+current stock and I don't know if they
+so my biggest question would be um is
+the is the internal stock stable enough
+that you can optimize it now right
+because like say you spend a year
+optimizing it to get the token cost down
+and then there's
+>> whatever the next archite architectural
+innovation is does that invalidate your
+optimization or not. So I I don't know,
+right? Um and so you you will hear me
+say I don't know perhaps more than most
+uh people talking about AI just because
+it's uh there's a lot that's unknown
+even to people who are deep like uh deep
+inside these companies about what's
+what's going to happen in like two or
+three years, right? Um
+>> yeah, I I would add one thing to that
+that you know um it's not not adding
+something as in information, adding
+something as in sort of like a thing to
+think about and that is that uh it's
+worth noting that I if the costs were
+really going to get that low that fast,
+I think I would have expected Google's
+costs to be very low already. And I know
+it's a weird thing to say, but
+>> if you assume that there's any hardware
+component, like if you think that that
+all 100x is going to come from software,
+then that seems okay, maybe that could
+happen. But if we're counting on a
+substantial portion of that 100x coming
+from infrastructure builds, it feels to
+me like Google has kind of been building
+AI centric like stuff for quite some
+time and has gotten their thing that
+like their TPUs are very much just like
+we built machines whose only purpose is
+to do this job as opposed to like say
+for example Nvidia who's not doing that
+like the Nvidia cards are kind of like
+still in a weird like hybrid state where
+only the
+only the very latest Nvidas could be
+said to be focusing on AI really and
+even those are still a little bit hybrid
+feeling to me. So I could imagine if
+someone said, well, you know, if all we
+had was Nvidia to look at, maybe you
+could believe that like, you know,
+there's a very long lead time on
+hardware. So, you know, we don't know
+what they, you know, when they shifted
+probably four or five years ago to going
+like, "Oh my god, AI is going to be the
+biggest thing. We need to completely
+redesign everything to just focus on
+that." That stuff will only be, you
+know, we'll only be seeing the end of
+that pipeline, you know, now or
+something like that, right? So, I could
+see that, but I feel like Google's kind
+of I mean, am I wrong about this speech?
+I feel like Google's been doing this for
+a long time. If there was a huge if
+there was huge gains to be had by doing
+just AI hardware, I would have thought
+they'd have them already. Is that am I
+way off?
+>> I'm not sure they don't. Right. So, the
+first the first time I heard about
+>> uh TPU
+uh I think the first time I heard that
+they were starting to work on it was
+like 2014 or something like So, that's
+just when I heard about it, right? like
+>> I am not a Google insider so I'm sure
+like uh knowing how Google works I'm
+sure that they were talking about that
+like 3 years before I heard about it in
+public right but when I heard when I
+first heard about TPU development was
+somewhere around 2014
+>> so I guess I I have not been studying
+the uh like whatever internal economics
+reports uh Google puts out it's possible
+that they are already substantially
+cheaper than um
+>> I would think
+>> on on operating cost substantially
+cheaper than open I don't So uh and but
+I mean this is a something that's a
+common uh folk belief in the industry
+which is um like Google is sort of the
+quiet monster in the business because
+like they
+if you compare them for a moment to say
+open AI uh they have had they have been
+infrastructure leaders forever. They
+have been AI leaders forever. Uh unlike
+open AI they have uh they have u I'm
+trying not to say the word surveillance
+but I'm just going to say surveillance.
+on the entire internet, right? So, they
+have just a constant flow of
+>> uh potentially trainable information and
+you know, XAI has um uh has that flow
+that uh that is their own proprietary
+flow of data.
+>> Um so, uh many people have have this
+feeling of Google was kind of slowed on
+the on the product side. I emphasize on
+the product side uh with uh like chat uh
+chat LLM products. Uh but there is many
+people have this feeling of um possibly
+Google is just going to quiet quietly
+leverage all those advantages that uh
+nobody else has. Uh and like XAI is the
+only one that's sort of sort of close in
+um in having that capability. It's
+interesting to note that uh as far as
+I've seen in public XAI,
+they're merging with uh Starlink.
+They're talking about sorry with uh
+>> SpaceX. Yeah,
+>> SpaceX. Uh and they're talking now about
+orbital data centers. And something that
+I I thought was interesting there um was
+uh that the designs that they've talked
+about are GPU based, not TPU based. And
+I don't know if that's because
+>> they don't think they can build it up as
+well as Google did or they don't think
+they can license it. So I don't I don't
+know, right? But the thing I will point
+out the the designs I've seen uh I mean
+I guess I haven't looked looked in like
+3 months but the designs I've seen were
+uh estimates based on uh you know Nvidia
+know something because this is this is
+the kind of thing that they do, right?
+Like the big um
+the biggest competence advantage that I
+would put in the kind of Musk category
+of companies is uh the relentless
+execution on on uh building and
+optimizing and streamlining physical
+stuff. That's something that they've
+been doing really well for a very long
+time. So if um anyway that caught my eye
+that the designs I saw were based on
+GPUs and not TPUs.
+>> Um and I I do know that they're working
+on their own um uh their own AI chips. I
+don't I don't know that much about how
+far they are there, but it's interesting
+that that when they were talking about
+the orbital data center designs, they
+were talking about u get conventional
+GPUs as we understand them.
+>> I got to say orbital data center is like
+the coolest sounding thing to build.
+>> Yes. Like I it seems really not
+practical. I get like I get there
+saying, "Oh, we're going to have robots
+do it and it'll be outer space and it's
+really cool." Um but I got I mean you I
+feel like everyone's got to admit
+orbital data center is probably the
+coolest thing to say you could work at
+in software development. So
+>> I think like yeah based on what I've
+seen for orbital data centers it sounds
+like it's it is either much cooler or
+much less cool than what you're thinking
+about depending depending on your
+perspective. Right? So,
+excuse me.
+If you're imagining like a giant
+building in space, like
+>> like it it sounds like uh the kind of
+more leading designs that are like more
+plausible. They're more like Starlink.
+They're more like satellite clusters
+where you just have lots of little
+things that talk to each other over
+light links basically for high-speed
+communication. Um,
+>> well, and giant giant radiators, right?
+>> And huge.
+>> Yep.
+>> It's almost all radiator. And then
+there's a little like nub in the center
+contains that contains the GPUs, right?
+>> Yeah.
+>> That doesn't sound as cool as what I had
+in my head of a big skyscraper in outer
+space where we've got racks of GPUs and
+you can walk around in it and it's like
+really cool.
+>> Um, but that's okay because when you
+tell your parents that you work at an
+orbital data center, they won't know. So
+it's fine.
+>> That's what they imagine is that
+>> Yeah. Yeah. I say it's exactly like Star
+Wars mom and dad. Trust me. Trust me.
+>> Unfortunately, like heat is just very
+>> I guess the as the the kids say say
+problematic in space. Like you don't
+have anywhere it
+>> like it's very hard to get rid of heat
+in space. So this is a problem. As
+Demetri was saying, you you end up
+having to have a lot of surface area per
+chip, like per per heat generating
+Nvidia, like GB200 or whatever. I mean,
+it won't be a GB200 by the time they get
+these things launched, but the uh you
+know,
+>> that's the thing I didn't I didn't get.
+I don't
+>> What is the advantage then? Because in
+in like I get that it feels like if you
+talk to like a regular person about
+putting it in outer space, they're like,
+"Well, it's cold in outer space, so
+that's going to be really good for
+GPUs." But it's the opposite, I think.
+Right. I mean, I So, I don't get
+>> It's not that it's not cold in outer
+space. Cold is the lack of available,
+you know, like not having energy.
+There's just there's no density, so you
+have nothing you can
+>> Yeah. I meant like more like they said
+it cooling would be super easy. I feel
+like that's like the normie thing if you
+say put something out cuz like it'll be
+cold. Sick. It's like a huge
+refrigerator, bro. But that's not how
+heat works. Like so I get that part. So
+then what is the advantage? Why this is
+we also don't have to go way down this
+route, but I have been wondering this
+myself. So what like why do they want to
+put it in outer space?
+>> Incredible investment TJ. Like the
+amount of investments that are coming in
+will be
+>> the TAM the TAM for outer space is big.
+Think about how many data centers we can
+put in outer space. Well, it's so it's
+free power and difficult but free
+cooling, right? So, if you if you can
+make the physics work and I don't I
+don't know, right? Like they have really
+really good like thermal people at you
+can imagine they have very good thermal
+people at uh
+>> uh at SpaceX. So, uh I I assume that
+they have done simulations that that
+suggest to them that this can be made
+viable. Um but yeah, so it's free power
+and also like more free power than you
+would get for the same panel on Earth
+because there's no right
+>> atmosphere eating up your atmosphere or
+weather for that matter.
+>> Yeah. No clouds,
+>> right? So free power and uh tricky but
+free cooling. Um as
+>> so it's like when you build a really
+complicated thing, but then it's passive
+in a video game. I understand. This is
+this mechanic makes sense to me. And one
+thing I would add uh this so this is
+entirely business strategy speculation.
+Um so whatever like take like poor big
+>> it's financial advice. Got it.
+>> Exactly. Right.
+>> Investing right now. If it works, if it
+works and you are
+uh Musk's AI team and you just get to
+launch your AI into space and everyone
+everyone else is like fighting local
+governments and can I build a hydro
+plant here? Oh, how much do I have to
+pay you to? Right. And you'll just be
+like, we're going to space, right? Like
+you losers can hang out here. We're
+going to space. And by the way, if you
+want to go to space, you have to come
+through me, right?
+>> Yeah. Yeah.
+>> Yeah. He pretty much owns the the
+passage to space. So it's
+>> it's pretty
+>> they can't ask Katy Perry. She's the
+nautace.
+>> Well and also like it's pretty trivial
+for like when you look at the
+projections for these sorts of things.
+It's all about launch cost. Like whether
+or not it makes sense to put a data
+center in space, a quote unquote data
+center in space. It's like here is the
+launch cost. like at this launch cost we
+think we could do it because that and
+that's based on like the failure rate of
+the thing how you know long it's
+expected to be able to be up there you
+know all those sorts of of things
+>> and so at the end of the day if you know
+if you look at somewhere like SpaceX and
+they're like well for us we could get
+our launch cost down to $50 a kilogram
+or whatever it you know the magic number
+is
+>> we just charge everyone else $75 a
+kilogram and then it's it's not worth it
+for them to put it in space or theirs
+will always be worse than ours, right?
+It's a very good position to be in and a
+and a strangely profitable bet for
+SpaceX if it turns out that these are
+actually useful in the future. So,
+>> so I think we should probably attempt to
+get a little bit more on uh on a more
+practical approach to AI. I do think
+orbital data centers does sound amazing.
+>> You don't want the title of this video
+to be orbital data centers. THERE'S
+GOING TO BE AI in space. That's going to
+How many clicks is that going to
+generate? Come on, man. space. Go ahead.
+>> That's my That's my rock opera I'm
+writing. That's crazy. How did you know?
+Case
+>> cuz I am also writing a rock opera
+called Ali in Space as it turns out.
+>> Oh, we could collab.
+>> Yep.
+>> That's not going to happen. Uh he's just
+he's just going to take it all from you.
+Okay. So, I guess we should
+we should probably uh talk. I think the
+number I get a lot of concerns uh from
+people and one of the most frequent
+questions I've been getting lately is is
+my future just reviewing code.
+>> Yeah. So, quite possible. Um let me let
+me try to be measured in what I like how
+likely I think that is. Um so look one
+one thing that I've been um I I have
+discovered in my own work and that I've
+been saying publicly for a while now is
+uh so I I try to work on um like
+repeatable and reproducible AI results.
+So like the bucket term I use for that
+is has been reliable AI but it turns out
+that there's a company called reliable
+AI and so anyway so
+uh so anyway uh the thing that I I I I
+think you can do right now like
+completely handsoff and not have to
+review anything right so this is what I
+mean by reliable right that like if I
+ask you th to whatever go implement uh
+like download this thing from this HTTP
+endpoint and like save it into the
+database and give me a dashboard that
+whatever calculates the averages of some
+things, right?
+>> I can just tell you that and expect a
+result and it will work and I don't have
+to talk to you about it again, right? So
+that's what I mean uh in this completely
+hands-off style. Uh right now I think
+the limit of that is somewhere around a
+couple thousand lines of like relatively
+standard junior level code. Uh and I
+want to emphasize because some people
+some people have uh justifiably pushed
+back on this a bit. I'm not saying you
+can't do more by having oversight and
+doing multiple tries and having
+algorithmic test suites. I'm not saying
+you can't do more right now. What I'm
+talking about is what's the limit of
+what you can do hands-off and you can
+mostly just trust that it happens. Mhm.
+>> Um
+I think I think at a at a minimum we are
+going to go through a
+um reviewheavy phase because the the
+businesses are as as I'm sure you know
+um the businesses are trying to shove
+this into everyone's workflow whether
+they like it or not. Right. And I I get
+lots of people lots of people even in
+the AI business who tell me like I hate
+how much they're trying to push us to
+use these things, right? I just
+>> I just want to do my job. Uh but like
+they're monitoring my token usage,
+right? I mean this this
+>> anecdotally too not just like literally
+like I have friends who are like we have
+to use this tool
+>> part of my KPI is like we use we have to
+use clawed code
+>> only. That's and my manager has a
+dashboard with my token count for the
+month and it is a thing we talk about
+and review. Not even like oh you can use
+whatever one you want. We just want to
+see you guys experimenting. They're like
+you have to use cloud code. You have to
+do this. Yeah, it's crazy.
+>> Yeah. Think about Amazon Curo. That's a
+lot of people are talking about that
+right now with the whole Amazon
+accidentally having several SE ones.
+>> Yeah. They're like, you have to use our
+stuff to take ourselves down. If
+anyone's going to bring it down, it's
+going to be me. Okay. That's
+>> We want to make sure we our but we want
+to make sure our site goes down and our
+AI looks bad at the same time. We don't
+want like someone else's AI to look bad.
+>> No, that would be mean. Okay. If it's
+going to if it's going to go down
+because of AI, it's our AI. They're
+putting the eye in AI. Okay.
+>> There you go. Very good. Yes.
+>> So yeah, Prime on on that point I think
+it's very likely that we will go through
+a u reviewheavy phase. Uh I think I
+think that at some point um
+uh like the workers will object to this
+enough that we're going to have to find
+something something more acceptable,
+right? because I don't know if you have
+tried it, but if you're just like
+reviewing stuff like you know claw dumps
+another thing on you every you know five
+minutes you're like okay now I have to
+review this and approve and merge
+whatever or or I mean you can just yolo
+right and but but we've seen what
+happens if you just yolo um so uh I do
+think we will at a minimum go through a
+like reviewing mostly reviewing phase
+and I think people are not going to like
+it
+that's my expectation I don't So I don't
+know how uh I don't see what the
+alternative is right now because like e
+so the either
+>> the two possibilities I see right now
+are uh like they're going to be
+monitoring your token count and so you
+need to be consuming and generating
+tokens and then that has to go that has
+to get uh linked which uh you know in
+some places they actually link the like
+the tokens to PRs right
+>> uh and so
+>> you need to be generating lots of PRs
+you need to be consuming lots of tokens
+How can you do that other than
+just generating many many PRs with AI
+and reviewing and like hoping that
+you're not taking down, you know, taking
+down fraud by by missing something in
+your review, right? So, I I don't know
+how we get out of that other than uh at
+some point the business side says,
+"Okay, like we can cool it, right? we're
+going to um we're going to stop
+monitoring your token use, which I mean
+I I personally I feel like that's not
+that different from a desktop monitor or
+like a keyboard monitor or something. It
+feels very invasive to me. Like, hey,
+you know, I understand you're asking me
+>> I think it's fair to ask me, hey, can
+you use this tool? Can you try to do
+better work? I think that that's fair,
+right? Like I'm ultimately you're like
+you're being paid to do something for
+the business. I think it's fair for them
+to ask, hey, we'd we'd like to be using
+these tools and we think you can do
+whatever like 20% more work if you can
+if you use this. I think that's fair. I
+think
+>> the micro micro tracking feels worse
+than the past. And um
+>> it's really easy to game too, right? You
+just like sequentially look at every
+single file and it's just going to be
+like dang dang dang like
+crushing the tokens. I know people who
+are like at big tech who are working on
+stuff and they have to do what exactly
+what you're saying and they're saying I
+I like I do I do this just to keep up
+appearances for my AI use and you know
+by the end like my output changes maybe
+10%. Right.
+I do like how it's literally just
+setting money on fire and they're like
+this makes me look fast because so that
+actually before we got distracted on the
+orbital data centers which I'll repeat
+coolest name ever
+>> super cool command
+>> I uh was I was interested in you know
+some of your thoughts about sort of the
+tokconomics side of things because right
+now it feels like people are burning a
+bunch of money trying stuff out and
+exploring and willing to just be like oh
+yeah you just spent $5,000 this month.
+Whereas before, like you couldn't get
+like a $45 like online course approved
+and they're like, "Oh, but yeah, yeah,
+$5,000 of tokens for nothing. Yes, we're
+totally down for that. Do that every
+month." because I I was interested to if
+you know
+uh like if we're going to see a big you
+know or your thoughts on if we're going
+to see a big push on like generating
+less or like more focus on like we're
+going to use more tools to check what's
+being gener you know because at some
+point you know Claude Claude just
+released their thing about code review
+and they're like yeah usually it's like
+15 or 25 bucks a review
+>> and you're like well that adds up kind
+of fast especially at the rate people
+are saying I'm shipping 10,000 lines of
+code today or I made a 30 300,000 line
+Ruby on Rails application for my blog.
+That's Gary Tan by the way Casey in case
+you didn't see that tweet.
+>> Okay. Um, hey, he's boiling a lake and
+then he's going to boil the ocean. All
+right. That's what he told us.
+>> Yep.
+>> I side note, I cannot tell if he's the
+most genius rage baiter of all time, but
+we can circle back to that on a
+different episode.
+>> Yeah.
+>> Um,
+>> yeah. So, because I'm I'm interested in
+in sort of that angle because I do find
+like some tasks I can get done like a
+lot faster with letting agents work on
+it or like agents spin on something like
+forever. It has a really clear outcome.
+There's some stuff I already have a
+bunch of patterns in my codebase spin.
+But I'm like, is is everyone just going
+to be chill forever with me spending
+$500 of tokens overnight on this? That
+doesn't seem like what a business would
+like. I don't think we're going to get
+$500 of value back from this feature.
+So, I don't know if you have any
+thoughts like in that vertical or
+>> um Yeah.
+>> So, this is speculation.
+>> Yeah. Speculation. Uh a lot of this is
+>> um like principal agent problems for the
+business. It's like
+>> the So there are for sure uh like CEOs
+and like one step down from CEOs who one
+way or another um their uh their
+personal benefit is tied to claiming
+that they did a lot with AI.
+>> Yes, it's true.
+>> Yeah.
+>> Um and as you know uh like in any big
+organization you never just evaluate
+something for whether it's good or not.
+It has to be evaluated through some KPI,
+right? Uh, so
+>> yes,
+>> there are people I'm sure like I haven't
+seen this personally, but I'm sure that
+something close to this exists that um
+there is someone with many millions of
+dollars worth of bonuses tied up to uh
+can I get our token usage to double this
+year and can I get our PRs to increase
+by 20% as attributed to that token
+increase? Right. Right. Like extremely
+bureaucratic thinking about using this
+new technology. Right. So I'm sure that
+there are many people like that. Um, and
+so, uh, those to those people, they're
+not they're not spending their own
+money, right? They're spending the
+company's money. They're tell they're
+telling you to spend the company's money
+to do something that makes the metric go
+up that gets them a bonus, right?
+>> Yeah.
+>> Um, so I don't know how long that's
+going to last, but there's certainly
+right now
+>> um, a very large premium at multiple
+levels of the kind of the business stack
+where people are like, you know, why why
+isn't your token usage double, right?
+And
+>> yes,
+>> some people some people that sounds like
+a joke. I have friends who literally
+they say my boss came and asked me why
+hasn't my token use usage doubled right
+but you only used $300 of cloud last uh
+last month
+>> honey you barely touched your cloud last
+month what's going on
+>> is something wrong sweetheart
+>> okay so I do actually want to follow up
+on that because this is the you know
+this was one of the big things that has
+been going around is this Amazon hero
+thing taking down everything and now
+they're saying hey we're going to make
+it so that juniors and mid-level people
+who use generative AI must have a senior
+sign off on this.
+>> Can I do a quick question on that as
+well, Prime? Which is, was there a
+policy before seniors didn't have to
+review junior's code just in general?
+>> I assume I assume I assume it's like a
+lot of companies, which is that a junior
+could have a mid-level person review the
+code and say, "Hey, this is not really
+good." Like, not every change needs to
+have, you know, the same cuz you you
+effectively will exhaust and lose your
+senior population if they have to review
+every single PR. And so, kind of
+>> that makes sense. So excluding the
+personnel problem that will likely
+develop from this with Amazon, is this
+like the first sign of people realizing
+that token measurement isn't necessarily
+the best metric? Because I assume that's
+what's hurting Amazon is that they
+really push super hard as token metric
+is the the greatest thing that has ever
+existed and you must only push on this
+one thing and now they're feeling some
+of the effects of maybe moving too fast.
+Is there a world that's going to exist
+where people are going, okay, instead of
+trying to double metrics, maybe we
+should double some other thing. Say, I
+don't know, uptime. Maybe like uptime
+could be the thing that we're like, you
+know, that we're valuing and then that
+can be that could be it. Like is is this
+an actual
+>> like path forward or are we
+>> I don't from your perspective, are we
+just going to see continued push on
+double your token usage, double your
+token usage? because they both sound
+super appealing I guess from a purely
+theoretical point of view of like oh
+more features we could know we could get
+all the features or no let's be stable.
+>> Uh again I think they so as we as we
+discussed with Casey and Casey you
+should you should jump in on on this
+part. Um like we've seen these cycles of
+like everything has to be you know like
+25 years ago everything had to be online
+and then everything had to be uh web 2.0
+And then everything had to be uh like
+social local mobile app and then
+everything had to be crypto right and
+that right so um we are in that phase
+absolutely right now where separate from
+any utility that the technology is
+offering there's just this social mania
+of everything has to be this right now
+uh
+>> I don't know when that fever will break
+um I think certainly events like the
+Amazon um Amazon event will will help
+with that and I I do think that at some
+point people someone is going to say,
+"Okay, look, like um we just can't be
+burning this kind of money all the time
+and also like setting our infrastructure
+on fire and driving our engineers
+crazy."
+At some point, at some point, we should
+actually get a benefit from this instead
+of hurting ourselves.
+>> You can only pick two points on that
+triangle. Drive engineers crazy, burn a
+lot of money, uptime. You get to pick
+two of those points.
+>> Yeah, it's true.
+>> Um but, uh I think I think this could
+last for years. And the reason I say it
+could last for years, I know people will
+not like that. Uh I think the reason
+this can last for years is uh it's easy
+to underestimate
+um like on like you know you guys or
+like people who watch this uh you know
+watch the stream how far how far up the
+the like power law curve of uh early
+adopter you are. And I
+>> just meet lots of people all the time
+who
+>> still conceptualize AI as like it's a
+better search engine, right? And I I
+mean it's uh it's easy to forget that
+actually the vast majority of people
+don't know much about this and aren't
+really trying to use it. And um so all
+those people somehow will have to be
+carried through the uh the fever swamp.
+Um and I don't know like I think that
+could take years. Um,
+>> I would agree with that uh for and add
+the sort of the chaser which I think we
+did talk about on that first episode of
+the podcast which was I don't see it as
+mattering whether it takes down proud
+all the time either is the problem
+because like at least my experience for
+the past 20 years has been it doesn't
+matter how bad the practice is. If it's
+just something that is in the zeitgeist,
+then people do it and you can show them
+>> clearly like you can literally
+demonstrate, look, if you had done it
+this way, this is how much better it
+would be. They don't care because the
+best practices is that you do it this
+other way. The best practice is you use
+Python, then we're using Python or
+whatever it is. And you're like, look,
+if you had just written it this way,
+it's a hundred times faster. And you're
+like, we don't care. That's how this
+industry has operated. And so it would
+be very weird to think that in the
+special case of AI that anyone would
+care one way or another whether it even
+was better. Right? So you can almost
+take your take your guesses about how uh
+good AI will be in practice about
+generating code in the first place. You
+could even put that aside. I think the
+fact that it has this much momentum is
+enough to know that this will be here
+for uh a long time. the current way
+we're doing things. Even if it never
+gets any better than it is right now,
+even if it stayed exactly as good as it
+is right now, no improvements literally
+at all,
+>> I I don't think that would change the
+outcome. Honestly, I really don't.
+>> Well, and there's like a trillion
+dollars invested in it, too, right? So,
+they're like, well, even if even and
+it's I mean,
+>> it's not really even Sunk fallacy. It's
+just like literally sunk cough truthy
+which is like we really we really need
+this to work guys or we're really
+underwater right it's not like
+>> so it will become the workflow I think
+that's like inevitable uh and
+>> like I wish that it I wish that we could
+say like well if the AIS don't improve
+uh substantially then people would like
+rethink the I don't I don't think that's
+true like I think whether or not they're
+able to push the quality up. I mean,
+hopefully they are cuz, you know,
+everyone is putting a lot of money into
+pushing the quality of the ads. So,
+hopefully they do get better. But even
+if they don't, I don't think it's going
+to matter, personally. Hey guys, if you
+like this episode, you can watch the
+rest of it on the Spotify. And don't
+forget to like and subscribe. Woo! See
+you later.
+>> Boot up today.
+Five errors on my screen.
+Terminal coffee
+and
+living the dream.

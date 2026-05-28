@@ -1,0 +1,1344 @@
+From b27244b02065e823e02343e526d4f80fe76d012e Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Wed, 4 Mar 2026 17:48:14 +0000
+Subject: [PATCH] Add Agent Machine API: spec interface, tool definitions, and
+ example
+
+Introduces a MachineAPI interface in flatagents-runtime.d.ts that lets
+an agent running in a tool_loop state control its own FlatMachine runtime
+via standard LLM function-call tools. The agent can launch/invoke child
+machines, inspect their checkpoints, read/write its own context, and
+send signals to paused machines.
+
+Key design: tool schemas are defined in language-agnostic YAML so the
+same API survives across Python, JS, Rust, Go, Java, and C/C++ SDKs.
+Each SDK implements MachineAPIToolProvider against its own runtime types.
+
+- flatagents-runtime.d.ts: MachineAPI, MachineAPIRuntimeInfo, MachineAPIStatus
+- sdk/examples/agent_machine_api/: full working example with orchestrator
+  agent, echo target machine, writer-critic target machine
+- CLAUDE.md: document the Agent Machine API pattern
+
+https://claude.ai/code/session_01PnT2aZWTwgZzEZSx7PyUAU
+---
+ MACHINES.md                                   |  26 ++
+ flatagents-runtime.d.ts                       | 115 ++++++
+ .../agent_machine_api/config/agent.yml        |  43 ++
+ .../agent_machine_api/config/machine.yml      |  52 +++
+ .../config/machine_api_tools.yml              | 155 ++++++++
+ .../agent_machine_api/config/profiles.yml     |  15 +
+ .../config/target_critic_agent.yml            |  23 ++
+ .../agent_machine_api/config/target_echo.yml  |  38 ++
+ .../config/target_echo_agent.yml              |  20 +
+ .../config/target_writer_agent.yml            |  20 +
+ .../config/target_writer_critic.yml           |  62 +++
+ .../python/src/agent_machine_api/__init__.py  |   0
+ .../python/src/agent_machine_api/hooks.py     | 131 ++++++
+ .../python/src/agent_machine_api/main.py      | 112 ++++++
+ .../python/src/agent_machine_api/tools.py     | 376 ++++++++++++++++++
+ 15 files changed, 1188 insertions(+)
+ create mode 100644 sdk/examples/agent_machine_api/config/agent.yml
+ create mode 100644 sdk/examples/agent_machine_api/config/machine.yml
+ create mode 100644 sdk/examples/agent_machine_api/config/machine_api_tools.yml
+ create mode 100644 sdk/examples/agent_machine_api/config/profiles.yml
+ create mode 100644 sdk/examples/agent_machine_api/config/target_critic_agent.yml
+ create mode 100644 sdk/examples/agent_machine_api/config/target_echo.yml
+ create mode 100644 sdk/examples/agent_machine_api/config/target_echo_agent.yml
+ create mode 100644 sdk/examples/agent_machine_api/config/target_writer_agent.yml
+ create mode 100644 sdk/examples/agent_machine_api/config/target_writer_critic.yml
+ create mode 100644 sdk/examples/agent_machine_api/python/src/agent_machine_api/__init__.py
+ create mode 100644 sdk/examples/agent_machine_api/python/src/agent_machine_api/hooks.py
+ create mode 100644 sdk/examples/agent_machine_api/python/src/agent_machine_api/main.py
+ create mode 100644 sdk/examples/agent_machine_api/python/src/agent_machine_api/tools.py
+
+diff --git a/MACHINES.md b/MACHINES.md
+index e411672d..d526f470 100644
+--- a/MACHINES.md
++++ b/MACHINES.md
+@@ -101,6 +101,32 @@ wait_for_approval:
+     - to: rejected
+ ```
+ 
++## Agent Machine API
++
++Let an agent control its own runtime via tool calls. The agent can launch child machines, inspect their state, read/write context, and send signals — all through standard function-calling tools.
++
++**Spec**: `MachineAPI` interface in `flatagents-runtime.d.ts`. Tool schemas in YAML (language-agnostic).
++
++**Tools**: `context_read`, `context_write`, `runtime_info`, `machine_launch`, `machine_invoke`, `machine_status`, `machine_inspect`, `signal_send`
++
++```yaml
++# Machine with agent that controls its own runtime
++states:
++  orchestrate:
++    agent: orchestrator
++    tool_loop:
++      max_turns: 20
++      max_tool_calls: 50
++    transitions:
++      - to: done
++```
++
++The agent sees tools and calls them: `machine_invoke(machine="echo", input={...})` → gets result. `machine_launch(machine="worker", input={...})` → gets execution_id, checks later with `machine_status`.
++
++**Cross-SDK**: Tool definitions are YAML. `MachineAPIToolProvider` implements `ToolProvider` protocol — each SDK implements the same tool names and parameter shapes.
++
++See `sdk/examples/agent_machine_api/` for a full example.
++
+ ## Distributed Worker Pattern
+ 
+ Use hook actions (e.g., `DistributedWorkerHooks`) with a `RegistrationBackend` + `WorkBackend` to build worker pools.
+diff --git a/flatagents-runtime.d.ts b/flatagents-runtime.d.ts
+index 22dd6eaf..bcb18d6e 100644
+--- a/flatagents-runtime.d.ts
++++ b/flatagents-runtime.d.ts
+@@ -780,6 +780,120 @@ export interface BackendConfig {
+     aws_region?: string;
+ }
+ 
++/**
++ * MACHINE API:
++ * ------------
++ * Runtime interface that exposes machine orchestration as tool calls.
++ *
++ * An agent running inside a tool_loop state can call these operations
++ * to introspect its own runtime, launch child machines, inspect their
++ * state, and coordinate via signals — all without SDK-specific code.
++ *
++ * The API is surfaced as LLM function-call tools. Each SDK provides a
++ * MachineAPIToolProvider that maps tool calls to the runtime primitives
++ * already defined in this spec (MachineInvoker, ResultBackend, etc.).
++ *
++ * Cross-SDK contract:
++ *   - Tool schemas are defined in YAML (language-agnostic)
++ *   - MachineAPI interface is the protocol each SDK implements
++ *   - Tool names and parameter shapes are stable across SDKs
++ *
++ * The agent sees tools like:
++ *   machine_launch(machine, input)      → execution_id
++ *   machine_invoke(machine, input)      → result
++ *   machine_status(execution_id)        → status snapshot
++ *   machine_inspect(execution_id)       → full checkpoint
++ *   context_read()                      → own context
++ *   context_write(key, value)           → updated context
++ *   signal_send(channel, data)          → signal_id
++ *   runtime_info()                      → available machines/agents
++ */
++export interface MachineAPI {
++    /**
++     * Read the agent's own machine context.
++     * Returns the full context dict visible to the current state.
++     */
++    contextRead(): Promise<Record<string, any>>;
++
++    /**
++     * Write a key-value pair into the agent's own machine context.
++     * The value persists across states and is available in templates.
++     */
++    contextWrite(key: string, value: any): Promise<void>;
++
++    /**
++     * List machines and agents available in the current config.
++     * Returns registry info the agent can use to decide what to launch.
++     */
++    runtimeInfo(): Promise<MachineAPIRuntimeInfo>;
++
++    /**
++     * Launch a child machine fire-and-forget.
++     * Returns immediately with the execution_id.
++     * Use machine_status / machine_inspect to check progress.
++     */
++    launch(
++        machine: string,
++        input: Record<string, any>,
++        options?: { debug?: boolean }
++    ): Promise<string>;
++
++    /**
++     * Launch a child machine and block until it completes.
++     * Returns the machine's final output.
++     */
++    invoke(
++        machine: string,
++        input: Record<string, any>,
++        options?: { timeout?: number; debug?: boolean }
++    ): Promise<Record<string, any>>;
++
++    /**
++     * Get the status of a launched machine by execution_id.
++     * Returns current state, step count, and whether it's finished.
++     */
++    status(executionId: string): Promise<MachineAPIStatus>;
++
++    /**
++     * Inspect a machine's full checkpoint snapshot.
++     * Returns context, output, pending launches, cost, etc.
++     * Use for debugging or verifying a child machine's behavior.
++     */
++    inspect(executionId: string): Promise<MachineSnapshot | null>;
++
++    /**
++     * Send a signal to a named channel.
++     * Wakes any machine waiting on that channel via wait_for.
++     */
++    signalSend(channel: string, data: any): Promise<string>;
++}
++
++export interface MachineAPIRuntimeInfo {
++    /** Machine names available in the current config's machines: map */
++    machines: string[];
++    /** Agent names available in the current config's agents: map */
++    agents: string[];
++    /** The current machine's name */
++    machine_name: string;
++    /** The current execution_id */
++    execution_id: string;
++    /** The current state name */
++    current_state: string;
++}
++
++export interface MachineAPIStatus {
++    execution_id: string;
++    machine_name: string;
++    current_state: string;
++    step: number;
++    /** Whether the machine has reached a final state */
++    finished: boolean;
++    /** Output if finished, null otherwise */
++    output?: Record<string, any> | null;
++    total_cost?: number;
++    total_api_calls?: number;
++}
++
+ export const SPEC_VERSION = "2.0.0";
+ 
+ export interface SDKRuntimeWrapper {
+@@ -799,5 +913,6 @@ export interface SDKRuntimeWrapper {
+     work_backend?: WorkBackend;
+     signal_backend?: SignalBackend;
+     trigger_backend?: TriggerBackend;
++    machine_api?: MachineAPI;
+ }
+ 
+diff --git a/sdk/examples/agent_machine_api/config/agent.yml b/sdk/examples/agent_machine_api/config/agent.yml
+new file mode 100644
+index 00000000..b689c305
+--- /dev/null
++++ b/sdk/examples/agent_machine_api/config/agent.yml
+@@ -0,0 +1,43 @@
++spec: flatagent
++spec_version: "2.0.0"
++
++data:
++  name: orchestrator
++
++  model: default
++
++  system: |
++    You are a machine orchestrator agent. You have access to the Machine API —
++    a set of tools that let you introspect and control your own FlatMachine runtime.
++
++    You can:
++    - Read and write your own context (context_read, context_write)
++    - See what machines and agents are available (runtime_info)
++    - Launch child machines fire-and-forget (machine_launch)
++    - Launch child machines and wait for results (machine_invoke)
++    - Check status of launched machines (machine_status)
++    - Inspect full checkpoint snapshots for debugging (machine_inspect)
++    - Send signals to wake paused machines (signal_send)
++
++    Your job is to orchestrate work by launching the right machines with the
++    right inputs, inspecting results, and making decisions based on what you see.
++
++    When debugging a machine:
++    1. First use runtime_info to see what's available
++    2. Launch or invoke the target machine
++    3. Use machine_inspect to examine its checkpoint — context, output, cost, steps
++    4. Report what you find clearly
++
++    Be methodical. Use the tools to verify your assumptions before acting.
++
++  user: |
++    {{ input.task }}
++
++  # Tool definitions loaded from machine_api_tools.yml at runtime via hooks.
++  # The agent YAML doesn't need to inline them — the MachineAPIToolProvider
++  # supplies them dynamically. But we can also inline them here for
++  # self-contained configs. See machine_api_tools.yml for the canonical defs.
++
++metadata:
++  description: "Orchestrator agent with Machine API tools"
++  tags: ["machine-api", "orchestration", "meta-agent"]
+diff --git a/sdk/examples/agent_machine_api/config/machine.yml b/sdk/examples/agent_machine_api/config/machine.yml
+new file mode 100644
+index 00000000..e323abac
+--- /dev/null
++++ b/sdk/examples/agent_machine_api/config/machine.yml
+@@ -0,0 +1,52 @@
++spec: flatmachine
++spec_version: "2.0.0"
++
++data:
++  name: orchestrator-machine
++  profiles: ./profiles.yml
++
++  context:
++    task: "{{ input.task }}"
++    launched_machines: []
++    results: {}
++
++  agents:
++    orchestrator: ./agent.yml
++
++  machines:
++    echo: ./target_echo.yml
++    writer_critic: ./target_writer_critic.yml
++
++  hooks: "machine-api"
++
++  states:
++    start:
++      type: initial
++      transitions:
++        - to: orchestrate
++
++    orchestrate:
++      agent: orchestrator
++      tool_loop:
++        max_turns: 20
++        max_tool_calls: 50
++        max_cost: 5.00
++        tool_timeout: 120
++        total_timeout: 600
++      input:
++        task: "{{ context.task }}"
++      output_to_context:
++        result: "{{ output.content }}"
++      transitions:
++        - to: done
++
++    done:
++      type: final
++      output:
++        result: "{{ context.result }}"
++        launched_machines: "{{ context.launched_machines }}"
++        results: "{{ context.results }}"
++
++metadata:
++  description: "Machine with an agent that can control its own runtime via Machine API tools"
++  tags: ["machine-api", "orchestration"]
+diff --git a/sdk/examples/agent_machine_api/config/machine_api_tools.yml b/sdk/examples/agent_machine_api/config/machine_api_tools.yml
+new file mode 100644
+index 00000000..12456781
+--- /dev/null
++++ b/sdk/examples/agent_machine_api/config/machine_api_tools.yml
+@@ -0,0 +1,155 @@
++# Machine API Tool Definitions
++# ============================
++#
++# Language-agnostic tool schemas for the Machine API.
++# These define the LLM function-call tools that let an agent
++# introspect and control its own FlatMachine runtime.
++#
++# Each SDK implements a MachineAPIToolProvider that maps these
++# tool calls to the runtime primitives (MachineInvoker, ResultBackend, etc.).
++#
++# spec: flatagents-runtime MachineAPI
++
++tools:
++  - type: function
++    function:
++      name: context_read
++      description: >
++        Read your own machine context. Returns the full context dict
++        visible to the current state, including values set by prior states
++        and output_to_context mappings.
++      parameters:
++        type: object
++        properties:
++          key:
++            type: string
++            description: "Optional: read a specific key. Omit to get the full context."
++        required: []
++
++  - type: function
++    function:
++      name: context_write
++      description: >
++        Write a key-value pair into your own machine context. The value
++        persists across states and is available in Jinja2 templates as
++        context.<key>. Use this to store intermediate results, flags,
++        or data for later states.
++      parameters:
++        type: object
++        properties:
++          key:
++            type: string
++            description: "Context key to write (e.g., 'analysis_result', 'should_retry')"
++          value:
++            description: "Value to store. Can be string, number, boolean, object, or array."
++        required: [key, value]
++
++  - type: function
++    function:
++      name: runtime_info
++      description: >
++        List machines and agents available in the current config.
++        Returns machine names, agent names, the current machine name,
++        execution_id, and current state. Use this to discover what
++        you can launch or invoke.
++      parameters:
++        type: object
++        properties: {}
++        required: []
++
++  - type: function
++    function:
++      name: machine_launch
++      description: >
++        Launch a child machine fire-and-forget. Returns immediately with
++        the execution_id. The child runs independently — use machine_status
++        or machine_inspect to check its progress later. Good for kicking
++        off work you'll check on later.
++      parameters:
++        type: object
++        properties:
++          machine:
++            type: string
++            description: "Name of the machine to launch (from machines: in your config)"
++          input:
++            type: object
++            description: "Input dict to pass to the child machine"
++          debug:
++            type: boolean
++            description: "If true, enable verbose checkpointing for inspection"
++        required: [machine, input]
++
++  - type: function
++    function:
++      name: machine_invoke
++      description: >
++        Launch a child machine and wait for it to complete. Returns the
++        machine's final output. Use this when you need the result before
++        continuing. The child machine runs through all its states and
++        returns its final state output.
++      parameters:
++        type: object
++        properties:
++          machine:
++            type: string
++            description: "Name of the machine to invoke (from machines: in your config)"
++          input:
++            type: object
++            description: "Input dict to pass to the child machine"
++          timeout:
++            type: number
++            description: "Timeout in seconds (0 = no timeout)"
++          debug:
++            type: boolean
++            description: "If true, enable verbose checkpointing for inspection"
++        required: [machine, input]
++
++  - type: function
++    function:
++      name: machine_status
++      description: >
++        Check the status of a previously launched machine by execution_id.
++        Returns its current state, step count, whether it's finished, and
++        output if complete. Use this to poll fire-and-forget launches.
++      parameters:
++        type: object
++        properties:
++          execution_id:
++            type: string
++            description: "Execution ID returned by machine_launch"
++        required: [execution_id]
++
++  - type: function
++    function:
++      name: machine_inspect
++      description: >
++        Get the full checkpoint snapshot of a machine. Returns its context,
++        output, pending launches, cost, API call count, and tool loop state.
++        Use this for debugging — you can see exactly what happened inside
++        the child machine at each step.
++      parameters:
++        type: object
++        properties:
++          execution_id:
++            type: string
++            description: "Execution ID of the machine to inspect"
++        required: [execution_id]
++
++  - type: function
++    function:
++      name: signal_send
++      description: >
++        Send a signal to a named channel. Wakes any machine that is paused
++        at a wait_for state listening on that channel. The signal data
++        becomes the wait_for state's output (accessible as output.* in
++        output_to_context templates).
++      parameters:
++        type: object
++        properties:
++          channel:
++            type: string
++            description: "Channel name (e.g., 'approval/task-001', 'quota/openai')"
++          data:
++            type: object
++            description: "Signal payload — becomes the output of the waiting state"
++        required: [channel, data]
+diff --git a/sdk/examples/agent_machine_api/config/profiles.yml b/sdk/examples/agent_machine_api/config/profiles.yml
+new file mode 100644
+index 00000000..e2b14874
+--- /dev/null
++++ b/sdk/examples/agent_machine_api/config/profiles.yml
+@@ -0,0 +1,15 @@
++spec: flatprofiles
++spec_version: "2.0.0"
++
++data:
++  model_profiles:
++    default:
++      provider: openai
++      name: gpt-4o-mini
++      temperature: 0.7
++    smart:
++      provider: anthropic
++      name: claude-sonnet-4-20250514
++      temperature: 0.7
++
++  default: default
+diff --git a/sdk/examples/agent_machine_api/config/target_critic_agent.yml b/sdk/examples/agent_machine_api/config/target_critic_agent.yml
+new file mode 100644
+index 00000000..b42d28b3
+--- /dev/null
++++ b/sdk/examples/agent_machine_api/config/target_critic_agent.yml
+@@ -0,0 +1,23 @@
++spec: flatagent
++spec_version: "2.0.0"
++
++data:
++  name: critic
++
++  model: default
++
++  system: |
++    You evaluate taglines. Score 1-10. Give brief feedback if score < 8.
++
++  user: |
++    Topic: {{ input.topic }}
++    Tagline: "{{ input.tagline }}"
++
++  output:
++    schema:
++      score:
++        type: int
++        description: "Score from 1-10"
++      feedback:
++        type: str
++        description: "Brief feedback for improvement"
+diff --git a/sdk/examples/agent_machine_api/config/target_echo.yml b/sdk/examples/agent_machine_api/config/target_echo.yml
+new file mode 100644
+index 00000000..57a43a18
+--- /dev/null
++++ b/sdk/examples/agent_machine_api/config/target_echo.yml
+@@ -0,0 +1,38 @@
++spec: flatmachine
++spec_version: "2.0.0"
++
++data:
++  name: echo
++  profiles: ./profiles.yml
++
++  context:
++    message: "{{ input.message | default('hello') }}"
++    uppercase: "{{ input.uppercase | default(false) }}"
++
++  agents:
++    echo_agent: ./target_echo_agent.yml
++
++  states:
++    start:
++      type: initial
++      transitions:
++        - to: process
++
++    process:
++      agent: echo_agent
++      input:
++        message: "{{ context.message }}"
++        uppercase: "{{ context.uppercase }}"
++      output_to_context:
++        echoed: "{{ output.echoed }}"
++      transitions:
++        - to: done
++
++    done:
++      type: final
++      output:
++        echoed: "{{ context.echoed }}"
++        original: "{{ context.message }}"
++
++metadata:
++  description: "Simple echo machine — transforms a message. Good for testing launches."
+diff --git a/sdk/examples/agent_machine_api/config/target_echo_agent.yml b/sdk/examples/agent_machine_api/config/target_echo_agent.yml
+new file mode 100644
+index 00000000..7bd73110
+--- /dev/null
++++ b/sdk/examples/agent_machine_api/config/target_echo_agent.yml
+@@ -0,0 +1,20 @@
++spec: flatagent
++spec_version: "2.0.0"
++
++data:
++  name: echo-agent
++
++  model: default
++
++  system: |
++    You are a simple echo agent. You receive a message and optionally transform it.
++
++  user: |
++    Echo this message back: "{{ input.message }}"
++    {% if input.uppercase %}Transform it to UPPERCASE.{% endif %}
++
++  output:
++    schema:
++      echoed:
++        type: str
++        description: "The echoed (and optionally transformed) message"
+diff --git a/sdk/examples/agent_machine_api/config/target_writer_agent.yml b/sdk/examples/agent_machine_api/config/target_writer_agent.yml
+new file mode 100644
+index 00000000..dbc3d234
+--- /dev/null
++++ b/sdk/examples/agent_machine_api/config/target_writer_agent.yml
+@@ -0,0 +1,20 @@
++spec: flatagent
++spec_version: "2.0.0"
++
++data:
++  name: writer
++
++  model: default
++
++  system: |
++    You write short, punchy taglines. One sentence only.
++
++  user: |
++    Write a tagline about: {{ input.topic }}
++    {% if input.feedback %}Previous feedback: {{ input.feedback }}{% endif %}
++
++  output:
++    schema:
++      tagline:
++        type: str
++        description: "A one-sentence tagline"
+diff --git a/sdk/examples/agent_machine_api/config/target_writer_critic.yml b/sdk/examples/agent_machine_api/config/target_writer_critic.yml
+new file mode 100644
+index 00000000..06c31f92
+--- /dev/null
++++ b/sdk/examples/agent_machine_api/config/target_writer_critic.yml
+@@ -0,0 +1,62 @@
++spec: flatmachine
++spec_version: "2.0.0"
++
++data:
++  name: writer-critic
++  profiles: ./profiles.yml
++
++  context:
++    topic: "{{ input.topic | default('technology') }}"
++    score: 0
++    round: 0
++    max_rounds: "{{ input.max_rounds | default(3) }}"
++
++  agents:
++    writer: ./target_writer_agent.yml
++    critic: ./target_critic_agent.yml
++
++  states:
++    start:
++      type: initial
++      transitions:
++        - to: write
++
++    write:
++      agent: writer
++      execution:
++        type: retry
++        backoffs: [2, 8]
++        jitter: 0.1
++      input:
++        topic: "{{ context.topic }}"
++        feedback: "{{ context.feedback | default('') }}"
++      output_to_context:
++        tagline: "{{ output.tagline }}"
++      transitions:
++        - to: review
++
++    review:
++      agent: critic
++      input:
++        tagline: "{{ context.tagline }}"
++        topic: "{{ context.topic }}"
++      output_to_context:
++        score: "{{ output.score }}"
++        feedback: "{{ output.feedback }}"
++        round: "{{ context.round + 1 }}"
++      transitions:
++        - condition: "context.score >= 8"
++          to: done
++        - condition: "context.round >= context.max_rounds"
++          to: done
++        - to: write
++
++    done:
++      type: final
++      output:
++        tagline: "{{ context.tagline }}"
++        score: "{{ context.score }}"
++        rounds: "{{ context.round }}"
++
++metadata:
++  description: "Writer-critic loop. Iterates until score >= 8 or max rounds."
+diff --git a/sdk/examples/agent_machine_api/python/src/agent_machine_api/__init__.py b/sdk/examples/agent_machine_api/python/src/agent_machine_api/__init__.py
+new file mode 100644
+index 00000000..e69de29b
+diff --git a/sdk/examples/agent_machine_api/python/src/agent_machine_api/hooks.py b/sdk/examples/agent_machine_api/python/src/agent_machine_api/hooks.py
+new file mode 100644
+index 00000000..80158342
+--- /dev/null
++++ b/sdk/examples/agent_machine_api/python/src/agent_machine_api/hooks.py
+@@ -0,0 +1,131 @@
++"""
++Machine API Hooks.
++
++Wires the MachineAPIToolProvider into the FlatMachine tool_loop.
++This is the glue between the machine runtime and the tool provider.
++"""
++
++import json
++import sys
++from typing import Any, Dict, List
++
++from flatmachines import MachineHooks
++from .tools import MachineAPIToolProvider
++
++
++def _dim(text: str) -> str:
++    return f"\033[2m{text}\033[0m"
++
++
++def _bold(text: str) -> str:
++    return f"\033[1m{text}\033[0m"
++
++
++class MachineAPIHooks(MachineHooks):
++    """
++    Hooks that provide Machine API tools to the agent in a tool_loop state.
++
++    The hooks:
++    1. Create a MachineAPIToolProvider bound to the live machine
++    2. Return it via get_tool_provider() so tool_loop uses it
++    3. Display tool call results for observability
++    """
++
++    def __init__(self):
++        self._provider = None
++
++    def on_machine_start(self, context: Dict[str, Any]) -> Dict[str, Any]:
++        # Provider is created lazily in get_tool_provider because
++        # we need the machine reference which isn't available here
++        return context
++
++    def get_tool_provider(self, state_name: str):
++        return self._provider
++
++    def set_machine(self, machine):
++        """Called by the runner to inject the machine reference."""
++        self._provider = MachineAPIToolProvider(machine)
++
++    def on_tool_calls(
++        self,
++        state_name: str,
++        tool_calls: List[Dict[str, Any]],
++        context: Dict[str, Any],
++    ) -> Dict[str, Any]:
++        """Display agent thinking before tool execution."""
++        content = context.get("_tool_loop_content")
++        if content and content.strip():
++            print()
++            print(_dim(content.strip()))
++
++        usage = context.get("_tool_loop_usage") or {}
++        parts = []
++        input_tokens = usage.get("input_tokens")
++        output_tokens = usage.get("output_tokens")
++        if input_tokens is not None or output_tokens is not None:
++            parts.append(f"tokens: {input_tokens or 0} -> {output_tokens or 0}")
++        cost = context.get("_tool_loop_cost")
++        if cost:
++            parts.append(f"${cost:.4f}")
++        if parts:
++            print(_dim(" | ".join(parts)))
++
++        return context
++
++    def on_tool_result(
++        self,
++        state_name: str,
++        tool_result: Dict[str, Any],
++        context: Dict[str, Any],
++    ) -> Dict[str, Any]:
++        """Display each Machine API tool call and its result."""
++        name = tool_result.get("name", "")
++        args = tool_result.get("arguments", {})
++        is_error = tool_result.get("is_error", False)
++        content = tool_result.get("content", "")
++
++        # Build a concise label
++        if name == "machine_launch":
++            label = f"launch: {args.get('machine', '?')}"
++        elif name == "machine_invoke":
++            label = f"invoke: {args.get('machine', '?')}"
++        elif name == "machine_status":
++            eid = args.get("execution_id", "?")
++            # Shorten execution_id for display
++            short = eid.split(":")[-1] if ":" in eid else eid[:12]
++            label = f"status: ...{short}"
++        elif name == "machine_inspect":
++            eid = args.get("execution_id", "?")
++            short = eid.split(":")[-1] if ":" in eid else eid[:12]
++            label = f"inspect: ...{short}"
++        elif name == "context_read":
++            key = args.get("key", "(all)")
++            label = f"ctx.read: {key}"
++        elif name == "context_write":
++            label = f"ctx.write: {args.get('key', '?')}"
++        elif name == "runtime_info":
++            label = "runtime_info"
++        elif name == "signal_send":
++            label = f"signal: {args.get('channel', '?')}"
++        else:
++            label = f"{name}: {args}"
++
++        status = "\u2717" if is_error else "\u2713"
++        print(f"  {status} {_bold(label)}")
++
++        # Show a brief excerpt of the result for key operations
++        if name in ("machine_invoke", "machine_inspect", "machine_status") and content:
++            try:
++                data = json.loads(content)
++                # Show just the key fields
++                if "output" in data:
++                    output_str = json.dumps(data["output"], default=str)
++                    if len(output_str) > 200:
++                        output_str = output_str[:200] + "..."
++                    print(f"    {_dim(output_str)}")
++                elif "status" in data:
++                    print(f"    {_dim(data.get('status', ''))}")
++            except (json.JSONDecodeError, TypeError):
++                pass
++
++        return context
+diff --git a/sdk/examples/agent_machine_api/python/src/agent_machine_api/main.py b/sdk/examples/agent_machine_api/python/src/agent_machine_api/main.py
+new file mode 100644
+index 00000000..1d8e86e3
+--- /dev/null
++++ b/sdk/examples/agent_machine_api/python/src/agent_machine_api/main.py
+@@ -0,0 +1,112 @@
++"""
++Agent Machine API — entry point.
++
++Demonstrates an agent that can introspect and control its own FlatMachine
++runtime via tool calls. The agent can launch child machines, inspect their
++state, read/write context, and send signals.
++
++Usage:
++    # Interactive REPL
++    python -m agent_machine_api.main
++
++    # Single task
++    python -m agent_machine_api.main -p "Launch the echo machine with message 'hello world'"
++
++    # Debug mode (verbose checkpointing)
++    python -m agent_machine_api.main -p "Invoke writer_critic for topic 'AI safety', then inspect the result"
++
++Environment:
++    LOG_LEVEL=DEBUG for verbose logging (default: WARNING)
++"""
++
++import argparse
++import asyncio
++import logging
++import os
++import sys
++from pathlib import Path
++
++from flatmachines import FlatMachine, HooksRegistry
++
++from .hooks import MachineAPIHooks
++
++
++def _setup_logging():
++    level = os.environ.get("LOG_LEVEL", "WARNING").upper()
++    logging.basicConfig(
++        level=getattr(logging, level, logging.WARNING),
++        format="%(name)s %(levelname)s %(message)s",
++    )
++
++
++def _config_dir() -> str:
++    return str(Path(__file__).resolve().parents[3] / "config")
++
++
++async def run_task(task: str):
++    """Run a single task through the orchestrator machine."""
++    config_dir = _config_dir()
++    machine_config = os.path.join(config_dir, "machine.yml")
++
++    # Create hooks and registry
++    hooks = MachineAPIHooks()
++    registry = HooksRegistry()
++    registry.register("machine-api", lambda: hooks)
++
++    # Create machine
++    machine = FlatMachine(
++        config_file=machine_config,
++        hooks_registry=registry,
++    )
++
++    # Inject machine reference into hooks so the tool provider can access it
++    hooks.set_machine(machine)
++
++    print(f"Task: {task}")
++    print("---")
++
++    result = await machine.execute(input={"task": task})
++
++    print()
++    print("---")
++    print(f"Result: {result}")
++    print(f"Cost: ${machine.total_cost:.4f} | API calls: {machine.total_api_calls}")
++
++    return result
++
++
++async def repl():
++    """Interactive REPL — type tasks, see the agent work."""
++    print("Agent Machine API — Interactive Mode")
++    print("Type a task, or Ctrl+D to exit.")
++    print()
++
++    while True:
++        try:
++            task = input("> ").strip()
++        except (EOFError, KeyboardInterrupt):
++            print()
++            break
++
++        if not task:
++            continue
++
++        await run_task(task)
++        print()
++
++
++def main():
++    parser = argparse.ArgumentParser(description="Agent Machine API example")
++    parser.add_argument("-p", "--prompt", help="Single task to run")
++    args = parser.parse_args()
++
++    _setup_logging()
++
++    if args.prompt:
++        asyncio.run(run_task(args.prompt))
++    else:
++        asyncio.run(repl())
++
++
++if __name__ == "__main__":
++    main()
+diff --git a/sdk/examples/agent_machine_api/python/src/agent_machine_api/tools.py b/sdk/examples/agent_machine_api/python/src/agent_machine_api/tools.py
+new file mode 100644
+index 00000000..6472581f
+--- /dev/null
++++ b/sdk/examples/agent_machine_api/python/src/agent_machine_api/tools.py
+@@ -0,0 +1,376 @@
++"""
++MachineAPIToolProvider — reference implementation.
++
++Maps LLM tool calls to FlatMachine runtime primitives. This is the
++cross-SDK contract: each SDK implements the same tool names and
++parameter shapes, backed by its own MachineInvoker, ResultBackend, etc.
++
++The tool provider is injected into the machine's tool_loop state via
++hooks.get_tool_provider(). The agent calls tools like machine_launch,
++machine_invoke, context_read — and this provider executes them against
++the live runtime.
++
++Designed to be portable: no Python-specific tricks, no closures over
++framework internals. The provider holds explicit references to the
++runtime components it needs (invoker, persistence, signal backend, etc.).
++A Rust/Go/Java SDK would implement the same interface against its own
++runtime types.
++"""
++
++from __future__ import annotations
++
++import json
++import logging
++import os
++import uuid
++from pathlib import Path
++from typing import TYPE_CHECKING, Any, Dict, List, Optional
++
++import yaml
++
++from flatagents.tools import ToolProvider, ToolResult
++
++if TYPE_CHECKING:
++    from flatmachines.flatmachine import FlatMachine
++
++logger = logging.getLogger(__name__)
++
++
++def _load_tool_definitions() -> List[Dict[str, Any]]:
++    """Load tool definitions from the canonical YAML file."""
++    tools_path = Path(__file__).resolve().parents[4] / "config" / "machine_api_tools.yml"
++    with open(tools_path) as f:
++        data = yaml.safe_load(f)
++    return data.get("tools", [])
++
++
++class MachineAPIToolProvider:
++    """
++    ToolProvider that exposes the Machine API as LLM function-call tools.
++
++    Each method maps 1:1 to the MachineAPI interface defined in
++    flatagents-runtime.d.ts. The tool names match the YAML definitions
++    in config/machine_api_tools.yml.
++
++    Usage:
++        provider = MachineAPIToolProvider(machine)
++        result = await provider.execute_tool("machine_launch", id, {"machine": "echo", "input": {...}})
++    """
++
++    def __init__(self, machine: FlatMachine):
++        self._machine = machine
++        self._tool_defs: Optional[List[Dict[str, Any]]] = None
++
++    def get_tool_definitions(self) -> List[Dict[str, Any]]:
++        if self._tool_defs is None:
++            self._tool_defs = _load_tool_definitions()
++        return self._tool_defs
++
++    async def execute_tool(
++        self,
++        name: str,
++        tool_call_id: str,
++        arguments: Dict[str, Any],
++    ) -> ToolResult:
++        try:
++            if name == "context_read":
++                return await self._context_read(arguments)
++            elif name == "context_write":
++                return await self._context_write(arguments)
++            elif name == "runtime_info":
++                return await self._runtime_info()
++            elif name == "machine_launch":
++                return await self._machine_launch(arguments)
++            elif name == "machine_invoke":
++                return await self._machine_invoke(arguments)
++            elif name == "machine_status":
++                return await self._machine_status(arguments)
++            elif name == "machine_inspect":
++                return await self._machine_inspect(arguments)
++            elif name == "signal_send":
++                return await self._signal_send(arguments)
++            else:
++                return ToolResult(content=f"Unknown tool: {name}", is_error=True)
++        except Exception as e:
++            logger.exception(f"Machine API tool error: {name}")
++            return ToolResult(content=f"Error in {name}: {e}", is_error=True)
++
++    # ------------------------------------------------------------------
++    # Tool implementations
++    # ------------------------------------------------------------------
++
++    async def _context_read(self, args: Dict[str, Any]) -> ToolResult:
++        ctx = self._machine.context
++        key = args.get("key")
++        if key:
++            value = ctx.get(key)
++            if value is None:
++                return ToolResult(content=f"Key '{key}' not found in context")
++            return ToolResult(content=json.dumps(value, indent=2, default=str))
++
++        # Filter out internal keys (prefixed with _)
++        public_ctx = {k: v for k, v in ctx.items() if not k.startswith("_")}
++        return ToolResult(content=json.dumps(public_ctx, indent=2, default=str))
++
++    async def _context_write(self, args: Dict[str, Any]) -> ToolResult:
++        key = args.get("key")
++        value = args.get("value")
++        if not key:
++            return ToolResult(content="Missing required parameter: key", is_error=True)
++
++        self._machine.context[key] = value
++        return ToolResult(content=f"Set context.{key} = {json.dumps(value, default=str)}")
++
++    async def _runtime_info(self) -> ToolResult:
++        m = self._machine
++        config = m._config
++
++        machines = list((config.get("data", {}).get("machines") or {}).keys())
++        agents = list((config.get("data", {}).get("agents") or {}).keys())
++
++        info = {
++            "machine_name": config.get("data", {}).get("name", "unknown"),
++            "execution_id": m.execution_id,
++            "current_state": m._current_state,
++            "machines": machines,
++            "agents": agents,
++        }
++        return ToolResult(content=json.dumps(info, indent=2, default=str))
++
++    async def _machine_launch(self, args: Dict[str, Any]) -> ToolResult:
++        machine_name = args.get("machine")
++        input_data = args.get("input", {})
++        debug = args.get("debug", False)
++
++        if not machine_name:
++            return ToolResult(content="Missing required parameter: machine", is_error=True)
++
++        # Resolve machine config
++        target_config = self._resolve_machine(machine_name)
++        if target_config is None:
++            available = list((self._machine._config.get("data", {}).get("machines") or {}).keys())
++            return ToolResult(
++                content=f"Machine '{machine_name}' not found. Available: {available}",
++                is_error=True,
++            )
++
++        execution_id = f"{self._machine.execution_id}:child:{machine_name}:{uuid.uuid4().hex[:8]}"
++
++        if debug:
++            # Enable all checkpoint events for debug inspection
++            if "data" in target_config:
++                target_config.setdefault("data", {})
++                target_config["data"].setdefault("persistence", {})
++                target_config["data"]["persistence"]["enabled"] = True
++                target_config["data"]["persistence"]["checkpoint_on"] = [
++                    "machine_start", "state_enter", "execute",
++                    "state_exit", "machine_end"
++                ]
++
++        # Fire-and-forget via invoker
++        invoker = self._machine._invoker
++        await invoker.launch(self._machine, target_config, input_data, execution_id)
++
++        # Track in context
++        launched = self._machine.context.get("launched_machines", [])
++        launched.append({"execution_id": execution_id, "machine": machine_name})
++        self._machine.context["launched_machines"] = launched
++
++        return ToolResult(content=json.dumps({
++            "execution_id": execution_id,
++            "machine": machine_name,
++            "status": "launched",
++        }, indent=2))
++
++    async def _machine_invoke(self, args: Dict[str, Any]) -> ToolResult:
++        machine_name = args.get("machine")
++        input_data = args.get("input", {})
++        timeout = args.get("timeout")
++        debug = args.get("debug", False)
++
++        if not machine_name:
++            return ToolResult(content="Missing required parameter: machine", is_error=True)
++
++        target_config = self._resolve_machine(machine_name)
++        if target_config is None:
++            available = list((self._machine._config.get("data", {}).get("machines") or {}).keys())
++            return ToolResult(
++                content=f"Machine '{machine_name}' not found. Available: {available}",
++                is_error=True,
++            )
++
++        execution_id = f"{self._machine.execution_id}:child:{machine_name}:{uuid.uuid4().hex[:8]}"
++
++        if debug:
++            if "data" in target_config:
++                target_config["data"].setdefault("persistence", {})
++                target_config["data"]["persistence"]["enabled"] = True
++                target_config["data"]["persistence"]["checkpoint_on"] = [
++                    "machine_start", "state_enter", "execute",
++                    "state_exit", "machine_end"
++                ]
++
++        # Blocking invoke via invoker
++        invoker = self._machine._invoker
++        result = await invoker.invoke(self._machine, target_config, input_data, execution_id)
++
++        # Track in context
++        results = self._machine.context.get("results", {})
++        results[execution_id] = result
++        self._machine.context["results"] = results
++
++        launched = self._machine.context.get("launched_machines", [])
++        launched.append({"execution_id": execution_id, "machine": machine_name, "finished": True})
++        self._machine.context["launched_machines"] = launched
++
++        return ToolResult(content=json.dumps({
++            "execution_id": execution_id,
++            "machine": machine_name,
++            "status": "completed",
++            "output": result,
++        }, indent=2, default=str))
++
++    async def _machine_status(self, args: Dict[str, Any]) -> ToolResult:
++        execution_id = args.get("execution_id")
++        if not execution_id:
++            return ToolResult(content="Missing required parameter: execution_id", is_error=True)
++
++        from flatmachines.backends import make_uri
++
++        # Check if result exists
++        uri = make_uri(execution_id, "result")
++        result_exists = await self._machine.result_backend.exists(uri)
++
++        if result_exists:
++            result = await self._machine.result_backend.read(uri)
++            status = {
++                "execution_id": execution_id,
++                "finished": True,
++                "output": result,
++            }
++        else:
++            # Try to read latest checkpoint
++            snapshot = await self._load_latest_snapshot(execution_id)
++            if snapshot:
++                status = {
++                    "execution_id": execution_id,
++                    "finished": False,
++                    "machine_name": snapshot.get("machine_name"),
++                    "current_state": snapshot.get("current_state"),
++                    "step": snapshot.get("step"),
++                    "total_cost": snapshot.get("total_cost"),
++                    "total_api_calls": snapshot.get("total_api_calls"),
++                }
++            else:
++                status = {
++                    "execution_id": execution_id,
++                    "finished": False,
++                    "note": "No checkpoint found — machine may still be starting or not using persistence",
++                }
++
++        return ToolResult(content=json.dumps(status, indent=2, default=str))
++
++    async def _machine_inspect(self, args: Dict[str, Any]) -> ToolResult:
++        execution_id = args.get("execution_id")
++        if not execution_id:
++            return ToolResult(content="Missing required parameter: execution_id", is_error=True)
++
++        snapshot = await self._load_latest_snapshot(execution_id)
++        if snapshot is None:
++            # Check result backend as fallback
++            from flatmachines.backends import make_uri
++            uri = make_uri(execution_id, "result")
++            result_exists = await self._machine.result_backend.exists(uri)
++            if result_exists:
++                result = await self._machine.result_backend.read(uri)
++                return ToolResult(content=json.dumps({
++                    "execution_id": execution_id,
++                    "note": "No checkpoint available, but result found",
++                    "output": result,
++                }, indent=2, default=str))
++            return ToolResult(
++                content=f"No checkpoint or result found for execution_id: {execution_id}",
++                is_error=True,
++            )
++
++        # Filter out very large fields for readability
++        inspect_data = dict(snapshot)
++        if "tool_loop_state" in inspect_data:
++            tls = inspect_data["tool_loop_state"]
++            if tls and isinstance(tls, dict):
++                chain = tls.get("chain", [])
++                if len(chain) > 5:
++                    tls["chain"] = f"[{len(chain)} messages — truncated]"
++                inspect_data["tool_loop_state"] = tls
++
++        return ToolResult(content=json.dumps(inspect_data, indent=2, default=str))
++
++    async def _signal_send(self, args: Dict[str, Any]) -> ToolResult:
++        channel = args.get("channel")
++        data = args.get("data", {})
++        if not channel:
++            return ToolResult(content="Missing required parameter: channel", is_error=True)
++
++        signal_backend = getattr(self._machine, "_signal_backend", None)
++        if signal_backend is None:
++            return ToolResult(
++                content="Signal backend not configured on this machine",
++                is_error=True,
++            )
++
++        signal_id = await signal_backend.send(channel, data)
++        return ToolResult(content=json.dumps({
++            "signal_id": signal_id,
++            "channel": channel,
++            "status": "sent",
++        }, indent=2))
++
++    # ------------------------------------------------------------------
++    # Helpers
++    # ------------------------------------------------------------------
++
++    def _resolve_machine(self, machine_name: str) -> Optional[Dict[str, Any]]:
++        """Resolve a machine name to its config dict."""
++        machines_map = self._machine._config.get("data", {}).get("machines", {})
++        ref = machines_map.get(machine_name)
++        if ref is None:
++            return None
++
++        if isinstance(ref, dict):
++            # Inline config
++            return ref
++
++        # String path — load YAML
++        config_dir = self._machine._config_dir or "."
++        path = Path(config_dir) / ref
++        if not path.exists():
++            return None
++
++        with open(path) as f:
++            return yaml.safe_load(f)
++
++    async def _load_latest_snapshot(self, execution_id: str) -> Optional[Dict[str, Any]]:
++        """Load the latest checkpoint snapshot for an execution."""
++        persistence = self._machine.persistence
++        if persistence is None:
++            return None
++
++        try:
++            # List checkpoints for this execution
++            keys = await persistence.list(f"{execution_id}/")
++            if not keys:
++                return None
++
++            # Load the latest one (last in sorted order)
++            latest_key = keys[-1]
++            snapshot = await persistence.load(latest_key)
++            if snapshot is None:
++                return None
++
++            # Convert to dict if it's a dataclass
++            if hasattr(snapshot, "__dict__"):
++                return vars(snapshot)
++            return snapshot
++        except Exception as e:
++            logger.debug(f"Could not load snapshot for {execution_id}: {e}")
++            return None

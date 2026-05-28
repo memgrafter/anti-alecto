@@ -1,0 +1,49 @@
+# GitHub issue: badlogic/pi-mono#104
+Title: ccusage compatibility for session logs
+State: closed
+Author: arunsathiya
+URL: https://github.com/badlogic/pi-mono/issues/104
+
+## Body
+ccusage (https://github.com/ryoppippi/ccusage) is a popular tool for analyzing Claude Code usage from local JSONL files. It doesn't work with pi-coding-agent because the session logs are stored in `~/.pi/` instead of `~/.claude/projects/` and may use a different format.
+
+It would be useful to either adopt a compatible log format/location or document the current format so ccusage could add support. I've opened a corresponding issue on ccusage to request pi-agent support: https://github.com/ryoppippi/ccusage/issues/739
+
+## Top comments
+- badlogic: I'm afraid this won't happen, as that would tie pi to whatever the Claude Code team does. However, it should be relatively simple for ccusage to add pi support, as the pi session logs have full token counts and cost in them, as oposed to the CC logs.
+
+The session format is described here:
+https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/docs/session.md
+
+All that is needed is to iterate the JSONL lines of type `message`, then inspect the inner `message.usage` field:
+
+```
+{"type":"message","timestamp":"2024-12-03T14:00:02.000Z","message":{"role":"assistant", ... "usage": { ... } } }
+```
+
+That ussage field has the following structure (see https://github.com/badlogic/pi-mono/blob/main/packages/ai/src/types.ts#L80):
+
+```
+export interface Usage {
+	input: number;
+	output: number;
+	cacheRead: number;
+	cacheWrite: number;
+	cost: {
+		input: number;
+		output: number;
+		cacheRead: number;
+		cacheWrite: number;
+		total: number;
+	};
+}
+```
+
+- `input`: the number of input tokens (does not include tokens read from the cache)
+- `output`: the number of output tokens, both normal and reasoning output
+- `cacheRead`: the number of tokens read from the cache
+- `cacheWrite`: the number 
+- mike1858: @arunsathiya [Splitrail](https://github.com/Piebald-AI/splitrail) is a usage analyzer for agentic coding tools, and I just added support for `pi` to it, per @badlogic's guide—it was very helpful.  You can use it to track your Pi usage:
+
+<img width="2742" height="1362" alt="Image" src="https://github.com/user-attachments/assets/8e9a773c-7fdd-4379-95d6-463c6a4166af" />
+- arunsathiya: Thanks @mike1858, this is awesome! Will give Splitrail a try.

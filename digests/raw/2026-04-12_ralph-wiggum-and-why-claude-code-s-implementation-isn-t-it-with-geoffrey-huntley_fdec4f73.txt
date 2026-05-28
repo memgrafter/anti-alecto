@@ -1,0 +1,1073 @@
+No,
+>> I think we're live. What's up, Jeff?
+>> What's up, Dex?
+>> Uh, I'm really jealous of your of your
+DJ setup over there. That's uh pretty
+incredible.
+>> It's been a while. Thanks, mate. Like, I
+remember um when I first caught up with
+you in San Fran, probably what June,
+July, rocking into a meetup and like go
+to Allison. It's like here's some
+pre-alpha. If you run it in a loop, you
+get crazy outcomes. And this was with
+Sonnet
+45. And now we're up to Opus 45.
+>> No, dude. This was not Sonnet 45. This
+was in May. This would have been like
+Sonnet 35, I think.
+>> Yeah, it was. Anyway, it was it was
+cooked back then. Six months later, as
+the model gets better, uh this the the
+techniques
+um there's been a few attempts to turn
+it into products.
+Um, but I I don't think that will work.
+Um, because I see LLM's amplifier of
+operator skill.
+>> Yep.
+>> Um, and
+if you just set it off and run away,
+you're not going to get a great as great
+of an outcome. um you really want to
+actually babysit this thing and then get
+really curious why it did that thing and
+then try to tune that behavior in or out
+and really think about it and never
+blame the model and always be curious
+about what's going on. So it's really
+highly supervised.
+>> Highly super. Yeah, you guys were
+talking with Matt today was like human
+on the loop is better than human in the
+loop, which is like don't ask me, but
+I'm going to go poke it and pro it and
+test it and I might stop you at certain
+points, but I'm not being the model's
+not deciding when and how that happens.
+>> Correct. So, it's it's really cute that
+Anthropic has made the uh Ralph plugin,
+which is nice.
+Um, so that it's starting to cross the
+chasm, but I do have some concerns that
+people will just like try the official
+plugin and go, "That's not it." And like
+you've you've you've poked in the
+internals. I've I've we sat down and
+you've done it. You you see the
+concepts. It's like some of the ideas
+behind human layer.
+>> It's um you say that it's not it. So how
+is it not it, Dex?
+>> Okay. So, I'm going to talk about what
+we actually want to do today, which is
+like
+>> I have two GCP VMs,
+and in both of them, we have this specs,
+and they both have a repo checked out.
+Um, this one actually doesn't even have
+a loop dash yet. This just has the like
+slashwigum
+create loop or whatever. I forgot what
+the exact thing is. We're going to go
+set it up today. I haven't actually
+turned this on yet. Um, but I've created
+these two git repos. One has a prompt.
+MD and a loop.sh sh and it will
+eventually create this implementation
+plan. This is like vanilla Ralph from
+the Jeff recipe, right? And so I've got
+in this shell I have my loop.sh,
+which is literally just run claude in
+yolo mode, cat the prompt in and let it
+go do its thing.
+>> Yeah. Bump your font uh bigger by the
+way. Triple size. What's bigger? Bigger.
+Bigger.
+>> Yeah. Yeah. Yeah. And I'm actually going
+to close some of these terminals. Um,
+and then each of these have um,
+let's see if we can pull this down.
+Yeah, each of these have a so there's
+two directories. There's two git repos
+I've made. One to test the anthropic
+version.
+Uh, and one to test the uh, I'll call it
+the Jeff version of Ralph. Um, so we've
+got the bash one and then we've got the
+plug-in one.
+And so these both have received they're
+just empty repos. Um I'm going to add
+the loop and the prompt. We'll look at
+the prompt in a sec. But then we've got
+these just like specs for a project that
+I was hacking on called customark which
+if you remember Kubernetes and the
+customized world. It's sort of a uh
+customization pipeline for like
+incrementally building markdown files
+with like patches and stuff.
+Um, so anyways, they're both getting the
+same set of specs and they're both
+basically being instructed to uh
+run. They both get the same prompt,
+which is like,
+oh my god. And actually, I guess this
+one will also get implementation plan,
+right?
+>> Yeah.
+>> Assuming we have the same prompt. And
+the prompt is essentially I'll just push
+it and go get it. Um,
+>> while you go get it now, yeah,
+>> in that diagram you have GCP
+>> folks,
+>> we uh we've been at AGI for a very long
+time. If you define AGI as disruptive
+for software engineers, at least six
+months now, and these models are just
+getting better. Now,
+>> yeah,
+>> the GCP thing I see people go, oh, what
+about the sandbox sandboxing dangerously
+allow all? Think about it. Dangerously
+all is literally like put deliberately
+injecting humans into the loop. You
+don't want to inject yourself into the
+loop because that's essentially not AGI.
+You're dumbing it down.
+>> But it is kind of dangerous to do
+things. So the fact that you're running
+on a GCP VM
+is key, right? You you want to you want
+to enable all the tools,
+>> but everything about it.
+>> And remember the lethal trifecta, right?
+is like
+>> got to remember the loop
+>> trifecta
+>> is
+access to the network.
+>> Yeah.
+>> And then access to private data.
+>> Correct.
+>> So
+>> we are giving it access to do everything
+which means it can search the web which
+means it can accidentally stumble on
+untrusted input. We're giving it access
+to the network to because it needs to do
+things. I don't know search web whatever
+it is. And we're giving it we're not
+giving it access to private data. So
+there here's why we're safe is this is
+running in like a dev cluster in GCP and
+I think the only thing on there is like
+the default IM key which can literally
+like look up information about the
+instance.
+>> You can look at this as layers of onion
+layers of the security onion.
+>> Uh so like if you run dangerously allow
+all from your local laptop, congrats.
+They they go nab your Bitcoin wallet if
+it's on your computer. They steal your
+Slack authentication cookies, GitHub
+cookies, and they pivot, right? That
+that's that's terrible.
+>> But if you create a custom purpose VM or
+an ephemeral instance just for this,
+>> you start restricting its network abil
+network connectivity and you do all the
+things that you should do as a security
+engineer. The next thing you know is
+like okay it's not what if it's like if
+it gets when it gets popped. I develop
+on the basis that it's a when so the
+blast radius is if that GCP is like the
+worst thing it is because this is not
+public IP.
+>> Yep.
+>> Um there is no really absolutely
+terrible thing. Okay. And we've given it
+restrict. The only permissions on this
+box are my cloud API keys and deploy
+keys to push to the two GitHub repos.
+>> Correct. Proper security engineering.
+>> It's not if it gets popped. It's not if
+it gets popped, it's when it gets
+popped. And what is the blast radius?
+>> So,
+>> this is however not an invitation to go
+pop my GCP VMs. I will not be sharing
+the IP addresses.
+If you want to uh share API keys with
+me, Dex, I always need some.
+>> Uh you know what, man? I think you have
+I heard you got a lot of tokens popping
+around over there. If anything, you
+should be bringing me some tokens.
+>> Facts.
+>> Um all right, let's look at this prompt.
+Yeah.
+>> Yeah. Let's look at the concept of the
+prompt. Um look, look at the prompt.
+>> So, here's what I'm using.
+This is my take on the original Ralph
+prompt. Sorry, let me let me my I have
+T-Mox inside T-Mox here, so it's getting
+a little
+>> That's fine. Okay, let's look at zero A,
+right?
+>> Yep. So, this is you got to think like a
+like a like a C or C++ engineer and you
+got to think of context windows as
+arrays because they are they're
+literally arrays.
+>> Context windows are arrays.
+you the a tool the chat when you chat
+with the LLM you allocate to the array
+when you get when it executes bash or
+another tool it autoallocates the array.
+>> Yep.
+>> So getting into something like context
+engineering I heard there's a guy who
+knows a thing or two about that
+definition. Hey, I just talked to people
+like you who uh who who knew things and
+put a name on a thing that hundreds of
+people were doing.
+>> But yeah, context engineering is all
+about designing this array.
+>> It's all about the array. So, and
+thinking about how LLMs are essentially
+a sliding window over the array
+and the less that that window needs to
+slide, the better. There is no memory
+server side.
+It's it's literally that an array. The
+array is the memory. So you want to
+allocate less.
+So let's go back to the prompt.
+>> Yep.
+>> Zero way. We're deliberately
+allocating. This is the key. Deliberate
+malicking
+uh context about your application.
+>> We're going to say we're just going to
+have 5,000ish tokens that are dedicated
+for like here's what we're building and
+we want that in every time.
+>> Yeah. This could be uh index h index.mmd
+or readme.md which is a whole bunch of
+hyperlinks out to different specs.
+>> Yep.
+>> Enough to like tease and tickle the
+latent space that like there are files
+there.
+>> So you can either go for an index or if
+Ralph starts being dumb you can go for
+like deliberate injection.
+So you can at specs, right? And that
+will just be just to list that out.
+>> Correct. You mentioned a file name. It
+the the tool registration for read file
+is going to go oh is there a file on
+that? I'm going to read it.
+>> Mhm.
+>> So you can give a directory path. You
+can give it like a direct file. So that
+is the key. So if we go back to your
+context window diagram.
+>> Yeah.
+>> Right. Think about this. So it's kind of
+like you're allocating the array
+deliberately. So the first couple first
+first couple allocations uh is about the
+actual application.
+>> Mhm.
+>> And every loop
+that allocation is always there. Now
+LLM engineering is kind of tarot science
+bit like tarot card reading. It's not
+really a science, but to me on vibes, it
+felt like it was a little bit more
+deterministic if I allocated the first
+couple things deterministically.
+>> Yeah.
+>> Um, now once you've got that, we go on
+to essentially our next level line in
+the spec. So like the first one is like
+deliberate malicking on every loop in
+the array.
+>> Yep.
+>> Okay. So, now we got like a to-do list
+type thing,
+>> like an implementation plan.
+>> Yeah.
+>> Now, something that's kind of missing in
+there is like pick one.
+>> Oh, it says implement the single highest
+priority feature.
+>> Oh, yeah. Okay. Yeah, I see that. Sorry.
+Um,
+>> that's the idea. Yeah. So, a lot of the
+people that do these multi-stage things,
+let's go back to the context window
+diagram. They do these multi-stage
+things.
+>> Well, what you want to do is for each
+one item,
+reset the goal. Remalik the objective.
+>> Yes.
+>> Cuz what you do is
+>> imagine you have your somewhere down
+here is the line of like where like
+performance degrades noticeably.
+>> Correct. There is a dumb zone. You
+should stay out of it. if the dumb zone
+is down here and it's very dependent on
+where this line is depending on what
+you're doing and if how your trajectory
+is and how much you're reading and all
+of this. Um but if you ask it to do too
+much in the working context then some of
+your results are going to be dumb and
+especially the important part where it's
+like okay I've made all the changes let
+me run the tests and then the tests are
+failing and it's like scrambling and
+flailing to try to get everything
+working. You kind of want to have this
+and then like a little bit of headroom
+also for like finalizing like doing the
+get commands pushes and making sure that
+all works. You want to have that all
+happening in the smart zone.
+>> This is the human in the loop uh human
+on the loop not in the loop. So I I I
+you we we set this up. We architect this
+loop in in this way and you can either
+go complete AFK or you can be on the
+loop. The what you just draw drew there
+is on the loop. I when I'm doing this I
+always leave myself a little bit of
+space for juicing like like when I'm
+reviewing the work. This is when I
+software instead of Lego bricks is now
+clay. So, this is where I I'll do my
+like final wrap-up steering or I just
+throw it away and then I
+>> get reset hard and I adjust my technique
+and let it rip again.
+>> So, you're saying you might even in the
+early days you might just run one
+iteration of this loop and then actually
+sit here and check it like have it
+basically for input between looping
+again. Right.
+>> So, like there's a reason I did the live
+the live streams. It's literally I use
+it as a cheeky portable monitor on my
+phone. I'm doing like housework and
+stuff and it's like a as like a portable
+monitor and I check in. I watch it. You
+start to notice patterns like and you
+start to anamorphize
+certain tendencies like Opus 45 doesn't
+have high anxiety with the context
+window gets
+>> but it does seem to be forgetful
+of some objectives. Um but
+So, I wanna I want to quickly um because
+I know you have a limited amount of
+time, I want to quickly go through the
+architecture of the anthropic plugin and
+how it's different and then I really
+want to get these things kicked off
+because I want people to start seeing
+how they how they actually work.
+>> Um, and so in the Ralph Wigum plugin,
+rather than like do the very first
+thing,
+um, so it's it we're going to use the
+exact same prompt for both of them
+because we want to like change as much
+as little as possible. But what's going
+to happen in the
+uh anthropic plugin is basically
+whenever it get forget where the
+performance line is, but whenever it
+gets to the end and you have your like
+final assistant user message,
+>> it's got a promise. It it uses a
+promise. So the user's got to do a
+promise and it it relies on the LLM to
+promise that it's completed.
+>> Yeah.
+So you have your final message and then
+basically unless unless this contains
+the promise. Sorry, let's just drop this
+in.
+If it's no,
+then we basically inject like the the
+hook injects a new user message that is
+just like
+prompt. MD again, which is then going to
+cause this stuff to be reallocated and
+like happen again. And then you get
+things like compaction and all this
+stuff. I want compaction is the devil.
+Dex.
+>> Yeah. At some point you get compacted
+here
+>> and then instead of having all of the
+context you end up with okay. You were
+running some tools and then you get
+compacted
+>> and then
+>> and then you have the model summary.
+>> Yeah.
+>> Of like what the model thinks is
+important and then you keep going.
+>> Correct. until you get your final
+message and then this process repeats.
+>> Yeah.
+>> And so in these very different behavior
+>> it's a it turns this is why I say
+deterministic
+>> because it's essentially
+uh one is one model has zero auto
+compaction ever. The other one is using
+auto compaction. So the one auto
+compaction is lossy. It could remove the
+specs.
+um it can remove the task and goal and
+objective and with this with the Ralph
+loop the idea is you set one goal one
+objective in that context window and so
+it knows when it's done if you keep
+extending the context window forever the
+>> you you lose your deterministic
+allocation
+>> you lose your deterministic allocation
+and more more so let's assume the
+garbage collection hasn't run it hasn't
+been compacted
+>> that window has to slide over two or
+three goals
+and some of those goals have already
+been actually completed.
+>> Mhm.
+>> One context window, one activity, one
+goal and that goal can be very fine
+grain like do a refactor, add structured
+logging, what else have you like and you
+can have multiple of these running. You
+can have multiple Ralph loops running.
+>> Um, okay. So, I'm on my Ralph plug-in
+one. I'm gonna run claw and I'm going to
+kick off this loop for the um for the
+other one. So, we're going to do Ralph
+Wigum Ralph loop
+read
+and then our what is it? Uh prom. What
+is the name of the flag? Sorry.
+>> Uh promise or something. Yeah.
+>> Completion promise.
+>> Completion promise. Yeah.
+And this is going to turn on the hook
+and it's going to start working. And
+over here, I'm going to kick off our
+loop.sa. Oh, I think I might have.
+Uh, I think I might need to grab the
+prompt.
+>> Yeah. All right. So the number thing to
+think about this is this is essentially
+the Ralph plugin is
+>> um running within Claude code and the
+the non-plugin like the the keep it
+really simple is the idea
+>> of an orchestrator running chord code.
+So or running a harness.
+>> So you have the outer harness and then
+the inner harness, right?
+>> This is the idea of between the inner
+harness and the outer harness. So
+remember I said opus is forgetful the
+current opus is forgetful for example
+when I'm doing loom and building loom I
+see that always forgets translations
+>> so cool you got this raph loop to do
+what it's meant to do you got a
+supervisor on top which sees if it did
+asks if it did translations and if the
+translations don't work you run another
+Ralph loop to nudge it hey did you do
+translations so the idea behind Ralph is
+an outer layer orchestrator,
+not a in a loop.
+>> So it doesn't it doesn't just have to be
+loop and do it forever. Your loop could
+actually have like, you know, run
+the main prompt
+>> and then you could have another one
+which is like
+classify if X was done.
+>> Correct. We'reing
+>> jump out to other prompts like add the
+tests and fix the tests or like do the
+translations or whatever it is. Yeah,
+we're engineering into places that don't
+even have names for these concepts yet.
+D. [laughter]
+>> Yeah, you can front Antropic on this
+one.
+>> Yeah. What do you want to I So I was
+thinking uh there was some conversation
+on Twitter which was like okay if cloud
+code is the harness what is the name you
+give for engineering the slash commands
+and plugins and cloud code and prompts
+and maybe the bash loop that you wrap
+around it because like you could say
+that the Ralph loop script is becomes
+part of the harness and you've created a
+new harness on the building block that
+is cla code or amp or open code or
+whatever but someone else posted is like
+well if if cla code is the harness if
+the if the coding model agent CLI tool
+is the harness, then the things you
+build to control it are the res. And so
+now I'm like, what about what is reins
+engineering? But I I hope that one
+doesn't catch on because it sounds
+really dumb.
+>> No, no, I have some ideas. I spicy. It's
+called software engineering.
+>> It's called software engineering.
+>> So
+>> I like it. We need the new term because
+um there are so many people who just
+don't get it right now and in denialism
+that this is good. They're in their cope
+land and people want a way to
+differentiate
+>> to they want to different differentiate
+their skills. Like we had like
+admins and devops and sres they created
+these new titles to diff differentiate
+and eventually those titles got muddied.
+>> Yep. Um
+cuz people will go, "Oh, I'm I'm DevOps
+now cuz I know Kubernetes. Oh, I am I'm
+an AI engineer now because I know like
+like how to malic the array um or how
+the inferencing loop works." No, no.
+These are just fundamental new skills.
+And if you don't have what we're talking
+about in a year, I think it's going to
+be really rough in the employment market
+for high performance companies. Like
+I've already seen things at like fangish
+companies. Won't go into specifics
+because we're live, but like like if
+you're a software engineering manager
+right now, um axes are coming out like
+they want your team, which you have no
+control over really
+>> because there humans to get good at AI.
+>> Um so it's kind of got to be kind of
+brutal. It's kind of kind of brutal.
+Like everyone wants people to get good
+at AI, but really comes down to if
+someone's curious or not. Really? Did
+you make the the right hire originally?
+>> Yep.
+>> Um,
+>> so I think it's software engineering,
+Dex.
+>> I think it's just literally software
+engineering, but what it means to be
+software engineer changes.
+>> I did realize that um
+I think we can get push. I just want to
+make sure that we're allowed to commit
+because I know you have to do some uh
+>> yeah Golf login
+>> the so the G so I have deploy keys on
+both these boxes. Um
+>> let's see if we can I'm like T-Mox
+within T-Mox is cra I'm really lucky I
+changed my default T-m prefix. So now I
+but I have to remember what the default
+one is on the new on the new boxes.
+>> Um
+>> we're on a tangent folks.
+>> Yeah. Um, you should be thinking about
+loop backs. Um, any way that you that
+the LLM can automatically scrape uh
+context. So the LLM's know how to drive
+t-mucks. So instead of doing some
+background clawed code agent, etc. Just
+tell it to spawn a T-max session, split
+the pain and scrape the pain. It does it
+really well. If you got like a web
+server log and then a backend API log
+created in two like in two splits. Um,
+and just tell Claude or the model to go
+grab the pain and then you got automatic
+loop back for troubleshooting. And this
+you don't need to be in the loop. You're
+on the loop and you're programming the
+loop. And this is all Ralph.
+Um, yes. Uh we actually did on last week
+uh a couple weeks ago on AI that works
+we did do a we did a session on git work
+trees and we figured out that uh we did
+some demos of like having one Ralph
+running over here and using T-M not
+route but having one claude running over
+here and using T-Mox to like scrape the
+pains of the other ones and then like
+merge in the results from the work trees
+and resolve the conflicts.
+>> Yeah. Well, whilst that kicks off, we're
+also on another tangent. This is a
+concept that you coined.
+>> Um,
+>> damn it. Because I just didn't write it.
+You You me. Um,
+>> that's why I invite you on my streams. I
+want you to come up with fun words and I
+I'll just be there while you do it,
+which is
+>> most recording what happened anyways.
+>> Most test runners are trash. They output
+too many tokens. You only want to output
+the failing test case.
+>> Oh, I wrote a blog post on this. Did you
+see this?
+>> I did. And it's it's golden, Derek. It's
+golden. Most runners are are trash.
+>> This is actually based on a bunch of
+work that I think the first person to
+write this stuff in our codebase was
+when um Allison was hacking. Like this
+is a version of a script that like
+Allison and Claude built a while ago
+because it was just like why would you
+want to output like a million tokens of
+like go spew like JSON test output if
+the test is passing?
+What happens is normally the test run
+the output's so large what it does is it
+goes tail minus 100 but if the error is
+at the top the tail it misses the tail.
+>> Yeah. No, this is the thing that
+happened all the time where it's uh
+yeah, it's just head-N50 and then yeah,
+if your tests take 30 seconds then
+you're fine. But most people that we
+work with are like teams with 50,
+hundred, thousands of engineers and
+their test suites if you run them wrong,
+they can take hours. And so like there's
+some work to be done to like
+if it runs the head and then something
+fails but it doesn't see it and then it
+has to run it again, it's like that's
+not wasted tokens. It is wasted tokens
+and it is wasted time. But like if in
+most cases most people aren't doing this
+super hands-off Ralph Wigum thing. And
+so what just happened is I finished my
+code and I the human am sitting there
+waiting for it to run this fiveminute
+test suite again.
+>> That's the key. And I'm like why would I
+ever use this tool?
+>> That's a that's the key like I'm not in
+the loop bashing the the array and
+manually allocate it and like ste trying
+to steer it like most people use cursor.
+Instead, I I try to oneshot it at the
+top and then I watch it and then if you
+watch it enough, you notice stupid
+patterns and then you make discoveries
+like the testr runner thing that you
+just showed.
+>> Yep.
+>> And you go, "Oh, that's a trick that
+works.
+>> I've also I've also
+>> discoveries are found by treating clawed
+code as a fireplace."
+>> as a fireplace that you just watch.
+>> You just sit there and watch it. you
+like you're out camping. You're sitting
+sitting there watching the fire going.
+>> I actually I had a I had a party on uh
+Tuesday, a little like pre-New New
+Year's event and I wanted to set this up
+and I just didn't have time. But I
+really wanted to have one of the
+attractions at the party is a uh laptop
+hooked up to the TV and one there's a
+terminal in a web app and you can see
+Ralph working and then anyone at the
+party can go up and edit the specs and
+like control the trajectory of the loop.
+Uh, so next time you come to one of my
+parties, we'll have we'll have that.
+>> Mate, I've still got a couple
+pre-planned trips, so it's just a matter
+of when I come to SF.
+>> Okay. When you come to SF, we're doing
+we're doing a Cursed Lang hackathon.
+We could probably also do a Ralph plus
+Cursed Lang hackathon. I think that
+would be really, really fun. Uh,
+>> and yeah, just like how do you make this
+it's it's deeply technical and you can
+change the world. you could build
+incredibly useful things that actually
+make many people's lives better, but
+also just like the perspective of like
+some of this is just art and like
+>> how do you how do you bridge the gap
+between art and and and utility and
+yeah, it's a fun time.
+>> Yeah, it's it's a crazy time. So, I'm
+down for that. Um,
+let me get Loom done because I think
+Loom is the encapsulation of some of
+these ideas into
+uh, essentially what is a remote
+ephemeral sandbox coding harness. M
+>> so the ability for a self-hosted
+platform to actually create its own uh
+remote agents weavers and then it's just
+like your standard uh like agentic
+harness which is 300 lines of code. If
+people think claude code's amazing, it's
+not. It's literally the model that does
+all the work. Go look at my how to build
+an a how to build an agent harness. All
+right. So you got this harness, you got
+this remote like provisioner on
+infrastructure.
+>> The next step there is really like how
+do you like how could you encodify Ralph
+and like little these all these nudges
+and all these pokes and what happens if
+it's a source control? It's also source
+control. Like I I've been wanting to get
+off GitHub for a long time and evolves
+SCM.
+>> Did you build your own now?
+>> Yeah. the last three days like AFK I now
+have a remote provisioner I now have
+full like Aback device login flows OF
+login flows tailwind UI
+uh it's got full SCM hosting full SCM
+mirroring we've got a harness so I've
+got the CLI now that can like spawn
+remote infrastructure
+kick kick off an agent and then when it
+says that it thinks that it's done then
+then I can set up this like almost
+[snorts] like a pix chain reaction of
+agent pokes agent. So this is like do
+did you do the translation do all these
+things and
+>> if you control the entire stack
+>> from source code you can modify and
+change that stack to your needs includes
+like source control as like a memory for
+agents.
+>> I love it. Um, I've realized one other
+thing here, which is that I did not put
+a push command in my prompt, and so the
+agents didn't push their stuff.
+>> Yeah. So, that's that's another thing we
+haven't covered off yet is the idea of
+if you have a a shell script on the
+outside or an orchestrator over the
+harness,
+>> that's true, you could just do the push
+in the orchestrator,
+>> correct? which makes it deterministic.
+But you can also add deterministic push,
+deterministic commit. You could add uh
+deterministic
+like evaluation whether it meets your
+criteria. Does it do a git reset hard?
+Does it run Ralph further on what you've
+already got? Does it bake it more or
+does it just reset and try again?
+>> Yeah.
+>> But if you run
+>> I like the communist. You're just gonna
+get you're just gonna get like steak
+that's either blue or it's charred.
+>> Okay. So, here's what's interesting is
+we are back to non-determinism. So, you
+see this one over here started running
+the thing and it actually emitted the
+promise because it read the prompt and
+it said, "Okay, everything is done with
+the first thing like it. It finished the
+prompt and it did the first thing, but
+it's now not looping."
+>> And so, Uh yeah,
+>> like if I tell you not to think about an
+elephant, what are you thinking about,
+Dex?
+>> Elephants.
+>> Exactly. Like this is another thing
+about prompt engineering. Like people
+go, it's important that you do not
+>> do XYZ,
+>> right? And next thing you know, it's in
+the context window. I'm going to think
+about XYZ. And it forgets the important
+not.
+>> The less that's in that context window,
+the better your outcomes.
+That includes trying to treat it like a
+little kid.
+>> So, I want to actually edit this because
+I haven't worked with this plugin much.
+So, it's like a little bit of this is my
+uh
+huh.
+Uh,
+a little bit of this is my um like just
+learning the the tricks of these of this
+plugin. But it looks like the Ralph loop
+is finished.
+So, I'm going to make another one.
+Um,
+down.
+Let's see.
+Or what is it? Completion promise. I'm
+just going to try to run it without a
+completion promise and see if this will
+just run forever. Yeah,
+>> I hope uh people stumb upon this video
+and they um they're able to disconnect
+the two between like the official
+product implementation and go, "Oh, wow.
+It's bienthanropic."
+Verse
+uh learning the fundamentals
+of like
+>> of like why it works and why it's good,
+>> why it works and how does it work and
+like actually watching it. Like I have
+AFKed it for 3 months, but I wasn't
+paying for tokens. I saw it rewrite the
+Lexa and Pasa like
+so many times. And I thought the model
+was the issue. It wasn't the model.
+>> Hey Dex, do you know someone who uh said
+that you should spend some time reading
+the specs and like more time on the spec
+because one bad spec equals
+uh like one [laughter] bad line of code
+is one bad line of code. one bad spec is
+like 10 new product features, 10,000
+lines of like crap and junk because in
+the case of cursed,
+>> yeah, in the case of cursed, my spec was
+wrong. So, it was tearing down the Lexa
+and the pasa like
+>> because I declared the same keyword for
+and and or to be the same keyword.
+>> Oh, because you had a mistake in your in
+the list. You couldn't come up I was
+saying that the model was bad and loot.
+It was literally garbage in, garbage
+out. Like, you got to eyeball these. You
+>> didn't know enough. You didn't know
+enough Gen Z slang to do a good job.
+>> Yeah. And I've never met a compiler
+before.
+>> Keywords.
+>> I ran out of gen.
+>> I'm just going to show this real quick
+for people who are not familiar, but
+this is a programming language that was
+built with Ralph uh three times over in
+three different it was C and then Rust
+and then Zigg, right?
+>> Yeah. playing with the notion of back
+pressure and what like what's in the
+training data sets and all that stuff.
+>> Yeah, this is cool. Um, anyways, I'm I'm
+going to leave this running for a while.
+I'm probably not going to be sitting
+here, but I hope if you're watching, uh,
+you had fun and you learned some stuff.
+And Jeeoff, I know you got to head into
+work in a minute.
+>> I got to head into work.
+>> Any any final thoughts? Any last words?
+I mean, you kind of said your advice,
+which is like don't just jump on the
+plugin and the name and the cartoon
+character, but like actually it's it's
+kind of as much of anything as a
+teaching tool and like go learn why it
+works and why it was designed the way it
+was.
+>> Yeah. Think like a think like a C or C++
+engineer. Think that you got this array.
+There's no memory on the server side.
+You it's a sliding window over the
+array. You want to set only one goal and
+objective in that array. And um you want
+to leave some like uh head room if
+you're
+>> Mhm.
+>> if you're not complete AFKing, you want
+to leave some headroom because sometimes
+you got this beautiful context window
+that you just fall in love with
+>> and then you're like, "Oh, can I squeeze
+some bore out? Maybe it's not a new
+loop. Maybe like like you get just you
+get these golden windows."
+>> Um
+>> yeah. Where it's like the trajectory is
+perfect and it's running the test
+properly and you get in the right place.
+>> You want to save it. You want to save
+it. Like that's something I think that
+we as an area of research uh in agenic
+harnesses is like the ability to say
+this is the perfect context when I want
+to go back to it.
+>> Deliberate malicking.
+>> Yeah, deliberate malicking. Um and less
+is more.
+>> Holy crap. Um take your claw code rules
+and tokenize them.
+[laughter]
+Go to like Tik Tok get tick token off
+GitHub. Run it through the tokenizer or
+the open AI tokenizer.
+>> Read the harness guides.
+Um, read the harness guides. Like
+anthropic says it's important to shout
+at the LLM. GPT5 says if you shout at
+it, it becomes timid.
+>> You dune the model. Yeah. It stops being
+>> Yeah, you can look at the look at the
+tokenizer. I mean this is easy because
+it's this but like yeah we talk about
+this all the time as if like you should
+go look at how the model sees what you
+say because when you type JSON into here
+you see like there are so many extra
+charact like this is way denser than
+just feeding the model words and so you
+should turn the JSON deterministically
+turn it into words or XML or something
+more token efficient.
+>> Yeah, I'll leave you with a quip.
+>> Yeah, let's go.
+So
+you could only fit about a
+actually maybe here's the quip.
+I remember someone coming to me and
+wanting to do an analysis on some data
+using our labs.
+>> Mhm.
+>> And I go, "How big is the data set?" And
+that that person went, "Oh, it's small.
+It's only a terabyte."
+So I had to pull up the chair. had to
+pull up the chair and go, "Oh, this is
+only a Commodore 64
+worth of memory." So, if you want to
+know how big like 200k of tokens is, um,
+you got you've got it's tiny. You've got
+like a the model gets about a 16k token
+overhead.
+>> The harness gets about a 16k overhead.
+you only got about 176K usable, not the
+full 200 because there's overheads,
+>> right? There's the there's the system
+messages that come in, right?
+>> Yeah. Yeah. Yeah. So, for that person, I
+u downloaded Star Wars Episode 1 movie
+script. [snorts]
+>> Mhm.
+>> And I tokenized it.
+>> Okay.
+>> And that that worked out to be about 60K
+of tokens or about 136 KB on disk.
+You can only fit two movie the max of
+one movie or two movies into the context
+window.
+>> Here's the new measurement. H how many
+movies can you fit into the to get
+people thinking about like visually from
+like when we talk about tokens it's it's
+just this weird concept like you can
+only fit about 136 KB and people go
+what's 136 KB it's Star Wars movie
+script
+>> amazing
+>> that that includes the tool output if
+you and if you apply the domain back
+that includes your tool output, your
+spec allocation, it includes your
+initial prompts. It goes by fast.
+Goes by fast.
+>> Yeah,
+>> Dex.
+>> So, it's both you can do a ton, but it's
+also it's it's incredibly small and uh
+the engineering and being thoughtful
+about how you use this stuff uh can make
+a huge impact.
+>> Correct. And your best learnings will
+come by treating it like a Twitch stream
+or sitting by the fireplace and then
+asking the all these questions and
+trying to figure out why it does certain
+behaviors and there's no explainable
+reason. But then you notice patterns and
+then you you tune things
+like your agents MD which should only be
+about 60 lines of uh code by the way.
+>> Yeah. Agents MD should be small.
+Everything should be small. you want to
+maximize
+>> useful working time in the smart zone.
+So, uh, this is super fun. I decided to
+do this on as a as a bit and Jeff texted
+me. I was like, I'm gonna come hang out
+and talk about Ralph. I was like,
+incredible. So, thank you so much for
+joining. Uh,
+>> anytime, mate.
+>> Post a video somewhere. Uh, if you want
+to do a recap or or a retrospective, I'm
+I'm happy to dive deeper once this thing
+is like cooked for a couple hours.
+>> Peace. Until I'm next in San Fran, mate.
+>> All right, sir. Enjoy. See you.
+Okay, that was Jeff Huntley. I am now
+going to uh get back to work. Uh and
+we're going to let this thing cook and
+we will just leave it online on the
+stream for a bit. So, I'm going to turn
+off the OBS camera. I'm gone now. And uh
+yeah, enjoy. We'll check back in in a
+little bit.
+Cheers.

@@ -1,0 +1,11 @@
+Pony Alpha
+openrouter/pony-alpha
+Released Feb 6, 2026200,000 context
+Released Feb 6, 2026200,000 context
+Prompt
+47.6B
+Completion
+1.99B
+Reasoning
+824M
+Prompt tokens measure input size. Reasoning tokens show internal thinking before a response. Completion tokens reflect total output length.

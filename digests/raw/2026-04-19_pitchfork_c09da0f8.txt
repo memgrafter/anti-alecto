@@ -1,0 +1,38 @@
+pitchfork
+Usage: pitchfork <SUBCOMMAND>
+Version: 2.6.0
+- Usage:
+pitchfork <SUBCOMMAND>
+Subcommands
+pitchfork activate <SHELL>
+pitchfork boot <SUBCOMMAND>
+pitchfork boot enable
+pitchfork boot disable
+pitchfork boot status
+pitchfork clean
+pitchfork config <SUBCOMMAND>
+pitchfork config add [FLAGS] <ID> [ARGS]…
+pitchfork config remove <ID>
+pitchfork completion <SHELL>
+pitchfork disable <ID>
+pitchfork enable <ID>
+pitchfork list [--hide-header]
+pitchfork logs [FLAGS] [ID]…
+pitchfork mcp
+pitchfork proxy <SUBCOMMAND>
+pitchfork proxy trust [--cert <CERT>]
+pitchfork proxy status
+pitchfork proxy add [--dir <DIR>] [--daemon <DAEMON>] <SLUG>
+pitchfork proxy remove <SLUG>
+pitchfork restart [FLAGS] [ID]…
+pitchfork run [FLAGS] <ID> [-- RUN]…
+pitchfork start [FLAGS] [ID]…
+pitchfork status <ID>
+pitchfork stop [-a --all] [ID]…
+pitchfork supervisor <SUBCOMMAND>
+pitchfork supervisor run [FLAGS]
+pitchfork supervisor start [-f --force]
+pitchfork supervisor status
+pitchfork supervisor stop
+pitchfork tui
+pitchfork wait <ID>

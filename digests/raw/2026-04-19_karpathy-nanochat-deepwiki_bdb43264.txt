@@ -1,0 +1,120 @@
+Loading...
+Loading...
+Menu
+This page provides a high-level introduction to nanochat: its purpose as a minimal full-stack LLM training system, the single-complexity-dial design philosophy, and the Time-to-GPT-2 leaderboard concept that drives development. For detailed instructions on installation and running your first training, see Getting Started For in-depth documentation of specific subsystems, consult the relevant sections (e.g., Base Model Pretraining Model Architecture Data Pipeline).
+Sources: README.md1-6
+nanochat is a minimal experimental harness for training large language models from scratch. It is designed to be:
+- Complete: Covers the entire LLM lifecycle including tokenization, pretraining, supervised fine-tuning (SFT), reinforcement learning (RL), evaluation, and deployment README.md1-6
+- Accessible: Runs on a single GPU node (typically 8xH100 or 8xA100) README.md32-35
+- Minimal: The codebase is small, readable, and hackable with no configuration objects or framework abstractions README.md1-6
+- Cost-effective: Trains a GPT-2 capability model in ~1.65 - 1.8 hours for approximately $40-$50 (vs. $43,000 in 2019) README.md21-24
+The repository enables you to train your own GPT-2 capability LLM and interact with it through either a command-line interface (scripts/chat_cli.py
+) or a ChatGPT-like web interface (scripts/chat_web.py
+) README.md54-60
+| Stage | Script | Output | Description |
+|---|---|---|---|
+| Tokenization | scripts/tok_train.py | tokenizer.model | Trains BPE tokenizer with 32,768 vocab on dataset |
+| Base Pretraining | scripts/base_train.py | Base checkpoint | Trains transformer from scratch using scaling laws |
+| SFT | scripts/chat_sft.py | Chat checkpoint | Adapts base model for conversation using SmolTalk/MMLU/GSM8K |
+| RL (Optional) | scripts/chat_rl.py | Aligned checkpoint | Further aligns model using GRPO/SimPO |
+| Evaluation | scripts/base_eval.py , scripts/chat_eval.py | Metrics | Measures CORE score, val_bpb, task accuracy |
+| Inference | scripts/chat_cli.py , scripts/chat_web.py | Interactive chat | Deploys model for user interaction with streaming API |
+Sources: README.md1-6 README.md117-172 dev/LOG.md77-80
+nanochat's defining design principle is the single complexity dial: the --depth
+argument (number of transformer layers) automatically determines all other hyperparameters to produce compute-optimal models README.md6-8 Users specify only the model size they want; the system calculates:
+- Model width (
+n_embd
+), number of attention heads (n_head
+) dev/LEADERBOARD.md29-37 - Learning rates (base LR, embedding LR, with
+dmodel_lr_scale
+) - Training horizon (total tokens based on scaling laws via
+target-param-data-ratio
+) dev/LEADERBOARD.md36-37 - Batch size (optimal for the given depth) dev/LEADERBOARD.md32
+- Weight decay schedules and Muon momentum schedules
+This is implemented through scaling law formulas in scripts/base_train.py
+that map depth to optimal hyperparameters. The result is that sweeping --depth
+produces a miniseries of compute-optimal models at various scales README.md77-87
+| Depth | Approximate Capability | Parameters | Training Time (8xH100) |
+|---|---|---|---|
+| 12 | GPT-1 scale | ~124M | ~5 minutes |
+| 16 | Intermediate | ~220M | ~15 minutes |
+| 20 | Approaching GPT-2 | ~343M | ~45 minutes |
+| 24-26 | GPT-2 | ~475-600M | ~1.65 - 1.8 hours |
+The philosophy eliminates the need for exhaustive hyperparameter tuning: any improvement to the codebase must work across all depths, ensuring principled changes rather than single-model overfitting dev/LEADERBOARD.md51-52
+Sources: README.md6 README.md77-87 dev/LEADERBOARD.md29-37 dev/LOG.md113-114
+The primary development focus is the Time-to-GPT-2 leaderboard, which tracks wall-clock time to train a model that exceeds GPT-2's (1.6B) CORE score of 0.256525 on an 8xH100 node README.md10-24
+| # | Time (hours) | val_bpb | CORE | Description | Date | Commit |
+|---|---|---|---|---|---|---|
+| 0 | 168.00 | - | 0.2565 | Original OpenAI GPT-2 (1.6B) | 2019 | - |
+| 4 | 2.02 | 0.71854 | 0.2571 | NVIDIA ClimbMix dataset | Mar 4 2026 | 324e69c |
+| 5 | 1.80 | 0.71808 | 0.2690 | Autoresearch round 1 | Mar 9 2026 | 6ed7d1d |
+| 6 | 1.65 | 0.71800 | 0.2626 | Autoresearch round 2 | Mar 14 2026 | a825e63 |
+- Time: Wall-clock training time excluding evaluation/logging (
+scripts/base_train.py
+trackstotal_training_time
+) dev/LEADERBOARD.md48-49 - val_bpb: Validation loss in bits-per-byte (vocabulary-size invariant metric) dev/LEADERBOARD.md49-50
+- CORE: Centered accuracy across 22 ICL tasks from the DCLM paper dev/LEADERBOARD.md5-6
+To participate, run runs/speedrun.sh
+(which implements the current SOTA), verify core_metric > 0.256525
+, and submit a PR with improved total_training_time
+dev/LEADERBOARD.md9-10
+Sources: README.md10-25 dev/LEADERBOARD.md1-10 dev/LOG.md95-97
+The following diagram shows the main entry points and how they orchestrate the core subsystems:
+Entry Points and Scripts Architecture
+Sources: README.md1-60 dev/LOG.md77-80
+The complete pipeline from raw data to deployed chat interface follows these stages:
+Complete Training Pipeline from Data to Deployment
+Each stage is independent: base pretraining checkpoints can be evaluated directly, or used to warm-start SFT. The RL stage is optional.
+Sources: README.md29-44 dev/LOG.md95-111
+The nanochat/
+directory contains the implementation modules:
+| Module | Primary Classes/Functions | Responsibility |
+|---|---|---|
+gpt.py | GPT , GPTConfig , CausalSelfAttention | Transformer architecture with Flash Attention 3, sliding windows, and rotary embeddings dev/LOG.md70-76 |
+engine.py | Engine , generate , generate_batch | Inference engine with KV cache, tool use (calculator), and sampling dev/LOG.md78-79 |
+dataloader.py | make_dataloader , parquets_iter_batched | BOS-aligned BestFit packing, distributed data loading for ClimbMix dev/LOG.md106-107 |
+dataset.py | download_file , Dataset | Manages parquet files for ClimbMix-400B dataset dev/LOG.md105-106 |
+tokenizer.py | Tokenizer , train_tokenizer | BPE tokenizer wrapper (tiktoken-style API) with 32,768 vocab dev/LOG.md101-102 |
+optim.py | MuonAdamW , DistMuonAdamW | Hybrid optimizer: Muon for 2D matrices, AdamW for embeddings/scalars dev/LOG.md17-18 |
+checkpoint_manager.py | save_checkpoint , load_checkpoint | Checkpoint I/O with backward compatibility and rank-aware saving dev/LOG.md86-89 |
+common.py | compute_init , COMPUTE_DTYPE | DDP setup, device management, and explicit precision system dev/LOG.md70-75 |
+Sources: README.md1-60 dev/LOG.md60-93
+nanochat uses an explicit precision system rather than PyTorch's autocast
+dev/LOG.md60-67 The global COMPUTE_DTYPE
+variable is auto-detected based on hardware:
+| Hardware | Default COMPUTE_DTYPE | Rationale |
+|---|---|---|
+| CUDA SM 80+ (A100, H100) | bfloat16 | Native BF16 tensor cores dev/LOG.md71 |
+| CUDA SM < 80 (V100, T4) | float32 | No BF16; FP16 available via NANOCHAT_DTYPE=float16 dev/LOG.md71 |
+| CPU / MPS | float32 | No reduced-precision tensor cores dev/LOG.md71 |
+Override with environment variable:
+Optional FP8 training is available via --fp8
+flag on Hopper+ GPUs, providing speedups using torchao
+tensorwise fp8 scaling dev/LEADERBOARD.md116-117
+Sources: dev/LOG.md60-84 dev/LEADERBOARD.md116-117
+nanochat makes several architectural choices that distinguish it from typical LLM frameworks:
+- No autocast: Explicit
+COMPUTE_DTYPE
+and a customLinear
+class that casts weights to match input dtype in forward pass replace "magic" precision management dev/LOG.md60-75 - ClimbMix Dataset: Switched from FineWeb-EDU to NVIDIA ClimbMix 400B, reducing GPT-2 speedrun time by 27% (from 2h46m to ~2h) dev/LOG.md95-98
+- Hybrid Optimization: Uses
+Muon
+for matrix parameters (orthogonalization) andAdamW
+for embeddings and scalars to optimize wall-clock capability gains dev/LOG.md17-18 - Flash Attention 3: Support for Hopper-optimized kernels (FA3) with automatic SDPA fallback for older hardware or fp16/fp32 paths dev/LOG.md90-92
+- SoftCap Tuning: Default logit softcapping set to 20 based on d24 scale experiments, improving validation loss dev/LOG.md118-121
+Sources: dev/LOG.md7-125
+Refresh this wiki
+- Overview
+- Purpose and Scope
+- What is nanochat?
+- Key Capabilities
+- The Single Complexity Dial Philosophy
+- Depth-to-Capability Mapping
+- Time-to-GPT-2 Leaderboard
+- Current Leaderboard (Recent Entries)
+- Leaderboard Metrics
+- System Architecture Overview
+- Training Pipeline Flow
+- Core Module Responsibilities
+- Precision and Hardware Support
+- Key Design Decisions

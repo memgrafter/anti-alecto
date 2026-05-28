@@ -1,0 +1,24 @@
+Reddit thread capture
+
+Thread URL: https://reddit.com/r/Chub_AI/comments/1ey6gni/stages_presets_and_lorebooks/
+Subreddit: r/Chub_AI
+Title: Stages, presets and lorebooks
+Author: u/Mean_Animator2901
+Score: 5
+Comment count (reported): 5
+
+
+## Original post
+How its works? Have some tutorial there ?
+
+## Prominent viewpoints (top-level comments)
+1. (3) u/Averytinyghost: I don't know everything, but I can tell you what I do know...and I'm not the best explainer so I'll try my best! Lorebooks are short entries you can make about the world, characters, story, etc that you're building. The "lorebook" is just a collection of these entries. You can add these entries directly to your character creation page one entry at a time, or you can make a themed lorebook (like all the entries are about the world of Baldur's Gate) and attach that book to a character. This is good if you want to make several characters for the same world though I find it better to add each entry separately to each new bot I make, but it's more time consuming. Say you want to make a character in some sort of fantasy world, we'll call it Magictown. You don't want to waste space/tokens explaining what Magictown is in the character's description. That is primo real estate for your character's
+2. (2) u/YukiiSuue: Lorebooks: It's like an encyclopedia. Each entry has a keyword and the content of the entry. When the keyword appears in the chat, the entry is sent to the model. If it doesn't appear, the entry won't be triggered. You have [this guide](https://rentry.co/statuobotmakie#lorebooks) about lorebooks to learn more. Presets: A set of premade settings that can be shared between users. For example, there are recommended presets for Chub's models, which have been created and checked by the Discord's mod/helper team. Stage: From the [official Chub documentation](https://docs.chub.ai/docs/stages/overview): "A Chub Stage is a software component written by other people that can be used within a chat. They are meant to add functionality like expression packs (showing a character's emotional state with a set of images), UIs for mini-games, special prompt handling, or even interacting with third-party A
+3. (1) u/TalsarGeldon: I've been wondering about these things as well. I came from Yodayo, and they have their own presets. And they don't use stages or lorebooks
+
+## Thread discussion sample
+- (3) u/Averytinyghost: I don't know everything, but I can tell you what I do know...and I'm not the best explainer so I'll try my best! Lorebooks are short entries you can make about the world, characters, story, etc that you're building. The "lorebook" is just a collection of these entries. You can add these entries directly to your character creation page one entry at a time, or you can make a themed lorebook (like all the entries are about the world of Baldur's Gate) and attach that book to a character. This is good if you want to make several characters for the same world though I find it better to add each entry separately to each new bot I make, but it's more time consuming. Say you want to make a character 
+  - (1) u/wazzur1: Old thread, but maybe you can help me. I notice the preset on the configuration page has some settings for the lorebook. But some bots will have their lorebook already with their own settings. So what is the deal with the lorebook settings like depth and token limit in the presets? Does it overrite the bot's settings or does the bots overrite the preset?
+- (2) u/YukiiSuue: Lorebooks: It's like an encyclopedia. Each entry has a keyword and the content of the entry. When the keyword appears in the chat, the entry is sent to the model. If it doesn't appear, the entry won't be triggered. You have [this guide](https://rentry.co/statuobotmakie#lorebooks) about lorebooks to learn more. Presets: A set of premade settings that can be shared between users. For example, there are recommended presets for Chub's models, which have been created and checked by the Discord's mod/helper team. Stage: From the [official Chub documentation](https://docs.chub.ai/docs/stages/overview): "A Chub Stage is a software component written by other people that can be used within a chat. The
+- (1) u/TalsarGeldon: I've been wondering about these things as well. I came from Yodayo, and they have their own presets. And they don't use stages or lorebooks
+  - (1) u/Mean_Animator2901: Same as me.

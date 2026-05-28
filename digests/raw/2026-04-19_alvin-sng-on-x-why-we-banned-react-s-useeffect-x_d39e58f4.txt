@@ -1,0 +1,302 @@
+X thread capture
+
+At Factory, we have a simple, yet important frontend rule: no useEffect. Yes, it sounds strict. In practice, it has made our codebase easier to reason about and much harder to accidentally break.
+
+What we mean by "banned"?
+
+We never call useEffect directly. For the rare case where you need to sync with an external system on mount, we have useMountEffect().
+
+typescript
+
+```
+export function useMountEffect(effect: () => void | (() => void)) {
+  /* eslint-disable no-restricted-syntax */
+  useEffect(effect, []);
+}
+```
+
+Most useEffect usage is compensating for something React already gives you better primitives for: derived state, event handlers, and data-fetching abstractions.
+
+This matters even more now that agents are writing the code. useEffect is often added 'just in case,' but that move is the seed of the next race condition or infinite loop. Banning the hook forces the logic to be declarative and predictable.
+
+We did not arrive at this rule so easily. We got there through production bugs.
+
+[](https://x.com/alvinsng/article/2033969062834045089/media/2028644000203522048)
+
+A sample of Slack threads triggered by useEffect incidents.
+
+Brittleness: Dependency arrays hide coupling. A refactor that seems unrelated can quietly change effect behavior.
+
+Infinite loops: It is easy to create state update -> render -> effect -> state update loops, especially when dependency lists get "fixed" incrementally.
+
+Dependency hell: Effect chains (A sets state that triggers B) are time-based control flow. They are hard to trace and easy to regress.
+
+Debugging pain: You end up asking "why did this run?" or "why did this not run?" without a clear entrypoint like a handler.
+
+At this point, useEffect is a running joke across the React community.
+
+Guillermo Rauch
+
+@rauchg
+
+▲ This year I’m going as a useEffect loop
+
+[](https://x.com/rauchg/status/1979730089400222185/photo/1)
+
+Seb  ThisWeekInReact.com
+
+@sebastienlorber
+
+The React core team when they see devs using useEffect
+
+Theo - t3.gg
+
+@theo
+
+Things React should rename "use server" -> "use action" (it used to be this lol) "use client" -> "use interactive" React.cache -> React.dedupe useEffect -> DO_NOT_USE_EFFECT_OR_YOU_WILL_BE_FIRED
+
+Peter Steinberger 
+
+@steipete
+
+Refactored 141 useEffect calls today after feeding my agent this.
+
+This is not just our internal preference. React has a full guide called
+
+.
+
+The problem? useEffect shifted many teams from explicit event-driven logic to implicit synchronization logic. Instead of reacting to a clear event, you are managing relationships between values and side effects through dependency arrays.
+
+Below are the five patterns that replaced most of our useEffect usage.
+
+Rule 1: derive state, do not sync it
+
+Most effects that set state from other state are unnecessary and add extra renders.
+
+typescript
+
+```
+// ❌ BAD: Two render cycles - first stale, then filtered
+function ProductList() {
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
+  useEffect(() => {
+    setFilteredProducts(products.filter((p) => p.inStock));
+  }, [products]);
+}
+
+// ✅ GOOD: Compute inline in one render
+function ProductList() {
+  const [products, setProducts] = useState([]);
+  const filteredProducts = products.filter((p) => p.inStock);
+}
+```
+
+This pattern also creates loop hazards:
+
+typescript
+
+```
+// ❌ BAD: total in deps can loop
+function Cart({ subtotal }) {
+  const [tax, setTax] = useState(0);
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    setTax(subtotal * 0.1);
+  }, [subtotal]);
+
+  useEffect(() => {
+    setTotal(subtotal + tax);
+  }, [subtotal, tax, total]);
+}
+
+// ✅ GOOD: No effects required
+function Cart({ subtotal }) {
+  const tax = subtotal * 0.1;
+  const total = subtotal + tax;
+}
+```
+
+Smell test:
+
+*   You are about to write useEffect(() => setX(deriveFromY(y)), [y])
+
+*   You have state that only mirrors other state or props
+
+Rule 2: use data-fetching libraries
+
+Effect-based fetching often creates race conditions and duplicated caching logic.
+
+typescript
+
+```
+// ❌ BAD: Race condition risk
+function ProductPage({ productId }) {
+  const [product, setProduct] = useState(null);
+
+  useEffect(() => {
+    fetchProduct(productId).then(setProduct);
+  }, [productId]);
+}
+
+// ✅ GOOD: Query library handles cancellation/caching/staleness
+function ProductPage({ productId }) {
+  const { data: product } = useQuery(['product', productId], () =>
+    fetchProduct(productId)
+  );
+}
+```
+
+Smell test:
+
+*   Your effect does fetch(...) and then setState(...)
+
+*   You are re-implementing caching, retries, cancellation, or stale handling
+
+Rule 3: event handlers, not effects
+
+If a user clicks a button, do the work in the handler.
+
+typescript
+
+```
+// ❌ BAD: Effect as an action relay
+function LikeButton() {
+  const [liked, setLiked] = useState(false);
+
+  useEffect(() => {
+    if (liked) {
+      postLike();
+      setLiked(false);
+    }
+  }, [liked]);
+
+  return <button onClick={() => setLiked(true)}>Like</button>;
+}
+
+// ✅ GOOD: Direct event-driven action
+function LikeButton() {
+  return <button onClick={() => postLike()}>Like</button>;
+}
+```
+
+Smell test:
+
+*   State is used as a flag so an effect can do the real action
+
+*   You are building "set flag -> effect runs -> reset flag" mechanics
+
+Rule 4: useMountEffect for one-time external sync
+
+useMountEffect is just useEffect(..., []) wrapped in a named hook to make intent explicit and prevent ad-hoc effect usage in components.
+
+typescript
+
+```
+function useMountEffect(callback: () => void | (() => void)) {
+  useEffect(callback, []);
+}
+```
+
+Good uses:
+
+*   DOM integration (focus, scroll)
+
+*   Third-party widget lifecycles
+
+*   Browser API subscriptions
+
+A useful pattern is conditional mounting.
+
+typescript
+
+```
+// ❌ BAD: Guard inside effect
+function VideoPlayer({ isLoading }) {
+  useEffect(() => {
+    if (!isLoading) playVideo();
+  }, [isLoading]);
+}
+
+// ✅ GOOD: Mount only when preconditions are met
+function VideoPlayerWrapper({ isLoading }) {
+  if (isLoading) return <LoadingScreen />;
+  return <VideoPlayer />;
+}
+
+function VideoPlayer() {
+  useMountEffect(() => playVideo());
+}
+
+// ✅ ALSO GOOD: Persistent shell + conditional instance
+function VideoPlayerInstance() {
+  useMountEffect(() => playVideo());
+}
+
+function VideoPlayerContainer({ isLoading }) {
+  return (
+    <>
+      <VideoPlayerShell isLoading={isLoading} />
+      {!isLoading && <VideoPlayerInstance />}
+    </>
+  );
+}
+```
+
+Smell test:
+
+*   You are synchronizing with an external system
+
+*   The behavior is naturally "setup on mount, cleanup on unmount"
+
+Rule 5: reset with key, not dependency choreography
+
+typescript
+
+```
+// ❌ BAD: Effect attempts to emulate remount behavior
+function VideoPlayer({ videoId }) {
+  useEffect(() => {
+    loadVideo(videoId);
+  }, [videoId]);
+}
+
+// ✅ GOOD: key forces clean remount
+function VideoPlayer({ videoId }) {
+  useMountEffect(() => {
+    loadVideo(videoId);
+  });
+}
+
+function VideoPlayerWrapper({ videoId }) {
+  return <VideoPlayer key={videoId} videoId={videoId} />;
+}
+```
+
+If the requirement is "start fresh when ID changes," use React's remount semantics directly.
+
+Smell test:
+
+*   You are writing an effect whose only job is to reset local state when an ID/prop changes
+
+*   You want the component to behave like a brand-new instance for each entity
+
+[](https://x.com/alvinsng/article/2033969062834045089/media/2033968974950744064)
+
+Banning direct useEffect works as a forcing function for cleaner tree design. Parents own orchestration and lifecycle boundaries. Children can assume preconditions are already met. You get simpler components and fewer hidden side effects.
+
+This is basically Unix philosophy applied to React components: each unit does one job, and coordination happens at clear boundaries.
+
+[](https://x.com/alvinsng/article/2033969062834045089/media/2033660285786210304)
+
+No team ships zero bugs. The question is which failure mode you want.
+
+useMountEffect failures are usually binary and loud (it ran once, or not at all). Direct useEffect failures often degrade gradually and show up as flaky behavior, performance issues, or loops before a hard failure.
+
+After operating a no-direct-useEffect codebase on a large app, we saw fewer infinite loops, fewer race-condition regressions, and faster onboarding because control flow became easier to follow.
+
+The rule felt extreme at first. It now feels like a baseline engineering guardrail.
+
+Enforce this with lint rules, clear agent guidance in AGENTS.md. To mass fix existing use cases, try our new Missions product to mass fix each violation. You can use this post as a reference guide for your droids.

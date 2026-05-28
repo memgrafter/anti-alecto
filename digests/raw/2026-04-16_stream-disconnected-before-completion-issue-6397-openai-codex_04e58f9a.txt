@@ -1,0 +1,62 @@
+# GitHub issue: openai/codex#6397
+Title: Stream disconnected before completion
+State: closed
+Author: rajan-openai
+URL: https://github.com/openai/codex/issues/6397
+
+## Body
+### What version of Codex is running?
+
+codex-cli 0.56.0
+
+### What subscription do you have?
+
+ChatGPT Enterprise (signing in with ChatGPT)
+
+### Which model were you using?
+
+gpt-5-codex-mini medium
+
+### What platform is your computer?
+
+Darwin 24.6.0 arm64 arm
+
+### What issue are you seeing?
+
+ stream disconnected before completion: An error occurred while processing your request. You can retry your request, or contact us through our help center at
+help.openai.com if the error persists. Please include the request ID 9533aa9c-0b12-47f6-bf85-773edc1f24fa in your message.
+
+### What steps can reproduce the bug?
+
+It started when I uploaded an image but I am unsure if this was the trigger.
+
+Uploaded thread: 019a63b6-9bb3-7201-ad62-f4c3f9cfb9d8
+
+### What is the expected behavior?
+
+The command should have run as desired.
+
+### Additional information
+
+" stream disconnected before completion: An error occurred while processing your request. You can retry your request, or contact us through our help center at
+
+## Top comments
+- github-actions[bot]: Potential duplicates detected. Please review them and close your issue if it is a duplicate.
+
+- #5130
+- #5037
+- #4983
+- #4381
+
+*Powered by [Codex Action](https://github.com/openai/codex-action)*
+- nos1609: Once again? It happens roughly everyday, same time this week...
+- crimpproduction: it just happened to me too. same error in vscode. it says: stream disconnected before completion: An error occurred while processing your request. You can retry your request, or contact us through our help center at help.openai.com if the error persists. Please include the request ID 19298611-0816-4bdd-86b9-1cf8efcbb3dd in your message.
+- rajan-openai: The error stopped coming up for me now but it was strange at the time
+- etraut-openai: If you see this, please use the `/feedback` slash command in the CLI. This will provide us more details that we need to diagnose the issue.
+- etraut-openai: This bug report is stale. Closing.
+- codeofdusk: Hi @etraut-openai,
+
+I'm running into this issue intermittently on Azure:
+
+> stream disconnected before completion: response.failed event received
+- etraut-openai: @codeofdusk, this bug report is closed. If you're seeing something similar, please use the `/feedback` slash command to upload your logs and session details and include the thread ID in a new bug report. You might also want to report this to the Azure team so they're aware of the problem.

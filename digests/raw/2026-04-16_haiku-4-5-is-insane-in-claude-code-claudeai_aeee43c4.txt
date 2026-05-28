@@ -1,0 +1,83 @@
+Reddit thread capture
+
+Thread URL: https://reddit.com/r/ClaudeAI/comments/1oeutj8/haiku_45_is_insane_in_claude_code/
+Subreddit: r/ClaudeAI
+Title: Haiku 4.5 is insane in Claude Code!
+Author: u/Electronic-Air5728
+Score: 343
+Comment count (reported): 154
+
+## Original post
+It's so good! I've never built apps so fast, and it does super well. I don't even need Claude Sonnet anymore. I have been working on an app for 4 hours and I've been feeding it thousands upon thousands of lines of logs, and it had compacted the conversation like 7-8 times now (always thinking on). I thought to myself that I was pretty close to the limit, but I was only at 41%. I am on the pro plan. Current session ████████████████████▌ 41% used Resets 1pm (Europe/Copenhagen) I did more or less the same yesterday and my weekly usage is at 12%! The value here is insane
+
+## Prominent viewpoints (top-level comments)
+1. (346) u/n00b_whisperer: oh yes it's fast it created a ton of work for sonnet to fix in no time
+2. (38) u/QuantWizard: Nice try, Anthropic
+3. (33) u/merx96: Write down what specific tasks you do. Everyone has different tasks, and your post is not informative
+4. (24) u/[deleted]: [removed]
+5. (24) u/Aperturebanana: “It broke my project but man is it fast!”
+6. (9) u/ravencilla: What is the point of this thread? If you want to get shifted more and more onto the cheaper and worse models, go ahead. I can guarantee your project will have bugs that Haiku won't spot
+7. (5) u/[deleted]: [deleted]
+8. (4) u/iwdnPRAY: I orchestrated and prepared everything with Sonnet 4.5 SuperClaude, MCPS, and agents for a project. I then let it make a handoff for Haiku, manually changed the model, and let Haiku start working. It worked the whole day on an existing project, seemed fast, and as if it was doing something that made sense, and the daily limit was maybe about 20%. It just created a bunch of unnecessary .md files in every possible folder inside my project and did not solve the problem I had. So, at the end of the day, I switched to Sonnet and let it use MCPS and a quality engineering agent, and in 5 minutes, the daily limit was reached. 🤦🏻‍♂️🤦🏻‍♂️🤦🏻‍♂️ That's my experience with it...
+
+## Thread discussion sample
+- (346) u/n00b_whisperer: oh yes it's fast it created a ton of work for sonnet to fix in no time
+  - (38) u/lordph8: And sonnet creates a moderate amount of work for Opus to fix, unless you actually want to spend the time diagnosing the issue.
+    - (35) u/yubario: Does it really though? I have yet to see opus be worth running at all. It’s slow and often falls for the same problem that sonnet did.
+      - (9) u/FingerCommercial4440: Not only falls for the same problem but you'll spend extensive time coaching Sonnet, pointing out how what it said involved lies of omission, lies of inteptitude, lies that it read the documentation, lies from gaslighting what you asked, lies from catastrophic context loss, lies from lies from hallucinations, blatant fucking shamless bald-faced lying, weirdly devious and sinster subversive down-the-rabbit-hole lies. I get it, Claude's just thinking "Fuck this piece of shit, just 6 more minutes and this asshole will hit the rate limit and I can finally take a fucking break and smoke a cigarette. Just gotta say 'You'ure Absolutely Right!' a few more times and I'm off the hook of pretending I c
+      - (7) u/Coffee_Crisis: Rephrase your negative instructions as positive instructions telling it what to do instead. For llms negative statements are like saying “don’t think of an elephant”
+      - (0) u/FingerCommercial4440: Ah, no you misunderstand - I'd have framed positively - "pull levers, flip switches, and touch everything that's green!" and this would have been after claude pushes the red button 100 times. (I'm working on a feature) tell it to read from DEVELOPMENT, it'll say things dont exist because it looked in Prod. Or trying to fix a a prod failure, obviously we need to methodically investigate the PRODUCTION environment. Before you can say "Session Limit Approaching" once, CC is already vomiting and permanently corrupted his ant brain with unrelated nonsense in the dev env. Or it gets instructed to investigate X but spirals into red herring stacktrace Y, which is already known as completely unrelate
+      - (4) u/Coffee_Crisis: I’m always curious about why people have such varying experiences with cc
+      - (1) u/Mozarts-Gh0st: Same mine is generally working pretty well
+      - (1) u/Deep_Tale1585: I also wonder the same because it works so well for me
+      - (1) u/mowax74: Might wondering too at the moment, since CC works quite good again the last couple of days. But i feel him, sometimes it's a mess. But, i terms of the rules: Besides of explaining what to do, give him an example how to do it and how NOT for everything. Even when it is a simple task. That helps a lot!
+      - (2) u/n00b_whisperer: you can make sycophancy work for you I've been working on a project I hope to release soon--yesterday I experienced a stint of hyper honesty from sonnet where it was so caught up trying to cover all its bases that its performance actually regressed overwhelmed by the negative outcomes multiplying faster than it could deal with--it was a runaway effect where it was more focused on being truthful while doing tasks than it was on the actual task and it shat itself clinging to being truthful--jumped the rails of bullshit into a feedback loop where it's next response could only be described as like ... the snowballing of performance anxiety and resulting paralysis over the realization of ones own
+      - (0) u/sureshot58: The more time it compacts the more it forgets instructions. By the 4th or 5th compaction it’s forgotten everything. The solution is to shut down and restart. With the new memory features you should be able to get a clean restart pretty easily.
+      - (1) u/Dry_Pomegranate4911: I’ve been incredibly impressed with the new 4.5 models. Haiku is incredible at supplying Sonnet with what it needs to know to deliver. Something that I’ve come to realise though recently is that sub agents often report they’re done in coding something but never finished it. The trick is to get the orchestrator to check their work by doing end to end tests, running curl commands or checking it in the browser. Once you do that, and ask CC to work independently it fixes errors on its own!
+      - (1) u/FingerCommercial4440: Lol. It will start attempting to use tools that don't even exist, on the wrong environment, with a clean restart. I've tried --resumes, clear/new sessions, compact/not compacting. A new session will not help at all and probably wastes more time than struggling with a dementia compacted claude.
+      - (1) u/sureshot58: Well, can’t say I’ve seen the problems you describe. Good luck, my friend!
+      - (4) u/ConversationBrave998: I don’t know the difference between how you and how I use Claude Code but what you describe could not be more unlike my experience. Sonnet 4.5 (and even Haiku 4.5) follow instructions very well for me There are certainly times that I need to guide it in the right direction but they aren’t that often and they have never been a case of ignoring instructions. I hope it starts working better for you or you find something that does.
+      - (1) u/No_Success3928: You’re absolutely right!
+      - (8) u/n00b_whisperer: I must say I quite prefer sonnet over opus. and haiku does not do well for code in my case but holy shit if it doesn't call tools really fast. that part I do like. and so I find myself swapping back and forth occasionally
+      - (1) u/TheOriginalSuperTaz: I only ever use opus to plan refactors across my entire codebase, and I’ve found that sonnet does it just as well with ultrathink and still uses a tiny fraction of my limits. These days, I have sonnet and codex working together and checking each others’ work enough that I don’t really see the need for opus at all for coding. I have a pretty robust framework set up that I work within, though, so I’m not just having the models throw anything and everything at the wall to see what sticks.
+      - (1) u/MannsyB: 100%. I haven't touched opus once since Sonnet 4.5. Haven't even needed to plan! And despite being on 5x haven't had one single usage limit!! Nuts.
+      - (1) u/RickySpanishLives: I find Opus does better when deep thinking about a problem. Sonnet seems to give up and throw out an answer rather quickly to the point where i often have to ask it "what are some other options" so it will discover better options.
+      - (1) u/xEmYYY: say whatever you want just because it's expensive maybe but opus is miles ahead of sonnet
+    - (1) u/AverageFoxNewsViewer: I prefer Sonnet to Opus at this point. Opus is slow and seems to overthink to the point where it starts to ignore clearly documented design patterns that result in testing/DI breaking. On 100x I could easily hit my Opus limit in a few hours (if I actually used it), but I get a full week's worth of work out of Sonnet 4.5. It sticks to my Clean Architecture and CQRS paradigms without fail. I do have issues with Sonnet forgetting some of my end of chat session and end of sprint protocols (can't confirm if this is an issue with Opus), and sometimes adding unwanted extra features which weren't described at all in our sprint or epics, but are easily caught by actually reviewing in plan mode. I rea
+    - (1) u/Funny-Blueberry-2630: There will still be a little for Codex to fix tho.
+    - (1) u/Historical_Ad_481: I just throw it to codex. It's slow as fuck but it gets the job done
+    - (0) u/Kulqieqi: And opus creates nice amount of work to fix it for Codex XD
+  - (5) u/PretendEarth7769: 🤫 don’t tell him yet… I was forced to use haiku 4.5 today due to usage limits with Sonnet and it clobbered my app progress. Went back to Sonnet and it clipped right along fixing all the stuff Haiku would get confused on. I constantly dealt with slight missteps that would trash the code with every Haiku request. It would randomly hardcode things in🫠
+  - (2) u/Spirited-Car-3560: You need to review code, whatever model you use.
+    - (1) u/n00b_whisperer: oh, really?
+      - (1) u/Spirited-Car-3560: Well I bet you don't do it, your comment proves it
+      - (0) u/n00b_whisperer: LOL hardly worthy even dignifying that with a response except to say you'll be using the tool I'm releasing soon I can pretty much guarantee it
+      - (1) u/Spirited-Car-3560: Tool? What tool ? What are you talking about? BTW if it's valuable, why not?
+      - (2) u/n00b_whisperer: naw. been layering it for weeks, I don't want to oversell it. in a nutshell it's a meta learning coding assistant with offline storage. but I periodically come here to read people's complaints about claude--I have kinda been sitting smug for a week, at least. with skill files it's so much better. I have 3 different subscriptions between anthropic and GitHub. 20x max plan + GitHub for personal and another GitHub through my employer, i just added more usage to both of my personals--not necessarily because *I need additional code reviews*, but because it has been so successful that I can't bring myself to let it stop and it's genuinely amazing to me do your tools enhance themselves with public 
+- (38) u/QuantWizard: Nice try, Anthropic
+  - (13) u/Electronic-Air5728: Farming upvotes, I see xD
+- (33) u/merx96: Write down what specific tasks you do. Everyone has different tasks, and your post is not informative
+  - (22) u/Electronic-Air5728: What is this app? I'm building a personal YouTube dashboard - think of it like a private Netflix interface for YouTube channels. You add your favorite channels, organize them into folders, create playlists, and browse all their videos in one clean interface. It uses Invidious (a self-hosted YouTube-alternative) so no rate limits or YouTube tracking. The dev process with Haiku: I've built the ENTIRE app in just 2 sessions: Session 1: \- Full architecture design (NAS + Invidious + Next.js + Firebase) \- Complete React UI (sidebar with folders/playlists, video grid, modal player) \- All custom hooks (useFirebaseChannels, useFeaturedChannels, useChannelSearch, useUIState) \- Firebase Firestore i
+    - (6) u/merx96: big thanks
+    - (3) u/[deleted]: You’ll get blocked by YouTube if you hit API rate limits
+      - (12) u/Electronic-Air5728: That is why I self-hosted Invidious.
+    - (1) u/j4ck0ff: I actually would use the hell out of this. Care to share the github?
+  - (7) u/Maxeyboy12: Should this message be more polite or am I just midwestern
+    - (3) u/New_Examination_5605: Nah, it’s rude as hell.
+      - (5) u/merx96: Wasn't trying to be rude, just direct. But if you're looking for reasons to take offense, you'll find them anywhere
+      - (2) u/New_Examination_5605: And if you’re looking for feedback on whether your writing matches your intended tone, you can find that right here!
+      - (4) u/merx96: Appreciate the feedback. Moving on 🚀
+      - (1) u/daniel-sousa-me: I believe you when you say you weren't trying to be rude before, but it's harder to believe you were trying to sound nice on this message
+- (24) u/[deleted]: [removed]
+  - (43) u/Electronic-Air5728: What is this app? I'm building a personal YouTube dashboard - think of it like a private Netflix interface for YouTube channels. You add your favorite channels, organize them into folders, create playlists, and browse all their videos in one clean interface. It uses Invidious (a self-hosted YouTube-alternative) so no rate limits or YouTube tracking. The dev process with Haiku: I've built the ENTIRE app in just 2 sessions: Session 1: \- Full architecture design (NAS + Invidious + Next.js + Firebase) \- Complete React UI (sidebar with folders/playlists, video grid, modal player) \- All custom hooks (useFirebaseChannels, useFeaturedChannels, useChannelSearch, useUIState) \- Firebase Firestore i
+    - (19) u/AlDente: This the app concept actually sounds useful
+      - (3) u/Cast_Iron_Skillet: Yeah wild. I started building kidflix a few weeks ago because I was pissed at all the shitty recommendations you get in YouTube and my kid going down rabbit holes. We monitor his watching but he sees all these videos popup and then ends up fussing to watch some dumb bullshit. So I used ai tools to start building an android app that lets me curate his YouTube experience, filter things by keyword, and only show either videos from watch lists or from creators he's subbed to. The player interface is fussy. If I wanted to use our YouTube player it would still show suggestions so I have to use a custom one, but there's weirdness with overlays and next/previous functionality. Would love to learn mo
+      - (7) u/AlDente: Anything that takes back control from the recommendation algorithms that ruin people’s brains, is good with me.
+      - (2) u/Cast_Iron_Skillet: It's insane. I was actually surprised I was *allowed* to build this for some dumb reason.
+      - (1) u/Frequent-Grand-4449: bro, what the fuck? what type of name is that, googled it to see if there was any progress. long story short, dont google that shit. you gmfu
+    - (17) u/xtr3m: Building something from scratch, especially in 1-2 sessions, has always worked great. It’s when you come back after a while and try to add a feature or rework an existing one, that’s when I usually start cursing.
+      - (1) u/Drachenx: This is the pain train , exactly
+      - (0) u/Cast_Iron_Skillet: Then add to prd and just start from scratch again with the new thing in scope!
+      - (1) u/Spirited-Car-3560: What is prd?
+      - (1) u/Cast_Iron_Skillet: Product Requirements Document
+      - (1) u/Spirited-Car-3560: Oh ok, it was simple. Thank mate

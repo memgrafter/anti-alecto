@@ -1,0 +1,1141 @@
+X thread capture
+
+I run 10 social medias for my clients and don't write a single post manually
+
+No content team. No $8-12k/mo agency retainer. No sitting in front of ChatGPT rewriting the same damn post ten times for ten platforms
+
+Just a folder of .md files + one AI agent, and a system that takes one idea and produces 10 platform-native posts (each one actually thinking about the topic differently)
+
+This article is the full breakdown I promised. Everything what I use in my daily workflow is here. Every file, every wikilink, every node
+
+By the end you'll have a complete content production system you can realistically build this WEEKEND
+
+After reading and implementing this, you'll have:
+
+1.   FULL Automated Content Engine
+
+2.   An AI agent that actually understands your voice, audience, and platform rules
+
+3.   A repurposing engine that turns one topic into 10 ready-to-publish posts
+
+4.   A working skill graph folder with every file filled in and connected
+
+5. A content system that runs 10 accounts while you go live your life (across 10 different social platforms)
+
+[ Let's build it ] ↓↓↓
+
+Most people use AI for content like this:
+
+1: Open Claude 2: Type "write me a LinkedIn post about productivity" 3: Get a generic post that sounds like a corporate intern wrote it 4: Spend 20 minutes making it not sound like a robot 5: Then do the whole thing again for every platform
+
+That's not a system. That's a chore with extra steps
+
+The problem isn't the AI. It's that you're giving it ZERO context about your brand, your audience, your voice, your platform strategies, or how any of this connects You're basically hiring a genius with amnesia every single time you start a new chat
+
+SOLUTION: a skill graph fixes this
+
+Think of it like hiring a new employee You could throw them into the deep end on day one with no onboarding, no documentation, no context about how your company works and just hope for the best
+
+Or you could hand them a complete playbook that explains who you are, how you operate, who you're talking to, and what good output looks like
+
+A skill graph is that playbook. Except it's for your AI agent
+
+Technically it's just a folder of interconnected markdown files where is each file is one "knowledge node", one piece of your content system's brain
+
+Inside each file you use [[wikilinks]] (double-bracket links like [[brand-voice]] or [[hooks]]) to reference other nodes
+
+When you point an AI agent at this folder and give it a topic, it doesn't just read one file. It follows the links, reads the connected nodes, and builds up a complete understanding of your brand, voice, audience, platform rules, hook formulas, and repurposing logic BEFORE writing a single word
+
+The difference is insane:
+
+BAD: A single prompt = hiring a freelancer with no brief, no brand guidelines, no knowledge of your audience
+
+GOOD: A graph of 30+ interconnected .md files = hiring a full content team that's read your entire playbook and knows exactly how each platform works
+
+Another way to think about it: one flat .md file gives you a TOOL (a simple reference doc) A graph gives you a TEAM (a system with sub-specialists for every platform, hook type, voice variant, and audience segment)
+
+This is what replaced $5K/month in content production costs for me
+
+Not because the individual files are magical, but because the connections between them create intelligence no single prompt can match
+
+[ PLAYBOOK BEGINS ]↓↓↓
+
+You have two options. Both work fine
+
+1.Obsidian — this is what I'd recommend if you want to SEE the graph visually
+
+Obsidian is a free markdown editor that natively supports [[wikilinks]] and has a gorgeous graph view that shows you how all your nodes connect
+
+It's like looking at a neural network of your own content system. Makes debugging super intuitive too, you can see which nodes are disconnected and which ones are overlinked
+
+2. A regular folder on your desktop — if you don't want another tool (tool fatigue is real), a plain folder of .md files works perfectly fine
+
+The AI agent doesn't care about Obsidian, it reads the markdown and follows the [[wikilinks]] regardless of what editor you used. VS Code, Notion exported to markdown, even Notepad. Literally anything works
+
+Which tools actually run the system:
+
+*   Claude is my primary choice (the best brain). Claude Projects lets you upload all your .md files and keep them as persistent context, so every conversation in that project has access to your full graph
+
+*   ChatGPT works with custom GPTs or by pasting key files into the conversation
+
+*   Cursor is if you're technical and want the agent to read files directly from your local file system
+
+Pick anything you're comfortable, but I guess 95% of readers will definitely pick Claude (and that's the best choice imo, I use it)
+
+Here's the exact structure you're gonna build:
+
+```
+/content-skill-graph
+├── index.md
+├── platforms/
+│   ├── x.md
+│   ├── linkedin.md
+│   ├── instagram.md
+│   ├── tiktok.md
+│   ├── youtube.md
+│   ├── threads.md
+│   ├── facebook.md
+│   └── newsletter.md
+├── voice/
+│   ├── brand-voice.md
+│   └── platform-tone.md
+├── engine/
+│   ├── hooks.md
+│   ├── repurpose.md
+│   ├── scheduling.md
+│   └── content-types.md
+└── audience/
+    ├── builders.md
+    └── casual.md
+```
+
+17 files. 4 folders. That's your entire content production machine
+
+Go create this structure RIGHT NOW. Seriously, pause reading and do it!!!
+
+Step-by-step:
+
+- Open Obsidian or just make a folder on your desktop - Create the subfolders - Make empty .md files with the names above - Then come back and we'll fill every single one
+
+Quick overview of what each folder does before we go file by file:
+
+index.md — the entry point. The briefing document your AI agent reads first. Most important file in the entire system
+
+platforms/ — one file per platform with the rules, format, character limits, posting frequency, content style. Everything the agent needs to write NATIVELY for that platform
+
+voice/ — your brand voice DNA and how it adapts per platform. This is what stops your content from sounding like a robot generated it
+
+engine/ — the operational backbone. Hook formulas, the repurposing chain, scheduling rules, content type definitions
+
+audience/ — who you're actually talking to. Different audience segments get different angles on the same topic
+
+[ Now let's fill every file ]↓↓↓
+
+This is the single most important file in your entire graph
+
+Every time you give your AI agent a topic, it starts here. If this file is weak, everything downstream will be weak. Think of it like the CEO of your content operation, it sees the full picture and delegates to specialists
+
+index.md is NOT a table of contents. This is the most common mistake I see people make. It's not a file list
+
+It's a BRIEFING. It tells the agent who you are, what the system does, and exactly how to execute
+
+Put three things in it:
+
+```
+# Content Skill Graph — Command Center
+
+## 1. Identity
+
+Content production system for [YOUR BRAND/NAME].
+Manages 10 social media accounts from one idea input.
+
+Brand: [YOUR NAME / BRAND]
+Niche: [YOUR NICHE — e.g. "AI automation, SaaS building, and
+monetizing tech skills"]
+Mission: Turn one topic into 10 platform-native posts that each
+think about the topic differently
+
+## 2. Node Map
+
+Every node below is a knowledge file. Read the relevant ones before
+executing any task. The [[wikilinks]] are clickable, follow them.
+
+### Platforms
+- [[x]] — short-form, hook-driven, 280 chars max, casual lowercase.
+  post 5x/week minimum. contrarian takes and step-by-step threads
+- [[linkedin]] — long-form narrative, professional tone, 1500+ words.
+  post 3x/week. personal stories with business insights
+- [[instagram]] — visual-first. 7-slide carousels with bold claim
+  on slide 1. post 4x/week. reels for short-form video
+- [[tiktok]] — raw, unpolished, 45-60 second screen recordings or
+  talking head. post 5x/week. hook in first 2 seconds
+- [[youtube]] — SEO-optimized titles, structured outlines, 8-12
+  minute format. post 2x/week. evergreen content focus
+- [[threads]] — conversational, opinion-driven, casual. post 3x/week.
+  think "X but more relaxed"
+- [[facebook]] — community-focused, longer captions, group engagement.
+  post 3x/week
+- [[newsletter]] — deep-dive format, 1000-2000 words, actionable
+  frameworks. send 1x/week
+
+### Voice
+- [[brand-voice]] — the core personality, values, tone markers, and
+  vocabulary that define how we sound across ALL platforms
+- [[platform-tone]] — how the core voice adapts per platform. same
+  person, different room
+
+### Engine
+- [[hooks]] — scroll-stopping opener formulas. categorized by type:
+  contrarian, proof, discovery, replacement, playbook. updated
+  weekly based on performance
+- [[repurpose]] — the repurposing chain: 1 idea → 10 outputs. defines
+  which platform gets written first, the adaptation order, and what
+  changes between each version
+- [[scheduling]] — posting calendar, best times per platform,
+  frequency rules, and batch workflow
+- [[content-types]] — format definitions: threads, carousels, reels,
+  long-form articles, short takes, video scripts, newsletters
+
+### Audience
+- [[builders]] — primary audience. indie hackers, AI engineers,
+  SaaS founders, freelancers monetizing tech skills. they want
+  actionable playbooks, real numbers, and tools they can use today
+- [[casual]] — secondary audience. curious about AI/tech but not
+  building yet. they want inspiration, simplified explanations,
+  and "wow I can do this too" moments
+
+## 3. Execution Instructions
+
+When given a topic:
+
+1. Check if the topic aligns with our niche. If not, reject it
+2. Read [[brand-voice]] for core personality
+3. Read [[hooks]] and select the best hook formula for the topic
+4. Read [[repurpose]] for the production chain order
+5. Write for the FIRST platform in the chain (usually [[x]])
+6. For each subsequent platform, read that platform's node and
+   [[platform-tone]] to adapt. don't just reformat, RETHINK the
+   angle, structure, hook, and format for that specific platform
+7. Apply [[scheduling]] rules for timing and frequency
+8. Output one native post per platform, each post ready to publish
+
+CRITICAL RULE: The output is NOT 10 copies of the same text
+reformatted for each platform. It's 10 pieces that each THINK
+about the topic differently. Same topic, different angle, hook,
+voice, structure, and format per platform.
+```
+
+A few things to notice about this file:
+
+The identity section isn't filler. The AI actually uses it to calibrate everything it produces
+
+"AI automation, SaaS building, and monetizing tech skills" gives you completely different content than "vegan meal prep for busy parents". Be SPECIFIC about your niche here, this part is THE MOST IMPORTANT!!!
+
+The node map gives context with every link. Not just "[[x]] — Twitter" but "[[x]] — short-form, hook-driven, 280 chars max, casual lowercase. post 5x/week minimum"
+
+That extra context helps the agent make decisions without needing to open every single file for every task. Saves tokens too
+
+To summarize, this file moderates the whole process of content production in this system
+
+Please, be careful with it and put the biggest focus here
+
+Each platform file is a complete playbook for producing content on that specific platform
+
+I'll show X as the detailed example (every other platform file follows the same structure, you just swap the specifics):
+
+```
+# X / Twitter
+
+## Platform DNA
+- Character limit: 280 per tweet, long-form tweets up to 25,000
+  (but sweet spot is 1,000-2,000 characters)
+- Vibe: fast, casual, opinion-driven. lowercase is default.
+  people scroll fast here, you have maybe 0.5 seconds to stop them
+- Audience here: more technical, more builder-oriented. skews
+  toward [[builders]] over [[casual]]
+
+## Content Rules
+- Write this platform FIRST in the [[repurpose]] chain. X forces
+  you to be concise which makes everything else easier to expand
+- Use [[hooks]] — contrarian hooks and proof hooks perform best here
+- Match [[brand-voice]] but make it more casual. see [[platform-tone]]
+  for X-specific adjustments
+- Line breaks between every thought. never write dense paragraphs
+- No hashtags. ever. they look spammy on X
+- Emojis only at the very end as a signoff (heart, or none at all)
+- Links go in a reply to your own post, never in the main tweet.
+  the algorithm penalizes external links in the main tweet
+
+## Formats That Work
+1. The Step-by-Step Thread — "Here's [N] steps to [outcome]:"
+   followed by numbered steps. most reliable format for engagement
+2. The Short Take — 2-4 lines. bold claim + one-line context +
+   punchline. best for contrarian hooks
+3. The Proof Post — "[Metric] → [metric] in [timeframe]" followed
+   by the breakdown. people can't resist real numbers
+4. The Resource Drop — "I just found [thing] — [why it matters]."
+   short, high value. always add a personal take
+5. The Long-Form Tweet — 1,000-2,000 characters. deep breakdown
+   of one idea. use sparingly, 1-2x/week max
+
+## Posting Strategy
+- Frequency: 5-7x/week minimum (1-2 posts per day)
+- Best times: 8-9am, 12-1pm, 5-6pm (audience timezone)
+- Engage in replies for 30 min after posting (algo hack honestly)
+- See [[scheduling]] for the full calendar
+
+## Audience on X
+- Primary: [[builders]] — indie hackers, AI engineers, SaaS founders
+- They want: actionable content, real numbers, tools, playbooks
+- They dont want: fluff, motivational quotes without substance,
+  generic "AI is changing the world" takes
+- Address them as "you" — direct, coaching energy
+
+## Repurposing Notes
+- X is the STARTING POINT of the [[repurpose]] chain
+- After writing for X, expand for [[linkedin]] (add narrative
+  and professional framing)
+- Condense the hook for [[tiktok]] (first 2 seconds of video)
+- Turn threads into [[instagram]] carousel slides
+- See [[repurpose]] for the full chain
+```
+
+```
+# LinkedIn
+
+## Platform DNA
+- No hard character limit, but sweet spot is 1,300-2,000 characters
+  for regular posts, up to 3,000 for articles
+- Vibe: professional but human. personal narratives win here. "I"
+  stories with business lessons attached
+- Audience: mix of [[builders]] and [[casual]] — more professionals,
+  decision-makers, people who actually have budgets
+
+## Content Rules
+- Lead with a personal hook. "I was wrong about..." / "3 months
+  ago I..." / "Everyone told me to..."
+- First line is EVERYTHING. LinkedIn truncates after ~210 characters
+  with a "see more" button. if your hook isnt in that first line,
+  nobody clicks
+- Use [[hooks]] — proof hooks and playbook hooks perform best
+- Match [[brand-voice]] but more professional. see [[platform-tone]]
+- Short paragraphs. one idea per paragraph. white space is your friend
+- No hashtags in the body. if you use them, max 3 at the very end
+- Links in the first comment, never in the post body. algo penalizes
+
+## Formats That Work
+1. Personal Narrative — "I [did/learned/failed at something]"
+   → lesson → actionable takeaway. LinkedIn's bread and butter
+2. The Listicle Post — "7 things I learned about [topic]:" with
+   numbered items. each item 1-2 sentences
+3. The Contrarian Take — challenge conventional wisdom. open with
+   a bold statement, follow with reasoning
+4. The Case Study — real results, real numbers, real process.
+   "How we went from [before] to [after] in [timeframe]"
+5. Document/Carousel Posts — PDF slides uploaded as a document.
+   10-15 slides, one idea per slide, bold headlines
+
+## Posting Strategy
+- Frequency: 3-5x/week
+- Best times: 7-8am, 12pm, 5-6pm (business hours)
+- Comment on 10 relevant posts before publishing yours (engagement hack)
+- See [[scheduling]] for full calendar
+
+## Audience on LinkedIn
+- Mix of [[builders]] and [[casual]]
+- They want: professional development, business insights, real
+  stories with lessons, tools that make them better at their job
+- They dont want: overly casual language, memes, hot takes
+  without any substance behind them
+- Higher ticket potential than X — these people have budgets
+
+## Repurposing Notes
+- LinkedIn is usually the SECOND platform in the [[repurpose]] chain
+- Take the X post → add personal narrative, expand to 1,300+ chars
+- Add professional framing ("In my experience managing 10 accounts...")
+- The hook usually needs a full rewrite — what works on X doesnt
+  always translate to LinkedIn
+- Can extract slides from this for [[instagram]] carousels
+```
+
+```
+# Instagram
+
+## Platform DNA
+- Caption limit: 2,200 characters, but most engagement comes from
+  the visual (carousel slides or Reels)
+- Vibe: visual-first. the image/carousel stops the scroll, the
+  caption closes the deal. bold, clean, designed
+- Audience: wider and more [[casual]] than X or LinkedIn. more
+  aspirational, more visual learners
+
+## Content Rules
+- Carousels are king. 7-10 slides, one idea per slide
+- Slide 1 = the hook. bold claim, large text, something contrarian
+  or curiosity-driven. use [[hooks]], discovery and proof hooks
+  work best in a visual format
+- Match [[brand-voice]] but simpler language. see [[platform-tone]]
+- Captions should add context the slides dont cover. dont just
+  repeat the slides in text form, thats lazy
+- Hashtags: 5-10 relevant ones at the end of caption. unlike X,
+  hashtags actually work on Instagram for discovery
+- CTA in the last slide AND caption: "Save this for later" /
+  "Follow for more [topic]" / "Share with someone who needs this"
+
+## Carousel Design Rules
+- Font: bold, sans-serif, high contrast against background
+- One idea per slide. max 30 words per slide
+- Consistent color scheme across all slides (your brand colors)
+- Slide 1: big bold text, no more than 8 words
+- Last slide: clear CTA with your handle
+
+## Posting Strategy
+- Frequency: 4-5x/week (3 carousels, 1-2 Reels)
+- Best times: 11am-1pm, 7-9pm
+- See [[scheduling]]
+
+## Repurposing Notes
+- Carousels come from expanding [[x]] threads into visual slides
+- Reels come from adapting [[tiktok]] scripts
+- Instagram version should be the MOST visually polished version
+  of any piece of content in the whole system
+- See [[repurpose]] for the full chain
+```
+
+```
+# TikTok
+
+## Platform DNA
+- Video platform. everything is video. 15 seconds to 10 minutes,
+  sweet spot is 45-90 seconds
+- Vibe: raw, unpolished, authentic. overproduced content actually
+  performs WORSE here. people want real, not perfect
+- Audience: youngest demographic. more [[casual]]. they're
+  discovering topics, not deep-diving
+- The algo is discovery-based — you dont need followers to go viral.
+  every video gets a chance. thats rare
+
+## Content Rules
+- Hook in the FIRST 2 SECONDS. if you dont grab them, they swipe.
+  use [[hooks]], contrarian and discovery hooks adapted for video
+- Match [[brand-voice]] but at its most casual and energetic.
+  see [[platform-tone]]
+- Talk TO the camera like you're talking to a friend
+- Screen recordings with voiceover work incredibly well for
+  tech/AI content. show, dont just tell
+- No long intros. no "hey guys welcome back". jump straight in
+- Captions/text overlays are mandatory. most people watch muted
+
+## Formats That Work
+1. The Screen Recording — show yourself doing the thing. record
+   your screen, add voiceover. 45-60 seconds
+2. The Quick Tip — one actionable tip in 30 seconds. hook → tip → result
+3. The "I Replaced X With Y" — show the transformation. before
+   vs after. works great for AI/automation content
+4. The Reaction — react to trending stuff in your niche. add your take
+
+## Script Template
+```
+
+[HOOK: 2 seconds (text overlay + voiceover)]
+
+[CONTEXT: 5 seconds]
+
+[THE HOW: 30-40 seconds]
+
+[RESULT: 5 seconds]
+
+[CTA: 3 seconds]
+
+```
+## Posting Strategy
+- Frequency: 5-7x/week (daily if you can manage it)
+- Best times: 7-9am, 12-3pm, 7-10pm
+- Post consistently for 30 days before judging results. seriously
+- See [[scheduling]]
+
+## Repurposing Notes
+- TikTok scripts come from condensing the [[x]] post into 45-60
+  seconds of spoken content
+- Focus on ONE idea from the post. dont try to cram everything in
+- Cross-post to [[instagram]] Reels and YouTube Shorts with minor tweaks
+- See [[repurpose]]
+```
+
+```
+# YouTube
+
+## Platform DNA
+- Long-form video. sweet spot is 8-12 minutes for the algorithm
+- Vibe: educational, structured, SEO-driven. YouTube is basically
+  a search engine — people come here looking for answers
+- Audience: mix of [[builders]] and [[casual]], but they're investing
+  8+ minutes of their time so they're more committed than scrollers
+- Evergreen content lives here. a good video gets views for years
+
+## Content Rules
+- TITLE IS EVERYTHING. SEO-optimized, curiosity-driven, specific.
+  "How to Build an AI Content System (Step-by-Step)" not
+  "My Content Strategy" (nobody is searching for that)
+- Thumbnail: bold text, your face (if personal brand), contrasting
+  colors. thumbnail and title together determine like 80% of clicks
+- Match [[brand-voice]] but more structured. see [[platform-tone]]
+- Use [[hooks]] in the first 30 seconds — the YouTube hook is
+  basically a spoken version of your best written hook
+- Structure with clear sections. YouTube shows chapters now, use them
+
+## Video Structure
+```
+
+[HOOK — 0:00-0:30]
+
+State the problem + promise the solution. "I run 10 social media accounts and don't write a single post manually. By the end of this video you'll know how to build the exact same system."
+
+[CONTEXT — 0:30-2:00]
+
+Why this matters. What most people get wrong. Set up the value
+
+[MAIN CONTENT — 2:00-9:00]
+
+Step-by-step walkthrough. Screen recordings, demos, examples. Break into 3-5 clear sections with timestamps
+
+[RECAP + CTA — 9:00-10:00]
+
+Summarize key points. CTA: subscribe or grab the template
+
+```
+## SEO Rules
+- Title: primary keyword, natural phrasing, under 60 chars
+- Description: first 2 lines are visible before "show more",
+  put the hook and key links there. full description 200-500 words
+- Tags: 5-10 relevant, mix broad and specific
+- Chapters: timestamps in description for each section
+
+## Posting Strategy
+- Frequency: 1-2x/week
+- Consistency matters way more than frequency on YouTube
+- Best days: Tuesday, Thursday, Saturday
+- See [[scheduling]]
+
+## Repurposing Notes
+- YouTube scripts are the MOST expanded version. built from
+  combining [[x]] + [[linkedin]] into a structured tutorial
+- Extract Shorts from the best 60-second segments, cross-post
+  to [[tiktok]] and [[instagram]] Reels
+- Description links back to your newsletter and lead magnets
+- See [[repurpose]]
+```
+
+These follow the same structure as above. I'll give condensed versions since the pattern should be obvious by now:
+
+```
+# Threads
+
+## Platform DNA
+- Text-first, conversational, opinion-driven
+- 500 character limit per post
+- Vibe: relaxed, community-feel, more casual than X
+- Audience: growing, more [[casual]], less tech-heavy
+
+## Content Rules
+- Opinions and hot takes perform best
+- More conversational than [[x]], think "talking out loud"
+- No hashtags. no links. pure text engagement
+- Match [[brand-voice]] at its most relaxed. see [[platform-tone]]
+- Cross-post adapted versions of [[x]] content, but rewrite
+  the hook and soften the tone
+
+## Repurposing
+- Adapted from [[x]] with more conversational tone
+- Remove any CTA that requires links
+- See [[repurpose]]
+```
+
+```
+# Facebook
+
+## Platform DNA
+- Older demographic, community-driven, group-focused
+- No hard character limit, sweet spot 300-800 chars
+- Vibe: community, discussion. less "personal brand",
+  more "helpful community member"
+
+## Content Rules
+- Questions and discussion prompts drive engagement
+- Longer captions with personal context work well
+- Video (native upload) gets algo priority
+- Match [[brand-voice]] but warmer. see [[platform-tone]]
+- Share to relevant groups, not just your profile
+
+## Repurposing
+- Expand [[x]] content with more personal context
+- Add a question at the end to drive comments
+- See [[repurpose]]
+```
+
+```
+# Newsletter
+
+## Platform DNA
+- Email-based. you own the audience (no algorithm to fight)
+- 1,000-2,000 words per issue. deep-dive format
+- Vibe: direct, personal. like a letter from a friend whos
+  also your mentor. most personal of all platforms
+
+## Content Rules
+- Subject line = your hook. use [[hooks]] adapted for email.
+  "The system that replaced my $8k/mo content team" not
+  "Weekly Newsletter #47" (nobody opens that)
+- Open with a story or personal observation, then transition
+  to the tactical stuff
+- One core topic per issue. dont try to cover everything
+- Match [[brand-voice]] at its most personal. see [[platform-tone]]
+- End with ONE clear CTA. reply to the email, check out a
+  resource, or try something specific
+- Plain text or minimal design. fancy templates look like
+  marketing spam. plain text looks like a real person
+
+## Repurposing
+- Deepest version of your weekly best topic
+- Combine the [[x]] take + [[linkedin]] narrative + exclusive
+  insights not shared on social
+- This is where you go deep on the "how" behind your posts
+- See [[repurpose]]
+```
+
+[ Setup Your DNA Below ]↓↓↓
+
+This file defines who you are across ALL platforms
+
+It's the source of truth every other file references. Think of it like your content DNA (the platforms adapt the expression, but the underlying identity stays the same):
+
+```
+# Brand Voice
+
+This file defines the core personality behind all content.
+Every platform node ([[x]], [[linkedin]], [[instagram]], etc.)
+references this and adapts it to their context.
+See [[platform-tone]] for platform-specific adjustments.
+
+## Core Personality
+
+[Write 3-5 sentences describing your brands personality.
+be specific. heres an example for a builder/AI niche:]
+
+We're a builder who teaches while building. casual authority —
+we know our stuff but never talk down to anyone. we share real
+numbers, real mistakes, real systems. we talk to our audience
+like friends who are building alongside us. direct, practical,
+allergic to fluff.
+
+## Tone Markers
+
+- Casual but credible — we use "imo", "btw", "lol" naturally
+  but back everything with real data and experience
+- Direct and personal — we say "I" a lot, address the reader
+  as "you", we're coaching not lecturing
+- Raw honesty over polish — "the biggest mistake is skipping
+  validation" not "one common pitfall is insufficient market
+  validation processes"
+- Coaching energy — every piece should feel like we're walking
+  them through something step by step
+- Numbers and proof — include specific metrics whenever possible.
+  "$4k MRR", "200 leads/week", "10 accounts". specifics = trust
+
+## Vocabulary
+
+Words we use: build, ship, automate, system, playbook, stack,
+workflow, scale, compound, iterate
+
+Words we NEVER use: moreover, furthermore, in conclusion,
+it's worth noting, delve, synergy, circle back, holistic
+
+Phrases we use:
+- "here's what actually works"
+- "most people get this wrong"
+- "the real reason is..."
+- "study this."
+- "hope you loved it."
+
+Phrases we never use:
+- "In today's fast-paced world..."
+- "It goes without saying..."
+- "Without further ado..."
+- any corporate buzzword soup
+
+## Formatting Rules
+- Lowercase by default for body text
+- Title case or ALL CAPS only for hooks/headlines
+- Bullet points with - prefix
+- Line breaks between every thought, never dense paragraphs
+- No hashtags (except Instagram where they actually help)
+- Minimal emojis, only as signoffs
+```
+
+Also, one of the most important parts and probably you will have to apply some changes as it will start generating the drafts
+
+But don't worry if you build this system around Claude, since it will rework all changes automatically inside of your project
+
+This is one of my favorite files in the whole system. It's the bridge between your universal voice and each platform's culture
+
+Like how you talk differently at a house party vs a business dinner vs a podcast interview (same person, different energy):
+
+```
+# Platform Tone Adaptations
+
+Core voice defined in [[brand-voice]]. This file defines
+how that voice ADAPTS per platform.
+
+## X / Twitter
+- Most casual version of the voice
+- Lowercase everything
+- Short sentences. punchy. no filler
+- "lol", "imo", "btw" used freely
+- Sarcasm and irony welcome
+- Example: "you don't need 10 tools. you need 10 markdown files.
+  study this."
+
+## LinkedIn
+- Professional but still human. not corporate
+- "I" used extensively but framed as lessons/insights
+- Longer sentences ok. more narrative structure
+- Replace "lol" with thoughtful observations
+- Example: "I spent 3 months building a content system that now
+  runs 10 accounts for me. Here's exactly what I built."
+
+## Instagram
+- Simplest language. visual-first, text supports the visuals
+- Carousel text: bold, short, one idea per slide. max 8 words on slide 1
+- Caption: more detailed but still scannable
+- Aspirational energy, "you can do this too"
+- Example: "I run 10 accounts with zero manual writing.
+  Swipe to see the exact system."
+
+## TikTok
+- Most energetic version of the voice
+- Spoken, not written. write how you actually talk
+- Fast-paced, no filler, hook immediately
+- "This is insane" energy is allowed here
+- Example: "You're still writing content manually?
+  Let me show you what I use instead."
+
+## YouTube
+- Most structured and educational
+- Longer, more detailed, more step-by-step
+- Authority voice — you're the expert teaching a class
+- Still casual but with depth
+- Example: "Today I'm showing you step by step how to build
+  a content system using nothing but markdown files and AI."
+
+## Newsletter
+- Most personal and intimate
+- Like writing a letter to a smart friend
+- Can be vulnerable, reflective, behind-the-scenes
+- Longest-form version of any thought
+
+## Threads
+- Similar to X but even more relaxed
+- More opinion, less structure
+- "shower thought" energy
+- Example: "hot take: a folder of markdown files is more
+  powerful than any content marketing tool on the market"
+
+## Facebook
+- Warmest and most community-oriented
+- Ask questions. invite discussion
+- More personal stories, less tactical playbooks
+
+## The Rule
+
+When adapting across platforms: CHANGE the tone first.
+Then change the format. Then change the hook. The voice stays
+the same — only the delivery changes.
+```
+
+Hooks are where 80% of your content's performance is decided
+
+You could write the most incredible post ever, but if the first line doesn't stop someone mid-scroll, NOBODY will ever read it
+
+It's like having a perfect restaurant in a back alley with no sign
+
+CTRL C + CTRL V:
+
+```
+# Hook Formulas
+
+Use these to open every post. Match hook type to platform and topic.
+See [[platform-tone]] for delivery adjustments.
+
+## The Playbook Hook
+"Here's [N] steps to [desirable outcome]:"
+- Best on: X, LinkedIn, YouTube titles
+- Examples:
+  - "Here's 7 steps to automate your content production:"
+  - "Here's how I run 10 accounts without writing manually:"
+
+## The Proof Hook
+"[Before metric] → [after metric] in [timeframe]"
+- Best on: X, LinkedIn
+- Examples:
+  - "0 → 10 accounts managed in 30 days using markdown files"
+  - "$8k/mo content spend → $0 after building one system"
+
+## The Contrarian Hook
+"You don't need [conventional thing]. You need [this instead]."
+- Best on: X, Threads
+- Examples:
+  - "You don't need a content team. You need a skill graph."
+  - "You don't need 15 tools. You need 15 markdown files."
+
+## The Replacement Hook
+"I replaced [expensive/complex thing] with [simple thing]"
+- Best on: X, TikTok, Instagram slide 1
+- Examples:
+  - "I replaced my $8k/mo content team with a folder of .md files"
+  - "I replaced 5 content tools with 30 wikilinked markdown files"
+
+## The Discovery Hook
+"I just found [valuable thing]"
+- Best on: X
+- Examples:
+  - "I just found a way to make AI write differently per platform"
+
+## The Behind-the-Scenes Hook
+"I run [impressive thing] and [surprising method]"
+- Best on: X, LinkedIn, YouTube titles
+- Examples:
+  - "I run 10 social media accounts and don't write a single post"
+
+## Rules
+- Test 2-3 hooks per topic before publishing
+- Track which types get the most engagement PER PLATFORM
+- Update this weekly. remove underperformers, add new winners
+- Hook for [[x]] is almost never the same as hook for [[linkedin]]
+```
+
+The right hooks define 70% success of your tweet/post/video
+
+Pay a lot of attention here's too
+
+OK this is the file that makes the whole thing actually work
+
+Without this, you just have a bunch of reference docs. WITH this, you have a production pipeline
+
+One idea goes in, ten platform-native posts come out:
+
+```
+# Repurposing Chain
+
+One idea enters. Ten platform-native posts come out. Each one
+THINKS about the topic differently — this is NOT reformatting.
+
+## The Chain Order
+
+Write in this order. Each step builds on the previous but adapts.
+
+### Step 1: [[x]] (Write First)
+X forces brevity. starting here makes you find the core idea
+and the sharpest hook. everything else expands from this.
+- Output: one tweet or long-form tweet (280-2,000 chars)
+
+### Step 2: [[linkedin]] (Expand with Narrative)
+Take the X post, add personal story and deeper analysis.
+Don't just add more words — add a DIFFERENT ANGLE.
+- X says: "I replaced my content team with .md files"
+- LinkedIn says: "3 months ago I was spending $8k/mo on content.
+  Here's what happened when I built a system with markdown and Claude"
+- Output: long-form post (1,300-2,000 chars)
+
+### Step 3: [[instagram]] (Make it Visual)
+Extract key points and turn into carousel slides. angle shifts
+to visual-first, scannable, aspirational.
+- Output: 7-10 slide carousel + caption
+- Slide 1 = bold hook
+- Each slide = one idea, max 30 words
+
+### Step 4: [[tiktok]] (Make it Raw)
+Condense to a 45-60 second script. the angle is SHOWING not telling.
+- Output: video script with timestamps
+- Hook in first 2 seconds
+- Show the system in action if possible
+
+### Step 5: [[youtube]] (Make it Deep)
+Combine everything into a structured tutorial. the viewer should
+be able to REPLICATE what you're showing.
+- Output: full video outline (8-12 min)
+- SEO title + description
+- Timestamps for chapters
+
+### Step 6: [[newsletter]] (Make it Personal)
+Deepest, most personal take. behind-the-scenes context, lessons,
+exclusive insights not shared on social.
+- Output: 1,000-2,000 word email
+
+### Step 7: [[threads]] (Make it Conversational)
+Adapt X version with more relaxed, opinion-driven angle.
+- Output: 1-3 short posts (under 500 chars each)
+
+### Step 8: [[facebook]] (Make it Community)
+Add a discussion question. frame as invitation to share, not
+just consume.
+- Output: post with a question at the end
+
+## The Litmus Test
+
+Each platform version should pass this test:
+
+"If someone followed me on ALL platforms, would they be
+annoyed seeing the same thing everywhere?"
+
+If yes → you're reformatting, not rethinking. go back
+If no → you've made 8 unique pieces from one idea. thats the goal
+
+## What Actually Changes Between Platforms
+
+| Element | How It Adapts |
+|---------|--------------|
+| Angle | Different entry point into the same topic |
+| Hook | Rewritten per platform |
+| Tone | Adjusted per [[platform-tone]] |
+| Format | Thread vs carousel vs video vs long-form |
+| Length | 280 chars → 2,000 words |
+| Depth | Surface insight → deep tutorial |
+
+## Batch Workflow
+
+1. Write ALL platform versions in one session, not across days
+2. Follow the chain order — each step feeds the next
+3. Review all 8 outputs together before publishing any
+4. Schedule using [[scheduling]] to stagger across the week
+```
+
+```
+# Scheduling & Posting Calendar
+
+## Weekly Frequency
+| Platform | Posts/Week | Best Days |
+|----------|-----------|-----------|
+| X | 7-10 | Daily |
+| LinkedIn | 3-5 | Mon-Thu |
+| Instagram | 4-5 | Mon, Wed, Fri, Sat |
+| TikTok | 5-7 | Daily |
+| YouTube | 1-2 | Tue, Thu or Sat |
+| Newsletter | 1 | Tue or Thu morning |
+| Threads | 3-5 | whenever posting to X |
+| Facebook | 3 | Tue, Thu, Sat |
+
+## Peak Posting Times
+| Platform | Best Times |
+|----------|-----------|
+| X | 8-9am, 12-1pm, 5-6pm |
+| LinkedIn | 7-8am, 12pm, 5-6pm |
+| Instagram | 11am-1pm, 7-9pm |
+| TikTok | 7-9am, 12-3pm, 7-10pm |
+| YouTube | 2-4pm day before (indexes overnight) |
+| Newsletter | 8-10am |
+
+## Batch Workflow
+
+Weekly Batch (Sunday or Monday):
+1. Choose 2-3 topics for the week
+2. Run the full [[repurpose]] chain for each
+3. This gives you 16-24 posts for the whole week in one sitting
+4. Schedule everything (Buffer, Hypefury, Later, or native schedulers)
+
+Daily (15 min):
+1. Check engagement
+2. Reply to comments in the first hour
+3. Note what hooks/formats performed
+
+Weekly Review (Friday):
+1. What topics performed best? → more of those
+2. What hook types drove engagement? → update [[hooks]]
+3. Which platform growing fastest? → double down
+4. Any new content ideas from comments/DMs?
+```
+
+```
+# Content Types & Formats
+
+## Thread / Multi-Part Post
+- Platforms: X (thread), LinkedIn (multi-paragraph), Threads
+- When: step-by-step guides, listicles, breakdowns
+- Structure: hook → numbered steps → conclusion + CTA
+
+## Carousel / Slide Post
+- Platforms: Instagram, LinkedIn (document posts)
+- When: visual guides, processes, comparisons
+- Structure: slide 1 = hook, slides 2-9 = content, last = CTA
+
+## Short-Form Video
+- Platforms: TikTok, Instagram Reels, YouTube Shorts
+- When: quick tips, demos, reactions, behind-the-scenes
+- Structure: hook (2 sec) → content (30-50 sec) → CTA (5 sec)
+
+## Long-Form Video
+- Platforms: YouTube
+- When: tutorials, deep dives, system walkthroughs
+- Structure: hook (30 sec) → context (90 sec) → main (6-8 min) → recap
+
+## Long-Form Text
+- Platforms: Newsletter, LinkedIn articles, blog
+- When: deep analysis, personal stories, comprehensive guides
+- Length: 1,000-3,000 words
+
+## Short Take
+- Platforms: X, Threads, Facebook
+- When: hot takes, observations, single insights
+- Length: under 280 chars (X) or 500 chars (Threads)
+```
+
+These 2 files identify to which audience this type of content will fit the best and if you want to touch some exact one, it just recreate an idea and adapt exactly under this audience
+
+```
+# Audience: Builders
+
+## Who They Are
+Indie hackers, solo founders, AI engineers, SaaS builders,
+freelancers, agency owners. already building something or
+actively planning to. technical enough to implement what you teach.
+revenue range $0-$50k/mo, aspiring to scale
+
+## What They Want
+- Actionable playbooks, not theory. steps they can follow TODAY
+- Real numbers. revenue, metrics, costs, time saved
+- Tool recommendations with context, not just "use this tool"
+  but "heres when and why"
+- Systems thinking — how pieces connect, not just individual tactics
+
+## How to Talk to Them
+- Direct and specific. "Here's 5 steps" not "consider exploring"
+- Show your work. real screenshots, real numbers, real process
+- Peer energy — building alongside them, not above them
+- Challenge them: "if you're not doing this, you're leaving
+  money on the table"
+```
+
+```
+# Audience: Casual
+
+## Who They Are
+Curious about AI/tech but not deeply technical. might be
+professionals in non-tech roles thinking about AI. early in
+their journey, consuming more than creating. aspirational —
+they want to be builders but havent started yet
+
+## What They Want
+- Simplified explanations of complex topics
+- Inspiration and "I can do this too" energy
+- Entry points — where to start, what to learn first
+- Results that seem achievable, not intimidating
+
+## How to Talk to Them
+- Simpler language. explain acronyms. define terms
+- More encouraging, less challenging
+- "Here's the easiest way to start" energy
+- Analogies and comparisons to things they already understand
+```
+
+Alright, you have all the files. Let me show you how to plug it in and start producing:
+
+Method 1: Claude Projects (what I'd recommend)
+
+1.   Create a new Project in Claude called "Content Skill Graph"
+
+2.   Upload all 17 files into the project knowledge base
+
+3.   Start a new conversation and give it a topic:
+
+```
+Topic: How I use markdown files to run 10 social media accounts
+without writing anything manually
+
+Follow the execution instructions in index.md. Produce one
+native post for each platform in the repurpose chain order.
+Each post should think about the topic differently — not
+reformatted, RETHOUGHT for each platform.
+```
+
+4. Claude reads index.md, follows the wikilinks, reads platform files, voice files, hooks, repurposing chain, and outputs 8 platform-native posts
+
+5. Review. Schedule. Publish. Go do something else with your day
+
+Method 2: Paste Context (simplest, works with anything)
+
+If you don't have Claude Pro or prefer another tool:
+
+1.   Copy the contents of index.md
+
+2.   Paste it into any AI chat (Claude free, ChatGPT, whatever)
+
+3.   Add: "Here's my content system. When I give you a topic follow the execution instructions. For each platform write a native post that rethinks the topic for that platform, not reformatted, completely rethought"
+
+4.   Give it topics
+
+For better results also paste brand-voice.md and whichever platform files you're producing for. More context = better output. Always
+
+Method 3: Cursor / Claude Code (most powerful, most technical)
+
+1.   Keep the skill graph folder on your local machine
+
+2.   Point Cursor or Claude Code at the folder
+
+3.   The agent reads files directly from your file system
+
+4.   It can also UPDATE the files by adding new hooks to hooks.md, refining platform-tone.md based on what's performing
+
+This is the fully autonomous version where the graph literally evolves itself over time. It's like giving the system a memory that compounds
+
+Let me show you what "rethinking, not reformatting" actually means in practice. Because this is the part that separates a skill graph from a copy-paste machine
+
+Say your topic is: "How I use AI to manage 10 social media accounts"
+
+Here's what each platform version looks like:
+
+X: contrarian thread, lowercase casual, step-by-step. "you don't need a content team. you need 30 markdown files. here's how I run 10 accounts without writing a single post manually:"
+
+LinkedIn: personal narrative, professional tone, ~1,500 words. "6 months ago, I was spending $8,000 a month on content production across 10 platforms. Today I spend $0. Here's exactly what changed."
+
+Instagram: 7-slide carousel, visual-first, bold claim on slide 1. Slide 1: "I Run 10 Accounts And Don't Write Anything." Slides 2-7: the system broken into visual steps. Slide 8: "Save this. Follow for more"
+
+TikTok: 45-second raw screen recording script. "You're still writing content manually for every single platform? Let me show you what I use instead." [shows the folder structure, Obsidian graph view, Claude spitting out posts]
+
+YouTube: SEO title + structured outline, 8-minute format. "How to Run 10 Social Media Accounts with AI (Complete System Walkthrough)" — full tutorial with screen recording
+
+Newsletter: 1,500-word deep dive. "This week I want to pull back the curtain on something I've been building quietly for months..."
+
+Threads: hot take, conversational. "hot take: the future of content isn't AI that writes for you. it's AI that thinks like 10 different people for you"
+
+Facebook: community discussion. "Has anyone else tried building a system to manage multiple social accounts at once? Here's what I've been experimenting with — curious what you all think"
+
+Same topic. Eight completely different pieces of content. Each one native to its platform. Each one valuable even to someone who follows you literally everywhere
+
+Just provide the topic and get 8 different angles at once
+
+1.   Create the folder. 17 files, 4 folders. Takes 2 minutes. Seriously, do it right now
+
+2.  Fill in index.md and brand-voice.md first. These two define everything else. If you don't know who you are and what your system does, the other files won't matter
+
+3. Fill in the platform files for your top 3 platforms. You don't need all 8 on day one. Start with the 3 where you're most active. Add the rest later
+
+4. Fill in hooks.md and repurpose.md. These are your engine. How you start posts and how you multiply them
+
+5.  Upload everything to Claude Projects (or paste into whatever AI tool you use)
+
+6.  Give it a topic and test. See what comes out. Adjust the files based on the output. First version won't be perfect and that's fine, it gets better over time you refine the nodes
+
+7. Iterate weekly. Update hooks.md with what's performing. Refine platform-tone.md as you learn what sounds right. Add new platform files when you're ready
+
+The skill graph is designed to grow. Start small, add nodes, refine connections. Every week it gets smarter because you're encoding what you've learned into the files themselves
+
+It's literally like compound interest but for your content system
+
+One folder. 17 markdown files. One AI agent. 10 platforms. ZERO manual writing
+
+That's how my current content engine looks like and I guess in few weeks I will make it even more adaptive and will improve research part
+
+If you loved this article and you found it interesting, please, put the LIKE + RT ❤️
+
+If this article collects 2,000+ Likes, I release a detailed video guide + my "Research Engine" in one more article
+
+Now, it's time to apply to your system buddies.

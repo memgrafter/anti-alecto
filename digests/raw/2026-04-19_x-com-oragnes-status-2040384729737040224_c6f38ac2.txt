@@ -1,0 +1,45 @@
+X thread capture
+
+# 比特币橙子Trader on X: "卧槽，这个仓库思路我是挺佩服的～ 能把任意公开的 GitHub 仓库逆向工程成“原始自然语言提示（prompt）”。 简单说就是： 你输入一个 GitHub 仓库链接，它就会自动抓取仓库的结构、README、文件树等信息，用 AI（比如 Gemini）帮你生成一个完整、自然的提示词。 把这个提示词直接丢给 https://t.co/EuF92hxB7g" / X
+
+Don’t miss what’s happening
+
+People on X are the first to know.
+
+Log in
+
+Sign up
+
+# [](http://x.com/)
+
+## Post
+
+See new posts
+
+# Conversation
+
+[](http://x.com/oragnes)
+
+比特币橙子Trader
+
+@oragnes
+
+Show translation
+
+卧槽，这个仓库思路我是挺佩服的～ 能把任意公开的 GitHub 仓库逆向工程成“原始自然语言提示（prompt）”。 简单说就是： 你输入一个 GitHub 仓库链接，它就会自动抓取仓库的结构、README、文件树等信息，用 AI（比如 Gemini）帮你生成一个完整、自然的提示词。 把这个提示词直接丢给 Claude、Cursor、Windsurf 等 AI 编程工具，AI 就能更好的理解。 主要用处： 快速学习一个项目的“构建思路”和提示风格（不用一行一行读代码） 复制/重现别人用 AI 写的项目（学习提示词） 仓库&体验地址
+
+11:03 AM · Apr 4, 2026
+
+·
+
+77.3K Views
+
+21
+
+153
+
+833
+
+1.2K
+
+Read 21 replies

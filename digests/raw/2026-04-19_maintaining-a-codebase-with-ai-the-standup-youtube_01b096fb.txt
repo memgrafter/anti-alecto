@@ -1,0 +1,1345 @@
+Welcome everybody to the stand-up. We
+have quite the list today and we're
+going to be talking about quite the
+topic. It has been all over Twitter, the
+new Next.js clone from Cloudflare by
+Next. And with us we have on we have
+Dane from Cloudflare CTO, correct? Uh we
+have Steve. Steve, sorry I do not know
+your position. And Dylan, of course,
+most people here know Dylan, streamer
+extraordinaire. Uh if you guys could
+take a moment maybe introduce yourselves
+a little bit better, that would probably
+be the best.
+>> That would be better. That would be
+good, actually.
+>> [screaming]
+>> Uh anyways, I'm sorry. Yeah, thanks a
+lot for having me on.
+Dane Connect, I'm the Cloudflare CTO.
+Been at Cloudflare for a little over 14
+years.
+Uh and
+trying not to break the internet every
+day. Okay, that's reasonable. Yeah,
+because when Cloudflare goes down, so
+does the internet. Uh I'm Steve
+Faulkner. I'm the director of
+engineering for Workers, containers,
+agents SDK, bunch of other stuff. About
+100 people. So responsible for a bunch
+of our like developer platform products.
+Uh I've been only for 2 years, so Dane's
+got got a few on me. I guess we're going
+in order of seniority. Dylan, go ahead.
+>> I'm the the least senior by far here.
+>> [laughter]
+>> I'm an engineer
+at Cloudflare. I've been here for four
+or five months now.
+Uh and working on on one of our AI and
+agent teams. And as chat knows, I do a
+lot of streaming. So a lot of fun stuff.
+>> Also one of the founders of TweetMash
+and the Real Humans. So I mean
+Dylan Moscow He was
+He was definitely not moonlighting, to
+be clear. Definitely not. There was no
+nothing during that time period was
+ever involved in. I think there's a lot
+of ways we can introduce this topic. So
+uh I think it probably be best just for
+everybody kind of getting up to speed.
+Why don't you kind of give like a pitch
+of what is by Next and what is or what
+was like the goal for you going into
+this
+shall we say experiment?
+>> was pretty much everything we do. We do
+we do it for customers. It's you know,
+for almost 5 years now it's been one of
+the biggest requests is how do you make
+Next
+easier to deploy on Cloudflare?
+And you know,
+we recognize we have a slightly
+different architecture.
+You know, we have region Earth. Deploy
+once, goes everywhere.
+That applies certain constraints to how
+you can build things on Cloudflare. I
+mean there's always going to be
+trade-offs.
+So you know,
+we understand that
+you know, Next was built for more
+traditional environments and
+no issue with that. And so you know,
+we've we've always tried to figure out
+ways to make it easier to deploy on
+Cloudflare cuz that's what the customers
+are asking for.
+And
+actually last summer Steve
+pitched the idea that
+let's have one of the interns just try
+this. He kind of had the idea that you
+know,
+the the next light surface area with
+with the next APIs actually could work.
+He thought it through a little bit and
+we brought on
+an intern who
+you know, he he gave it a good shot. You
+know, interns are only here for 3
+months. He he got a lot of the paid
+router
+surface area done. And and
+you know, we kind of put that on the
+shelf
+cuz we realized it's going to be quite
+an investment to actually
+>> lamp shelf or a different one? I don't
+know. Probably probably more in Steve's
+garage. Okay.
+>> [laughter]
+>> Yeah. Yeah. And and then I I guess Steve
+you know, a month month and a half ago,
+2 months ago was I guess in his garage
+and uh said hey, I have a new I have an
+electric screwdriver now.
+I'm going to let's see if I can give it
+a give it a go
+and finish this project out. Teach,
+production's down.
+I don't concern myself with such
+matters.
+>> What do you mean production doesn't
+concern you? I've shipped 37, nay,
+38 features today.
+Teach always makes [music] the mess and
+I always clean it up. I'm better than
+that. I don't have to be a janitor.
+Someone has to be the adult around here.
+Who Who is that? It's me, your Westley
+Godfather.
+John John Carmack? What? No, it's me,
+Trash. Oh.
+Wait. Are you here to finally get
+management to understand software? What?
+I'm a Westley Godfather, not a miracle
+worker. Oh. Then why are you here?
+I'm here to tell you about Sentry
+>> [music]
+>> the world's first AI debugger that
+actually has access to all of your logs,
+stack traces, code, commit history, and
+more. Code breaks, but you can get them
+fixed [music] faster with Sentry. Who
+are you talking to? What?
+Back to the stand-up. Build with AI.
+Fixed with Sentry.
+Yeah, it was it was really for me it was
+all about AI, right? I mean Next and
+sort of applying it to V was the problem
+that I ended up picking, but it was more
+about like how can I push out AI in all
+these ways and these limits and
+can I can I just take it further than
+I've taken any other project? And so it
+just sort of the the right problem at
+the moment.
+>> Okay, can we go back to the intern for a
+quick second? What was the intern's
+reaction when you're just like hey,
+make Next.js for Cloudflare, no
+mistakes. Like what what was the what
+[laughter] was that experience like?
+He was excited. It was one of our you
+know, interns is more ambitious than
+most and he did really want something
+big and juicy to try. And so I said, hey
+here's a big juicy thing.
+You know, see how far you get. And and
+honestly like we scoped it initially
+just to pages. I didn't think he would
+even get to touch app router before you
+know, 3 months. And he made a decent
+amount of product on projects on pages.
+Like it it did kind of work. At least
+the basics. And so yeah, it it at least
+showed me that there was something there
+like a thread to pull. And then it was
+sort of like, okay now AI is here and
+can actually you know, do the rest of
+the work. How do you make the decision
+to put something on the shelf at that
+point? Because you have a somewhat
+working version of it. You have a bunch
+of customers wanting to use it. And but
+you have to maintain it afterwards. Like
+at what point what was the line that
+said, okay we're willing to maintain
+things at this point? Because obviously
+you did not go forward with the interns.
+work. Yeah, well first off this thing
+was just pages router, right? Which is
+there's a bunch of people out there that
+still are on pages router and love pages
+router and want to keep using it. So you
+know, I I could see a world where we
+would have just like done a pages router
+only version. But again, this is where
+AI just kind of keeps coming back into
+the story. If you go look at the the V
+Next repo, we maintain it with AI,
+right? We have AI bots that are doing
+triaging. We have AI bots that are
+reviewing all the PRs. We have AI bots
+that are doing security reviews. We have
+now AI bots that track the Next.js repo
+and then open up issues back into our
+repo when we find commits that are
+relevant. So
+it's like
+part of why we can keep doing this is
+because of AI, too. It's It's why we
+could do it and then it's why we could
+keep doing it. I mean I I I mean in some
+ways the fact that we're also doing this
+as open source
+it's a kind of a bigger experiment on on
+how you make open source work with
+in the AI world. You know, a lot of open
+source maintainers are really struggling
+with
+all the pull requests
+you know,
+to have to deal with the complete the
+comments and
+you know, is there more a sustainable
+way?
+And so far this has been pretty
+sustainable. Like I think there's over
+50 committers who actually we say
+they're committers, it means they they
+wrote a plan for an agent to implement
+something.
+You know, they're still using all AI
+implemented code, but you know, they're
+still committers and they're helping
+move the project forward. But then you
+know, then you have their agents talking
+to the GitHub comments.
+And and so you know, we don't have it
+all figured out, but I I feel like
+there's a model here where
+you know, you're applying
+AI in a sustainable way to open source
+and and
+yeah,
+and that's kind of the beauty of open
+source.
+I had a
+so sort of like related to that in terms
+of
+you know, what so I did a lot of stuff
+with Neovim and like maintaining a fork
+that like still cared about like we were
+trying to still make it so that it
+wasn't like completely different
+experience compared to using Vim, still
+applying like patches and a bunch of
+other stuff. I think actually you know,
+Neovim is experimenting with some stuff
+in some of the same vein of figuring out
+like hey, how do we not have to spend
+all of our time like merging over
+patches from Vim. You know, like some
+people that's like their thing. Dylan, I
+think you know it like like there's a
+few people who you're like,
+how does this person even do all of
+this? It's crazy.
+But like how you know, deciding like
+okay we're going to have this this fork
+and everything. Like how do you decide
+what features from Next makes sense to
+go into this? How do you you know,
+triage what things are most important,
+etc. Like I cuz that part for me is the
+really difficult part about like having
+a fork of something is not so much like
+hey,
+you know, decide how it
+continues to be a drop-in replacement,
+is a drop-in replacement for certain
+aspects or what? I'm interested on that
+like part of the maintainership.
+>> I think that's part of how you define
+the mission of it, right? Like
+the mission is it to be it's to be a
+it's
+not really a fork. This is a you know,
+it's just the the Next API surface, the
+official API surface put over a
+different runtime really, the V runtime.
+[clears throat]
+So we actually are are not accepting
+pull requests and feature requests for
+things that fall out of that. We are we
+are following Next completely. Versus
+today
+we launched
+M dash which is a
+I would call that you know,
+I would name this different kind of
+fork. So you know, I I call that more of
+a spiritual fork of WordPress where you
+know,
+it can import WordPress. It it looks a
+lot like WordPress in a lot of ways. But
+you know, it has a lot of unique things
+that go off the traditional path. And it
+you know, and I think its road map over
+time will diverge
+diverge more like more like a
+traditional
+fork. You know, I mean there's a long
+history of how different forks evolve
+like you know, you know, you know,
+WebKit came out of
+the you know, Linux ecosystem and then
+Chrome obviously made it you know,
+Blink. And
+sometimes they diverge. And you know,
+honestly if we didn't have forks, we
+would still be all on IE probably,
+right?
+You know, or or the the Node's
+ecosystem, right? In that case,
+Node, you know, I obviously had the fork
+to IO and
+you know, it made some points and
+it actually brought the community back
+together in a better place when it kind
+of re-merged back together.
+In general, I think it's all healthy. I
+I think
+it just you can do it at such a
+different rate and cost
+today that that's really the biggest
+part of the story.
+What are you What are you guys going to
+do if you have to kind of compete
+against some sort of surface area that
+goes against what you're doing? Cuz I
+know you made like building was one of
+the big things where you made building
+work better because it doesn't build
+every single artifact if they have some
+sort of static thing instead it analyzes
+your traffic and it's like, "Hey, we're
+only going to build 10% of your assets
+because if we do that, we're going to
+cover 99% of traffic. It's super fast
+and your build time is not 45 minutes."
+What
+Are there things they could add that you
+would have to say no to?
+Like is there a world where Vinxi is
+actually a like a different fork and no
+longer maintains the same surface area?
+Or are you like hard on same surface
+area always?
+I would say right now we're hard on same
+surface area always, right? I'm I'm not
+trying to create like drastically
+different things. I would I would say
+like never say never though, right? Like
+I mean, we're going to see where this
+goes. If they introduce something that
+completely, you know, is like against
+what, you know, like we want to do or or
+against, you know, maybe like what we
+consider best practice for architecture.
+I mean, we'll consider it, right? It's
+It's going to really depend on the thing
+and what the what is needed. I'll be
+honest, I was surprised how many people
+have come in asking for
+us to fix bugs in Next or things that
+Next has said it won't do, right?
+There's actually a pretty active
+discussion right now a feature from Next
+9 that apparently a lot of people really
+liked that they deprecated. There's a
+bunch of people that want to see
+>> versions ago or something like that,
+right?
+What is the feature? Like what is the
+request going on?
+They They switched from get initial
+props which ran on the client and the
+server to get server-side props. I I
+think I'm hopefully getting the details
+right there. And a lot of people still
+like get initial props, right? For
+various reasons. So, there's a a vocal
+community that wants us to add get
+initial props. I don't know if we'll do
+that one since it's it's deprecated and
+we're we're still trying to keep true to
+Next to at least Next 16 like where Next
+is at today.
+But it's a kind of example of things
+that are coming in that people are
+asking for. So, there's like smaller
+ones like little behavioral tweaks where
+somebody maybe says, "Oh, Next should
+have always done it this way." Well, you
+just do it that way instead.
+But so so far it's been we've been
+really holding the line of like let's
+just do it the way Next does cuz we want
+it to just, you know, match one-for-one.
+So, there's there's a
+there's a kind of a funny law that in in
+programming we have a lot of laws in
+programming, right? And one of them is
+Hyrum's Law, which is effectively that
+the internals there will eventually be
+features that aren't documented
+that you rely on that people rely on.
+How Have you ran into any Hyrum's Law
+that's like a non-documented feature,
+but just the way that it was programmed
+that people are like, "Hey, this doesn't
+work." Like Vercel that I can launch
+this on Vercel, but I can't do it on
+Cloudflare because of some funny
+internal if statement that you just
+don't have captured.
+I'd say some of that's coming from the
+community packages, right? So, things
+that are people have plugged into the
+Next internals, right? Like other
+vendors,
+other people supplying like, you know,
+things that plug into your Next.js app
+automatically and hook things in. That's
+where we've probably hit the most
+friction is that they either were
+knowingly plugging into undocumented
+Next internals or they didn't know they
+were and now they're finding out when
+they try to come use Vinxi. Like when
+someone imports like, "Do not import
+this or you will be fired." or something
+like that and they're like, "Well, bro,
+but you guys aren't supporting do not
+import this or you will be fired. That's
+literally the key to my workflow."
+>> [laughter]
+>> You'll You'll see it Next If somebody
+imports from Next dist, right? Like
+that's like Next X, you know, internal
+distribution, right? That's where they
+That's where they usually end up in a
+trouble. Do Do you guys support
+importing from Vinxi/dist or is that
+just a something [laughter] that you're
+like, "No, we will not do internal
+Right now, no. We have not done it yet.
+But I I again, never say never.
+Didn't say at the beginning like we're
+doing what customers want. This whole
+thing is about like how can we give
+people a better experience
+running Next.js like everywhere and on
+Cloudflare. And so, if there's enough
+demand for something, we'll at least
+think about it.
+The The spike The spike on new new users
+that day was, you know, one of the
+biggest
+one-day spikes ever like
+I mean, you can see that there's there's
+pent-up demand. And you know, that's why
+we why we do things here.
+What's the like, you know, obviously
+right now it can't do literally
+everything. What's the path or like what
+would make you guys feel like it moves
+out of like an experiment into something
+that's like not experimental or you
+would say is like, "Oh, we're we feel
+good about this."
+We're We're working through that now.
+So, probably the big one you already
+mentioned is is proper
+pre-rendering for everything. I mean,
+some people still want that, right? They
+don't want the percentage pre-rendering.
+And so,
+we've got some stuff going on right now
+for that.
+There's some ways just some like a lot
+of little like things that Next does a
+little differently and we're trying to
+figure out like do we want to do it a
+little differently? You know, some of
+these things don't map cleanly between
+Veet and Turbopack, right? So, there's
+stuff where we're trying to still work
+out some details. It's all small stuff
+where like
+like a hard navigation might happen in
+our case, but it wouldn't happen in Next
+because, you know, they do some sort of
+like soft navigation, you know, hijack
+into what the browser is going on. So,
+there's a few examples of that, but it
+really mostly works, right? Like if you
+look at like the bulk of what people
+are, you know, doing with Next and not
+sort of the long tail of new API
+features, but, you know, routing and
+hydration, server-side rendering all
+works. I'm I'm interested a little bit
+in sort of just like,
+you know, you said a lot of it is, you
+know, people with their AI agents. Like
+I'm interested in knowing like how do
+you guys manage
+that from like a hey, it's a fast-moving
+thing. We're experimenting. People are
+running this in production. How do we
+make sure we don't just like in-slopify
+our entire like app or release like
+I mean, I know that it's all the rage
+these days to add 37K lines of code a
+day and you're like, "If you're not
+doing that, you're getting left behind."
+But I'm wondering how you guys, you
+know, prevent like that situation from
+happening from some of the stuff you
+said at the beginning.
+Yeah, so I'll give a couple examples.
+Number one, that we rely on the tests,
+right? You know, we ported a bunch of
+the Next.js tests, not all of them cuz
+they didn't all make sense to port, but
+we ported in a huge suite of tests and
+we're still porting more. So, it it's
+just having that confidence that these
+tests are doing what they think they do.
+So, we're not breaking users. We have
+end-to-end tests, unit tests, and then
+we kind of have a whole suite now of
+like smoke tests that we run against
+production deployments.
+The other thing too is there's been a
+couple times where I've had to sort of
+go in and and un-slopify things with AI.
+So,
+probably the best example is that there
+was a part that was about a 2,000-line
+template string in there that was like a
+lot of logic got like, you know, Nice.
+like clobbered into this thing. Mhm. I'm
+I'm not going to lie, it was pretty bad.
+And I I just sat down one day and I was
+like, "We cannot have this in here. This
+is unmaintainable for humans and AI."
+So, I spent I spent the weekend kicking
+off a bunch of PRs and just bit by bit
+got stuff out of there, split it out
+into its own modules. And so, like just
+going through and finding where the slop
+happens and then sort of saying, "No,
+no, I'm going to spend time
+de-slopifying that part." I've actually
+seen that exact thing many, many times
+even using Cloudflare like Hono,
+just saying like, "Hey, AI agent, let's
+go build out this thing." It's just
+like, "Got you, dog." It's just one It
+loves giant HTML strings
+or JavaScript strings and then it
+becomes impossible to start debugging
+cuz then it's just this crazy cycle of
+how do you actually know It's It's
+tough. It's a tough world.
+It's no linting, no type checking. It's
+just like the wild west, yeah. So, Yeah,
+just interpolating strings, yeah. And
+like that's my favorite way to do this.
+This is This is why I write full-stack
+JavaScript is so I can throw away JSX
+and I can use template strings.
+>> [laughter]
+>> Steve, I actually have a a good question
+for you because like you probably Hey
+Dylan, you're you're a guest here.
+You're not an interviewer. What the
+heck? No, I'm just I'm just kidding.
+Okay, go ahead, Dylan. I allow it. We'll
+allow it. We'll allow it.
+We've talked about We talked about this
+a little bit earlier when you started
+the project, but I wanted to follow up
+and ask the question again now that
+you've like had You probably have more
+experience than most people in driving a
+large code base with exclusively AI and
+like finding
+slop like this template string literal
+that you were just talking about. Like
+have you found good strategies for like
+building tooling for either the repo
+CICD or like harnesses to like prevent
+the same mistakes over and over again?
+Or like what What are like your tips for
+like
+Like there's a whole conversation to be
+had about how to properly do like
+agentic development. Like I'm I'm very
+much in the camp and like I want to keep
+my work small. I want to keep it
+isolated and I want to review every
+single line of code that goes in. But
+like
+Vinxi being like a good experiment to
+repo and like how can we like really
+maximize this? Like what have you found
+to work on putting good guardrails on
+the AI and getting good results?
+I I've mentioned already test, linting,
+stuff around Well, formatting matters a
+little less, but I think it still helps,
+right? So, some of the diffs aren't, you
+know, ridiculous. So, we we've put a lot
+of effort into that.
+I honestly like I I would say once a
+week I just go ask AI like, "Hey, what's
+the sloppiest part of this codebase and
+how can we fix it, right?"
+Like that's an important part. We also I
+do have a a scheduled process that
+updates agents.md every few days. And
+so, it goes and looks through PRs, looks
+through the comments on those PRs where
+we had AI,
+you know, finding stuff and saying,
+"Okay, how can we make sure we don't,
+you know, make these same mistakes
+again."
+This stuff is pretty wild. Like every
+time I I think I'm like, "Oh, I'm kind
+of hitting the limit. This is like it
+can't figure itself out." The answer
+just kind of seems to be throw more AI
+at it
+and it it sort of like rescues itself
+right from the brink. Um,
+I don't know. So. This is sort of become
+like a lab for us for, you know, how we
+do things internally. I mean,
+internally, you know, we are still very
+much in the, you know, engineers write
+the code
+with AI, they commit it, and you know,
+much more traditional still, you know,
+pull request
+process via human. Um,
+with AI assistance, of course.
+Um, and you know, we have strict rules
+like no vibe coding, you have to read
+every line of your code, and you have
+you basically test to it when you you do
+it. Um,
+uh, but, you know, we're we're obviously
+see that things in this project where we
+want to apply internally and try to
+think about how you do the guardrails
+not on a, you know, project that has one
+main maintainer and
+versus like, you know, a 2,000-person
+engineering org. Uh,
+and the things that we found that work
+real well there is, you know, there's
+linting, but there's also,
+you know, how you build. And so, like,
+we've we've been working internally a
+lot on what we call like the engineering
+codex,
+which is a set of RFCs that get a kind
+of rolled up into a kind of like a 10
+commandments of a lot more than 10
+on how you build everything, and then
+uh, you know, an AI reviewer internally
+uh, does it just do a security review,
+doesn't just do a, you know, performance
+review, uh, um, it actually goes over
+the codex and says, you know, is this
+how you build things at Cloudflare? And
+kind of reviews those, and some of those
+things are are things like, you know,
+kind of stay, you know, no long HTML
+strings, you know,
+obviously that's the the things that
+would you would catch and uh, hopefully
+kind of put the
+AI back to the the PR reviewer back in,
+you know,
+that back at it to to review it. Um, but
+you can see that that those things can
+kind of get applied to more pure genetic
+workflow in the future as well, too,
+those kind of guardrails.
+But, I mean, you you have to
+treat the AI like as if it was another
+engineer. I mean, AI is kind of just
+making us all clean up a lot of the tech
+debt that we had where we our readmes
+weren't up to date, our comments weren't
+good, our code wasn't structured great.
+You know, AI wants the same things as
+you know, any human developer wants when
+they come into a project really. Uh,
+so. Realistically,
+you're obviously approaching Vinayak's
+much different than you're approaching
+everything you do internally, right? I
+forget I forget the name of the the big
+the big edge, you had a name for it. Was
+in Lua for version one, it's now in Rust
+for version two. I forget I've read so
+many of your blogs at this point. I know
+there's a name for it, but uh, could you
+ever would you be okay with people
+trying to take the same approach that
+you see in Vinayak's into that area? I
+think it I mean,
+today probably not quite just cuz I
+mean,
+uh, but but I think you'd have to a
+whole different set of uh,
+test suites that that that uh,
+just the level of detail of writing
+something that is so
+specific to our hardware so that we get,
+you know, every CPU cycle is, you know,
+perfectly timed so we can mean I mean,
+it's the only way we can run at our
+scale and offer so many free things is
+if everything is kind of perfectly
+aligned there. Uh, that takes
+uh, um,
+a lot of innovation that uh, you know,
+that that you know, I think the AI is
+still good at at how you copy existing
+patterns and you you replace it. I still
+haven't seen AI, you know, invent a new
+algorithm uh,
+uh, or invent a a new way where like,
+you know, building FL, we also have
+patches that go all the way into the
+kernel that change how IPv6 hash look
+IPv4 hash lookups happen, right? Like,
+AI wouldn't know that in order to build
+this, we also need to do a kernel patch
+uh, to uh,
+to change how we you know, do do the
+socket lookups, right? Um, so I mean,
+I think the level of complexity and
+is a little different in those cases.
+Do you think any of it also is different
+like
+for this one, a lot of it is there's
+already a well-defined
+like shape and stuff that you're trying
+to match against versus like, hey, we're
+starting a
+brand new greenfield project like
+I've seen it go off the rails a lot more
+often when I'm like, hey, like, let's
+just write this, and I say like, okay,
+go, and it spins for a little bit, and
+it comes back, and I'm like, this is so
+bad. I can't believe that this generated
+this as opposed So, I'm wondering like
+your thoughts on
+is this like a particular kind of repo
+where it's special that this kind of
+strategy would work compared to like
+regular I'm driving my own product, I'm
+driving my own thing, we don't have this
+set of constraints like an API. I I
+think it's I think today that's still
+very much that is a different process.
+Right? Right? Right? I mean, in some
+ways there already is a spec for this
+out there that AI knows how to kind of
+follow and uh,
+go through. Um, I mean,
+uh,
+you know, I I can think of a few
+internal projects that uh, have existing
+shapes that we largely
+can do that with, but, you know, so many
+things that we do are just uh, you know,
+they they don't have comparables out
+there, right?
+I I I'll like middle ground this one,
+which is I I do think having the next
+test suite was a really good starting
+point. But now
+now that we're into the territory of
+having to really make decisions about
+uh, sort of more architectural things
+where maybe the the surface area is the
+same, but like underneath the hood, what
+are we doing? Are we doing things
+optimally? Are we doing things that make
+sense for Veet and not things that make
+sense for Turbopack? Like, it's it's
+almost like we've had to bring the human
+back in a little bit more in the loop,
+right? Where now we're actually having
+more discussions about like, okay, is
+this the right way to do it or not, and
+just not just letting AI go wild at the
+test suite. So, um, I definitely if
+there's anything I've learned from this,
+it's that humans, in my opinion, aren't
+going anywhere in software development.
+Um, but our role is going to change.
+I I mean, I still think there's going to
+be over over the long term I mean, more
+engineers not less. Uh,
+uh, you know,
+we see people wanting to add engineers
+in our legal department, in our finance
+department, uh, um,
+you know, uh, uh,
+the number of places that you need
+engineers to do, you know, the thinking,
+the architecture. I met with a bunch of
+interns this this morning, and I said,
+you know, I I
+we talked about how like how would they
+do versus what someone came in five
+years ago is going to be different,
+right? Uh,
+uh, you know,
+I encourage them to work on their
+communication skills, their their
+writing skills, uh,
+uh,
+um, their, you know, their their
+problem-solving skills uh, as opposed to
+just, you know, expecting to be in front
+of a computer and taking a Jira ticket
+and and and, you know, uh, uh, solving
+it like, uh, uh, you know, you you have
+to be ready to to do higher higher
+higher level things. Uh,
+there's definitely going to be a role
+and a need for that.
+Yeah, I mean, very little of my career
+has felt like I had a clearly scoped
+piece of work that I could just take a
+Jira ticket off and like do it. Anyways,
+that always seemed like I guess there
+were people doing that, but that always
+felt like that's weird. I've never had
+that experience like at work where
+it was just like, yeah, you just here's
+the well-defined task that's obvious
+what it's going to do and how long it's
+going to take. Like, just go spend your
+time on that and come back to us later.
+Like, that didn't
+I don't know. For me, that was like not
+really part of any of my jobs after like
+year one of working, it felt like.
+>> I've had I've had that happen once, and
+I realize now like looking back on that,
+that's also the same thing that I did
+TDD with.
+It's because it was so well-defined that
+we had to sit down for so long to come
+up with it.
+It's like, oh, TDD also works in this
+situation, which probably highly aligns
+with this type of approach. It's like,
+oh, we already can build out all the
+constraints in the interface and
+everything. Therefore, everything just
+works. And now I see like if I had AI
+back then, I could just say go now. Um,
+all right. So, I guess I kind of want to
+switch gears a little bit in the more
+interesting side of this discussion,
+which is uh, the receiving of of this
+uh, you know, library slash I What do
+What do we call framework? I'm not
+really sure. I never know when to call I
+don't want to, you know, use the F word
+when people get really offended about
+it. Uh, I know. It's a or meta
+framework. It's an MF. I said MFer. Uh,
+We do not say that on this podcast,
+right?
+>> this podcast. So, with that with that in
+mind, um, how how was the receiving of
+it all? Because it's hard to kind of
+suss out what people actually feel when
+you just go on Twitter.
+And so, I'm actually curious what that
+was like for you guys.
+Uh, I I can go.
+I honestly like I I honestly I saw a lot
+of the Twitter stuff, but I tried not to
+pay too much attention to it. I think
+when I we launched this, I actually like
+just turned off my phone and like went
+on a walk with my kids or something like
+that. I was like, ah, I'm not going to
+pay attention to that the rest of the
+day. Um,
+I want to build something that people
+like. That's it. At the end of the day,
+like, I want to build software that's
+useful for people. So, I've been very
+focused on like the people that are
+actually getting value out of this,
+right? I mean, Dane said, you know, 50
+plus contributors, they got this point
+of merge like 400 plus PR's in a month.
+I mean, this is like an active project,
+and so the reception in my mind has been
+really good because I see people using
+it and getting value out of it, right?
+And and people outside of Cloudflare, to
+be clear, right? I mean, that from day
+one, this has worked anywhere. It's just
+a Veet plugin. So, you can Veet start
+and run it on any server in the world,
+and it just works. Um, so I I think I've
+been very focused on that aspect of
+like, if I can make software that people
+enjoy using, then I'm going to keep
+doing that.
+I I mean, as you said, it does go back
+to customers for us. I mean, uh,
+uh, obviously I I I
+mentioned that it was, you know, the
+number of new users, new customers came
+that day was it was a just a a huge
+spike. Uh, so which, you know, that's
+gratifying, you know, that people are
+using it, and uh, uh, you know, the
+different metrics on, you know, what
+could be success there. You know,
+number of active developers for us is is
+really important. So, you know, that was
+a success from that. You know,
+uh,
+all the Twitter uh, uh,
+you know,
+it is what it is.
+So, you know, can be a little fun. Um,
+uh,
+you know,
+but uh,
+you know, it's
+it's short-lived, and you move on and
+get back to work, really.
+The
+I think the interesting thing here for
+for me, too, about it like the reception
+has been around like Veet, right? I
+mean,
+basically all of the frameworks except
+for Next have standardized on Veet. I
+mean, I think that's just how it works
+now. And so you use a Next has sort of
+been telling everybody for years like,
+"Well, we'll use Turbo Pack cuz back cuz
+we have to because it's, you know,
+whatever, better or faster or all these
+things." And I think there's just been
+like this pent-up sort of latent sense
+of like, [clears throat] "Wow, what if
+you had just used V?" And this answers
+that question. So, when I built this, I
+definitely did not spend any time on
+performance
+uh or sort of like making build times
+fast. That was not what I was trying to
+do. I was trying to get the breadth of
+coverage with API. So, it's a testament
+to V that just literally the first
+version of this was six times faster,
+right? Like that is like that that's
+how powerful V is and how good it is as
+a bumbler. The the I mean, yeah, I mean,
+what Evan built
+just the, you know,
+how many people have been able to build
+great things off of it. I mean,
+including you know, Astro, right?
+It is
+this is really more of a story about how
+great V is, right? Like none of this
+would be possible without
+that. I mean,
+you know, maybe we would have just, you
+know, been a lot more tokens, but
+you know, I think the fact that a design
+like that has been able to
+kind of get you the ubiquity and and
+still remain performant and
+is pretty amazing. We've got, I would
+say, like a wide wide range of devs that
+watch the pod. Can you explain to people
+who are not in the web dev world, why is
+there a thing called V?
+>> And then why is and also why don't
+people use V and they use other things?
+Oh, I thought for sure you were going to
+say, "And why isn't it pronounced V?" I
+was I saw I saw I threw that up for you
+Prime cuz I knew that was your one and
+then you didn't even go for it. It's a
+little weak, dude. It's clearly V. Okay,
+keep on going.
+All right. I I said
+It's funny you ask this question for
+like people who don't understand like
+web dev and then I'm like can do I we
+have an hour for me to spend talking
+about like the history of bundling on
+the web because
+>> [laughter]
+>> Like do we
+And then I want to Okay. You got to go
+back to Grunt. I would start with
+Gulp.
+Gulp was one of the greatest build tools
+of all time and I will die on that hill.
+I agree with Dylan. Dylan is correct
+about this. I don't understand why
+we can't just use Make for all this, to
+be quite honest. I love There's a group
+of people that agree with that. I still
+[laughter] use Make. Now we're cooking.
+>> have a hot take about Make. I think Make
+is overutilized in developer ecosystems
+outside of web dev outside of web dev
+and severely underutilized in web dev.
+That's my Make hot take.
+All right. So, for those that have no
+idea what V
+>> have You didn't want to follow up on the
+hot take, Prime?
+>> No, we're not because we are so far off.
+We need Okay. People are still
+three-quarters of our audience are going
+to be like, "Okay, so what is V
+[laughter]
+>> if you have a language that was invented
+beyond 2008, you typically the language
+itself
+>> also provided all the tooling. So, Go
+has its own tooling, Rust has its own
+tooling, Zig has its own tooling, and
+all that. Uh some of the older
+languages, you don't get all the tooling
+kind of also thrown into it, so it gets
+really complicated. Everyone knows
+about, you know, Java. Java was very
+very difficult back in the day. C is
+very very difficult. As you get you huge
+build systems devoted to it. And
+JavaScript is the exact same thing.
+There is no, you know, committee that
+owns the web, HTML, CSS, and JavaScript.
+These are all individually, you know,
+developed items all falling under the
+W3C Consortium and some NTC 39.
+Multiple,
+you know, multiple things are all doing
+it. And so
+>> They get a lot of stuff done, fast.
+Yeah, so that means tools There's not
+like a department of tools. So, everyone
+kind of makes up their own tool and then
+some of them got popular. There in fact
+was even Snowpack at one time, which I
+think got renamed to Parcel potentially.
+I can't remember. But there's been a lot
+of a lot of bundling
+in the web world.
+>> If I If we just make a new one, do you
+think everyone will use ours then? Yeah.
+If there's a If there's a small chance,
+TJ.
+>> [laughter]
+>> I fully support it, so.
+>> We got just one more, just one more
+framework, bro. Just one more framework.
+If you do that, I will fork V next and
+then I will rewrite V next and then the
+whole thing. V even nexter. Nice. Well,
+the wait, or do we have to change the
+prefix, right? Cuz the the VI part is
+for V, I'm assuming, right?
+>> Yes. Yes. It'd be X and X. We X A X
+nade.
+I X A I know.
+There we go. All right, so
+how about some of the sentiment? Like
+did you have any uphill battles in the
+sentiment change or did what was there
+enough social pressure that you had to
+Did you feel any of it? Like not just
+like, "Hey, we put our heads down, we
+moved on, we had a great customer day."
+Was there any fires you had to put out
+or things you had to take a little bit
+more time on kind of explaining your
+positioning?
+So so, I mean, we have a ton of respect
+for the Next.js team. We we working with
+them closely. You know, a blog recently
+came out about a Next adapters that uh
+we we helped work with the with the team
+on.
+I mean, they built a great product. I
+mean, the testament to just the number
+of developers that use it. You know,
+I obviously might tweet with a little
+tug and shake.
+You know,
+it was not meant to offend
+anyone. I just mean we do have that deep
+respect. So, you know, we did spend a
+lot of time with the team and
+making sure that, you know, they knew we
+were committed to
+was the Next adapters.
+And that we are going to be still
+committed to that cuz we've been working
+with them on that.
+And you know, uh And we're still very
+excited for that to come. I mean,
+and Steven and his team and Fred from
+the Astro team all spent a lot of time
+with with them on on that. Um
+we think they're doing, you know, great
+work with adapters and
+you know,
+and you know, a lot of this is this is
+how open source works. Like
+you know,
+um
+And you know, when adapters gets there,
+obviously, then, you know, maybe we
+won't we'll just support V next in
+in pure next as opposed to also There's
+a whole other thing we haven't been
+talking about, Open Next. Uh um but, you
+know, I think This is the
+the pressures and for forking is how you
+kind of push back innovation when
+there's not, you know, complete
+uh community support for the direction
+that you want to take something in.
+All right. Uh and then I I did want to
+talk a little bit more. I know, TJ, you
+kind of alluded to it earlier kind of
+about this whole like using AI on a
+purely on the project. Has there been
+any downsides besides for some
+slopification? Has there been any
+downsides or things that you're finding
+frustrating in this more purely AI
+approach to building something that is
+largely customer-facing?
+I Yeah, I mentioned slopification. I I
+would say
+sometimes I just feel like I'm a little
+babysitting everything too much, right?
+I've got like maybe 10 different
+workspaces going and they're all kind of
+going along in the background and then
+I'm I'm losing track of what's doing
+what and then I go check in on it and
+I'm like, "Oh, like what did you do
+here? You know, you just went down some
+weird path." And so it it it definitely
+feels like right now I'm I'm sort of
+this glorified AI babysitter. And I and
+I want to believe that like as these
+agents get better, the agents can do
+more of their babysitting for
+themselves, but right now it feels very
+much like I still have to be like
+sitting there like minding them every
+day.
+How would you describe managing your own
+team, Steve?
+>> [laughter]
+>> It's uh it it it's sort of interesting
+because like
+I I gave a talk at a at an event in SF
+about this and and sort of the
+contrasting the difference between
+managing humans and managing AI. I mean,
+AI is better at taking feedback than
+humans are, right? I mean, you can just
+tell an AI it did a bad job and it it
+won't get mad at you, right?
+But also like
+So it's it's Somebody asked me they were
+like, "Oh, you know, is is your
+management skills translate?" And I
+said, "Not really, right?" Like I mean,
+humans
+humans are like squishier, right? And we
+need like sort of more like thoughtful
+feedback. And AI you can just kind of
+say like, "Ah, this this sucks. Just do
+it again." Right? You know, and it'll
+just do it again.
+So it's been interesting. There's a less
+overlap there than I thought there would
+be.
+We were just laughing about this
+recently Prime and I were working on
+something and he like told like, "Hey,
+move this thing to the left." And then
+it did it. He's like, "No, put it back
+on top."
+>> [laughter]
+>> And I'm like, I'm just imagining if it
+was a person on the other end and you're
+like yelling at some junior dev. And
+it's like move the couch over an inch to
+the left. No, your other left kind of
+situation.
+>> [laughter]
+>> But AI doesn't care. Doesn't care.
+Doesn't care at all. It'll it'll just
+Okay, I'll put it back on top. No
+problem.
+>> [laughter]
+>> It's it's interesting to see the range
+of outcomes, right? Like like if I if
+somebody writes a document for me and
+then, you know, I say, "Okay, this isn't
+very good. You need to make it better."
+You know, maybe it'll get a little
+better, right? But somebody's not going
+to like rewire their brain overnight.
+But AI really kind of can. You know, you
+can literally say like, "No, this is
+entirely wrong. Start over." And and it
+can do something entirely different
+which humans are they it's hard for them
+to make that level of adjustment in
+relative to feedback. So.
+Um I I don't But it's a little bit
+rambly, but like there's there's like I
+don't have a takeaway other than I'm
+still trying to figure it out, too,
+right?
+There's this kind of process where, you
+know, they they say that writing like
+how you write is how you kind of express
+your opinions or how you think through
+stuff like it's kind of like one of the
+big signs of intelligence is your
+ability to write out your thoughts. Cuz
+you have to organize them and actually
+go through stuff. Without the actual
+activeness of programming and then a lot
+of more and more feedback about say the
+interfaces and all that of how you
+interface with stuff kind of just also
+just being vibed out where people can't
+really actively know what the interfaces
+are. Maybe you're not as familiar with
+them cuz a lot of it is vibed out. How
+do you kind of come up with better ways
+to work
+when these layers are becoming more and
+more fuzzy because you don't look at
+them every day. You kind of look at them
+Well, we can all agree we look at them
+less than we ever would say 5 years ago.
+So how how do you know that you're even
+building the right direction at this
+point without like that constant daily
+everyday thinking about it like in the
+trenches, not just from a high-level
+view?
+That's where like experience probably
+comes in, right? Like I
+I'm almost at a bit of an advantage
+there where I've I've been in this space
+and working on these problems for so
+long that I have a lot of strong
+opinions about what should be done and
+how it should be done even if I'm not
+writing code every day, right? Like
+hasn't been my job for a while, but I
+still have opinions about
+the JavaScript ecosystem and how things
+should be working, right? And so there
+has been times where the AI the AI will
+happily go off and build something that
+is wrong if you just let it. And we've
+had that happen on this project. And
+then I have to step in and say like,
+"No, no, no, no. I am 100% sure that we
+should do it this way because I have,
+you know, 15 years of experience that
+tells me that's the way we should do
+it." Right? And that's where honestly
+some of the other people who've been
+involved in the project, I think have,
+you know, like we we have some fantastic
+contributors, but I think there's been a
+couple cases where they've just went and
+built a thing because somebody asked for
+it or AI just said, "Oh, I'll just do it
+this way." And they don't have that like
+depth of experience to say like, "No,
+no, no, no. This is wrong. We're not
+going to do it this way."
+How do you think people are going to get
+that experience if like in the in the
+future?
+I think I I think about this a lot and I
+don't know the answer, right? Like I I
+Yeah, I've thought on this. I So I have
+a more mid-level junior dev
+>> Oh, sorry. We're out of time. No, I'm
+just
+>> [laughter]
+>> Hey guys, if you like this episode, you
+can watch the rest of it on Spotify. And
+don't forget to like AND SUBSCRIBE. WOO!
+SEE YOU LATER. BOOT up the day.
+Five code [music]
+errors [singing]
+on my screen.
+Terminal coffee
+living the [music]
+dream.

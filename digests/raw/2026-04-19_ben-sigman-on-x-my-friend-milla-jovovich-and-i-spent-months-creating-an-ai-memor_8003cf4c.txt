@@ -1,0 +1,15 @@
+X thread capture
+
+## Post
+
+## Conversation
+
+My friend Milla Jovovich and I spent months creating an AI memory system with Claude. It just posted a perfect score on the standard benchmark - beating every product in the space, free or paid. It's called MemPalace, and it works nothing like anything else out there. Instead of sending your data to a background agent in the cloud, it mines your conversations locally and organizes them into a palace - a structured architecture with wings, halls, and rooms that mirrors how human memory actually works. Here is what that gets you: → Your AI knows who you are before you type a single word - family, projects, preferences, loaded in ~120 tokens → Palace architecture organizes memories by domain and type - not a flat list of facts, a navigable structure → Semantic search across months of conversations finds the answer in position 1 or 2 → AAAK compression fits your entire life context into 120 tokens - 30x lossless compression any LLM reads natively → Contradiction detection catches wrong names, wrong pronouns, wrong ages before you ever see them The benchmarks: 100% recall on LongMemEval — first perfect score ever recorded. 500/500 questions. Every question type at 100%. 92.9% on ConvoMem — more than 2x Mem0's score. 100% on LoCoMo — every multi-hop reasoning category, including temporal inference which stumps most systems. No API key. No cloud. No subscription. One dependency. Runs on your machine. Your memories never leave. MIT License. 100% Open Source. github.com/milla-jovovich
+
+[](https://x.com/bensig/status/2041236952998171118/photo/1)
+
+Readers added context they thought people might want to know
+
+The claimed 100% LongMemEval score uses targeted fixes for the 3 failing questions and LLM reranking (held-out score: 98.4%). The 100% LoCoMo score uses top-k=50 exceeding session count with reranking (honest top-10 no rerank: 88.9%). github.com/milla-jovovich…
+
+Context is written by people who use X, and appears when rated helpful by others. Find out more.

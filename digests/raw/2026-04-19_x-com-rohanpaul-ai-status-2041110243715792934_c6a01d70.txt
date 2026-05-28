@@ -1,0 +1,41 @@
+X thread capture
+
+# Rohan Paul on X: "New Stanford + MIT paper on Model Harnesses shows that AI performance depends not just on the model itself, but on the surrounding system code — the “harness”. This is what decides what to store, retrieve, show to the model, and how the workflow runs. With the same underlying https://t.co/u9Pa9eqUwr" / X
+
+Don’t miss what’s happening
+
+People on X are the first to know.
+
+Log in
+
+Sign up
+
+# [](http://x.com/)
+
+## Post
+
+See new posts
+
+# Conversation
+
+[](http://x.com/rohanpaul_ai)
+
+Rohan Paul
+
+@rohanpaul_ai
+
+New Stanford + MIT paper on Model Harnesses shows that AI performance depends not just on the model itself, but on the surrounding system code — the “harness”. This is what decides what to store, retrieve, show to the model, and how the workflow runs. With the same underlying
+
+[](http://x.com/rohanpaul_ai/status/2041110243715792934/photo/1)
+
+11:06 AM · Apr 6, 2026
+
+20
+
+24
+
+165
+
+143
+
+Read 20 replies

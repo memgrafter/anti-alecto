@@ -1,0 +1,25 @@
+X thread capture
+
+## Post
+
+## Conversation
+
+If you’re just interested in doing stuff with your own posts (and likes, DMs, etc.), you can save yourself some money by downloading your personal data archive and using it with my free xf tool instead of using the new paid X api:
+
+Quote
+
+Jeffrey Emanuel
+
+@doodlestein
+
+Jan 13
+
+I'm very pleased to introduce my latest tool, xf, a hyper-optimized Rust cli tool for searching your entire Twitter/X data archive. You can get it here: github.com/Dicklesworthst Many people don't realize this, but X has a great feature buried in the settings where you can
+
+[](https://x.com/doodlestein/status/2011140841256124454/photo/1)
+
+[](https://x.com/doodlestein/status/2011140841256124454/photo/2)
+
+[](https://x.com/doodlestein/status/2011140841256124454/photo/3)
+
+[](https://x.com/doodlestein/status/2011140841256124454/photo/4)

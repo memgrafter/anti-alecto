@@ -1,0 +1,45 @@
+X thread capture
+
+# Chris Hayduk on X: "I strongly suspect that Claude Mythos is a looped language model, as described in the paper "Scaling Latent Reasoning via Looped Language Models" from ByteDance The authors of that paper called out graph search as one of the areas where looping provides a huge theoretical https://t.co/hDvraXf355" / X
+
+Don’t miss what’s happening
+
+People on X are the first to know.
+
+Log in
+
+Sign up
+
+# [](http://x.com/)
+
+## Post
+
+See new posts
+
+# Conversation
+
+[](http://x.com/ChrisHayduk)
+
+Chris Hayduk
+
+@ChrisHayduk
+
+I strongly suspect that Claude Mythos is a looped language model, as described in the paper "Scaling Latent Reasoning via Looped Language Models" from ByteDance The authors of that paper called out graph search as one of the areas where looping provides a huge theoretical advantage over standard RLVR. And look at where Mythos blows out its competitors the most
+
+[](http://x.com/ChrisHayduk/status/2042711699413926262/photo/1)
+
+9:09 PM · Apr 10, 2026
+
+·
+
+590.1K Views
+
+111
+
+423
+
+4K
+
+3.1K
+
+Read 111 replies

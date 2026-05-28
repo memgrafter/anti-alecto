@@ -1,0 +1,19 @@
+Hi lobste.rs! I'd like to share a proof of concept for an idea I've thought about for a long time. Think of a new form of spreadsheets where the primary data structure is not a rigid grid but a free-form JSON-like structure (but with first class tables support of course). I'm linking here a demo which uses vi style hotkeys for interaction, although of course the idea is not limited to that mode of interaction.
+The addresses end up being JSON paths. The layout is currently rigid because it's just a PoC but ideally you'd have much more control over it, kind of like a canvas.
+Expressions can refer to other cells via their JSON based address, even relative to their current address. There is no expressions support in the PoC yet but a table in the example does show a dynamic column. Since you have arbitrarily nested arrays/hashes anyway, you can reserve tables to represent arrays of homogenous records, and some of the columns can be dynamically calculated (or have a default dynamic calculation) based on other columns. The expressions are just JavaScript functions, but they can be anything that works with JSON types.
+This is very far from finished. I'm just been trying to share early these days and I think many of you'd find the idea itself interesting.
+Why? I think spreadsheets are great but they are underutilized because of their rigidity. They are not suitable for version control, being authoritative data sources, powering APIs etc. I don't know if this is the right direction either. I'd be happy to hear your thoughts!
+The code is 100% manually written by me (except for the CSS background which I copied from SO). If there is sufficient interest in collaboration, I'd be happy to put up the source on codeberg.
+-
+-
+-
+Hi there, this is quite the different, novel idea! I tried playing around with this, and at first was a little stumped....and tried hitting escape key and ":"...and then actually read the inline instructions... :-) And then the UI made more sense. I wonder if maybe near the top (or somewhere easy to spot), you might consider placing an animated gif or some video that loops showing the UI in action...that way, someone like me who just jumps in without properly reading will at least get a better idea.
+Also, and maybe this doesn't need to be at the top or anything, but maybe consider writing more about what might be some more common, expected use-cases. Like, years ago, i used to think spreadsheets were quite rigid and of limited use...but then, i learned how could they can be for many types of slicing and dicing of data; sort of like a common man's sql repl....I'm sure you have some ideas in mind for this...so would be good to maybe very briefly list some use-cases....and then maybe on a blog page (as you promote your new tool), you could walk through a single use case with more depth.
+Please don't take my comments as knocks against what you built! I really want you to succeed!!!! Kudos and good luck!!!!
+-
+Thank you, this is incredibly valuable feedback. I agree that it's not easy to understand what's going on without reading the details. I'm still working on how exactly to communicate about this project, how to pitch it. Indeed a demo of its realistic use-cases might be the best way to go. It's not feature-complete enough yet for that, I hope I stick with it long enough to get it there :)
+-
+Keep at it; you can do it! And, keep promoting it to get more feedback from others too! Kudos to you for doing this!
+-
+-
+-

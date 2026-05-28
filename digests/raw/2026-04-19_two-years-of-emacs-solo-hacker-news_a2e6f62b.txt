@@ -1,0 +1,194 @@
+> — Sensible file handling: backups and auto-saves in a cache/ directory, recentf for recent files, clean buffer naming with uniquify
+It's crazy to me how out of the box when you edit nginx file at /etc/nginx/sites-enabled/foo it creates another file foo~ there and nginx tries to load that too
+When I tried to ask emacs reddit community they started attacking me for changing the default that only I need and fits everyone perfectly.
+Still can't believe I'm the only one finding that default amazingly bad.
+> The ~foo as backup convention is not part of any standard.
+Emacs does foo~ by default, not ~foo.
+In either case, you're not really supposed to edit files in sites-enabled. That directory is expected to contain symlinks to files in sites-available. I'm not going to say with any certainty that one of the reasons for this indeed is that the pattern (which was used by apache as well - and perhaps other things before it) protects against accidentally reading backup files, but it's not impossible.
+So there's definitely a case of holding it wrong if you end up with backup files in that directory.
+I liked doing symlinks so the site configuration is with the rest of the site, but that was before containers when it was common to host a bunch of sites on one instance apache or nginx.
+> The ~foo as backup convention is not part of any standard.
+> [...]
+> It's the second thing I fix in either Vim or Emacs: Put backup files in a central location. (The first is proper indentation/spacing rules.)
+Perhaps not a standard, but you yourself admit it's the default behavior.
+Though I agree that the simple mechanism acts ... er,... simply, shouldn't it be at the very least aware of the default behavior of common editors?
+But it DID contribute to the conversation ... it corrected an error/misunderstanding. If I didn't think I was contributing, I wouldn't have commented. You seem to have a different ethic.
+I won't comment further, as we are now off topic (thanks to you).
+Surprised to hear people told you not to change that - one of the earliest bits of advice I got on using emacs is to set the location of those files to a hidden directory in your home folder.
+I was proposing to make default where those files are not created, since Emacs is actually surprisingly great out of the box with no configuration, except for this "little" thing. Apparrently, some people believe it's perfect as it is
+I tell emacs to create all of the files in "~/.backups", and it names them using the full pathname with "/" replaced with "!". So "~/foo/bar.txt" -> "!home!username!foo!bar.txt~"
+I also set create-lockfiles to nil. I think you can theoretically keep the lockfiles and the clean directory by using lock-file-name-transforms to place the lockfiles somewhere sensible but I didn't bother.
+Without this I had to be careful not to acciddentally commit stuff like ".#filename.txt".
+(n)vim can also do this, if you've set up an ssh alias in your ssh config for your multi-hop destination you just list it where the hostname would go. e.g.
+nvim scp://remotemachine/.config/emacs/init.el
+For the same reason you can use sshfs, sftp, and rsync with multi-hop. Gotta love openssh!
+> The list of things emacs users don't get seems to get...
+There are a ton of Emacs users, and it's doesn't make much sense to talk about them as a group like that, no more than if I were to say, "The list of things Windows users don't get..."
+using the same directory drastically reduces the amount of assumptions about your system's permissions and your own installation (or lack thereof)
+old school *nix editors typically do something like emacs and vi typically do, whereas old WinDOS/Mac single-user systems would have an installation file and a cache system-wide, and post NT and OS-X they have roughly the same but in a centralised user directory that is not system-wide, but is located as if it were (different evolution path)
+I just realized that `apt install emacs-nox` is a great editor in containers and VMs. I just have to disable it every damn time (for regular and root user). Defaults would be better.
+I don't mean to be condescending, but since you just learned about emacs-nox... If you haven't already, try tramp mode to edit files in containers and VMs. It also lets you edit local files using sudo.
+There's also a docker package for managing containers - similar concept and UI to magit, but for managing Docker. Not as life changing as magit, but convenient.
+Anyway, the problem with changing the default after all this time is that everybody would want the new default to be different, and changing it now would meaning breaking things for long time users who depend on the current default. And TBH if you're setting up a container and installing Emacs, it's very little extra work to copy over a .emacs file that fixes everything the way you like.
+It can be handy. It gives you an additional safety net on top of the VCS that runs automatically in the background. It doesn't take much to configure it to your liking, e.g. [1].
+The kids really have no idea how tenuous computing in general was back in the olden days. Some of the stability issues in the 20th century translated to modern systems would be akin to black smoke coming out of your computer if you happened to have the wrong two programs running at the same time.
+I am no kid but screen(1) dates back to 1987 and any wise sysadmin would put that advice on every ~/.login or /etc/motd so the user could run 'screen' at login, some keybinding to detach screen(1) and 'screen -r' on coming back by telnet.
+I never used screen back in the day (I was primarily a VMS guy then), but that man page is one of the best-written man pages I’ve come across: informative, friendly and just the right level of detail.
+I do too, it’s just that I’ve realised that emacs-nox is awesome container / vm editor out of the box, this backup thing is the only most annoying part (and Ubuntu 22.04 emacs packages expired cert)
+> Disabling C-z (suspend) because accidentally suspending Emacs in a terminal is never fun
+This reminds me of a story from a past job. I have to get it out of my system.
+There was this bearded sysadmin guy who was very proud of his "15 years of experience", and was quick to scold us new employees for every little thing he could.
+He used vim, and every now and then would say that it's a good editor, but kinda "unstable". Crashed a lot, he said.
+You probably know where this is going.
+One day, one of us sat next to him and discovered many suspended vim jobs in his shell (this was the kind of guy that doesn't power off his computer).
+He was fat-fingering C-z all the time, and has never heard of job control - bg, fg, etc.
+This article shows how Emacs remains a beautiful, relevant project several decades after it was first created. The core design and implementation’s ability to evolve into something still useful today and competitive with modern tools is an amazing achievement.
+Also, with LLMs driving so much of current development it potentially makes Emacs even more competitive relative to modern IDEs. Development can be driven primarily by an agent like Claude Code from the command line, then navigating and tweaking the code, handling Git commits, etc with Emacs.
+I imagine an LLM would be very good at writing Elisp to leverage EMacs’ strong core functionality to make Emacs work exactly how you want. This author managed to do it by hand, but I imagine someone starting now with an LLM could get there much faster.
+> I imagine an LLM would be very good at writing Elisp to leverage EMacs’ strong core functionality
+Yes, they are pretty good. I have set up GPTel (an excellent Emacs package for interacting with LLMs) with some tools allowing it to run Elisp, inspect files (Elisp functions know what file they were defined in, so it's easy to find stuff) and read Emacs documentation. LLMs use this to good effect, and iterate on my config very nicely.
+Indeed. I always used Emacs, but not, thanks to AI agents, Emacs is better than ever, as it can write the lisp I can't write, and it can read the docs I don't have the time to read.
+Emacs would be a pretty badass "OS" for LLM agents to use... has anyone explored and written something up on that yet? Perhaps emacs commands would give agents even more power than just shell commands ?
+The core of it is described by the post you're replying to as "I imagine an LLM would be very good at writing Elisp to leverage EMacs’ strong core functionality to make Emacs work exactly how you want."
+Emacs is highly customisable. There's not really a hard difference between "configuration" and "extension". Whereas with e.g. VSCode, very few people would write their own extensions. -- So it's a good point that with LLMs, the barrier to customise Emacs to exactly how you want it is even lower.
+I'd also argue that since practically everything in Emacs is text (as opposed to a rich GUI interface), Emacs itself ought to make for a nice interface to LLM functionality.
+> That means the code is sketchy sometimes, sure, but it's in my control. I wrote it, I understand it, and when it breaks, I know exactly where to look.
+This resonates with me so hard. I'm not a "no external packages" purist, but there are a number of pieces of functionality that I wrote for myself because there wasn't anything quite like what I wanted.
+One example is a function to expand the region (selection) to any arbitrary set of pairing delimiters that I define in a defvar (parens, quotes, brackets, or I can can supply a custom left/right regex for matching). Then, when I execute the function, it waits for a second keypress, which is the trigger key I've defined for that matching pair, and it will expand the region to the left and the right until it meets the applicable delimiter.
+Repeating the same key presses results in selecting the left and right delimiters themselves, and another repeat will extend to the next set of matching delimiters, and so on.
+Even though I use a treesitter-based expand-region plug-in, my custom function is still invaluable for when I want to jump past a series of valid treesitter object expansions, or when certain text objects are just not defined in treesitter.
+Some of the helpful custom expansions I have defined are:
+"w" to select what Vim considers a lowercase-w word
+Space to select what Vim considers an uppercase-W word
+"$" to select ${...}-style expressions
+"/" to select everything between forward slashes
+"*" to select between asterisks (useful when editing markdown)
+It's really an invaluable function for me, personally, but I always talk myself out of trying to open-source it because it has some gotchas and limitations, and I just don't want to be on the hook for trying to make everyone who uses it happy.
+vim has two "word" motions, w and W, the lowercase w motion will see punctuation as a word boundary (as well as whitespace ) W only considers whitespace
+Sure. how was that relevant to explaining their keymapping? Why would you not simply directly describe the behavior as you did rather than sending the same amount of energy to route people through an entirely unrelated editing paradigm?
+The "why" is kinda sketchy. The difference between what is shipped in Emacs and in ELPA is somewhat arbitrary. In fact, there are many built in packages that have their updates shipped in ELPA, meaning if you aren't using ELPA then your builtin packages might have unpatched bugs.
+There's also no reason why you have to literally write everything yourself either. You can find open source licensed packages, read them to understand them, and then copy them into your config. Doing everything from scratch is a waste of time unless you enjoy the process (in which case go nuts).
+It's roughly equivalent to trying to discover all of our scientific knowledge yourself from scratch vs taking "for granted" the knowledge discovered by your forebears. There is no shame or disadvantage in doing so.
+Also, a critical objection:
+> Writing your own packages is the best way to learn Elisp
+Absolutely not. Reading a language is crucial. If all you do is write, you will pigeonhole into weird practices and generally fail to improve. Only by reading stuff written by others can you learn, as you're exposed to what other people do right and wrong, both of which will be different from you.
+Of course, writing your own packages is also necessary, but not sufficient alone.
+I don't think the post implied that this package writing activity was a write-only activity where reading and learning is strictly forbidden.
+> You can find open source licensed packages, read them to understand them, and then copy them into your config. Doing everything from scratch is a waste of time unless you enjoy the process (in which case go nuts).
+The post clearly indicates the relatively large set of open source packages they looked at and understood before doing their own packages. The author graciously acknowledges them and their influence on the work:
+"Emacs Solo doesn't install external packages, it is deeply influenced by them. diff-hl, ace-window, olivetti, doom-modeline, exec-path-from-shell, eldoc-box, rainbow-delimiters, sudo-edit, and many others showed me what was possible and set the bar for what a good Emacs experience looks like. Where specific credit is due, it's noted in the source code itself."
+It's nothing like rediscovering everything. Not only is it only Emacs, but it's also been designed by people with a goal of being straightforward to use by people. And whatever you create just needs to be useful to you personally anyway.
+I think of it more like building stuff out of Lego without following any instructions.
+> There's also no reason why you have to literally write everything yourself either.
+> It's roughly equivalent to trying to discover all of our scientific knowledge yourself from scratch vs taking "for granted" the knowledge discovered by your forebears.
+The author do have another config with all the bells and whistles. But Emacs does come with a lot of packages and tweaking them isn't that much work compared to building a full suite like Helm, especially with the awesome documentation system. Getting a v0.x of anything can be a matter of minutes. And then you wake up one day and you've built a whole OS for your workflows.
+You have to sign the FSF's CLA (and clear your contributions with your employer) to contribute to Emacs itself. To ship a separate package to ELPA you need not do this.
+A point of clarification: GNU ELPA (https://elpa.gnu.org/) is part of Emacs, and you have to sign the copyright assignment to submit packages an to contribute to packages. NonGNU ELPA (https://elpa.nongnu.org/) doesn't have this restriction.
+This might be a paragon of masochism. Though, I am not only beyond impressed. I am beyond jealous as well.
+I've been using Emacs since one of professors/mentors converted me over a decade ago back when I was attending university. As the years have progressed, I have found myself reaching for Emacs less and less. I still maintain my config and use it fairly often. I cannot use Emacs at my employer either, so that doesn't help.
+However, I have always wanted to do what the author has demonstrated. I would love to be liberated from the all package dependencies I currently have. I just do not have the time nor self-discipline to do something like this. Even if the functionality would be less than or equal parity with 3rd-party packages, I would prefer the Devil I know over the ones I don't.
+I’m always impressed by people who are hardcore EMacs or Vim devs, their setups are impressive af.
+I’m a GUI guy though. As soon as I try delving in, I abort when I see things like “just type c-C dingle bob to do x thing.” I’m happy these people found something that works with their brains. I just want a GUI that works like what they use.
+I recently saw a Zed fork stripped of AI stuff but there’s no binaries yet (you gotta compile and get an Apple dev account and I don’t care enough). Zed and Sublime Text are the closest to my stylistic sensibilities but I’m always on the lookout for something better.
+If you’re one of these EMacs freaks who also love GUIs, sign me up to your app!
+> I’m a GUI guy though. As soon as I try delving in, I abort when I see things like “just type c-C dingle bob to do x thing.” I’m happy these people found something that works with their brains. I just want a GUI that works like what they use.
+You do have that somewhat with packages like which-key that will show you a menu of options every time you press a key. You then learn the keybinds that you use the most. You can also search for them by name and see the keybind like you do with VS Code etc..
+Here's what doom-emacs looks like when I press space and then space-t:
+> I just want a GUI that works like what they use.
+I don't think this is really possible. The thing that makes it special is that there are key binds for all the 100s of things you could want to do. So it becomes sort of like playing a instrument where you use your muscle memory instead of thinking specifically about the keys. If you make a bunch of menus and buttons to do the things it would be a mess and probably not very nice to use. Emacs actually has buttons and GUI controls for lots of the functionality, but it kind of sucks to use it that way.
+These setups are impressive specifically because the creator has put in the time and effort to become an expert at using their editor. There is just no way to hand that over to someone else as-is without any investment from the recipient in skill development.
+A nice way to get quickly familiar with how to use emacs/(neo)vi(m), understand how keybindings work and how to uncover new ones, is to go through reading/practicing the built-in tutorial. It almost plays like games.
+When opening a freshly installed emacs, there should be a "Emacs Tutorial" link that can be clicked; also the keyboard shortcut `C-h t` (which is «Control + `h`, then `t`»).
+There is a similar feature in `neovim`, when opened type `:Tutor` (which is «`:` to open the command prompt, with command `Tutor`»).
+>I abort when I see things like “just type c-C dingle bob to do x thing.”
+I used nothing but emacs for several years (well, xemacs, but close enough), because I was using an old Thinkpad, and long-term use of the trackpoint gave me RSI in my finger. Being able to use nothing but the keyboard was nice.
+Eventually I went back to BBEdit and have remained there. You can make it mostly keyboard oriented if you want, but sometimes using the mouse is easier/faster, and I have a lot of reps inside of BBEdit. It just seems more like home to me. A nice balance between GUI and keyboard-focussed IMO.
+I'd say most people run Emacs in the GUI mode, not in a terminal. So these days, you're pretty much on the same level as most rivals.
+Sadly, "these days" is a low bar. The days of consistent platform-specific "Human Interface Guidelines" are over, it's all just a browser wrapped in a top-level window or something that simulates that, with most interaction patterns being a cargo cult of how it's remembered from the 90s. So "GUI" means that some unique overlays can be drawn without a fixed width character grid and that you might get the original file requester now and then.
+I mostly run Emacs in a terminal, except I configure for two finger scroll on Mac trackpad and tap to move cursor. I also reduced the size of my .emacs by 60% in the last year.
+The binary release for Linux is a bit rough, there's an `install.sh` script in the repo which can install the tarball for you. For the next release there will be flatpaks, .deb and .rpm available.
+What was the Apple Dev account needed for? Previously I remember it was only needed for submitting apps to the App Store, not running Dev builds locally.
+Last I checked it was just to notarize the app but I went back to the fork to remember and now there are binaries! https://codeberg.org/GramEditor/gram
+> I just want a GUI that works like what they use.
+TL;DR: Emacs is a GUI app and has lots of GUI-related functionality, but it tends to be slightly neglected by the majority of users. You can easily build your ideal GUI using the provided building blocks; the problem is, you have to build it, since most other users are not interested in doing so.
+Both Emacs and Vim/NeoVIM have GUIs. I can't even run my Emacs in a terminal without `-q` (omit user config) - I never feel the need, and my config would be much more complex if I tried to make it terminal-friendly.
+You don't need baroque keybinds, either. Both Emacs and Vim have always had "Command Palette" - Alt+x in Emacs, : in Vim - and with a few plugins[1], you get fuzzy matching, inline docs, icons showing what type of command you're looking at, etc. Both editors also have GUI buttons and mode-specific (on top of generic) menus (including context menus on click). This provides unmatched discoverability of available functions - you can then bind them to any key combination you find easy to remember. You don't have to, though, since with a few other plugins (Orderless), the frequently used commands bubble to the top of the list.
+There are two things Emacs handles a bit poorly: mouse and popups. The former stems from existing users largely ignoring the issue, but the hooks for clicks and even gestures are there. The latter is an unfortunate consequence of wanting TUI to remain first class. There is functionality for creating Emacs "frames" (GUI windows) with given dimensions and a specified position, but it's basically GUI-only. Things like auto-completion popups default to something that can be emulated in the terminal, with frame/window-based implementations provided as extensions. That means that you can have a pop-up with method names starting with a few characters you typed, you can even have another pop-up beside that with docs for a given method, but you generally won't get that doc displayed as rendered markdown (you can't display headers with a bigger font in a terminal). It's 100% social and not a technical limitation - if you accept that you're only going to use Emacs in a GUI, you can get an IntelliJ-level of mouse and popup handling... Though it takes some effort.
+That's the real problem, I think. You need to craft many of those features yourself out of available functionality. And it's not even a matter of some (even obscure) configuration, you will need to write your own Lisp to get the most out of Emacs. That's much more of a pain point and a respectable reason for not wanting to touch it. Technically, though, Emacs is not anti-GUI, and there are many packages that make Emacs pretty. Less so with mouse-friendliness, unfortunately, but you can configure it into something half-decent without much effort.
+The only environment I know of that is (at least) equally powerful and flexible, but which handles GUI better is GToolkit[2] (VisualWorks was nice before the license change; now it's impossible to use) - a Smalltalk-derived system that uses the host OS (Linux/Windows/Mac) GUI directly through Rust bindings. A step down from there, but still respectable, is Pharo and the browser/Electron. Other than that, you have pre-written GUIs that you can't really change beyond what the developers planned.
+Hey celadevra_, author here. Thanks for submitting my post to HN, I really appreciate it.
+Seeing it stay at #1 for a few hours while my blog server struggled with the requests was quite a joy :)
+PS: Also, thanks to everyone who commented on it. While I can't reply to all of you, I'm doing my best to read everything. I'm glad to hear that the project resonates with so many people, whether philosophically, aesthetically, or as something partially useful.
+I've used {GNU |X}Emacs intensively for over 20 years and never thought about doing a thorough study of many of the things it provides like you do in Emacs Solo. Your work is inspiring to me in showing me what dedication and thoughtfulness can achieve, even when it seemed at the beginning as trivial as one tending their own homestead. Many, many kudos.
+The new Emacs features sound great! (We have native window management finally)
+I wish we would someday be able to edit in xref too, wgrep having landed in Emacs 30 (especially since project.el grep goes to xref by default).
+By the way, anyone more informed know about any work on getting a graphical browser to work on latest Emacs, now that webkit xwidgets is dead for Emacs 30+? (Have tried EAF; extremely buggy on Mac)
+Emacs solo actually contains functionality for just that, the below snippet which allows exporting xref buffers to grep format by pressing 'E'. You can then use wgrep etc.
+;; Makes any xref buffer "exportable" to a grep buffer with "E" so you can edit it with "e".
+(defun emacs-solo/xref-to-grep-compilation ()
+"Export the current Xref results to a grep-like buffer (Emacs 30+)."
+(interactive)
+(unless (derived-mode-p 'xref--xref-buffer-mode)
+(user-error "Not in an Xref buffer"))
+(let* ((items (and (boundp 'xref--fetcher)
+(funcall xref--fetcher)))
+(buf-name "*xref→grep*")
+(grep-buf (get-buffer-create buf-name)))
+(unless items
+(user-error "No xref items found"))
+(with-current-buffer grep-buf
+(let ((inhibit-read-only t))
+(erase-buffer)
+(insert (format "-*- mode: grep; default-directory: %S -*-\n\n"
+default-directory))
+(dolist (item items)
+(let* ((loc (xref-item-location item))
+(file (xref-file-location-file loc))
+(line (xref-file-location-line loc))
+(summary (xref-item-summary item)))
+(insert (format "%s:%d:%s\n" file line summary)))))
+(grep-mode))
+(pop-to-buffer grep-buf)))
+(with-eval-after-load 'xref
+(define-key xref--xref-buffer-mode-map (kbd "E")
+#'emacs-solo/xref-to-grep-compilation))
+This is beautiful, incredibly sane, and awesome reference material. There's no way I'd use a 3500 lines init.el or most of the extras, but somehow I feel like a good chunk of the stuff here should be upstreamed if we one day consider it reasonable to change default behaviors in a major update.
+> Partly because I wanted my config to survive without breakage across Emacs releases. Partly because I was tired of dealing with package repositories, mirrors going down in the middle of the workday, native compilation hiccups, and the inevitable downtime when something changed somewhere upstream and my job suddenly became debugging my very long (at the time) config instead of doing actual work.
+Picking on this detail, what I've found works nicely is that when a new major Emacs version flows into my Debian, I also update all packages to their latest versions and then freeze those versions until the next major Emacs release. And those versions are locked in my emacs.d git repo, so I have a reproducible Emacs at home and work both. There's a little iteration to adapt to changes in Emacs and packages, but after that, it's stable and reliable for a year or two.
+I feel I can given up most packages I use for some hand rolled code (with a significant time investment, that is). There will be tradeoffs.
+Every thing except magit. I can’t think of a better way to use git, and it’s one of the main reasons I’ve never survived my adventures in editor wilds for very long.
+This was a beautiful article; the joy of tinkering just shines through everywhere :-) I'm glad Rahul did the work to upstream some of the changes, I hope some of the maintainers read his post and are inspired to change a few defaults too (with that init.el vs `lisp/` refactor it should be easier for them to see what wants changing). Maybe some of the packages might provide for inspiration too; I'd love to see vc-mode provide builtin gutter support, for example. And viper extensions sounds like something that should just be upstreamed. (Less so exchange rates and weather.) Emacs is so close to being quite good out-of-the-box.
+Is Eglot on par with emacs-lsp for C++? Specifically thinking about pointing it to a compile_commands.json and all of the usual C++ nonsense required for code navigation and autocomplete.
+Pretty much yes. I switched to eglot from emacs-lsp because of some frequent random errors ("document not added") that required me to frequently kill clangd; might be a PEBCAK problem, but went away with eglot.
+The UX will be different and is a matter of preference. The performance depends solely on your LSP. So long as your LSP is the same and configured the same, it will give you the same results for navigation/completion.
+I use it that way. It requires less setup than lsp-mode. Just try it – add `:disabled t` to your use-package lsp-mode, restart emacs and type `M-x eglot` in a C++ buffer.
+Funny, this mirrors almost exactly a decision I made after about a year of struggling with ELPA packages breaking on me repeatedly.
+I ended up cutting Emacs off from ELPA entirely, settled on a ~700-line init.el, and now use Emacs as a glorified Org-mode agenda keeper. It's been heavenly (especially with a dedicated monitor).
+The one thing I'm still working out is syncing with calendars and email.
+Interesting. I use ELPA/MELPA all the time and find things pretty stable for my own uses. Surprisingly so, in fact. I honestly expected more hiccups. I wonder whether it’s differences between the packages that we use or the complexity of the configuration or what. Mostly I spend my time in Clojure mode with CIDER and Magit. I’m not trying to run email and calendar in Emacs.
+The solo Emacs path is underrated for building deep understanding. Most people reach for a config framework immediately and end up with a system they can't debug. Starting from scratch forces you to actually understand what each piece does, even if it takes longer upfront.
+Yep, me too. That’s the eternal trade-off. I’m always pretty sure that there’s a specific Emacs function or mode that does exactly what I want, but I mostly can’t be bothered to find it beyond a quick guessing search via apropos (C-h a). I brute-force my way through a lot of tasks using keyboard macros that might otherwise be solved more elegantly if I had the time.
+Why are we so bad at naming things? Modules and packages are so abstract I need to google what they mean relative to the development environment just to move forward.
+If I was going to reimplement Emacs it wouldn't be with Lisp.
+Is there some reason Lisp is superior to any other general-purpose programming language for text editing? I'm skeptical because to my knowledge, Emacs is the only major text editor written in Lisp.
+>Is there some reason Lisp is superior to any other general-purpose programming language for text editing?
+purely for text editing? No. But that's not what distinguishes Emacs, it's famously very mediocre at it. The point of Emacs is to be a fully transparent, inspectable, dynamic and changeable environment. In spirit similar to Smalltalk systems like Pharo. And for that a Lisp is not the only choice but a very good one.
+There's very few languages and environments that facilitate jumping into any place, making a change, compiling or evaluating a block of code or treating it as data and continuing seamlessly.
+> But that's not what distinguishes Emacs, it's famously very mediocre at it.
+I disagree. Every time I use another editor I lament missing features when it comes to editing text. Like most editors (vim excluded) have pretty lackluster undo, transpose, case altering, and text reflowing commands.
+See GToolkit[1] - Lepiter is a bit like that. It's too notebook-y for my taste, but it lets you write and format text and embed any widget. It also uses a native GUI and is not a repackaged browser.
+It's a product of its time. In the mid 70s when Emacs was originally created, the MIT Lisp Machine Project had already been going for a few years, and Lisp was kind of a big deal at MIT's AI Lab, where it was created. When Stallman started GNU Emacs in '85 or so, he took lots of inspiration from Lisp and those systems.
+You can think of Emacs as a kind of software Lisp machine with an emphasis on editing. Although that analogy only works well if you squint or if you don't know a lot about Lisp machines.
+As someone who first learned Lisp through Emacs Lisp, I found it fun, well-documented, and powerful. Once you grok the basics of how the system is dynamically glued together, infinitely hackable, and self-documenting it's kind of mind-blowing.
+Not specifically superior for text editing, but it has some specific capabilities that make it ideal for making an editing environment. Specifically, it’s great at incremental, dynamic loading of small code snippets. This allows development of Emacs code without having to recompile and restart all the time. In fact, the low-level core of Emacs (buffer manipulation code, regex execution, redisplay, etc.) is all in C. But then those C routines are strung together with Lisp to make up all the high level functionality. Having a dynamic, incremental language is really handy for that. Does it have to be Lisp? No, not necessarily. But Lisp is a great choice.
+The Lem editor[0] and LispWorks IDE's[1] are implemented in Common Lisp.
+Still, the reason for choosing a language for whatever are always more social and path-dependent than technical (reason 1: initial developer of whatever really likes the language, reason 2: language is seen as hip within some crowd, reason 3 (later in the game): management feels language is safe). Technical reasons for choosing a language typically tend to be post-hoc rationalizations. (I mean, no sane person would choose Javascript for an editor based on technical reasons alone, yet here we are.)
+As much as I love Common Lisp, it's dead. It has 2 orders of magnitude fewer packages in quicklisp than Emacs has in MELPA - and Emacs is an editor, not a general-purpose programming language. SBCL has a handful of devs and moves very slowly - nothing else does at all. Maybe LispWorks, but that's expensive.
+CL is also held together - and held back, hugely - by the standard that won't ever be updated. It's good to have it, but there are major omissions (code walkers, MOP) that won't ever be fixed.
+As it is now, Elisp is more practical as a scripting language than CL. The gap will only continue to grow. Right now, CL has an edge in parallelism - native threads and mutexes (with all the problems they entail) work there, while with Emacs, the only parallelism you can get is through separate processes. On the other hand, async/await-style concurrency works quite well in Emacs, while in CL you're basically a few macros away from raw promises, and the only real asynchrony is through a pool of threads executing callbacks, and it doesn't play well with conditions and restarts and some other advanced features (notably absent from Elisp).
+I love CL, but right now it's aged considerably, lost many of its unique advantages, and has little chance of ever catching up. It's a shame, but using CL in 2026 is not a superpower anymore - it's just one of the similarly-valued propositions, competing with other dynamic languages, still providing a few unique advantages, but even those are being implemented in other languages fast.
+Lisp calls c in emacs. What would be a better language? The code-as-data, data-as-code paradigm fits nicely imo with everything-is-a-buffer. Things like global namespace, hooks, defadvice, would all feel very wrong in other interpreter, and yet seem to make sense in elisp.
+But in 1976 Emacs was implemented in TECO. In 1984 it was implemented in Lisp, because Multics Emacs _or_ EINE/ZWEI (Lisp Machine editors) were using Lisp as an extension language, which apparently has shown itself to be useful.
+P.S. As for the naysayer: The C code does a lot more than run elisp. e.g., memory management/GC, display and I/O, primitives/built-in functions/subrs, system services.
+Even if you interpret emacs strictly as an interpreter of elisp, that interpreter is written in C, not elisp.
+If you removed all elisp from the emacs distribution, you would still have an extensible windowed text editor. And you could add any desired functionality by writing elisp. Take C code away and you've got nothing functional.

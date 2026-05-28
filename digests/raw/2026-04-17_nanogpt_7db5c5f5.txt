@@ -1,0 +1,104 @@
+NanoGPT Subscription
+
+Private open-source AI for just $8/month
+
+PAY AS YOU GO
+
+ACTIVE
+
+$0
+
+per month
+
+Access every AI model there is
+
+Access to image, video, text and voice
+
+Access to web + API
+
+Generous rate limits
+
+One free model, available on web only
+
+Active
+BEST VALUE
+
+PRO
+
+$8
+
+per month
+
+Weekly included input tokens per week
+
+5% discount on all other text models
+
+Both text and image models included
+
+Both via web and API
+
+Everything else in the free tier
+
+Subscribe
+What's Included in Pro
+
+Text Generation Models Included
+
+Most open-source text models are included. Popular examples:
+
+GLM 5 - New flagship reasoning and chat model
+Kimi K2.5 - Fast multimodal model for coding and agent tasks
+MiniMax M2.5 - Strong productivity and tool-use workflows
+Qwen 3.5 397B - Large open-source MoE model with strong reasoning
+Uncensored Models - Venice and more
+Roleplaying Models - Special finetunes
+Coding Specialists - Programming assistance
+Math Models - Advanced calculations
+And dozens more open-source models - see the full list.
+
+GLM 5 is included. GLM 5.1 and GLM 5.1 Thinking are currently not included in Pro.
+
+Note: TEE variants and a small number of unusually expensive open-source models are not included. We guarantee 99.9% availability for popular models like GLM 5 and Kimi K2.5. Some roleplaying finetuned models may rely on a single provider, which can occasionally affect availability.
+
+Image Generation Models Included
+
+HIDREAM
+CHROMA
+Z IMAGE TURBO
+QWEN IMAGE
+
+Click to view examples:
+
+Create stunning images with these premium models at no extra cost. Note: image models might not stay in the subscription forever. We would not recommend taking out a subscription based on the image models.
+
+API Access Included
+
+Use via website or API
+
+Paid Models Discounted
+
+5% off all pay‑as‑you‑go usage while subscribed
+
+Privacy First
+
+Your data stays private
+
+Frequently Asked Questions
+What usage limits apply to subscription access?
+Can I have multiple accounts?
+Can I use this via API and website?
+What usage limits apply to the API?
+Is the v1/completions (Text Completions) endpoint supported?
+Is the context size of the models limited in the subscription?
+Is my data private?
+Can I still use paid models with a subscription?
+What models are included in the 5% discount?
+What happens if I exceed my quota?
+Is xxx included?
+All included open-source text models
+Earn 5% from friends' subscriptions
+REFERRAL
+
+Share your personal link. When a friend subscribes or renews ($8/mo), you earn 5% each time.
+
+Generating your link…

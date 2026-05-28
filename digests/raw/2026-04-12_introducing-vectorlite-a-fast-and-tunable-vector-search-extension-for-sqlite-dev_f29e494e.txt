@@ -1,0 +1,170 @@
+Introduction
+With the rise of LLMs(Large Language Models) and RAG(Retrieval-Augmented Generation), vector databases, like Milvus and Pinecone, are getting a lot of attention. Traditional databases are also catching up in vector search support via third-party extensions, such as pgvector for PostgreSQL and sqlite-vss for SQLite.
+In this article, I'm introducing vectorlite, yet another fast and tunable vector search extension I write for SQLite that has just made its first beta release. It can now be installed using pip
+pip install vectorlite-py
+A SQLite extension is a dynamic library that can be loaded by SQLite at runtime. Below is an example of using vectorlite in the SQLite CLI shell:
+-- Load vectorlite
+.load path/to/vectorlite.[so|dll|dylib]
+-- shows vectorlite version and build info.
+select vectorlite_info();
+-- Calculate vector l2(squared) distance
+select vector_distance(vector_from_json('[1,2,3]'), vector_from_json('[3,4,5]'), 'l2');
+-- Create a virtual table named my_table with one vector column my_embedding with a dimention of 3 using default HNSW parameters.
+create virtual table my_table using vectorlite(my_embedding float32[3], hnsw(max_elements=100));
+-- Insert vectors into my_table. rowid can be used to relate to a vector's metadata stored elsewhere, e.g. another table.
+insert into my_table(rowid, my_embedding) values (0, vector_from_json('[1,2,3]'));
+insert into my_table(rowid, my_embedding) values (1, vector_from_json('[2,3,4]'));
+insert into my_table(rowid, my_embedding) values (2, vector_from_json('[7,7,7]'));
+-- Find 2 approximate nearest neighbors of vector [3,4,5] with distances
+select rowid, distance from my_table where knn_search(my_embedding, knn_param(vector_from_json('[3,4,5]'), 2));
+-- Find the nearest neighbor of vector [3,4,5] among vectors with rowid 0 and 1. (requires sqlite_version>=3.38)
+-- It is called metadata filter in vectorlite, because you could get rowid set beforehand based on vectors' metadata and then perform vector search.
+-- Metadata filter is pushed down to the underlying index when traversing the HNSW graph.
+select rowid, distance from my_table where knn_search(my_embedding, knn_param(vector_from_json('[3,4,5]'), 1)) and rowid in (0, 1) ;
+For full API reference, please check here.
+Highlights
+- Fast ANN(Approximate Nearest Neighbors) search backed by hnswlib. Please see benchmark.
+- Works on Windows, Linux and MacOS.
+- SIMD accelerated vector distance calculation for x86 platform, using
+vector_distance()
+- Supports all vector distance types provided by hnswlib: l2(squared l2), cosine, ip(inner product. I do not recomend you to use it though). For more info please check hnswlib's doc.
+- Full control over HNSW parameters for performance tuning. Please check this example.
+- Predicate pushdown support for vector metadata filter (requires sqlite version >= 3.38). Please check this example;
+- Index serde support. A vectorlite table can be saved to a file, and be reloaded from it. Index files created by hnswlib can also be loaded by vectorlite. Please check this example;
+- Vector json serde support using
+vector_from_json()
+andvector_to_json()
+.
+Why another vector search extension for SQLite?
+First of all, SQLite is valuable tool for LLM-powered apps because it is lightweight and stores data locally, making your data much safer.
+Though there's already sqlite-vss that enables vector search for SQLite, some of its technical decisions are worth debating, which is why I write vectorlite. The author of sqlite-vss has moved on to another vector search extension project and wrote an article explaining what's wrong with sqlite-vss from his point of view. I'll share mine.
+The choice of vector search library
+Sqlite-vss uses faiss to do vector seaching. It is a great library opensourced by Meta(facebook) and provides a wide range of algorithms for vector search. However, it is optimized for batch operations over a large dataset, making it slow for a single vector query and incremental indexing on CPU. However, SQLite's extensibility model (called virtual table) doesn't provide APIs for batch operations and only exposes API to insert/update/delete a single row at a time. Besides, sqlite-vss only support single-vector search, which faiss is not good at. As a result, sqlite-vss can't fully exploit faiss's performance.
+Vectorlite uses hnswlib that provides a fast implementation of HNSW algorithm and is optimized for incremental index construction and single-vector queries, which plays well with SQLite's virtual table API.
+In my benchmark, compared with sqlite-vss, vectorlite is 10x faster in inserting vectors and 2x-40x faster in searching (depending on HNSW parameters with speed-accuracy tradeoff), which is mainly due to different choices of vector search library.
+Vector metadata filter
+Another important feature that sqlite-vss misses is vector metadata filtering. In real word scenarios, a vector is always tagged with some metadata including dates, genres, categories, names, types, contents, etc. There's no doubt that filtering a vector based on its tags before performing vector search is a must-have feature for a functional vector database.
+Vectorlite supports vector metadata filter (requires sqlite version >= 3.38) since first release. Please check this example.
+Performance tuning for production deployment
+Both sqlite-vss and vectorlite leverage ANN(Approximate Nearest Neighbors) alogorithms for vector search, meaning that the result is not guaranteed to be 100% correct but the search is relatively fast. In prodcution, the performance of ANN alogrithms need to be benchmarked and tuned based on your workload, embeddings and specific needs. For example, one may need fast vector query at the cost of lower recall rate because they are building a realtime semantic search app, while another may need high recall rate but doesn't care search speed because they are doing some offline analysis.
+In a typical recommendation system, its vector index is often built and tuned offline using libraries like faiss and hnswlib for acceptable speed and accuracy, and then served in production.
+With sqlite-vss, you have to build vector index using it, making performance tuning very difficult. One cannot build the vector index offline with faiss and then serve the index with sqlite-vss. Though you do get to pass faiss strings to it to tune the index, non-default indexes are so slow that they barely work (probably due to the nature of the algorithm or improper use of faiss I mentioned above).
+With vectorlite, you have full control over the HNSW paramters to tune the search speed and recall rate. Please check this example and the result.
+┏━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━┳━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━┓
+┃ distance ┃ vector ┃ ef ┃ ┃ ef ┃ insert_time ┃ search_time ┃ recall ┃
+┃ type ┃ dimension ┃ construction ┃ M ┃ search ┃ per vector ┃ per query ┃ rate ┃
+┡━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━╇━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━┩
+│ l2 │ 256 │ 200 │ 32 │ 10 │ 291.13 us │ 35.70 us │ 31.60% │
+│ l2 │ 256 │ 200 │ 32 │ 50 │ 291.13 us │ 99.50 us │ 72.30% │
+│ l2 │ 256 │ 200 │ 32 │ 100 │ 291.13 us │ 168.80 us │ 88.60% │
+│ l2 │ 256 │ 200 │ 32 │ 150 │ 291.13 us │ 310.53 us │ 95.50% │
+│ l2 │ 256 │ 200 │ 48 │ 10 │ 286.92 us │ 37.79 us │ 37.30% │
+│ l2 │ 256 │ 200 │ 48 │ 50 │ 286.92 us │ 117.73 us │ 80.30% │
+│ l2 │ 256 │ 200 │ 48 │ 100 │ 286.92 us │ 196.01 us │ 93.80% │
+│ l2 │ 256 │ 200 │ 48 │ 150 │ 286.92 us │ 259.88 us │ 98.20% │
+│ l2 │ 256 │ 200 │ 64 │ 10 │ 285.82 us │ 50.26 us │ 42.60% │
+│ l2 │ 256 │ 200 │ 64 │ 50 │ 285.82 us │ 138.83 us │ 84.00% │
+│ l2 │ 256 │ 200 │ 64 │ 100 │ 285.82 us │ 253.18 us │ 95.40% │
+│ l2 │ 256 │ 200 │ 64 │ 150 │ 285.82 us │ 316.45 us │ 98.70% │
+│ l2 │ 1024 │ 200 │ 32 │ 10 │ 1395.02 us │ 158.75 us │ 23.50% │
+│ l2 │ 1024 │ 200 │ 32 │ 50 │ 1395.02 us │ 564.27 us │ 60.30% │
+│ l2 │ 1024 │ 200 │ 32 │ 100 │ 1395.02 us │ 919.26 us │ 79.30% │
+│ l2 │ 1024 │ 200 │ 32 │ 150 │ 1395.02 us │ 1232.40 us │ 88.20% │
+│ l2 │ 1024 │ 200 │ 48 │ 10 │ 1489.91 us │ 252.91 us │ 28.50% │
+│ l2 │ 1024 │ 200 │ 48 │ 50 │ 1489.91 us │ 848.13 us │ 69.40% │
+│ l2 │ 1024 │ 200 │ 48 │ 100 │ 1489.91 us │ 1294.02 us │ 86.80% │
+│ l2 │ 1024 │ 200 │ 48 │ 150 │ 1489.91 us │ 1680.97 us │ 94.20% │
+│ l2 │ 1024 │ 200 │ 64 │ 10 │ 1412.03 us │ 273.36 us │ 33.30% │
+│ l2 │ 1024 │ 200 │ 64 │ 50 │ 1412.03 us │ 899.13 us │ 75.50% │
+│ l2 │ 1024 │ 200 │ 64 │ 100 │ 1412.03 us │ 1419.61 us │ 90.10% │
+│ l2 │ 1024 │ 200 │ 64 │ 150 │ 1412.03 us │ 1821.85 us │ 96.00% │
+│ cosine │ 256 │ 200 │ 32 │ 10 │ 255.22 us │ 28.66 us │ 38.60% │
+│ cosine │ 256 │ 200 │ 32 │ 50 │ 255.22 us │ 85.39 us │ 75.90% │
+│ cosine │ 256 │ 200 │ 32 │ 100 │ 255.22 us │ 137.31 us │ 91.10% │
+│ cosine │ 256 │ 200 │ 32 │ 150 │ 255.22 us │ 190.87 us │ 95.30% │
+│ cosine │ 256 │ 200 │ 48 │ 10 │ 259.62 us │ 57.31 us │ 46.60% │
+│ cosine │ 256 │ 200 │ 48 │ 50 │ 259.62 us │ 170.54 us │ 84.80% │
+│ cosine │ 256 │ 200 │ 48 │ 100 │ 259.62 us │ 221.11 us │ 94.80% │
+│ cosine │ 256 │ 200 │ 48 │ 150 │ 259.62 us │ 239.90 us │ 97.90% │
+│ cosine │ 256 │ 200 │ 64 │ 10 │ 273.21 us │ 49.34 us │ 48.10% │
+│ cosine │ 256 │ 200 │ 64 │ 50 │ 273.21 us │ 139.07 us │ 88.00% │
+│ cosine │ 256 │ 200 │ 64 │ 100 │ 273.21 us │ 242.51 us │ 96.30% │
+│ cosine │ 256 │ 200 │ 64 │ 150 │ 273.21 us │ 296.21 us │ 98.40% │
+│ cosine │ 1024 │ 200 │ 32 │ 10 │ 1192.27 us │ 146.86 us │ 27.40% │
+│ cosine │ 1024 │ 200 │ 32 │ 50 │ 1192.27 us │ 451.61 us │ 66.10% │
+│ cosine │ 1024 │ 200 │ 32 │ 100 │ 1192.27 us │ 826.40 us │ 83.30% │
+│ cosine │ 1024 │ 200 │ 32 │ 150 │ 1192.27 us │ 1199.33 us │ 90.00% │
+│ cosine │ 1024 │ 200 │ 48 │ 10 │ 1337.96 us │ 200.14 us │ 33.10% │
+│ cosine │ 1024 │ 200 │ 48 │ 50 │ 1337.96 us │ 654.35 us │ 72.60% │
+│ cosine │ 1024 │ 200 │ 48 │ 100 │ 1337.96 us │ 1091.57 us │ 88.90% │
+│ cosine │ 1024 │ 200 │ 48 │ 150 │ 1337.96 us │ 1429.51 us │ 94.50% │
+│ cosine │ 1024 │ 200 │ 64 │ 10 │ 1287.88 us │ 257.67 us │ 38.20% │
+│ cosine │ 1024 │ 200 │ 64 │ 50 │ 1287.88 us │ 767.61 us │ 77.00% │
+│ cosine │ 1024 │ 200 │ 64 │ 100 │ 1287.88 us │ 1250.36 us │ 92.10% │
+│ cosine │ 1024 │ 200 │ 64 │ 150 │ 1287.88 us │ 1699.57 us │ 96.50% │
+└──────────┴───────────┴──────────────┴────┴────────┴─────────────┴─────────────┴────────┘
+The same benchmark is also run for sqlite-vss using its default index:
+┏━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┓
+┃ vector dimension ┃ insert_time(per vector) ┃ search_time(per query) ┃ recall_rate ┃
+┡━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━┩
+│ 256 │ 3644.42 us │ 1483.18 us │ 100.00% │
+│ 1024 │ 18466.91 us │ 3412.92 us │ 100.20% │
+└──────────────────┴─────────────────────────┴────────────────────────┴─────────────┘
+Vectorlite is faster while offering 96% recall rate if properly tuned. Besides, you can also build the index using hnswlib directly and serve the index using vectorlite as vectorlite can be considered a thin wrapper around hnswlib with a SQL API.
+Quick start
+The quickest way to get started is to install vectorlite using python.
+# Note: vectorlite-py not vectorlite. vectorlite is another project.
+pip install vectorlite-py apsw numpy
+Vectorlite's metadata filter feature requires sqlite>=3.38. Python's builtin sqlite
+module is usually built with old sqlite versions. So apsw
+is used here as the SQLite driver, as it provides bindings to newer SQLite. Vectorlite still works with old SQLite versions if metadata filter support is not required.
+Below is a minimal example of using vectorlite.
+import vectorlite_py
+import apsw
+import numpy as np
+"""
+Quick start of using vectorlite extension.
+"""
+conn = apsw.Connection(':memory:')
+conn.enable_load_extension(True) # enable extension loading
+conn.load_extension(vectorlite_py.vectorlite_path()) # load vectorlite
+cursor = conn.cursor()
+# check if vectorlite is loaded
+print(cursor.execute('select vectorlite_info()').fetchall())
+# Vector distance calculation
+for distance_type in ['l2', 'cosine', 'ip']:
+v1 = "[1, 2, 3]"
+v2 = "[4, 5, 6]"
+# Note vector_from_json can be used to convert a JSON string to a vector
+distance = cursor.execute(f'select vector_distance(vector_from_json(?), vector_from_json(?), "{distance_type}")', (v1, v2)).fetchone()
+print(f'{distance_type} distance between {v1} and {v2} is {distance[0]}')
+# generate some test data
+DIM = 32 # dimension of the vectors
+NUM_ELEMENTS = 10000 # number of vectors
+data = np.float32(np.random.random((NUM_ELEMENTS, DIM))) # Only float32 vectors are supported by vectorlite for now
+# Create a virtual table using vectorlite using l2 distance (default distance type) and default HNSW parameters
+cursor.execute(f'create virtual table my_table using vectorlite(my_embedding float32[{DIM}], hnsw(max_elements={NUM_ELEMENTS}))')
+# Vector distance type can be explicitly set to cosine using:
+# cursor.execute(f'create virtual table my_table using vectorlite(my_embedding float32[{DIM}] cosine, hnsw(max_elements={NUM_ELEMENTS}))')
+# Insert the test data into the virtual table. Note that the rowid MUST be explicitly set when inserting vectors and cannot be auto-generated.
+# The rowid is used to uniquely identify a vector and serve as a "foreign key" to relate to the vector's metadata.
+# Vectorlite takes vectors in raw bytes, so a numpy vector need to be converted to bytes before inserting into the table.
+cursor.executemany('insert into my_table(rowid, my_embedding) values (?, ?)', [(i, data[i].tobytes()) for i in range(NUM_ELEMENTS)])
+# Query the virtual table to get the vector at rowid 12345. Note the vector needs to be converted back to json using vector_to_json() to be human-readable.
+result = cursor.execute('select vector_to_json(my_embedding) from my_table where rowid = 1234').fetchone()
+print(f'vector at rowid 1234: {result[0]}')
+# Find 10 approximate nearest neighbors of data[0] and there distances from data[0].
+# knn_search() is used to tell vectorlite to do a vector search.
+# knn_param(V, K, ef) is used to pass the query vector V, the number of nearest neighbors K to find and an optional ef parameter to tune the performance of the search.
+# If ef is not specified, ef defaults to 10. For more info on ef, please check https://github.com/nmslib/hnswlib/blob/v0.8.0/ALGO_PARAMS.md
+result = cursor.execute('select rowid, distance from my_table where knn_search(my_embedding, knn_param(?, 10))', [data[0].tobytes()]).fetchall()
+print(f'10 nearest neighbors of row 0 is {result}')
+# Find 10 approximate nearest neighbors of the first embedding in vectors with rowid within [1000, 2000) using metadata(rowid) filtering.
+rowids = ','.join([str(rowid) for rowid in range(1000, 2000)])
+result = cursor.execute(f'select rowid, distance from my_table where knn_search(my_embedding, knn_param(?, 10)) and rowid in ({rowids})', [data[0].tobytes()]).fetchall()
+print(f'10 nearest neighbors of row 0 in vectors with rowid within [1000, 2000) is {result}')
+conn.close()
+More examples can be found in examples and integration_test folder.
+Conclusion
+Vectorlite is created with the hope that it could be the go-to vector search solution for SQLite like pgvector for PostgreSQL.
+It is still in early stage. Any suggestions are welcome and appreciated.

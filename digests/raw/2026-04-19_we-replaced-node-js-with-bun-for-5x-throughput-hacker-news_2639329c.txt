@@ -1,0 +1,25 @@
+I'm puzzled by the title of this post. From what I can gather most, if not all, of the performance improvements came from sacking SQLite and Zod.
+They applied optimizations that cut CPU time by ~40% to the Bun version before comparing it with Node. Claiming 5x throughput from "replacing Node.js with Bun" is a wild misrepresentation of the findings.
+And they include "phase 3 opts" in the phase2 benchmark, so the move to Bun also includes improvements from removing "safeParse". So Node might've been at more than 40% of the performance.
+It's sad since these kinds of numbers are interesting, but when there's blatant misrepresentations it just create a stink.
+I was curious why bun build --compile would be faster. The docs say:
+“Compiled executables reduce memory usage and improve Bun’s start time.
+Normally, Bun reads and transpiles JavaScript and TypeScript files on import and require. This is part of what makes so much of Bun “just work”, but it’s not free. It costs time and memory to read files from disk, resolve file paths, parse, transpile, and print source code.
+With compiled executables, you can move that cost from runtime to build-time.”
+The SQL query they replaced was extremely cringe and amateurish ("let's sprinkle DISTINCT until all those pesky redundant rows that come from our inefficient KV metadata schema go away"). The fact they did not acknowledge that and somehow blame it on SQlite made me stop reading on the spot, and be very worried for whoever depends on their products.
+>Next: the runtime itself. Bun has a bun build --compile flag that produces a single self-contained executable. No runtime, no node_modules, no source files needed in the container.
+I didn't know that. So Bun is basically a whole runtime + framework all in one with little to no deployment headaches?
+The bun build creates a large self-contained executable with no optimisations. Almost like a large electron build.
+Deno also provides the same functionality, but with a smaller optimized binary.
+Appreciate Bun helping creating healthy competition. I feel like Deno falls under most people's radar often. More security options, faster than Node, built on web standards.
+Ideally we would still only use JavaScript on the browser, personally I don't care about about the healthy competition, rather that npm actually works when I am stuck writing server side code I didn't ask for.
+FE-BE standardization is efficient in terms of labor and code migration portability, but I really like the idea of static compilation and optimization of the BE in production.. there's absolutely no need or reason for the BE to do dynamic anything in prod. As long as it retains profiling inspectability when things go wrong.
+That doesn’t align with my experience. It feels more like a trojan horse. Client and Server rarely (should) share code, and people that are really good at one discipline aren’t that good at the other. Maybe LLMs will change that.
+C. 2015 one of my friends was a Django dev but moved to Express/node because that's where the cool kids went, it was one less language, and allowed them to move logic FE->BE and BE->FE much easier. Also, a bunch of Rails people left to Node/FE JS and Rust (BE). JS/TS is still an irreducible requirement for FE. There is no law that either grand unified frameworks must be used nor entirely separate FE and BE must be maintained separately and are somehow mysterious, arcane arts. Not sharing code when/where it is possible and appropriate is duplicating effort.. like client- and server-side input validations doing exactly the same thing.
+Except we have moved beyond that with SaaS products,agents, AI workflows.
+The only reason I touch JavaScript on the backend instead of .NET, Java, Go, Rust, OCaml, Haskell,.... are SDKs and customers that don't let other option than JavaScript all over the place.
+Thus my point of view is that I couldn't care less about competition between JavaScript runtimes.
+SEA with node.js "works" for nearly arbitrarily general node code -- pretty much anything you can run with node. However you may have to put in substantial extra effort, e.g., using [1], and possibly more work (e.g., copying assets out or using a virtual file system).
+I wish you were getting replies instead of downvotes. I want to know why people think Bun is preferable here. For cross-platform non-performance-important code, I’ll use Bun all day. Once speed enters the equation, I don’t see why you’d still be using it.
+I use bun for everything except for monorepos with isolated deployment targets and shared packages. I use yarn or pnpm for monorepos. Maybe it's changed in the last six months but I could never get docker to properly resolve my dependencies when I only want to build the web app, for example, since the bun lock is deterministic based off of all the packages in the repo so isolating a single leaf makes it error.
+Maybe I'm doing something wrong but I scoured docs and online and asked multiple AI agents to no avail.

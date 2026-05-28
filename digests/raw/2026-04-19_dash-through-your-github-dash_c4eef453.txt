@@ -1,0 +1,47 @@
+DASH Through Your GitHub
+gh dash -- 70x32
+·- ·--- --
+▜▔▚▐▔▌▚▔▐ ▌
+▟▁▞▐▔▌▁▚▐▔▌
+▟▁▞▐▔▌▁▚▐▔▌
+Through
+Your GitHub
+A rich terminal UI for GitHub that doesn't break your flow
+──◇──
+Companion Apps
+▐▔▔▐▚ ▌▐ ▌▐▔▌▐▚ ▌▐▔▔▐▔▔ ▐▛▁▐ ▚▌▐▔▌▐▔▌▐ ▚▌▐▁▁▐▛▁
+A Blazingly Fast Terminal UI for GitHub Actions
+▜▔▚ ▌▐▔▔▐▔▔▐▚ ▌▐▔▌▐ ▞ ▟▁▞ ▌▐▔ ▐▔ ▐ ▚▌▐▔▌▐▞
+A git diff pager based on delta but with a file tree, à la GitHub.
+──◇──
+Donate To Support the Project
+I'm always working on new terminal UIs to make my life easier.
+By
+donating or joining Insiders you can support this and
+any of my other projects.
+This is my current sponsorship goal
+──◇──
+Features
+Define Custom GitHub Filters
+gh dash -- 70x32
+──◇──
+Native Vim Keybindings
+- h/j/k/l to move between rows/sections
+- ctrl+d/u to move in sidebar
+- o to open in browser
+- y/Y to copy pr number/url
+- and more...
+──◇──
+Set Custom Commands
+gh dash -- 70x32
+──◇──
+Use Custom Themes
+gh dash -- 70x32
+──◇──
+Why use DASH?
+Check out this 10/10 video by Charm ✨ explaining how DASH can help you manage your GitHub experience
+──◇──
+Join Our Discord Community
+If you want to keep up with the TUIs I'm developing or just want to nerd out
+about the terminal -
+come join us!

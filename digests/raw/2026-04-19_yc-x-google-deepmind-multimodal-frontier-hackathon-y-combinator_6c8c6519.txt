@@ -1,0 +1,43 @@
+ABOUT
+
+YC x Google DeepMind: Multimodal Frontier Hackathon
+
+YC and the Google DeepMind team are hosting a low-key, high-signal hackathon.
+
+Most "AI apps" are still just text boxes with extra steps. We want to see what happens when you actually use the full multimodal stack - native audio, real-time video, and high-fidelity image generation - to build something that wasn't possible six months ago.
+
+The Tech
+
+We’re giving you early access and high-rate limits for:
+
+Gemini 3.1: The latest iteration with expanded long-context reasoning and native agentic vision.
+Lyria: DeepMind’s specialized model for high-fidelity music and transformational audio.
+NanoBanana 2: The new state-of-the-art for image composition, character consistency, and sub-pixel text rendering.
+
+The goal is to push these models past the "chatbot" paradigm. Build a real-time foley engine, a spatial video reasoning agent, or something so weird we haven't named the category yet.
+
+This is an in-person event in San Francisco. (There is no travel support available.)
+
+The People
+
+A few folks from the DeepMind research and product teams will be hanging out all day to debug, brainstorm, and see what you're shipping:
+
+Shubham Agrawal, DeepMind Researcher
+Paige Bailey, DeepMind Developer Experience Lead
+Abinaya Rajesh, ML lead, NotebookLM & former founder
+Min Choi, DeepMind Product Manager, GenAI & Gemini Long Context
+Naman Goyal, DeepMind Machine Learning Engineer
+
+9:30 AM: Doors Open
+
+10:30 AM: Hacking begins
+
+5:00 PM: Final presentations
+
+8:30 PM: Prizes
+
+9:00 PM: Event ends
+
+This event has ended.
+
+Stay tuned for news about future events by following Y Combinator's LinkedIn and Twitter accounts, plus by keeping an eye on your inbox!

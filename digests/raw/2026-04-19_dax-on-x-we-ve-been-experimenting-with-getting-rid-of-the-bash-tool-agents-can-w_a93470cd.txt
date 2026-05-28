@@ -1,0 +1,25 @@
+X thread capture
+
+## Post
+
+## Conversation
+
+dax 
+
+@thdxr
+
+we've been experimenting with getting rid of the bash tool agents can write js fine which can do what bash can (though some gaps with things like git) and is more cross platform and then could run that in this
+
+Quote
+
+Rivet
+
+@rivet_dev
+
+Mar 18
+
+Introducing the Secure Exec SDK Secure Node.js execution without a sandbox  17.9 ms coldstart, 3.4 MB mem, 56x cheaper  Just a library – supports Node.js, Bun, & browsers  Powered by the same tech as Cloudflare Workers $ 𝚗𝚙𝚖 𝚒𝚗𝚜𝚝𝚊𝚕𝚕 𝚜𝚎𝚌𝚞𝚛𝚎-𝚎𝚡𝚎𝚌
+
+8:20 PM · Mar 18, 2026
+
+211.5K Views

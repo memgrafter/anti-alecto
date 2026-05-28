@@ -1,0 +1,2603 @@
+I've done OSS open source software for
+more than 15 years actually. I'm so
+[ __ ] old, sorry.
+Now it's very very much understandable
+that why you like the CLI. [music] So
+another surprise, I love GUIs. I hate
+terminals. I grew up with MS-DOS and I
+hated it. Wait, you have a lot of
+contradictory answers to
+>> [laughter]
+>> Me, Peter, and Armin [music] got
+together at Peter's flat in Vienna and
+we had a hackathon. That was the first
+all-nighter. These days I try to not
+have any of these all-nighters. It's not
+healthy at all. I'm one of the people
+who clamorizes programmers.
+>> [laughter]
+>> Like I build a coding agent for the rest
+of the world so they leave me alone.
+>> [music]
+>> Yes, Marius, we were just talking about
+you
+you know, having those all-nighters. I
+was ask I was asking you that is that
+quite normal for you because I was
+having the chat with Peter last time and
+I asked the same question to him and he
+was like uh don't ask me that question
+once again.
+>> [laughter]
+>> Yeah. So what what is the thing that you
+guys have been doing? You, Peter, Armin,
+all all three of you. Uh well, I so
+these days I try
+to not have any of these all
+all-nighters. It's not healthy at all.
+>> [laughter]
+>> Uh also we have a we have a we have a
+small kid and
+I I want to experience life with him so
+it's it's good to have the same sleep
+and wake schedule. Uh but it was
+actually Peter's fault that both me and
+Armin had a period of prolonged
+all-nighters uh back in
+>> Yeah,
+back in 2025 in April. It's about a year
+ago.
+Peter was was was messaging me and Armin
+and be like, "Hey man,
+the coding agents the coding agents
+actually work. You got to try it." And
+then
+we fell into that rabbit hole and
+>> [laughter]
+>> I think Armin
+>> Before that
+I mean, before that you must have heard
+about all these
+Cursor and not Cloud Code I would say
+but there was cloud.ai. You could have
+done some, you know,
+normal Oh yeah. I would not say agentic
+coding but some assisted coding
+>> Well,
+so I I I actually come from machine
+learning originally. Okay. Um but that
+was pre-transformers
+and pre-deep learning. Wow. Uh but I
+kept up with it even though it wasn't my
+my day-to-day business anymore after
+or so.
+Um so when GPT came out
+late 2022 or so, I I obviously took
+notice and immediately started playing
+around with whatever I could get my
+hands on in my free time. So I've always
+been using LLMs since GPT's release to
+to see if they can help me with coding.
+So
+the evolution was kind of like starting
+at chat.openai.com,
+ask a question or paste some code and
+ask it to fix the problem in this
+function or whatever and then copy and
+paste the result back into Visual Studio
+Code or whatever editor I would use.
+Then GitHub Copilot came out with tab
+completion
+in Visual Studio Code. So I tried that
+but that never worked for me. I didn't
+like it.
+And then 2024,
+I think early 2024, I started using
+Cursor.
+Um and that was really decent. So
+initially it would be like edit this
+currently open file with these files as
+context and that worked quite well. And
+eventually they added some agentic
+capabilities as well but they weren't
+they weren't the same like Cloud Code.
+So no I mean, we used to have like PRD
+files that we used to set up in Cursor
+and then used to make it work. We used
+to even give it links to the
+documentation to get things Yeah. Yeah.
+Yeah, I remember. Yeah, I
+I I honestly it's it's all been so quick
+and fast. I don't remember half of
+what's happened
+>> [laughter]
+>> Um but yeah, for me Cloud Code was
+interesting because it introduced the
+concept of agentic search. So basically
+just give the agent a way to to scan
+your file system autonomously and that
+kind of changed things for me because
+that made it so much more powerful. Um
+yeah, that's the story and then
+I don't know in April or in May April
+April 2025, me, Peter, and Armin got
+together at Peter's flat in Vienna and
+we had a hackathon. That was the first
+all-nighter. Is that the photograph on
+Twitter from that night only? Oh yeah.
+Yeah,
+that's from that night. Yeah. We we we
+built Wipe Tunnel back then in 24 hours
+and actually worked. So it was basically
+access to Cloud Code from your mobile
+device and browser. Yes. Uh that was
+fine. I know about Wipe Tunnel because
+we discussed that Oh yeah. Okay. last
+[laughter]
+year. Yeah. Yeah, and then Armin didn't
+continue contributing to Wipe Tunnel
+much. I stayed with the project for
+three or four weeks and fixed a bunch of
+things in the underlying code that I
+built.
+And Peter was just going crazy on it and
+then spent another two or three
+[laughter] months on it and and tried to
+build his first open source community
+but that didn't quite
+>> I I think I think before we go into like
+the whole wave of what all happened in
+last one year. I would like to ask few
+questions before that because
+a lot has already been done, right? I
+think we both feel the same thing about
+it that
+looking back you would not even
+recognize the fact that just one year
+ago we were doing coding in a different
+completely different way and today the
+things are, you know,
+you know, where are they heading at
+least.
+So before the Cloud Code era, I would
+say before February 2025
+um what was your perspective towards
+agentic coding because we were hearing
+about those things that okay, things
+will transform in this way which they
+are currently.
+>> Yeah. Um but what was your perspective
+since you are from the background of
+machine learning and I believe once you
+are coming from that background, you
+must be having some skepticism as well
+because the more you know about
+something,
+the more you get to know about what can
+be done and what cannot be done, I
+believe. All right.
+Uh what is not like easily being done.
+So what was your take on this before
+February 2025?
+>> Oh, my take was this is never going to
+work. My my take was this sucks.
+[laughter]
+It's helpful in some cases but it's
+never going to work like that. Um so
+yeah, I
+totally misjudged it. It actually
+started working.
+Um Okay. And and why did you think like
+it would not work?
+That's a quick good question. Probably
+because of the experience that evolution
+I just told you about. Um
+while there were some some step changes
+I would say between ChatGPT, copy and
+paste, and
+tap the tap Copilot and and Cursor, I I
+didn't expect it to become
+this
+autonomous. It's not not not in the
+sense of I just tell it to do the thing
+and make no mistakes and it does all the
+things but being able to take an
+instruction for myself and figure things
+out, coming back to me and asking me is
+this what you want and how do you want
+to implement it. Um that that mode of
+operation was just simply not on my
+radar. I
+Okay. Um but that's also mostly because
+I I built a bunch of side projects that
+involved tool calling
+which wasn't a thing until I think
+mid-2024
+or so.
+I I mean Okay. it it wasn't a reliable
+thing. People Yeah. people cursed LLMs
+to do tool calls without tool calls
+being part of the training set.
+Right. But even when they started
+introducing that into the training, it
+wasn't really reliable. Like
+and based just based on that and based
+on the fact that it didn't get reliable
+as quickly as it
+got better at say thinking or answering
+specific types of questions that it
+would previously fail on on on
+answering. I I didn't have the
+expectation that the tool calling will
+get much better.
+Um but the tool calling got better
+because they got better training data
+and I see.
+Because the models evolved, right?
+Basically.
+>> Yeah.
+And I didn't expect them to evolve. So
+the evolution of a model is basically
+two parts. Either the architecture
+evolves like mixture of experts was one
+big introduction in the architecture of
+all the state-of-the-art models that
+changed a lot of things. Um the split
+between thinking and normal text
+output
+to think through the problem before
+actually giving you an answer. All of
+these were more like architectural and
+and training data
+things that improved the models and it
+wasn't obvious to me despite my
+background that this could work
+eventually for this kind of agentic tool
+calling in a loop thing.
+Just didn't see it.
+Yeah.
+Yeah, I mean, today you have
+by agent and
+things have completely, you know,
+changed. You you have yourself been
+orchestrating around the same models
+which have now evolved.
+But there was a thing last year as far
+as I remember because I have also been
+in touch with this wave of, you know,
+what all is going on being a programmer
+myself. So
+last year around the month of November
+2025 um
+there was a chatter around the Twitter
+that people were saying the models have
+touched the rooftop and there is no
+nothing beyond that and, you know, there
+was this conversation going on around
+some areas in uh the Twitter tech scene.
+Uh but eventually in January, though it
+came out I think originally in November
+Cloud Code
+but eventually in January around mid-Jan
+uh things blew up and
+the perspective changed around what can
+be done because I felt like it was a
+next breakthrough in the whole agentic
+coding scene.
+Till November 2025, people were like
+very pessimistic about what text and
+once this all blew up in January 2026
+people were like there's a new dimension
+to it and now we can think about this,
+we can think about that and, you know,
+whatever is happening for the last two
+three months. Yeah. So what is your what
+is your, you know, perspective around
+this timeline? Okay. So again, I I
+the agenda coding thing I started doing
+in April 2025. So, I had in AI years
+>> [laughter]
+>> until until January 26th, that's like a
+lifetime, right? It's almost a year.
+Right.
+>> [laughter]
+>> Um so, I I've I've used agents from
+April to the end of the year to the
+beginning of January 26th
+a lot, like a lot. And I tried them out
+on a lot of greenfield projects, a lot
+of brownfield projects, um
+Okay. just to see what works and what
+doesn't work. Right.
+Okay. So, for me around July, it was
+very obvious that this is
+probably the way we're going to create
+software going forward. So, less typing,
+more delegating, more planning. I mean,
+ideally you plan before agents as well,
+but Right.
+Right. Um but
+basically agents becoming a standard
+tool in your tool set as a programmer or
+software engineer. That was clear to me
+in in July for a lot of tasks, not all
+of the all tasks.
+>> Looking at what kind of examples, if you
+don't mind mentioning that? Uh
+an example of what?
+Example of like what actually you
+actually experimented with in July last
+year that made you think that okay, this
+is going to work. So, I have a big big
+brownfield project that consists of a
+Java
+API implementation.
+Uh not a web API, it's just a in-game
+development tools. Uh so, it is
+implemented in Java and then there's
+ports to C, C++, Swift, C#, Haxe,
+TypeScript,
+whatever, right? Okay. Yeah. Previously
+previously I would do this by hand, the
+ports. So, a change would would be made
+to the Java runtime as we call it, uh
+and then I would take that change and
+port it over to C++ and Haxe and
+TypeScript and whatsoever manually. And
+around July I started experimenting, can
+the agent actually do this for me? Can
+it create a faithful port between a
+managed language like Java and an
+unmanaged language in terms of memory
+like C++ with a little bit with
+different semantics, so to speak. Yeah.
+Okay.
+>> And it couldn't.
+>> [laughter]
+>> At least not
+at least not with
+>> Not end to end. Well, at least not with
+a lot of hand-holding and a lot of
+reviewing, but I see. it saved me a [ __ ]
+ton of time because that Java code and
+C++ code is a lot of it's like
+hundreds of lines of math code, right?
+Mhm. And that part, it got perfect every
+time. What it did not get perfect was
+translating from Java classes to C++
+equivalents just because of the way that
+those things differ in terms of
+semantics. Um Okay. translating from um
+memory management in Java where you
+basically don't do much except trying to
+not allocate too many objects at once so
+the garbage collector can do
+to um
+manually memory managed runtime like C++
+where you need to reshuffle some of the
+structures that you set up compared to
+Java. Right.
+At that it failed entirely. But if I
+gave it, say, a class method in Java
+full of math uh code, it could port it
+perfectly.
+>> [clears throat]
+>> Never a miscommunication. And that saved
+me so much time because that was the
+tedious part. The the kind of
+translating the idioms from Java to C++,
+that's easy for me because I know how to
+do this and it's not a lot of code.
+>> Right. But it takes some thinking.
+Um but porting those hundreds of lines
+of math code to C++ was miserable and I
+would always end up with a minor thing
+missing like I forgot a minus somewhere
+or I invoked
+a wrong trigonometric function or I did
+a copy and paste error, stuff like that.
+And [clears throat] it basically it
+basically removed all that kind of work
+for me. And I I could rely on it. And
+from that point on forward I was like,
+okay, this can do it this can do a
+sizable amount of the work that takes a
+lot of time for me
+uh
+with extremely high quality and
+extremely high percentage of success
+rate.
+Um
+>> Yes. And I can focus on the on the parts
+that are hard for for the LLM, which is
+Right. things that are hard.
+Yeah, which is understandable, yeah. I
+mean, yeah, I get it. And then for me by
+that point I was like, this is going to
+be a tool that's in my tool belt as a
+software engineer because it saves me so
+much time. Even if it doesn't do all the
+things for me, it can do the things for
+me that I hate doing, which is amazing.
+>> [laughter]
+>> Um and then I also did a lot of
+greenfield projects where I saw, okay, I
+can now go into domains that I
+previously haven't understood or haven't
+touched.
+Uh and can with the help of an agent
+figure them out or just not care and
+vibe code and say, "Hey agent, build me
+this thing. Make no mistakes. I don't
+care for the code, right?"
+Right. That was the second thing like
+using agents to generate code or
+programs that are throwaway programs for
+debugging, for analysis, for dashboards,
+for things I don't care about but would
+be nice to have and would help me with
+my actual workflow, my actual work of
+programming on a product production code
+base.
+For that they're also brilliant.
+And that also saves me time. I give you
+an example like another observation
+during that time in July was
+I would get a lot of user reports, bugs,
+right? They would send me some data and
+a snippet of code and say, "This doesn't
+work for me."
+And generally what I have to do is I
+need to create a reproduction case. So,
+I actually need to set up a full program
+ingesting the data, trying to reproduce
+how the bug happened.
+Yes. Previously I would have to do this
+by hand and it would take me half a day
+or a day depending on the complexity of
+the issue. And now in July I could just
+I I
+I was like, "Why the [ __ ] am I doing
+this myself? I can just ask my my agent
+try to create a program out of that
+issue report that reproduces the issue
+the user reported."
+Poof. So, which 15 minutes later I had
+my reproduction program and then I could
+start and then I could start debugging.
+I I wouldn't spend an entire morning
+setting So, which agent were you using?
+Which agent were you using Uh Cloud
+Code, just Cloud Code, yeah.
+>> [clears throat]
+>> I was in love with Cloud Code back then.
+It was great. It was an Back then. Yeah,
+back then. Back then, yeah.
+>> [laughter]
+>> All right. All right. I mean, these were
+like very
+evident examples. Even
+back in 2024, late 2024, I was trying to
+make a project a social media management
+kind of tool. Um and I thought since
+Claude.ai is there, so I should use it
+to the fullest. I created two projects,
+one for back end, one for front end and
+started just, you know, playing around
+with it. And figured that in the span of
+three, four days I was able to achieve
+80% of it and the rest I managed to do.
+And while doing that project I figured a
+lot of loopholes, right? Which we talk
+about today, which is be tool calling,
+be able to just uh
+search across the internet and figure
+out what the documentation is and what
+the real uh tools that you actually need
+while building that. Uh
+because I was putting them manually by
+myself.
+And in in span of two, three months and
+February came and then, you know, all
+things changed completely.
+Uh so, even I felt that it was a big
+shift for me building a project using
+Claude.ai and then using Claude Code,
+completely different scenarios. Uh and
+then you telling me the July example
+from last year, I think uh
+Okay. Okay, so all this happened, but
+I I figured that uh
+people still there's a selective um
+category of people in the tech scene
+that still
+are hesitant or probably are against the
+use of agentic tools. They they sort of
+glamorize the importance of fact that
+you should know how to program things
+and if you will not write your code, if
+you will not read out the code that you
+have generated out of AI, then things
+are not going to production in a way
+that they used to go earlier. You would
+not be able to rely on that feature, you
+would not be able to rely on that code
+base eventually and when the things go
+down south as far as your crashes or
+bugs are concerned, you as a programmer
+or as a team would not be able to manage
+that.
+Um what is your perspective on this one
+like on which side are you when people
+say that to you as well? I'm one of the
+people who glamorizes programmers.
+>> [laughter]
+>> Like I built I built a coding agent for
+the rest of the world so they leave me
+alone.
+>> [laughter]
+>> All right. No,
+Why why do you say so? I mean, Let let
+me expand on that and also I want to I
+want to just quickly go back to the last
+thing. You also said something in
+January 2026 changed in the industry.
+>> Yes.
+>> [gasps]
+>> So, here's why. Here's here's my theory
+why.
+Before January 2026,
+there was the Christmas vacation in most
+of the world. Yes. And that was the
+first time where a lot of people
+actually had time to try out Claude and
+Codex and all of that.
+And from and from that everybody now was
+like, "Oh my god." They were basically
+in the state that me and Peter and Armin
+were back in April
+2025. So,
+when that happened in January, everybody
+came back from vacation and went on
+Twitter or socials and started, "Oh my
+god, this is amazing. This is a step
+change and Opus uh it's over."
+>> [laughter]
+>> I was like,
+"Not a lot has changed since July."
+Yeah, I mean, yes. Um and honestly like
+I personally feel that not a lot has
+changed since July. Like uh I think I
+started out in July. Yeah.
+>> [laughter]
+>> The models got better. I
+I I agree that the models got better,
+but it's not it's not the step change
+everybody seems to be seeing. I at least
+I don't see it and I honestly I used
+that stuff a lot, so
+maybe I'm holding it wrong. Maybe maybe
+it's
+>> this this brings me to the question that
+Like this was the biggest statement that
+since July last year you you mentioned
+not a lot has changed, right? In terms
+of what we have already achieved as far
+as agent decoding and the whole scenario
+is concerned. But what I feel is even
+you would find those articles on the
+internet these days that people are
+trying to
+talk more about the orchestration layer
+now
+versus back then nobody was even into
+what is agent harnessing and how you can
+actually use a model to the fullest.
+I think the focus has been shifted to
+not just the models now because earlier
+we were just bullish on what the next
+model is going to have as a capability.
+Now people are also focusing on what
+best you can do as an orchestrator. What
+best you can do as far as architecture
+of your agent is concerned. And I think
+that's why as far as I could understand
+Pi Agent also exist. A better
+orchestration layer, right? Otherwise
+there is nothing new eventually.
+Yeah, I mean it's a while loop that
+calls an LLM and then executes
+functions. It's not anything new. It's
+just very barebones and I made it
+extensible so people can build their own
+orchestration layers if they want.
+Here's a secret. I don't do sub agents
+or orchestrations.
+>> [laughter]
+>> No, I don't.
+I have two extensions. One extension
+is if a user message from me contains a
+GitHub URL to an issue or pull request
+Yeah. So this is my first extension.
+Up here, wait.
+Up here I posted this. It's a slash
+command and it has an argument which is
+a link to an issue or PR.
+And it
+>> It just tells the agent to get the issue
+from GitHub the full description and any
+code that's in there and so on if it's a
+pull request and then for bugs do this
+and for feature requests do this and
+then just give me an initial analysis.
+And as soon as my as soon as my
+extension sees this GitHub URL
+Uh-huh. all it does is it just adds a
+tiny little user interface widget on top
+of my editor
+that just tells me the name of the the
+title of the issue, the the account name
+of the submitter and the link to the
+issue so I can click on it and open it
+up in my in my browser immediately.
+That's Okay.
+>> That's the first
+It's trivial, man. It's just like my my
+my point is this is not orchestration or
+anything. This is just for me because I
+usually have two or three of these
+sessions going. If I come back to my
+terminals, I know what I'm working on
+and I can actually go to the source.
+This is user experience eventually.
+Exactly. That's all it is and that's all
+the reason why I built Pi. I just want
+these tiny little tools that are
+specific to a workflow for a project. In
+this case it's a GitHub project so an
+open source project so I work with
+GitHub issues and GitHub pull requests.
+So I built myself a tiny stupid
+extension.
+All it does is if there is a GitHub URL
+in my user messages
+it just fetches the information from
+that issue.
+>> These details and show it to you. Yeah.
+Yeah. And that's it. I don't do I don't
+do orchestration and now that ties back
+to your last question. Am I one of these
+people who clamorize code or am I one of
+those people who say the agent can do
+everything for me now? So why do I
+clamorize code? So I've been I've also
+taught at university and
+again again I'm I'm basically a caveman
+as you saw this is my workflow.
+>> [laughter]
+>> I mean this is
+as a programmer we all have our very
+personalized workflow. So so looking at
+your workflow it it really gives me good
+insight into how do you think about
+coding while actually executing
+something. Even when I operate I also
+have some you know little bit different
+things which probably no nobody else
+does. So I I resonate with that. So so
+coming back to the clamorizing code and
+so on and so forth. I am still somebody
+who reads the outputs of their agent.
+The reason is twofold. First of all they
+make mistakes.
+They don't make an they don't make an
+immense amount of mistakes depending on
+what kind of project you're working on.
+If you're working in TypeScript front
+end now, yes.
+TypeScript front end or Node.js back end
+or bun doesn't matter. They're pretty
+decent. They can do most of the things
+probably better than I do can do them
+because I haven't done any front end
+work in my life ever because I hate it.
+>> [laughter]
+>> I'm very happy that an agent can now
+write websites for me because
+I
+I've come from compiler engineering and
+machine learning and all that. I I don't
+care for websites. Truly do not. So I
+don't even look at the code if it writes
+me a website, right? Now it's very very
+much understandable that why you like
+the CLI.
+Right? There's also a debate between CLI
+and the GUI so I get it. So another
+surprise. I love GUIs. I hate terminals.
+I I grew up with DOS MS-DOS and and I
+hated it. Wait, you have a lot of
+contradictory answers to
+>> [laughter]
+>> Too many questions. Too many answers.
+Okay, okay. Let me just explain why a
+TUI.
+It's very easy to make a TUI extensible
+in terms of user interface.
+All an extension in Pi needs to do to to
+draw something on screen is say "Hello,
+I'm a UI component. Here are the lines
+you need to draw in the console in the
+in the terminal."
+There is no there is no CSS. There is no
+styling. There is no no UI framework to
+speak of. It's just
+your extension returns a user interface
+component and all that user interface
+component does is it renders a bunch of
+strings and it's literally an array of
+strings that it returns that gets then
+displayed on screen. And what the
+content of your strings is, I don't
+care.
+The the user interface of Pi doesn't
+care. So that's why it's a TUI because
+it's super easy to extend. If I did this
+on the web, I would have to decide on
+the CSS framework, the the JavaScript
+framework like React or Solid or
+whatever.
+No, I don't want to. So that's why it's
+a TUI at the moment.
+Yeah.
+Super easy super easy to extend. That's
+why it's a TUI. Not because I like TUIs.
+I hate TUIs. They're terrible.
+No, because the information density just
+just sucks and I'm very limited in the
+in the
+I'm very limited in the stuff that I can
+render in Pi in a TUI. Like no charts. I
+can render charts now because Pi can
+also display images in the TUI.
+But it's nowhere near like the web where
+I can do anything. I can pull up a WebGL
+context and just draw something in 3D.
+And also the agent could do this. Like
+the agent could inject a user interface
+component in the session that would
+display some data or answer stuff
+whatever, right?
+It actually can do this in Pi in the TUI
+now. It's not a problem but it's not as
+expressive as a web interface for
+example where I have a proper user
+interface
+Again it's all about simplicity and
+extensibility at this point. That's it.
+There will be a GUI version of this
+as well eventually but that needs some
+that needs some design and some thinking
+and some coding and some feeling out and
+that comes back to clamorizing the code.
+So
+>> [laughter]
+>> Yeah.
+Why am I building a thing that a lot of
+people use in the sense of
+"Build me the thing. Make no mistakes. I
+don't care for the code." when I myself
+care for the code.
+I have taught at university. I've taught
+in schools. I have taught
+grown up people in in adult education
+and the way I think learning happens is
+if there is friction.
+Okay. Okay. And what do you mean by that
+friction? Okay. When when a stupid
+example. Say I never I never coded up a
+binary tree. Nobody ever needs to do
+this. It's just a stupid example.
+Yeah. Now nowadays I have two ways of
+doing this. I can go to my clanker and
+say "Hey, build me a library that
+implements a red-black binary tree
+a red-black tree."
+And I will learn nothing.
+Absolutely nothing because the agent
+will just spit out the code based on its
+training data and it's probably going to
+be correct and I'm going to trust it
+because it also spat out a bunch of
+tests that I also don't read the tests
+but there are tests now so it must be
+correct, right?
+Um
+Yes,
+exactly. [laughter]
+And I have learned zero because there
+was zero friction. The only friction I
+had was telling the agent what I want.
+Yes. If I then if I then don't even read
+the code
+that it spat out and just trust that it
+works, I have learned Even even some
+people don't even write that. They just
+whisper it out.
+>> [laughter]
+>> So so so that's that's one reason why I
+still
+code by hand partially
+and read code the agent outputs because
+I learn because then there is friction
+and the friction is the thing that makes
+my head understand things and recall
+things, memorize things.
+The second the second issue why I still
+do at least the design work by hand in
+code of APIs and architecture and stuff
+like that is because at the moment at
+least I do think that agents and the
+current set of models are terrible
+at building good abstractions and
+building complex systems.
+And I have an explanation which might be
+totally wrong but my explanation is
+this. How does a large language model
+become a coding agent? What do I need to
+give it in sense of training data
+for it to be able to become a coding
+agent like you saw it in Pi or Cloud
+Code and Codex?
+It gets the exact same kind of sessions
+that we just saw in in in my little
+screen share.
+And what what do these sessions do? The
+sessions assume there's already a code
+base or a a tabula rasa directory with
+nothing in it.
+And that session is limited in terms of
+context, so it can only be about a small
+piece of a project. It can be a bug fix
+in some file or two files or three files
+across the entire code base. It can be
+the implementation of a new feature
+across five or 10 or 20 files, but it's
+never the entire project. It's never the
+entire system design that the agent sees
+in a session.
+And if that that is the kind of training
+data that is being
+uh used to train LLMs,
+then that's what they're good at, which
+also means
+inside the distribution of the training
+data, they never experienced this
+holistic system thinking, where you
+actually need to
+keep the entire system in your head or
+design the entire system, because that's
+just what
+Yeah, and that that also extends to API
+design. And and another reason why I
+don't think they're good,
+most of the code they've seen comes from
+GitHub, Stack Overflow.
+And um I'm not saying
+non- I'm I'm not saying non-open-source
+proprietary code is awesome,
+because it's not. It's also garbage.
+>> [laughter]
+>> But I would I would propose that the
+code you find publicly on the internet
+is to a large degree also very garbage,
+right? And
+LLMs train on that are trained on that.
+So, what's the code quality an LLM will
+spit out when it sees average or garbage
+code all for the most part? It's going
+to be average or garbage.
+So, now combine those two things. It
+will write average or garbage code,
+because that's what it saw for the most
+part.
+And it has no systemic thinking. It has
+no It has no holistic view of big
+complex uh systems. Okay, combine this.
+And now you go to your coding agent and
+say, "Hey, coding agent,
+build me a product. Make no mistakes.
+Good luck."
+What what kind of system are you going
+to end up with? Are you going to end up
+with a
+Average or garbage.
+>> [laughter]
+>> And you will also end up with a big
+project, a project that's bigger than it
+needs to be, because all the agent
+in one session
+sees is just a small slice of your
+entire project. And within that small
+slice, it will add a ton of stuff,
+not knowing that that ton of stuff it
+just added actually exists over there,
+outside of the slice that it just saw.
+So, when you say it only looks at a
+certain context while executing the
+thing that you have asked it to as an
+engineer or as a
+prompter, whatever you are.
+>> [laughter]
+>> How can we change the scenario? I mean,
+what we would expect out of that
+particular agent or model, let's say,
+is to actually first design the system,
+design which system design is basically
+what, like designing everything from
+scratch, like data models, APIs, and
+everything else, which is
+going to the part of the product. And
+then starting to build that.
+Even if we do that, I think it's it will
+still have some context of
+what the whole system design is going to
+be.
+Right? Yeah, but you're asking it to
+design the thing for you, and that
+design will be based on what it saw
+during training.
+Yeah. So, we are again back to
+>> [laughter]
+>> medium to garbage.
+And and and So, this this problem it
+stays at this level only, right? At this
+point, since the training data that is
+that is there for the models is not is
+between average and garbage.
+So, eventually we are having this
+problem. So, what do you think can be
+done in this layer, which would
+eventually help us at least being better
+at
+building that product? So, on the
+Yeah, so on the on on the training the
+LLM side, I don't know. I I'm not
+training LLMs myself. I have an idea how
+they are trained. I know what the
+training data looks like currently. I
+honestly don't know how you can generate
+training data that would encompass the
+systemic level thinking.
+Um and
+I also don't know how to filter uh the
+the garbage out of the the rest of the
+code that it fetches from the internet,
+because that's also very hard to judge.
+So, I'm not sure how to solve this. No
+idea. On the We are using an agent that
+produces average to garbage code and
+designs front, what can we do about
+this? Assuming that that will not
+change.
+And it will change. I'm I'm I'm totally
+sure it will change, but
+I think that there's a cap to what can
+be done.
+Um but again, I was also thinking agents
+will never have
+>> [laughter]
+>> So,
+don't listen to me. I'm an old man. I I
+have no [ __ ] clue what I'm talking
+about. I
+>> [laughter]
+>> But
+let's just assume tomorrow OpenAI and
+Tropic and all the other labs just shut
+down, and all we're left with is open
+weights versions of their models, and
+that's and we cannot improve them, okay?
+So, that's what we're stuck with. So,
+what can we do now? They are average to
+garbage.
+They can't They can't design, because
+they have not seen training data that
+that gives them a sense of how to design
+a thing.
+What [snorts] can we do? So, currently
+the trend is I want a dark factory,
+where I just uh specify a thing and
+write this super long specification of
+my application and what I need and the
+business rules, and wow.
+And then I give that to a million
+agents, and they will just do it with
+Beats and Gastown, and I don't know.
+Whatever. Yeah.
+So, I propose I have not seen a single
+project that has done this that actually
+went into production. Not a single one.
+Except for Gastown and Beats. And if you
+look at Gastown and Beats,
+are those good software projects?
+It's basically
+I have installed Beats once. Armin also
+has, and I think Armin still has some
+remnants of Beats on his system, because
+it's basically uninstallable, because
+it's such garbage.
+>> [laughter]
+>> It's basically It's basically malware at
+this at this point. And I think Steve
+uh who built it is kind of on that train
+now, too. After he realized [laughter]
+what he did.
+So, yeah, this doesn't I don't think
+this works. I I personally haven't seen
+it work for myself. I also have not seen
+any of my peers succeed in making it
+work, apart from
+toy projects.
+So, what toy projects are there that
+kind of point in the direction that it
+might eventually work? So, Cursor
+recently built a browser
+using this kind of method.
+Okay. But how was that built?
+That was built, first of all, all of
+Chrome, all of Firefox, all other
+Ladybird browser, all open-source
+browser code is part of the training
+training data that an LLM sees. So, they
+already know what a browser is and what
+code of a browser kind of looks like,
+okay? So, they're not doing this from
+scratch. There's an example there,
+multiple, and they're heavily in the
+code in the in the training data.
+>> [gasps]
+>> So, it's kind of cheating to ask an army
+of agents to build a browser. It's I
+wouldn't consider it cheating. It's like
+if a human if a human knows what a
+browser and how it works under the hood,
+that's not cheating. That's just
+knowledge that we use to build a thing.
+So, I But some people consider that
+cheating. I don't think it's cheating.
+Okay, so that's the first part. They
+already know what a browser is. They've
+seen a lot of browser code.
+And the second part is, when you then
+tell 100 agents to build a browser for
+you,
+they need a way to verify if the thing
+they built is actually a browser or
+compatible with what a browser is doing.
+All right. And here we also have
+humongous test suites for HTML, CSS,
+JavaScript execution, rendering, and all
+of that stuff that came out of all of
+these browser projects, right? So, what
+Cursor did So, what Cursor did was it
+started from a really good place
+for the agents to be successful in
+building a browser.
+The agents know what a browser is, and
+they could give the agents test suites
+up to bazoo
+to verify their work. That's a big
+difference, yeah. Yes. So, perfect
+conditions to prove that this kind of
+dark factory pattern, where you just
+give 100 agents a thing to do that's
+super scoped, super testable,
+does it work? Can actually work.
+>> Yes. So, what was the result of that?
+Have you looked at the Cursor browser
+repository and tried building it
+yourself and executing it yourself?
+No. Okay. It's absolutely broken
+garbage. It cost like $30,000,
+and it is just garbage. It doesn't even
+compile out of the box, or at least when
+they released So, do you think do you
+think it it is all being done just to
+justify the agenda of these companies
+that you can actually do this, or is it
+like actually an experiment that didn't
+work well?
+Which can happen.
+Oh, yeah, it absolutely can happen, but
+it's not the only experiment. Anthropic
+did the same experiment and let
+an army of agents build a C compiler.
+Same thing.
+Same thing again. There's GCC and Clang
+in the training set. There is
+a humongous
+uh amount of tests that are on the
+internet that you can use to verify that
+your compiler works. And compilers are
+the most simple to verify kind of
+programs that I personally have written
+myself in anger for production and for
+money. So, I
+I know that
+And yet
+>> [laughter]
+>> what came out
+what came out to be fair Did Did they
+share the project
+>> Yeah, they shared the project. It's also
+GitHub, yeah.
+So, what came out isn't terrible.
+And it kind of works, but only by
+actually cheating.
+Um so, to compile the
+Yeah, just a bunch of things like they
+they they claimed it can compile Linux.
+But it actually it can compile Linux,
+but not a specific part of the Linux
+bootloader which requires x86 16-bit DOS
+like not DOS like, but x86 16-bit
+uh machine code to be generated by the
+machine code emulator.
+They had to use They had to use
+GCC for that part. So,
+Okay. Then it it also wasn't that they
+just let it run autonomously. The author
+of that experiment had to intervene a
+couple of times to actually get things
+unstuck and and kind of push them in the
+direction that it works.
+And finally, the resulting architecture
+while while
+being very similar to any other kind of
+compiler
+also didn't have any kind of thing like
+an optimization pass. So, the resulting
+code that it spits out the machine code
+is garbage, absolute garbage. And you
+would think that's also an optimizable
+problem for an LLM, but apparently
+Right. either they ran out of time or
+they just failed at doing that.
+And then
+There was pressure to release.
+>> Yeah. And then the the weeks following
+that a bunch of people in the know
+analyzed it including Chris Latner who
+built clang.
+Um he's now doing Mojo.
+And he said this is actually not
+terrible. And I agree it's not terrible,
+but it's also not like you can just
+give a spec to an agent.
+And again It's like it's not a failed
+project.
+>> It's not a failed project. I agree. It's
+a super interesting experiment. I think
+we need more of that to to kind of feel
+out what works and what doesn't work.
+But
+just remember this is the perfect
+perfect environment for this kind of
+experiment. You have a thing that is in
+the training set a gazillion times.
+You have a suit of tests that are really
+like
+there's probably
+only SQLite probably has better tests
+than than clang and GCC.
+It's like you
+are a new startup that has just got an
+accelerator.
+A good accelerator and then you have a
+good possibility to have something, you
+know
+>> [laughter]
+>> to begin life as a startup. I think it's
+like that in that way. So So yeah, so
+going back to if the these are the
+models that we will have going forward
+and nothing changes anymore
+then this work factory thing doesn't
+work yet doesn't work because it doesn't
+even work for problems that are super
+well specified, super in the training
+set and have the biggest human-written
+test suites covering everything.
+[clears throat]
+Right? And if they fail at that, what
+hope do you have to build something
+that's not in a training set and for
+which there is
+no test suite.
+You know what I mean? Then we are living
+in an illusion, I believe because
+Yeah, I I eventually thought this year
+that things have improved a lot and they
+have.
+>> Yeah, they did have.
+Clearly.
+But it's still that human in the loop
+has hasn't been you know
+hasn't been removed as people say that
+you know you just do not need to code
+now and you are going to build a
+one-person billion-dollar company
+sitting yourself, coding yourself,
+building the whole AI agent team and
+then
+a lot of drama around that. But
+But yeah, I I I I will I would like to
+go back to where we want to talk about
+the Pi agent journey because that has
+been there for almost 6 months now.
+Yeah, October. Yeah, started in October.
+So, but even I got to know about that
+once
+Claude Bot came out not just came out
+Claude Bot actually got the attraction
+in January.
+Yeah, and it blew up. And even after
+that even yesterday I was replying to
+somebody's tweet and this person was
+talking about Claude Bot and why it was
+not working for him some some whatever
+it was. I asked him, "Did you try Pi
+agent?" And this guy was like I know
+this guy through this tech community in
+India that he's very respected and he
+didn't know about Pi agent. He was like,
+"What is it?"
+>> Good because that means he can also not
+file issues on my issue tracker. Great.
+Mission accomplished.
+>> [laughter]
+>> OSS vacations.
+Exactly.
+So So, I shared the link with him of
+your blog that why build this
+opinionated agent.
+And I got to know that okay
+I also felt at the point that why people
+do not know about Pi agent because it
+has to be out there because
+it has been the foundation of Claude
+Bot, right?
+Why are you keeping it so capped in the
+ecosystem that not a lot of people know
+this.
+I I think they should know about it. Uh
+so, here's the thing. I've done OSS open
+source software for
+50 more than 15 years actually. I'm so
+[ __ ] old. Sorry.
+>> [laughter]
+>> Uh and I I I I created and have been
+part of bigger open source projects in
+the past.
+And it's
+unpaid work for little to no
+recognition.
+So,
+I'm doing this as a hobby now because
+I'm financially mostly independent.
+And
+I don't want that work. I don't I I
+don't want to feel like I'm working for
+other people without getting paid.
+That's just against my ethos. Like I am
+happy to provide
+I'm happy to provide free stuff to the
+world, but also only under the
+expectation that I decide how much time
+I spend on this and that
+and and and that I owe you as the user
+of my free stuff exactly nothing.
+>> [laughter]
+>> Yeah. And the problem is this works if
+there is a small tight-knit community of
+people who appreciate what we are doing
+and everybody's friendly and everybody
+is respectful of your time and your
+needs, right?
+But as soon as you open up the
+floodgates to everybody, this changes.
+Always has been. This has always been
+the biggest problem for me in open
+source that after a specific size there
+come the entitled people
+who think you owe them something, who
+think that their little feature request
+or bug report is the most important
+thing in the world and if you don't do
+it, I'm going to write a blog post
+telling the world how what an [ __ ]
+you are as an OSS maintainer. So, that's
+why I want to keep it small.
+Um the other part is I don't think it's
+so special to be honest.
+>> [laughter]
+>> I mean okay, you're being humble again,
+but yeah. It's not humble. Humbleness is
+just
+out of the box it's the most bare-bone
+agent that's probably out there at the
+moment. It doesn't do all the things you
+would expect a coding agent to do. It
+has no MCP. It has no sub agent.
+>> But I think
+I think having such agent in place where
+you can actually play around your own
+custom
+uh workflow which you probably could not
+using Claude Code or say CodeX because
+they have they have a lot to offer,
+right? By default.
+Um as a coder yourself you feel
+overwhelmed sometimes when you try to
+use it.
+Uh and after a point you get to you get
+the hang of it and you do not feel like
+thinking about how you're coding and
+what you're trying to do. Whereas with
+the agent like Pi, I I tried it and I
+figured that
+I had a I have a lot of control over it.
+It's not like it is controlling me. I am
+having a control and whatever now I
+expect out of it, I can actually plug
+and play with it. This is like it is
+actually built for developers who want
+to code, who want to learn about their
+code, who want to craft it like that
+way, right? You got me. You're friend
+now.
+>> [laughter]
+>> Yeah, I mean. So So, when I see people
+not knowing much about it, I feel like
+why dude? There should be much more
+chatter about this on the tech space and
+leave LinkedIn at least X should know
+about it completely. LinkedIn probably
+in the next decade they would get to
+know.
+>> [snorts]
+[laughter]
+>> It's not my audience. Put it that way.
+It's not your audience as well, right?
+No, I but
+I basically built it for old people.
+Old people
+>> [laughter]
+>> No, really. Old people who have a
+specific way of working that they've
+developed over 10 or 20 years who would
+like to have control over their tools.
+Actually, since agents happened and
+since I have subscriptions with all of
+them,
+um I feel bad. I don't want to be
+dependent on a third party to code. This
+is everything against what I had in in
+in the life before agents and I hate
+I [laughter] hate that. And then if I
+add on top of needing to use their LLMs
+also needing to use their harnesses
+that are entirely non-controllable, non
+non-modifiable. I mean they are there's
+hooks and all of that, but it
+it's not good.
+>> [laughter]
+>> Um
+then I'm entirely caught in their
+ecosystem and I don't want that because
+they then tell me how I should do my
+work and that's not going to happen.
+Exactly. Yeah. Exactly. And you get used
+to it. Yes. The bad The worst part is
+you get used to it. Yes.
+And then I don't want that. I I I want
+to be in control at least of the parts I
+can be in control of and currently
+that's not the LLMs, that's on them. But
+I can at least be part
+in control of the thing around the LLM.
+I don't want them to to to dictate my
+workflows. That's terrible. And that was
+my problem with Cloud Code. Initially,
+it was kind of like pie. It was very
+minimal and they added features one
+after the other. Most of them made
+sense, but around
+end of July, August,
+that started to change and
+Well, not even like I'm not even opposed
+to MCP. There there's many use cases for
+MCP. It's just that I don't have these
+use cases. I'm not working in a large
+corporation where I need to have
+single sign-on authentication with with
+services. I just don't personally need
+it. I see that a lot of people in a lot
+of contexts need it and that's fine. I
+just don't need it.
+But then
+around the end of July, they started
+going crazy with features and then
+things also started to break all the
+[ __ ] time. Like
+Yeah. And then the people behind it, who
+I truly respect, like I I don't want
+this to be about they they don't know
+what they they clearly know what they're
+doing. They invented this genre of
+coding agent on the CLI and they have
+been doing a great job and they are the
+leader in the segment. So, this is not
+me throwing shade. It's just old person
+who likes control doesn't like what the
+other people do. Okay? So,
+um but I think they are now priding
+themselves and saying 100% of Cloud Code
+is now written by Cloud Code
+and I think it shows.
+I It shows, yeah.
+No, I I I don't even mean this in a mean
+way. I I just mean this in objective. It
+shows that this is now a 100% vibe coded
+product. This is exactly how I would
+expect such a product to to feel and
+behave.
+>> Yeah. It it's broken and it's full of
+features nobody needs and it's broken
+for the most part. I mean
+the the POV behind Anthropic's team,
+what I could understand is that they
+built it in the first place for coding.
+>> themselves
+>> themselves And and then themselves which
+is good and then
+which is good and then what happened is
+thought that this is not just for
+coding. This can do everything.
+So, they started putting a lot of things
+just like, you know,
+when you order a fancy cake having
+multiple floors, you have
+>> [laughter]
+>> a bunch of things which you would not
+even taste as well. So, I think it it
+built it was built originally for coders
+and then it transformed into it can be
+used for everything and that's where I
+think they lost the track. At least as a
+programmer, I can say that. Could be,
+yeah. Um yeah, I mean I mean, they are
+also trying to be to be experimental.
+They they are putting in like just today
+or yesterday, they added being able to
+connect Cloud Code to Telegram and
+Discord.
+>> And Slack, I think. Discord or Slack or
+Yes, something something like that,
+yeah.
+Yeah. I think you already could could
+add it to Slack. Maybe it was Cloud
+Co-work and not Cloud Code or just Cloud
+Desktop or whatever, but this time it's
+about command line Cloud Code can now
+talk to you via Telegram or Slack or
+whatever, right?
+And while I don't think that's super
+useful, they experiment and I love that
+they are experimenting. It's just
+I But don't you think this has already
+been solved?
+Mm yes. I mean, Open Cloud is basically
+that.
+>> [laughter]
+>> I'm not saying it's it's it's the only
+solution that should exist. I I I have
+never used Open Cloud myself, so
+>> [laughter]
+>> What? You haven't used it? No.
+I mean, tell me this story.
+You built pie agent out of your
+curiosity. Right? As you mentioned.
+And then how did this collab happen that
+Peter actually used pie agent as the
+core of building Cloud Bot? Well, Peter
+me and him have been in contact all the
+freaking time. Like we were exchanging
+thoughts and ideas and so on and then I
+started building pie as a abstraction
+over AI providers and coding agent thing
+and Peter started working on bar relay,
+WhatsApp relay. Um which was just I want
+my agent to talk to me via WhatsApp and
+not all the other channels and not have
+all this crazy [ __ ] going on.
+And he was just in search of a coding
+agent SDK that he can integrate into his
+thing that makes his life easier. And he
+evaluated all the possible things and he
+just found pie to work well enough for
+him.
+That's how it happened.
+Yeah. He's also the reason why pie has
+compaction. I would have never added
+compaction to pie, but Okay, he
+requested or he just did it?
+>> it, so I built it for him.
+Nice. Nice. Nice.
+Uh
+can we talk more about pie now like
+expanding into how it works and, you
+know,
+I listened to one of your podcast
+and in that podcast, you were talking
+about
+the capabilities that pie has.
+Especially, I think there is a lot of
+emphasis on one of the features that is
+bash. Right? It has controller and then
+we can do stuff from there.
+I also heard you saying that you can
+actually have
+features being built in the runtime if
+you actually need them.
+Uh somewhat along something along those
+lines. I'm not sure if I'm making sense
+to you or not. You were talking about
+building agents and then you said once
+you have the flexibility or freedom to
+actually build something out which you
+eventually need in that agent at the
+same time,
+pie allows to do that. I heard something
+like that. So, you
+you can explain, yeah. Sure. It's it's
+very simple complex as all this
+computers. You can build a program which
+is static and not modifiable by anyone
+externally
+or you build a program that has a plugin
+interface
+where you can inject new behavior or new
+user interface or anything you want. But
+how would you make sure that that new
+behavior is like working correctly? At
+the runtime, how would you make sure
+that?
+I pie can't. You need to be If you build
+a plugin for it or an extension as we
+call it, that's your responsibility to
+not [ __ ] [ __ ] up.
+>> [laughter]
+>> But but that's the same how plugin
+systems worked in like I also do music
+as you see in the back and there is
+these
+digital audio
+applications like what did I use to At
+the moment, I use Logic, but there's
+Ableton and blah blah and all of these
+have a plugin mechanism. So, vendors of
+effect pedals can build digital versions
+of the effect pedals as a plugin for the
+audio program. So, I can plug in my my
+guitar into my computer,
+install the plugin for a distortion
+pedal from a distortion pedal vendor in
+Logic and then
+it just does it digitally, right? So,
+plugins have been a part of pretty much
+all software over the years. You can
+build plugins for Microsoft Word. You
+can build plugins or extensions for
+Chrome and so on and so forth. So, it's
+not a new concept.
+And I was surprised that nobody ever did
+this for coding agent up until now
+because it's not hard.
+Yes, I mean, but
+listening to this concept and
+you know, the way you have explained it,
+I think now I I understand it in a much
+better way because the analogy that you
+gave is like making much more sense.
+Otherwise, I was like very skeptical
+about what are you talking about? I
+didn't get that part. Yeah. I listened
+to it listened to it again and then I
+was like I'm not getting it. Cloud Cloud
+Cloud has hooks. You you know Cloud Code
+hooks? Yeah. Yes. Yes. And pie is so
+Cloud Code hooks are very limited in
+where inside the agent you can do a
+thing. For example, you can have status
+line, right? You can have a status line
+hook that will display below, I think,
+the editor where you can just print text
+and that's it. In pie,
+uh I can ask pie, hey pie, write me a
+question answer tool extension.
+Okay. And pie will build me an
+extension, then I say reload in the same
+session and that loads that code I just
+just wrote and now pie has a tool where
+you can ask me questions with like you
+have in Cloud Code the question answer.
+>> Right. Except Right. it is fully custom
+UI that is part of the extension and not
+pie.
+You remember this array of strings?
+>> Yes. This is that.
+>> [laughter]
+>> Okay. Okay. And I can then if I use it,
+I can see I I don't like the way it's
+rendered or I don't like the way
+it works in general and I can just say,
+hey pie, could you please go into the
+question answer tool extension and just
+modify it this and that way, right?
+And it does it and then I hit reload
+which takes not even a second or
+whatever
+and now I have an updated tool.
+Um
+you understand now?
+Yes, I I get it now. At least 80% of it,
+I get it. I still have some doubts, but
+I think that's for Okay, let me give you
+let me give you another example. Cloud
+Code introduced /by the way in a couple
+of days ago. Do you know what it does?
+So, basically while your
+Yeah, but while your agent works on a
+problem, turns and tool calls as well,
+you can type /by the way and ask a
+question and then
+a second a second LLM call will
+basically be sent off while your agent
+works and then display that answer in
+the user interface, right? All right.
+>> Okay, so that's the new by the way
+feature from Cloud Code. It takes 2
+minutes
+to tell pie, hey pie, build me a
+/by the way extension. And it just
+builds it for you.
+And and you immediately have it in the
+same session.
+That's what this kind of extensibility
+gives you. I can clone any I can clone
+any Cloud Code feature in seconds.
+>> [laughter]
+>> You can even And then you say and then
+you say pie agent is like just, you
+know, it's Yeah, but the thing is this,
+the concept, how it works, that's it's
+trivial. We've been doing this for 100
+years. It's just nobody has done it for
+coding agent yet. I think eventually it
+all boils down to the operator who's
+actually going to use that agent. If
+that operator can think of it, then they
+can actually have it.
+>> Yes. Uh as far as Pi case is concerned,
+right? Yeah, exactly. And also if if you
+don't want to be that kind of operator
+and if you want to use off-the-shelf
+kind of extensions,
+you can install them from MTM because
+people are sharing their extensions now.
+Like there's a sub there's 10 different
+sub agent extensions, all with their own
+unique take on sub agents and how they
+should work, how they should be
+displayed in your user interface,
+whether they should get the context up
+until you spawn the sub agent from the
+main agent, or whether the the sub agent
+has tabular rasa, a clean context
+without any. You can pick and choose
+from existing solutions now.
+I personally do not install third-party
+extensions because they contain code
+which will run on your machine.
+Unless you have reviewed that code, so
+it's not bad,
+you shouldn't install and run it.
+>> [laughter]
+>> That is Okay.
+>> That's why I built all my two extensions
+that I use myself because I don't trust
+anyone.
+Well, and have you seen this behavior
+across the community which is actually
+using Pi on a regular basis that they
+are also the same type of user that you
+know they resonate with this idea of
+having the control and then Yeah.
+they're actually using it.
+>> Yeah, yeah. Yeah. Like
+all the people that
+on on the Discord most of the people
+built their own extensions. Like so many
+more than I do. Like
+people have 40 to 50 extensions that
+they built. It's kind of somebody said
+it's like the NeoVim of coding agents.
+You spend more time you spend more time
+building and configuring extensions than
+actually working with it,
+which [laughter] is not
+You lost in that rabbit hole of building
+the extensions.
+>> Yeah, but not me. I I'm not lost in that
+because I don't build extensions.
+I just gave you the name.
+But yeah yeah actually built that rabbit
+hole. I'm the drug dealer and you're the
+druggies.
+>> [laughter]
+>> Yeah.
+True that. True that. How do you see
+this whole coding agent future going now
+as we are talking about 26 and we have
+been through one way of
+the agentic workflow
+in last one year. How do you see the
+future now So for this race. I'm super
+unimaginative. Don't ask me.
+I I built I have a question. No, no, no,
+no, no, no. I will answer. I'm just
+saying I'm not the person to ask because
+I'm old and I don't have good ideas and
+I've seen that you first build a plot
+and then you start
+>> [laughter]
+>> talking more about it, right?
+>> Yeah.
+But but if you ask me what the future
+is, I can tell you the future is not
+what it what the future will not look
+anything like we have at the moment in
+terms of coding agents, but I can tell
+you how it would look like. If you want
+to follow people who might know and
+might actually work on building the
+thing, then I would suggest you follow
+the Amp team, Amp code team.
+Yes, I I closely follow them.
+>> Yes. Um follow these people on socials
+because they are actually at the
+frontier and building stuff that's
+experimental and and might point in
+directions that are actually productive
+and not just I think they they haven't
+come here to build a startup. They
+haven't they have come here to build uh
+something that can be of use.
+They came here to build a lab where they
+can experiment with actually
+>> and then scrap things and then build
+something new.
+>> Because how many startups do you know
+that
+put a timer on the website
+uh
+how long it will take until they
+destroy the Visual Studio Code extension
+of their product.
+>> Yeah. Yeah, I remember that.
+>> love it. It's freaking amazing. It's
+awesome. That's exactly how we should
+operate now.
+>> You you had some you had some
+leg pulling also on the internet with
+the Amp team especially I think with
+Quinn.
+What was that like? What was that whole
+thing? I was not trying to I was just
+trying to understand and I didn't get
+what you guys were discussing at that
+point. Did you think it's beef or
+something? I I don't quite know which
+which
+There's no beef. There's only love
+between us. Really truly. Your your
+tweets sometimes feel like you know you
+are just trying to
+uh
+what do you call it? Roast them.
+No, that's
+that's loving teasing, I would say. And
+and we do it and we do it the other they
+do it the other way around. No, really
+truly. I I think Okay. if there's
+[laughter]
+if there's any coding agent harness team
+on the web that
+there's absolutely zero ill feelings
+towards from each party, it's the Amp
+team. We are like kindred spirits. Like
+truly. Big shout out to Amp team. Big
+shout out to Quinn. It's like yeah. I I
+I love each and every one of them that I
+got to know and and they are really
+talented folks. So if you want to see
+the frontier, look at Amp. They are
+probably they're currently working on
+something new Yeah. and I hate them for
+not telling me what it is.
+>> [laughter]
+>> And I think that you asked what is that
+something new. It wasn't you? Yeah,
+I was asking I'm asking every second
+day, where the [ __ ] is the new thing,
+guys? Where is it?
+Is it vaporware
+>> [laughter]
+>> But hey, I mean They have a good vision.
+They they they
+they have a good vision and they have a
+good feeling for what's actually working
+and what's not working. And so you
+should follow them because they have the
+means to build the next level of this
+whole thing. And ignore everybody else
+basically, including myself. How does
+your how does your day-to-day look now?
+Like are you just working on Pi and some
+couple of other projects or like what is
+your focus area now? I would like to
+understand how you think about this. I
+wake up and eventually I pick up my
+phone and do issue triage on the open
+source repository Pi Mono.
+I hate and hate myself that I built
+another open source project that
+requires me to do this every morning.
+>> [laughter]
+>> Um
+and and and then I'm
+working in the game development tool
+space
+with my best friend on a product that's
+more or less a family business. I'm not
+going to dwell on it too much, but Okay.
+I'm very free in in how I how I spend my
+time, let's say.
+I see.
+Are you also building a new startup?
+I
+that Anduril something like that I
+>> Oh, no, that's Armin's. That's that's
+Armin's thing.
+Yeah. Okay. I think I saw your
+contribution to the project somewhere.
+Uh
+So probably that's why I remember that.
+That would be interesting. Oh, maybe to
+Gondolin, yeah. He they have a bunch of
+open source projects under their Anduril
+works thing.
+And I think I might have contributed to
+Gondolin.
+Don't remember. That's their sandbox for
+agents. And Armin Armin built it on top
+of QEMU and they made it open source,
+those idiots, because it's actually
+really good and
+I think there's a lot of money in that
+and they just made it open source.
+>> [laughter]
+>> I mean what do you think about this?
+Yeah, you were saying something first.
+>> No, no, you you go ahead. I'm I'm done.
+I was just trying to understand your
+perspective on this.
+I have seen Peter talking about this. I
+have been seeing you talking about this.
+And then things changed in January and
+then his decisions also changed after
+that. I would like to know from you now
+if you get the opportunity or you must
+have already got by the way
+I'm so stupid.
+To work with a lab, right? With any of
+these labs out there, we do Google,
+Anthropic, Amp is there. Uh
+Amp is not like building the foundation
+model, but yeah, I mean in that way I'm
+saying that if you get to work with any
+of any one of these teams, you must have
+already got some offers.
+Maybe you will not be sharing them.
+Have you ever thought about it? Have you
+ever thought about okay, I should jump
+into this wave and you know
+uh
+just have this fight from the front and
+then build something that people can use
+and build something which is valuable
+eventually. You have already built some
+of the stuff already, but still do you
+still think of it? Do you ever think of
+it? What is the scene?
+Uh I had my kids crying a couple of
+times in the past 1 and 1/2 months
+because daddy wasn't home, daddy wasn't
+there or wasn't available because he was
+on a call.
+So I had a lot of calls over the last 1
+and 1/2 months and I was offered a lot
+of things.
+But I want to not have my child cry that
+daddy is not there.
+So I
+>> to prioritize the family over Yes, I'm
+not I want to keep my lifestyle.
+That doesn't necessarily exclude me
+going for a commercial angle or
+basically making this more than a hobby
+project.
+But if that happens, it must be so that
+my son never cries. So I need to be able
+to retain my lifestyle. Money doesn't
+matter so much to me. It's obviously
+awesome to have more money.
+Um
+but uh
+with a lot of money there usually come
+also come interesting terms.
+And I don't care for that. I've been
+through that.
+>> [laughter]
+>> All right.
+>> I don't need it in my life anymore. And
+the other part is um
+Peter started at OpenAI and he also had
+offers from other big corps and so on
+and I think OpenAI is the perfect place
+for him. Um
+truly.
+Uh but for me for me it wouldn't be a
+good place for example if they offered
+me anything I'm just because
+I'm too old.
+>> [laughter]
+>> I I don't think I I don't think I don't
+think I can keep up with the velocity
+and I also don't
+I also think
+I'm such a European by heart
+that I'd rather if I did something I'd
+rather do something in Europe
+than than be another expert that goes to
+the Valley and works for yet another big
+valley company. So, I like my people
+here. I like the the way we're living. I
+like the way we work.
+>> Here comes my question. A lot of people
+say that Europe as a startup ecosystem
+uh is not growing at that space which is
+which it actually requires to be at,
+right? I hope you got what I'm trying to
+say. Uh like if people compare it with
+US directly, then you can make that
+comparison that okay, US is at let's say
+10x with the speed then probably Europe
+ecosystem is at 5x. Right?
+Yeah, I don't even think it's that high.
+>> do you think about it? And what are you
+doing about it? Like as you mentioned
+that you are, you know, uh hardcore
+European at heart. So, [snorts]
+are you are you actually contributing to
+that ecosystem uh in some manner? I I I
+used to be involved in more startup-y
+things in in at least in Austria, not
+Europe as a whole. Um
+Okay. Um but I kind of lost interest in
+that just because we had a child and so
+on and so forth. For for now, I do see a
+big challenge in the sense that Europe
+only has a single frontier lab with
+Mistral.
+Yes. They are tightly entrenched in
+enterprise, um but they're not doing uh
+they're not where they should be in
+terms of agentic workflows yet. And I
+would attribute that mostly because
+enterprises in Europe at least, which is
+probably the biggest customer segment,
+have not needed agentic LLMs so far. So,
+their focus has been on non-agentic LLM
+use within the enterprise. I think this
+is changing and it must change because I
+really want uh Mistral or any other
+European frontier lab to pop up and be
+competitive with the American labs and
+the Chinese labs.
+Um but we're not there yet and I think
+there's ways to to get there. In terms
+of startups in the AI space,
+you can be a European startup and
+incorporate in Delaware.
+So, you can basically get investments
+from the US side and still keep your
+business in Europe.
+There's constructs that you can do.
+Ideally, obviously, I would prefer that
+European startups can incorporate just
+in the EU
+uh and and have the same access to money
+that valley companies have, but that's
+currently not the case. Like how how is
+it in I think in How is it in India? I
+mean, you have a sprawling tech scene,
+uh but I'm totally unaware of what your
+startup scene looks like. I think it's
+A lot of people are bullish,
+uh but as far as the ground reality
+goes,
+uh
+one or two cities have actually been
+concentrated into okay, if you are into
+these cities, if you have that network,
+then only things can happen.
+Otherwise, other part of India, it's
+like zero startup scene. For in the name
+of startup, people open or start a
+services company and they start calling
+it startup and then,
+you know,
+uh it's it's it's like heavily dominated
+by services companies.
+Uh and if you want to do a product, if
+you want to do uh
+frontier lab like we have Sarvam AI,
+which is doing their own models like
+sovereign models for India, and they are
+doing pretty good.
+Uh
+but as far as a whole product scene is
+concerned, if I want to build some infra
+product for AI agents,
+uh then I have to be in Bangalore
+uh or some big metropolitan city,
+otherwise things will not take off.
+Yeah. Uh and I will not get those people
+who will eventually invest in the idea.
+But there is an investment scene. There
+is money in that market if you're in the
+right location.
+Yes. There is.
+I think I I'm also hopeful about uh
+countries like I'm not right aware about
+Austria much, but
+uh as far as I can see, Netherlands Mhm.
+and Sweden. I think these two countries
+are doing good on that side.
+Uh
+I get to hear good news from Sweden and
+especially from Netherlands because I
+have worked
+in a collaboration with one of the
+companies called Stream, uh which is
+live video SDK.
+So, I believe the startup ecosystem in
+these two countries at least is actually
+taking off. I'm not sure if that is a
+right estimation, but I think you would
+be having much better idea. Uh let me
+put it that way. One company I was
+involved in that uh then
+super early exit was from Sweden.
+>> [laughter]
+>> So,
+uh
+I but I don't know the Swedish startup
+scene, nor do I know the Netherlands and
+startup scene. I I do know the German
+and the Austrian startup Everybody is
+from Sweden, I guess, right? Yeah. Uh
+yeah.
+>> Yeah, but I wasn't involved in that.
+>> [laughter]
+>> Uh that
+10 years ago, actually more than 10
+years ago, so yeah. Now, I'm So, Europe
+usually just
+I think So, you have the US or you have
+India and as far as I understand
+correctly, India kind of operates like
+the US. You're one single big market,
+right? With mostly the same uh
+legislation, regulation across the
+entire country, right? Similar, yeah.
+Similar, yeah. I mean, there will be
+some parts, but But at large, it's like
+same. Yeah. If you as a software company
+build something for India within India,
+India can be your entire market, right?
+Yes. In in in Europe, if I as an
+Austrian build software and want to sell
+it to France,
+Okay.
+that might be hard because French people
+really like French language.
+>> [laughter]
+>> So, now now I have to start translating,
+but I know I mean, India is also not a
+single language country, right? Like
+Yeah, I mean, we have 22 official
+languages in India.
+>> Yeah. But but but is is there something
+like a standard that that you all can
+all agree on for official
+communications?
+English.
+>> [laughter]
+>> I figured. I figured. I mean, it's
+similar in it's similar in Europe. Um
+but the French hate English. The French
+hate anything that's not English. It's
+obviously a stereotype, but Yeah. Or or
+let me put it another way. If I want to
+build uh software for governmentals, um
+it's really hard in Europe despite the
+regulation of the European Union
+actually saying as an Austrian company,
+you should be able to bid for contracts
+in France, for example.
+Yeah. The chance of you winning a
+contract in France with a governmental
+are zero, right? If you're not a French
+Yeah, if you're not a French company.
+>> [laughter]
+>> Just because I mean, obviously, I I I I
+I don't even like I totally understand
+why that happens, right? But my basic
+gist is Europe is not a single digital
+market at least. Yes. Um and I feel like
+that's different in say India. That's
+different in China. That's different in
+the US. And I think that makes it really
+hard to be a startup because instead of
+having like 550 million people of Europe
+be your your potential customers, you
+always must start out where you
+basically are to some degree.
+Yeah.
+That limits your growth. That limits a
+lot of other things, talent acquisition
+and so on and so forth. Obviously, you
+can work around that. I can build a
+product that's being used in all of
+Europe and all the world. No problem.
+It's just a different kind of feeling.
+If I if I start a startup in the US, I
+never think about ah, can I sell it in
+in
+[ __ ] New Jersey or
+>> [laughter]
+>> or or Texas or ah
+I don't know what regulations are there.
+And in Europe, you do have these
+questions and that kind of sucks. Yeah.
+That that is I can I think I can
+resonate with that because
+I'm thinking around one idea and I have
+had call with almost 20, 22
+investors, mostly angels so far and then
+pre-seed VCs.
+And one
+common takeaway that I've got from all
+of these guys is
+why don't you go to US and then build
+from there?
+Uh because that is eventually going to
+be your market. Indian market is not
+mature enough for the AI, you know, wave
+as a as of now.
+Uh so, why don't you just go to US and
+raise from there only, even not from
+here. Yeah. Uh well, that's not the
+advice from pre-seed VCs, but as far as
+the angels are concerned, they are
+saying,
+"Uh we are ready, but you you need to go
+to US.
+Otherwise, things will not work." Yeah.
+>> [laughter]
+>> Yes. So, there is this scene that the
+people are very bullish on the US and
+the dream US offers.
+And I think they have also made things
+easy for the operators over there.
+That's also a big one. Yeah. Uh which is
+not the scene with India that I can see
+as you explained, which is not the scene
+with Europe as well. But all of that
+said, I'm still a European through and
+through. Yeah.
+>> [clears throat]
+>> So, the way I want to help with that is
+being a positive
+force on on the interweb and
+counteracting any kind of narrative that
+Europe sucks because it's not true. Just
+like you would counteract that the US
+sucks and so on and so forth. I I guess
+that that
+No, it doesn't suck. It just has its
+challenges like every other country has
+it or any other continent or whatever
+has its challenges. And I firmly I I I I
+think it's possible to build great
+companies in Europe still, even
+companies at the frontier. We just need
+to set a couple of examples and maybe
+I will be part of setting such an
+example in the future. So, yeah. Nice.
+Good to know that. You know, I'm
+thinking of uh moving to Netherlands and
+set up uh things over there. I'm I'm
+planning to do that.
+>> Yeah. Uh
+let's see. It's nice to live here. It's
+We have good living standards.
+[laughter]
+We pay a lot more taxes, but those taxes
+go towards things that are nice.
+>> [laughter]
+>> I mean, yeah, people people always talk
+about taxes whenever we think about
+Europe. And I as far as I have studied
+about it, it's for the good. It's for
+the good of people. It's for the good of
+the whole economy.
+>> Let me say let me put it like that. I've
+also lived in US and I know most of the
+tax regimes in the west of the US at the
+state tax is
+>> many years? Yeah, only was there for a
+year, but I also have a lot of friends,
+so I I know their tax situation, right?
+And if somebody tells you that the US is
+a low-tax country, they're full of
+[ __ ] [ __ ] The US? Not really, they
+are. Like you have a federal tax and
+then you have a state tax. If you live
+in Hawaii, the state tax
+quite hefty. Is? Yeah, yeah. Okay. Um
+some claim Europe has this VAT scheme
+where every country has its own VAT.
+Yeah. Right.
+>> Man, the US, every [ __ ] state has
+their own sales tax.
+>> own Good luck with that. That also
+sucks. It's exactly the same [ __ ]
+And then people say, "Yeah, but you can
+earn so much more in the US." And that
+is definitely true in the tech sector if
+you're in the valley. But then you also
+have to look at what's the cost of your
+standard of living over there.
+Right.
+>> Like I was lucky enough to have friends
+in San Francisco who gave me and my
+friend Nate basically a full house.
+>> [laughter]
+>> It takes straight for $2,000 a month. Um
+which was [clears throat]
+freaking crazy. That's not not just
+cheap, that's like what the [ __ ] It's
+what It was like 300 square meters in in
+a really good good location, and we only
+paid $2,000. If you are an engineer
+there and you want to buy a house for
+your family or you want to get a big
+apartment or whatever,
+even the top brass can't really quite
+afford that.
+So [laughter]
+what are we even doing? Like
+sure, you can get a lot of money, but
+you also have to pay a lot more for the
+same amenities that cost a tenth here in
+Europe. Um Watch out. And then there's a
+whole health care thing and all, let's
+stop with politics.
+>> [laughter]
+>> Yeah, yeah, let let's leave that.
+I I I'll just come back to the last
+question that I had because
+I still have a lot of questions, but I
+think let's not make it that lengthy
+that people would not be able to consume
+it. So the last question is that what is
+that one thing that keeps you awake now?
+What is your vision looking forward to
+your perspective of how things are
+changing? So what is that one thing that
+you are
+you know, aiming for or trying to do for
+yourself, I would say. For myself? Um
+that's a terrible question because it's
+hard to answer. Just give me a second to
+You got to cut off 5 minutes of that.
+This is the last question. Yeah, that's
+why this is the last question.
+>> [laughter]
+>> I'll just plug in the charger.
+[laughter]
+Uh man, why do you why do you hit me
+like that at the end? It's hard. I mean,
+it's it's like it's a very
+self-conscious self-conscious question
+from my side because I like to
+understand how the people that I get
+inspired from
+think.
+Uh It's okay. Okay. And how they Yeah,
+yeah. Let me try. So this it will be a
+multi-layered answer because Kramers,
+aka me, can shut up and just likes
+talking, but
+first layer is always
+>> listening for length. Yeah, first layer
+is always family. I truly have
+the wish that
+the amount of joy I get out of working
+on anything, really, transfers to my
+boy.
+And I don't know because it makes life
+so much more enjoyable. Like How how old
+is he?
+>> He's four now, so there's
+plenty of time to to elicit this kind of
+joy. I'm not even talking about him
+doing computer stuff. I don't care. I
+All I want for him is to find something
+that he truly enjoys and can make his
+life's kind of
+center.
+Um I don't like Yeah.
+>> Yeah, so not sure how how you can elicit
+that in a child, but we're trying. And
+that that is the one thing I'm
+I'm I'm I like to focus on. Then on a
+professional level,
+>> [laughter]
+>> I I I I already have a lot of I already
+had had a lot of experiences and
+um
+there's obviously new experiences to be
+had. I I think honestly just making our
+tech industry a little bit more open
+uh and and avoid monopolization of all
+this AI tech.
+That would be something I would like to
+work on.
+Monopolization by OpenAI in the topic,
+yeah. Yeah, yeah. Yeah. Like I love the
+Chinese for their open-weight models.
+They threw a really big [ __ ] wrench
+in the US frontier labs gears.
+Love you guys. You're amazing.
+Um
+I mean, nobody knows if if they do it
+for the controversy or if that is if
+that is for real, but the thesis that
+they propose with every new model that
+they come up with, I think that just hit
+in the face
+>> [laughter]
+>> I I love my US brethren, right? You do
+your thing and it's awesome and it's
+great. Me, too. But I also do not want
+the world that depends on just you two
+companies. That's unhealthy, super
+unhealthy. So I hope I can contribute in
+some small way for that not to happen.
+Um that that would be my vision. And in
+terms of where is IT or software going,
+I have no [ __ ] idea. I I will never
+make any predictions like agents don't
+work
+>> [laughter]
+>> because I will be wrong, so I I I won't
+do that.
+But I I I do feel I do feel that
+personal agents, like for normies,
+non-technical people, yeah.
+Yeah. I think that's what the next big
+thing is likely going to be. But there's
+a lot of challenges, and Open Claw gave
+us an amazing glimpse at what could be
+possible. But all
+Yeah, and Open Claw also showed us
+showed us
+what we still need to solve. And I'm not
+even talking about model capabilities,
+just in terms of security and all of
+that stuff. Security, yeah. Yeah, and
+those are really really fundamentally
+hard problems to solve. So I think once
+we once we have that, then we will have
+the next big thing that actually is a
+big thing. Like we thought crypto was a
+big thing. It's
+>> [laughter]
+>> sucks. I never believed in it.
+>> Yeah, me neither. In the first place, I
+never Yeah, not my thing. Zuckerberg
+thought virtual reality and augmented
+reality will be the next big thing, and
+even he named his whole [ __ ] company
+to Meta. Right.
+>> Well, how did that work out?
+>> [laughter]
+>> Nobody knows. Yeah, so we've been
+without a big thing for a very long
+time, and then comes along LLMs and
+this is already a big thing, but I think
+once it becomes a personal thing,
+it's going to be an entirely different
+ball game. Like every time I use this
+[ __ ] Android phone with Google What's
+it called now? It's It used to be called
+Google Assistant. Now it's just Gemini.
+It's still garbage. I can't use it. It
+can't actually set up calendar entries
+for me reliably.
+>> the classic Siri thing, it's like quite
+similar.
+>> Yeah, exactly. Like Siri, like no, not
+this garbage. I want something like Open
+Claw, just really super secure and and I
+can give it to my mom. And that's
+actually what Peter is working on now,
+so I think Nvidia released something in
+collaboration with Open Claw.
+But it's basically just put the claw
+into a container, and that's not solving
+anything.
+>> [laughter]
+>> Yeah, nothing new in that way. No, no.
+Yeah, so those are the three layers:
+family, personal, and software world.
+Okay. Though I said this would be the
+last question, but I think I got one
+more.
+I know that that is that in the last 2-3
+years since you have been experimenting
+with coding assistants and then agentic
+coding, what has been the one most
+craziest moment that you feel like
+I felt
+what the [ __ ] is going on when I saw
+that?
+Yeah, it was actually the first time I
+used ChatGPT. Yeah, it was the first
+time I used ChatGPT in 2022,
+right around December, I think.
+Um just because
+>> Even from being a ML background, Mario,
+you are saying that?
+>> Especially because I have that
+background, because when I worked in ML,
+I was actually working on natural
+language processing. So
+>> NLP, it has been there. Yeah, computers
+understanding and generating text,
+basically, or speech or language,
+natural language. I mean, when we were
+in college, we used to create the
+sentiment analysis projects. Uh that you
+write a sentence and then
+I I was sitting there and I I was like
+writing my first couple of prompts, and
+the [ __ ] machine replied in perfect
+English, coherently, and
+semantically meaningful, right? Yes. And
+the first thing I did was give it all
+the tasks that I hand wrote classifiers
+for in 2006 or 7 to extract person names
+and locations and everything where I put
+so much blood and sweat and tears into.
+I just handed those tasks, and it's
+like, "Sure, here's Mario, Sabrina,
+Steffie, and all."
+And I'm like, "God [ __ ] dammit,
+[laughter] I wasted four or five years
+of my life on building these kind of
+narrow AI solutions to to do natural
+language processing, and holy [ __ ] we
+now have something that can do all of
+that perfectly." And that just blew my
+mind. It just It still kind of does.
+Uh and then anything that came up later,
+I don't care. Like coding engines, yeah,
+cool, don't care. [laughter] But man,
+this
+this solved the stuff this solved the
+[ __ ] Star Trek computer. How [ __ ]
+crazy is that? Just in terms of language
+understanding and and generation. That
+for to me is the biggest [ __ ] wow. I
+mean, you come from that, you know,
+perspective that you have seen the
+pre-era of it, and then you saw the
+whole transformation, so I think that's
+that's what make it so special for you.
+>> Nobody expected that, truly. Like I I
+was aware of the Transformer paper back
+then in 2017, I think. Um just because a
+friend friends were still working in the
+ML, and I was reading through that, and
+I was seeing the connection to Google
+Translate a lot of that.
+>> It was released around that time only,
+right? 2015 or 16? 17, I think 17 it
+was. 2017 is Attention Is All You Need.
+There were precursors to that, um but
+Attention Is All You Need is a seminal
+paper, most people would say right now,
+for the Transformer architecture.
+And I was looking into that, and it
+still had the encoder-decoder
+architecture because it was for
+translation.
+Um and that looked super interesting,
+but I would have never never in my
+[ __ ] life thought that out of that,
+if you strip away the decoder, you can
+get a generative model that basically
+works like the Star Trek computer.
+That's [ __ ] crazy to me as somebody
+who built models by hand in 10 years
+earlier. That's just
+crazy.
+Because on the surface, no, under the
+hood, those models aren't complex in a
+sense. It's crazy how simple not not
+How should I put it? They need a lot of
+compute. No question about that. They
+need a lot of thought put into the the
+the actual layering and all of that. But
+ultimately, they're super simple [ __ ]
+models. It's just [ __ ] crazy. Like
+the support vector machines I built back
+then, they kind of felt more complex to
+build than building an LLM. That's
+[ __ ] crazy. The difference of
+capabilities. It's yeah.
+So sorry, lots of words again, but I'll
+shut up now. Loved it. Loved it. I mean,
+I just loved it. And this is going to be
+the outro of this video of this part
+that, you know, out of all the things
+that we discussed, the one thing that I
+that I loved talking to you about was
+understanding how you approach anything
+or any idea or how your opinion goes
+with a lot of variety of things that we
+discussed today. And I really enjoyed
+this conversation.
+>> I hope you also. I don't care about the
+audience that is going to watch it.
+My job is done. I just loved it. So
+thank you so much for taking out time
+for this, Mario.
+>> Thanks for having me.

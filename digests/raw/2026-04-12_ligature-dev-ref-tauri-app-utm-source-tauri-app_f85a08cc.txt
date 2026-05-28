@@ -1,0 +1,13 @@
+Representation Toolkit
+Ligature is a libre (free and open source, MPL-2.0 licensed) knowledge representation toolkit that focuses on simplicity, pragmatism, and portability. It is currently under heavy design and development, and not ready for real world use, but experimentation and feedback are encouraged and much welcomed. This website aims to document the current state of Ligature and link to resources.
+Ligature is made up of many projects. Below is an incomplete list of ones that are being developed. More will be added as they mature.
+Ligature's core project provides a data model for other projects to build on top of.
+Wander is a scripting language designed to manipulate Ligature's data model.
+tiny-dl implements ideas from Description Logic using Ligature's data model.
+A library for using Ligature from JavaScript.
+- Docs
+- @ligature/ligature - npm package
+A set of UI components for working with Ligature in the browser.
+- github.com/almibe/ligature-fs - F# implementation, main implementation
+- github.com/almibe/ligature-rs - Rust implementation, behind F# implementation
+Logo credit: https://openmoji.org/library/emoji-1FAA2/

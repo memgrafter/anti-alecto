@@ -1,0 +1,55 @@
+GitHub Agentic Workflows
+Imagine a world where improvements to your repositories are automatically delivered each morning, ready for you to review. Issues are automatically triaged, CI failures analyzed, documentation maintained and tests improved. All defined via simple markdown files.
+GitHub Agentic Workflows deliver this: repository automation, running the coding agents you know and love, in GitHub Actions, with strong guardrails and security-first design principles.
+Use GitHub Copilot, Claude by Anthropic or OpenAI Codex for event-triggered and scheduled jobs to improve your repository. GitHub Agentic Workflows augment your existing, deterministic CI/CD with Continuous AI capabilities.
+Developed by GitHub Next and Microsoft Research, workflows run with added guardrails, using safe outputs and sandboxed execution to help keep your repository safe.
+ⓘ Note: GitHub Agentic Workflows is in early development and may change significantly. Using agentic workflows requires careful attention to security considerations and careful human supervision, and even then things can still go wrong. Use it with caution, and at your own risk.
+Key Features
+Section titled “Key Features”Automated Markdown Workflows
+Write automation in markdown instead of complex YAML
+AI-Powered Decision Making
+Workflows that understand context and adapt to situations
+GitHub Integration
+Deep integration with Actions, Issues, PRs, Discussions, and repository management
+Safety First
+Sandboxed execution with minimal permissions and safe output processing
+Multiple AI Engines
+Support for Copilot, Claude, Codex, and custom AI processors
+Continuous AI
+Systematic, automated application of AI to software collaboration
+Guardrails Built-In
+Section titled “Guardrails Built-In”AI agents can be manipulated into taking unintended actions—through malicious repository content, compromised tools, or prompt injection. GitHub Agentic Workflows addresses this with five security layers that work together to contain the impact of a confused or compromised agent.
+Read-only tokens
+Section titled “Read-only tokens”The AI agent receives a GitHub token scoped to read-only permissions. Even if the agent attempts to create a pull request, push code, or delete a file, the underlying token simply doesn’t allow it. The agent can observe your repository; it cannot change it.
+Zero secrets in the agent
+Section titled “Zero secrets in the agent”The agent process never receives write tokens, API keys, or other sensitive credentials. Those secrets exist only in separate, isolated jobs that run after the agent has finished and its output has passed review. A compromised agent has nothing to steal and no credentials to misuse.
+Containerized with a network firewall
+Section titled “Containerized with a network firewall”The agent runs inside an isolated container. A built-in network firewall—the Agent Workflow Firewall—routes all outbound traffic through a Squid proxy enforcing an explicit domain allowlist. Traffic to any other destination is dropped at the kernel level, so a compromised agent cannot exfiltrate data or call out to unexpected servers.
+Safe outputs with strong guardrails
+Section titled “Safe outputs with strong guardrails”The agent cannot write to GitHub directly. Instead, it produces a structured artifact describing its intended actions—for example, “create an issue with this title and body.” A separate job with scoped write permissions reads that artifact and applies only what your workflow explicitly permits: hard limits per operation (such as a maximum of one issue per run), required title prefixes, and label constraints. The agent requests; a gated job decides.
+Agentic threat detection
+Section titled “Agentic threat detection”Before any output is applied, a dedicated threat detection job runs an AI-powered scan of the agent’s proposed changes. It checks for prompt injection attacks, leaked credentials, and malicious code patterns. If anything looks suspicious, the workflow fails immediately and nothing is written to your repository.
+flowchart LR Event[" GitHub Event"] --> Agent subgraph Sandbox[" Isolated Container · Read-only Token · Firewall-Protected"] Agent[" AI Agent"] end Agent --> Output[" Proposed Output<br/>(artifact)"] Output --> Detect[" Threat Detection<br/>(AI-powered scan)"] Detect -->|"✓ safe"| Write[" Write Job<br/>(scoped write token)"] Detect -->|"✗ suspicious"| Fail[" Blocked"] Write --> GitHub[" GitHub API"]
+See the Security Architecture for a full breakdown of the layered defense-in-depth model.
+Example: Daily Issues Report
+Section titled “Example: Daily Issues Report”Here’s a simple workflow that runs daily to create an upbeat status report:
+The gh aw
+cli augments this with a lock file for a GitHub Actions Workflow (.lock.yml) that runs an AI agent (Copilot, Claude, Codex, …) in a containerized environment on a schedule or manually.
+The AI coding agent reads your repository context, analyzes issues, generates visualizations, and creates reports. All defined in natural language rather than complex code.
+Gallery
+Section titled “Gallery”Issue & PR Management
+Automated triage, labeling, and project coordination
+Continuous Documentation
+Continuous documentation maintenance and consistency
+Continuous Improvement
+Daily code simplification, refactoring, and style improvements
+Metrics & Analytics
+Daily reports, trend analysis, and workflow health monitoring
+Quality & Testing
+CI failure diagnosis, test improvements, and quality checks
+Multi-Repository
+Feature sync and cross-repo tracking workflows
+Getting Started
+Section titled “Getting Started”Install the extension, add a sample workflow, and trigger your first run - all from the command line in minutes.
+Creating Workflows
+Section titled “Creating Workflows”Create custom agentic workflows directly from the GitHub web interface using natural language.

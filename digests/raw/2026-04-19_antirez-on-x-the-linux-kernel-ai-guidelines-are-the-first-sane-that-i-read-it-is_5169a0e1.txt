@@ -1,0 +1,19 @@
+X thread capture
+
+## Post
+
+## Conversation
+
+antirez
+
+@antirez
+
+The Linux kernel AI guidelines are the first sane that I read. It is not a coincidence. Where high level work is done, high level work is pretended, regardless of the tools.
+
+ linux/Documentation/process/coding-assistants.rst at master · torvalds/linux
+
+From github.com
+
+8:53 PM · Apr 10, 2026
+
+152.8K Views

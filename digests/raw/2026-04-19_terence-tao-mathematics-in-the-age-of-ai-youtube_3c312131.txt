@@ -1,0 +1,455 @@
+Yeah. So I'll be talking about how my
+own field of mathematics is uh changing
+or beginning to change uh in the age of
+AI um and maybe how it will impact the
+other sciences as well. Um but uh it's
+it's an age of change and uncertainty
+which is something that we're not really
+used to. Um in my field uh we are maybe
+one of the most conservative fields as
+far as um as far as change is concerned
+um in that we really haven't changed our
+practices in so many ways for centuries.
+Um on the left here um I'm displaying a
+textbook by by Koshi from exactly 200
+years ago um introducing what we now
+call the Kashi integral formula among
+other things. Um and you probably can't
+read it um at at that resolution but um
+it reads it looks almost identical to a
+textbook we would give our graduate
+students today. I mean other than it's
+in French rather than English and it's
+not type set using a modern computer
+language type setting language but other
+than that um you know it's it's it's
+completely usable uh today. Uh and that
+continuity of mathematics is a great
+strength of mathematics. We we use
+results that are 200 years old 2,000
+years old. You know I use the
+Pythagorean theorem routinely in my own
+work. Um and that's and that's fantastic
+but it does mean that we we often do not
+embrace trends as much as as other
+disciplines. Um on the right is a coffee
+table book by a photographer um Jessica
+Wyn. Um so she was fascinated by the
+chalkboards that mathematicians use. So
+so we're almost the only um discipline
+academic discipline that left that still
+holds on to the blackboards and chalk.
+Um everyone else moved on to powerpoints
+and and whiteboards and and and
+whatever. Um but uh but we still, you
+know, I have I have six blackboards in
+my in my own office. Um I love them. I I
+will not give them up. Um but yeah, she
+actually took photographs of of the of
+mathematicians uh chalkboards and made a
+nice little art uh coffee book out of
+it. Um another way in which we don't um
+we are different from the other sciences
+is that we often don't collaborate. Um
+so here is a just um scientific metrics
+of how many collaborators we've had um
+you know on average over the years and
+it's sort of slowly gone up from say 1.5
+authors per paper to 2.5 in mathematics.
+But you look at the other sciences and
+and they they are exploding. You know,
+they're um embracing big collaborative
+research projects and mathematicians are
+lagging way behind. Now, it's it's not
+because we're antisocial or not just
+because we're antisocial. Um
+there are there are systemic issues. Um
+so, math projects traditionally have a
+high barrier to entry. You you often
+need a math PhD to even understand the
+problem you're working on. um we need
+our proofs to be 100% correct in every
+single detail. So if you try to
+crowdsource a proof and there's 100
+contributions and one of them is
+incorrect, you destroy the whole proof.
+Um and the workflows we have, you know,
+for example, um um working things out
+together at a blackboard of chalk don't
+scale to 100 people over the internet.
+Um so but the other sciences are doing
+that and and and they're flourishing. So
+you know, are we missing out? Um so it
+is beginning to change uh because of new
+technologies um including AI although AI
+I think is just a part of it. Um we are
+beginning to to figure out how to do
+large scale um projects. So if you like
+um most of mathematics until very
+recently has been sort of case studies
+where you take one problem and you work
+on it for for several months and you
+produce one report on one problem and
+then you move on to the next problem.
+But we're beginning to do surveys where
+we can we can handle we can study
+hundreds or thousands of problems at
+once. We may can't solve all of them,
+but we can report various interesting
+statistics about these populations of
+problems. Um, we're beginning to broaden
+up our participation be beyond sort of
+the math PhD set. Um, um, so citizen
+science is flourishing in other uh
+disciplines. Uh, we're just beginning to
+have citizen mathematics happen. Um, and
+we are uh it's it's not it's just on the
+verge of of of happening, but we are
+beginning to figure out how to properly
+use machine learning and AI to actually
+help us. We've discovered lots of
+incorrect ways to use machine learning
+and AI, but um we're we're just
+beginning to get some um um some useful
+mileage out of these tools. Um there's
+one secret source that makes this all
+work um which is formal verification. Uh
+so this is um a special type of computer
+language which roughly speaking can take
+a mathematical argument and check if
+it's correct or not automatically. Um
+and uh this reduces a lot of um it
+filters out a lot of rubbish which was
+previously blocking uh these kind of new
+workflows from happening. So there are
+many many examples of this. Now I only
+have time to give one and a half
+examples uh in in this presentation. Um
+so the first example is something that
+that I have been uh I launched last year
+at at UCLA. Um it's something called the
+equational theories project. Um and it's
+something I I did with 50 collaborators.
+Um most of whom I actually didn't meet.
+I only I I I only met through this
+project. Um and most of them are not
+actually profession professional
+mathematicians. A lot of computer
+scientists um um students, grad
+students, undergraduates, I think even
+some high school students um they just
+got involved in this um open
+collaborative project. It is a project
+in algebra. Uh I don't have time to
+actually tell you u what the project is.
+Um but there's um uh we we sort of
+procedurally generated 22 million
+problems in algebra. Um so a typical one
+is is uh um does the commutive law imply
+the associative law? If you have an
+operation such that a * b is the same as
+b * a can you deduce that a * b * c is
+the same as a * b * c. Turns out the
+answer is no. Um but we generated 22
+million questions of this form. Um any
+individual question maybe a grad student
+in algebra could sit down for an hour
+and work out yes or no it's true. But
+there's 22 million of them. I don't have
+22 million grad students. Um so you
+could say oh let's crowdsource this.
+let's let's open this up. Let's let's
+let's let's get the general public to to
+to contribute. But then someone has to
+grade 22 million algebra problems. I
+also don't have time for that. Um so uh
+these projects were basically not
+possible in the past. I mean um the the
+previous examples of this type of
+project I could find in the literature
+sort of classified 20 problems of you
+know and did a study. Okay, but this is
+22 million. Um but we we managed to
+complete this project in in three
+months. every single one of these
+statements we have a proof or disproof
+uh whether it was true or false.
+>> Um so um so we had to sort of invent new
+workflows to do this. Uh um so uh we
+have a big GitHub where we store all the
+proofs and they have to be formalized in
+a common language so we we can verify
+them automatically. Uh we used the proof
+assistant language lean for this. Um we
+had a a very active discussion board
+where we had both human generated
+proofs. someone would pick one of these
+22 million implications and prove it,
+post it, and then other people would try
+to copy it. Um, people would would run
+computer programs to to generate to see
+um they would they would attack all 22
+million of the problems and they maybe
+their program can handle 100,000 of them
+at a time. Um, and people would go back
+and forth maybe converting a a human
+proof into a lean proof or a computer
+proof into a human proof. Lots and lots
+of of back and forth um uh which we kind
+of uh improvised, but it it it worked
+really well. Um I think there are
+several factors that made this
+particular project successful. Um one
+was that it was very modular. Um so by
+its nature it broke up into 22 million
+related problems and so people could
+sort of claim some subgroup of these
+problems and work work on those. Um and
+or maybe um some people would specialize
+in writing human readable proofs and
+other ones would specialize in
+translating those into a computer
+readable proof. You didn't have to be um
+to know every single part of the
+project. You could you could specialize
+in just one aspect. um much like in a
+modern software development project for
+instance. Um another um thing that that
+really helped was that um uh we had a
+good metric. We had talks earlier about
+how once you have a goal and and and
+sort of as a set score a loss function
+if you wish that you can start
+optimizing on then um uh uh that really
+sort of opens up new ways to to to run a
+project. So um at any given point in the
+project saying on the 16th day there are
+these 22 million implications. It turns
+out that on day 16 we' already cleared
+out all of them like we resolved all of
+them except for 888. Um and then um so
+people would would claim some subset of
+those and and work on those. Um this
+allowed for people uh the project to
+decentralize. Um so spontaneously some
+participants would would would just sort
+of um work on some idea um and uh if it
+worked it would add some more
+implications to the database and this
+number would go down um and so everyone
+was just working to move the needle and
+and some some ideas pushed this number
+down a lot and some some didn't weren't
+so successful but we didn't have to
+coordinate you know you do this you do
+that. I mean we did some task allocation
+but um there was also a lot of
+spontaneous um um um u sort of
+independent activity by by by
+participants which was which was um
+really quite uh quite quite fun to watch
+actually. Um and then the final uh
+secret ingredient that I said was um was
+form formal verification. Um and the key
+to this is that it breaks the trust
+barrier. So um previously in in
+mathematics if you want to collaborate
+with other people you either have to
+check every line of what they what they
+submit or you have to to trust that what
+they do uh that they have a good enough
+reputation that probably their work is
+high quality enough that that that um
+that it should go into into your paper.
+Um but we were getting submissions from
+all kinds of people that we never met
+before. Uh but they all had to pass
+through this formal verification and so
+we could accept anonymous contributions
+or untrusted contributions. Um and uh
+you you could really um because of the
+way um these this form of verification
+works um you could have really precise
+discussions like um um so someone tries
+a proof and uh say a human proof and
+then they they try to convert it into
+lean and the proof has nine steps and
+eight of them work fine and then there's
+this one step that doesn't quite um
+formalize properly but then you can have
+a discussion with that human author.
+There's one very very precise micro step
+that needs clarification. Um, and this
+is a a kind of discussion that you can
+do without ble, but um often you have to
+spend lots of time um specifying what
+what are um what's what's the notation,
+what's the common language. Um sometimes
+people don't quite understand why you're
+stuck on this one step if you can't
+specify exactly what that step is. But
+um these languages allow for extremely
+precise technical um conversations on at
+a very atomic scale. And you don't again
+you don't need to understand the entire
+project in order to um to proceed. Okay.
+So that's uh one of the the projects. Um
+okay. Yeah. And um you know while we did
+use some moderately fancy AI most
+particularly these things called
+automated theorem provers um actually it
+was the more mundane technologies things
+just like GitHub and this discussion
+group at Zula but just basic
+collaboration platforms were just
+incredibly um incredibly useful and
+essential.
+Okay. So uh that was one of the
+examples. I have time for half an
+example. Um it's work in progress in
+collaboration with with Google DeepMind
+but I was hoping to announce it uh but
+they're still going through the approval
+process the paper so I I can't tell you
+exactly what we've done but I can tell
+you um in broad terms um what Google has
+some prior work. Um so we are large
+language models are becoming
+increasingly powerful. They can solve
+olympia problems. uh they can sometimes
+answer quite deep um math questions but
+they make mistakes and um it's it's
+really uh and and often at at really
+basic mistakes. So so even um the latest
+models you ask it a simple arithmetic
+question and sometimes it will get the
+arithmetic right and sometimes it won't.
+Here's one where it got 7 * 4 plus 8* 8
+wrong and then you it was called out and
+they apologized and actually gave the
+right answer eventually. Um so every
+mathematician has tried using these and
+has eventually found that the
+unreliability is is too um uh is is is
+just too great of an issue. Um but if
+you can combine these um um unreliable
+outputs with a verifier, something that
+can actually check whether your output
+is good or not, um then then it becomes
+useful at least potentially. Um and
+sometimes you can make it go in a loop.
+So you you you make the LM generate
+mathematical output. You test it. If
+it's if it works, great. If it doesn't
+work, you send the error messages back
+to the LM and they try and tries to
+correct it. Um and um yeah, so um many
+people have have tried ways to make this
+work and with various degrees of
+success. Um I've been working with Deep
+Mind on their latest tool of this type
+is called Alpha Evolve. There are other
+things. There's also a generic algorithm
+under the hood. Um but this has been
+somewhat promising. Um so it's already
+been able to solve certain classes of
+math problems. Um so we released a
+preliminary paper a few months ago where
+we managed to improve uh various bounds
+on things like um packing problems. Uh
+so if you want if so these are sort of
+toy examples of math problems. Things
+like if you have 11 hexagons, what's the
+smallest hexagon that that can contain
+all 11 at once? Um and there were
+previous records on on on what the best
+record what the best packings were. And
+by by by having LLM try random things,
+get feedback, evolve the um the code, um
+they were able to to to to get uh uh to
+to get numerical improvements. Uh these
+are by themselves are just sort of test
+cases. These are kind of finite
+dimensional optimization problems which
+are just a very small subclass of um of
+of all the math problems that we care
+about. Um but uh we have some recent
+progress on on also working on on
+infinite dimensional optimization
+problems. Uh but unfortunately I can't
+tell you more about them just yet. Uh
+but stay tuned. A few weeks we will get
+a paper out. Um so uh just to wrap up um
+so these tools I think they're just
+beginning to to transform um our
+profession. Um they're already helping
+in many ways. Uh I already I and many
+others use AI routinely for secondary
+tasks. Writing computer code is so much
+easier now. Um performing literature
+review. I think this was also mentioned
+as as as a as a already a very useful um
+use case right now. Um there are
+isolated examples of feeding um data
+sets to AI and getting new interesting
+mathematical conjectures and finding new
+patterns. Um we can't do that
+systematically yet but there are
+isolated proofs of concept. Um and
+they're a good kind of universal
+translator. Um I think it it it has
+helped commu the general public. we can
+communicate with the general public or
+with with other scientists because our
+jargon is not quite the same as their
+jargon but but we can now translate more
+effectively with with AI. So there are
+already many um decent use cases of of
+AI currently. Um but we are going if to
+get the more advanced um applications we
+really really need to rely on rigorous
+verification to to to filter our use.
+Basically, we can only use the AI as far
+as you can trust his outputs um or at
+least check them any further. And it's
+just too it's just too risky. Um I think
+they they can help individual
+mathematicians somewhat, but I think
+they're um um I think they'll be most
+effective when combined as part of a
+broader collaboration. They can fill in
+all the gaps that the the collaboration
+is is missing. Um I also think that um
+you know the most obvious use case of
+mathemat of AI for these is to kind of
+replace mathematicians doing what they
+do best which is work on hard problems
+with you know um um with creative new
+techniques. But there's actually um an
+orthogonal use of AI which I think will
+be much um uh more productive at least
+in the medium term uh which is that
+there's there's all these there's this
+long tale of um medium difficulty
+problems like these 22 million algebra
+problems which we just don't have the
+manpower to attack with humans but um we
+we can get AI just to do a a first pass
+through them prove all the lowhanging
+fruit and then escalate any difficult
+problems up to to human experts. Um
+we've also seen um people in the panels
+discuss those that kind of paradigm. Um
+in general I think AI should be used to
+to to to not um compete with the with
+the pie of of of of work to do that
+humans already do but to enlarge the pie
+and create more tasks that what was the
+the phrase that um I think make make
+more objectives economically feasible.
+Um so there are a lot of of of promising
+applications but it's very very
+situational. uh it's it's it's not just
+a plug-and-play. We have to to know how
+to use it and when to use it. So, thank
+you very much.

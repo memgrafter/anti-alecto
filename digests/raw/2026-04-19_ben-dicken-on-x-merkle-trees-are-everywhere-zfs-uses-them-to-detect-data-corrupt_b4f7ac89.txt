@@ -1,0 +1,25 @@
+X thread capture
+
+Don’t miss what’s happening
+
+People on X are the first to know.
+
+Log in
+
+Sign up
+
+## [](https://x.com/)
+
+## Post
+
+## Conversation
+
+Ben Dicken 
+
+@BenjDicken
+
+Merkle trees are everywhere: - ZFS uses them to detect data corruption - Git uses them to verify repo integrity - Cursor uses them for codebase sync - Bitcoin uses them for transaction verification Talked through how they work on the latest database stream.
+
+5:51 PM · Apr 6, 2026
+
+132.8K Views

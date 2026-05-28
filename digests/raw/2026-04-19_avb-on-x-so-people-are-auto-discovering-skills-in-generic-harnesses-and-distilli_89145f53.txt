@@ -1,0 +1,25 @@
+X thread capture
+
+Don’t miss what’s happening
+
+People on X are the first to know.
+
+## Post
+
+## Conversation
+
+So people are auto-discovering skills in generic harnesses and distilling directly into 3B models, and you think local SLMs will forever remain a bubble?
+
+[](https://x.com/neural_avb/status/2041536670936555640/photo/1)
+
+Quote
+
+AVB
+
+@neural_avb
+
+Apr 7
+
+SKILL-0: In Context RL for Learning Skills, explained clearly
+
+The LongCat team published their new research and this combines two topics everybody loves - Reinforcement Learning and Automated Skill Discovery. Let's unpack what happened here. This work is yet...

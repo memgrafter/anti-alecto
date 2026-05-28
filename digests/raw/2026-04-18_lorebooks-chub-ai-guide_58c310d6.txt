@@ -1,0 +1,120 @@
+Title: Lorebooks | Chub AI Guide
+
+URL Source: http://docs.chub.ai/docs/advanced-setups/lorebooks
+
+Markdown Content:
+# Lorebooks | Chub AI Guide
+
+[![Image 1](https://docs.chub.ai/docs/~gitbook/image?url=https%3A%2F%2F2344291215-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FAKsJdjrPkq5TnML4IXif%252Ficon%252F68rAMufc9oE0xfPLjJul%252FIMG_8422.png%3Falt%3Dmedia%26token%3Da277566f-44d9-4f77-b54c-a2ee4d418609&width=32&dpr=3&quality=100&sign=d2bd340d&sv=2)![Image 2](https://docs.chub.ai/docs/~gitbook/image?url=https%3A%2F%2F2344291215-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FAKsJdjrPkq5TnML4IXif%252Ficon%252F68rAMufc9oE0xfPLjJul%252FIMG_8422.png%3Falt%3Dmedia%26token%3Da277566f-44d9-4f77-b54c-a2ee4d418609&width=32&dpr=3&quality=100&sign=d2bd340d&sv=2) Chub AI Guide](http://docs.chub.ai/docs)
+
+⌘Ctrl k
+
+[![Image 3](https://docs.chub.ai/docs/~gitbook/image?url=https%3A%2F%2F2344291215-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FAKsJdjrPkq5TnML4IXif%252Ficon%252F68rAMufc9oE0xfPLjJul%252FIMG_8422.png%3Falt%3Dmedia%26token%3Da277566f-44d9-4f77-b54c-a2ee4d418609&width=32&dpr=3&quality=100&sign=d2bd340d&sv=2)![Image 4](https://docs.chub.ai/docs/~gitbook/image?url=https%3A%2F%2F2344291215-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FAKsJdjrPkq5TnML4IXif%252Ficon%252F68rAMufc9oE0xfPLjJul%252FIMG_8422.png%3Falt%3Dmedia%26token%3Da277566f-44d9-4f77-b54c-a2ee4d418609&width=32&dpr=3&quality=100&sign=d2bd340d&sv=2) Chub AI Guide](http://docs.chub.ai/docs)
+
+*    The Basics 
+
+    *   [▶️Getting Started](http://docs.chub.ai/docs)
+    *   [🧔Character Creation](http://docs.chub.ai/docs/the-basics/character-creation)
+    *   [💬Just Chatting](http://docs.chub.ai/docs/the-basics/just-chatting)
+    *   [⚙️API Connections](http://docs.chub.ai/docs/the-basics/api-connections)
+
+*    Advanced Setups 
+
+    *   [Prompting](http://docs.chub.ai/docs/advanced-setups/prompting)
+    *   [Lorebooks](http://docs.chub.ai/docs/advanced-setups/lorebooks)
+
+*    Inference API 
+
+    *   [Usage with Third-Party UIs](http://docs.chub.ai/docs/inference-api/usage-with-third-party-uis)
+
+*    🎭Stages 
+
+    *   [🦅Overview](http://docs.chub.ai/docs/stages/overview)
+    *   [🏗️Developing a Stage](http://docs.chub.ai/docs/stages/developing-a-stage)
+    *   [🛞Using a Stage](http://docs.chub.ai/docs/stages/using-a-stage)
+
+*    Patch Notes 
+
+    *   [0.5.7](http://docs.chub.ai/docs/patch-notes/0.5.7)
+
+[Powered by GitBook](https://www.gitbook.com/?utm_source=content&utm_medium=trademark&utm_campaign=AKsJdjrPkq5TnML4IXif&utm_content=site_r8Z9z)[](https://www.gitbook.com/?utm_source=content&utm_medium=trademark&utm_campaign=AKsJdjrPkq5TnML4IXif&utm_content=site_r8Z9z)
+
+###### On this page
+
+Copy
+
+On this page
+
+1.   [Advanced Setups](http://docs.chub.ai/docs/advanced-setups)
+
+# Lorebooks
+
+An overview of lorebooks, what they are and how they can be used in Chub AI.
+
+A lorebook is a series of defined keywords that, when activated, insert specific content into the prompt. They can be used to serve content to the AI about the character's backstory, setting, environment, etc without needing to have it be in character definitions taking up permanent token space.
+
+A keyword is activated when it is mentioned in a message. For example, let's say one of the keywords in your lorebook is the word, "Apple." Let's further say that the content you have associated with the keyword is "{{char}} really loves Apples and will do anything to get one." By mentioning the word "Apple" in your message this then inserts that keyword into the prompt, thereby helping the AI understand how it should respond when Apples are mentioned.
+
+When a lorebook is attached to a character, these are referred to as "Characterbooks."
+
+### [](http://docs.chub.ai/docs/advanced-setups/lorebooks#lorebook-settings)
+
+Lorebook Settings
+
+There are two main settings for lorebooks, these can be found in "Chat Settings."
+
+*     Scan Depth - The number of messages that are scanned for matching keywords. Starts at the end of the chat history, so a scan depth of two would scan the last messages sent. Which, generally speaking, will be your message and the character's message. 
+*     Token Budget - The number of tokens that lorebook info is allowed to take up. Once this amount is reached subsequent keywords will be ignored even if they are matching. 
+
+By default, Chub AI matches lorebook keywords with case-insensitivity and whole word matching. Going back to our "Apple" keyword example, this means that "apple" or "aPPle" would match for that keyword, but "Applebottom" would not.
+
+### [](http://docs.chub.ai/docs/advanced-setups/lorebooks#creating-a-lorebook)
+
+Creating a Lorebook
+
+Lorebooks can be created with the [Lorebook Creator](https://chub.ai/create_lorebook), Character Books can be created within the [Character Creator](http://docs.chub.ai/docs/the-basics/character-creation).
+
+![Image 5](https://docs.chub.ai/docs/~gitbook/image?url=https%3A%2F%2F2344291215-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FAKsJdjrPkq5TnML4IXif%252Fuploads%252Fxbu44aPkKcGQZ2UI6QPu%252FScreenshot_2025_05_31-17.png%3Falt%3Dmedia%26token%3D87370e0b-90d9-4e19-9e32-546965ff634a&width=768&dpr=3&quality=100&sign=889d8768&sv=2)
+
+*     Title - A title for the character book. Not used in prompting. 
+*     Description - A description of the character book. Not used in prompting. 
+*     Scan Depth & Token Budget - Specific scan-depth and token budget values for the character book. These values are overridden in favor of the user-defined values in the "Chat Settings" but will be used in the absence of. 
+*     Recursive Scanning - Whether the character book should have recursive scanning enabled by default. Recursive scanning allows for entries to activate other entries or be activated by others, enabling complex interactions and dependencies between different lorebook entries. 
+
+#### [](http://docs.chub.ai/docs/advanced-setups/lorebooks#entries)
+
+Entries
+
+![Image 6](https://docs.chub.ai/docs/~gitbook/image?url=https%3A%2F%2F2344291215-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FAKsJdjrPkq5TnML4IXif%252Fuploads%252FcEtP0MtD78qQoZSXkr1c%252FScreenshot_2025_05_31-38.png%3Falt%3Dmedia%26token%3Dce15209b-a93d-44c5-84bb-2c375c17410f&width=768&dpr=3&quality=100&sign=41f5f362&sv=2)
+
+When creating a character book entry, you're allowed to name the entry. That name is not used in prompting and is just for categorization purposes. The properties of an entry are as follows:
+
+*     Keywords - This is the most important aspect of a character book entry. These are the list of words that, when, mentioned, insert the content into the prompt. 
+*     Secondary Keywords - These are, as the name suggests, additional keywords that may be required (or not) to insert the content into the prompt. If you have a keyword of "Apple" and a secondary keyword of "Banana", then what that means is that the content will only be inserted if both keywords can be found. 
+*     Content - The actual information that gets sent to the AI. This is second most important part seeing as this is what you actually want the AI to learn/know about your character. 
+*     Insertion Order - If multiple entries are inserted, insertion order determines which entries are inserted first. The lower the insertion order, the higher the entry is inserted (which in turn means the less the AI will 'pay attention' to it). 
+*     Case Sensitivity - Whether the keywords and secondary keywords (if any) should be searched with case-sensitivity applied to them. If true, "apple" won't trigger the keyword "Apple." 
+*     Priority - If the token budget has been exceeded, priority determines which entries will be removed first until the entries are within the token budget. 
+*     Selective & Selective Logic - The first determines whether to require both keys and secondary keys to trigger an entry, the second determines _how_ those keys are required to be triggered. If you have a keyword "Apple" and secondary keyword "Banana" with a Selective Logic of "NOT", what that translates to is "Insert this entry if 'Apple' is found and 'Banana' ISN'T found." 
+*     Constant - Whether to always insert the trigger regardless of if the keys are found. This will always be inserted as long as their space in the token budget for the entry. 
+*     Probability - The % chance the content will be inserted when the entry is triggered. 
+
+### [](http://docs.chub.ai/docs/advanced-setups/lorebooks#using-lorebooks)
+
+Using Lorebooks
+
+Lorebooks can be used by importing one into the chat. For character books, "Use V2 Spec." must be enabled. The steps to import a lorebook into the chat are simple:
+
+1.     Navigate to the "Chat Settings."
+
+![Image 7](https://docs.chub.ai/docs/~gitbook/image?url=https%3A%2F%2F2344291215-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FAKsJdjrPkq5TnML4IXif%252Fuploads%252FT0rQsMqAKaCnzjxxQtPC%252FScreenshot_2025_05_31-24.png%3Falt%3Dmedia%26token%3D86ca42e4-cda0-4036-9189-a9ec7ba2cd43&width=768&dpr=3&quality=100&sign=859e97ad&sv=2)     
+2.     Find the lorebook you want to use from our [lorebook repository](https://www.chub.ai/lorebooks) and copy its path. You can do this selecting by "Copy Path", found in the kebab menu in the bottom-right of the card interface. For example: "lorebooks/bartelby/example-lorebook." 
+3.     Insert the lorebook path into the field and select the lorebook. When it asks, "Are you sure you want to use this lorebook?", select "OK." 
+
+[Previous Prompting](http://docs.chub.ai/docs/advanced-setups/prompting)[Next Usage with Third-Party UIs](http://docs.chub.ai/docs/inference-api/usage-with-third-party-uis)
+
+Last updated 10 months ago
+
+*   [Lorebook Settings](http://docs.chub.ai/docs/advanced-setups/lorebooks#lorebook-settings)
+*   [Creating a Lorebook](http://docs.chub.ai/docs/advanced-setups/lorebooks#creating-a-lorebook)
+*   [Using Lorebooks](http://docs.chub.ai/docs/advanced-setups/lorebooks#using-lorebooks)

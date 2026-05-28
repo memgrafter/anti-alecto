@@ -1,0 +1,7 @@
+X thread capture
+
+## Post
+
+## Conversation
+
+Every entrepreneur that knows how to use AI is trying to find ways to build AI native companies that completely displace incumbents. For the incumbents, it’s the “Innovator’s AI Dilemma” If those startups get traction, and they can’t buy them, the CEOs will face multiple huge Dilemmas: 1. Do they tear down their companies and reinvent them as native AI ? 2. How do they explain it to public shareholders ? You will know AI is having a huge impact on public companies when there are two types of lawsuits: - Shareholders that sue the company for tearing down the company and crushing the stock price - Shareholders that sue the company for NOT tearing down the company and crushing the stock price I think most CEOs don’t come close to understanding AI in enough detail to even begin to consider these decisions. Hint: Asking your AI models the best paths from where you are now, to being an AI native version that can achieve the same economics has to be one of your initial steps. If asking your models questions doesn’t make sense to you, you are in deep shit

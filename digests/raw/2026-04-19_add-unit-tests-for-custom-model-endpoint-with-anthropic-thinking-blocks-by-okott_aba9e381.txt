@@ -1,0 +1,439 @@
+From e391ccdcff9469adf02467813b3bf782541086a5 Mon Sep 17 00:00:00 2001
+From: okottorika <siddhantmanekar71@gmail.com>
+Date: Mon, 6 Apr 2026 20:12:21 +0530
+Subject: [PATCH 1/2] fix: distill-replace creates new conversation entry in UI
+ initially
+
+The distill-replace feature was immediately navigating to the newly created
+conversation before the slug swap completed, causing a confusing UX where a
+blank/new conversation appeared in the sidebar.
+
+Now the UI:
+- Tracks active distill-replace operations (source ID -> new ID mapping)
+- Stays on the source conversation after initiating distill-replace
+- Waits for the SSE conversation list update showing the source was archived
+- Only then navigates to the new conversation (which now has the original slug)
+
+This ensures users see a smooth transition without intermediate confusing states.
+
+Also fixed backend tests to properly wait for async slug swap and archival
+operations to complete before asserting on their results.
+
+Co-authored-by: Qwen-Coder <qwen-coder@alibabacloud.com>
+---
+ server/distill_test.go | 76 +++++++++++++++++++++++++++++++++++-------
+ ui/src/App.tsx         | 37 ++++++++++++++++++--
+ 2 files changed, 99 insertions(+), 14 deletions(-)
+
+diff --git a/server/distill_test.go b/server/distill_test.go
+index b62e12e1..cfe09c70 100644
+--- a/server/distill_test.go
++++ b/server/distill_test.go
+@@ -765,15 +765,24 @@ func TestDistillReplaceConversation(t *testing.T) {
+ 		t.Fatal("timed out waiting for distilled user message")
+ 	}
+ 
+-	// Verify slug swap: new conversation should have the original slug
+-	newConv, err := h.db.GetConversationByID(context.Background(), newConvID)
+-	if err != nil {
+-		t.Fatalf("failed to get new conversation: %v", err)
++	// Wait for the slug swap to complete (happens asynchronously after distillation)
++	var newConv *generated.Conversation
++	for i := 0; i < 100; i++ {
++		newConv, err = h.db.GetConversationByID(context.Background(), newConvID)
++		if err != nil {
++			t.Fatalf("failed to get new conversation: %v", err)
++		}
++		if newConv.Slug != nil && *newConv.Slug == originalSlug {
++			break
++		}
++		time.Sleep(50 * time.Millisecond)
+ 	}
+ 	if newConv.Slug == nil || *newConv.Slug != originalSlug {
+ 		t.Fatalf("expected new conv slug %q, got %v", originalSlug, newConv.Slug)
+ 	}
+ 
++	// Verify slug swap: new conversation should have the original slug
++
+ 	// Verify source conversation was renamed
+ 	sourceConv, err := h.db.GetConversationByID(context.Background(), sourceConvID)
+ 	if err != nil {
+@@ -897,20 +906,36 @@ func TestDistillReplaceConversationNoSlug(t *testing.T) {
+ done:
+ 
+ 	// The new conversation should have gotten its own generated slug (not
+-	// transferred from source, since source had none).
+-	newConv, err := h.db.GetConversationByID(context.Background(), newConvID)
+-	if err != nil {
+-		t.Fatalf("failed to get new conversation: %v", err)
++	// transferred from source, since source had none). Wait for it to be generated.
++	var newConv *generated.Conversation
++	for i := 0; i < 100; i++ {
++		newConv, err = h.db.GetConversationByID(context.Background(), newConvID)
++		if err != nil {
++			t.Fatalf("failed to get new conversation: %v", err)
++		}
++		if newConv.Slug != nil {
++			break
++		}
++		time.Sleep(50 * time.Millisecond)
+ 	}
+ 	if newConv.Slug == nil {
+ 		t.Fatal("expected new conversation to have a generated slug")
+ 	}
+ 
+-	// Verify source is archived and parented
+-	sourceConvAfter, err := h.db.GetConversationByID(context.Background(), sourceConvID)
+-	if err != nil {
+-		t.Fatalf("failed to get source conversation: %v", err)
++	// Wait for source to be archived and parented (happens asynchronously)
++	var sourceConvAfter *generated.Conversation
++	for i := 0; i < 100; i++ {
++		sourceConvAfter, err = h.db.GetConversationByID(context.Background(), sourceConvID)
++		if err != nil {
++			t.Fatalf("failed to get source conversation: %v", err)
++		}
++		if sourceConvAfter.Archived && sourceConvAfter.ParentConversationID != nil {
++			break
++		}
++		time.Sleep(50 * time.Millisecond)
+ 	}
++
++	// Verify source is archived and parented
+ 	if !sourceConvAfter.Archived {
+ 		t.Fatal("expected source conversation to be archived")
+ 	}
+@@ -955,6 +980,15 @@ func TestDistillReplaceMultiPass(t *testing.T) {
+ 	// Wait for first distillation to complete
+ 	waitForDistillComplete(t, h.db, conv1ID)
+ 
++	// Wait for first slug swap to complete
++	for i := 0; i < 100; i++ {
++		conv1Check, _ := h.db.GetConversationByID(context.Background(), conv1ID)
++		if conv1Check.Slug != nil && *conv1Check.Slug == originalSlug {
++			break
++		}
++		time.Sleep(50 * time.Millisecond)
++	}
++
+ 	// Verify first pass: conv1 has the original slug, source renamed to -prev
+ 	conv1, _ := h.db.GetConversationByID(context.Background(), conv1ID)
+ 	if conv1.Slug == nil || *conv1.Slug != originalSlug {
+@@ -986,6 +1020,15 @@ func TestDistillReplaceMultiPass(t *testing.T) {
+ 	// Wait for second distillation to complete
+ 	waitForDistillComplete(t, h.db, conv2ID)
+ 
++	// Wait for second slug swap to complete
++	for i := 0; i < 100; i++ {
++		conv2Check, _ := h.db.GetConversationByID(context.Background(), conv2ID)
++		if conv2Check.Slug != nil && *conv2Check.Slug == originalSlug {
++			break
++		}
++		time.Sleep(50 * time.Millisecond)
++	}
++
+ 	// Verify second pass:
+ 	// - conv2 has the original slug
+ 	// - conv1 renamed to -prev-2 (since -prev is taken by the original source)
+@@ -1023,6 +1066,15 @@ func TestDistillReplaceMultiPass(t *testing.T) {
+ 
+ 	waitForDistillComplete(t, h.db, conv3ID)
+ 
++	// Wait for third slug swap to complete
++	for i := 0; i < 100; i++ {
++		conv3Check, _ := h.db.GetConversationByID(context.Background(), conv3ID)
++		if conv3Check.Slug != nil && *conv3Check.Slug == originalSlug {
++			break
++		}
++		time.Sleep(50 * time.Millisecond)
++	}
++
+ 	// Verify third pass:
+ 	// - conv3 has the original slug
+ 	// - conv2 renamed to -prev-3
+diff --git a/ui/src/App.tsx b/ui/src/App.tsx
+index 7bdbb1f7..2384afe3 100644
+--- a/ui/src/App.tsx
++++ b/ui/src/App.tsx
+@@ -139,6 +139,10 @@ function App() {
+     conversation_id: string;
+     working: boolean;
+   } | null>(null);
++  // Track active distill-replace operations: sourceConvID -> newConvID
++  const [distillReplaceOperations, setDistillReplaceOperations] = useState<Record<string, string>>(
++    {},
++  );
+   const initialSlugResolved = useRef(false);
+ 
+   // Resolve initial slug from URL - uses the captured initialSlugFromUrl
+@@ -342,7 +346,28 @@ function App() {
+       }
+ 
+       // If the conversation is archived, remove it from the active list
++      // If this was a distill-replace source, navigate to the new conversation
+       if (update.conversation.archived) {
++        // Check if this is a distill-replace source conversation
++        const newConvId = distillReplaceOperations[update.conversation.conversation_id];
++        if (newConvId) {
++          // Clean up the tracking entry
++          setDistillReplaceOperations((prev) => {
++            const { [update.conversation!.conversation_id]: _, ...rest } = prev;
++            return rest;
++          });
++          // Navigate to the new conversation after state updates complete
++          setTimeout(() => {
++            setConversations((convs) => {
++              const newConv = convs.find((c) => c.conversation_id === newConvId);
++              if (newConv) {
++                setCurrentConversationId(newConvId);
++                setViewedConversation(newConv);
++              }
++              return convs;
++            });
++          }, 0);
++        }
+         setConversations((prev) =>
+           prev.filter((c) => c.conversation_id !== update.conversation!.conversation_id),
+         );
+@@ -384,7 +409,7 @@ function App() {
+       setConversations((prev) => prev.filter((c) => c.conversation_id !== update.conversation_id));
+       conversationCache.delete(update.conversation_id);
+     }
+-  }, []);
++  }, [distillReplaceOperations, conversationCache]);
+ 
+   // Handle conversation state updates (working state changes)
+   const handleConversationStateUpdate = useCallback(
+@@ -661,9 +686,17 @@ function App() {
+     try {
+       const response = await api.distillReplaceConversation(sourceConversationId, model, cwd);
+       const newConversationId = response.conversation_id;
++      
++      // Track this distill-replace operation so we can navigate when the source is archived
++      setDistillReplaceOperations((prev) => ({
++        ...prev,
++        [sourceConversationId]: newConversationId,
++      }));
++      
++      // Refresh conversations list but don't navigate yet - we'll navigate
++      // when we receive the SSE update showing the source was archived
+       const updatedConvs = await api.getConversations();
+       setConversations(updatedConvs);
+-      setCurrentConversationId(newConversationId);
+     } catch (err) {
+       console.error("Failed to distill-replace conversation:", err);
+       setError("Failed to distill-replace conversation");
+
+From 496c05ab6fd6acf6b9022ad3c95ef257b30201e2 Mon Sep 17 00:00:00 2001
+From: Shelley Contributor <contributor@shelley.ai>
+Date: Mon, 6 Apr 2026 22:04:47 +0530
+Subject: [PATCH 2/2] test: add unit tests for custom model endpoint with
+ Anthropic thinking blocks
+
+The existing tests for issue #146 were integration tests requiring a real
+ANTHROPIC_API_KEY, making them impossible to run in CI or for most
+contributors.
+
+Add two unit tests using a mock SSE server:
+- TestCustomModelTestEndpointWithMockAnthropic: verifies that responses
+  with thinking blocks followed by text are handled correctly
+- TestCustomModelTestEndpointOnlyThinkingBlocks: verifies that responses
+  with only thinking blocks (no text) are properly rejected
+
+Fixes #146
+
+Co-authored-by: Qwen-Coder <qwen-coder@alibabacloud.com>
+---
+ server/custom_models_test.go | 168 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 168 insertions(+)
+
+diff --git a/server/custom_models_test.go b/server/custom_models_test.go
+index ebc72d61..1b806661 100644
+--- a/server/custom_models_test.go
++++ b/server/custom_models_test.go
+@@ -4,6 +4,7 @@ import (
+ 	"bytes"
+ 	"context"
+ 	"encoding/json"
++	"fmt"
+ 	"net/http"
+ 	"net/http/httptest"
+ 	"os"
+@@ -14,6 +15,97 @@ import (
+ 	"shelley.exe.dev/llm/ant"
+ )
+ 
++// mockAnthropicSSE returns an SSE stream with thinking blocks followed by text.
++func mockAnthropicSSE(thinkingText, responseText string) string {
++	return fmt.Sprintf(`event: message_start
++data: {"type":"message_start","message":{"id":"msg_test","type":"message","role":"assistant","model":"claude-test","content":[],"stop_reason":null,"stop_sequence":null,"usage":{"input_tokens":10,"output_tokens":0}}}
++
++event: content_block_start
++data: {"type":"content_block_start","index":0,"content_block":{"type":"thinking","thinking":""}}
++
++event: content_block_delta
++data: {"type":"content_block_delta","index":0,"delta":{"type":"thinking_delta","thinking":"%s"}}
++
++event: content_block_stop
++data: {"type":"content_block_stop","index":0}
++
++event: content_block_start
++data: {"type":"content_block_start","index":1,"content_block":{"type":"text","text":""}}
++
++event: content_block_delta
++data: {"type":"content_block_delta","index":1,"delta":{"type":"text_delta","text":"%s"}}
++
++event: content_block_stop
++data: {"type":"content_block_stop","index":1}
++
++event: message_delta
++data: {"type":"message_delta","delta":{"stop_reason":"end_turn","stop_sequence":null},"usage":{"output_tokens":20}}
++
++event: message_stop
++data: {"type":"message_stop"}
++
++`, thinkingText, responseText)
++}
++
++// TestCustomModelTestEndpointWithMockAnthropic verifies that the model test
++// endpoint correctly handles Anthropic responses with thinking blocks.
++func TestCustomModelTestEndpointWithMockAnthropic(t *testing.T) {
++	mockSSE := mockAnthropicSSE("I need to think about this...", "test successful")
++
++	// Mock Anthropic API server
++	mockServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
++		w.Header().Set("Content-Type", "text/event-stream")
++		fmt.Fprint(w, mockSSE)
++	}))
++	defer mockServer.Close()
++
++	h := NewTestHarness(t)
++
++	testReq := struct {
++		ProviderType string `json:"provider_type"`
++		APIKey       string `json:"api_key"`
++		Endpoint     string `json:"endpoint"`
++		ModelName    string `json:"model_name"`
++	}{
++		ProviderType: "anthropic",
++		APIKey:       "sk-test-fake",
++		Endpoint:     mockServer.URL + "/v1/messages",
++		ModelName:    "claude-test",
++	}
++
++	body, _ := json.Marshal(testReq)
++	req := httptest.NewRequest(http.MethodPost, "/api/custom-models/test", bytes.NewReader(body))
++	req.Header.Set("Content-Type", "application/json")
++	w := httptest.NewRecorder()
++
++	h.server.handleTestModel(w, req)
++
++	if w.Code != http.StatusOK {
++		t.Fatalf("Expected status 200, got %d: %s", w.Code, w.Body.String())
++	}
++
++	var result map[string]interface{}
++	if err := json.Unmarshal(w.Body.Bytes(), &result); err != nil {
++		t.Fatalf("Failed to parse response: %v", err)
++	}
++
++	success, ok := result["success"].(bool)
++	if !ok || !success {
++		t.Fatalf("Expected success=true, got: %v (message: %v)", result["success"], result["message"])
++	}
++
++	message, ok := result["message"].(string)
++	if !ok {
++		t.Fatal("Response missing message field")
++	}
++
++	if message == "" || message == "Test failed: empty response from model" {
++		t.Fatal("Got empty response error despite valid mock API returning text after thinking block")
++	}
++
++	t.Logf("SUCCESS: Mock Anthropic response with thinking handled correctly: %s", message)
++}
++
+ // TestCustomModelWithThinking tests that the custom model test endpoint
+ // correctly handles responses from Anthropic models with ThinkingLevel enabled.
+ // When thinking is enabled, the first content block is a thinking block, not text.
+@@ -137,3 +229,79 @@ func TestCustomModelTestEndpoint(t *testing.T) {
+ 		t.Error("Got empty response error despite having a valid API key")
+ 	}
+ }
++
++// TestCustomModelTestEndpointOnlyThinkingBlocks verifies that the model test
++// endpoint correctly rejects responses with only thinking blocks (no text).
++func TestCustomModelTestEndpointOnlyThinkingBlocks(t *testing.T) {
++	// SSE stream with ONLY thinking blocks, no text
++	mockSSE := `event: message_start
++data: {"type":"message_start","message":{"id":"msg_test","type":"message","role":"assistant","model":"claude-test","content":[],"stop_reason":null,"stop_sequence":null,"usage":{"input_tokens":10,"output_tokens":0}}}
++
++event: content_block_start
++data: {"type":"content_block_start","index":0,"content_block":{"type":"thinking","thinking":""}}
++
++event: content_block_delta
++data: {"type":"content_block_delta","index":0,"delta":{"type":"thinking_delta","thinking":"Hmm, let me think about this..."}}
++
++event: content_block_stop
++data: {"type":"content_block_stop","index":0}
++
++event: message_delta
++data: {"type":"message_delta","delta":{"stop_reason":"end_turn","stop_sequence":null},"usage":{"output_tokens":10}}
++
++event: message_stop
++data: {"type":"message_stop"}
++`
++
++	mockServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
++		w.Header().Set("Content-Type", "text/event-stream")
++		fmt.Fprint(w, mockSSE)
++	}))
++	defer mockServer.Close()
++
++	h := NewTestHarness(t)
++
++	testReq := struct {
++		ProviderType string `json:"provider_type"`
++		APIKey       string `json:"api_key"`
++		Endpoint     string `json:"endpoint"`
++		ModelName    string `json:"model_name"`
++	}{
++		ProviderType: "anthropic",
++		APIKey:       "sk-test-fake",
++		Endpoint:     mockServer.URL + "/v1/messages",
++		ModelName:    "claude-test",
++	}
++
++	body, _ := json.Marshal(testReq)
++	req := httptest.NewRequest(http.MethodPost, "/api/custom-models/test", bytes.NewReader(body))
++	req.Header.Set("Content-Type", "application/json")
++	w := httptest.NewRecorder()
++
++	h.server.handleTestModel(w, req)
++
++	if w.Code != http.StatusOK {
++		t.Fatalf("Expected status 200, got %d: %s", w.Code, w.Body.String())
++	}
++
++	var result map[string]interface{}
++	if err := json.Unmarshal(w.Body.Bytes(), &result); err != nil {
++		t.Fatalf("Failed to parse response: %v", err)
++	}
++
++	success, ok := result["success"].(bool)
++	if ok && success {
++		t.Fatal("Expected success=false for response with only thinking blocks")
++	}
++
++	message, ok := result["message"].(string)
++	if !ok {
++		t.Fatal("Response missing message field")
++	}
++
++	if message != "Test failed: empty response from model" {
++		t.Fatalf("Expected 'empty response' error, got: %s", message)
++	}
++
++	t.Logf("SUCCESS: Response with only thinking blocks correctly rejected: %s", message)
++}

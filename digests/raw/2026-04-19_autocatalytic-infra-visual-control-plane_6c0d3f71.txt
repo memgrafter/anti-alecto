@@ -1,0 +1,87 @@
+System Health at a Glance
+35
+Total Plans
+all states
+11
+Active Plans
+⚠ many stalled
+6
+Stalled Executions
+▼ needs triage
+344
+Changesets
+96% commit rate
+2
+Pending Reviews
+14+ days old
+164
+Doc Registry
+across 18 kinds
+🚨 Stalled Executions (Non-Terminated, Not Advancing)
+6 executions are stuck — these plan_lifecycle and checker-gpt instances have not terminated and have no waiting_channel. They require manual investigation or cleanup.
+| Execution ID | Machine | Stuck State | Since (UTC) | Age |
+|---|
+Plan Lifecycle Pipeline
+Plan States Distribution
+Doc Registry by Kind
+Plan Lifecycle State Machine
+stateDiagram-v2 [*] --> start start --> prepare_checker_input prepare_checker_input --> run_checker_parallel run_checker_parallel --> invoke_checkers invoke_checkers --> publish_checker_review publish_checker_review --> wait_checker_decision wait_checker_decision --> prepare_atomizer_input: approve wait_checker_decision --> check_checker_revision_limit: revise wait_checker_decision --> rejected: reject check_checker_revision_limit --> apply_checker_corrections: under limit check_checker_revision_limit --> rejected: over limit apply_checker_corrections --> prepare_checker_input prepare_atomizer_input --> invoke_atomizer invoke_atomizer --> publish_candidate_review publish_candidate_review --> wait_candidate_decision wait_candidate_decision --> approve_candidate: approve wait_candidate_decision --> check_candidate_revision_limit: revise wait_candidate_decision --> rejected: reject check_candidate_revision_limit --> invoke_atomizer_revision: under limit check_candidate_revision_limit --> rejected: over limit invoke_atomizer_revision --> publish_candidate_review approve_candidate --> planned planned --> [*] rejected --> [*]
+Active & Done Plans — Execution Detail
+| ID | Title | State | Tasks | Pending | Passed | Dropped | Runs | Completed | Created |
+|---|
+Execution Funnel — Where Plans Get Stuck
+Plan → Task → Run Funnel
+Task Status Breakdown (Active Plans)
+The execution gap: Of 11 active plans, only 2 have task runs (plans 134 and 154).
+Plans 117, 130, 141 have approved candidates with pending tasks but zero task runs.
+The pipeline produces plans faster than the swarm can execute them.
+Changeset Velocity
+Daily Changesets (Committed vs Abandoned)
+Cumulative Changesets
+Review Turnaround Analysis
+Review Response Time (minutes, log scale)
+Review Decisions Distribution
+Bimodal review pattern: Reviews are either handled in <3 min (operator actively monitoring)
+or >4 hours (operator away). There is no queueing/batch review mechanism — reviews block the entire pipeline
+until the human returns. The system needs either async continuation or priority-based review queuing.
+⏳ Open Review Requests
+| Action ID | Type | Plan | Created (UTC) | Age (days) |
+|---|---|---|---|---|
+| 60 | prompt_pack | plan-20260311T1105-prompt-pack-qa-gate | 2026-03-12 05:13 | 14 |
+| 61 | checker | design-20260311T2345-execution-dag-canonical-block | 2026-03-12 07:02 | 14 |
+Plan Backlog Age
+Days Since Creation (Active + Draft + Inactive Plans)
+🎯 Priority Gap Analysis
+What Exists
+user_actions.priority
+— integer column with index, but every row is 1 or 2 (binary, not a real queue)- Git history shows priority discussed in 3 early commits (Feb 21-22): gap analysis, lifecycle criteria, model selection
+- Plan states (
+active
+,inactive
+,superseded
+) serve as coarse human triage
+What's Missing
+- No plan-level priority:
+docs
+table has no priority/urgency column — plans are implicitly ordered by which review the human responds to first - No task-level priority: tasks have status but no ordering signal for the swarm to pick the most important work
+- No execution priority: when multiple executions are waiting for signals, nothing determines which resumes first
+- No automated triage: stalled executions and aged-out drafts accumulate silently — no alerts, no auto-cleanup
+Impact
+Priority is currently an emergent human behavior, not a system property. The operator's attention is the scheduler.
+This works at low plan counts but creates invisible debt — 6 stalled executions, 2 reviews aging 14+ days,
+7 draft plans with no path forward. A priority field on docs
++ automated staleness alerts would
+convert this implicit knowledge into actionable system state.
+📋 Key Insights
+✅ Working Well
+- Changeset system: 96% commit rate (330/344), 4% abandon rate is healthy
+- Dual-checker pattern: parallel GPT+ZAI review catches more issues
+- Signal-driven resume: checkpoint-based persistence allows long-lived workflows
+- Task decomposition: plan 104 produced 29 tasks, executed 5, showing the pipeline works end-to-end
+- Swarm execution: plan 134 completed all 5 tasks across 5 workers in 4 minutes
+⚠️ Needs Attention
+- Execution gap: 9 of 11 active plans have zero task runs — pipeline produces plans faster than execution capacity
+- Stalled executions: 6 non-terminated executions from Mar 11-18 need manual cleanup
+- Review bottleneck: bimodal response (instant or hours) blocks entire pipeline
+- Draft rot: 7 draft plans aging 18-30 days with no path forward
+- No priority system: human attention is the only scheduler — doesn't scale

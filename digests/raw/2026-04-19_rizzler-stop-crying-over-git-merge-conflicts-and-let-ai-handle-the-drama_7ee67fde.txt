@@ -1,0 +1,21 @@
+rizzler: stop crying over Git merge conflicts and let AI handle the drama
+💀 Ugh, merge conflicts: That sinking feeling when Git screams at you? We've all been there. Manually fixing those tangled messes? It's giving... tedious. It's giving... waste of my precious time. 😩
+🚀 Enter rizzler: Your new AI bestie that actually *gets* Git. This ain't your grandpa's merge tool. rizzler
+slides into your Git workflow and uses ✨ AI magic ✨ (think OpenAI, Claude, Gemini, Bedrock - the whole squad) to automatically resolve those annoying merge conflicts. Less time untangling, more time coding (or scrolling). You're welcome. 😉
+Basically, it turns this:
+<<<<<<< HEAD
+const message = "Hello from main branch!";
+=======
+const message = "Waddup from feature branch!";
+>>>>>>> feature-branch
+Into actual, usable code, letting you get back to the important stuff. ✨
+🚀 Get Rizzin': Installation
+Ready to ditch the conflict drama? Let's get you set up. Head on over to the repository below for the source code, installation and configuration instructions:
+no cap, how does this work?
+The rizzler is a low-level merge driver that can be used as a command-line tool without Git and can be configured into Git itself as a resolver strategy. It queries the LLMs you have configured (there's a bundle of strategies within, and I'd love for folks to send in more)
+If a file hits eight merge conflicts and can't crack one, it'll tackle the rest and send an "oops" back to Git, halting the merge party. That's your cue to dust off your favourite editor and resolve that stubborn conflict manually—throwback style, like it's 2005. On the bright side, successful fixes get cached on disk, cutting down on LLM costs and giving you a productivity boost—no more twiddling thumbs waiting for the LLM to chime in!
+ps. socials
+- LinkedIn: https://www.linkedin.com/posts/geoffreyhuntley_rizzler-stop-crying-over-git-merge-conflicts-activity-7320785714051170305-ugaV
+- BlueSky: https://bsky.app/profile/ghuntley.com/post/3lni5qdx3vk2u
+- X: https://x.com/GeoffreyHuntley/status/1915030413082583227
+pps: this is a joke. A thought experiment if you will. What if in the future git commits are automatically done by assistants and the commit message contains information that a client such as rizzler could use for injection into the context window? That starts make things interesting fast. Now we got yours and mine with full context and perhaps a way to traverse all the way back up to JIRA via MCP to determine intent…

@@ -1,0 +1,276 @@
+X thread capture
+
+The LongCat team published their new research and this combines two topics everybody loves - Reinforcement Learning and Automated Skill Discovery. Let's unpack what happened here.
+
+This work is yet another indication that the future of software development may not be more API calling for general tasks, but instead shipping vertical intelligence yourself.
+
+> 1. You can write a harness for your project - all the rules, hooks, tools, and prompts around a local SLM (Small Language Model).
+
+> 2. Make your harness verifiable - meaning programmatically check if an agent action led to task completion or failure.
+
+> 3. Use SKILL-RL (described in this article) to auto-discover "skills" to perform various tasks you care about.
+
+> 4. Run SKILL-0 (described in this article) to distill the skills directly into the model's weights. Smaller prompts, faster inference.
+
+You can ship these models directly to client. Zero inference cost. High throughput. Outperform closed-source models.
+
+This entire article is a paper breakdown for these two paper released this year:
+
+1.   SKILL-RL: 
+2.   SKILL-0: 
+
+You probably already know what skills are.
+
+> Skills are lazily loaded prompts.
+
+Its a structured package of procedural knowledge or instructions and (optionally) executable resources that an agent uses complete tasks.
+
+Maybe you want your agent to have a skill for writing an ad.
+
+Another skill about designing frontend code.
+
+Another skill about writing motion graphics code.
+
+The typical setup to maintain multiple setup is you write all the instructions in a markdown file (called SKILL.md) and put it in a directory that the agent can see (examples: agents/skills/frontend-design/SKILL.md)
+
+And you inform the agent that the skill should be loaded when you ask for frontend code.
+
+```
+----
+name: frontend-design
+description: techniques and instructions to write good UI code
+---
+```
+
+The agent can now progressively load the `frontend-design/SKILL.md` file to read the full instruction when you ask it to do a task that requires that skill.
+
+You can learn practical things about skills from this Anthropic post:
+
+Easy peezy.
+
+But what if the weights of your network were trainable? Maybe you are using an open source model. Then you can technically up
+
+This paper introduces SKILL0, an in-context reinforcement learning (ICRL) framework that teaches the model to internalize skills through collecting experiences.
+
+Meaning SKILL0 moves procedural knowledge from the "external prompt" as the typical skill directories (mentioned above) and use into the model's internal parameters.
+
+The framework uses a form of curriculum learning.
+
+*   At the beginning we show the skill prompts to the agent.
+
+*   As the model gets better at the task, the scaffolding is slowly removed
+
+*   Forcing the model's weights to "take over" the job of remembering how to perform those skills.
+
+Before going into details, let's see the skills the researchers trained on.
+
+... were based on popular RL environments such as:
+
+1. ALFWorld: a synthetic environment where an agent must interact with a 3D house using text commands to complete household chores. This benchmark is particularly difficult because it requires long-horizon planning and precise tool use.
+
+The paper focuses on 6 categories of tasks in ALFWorld:
+
+*   Pick & Place: Find an object (e.g., a spoon) and move it to a target location (e.g., a countertop).
+
+*   Look At: Find an object and use a lamp to examine it.
+
+*   Clean: Find a dirty object and wash it in a sink or bathtub.
+
+*   Heat: Find an object and heat it using a microwave or stove.
+
+*   Cool: Find an object and cool it in a fridge.
+
+*   Pick Two: Find and move two specific objects to a single location.
+
+For these tasks, the model must learn skills related to navigation, interaction with world objects (opening drawers, turning on lights), and state tracking (remembering what is currently in the agent's "hand").
+
+2. Search-QA: This set of tasks tests the agent's ability to use a Search Engine tool to answer complex questions. The agent must decide when to search, how to refine queries, and how to aggregate information.
+
+They use several benchmarks here:
+
+*   Single-Hop QA: Questions that can be answered with one search (e.g., TriviaQA, PopQA).
+
+*   Multi-Hop QA: Complex questions that require following a chain of facts (e.g., HotpotQA, 2Wiki, MuSiQue). For example, "What is the birth city of the director of the movie Inception?"
+
+*   Bamboogle: A specifically designed "un-Googleable" dataset where the answer isn't directly in a single snippet.
+
+They use Qwen2.5-VL as their seed model. Since we are doing RL, we need to be able to update it's weights - so this approach only works on open source self-hosted models.
+
+To apply it to closed source models (available through API), you can use prompt optimization techniques like GEPA instead of weight optimization that this paper is doing. The same tricks apply.
+
+Let's take a full step by step view of what happens
+
+Step 0: Inputs you start with
+
+*   An environment E (e.g., ALFWorld simulator, Search-QA retrieval environment).
+
+*   A base agent policy (a Vision Language Model that can act and receive observations).
+
+*   A high-capability teacher model (used to analyze trajectories and write skills).
+
+> First we construct an initial SkillBank. For this we use the SkillRL.  (
+> 
+> 
+> SkillRL inputs any environment, and generates a collection of skills! Let's see how that works first before moving to Skill0.
+
+Step 1> Collect raw experience (trajectories)
+
+Run the agent in the environment to produce trajectories (interaction logs).
+
+SkillRL keeps both successful trajectories (where agent finished the task correctly) and failed ones too (where agent answered incorrectly or failed to finish in time).
+
+[](https://x.com/neural_avb/article/2041524183499428217/media/2041509794578866176)
+
+Step 2> Distill trajectories into reusable “lessons”
+
+SkillRL uses an LLM to compress and abstract the trajectories:
+
+*   From successful trajectories, extract critical decision points
+
+*   From failed trajectories: create “failure lessons” by identifying where it failed, the flawed action/reasoning, what should have been done.
+
+Step 3> Synthesize those lessons into skills with a fixed schema
+
+The teacher is prompted to output 1–3 new actionable skills with fields.
+
+It takes successful/failed trajectories and existing skill titles as input and instructs the teacher model to generate new skills:
+
+The prompts look like these
+
+[](https://x.com/neural_avb/article/2041524183499428217/media/2041174300401786880)
+
+Step 4> Organize skills into a hierarchical SkillBank
+
+SkillRL then builds a hierarchical library:
+
+*   General skills: transferable strategies (exploration, state management, goal tracking)
+
+*   Task-specific skills: category-specific procedures, preconditions, constraints, and failure modes.
+
+Example of what the SkillBank looks like after all this for the ALFWorld environment:
+
+[](https://x.com/neural_avb/article/2041524183499428217/media/2041175693799952384)
+
+And the initial skillbank for Search:
+
+[](https://x.com/neural_avb/article/2041524183499428217/media/2041415170204012544)
+
+The organized SkillBank is what later becomes the starting point for SKILL0.
+
+> Skill0 (the new paper) has one job - transfer the skills from the organized library into the network's weights through RL finetuning.
+
+Step 5> Represent skills as “skill files” and choose a subset during training
+
+SKILL0 explicitly starts from SkillRL’s skill library from Step 4.
+
+So the pipeline is literally: SkillRL builds SkillBank → SKILL0 trains to absorb it.
+
+In SKILL0, SkillBank is concretely a set of Markdown files: skills/{task_name}/{skill_category}.md
+
+If you are familiar with how AGENTS skill (or Claude skills) work, the skillbank is in a similar markdown format as well.
+
+Recall that these skills are also categorized into "general" and "task-specific" skills.
+
+When generating a rollout, the agent receives the environment context and a task description.
+
+Given this task description, they pick a subset of skills to use during the rollout. These skills include all the general skills + the top relevant similarity searched skills.
+
+Step 6> Render the prompt context compactly (visual context)
+
+To control token costs, SKILL0 uses context rendering:
+
+*   It takes the interaction history with the environment​ plus the selected skill files
+
+*   Renders them into a compact RGB image
+
+*   Encodes that image with a vision encoder to feed into the policy.
+
+Why do they use an image observation instead of plain text?
+
+It’s a compression / packaging trick: they take a textual context (interaction history + retrieved skills) and render it as an RGB image, then feed that to the VLM. The motivation is to reduce token cost as history and skills accumulate.
+
+Basically images are mapped to a fixed-size set of visual tokens/patch embeddings, whereas raw text scales linearly with characters/words. So rendering long text into a fixed-resolution image can cap the “context length” cost.
+
+> They also use semantic color coding (e.g., in ALFWorld: observations blue, actions red) so the vision encoder can more easily disambiguate parts of the context.
+
+The input to the LLM also contains the skills and past actions - these things go in as text into the system prompt.
+
+Here is the how the prompt for ALFWorld looks like, read it fully and you will understand the context engineering setup!
+
+[](https://x.com/neural_avb/article/2041524183499428217/media/2041150917668646912)
+
+Here is how the prompts for Search-based QA look like
+
+[](https://x.com/neural_avb/article/2041524183499428217/media/2041150980650377216)
+
+Step 7> Dynamic Curriculum
+
+SKILL0’s core training loop is RL.
+
+Early on, the agent has access to the skill context so it generates rollouts while being guided by the skill scaffolding.
+
+The paper’s then does a dynamic curriculum where it progressively removes the need for skill retrieval at inference time by tuning the model using RL.
+
+> Basically, across curriculum stages, SKILL0 progressively reduces how many skill files it is allowed to include.
+
+The curriculum procedure (shown as pseudocode in the paper) includes:
+
+*   Start with the full SkillBank active
+
+*   For each stage: Train for a chunk of steps - Every d steps: run helpfulness evaluation for each skill file - Keep only the top skills under the current budget - Decrease the budget over stages until it reaches 0 (fully skill-free)
+
+> Basically, they treat skills as “training wheels” that get removed as the policy learns.
+
+They train SKILL0 with Group Relative Policy Optimization (GRPO).
+
+And the End-State> Skill-free inference (skills internalized)
+
+By the end of training:
+
+*   The agent can perform well without skill prompts.
+
+*   Training dynamics support this: performance without skill prompts starts lower, then catches up, consistent with internalization; and measured “helpfulness” rises then falls back toward 0 as the skill budget shrinks
+
+Here is a schema diagram about what happened in Part B, i.e. how we went from the SkillBank to the policy.
+
+[](https://x.com/neural_avb/article/2041524183499428217/media/2041515613831761920)
+
+Generated using Paper Breakdown
+
+They show that they were able to train better policies with Skill0 than a bunch of other techniques that include prompting techniques (few-shot), learning methods like GRPO, memory-based methods (Mem0, MemRL), and Skill-based methods (like Skill-RL).
+
+Skill-0 tries to combine the best of all worlds and train a single policy network to do good on a single task.
+
+[](https://x.com/neural_avb/article/2041524183499428217/media/2041513078530166784)
+
+This is a very exciting field of research for me because it shows that you can train narrow AI models with very small neural networks - 3B and 7B params and outperform the big labs on small tasks. They tested with older models like GPT-4o and Gemini-2.5-Pro, but lets not forget that Qwen2.5-VL is two generations old at this point. The Qwen bros have dropped Qwen-3 series and Qwen-3.5 series which are all VLMs too, which straight-up mogs some previous gen closed-source models.
+
+See the comparison between closed source LLMs and Qwen2.5-VL below.
+
+[](https://x.com/neural_avb/article/2041524183499428217/media/2041514703978205185)
+
+Note that you can use different models to train and generate skills. For example, these guys used a closed-source teacher model for skill distillation + SFT data generation:OpenAI o3
+
+> Basically you can use bigger/closed-source models for the SkillBank generation, and use your local model to train on those skills. This delegates the harder part to bigger models (discover skills), and the smaller models can just distill knowledge through RL training.
+
+There are multiple approaches to what just happened as you can see in the tables above. And each method has it's pros and cons, but once you study these different approaches, you will understand which one fits your specific product the best.
+
+In 2026, you can write a harness for your product, get a small VLM (pick the new Gemma-4 edge (E2B/E4B) models or the Qwen 3.5 - 0.8B/2B/4B models) and generate skills automatically. You can ship these models directly to client free of cost once they are trained.
+
+Do you realize how powerful this is.
+
+Read the papers on Arxiv: SKILL-RL:
+
+SKILL-0:
+
+I am building Paper Breakdown to help me understand technical papers like these. Check our landing page here:
+
+It helped me immensely write this article, coz it can cross-reference between multiple papers at once, respond fast and contextually, and highlight the exact sections into the PDF.
+
+Read the papers with our AI (from a computer):
+
+SKILL-RL:
+
+SKILL-0:
+
+Like and RT to share with others!

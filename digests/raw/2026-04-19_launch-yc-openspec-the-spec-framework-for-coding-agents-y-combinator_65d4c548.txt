@@ -1,0 +1,21 @@
+67
+27k+ stars. The open-source spec layer for AI-assisted development
+Hey, everyone, I'm Tabish, and I’m the founder of OpenSpec!
+TL;DR: OpenSpec is an open-source spec framework that captures what you're building, why, and how, before your coding agent writes a line of code. 27k+ GitHub stars in under six months.
+Generating code is now cheap. Correctness is still expensive.
+Engineers don't distrust AI-generated code because models aren't capable. They distrust it because they can't reliably get the output they actually wanted. Did the agent meet my requirements? Handle edge cases? Fit my architecture?
+The bottleneck isn't the model. It's underspecification.
+OpenSpec adds a spec layer to your codebase: an openspec/ folder in your repo with two parts.
+A spec library (openspec/specs/) that documents how your system actually works, organized by capability. Living documentation that your agents and your team can always reference.
+A changes system (openspec/changes/) where each feature you build gets a proposal, design, implementation tasks, and spec deltas showing exactly how the requirements will change. When you ship, the deltas merge back into the spec library, so it grows with your codebase.
+Everything is markdown. Checkable into Git. Always accessible by your coding agent. We provide integrations with 20+ AI tools (Claude Code, Cursor, Windsurf, Copilot, and more) so your agents help you create, evolve, and manage specs through slash commands and skills.
+- Your thinking persists. Unlike plan mode, specs don't vanish when you close the chat.
+- Iterate across sessions. Evolve specs, keep the context.
+- Changes are cheap here. Expensive in code.
+We're seeing teams shift from code review to plan review. It's easier to read a markdown spec than a large diff, and writing one forces real thought about the problem.
+I was a team lead at a quantum computing startup. Turns out, managing coding agents is a lot like managing a team. Things break when there's no alignment on what you're building and why. Coding agents can't read your mind. That's still your job. We're building the workspace where that job gets done.
+If your team has adopted AI coding tools but you're finding it harder to stay aligned, that's exactly the problem we're solving. Code review feels heavier, agents produce work that doesn't quite fit, and your codebase is changing faster than anyone can track.
+- Try it yourself: OpenSpec takes less than a minute to set up. Use it on your next feature: github.com/Fission-AI/OpenSpec
+- Engineering teams working on large or multi-repo codebases: We're building Workspaces for teams that need deeper collaboration, customization, and multi-repo planning. If that sounds like you, we want to build it with you. Reach out at tabish@openspec.dev.
+- Know an eng lead figuring out how to make AI coding work across their team? We'd love an intro.
+Website: openspec.dev Email: tabish@openspec.dev

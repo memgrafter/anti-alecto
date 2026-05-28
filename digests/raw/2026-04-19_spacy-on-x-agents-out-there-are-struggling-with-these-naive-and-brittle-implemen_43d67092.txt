@@ -1,0 +1,57 @@
+X thread capture
+
+# spacy on X: "agents out there are struggling with these naive and brittle implementations the paper barely touched the real key to unlock agents, RLM with GEPA optimization of the core agent + harness code with a solid eval harness." / X
+
+Don’t miss what’s happening
+
+People on X are the first to know.
+
+Log in
+
+Sign up
+
+# [](http://x.com/)
+
+## Post
+
+See new posts
+
+# Conversation
+
+[](http://x.com/dosco)
+
+spacy
+
+@dosco
+
+agents out there are struggling with these naive and brittle implementations the paper barely touched the real key to unlock agents, RLM with GEPA optimization of the core agent + harness code with a solid eval harness.
+
+Quote
+
+Masato Ota
+
+@ottamm_190
+
+·
+
+Apr 11
+
+Externalization in LLM Agents: A Unified Review of Memory, Skills, Protocols and Harness Engineering https://arxiv.org/abs/2604.08224
+
+[](http://x.com/ottamm_190/status/2043005786843218163/photo/1)
+
+7:30 PM · Apr 12, 2026
+
+·
+
+31K Views
+
+9
+
+14
+
+166
+
+180
+
+Read 9 replies

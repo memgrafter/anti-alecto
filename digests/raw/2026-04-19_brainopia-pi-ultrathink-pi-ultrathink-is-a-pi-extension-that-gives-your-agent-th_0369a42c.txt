@@ -1,0 +1,328 @@
+<div align="center">
+  <h1>🧠 pi-ultrathink</h1>
+  <p><b>A git-driven multi-pass review loop and an AI oracle reviewer for Pi</b></p>
+</div>
+
+`pi-ultrathink` is a [Pi](https://github.com/mariozechner/pi-coding-agent) extension that adds three commands:
+
+- `/ultrathink <prompt>` — a git-driven review loop on a temporary branch
+- `/ultrathink-review [optional prompt]` — a git-driven review loop for existing branch changes
+- `/ultrathink-oracle <prompt>` — an AI oracle reviewer that evaluates the agent’s work
+## Why use Ultrathink?
+
+Complex coding tasks often need more than one pass. The model writes code, reviews what changed, fixes issues, checks again, and stops only when another pass no longer changes the repo.
+
+Ultrathink makes that process explicit and inspectable:
+
+- the initial task is still a normal visible user message
+- follow-up review prompts are also visible user messages
+- each changed pass becomes a git commit on a temporary branch
+- the final summary prints the branch outcome plus every scratch-branch commit title and description
+
+## How the loop works
+
+```mermaid
+flowchart TD
+    Start([User: /ultrathink Fix the task]) --> Prompt[TUI review-prompt editor]
+    Prompt -->|Accept| Naming[Pick naming model first time only]
+    Prompt -->|Cancel| End([Abort])
+    Naming --> Branch[Create ultrathink/ai-slug branch]
+    Branch --> V1[Agent pass 1]
+    V1 --> Git1{Repo changed?}
+    Git1 -->|No| Finish0[Delete empty scratch branch]
+    Git1 -->|Yes| Commit1[AI-authored commit message]
+    Commit1 --> Review1[Visible review prompt]
+    Review1 --> V2[Agent pass 2]
+    V2 --> GitN{Repo changed?}
+    GitN -->|Yes| CommitN[Another AI-authored commit]
+    GitN -->|No| Finalize[Reintegrate into original branch]
+    CommitN --> Review1
+    Finalize --> One{How many scratch commits?}
+    One -->|1| Rebase[Rebase + fast-forward]
+    One -->|2+| Merge[AI-authored merge commit]
+```
+
+## Usage
+
+Inside Pi:
+
+```text
+/ultrathink Migrate the database schema to v4 and update all queries
+/ultrathink-review
+/ultrathink-review Focus on correctness, edge cases, and test gaps
+```
+
+### First run: choose a small naming model
+
+The first time you run Ultrathink, it checks `~/.pi/ultrathink.json` for a configured naming model.
+
+If none is set, Ultrathink shows a selector built from Pi’s available models. The selected model is saved to `~/.pi/ultrathink.json` and reused later.
+
+That small model is used only for:
+
+- scratch-branch slug generation
+- per-iteration commit title/body generation
+- final merge-commit title/body generation when the scratch branch has multiple commits
+
+### Review prompt editor
+
+Before the loop starts, Pi opens the continuation-prompt editor. Ultrathink automatically prepends:
+
+- the original task
+- a git diff command based on the run’s baseline commit
+
+You only edit the review instructions that come after that fixed header.
+
+
+### Reviewing existing branch changes with `/ultrathink-review`
+
+Use `/ultrathink-review` when the work already exists on the current branch and you want Ultrathink to inspect and improve it in several visible passes.
+
+This mode differs from `/ultrathink` in a few important ways:
+
+- it does **not** open the continuation-prompt editor
+- it sends the first message as an English review prompt, not as your raw slash-command text
+- it shows a visible start message listing the commits that will be reviewed
+- it still runs on a temporary `ultrathink/...` scratch branch
+- it allows a dirty working tree by converting those local edits into one bootstrap commit on the scratch branch before review begins
+
+If you omit the optional prompt text, Ultrathink uses the normal default continuation body from `continuationPromptTemplate`. If you provide text, that text replaces the default body, but Ultrathink still injects the fixed English review header and the computed `git diff <base> HEAD` command above it.
+
+The review range is chosen like this:
+
+1. **Dirty working tree** → create a bootstrap commit on the scratch branch and review that commit first
+2. **Current branch tracks its pushed branch** → review commits after the last pushed point (`last-pushed`)
+3. **Current branch tracks another upstream branch** → review commits starting at the first commit unique to the current branch (`first-unique`)
+4. **No upstream, but other local branches exist** → find commits unique to the current branch compared to all other local branches (`first-unique`)
+
+If there is nothing to review, Ultrathink tells you so and does not start a run. If the current branch has no upstream and no other local branch to compare against, Ultrathink fails clearly instead of guessing a base.
+### Conversation flow
+
+The loop stays visible in chat history:
+
+```text
+user: /ultrathink Fix the task
+assistant: [v1] initial implementation
+user: Original task: Fix the task
+      Review the current repository changes with:
+      git diff <baselineSha> HEAD
+assistant: [v2] refinement
+user: Original task: Fix the task
+      ...
+assistant: [v3] no further substantial changes
+custom: Ultrathink summary ...
+```
+
+## Git behavior
+
+Ultrathink now always uses a temporary branch, but its own config lives globally in `~/.pi/ultrathink.json` instead of inside each repository.
+
+### Scratch branch naming
+
+Each run starts on a branch named:
+
+```text
+ultrathink/<ai-generated-slug>
+```
+
+There is no run-id suffix in the branch name. If the generated name already exists, Ultrathink asks the naming model for another slug.
+
+### Iteration commits
+
+When an assistant pass changes the repository, Ultrathink creates a commit on the scratch branch.
+
+The title and body are generated by the configured naming model from:
+
+- the original prompt
+- the changed files
+- a diff summary
+- the assistant’s output for that iteration
+
+If an assistant pass leaves the repo unchanged, no commit is created and the loop stops.
+
+### Reintegration into the original branch
+
+When the run ends normally:
+
+- **0 scratch commits** → switch back and delete the scratch branch
+- **1 scratch commit** → rebase the scratch branch onto the original branch, then fast-forward the original branch
+- **2+ scratch commits** → merge back with one final AI-authored merge commit
+
+On successful reintegration, the `ultrathink/...` branch is deleted.
+
+If the final rebase or merge conflicts, Ultrathink aborts the operation, preserves the scratch branch, and tells you to resolve it manually.
+
+### Review-mode startup rules
+
+`/ultrathink` still requires a clean working tree before it starts.
+
+`/ultrathink-review` is the one exception. If the repository is dirty, it first:
+
+1. creates the scratch branch
+2. stages all current changes
+3. creates an AI-authored bootstrap commit
+4. includes that bootstrap commit in the visible reviewed-commit list
+5. reviews the resulting range with a prompt that always includes an English header and `git diff <exclusiveBaseSha> HEAD`
+
+For a clean `/ultrathink-review` start, the extension first checks for an upstream tracking branch. If none exists, it falls back to comparing against other local branches. It only fails when there is no upstream and no other local branch to determine a review range.
+
+## When does the loop stop?
+
+Ultrathink stops when one of these happens:
+
+1. **No git changes** — the latest pass did not change the repo
+2. **Iteration cap** — `maxIterations` was reached
+3. **User cancellation** — the user sends another prompt
+4. **Interrupt cancellation** — the active assistant turn is aborted
+5. **Naming model failure** — if the naming model cannot produce a commit message, a fallback commit is created with a generic message and the run continues; the final stop reason is `naming-error`
+6. **Git failure** — branch/commit/finalization automation fails
+
+Normal completions (`no-git-changes`, `max-iterations`, `naming-error`) attempt automatic reintegration into the original branch.
+
+## Oracle Mode
+
+Oracle mode (`/ultrathink-oracle`) replaces the git-based stop signal with an **AI reviewer** (the oracle). This works without git and in any directory.
+
+### How oracle mode works
+
+```mermaid
+flowchart TD
+    Start(["/ultrathink-oracle Fix auth bugs"]) --> Setup[Setup widget: model + thinking + prompt]
+    Setup -->|Confirm| Task[Send task to main agent]
+    Setup -->|Cancel| End([Abort])
+    Task --> V1[Agent works on task]
+    V1 --> Oracle1[Oracle reviews code with tools]
+    Oracle1 --> Accept1{Oracle calls oracle_accept?}
+    Accept1 -->|Yes| Done[🔮 Oracle accepted]
+    Accept1 -->|No / feedback| Feedback1[Oracle feedback shown to user]
+    Feedback1 --> V2[Agent responds to feedback]
+    V2 --> OracleN[Oracle reviews again]
+    OracleN --> AcceptN{oracle_accept?}
+    AcceptN -->|Yes| Done
+    AcceptN -->|No| MaxCheck{Max rounds?}
+    MaxCheck -->|No| Feedback1
+    MaxCheck -->|Yes| MaxDone[🔮 Max rounds reached]
+```
+
+### Setup widget
+
+When you run `/ultrathink-oracle`, a setup overlay appears where you can:
+
+- Select the oracle’s model from available models
+- Choose the thinking level (minimal/low/medium/high/xhigh)
+- Edit the oracle’s system prompt
+
+Defaults come from `~/.pi/ultrathink.json` under the `oracle` key.
+
+### The oracle session
+
+The oracle is a separate in-process agent session (via `createAgentSession` from the Pi SDK). It has its own tools (read, bash, grep, find, ls) and can independently inspect the codebase. The oracle and main agent communicate through visible user messages — you can see the entire conversation.
+
+The oracle signals acceptance by calling a custom `oracle_accept` tool. This is an unambiguous machine-readable signal — no text parsing.
+
+### When does oracle mode stop?
+
+1. **Oracle accepts** — the oracle calls `oracle_accept`
+2. **Max rounds** — `oracle.maxRounds` reached without acceptance
+3. **User cancellation** — the user sends another prompt
+4. **Interrupt cancellation** — the active assistant turn is aborted
+
+Oracle mode does not use git branches or reintegration.
+
+## Final summary
+
+At the end of a **git task run** (`/ultrathink`), Ultrathink sends a visible summary message that includes:
+
+- original branch
+- scratch branch
+- naming model
+- reintegration result
+- whether the scratch branch was deleted
+- every scratch-branch commit with SHA, title, and description
+- the final merge commit, if one was created
+
+At the end of a **git review run** (`/ultrathink-review`), the summary also identifies that it was a review run and includes:
+
+- the review source (`dirty-bootstrap`, `last-pushed`, or `first-unique`)
+- the diff base used for the injected review prompt
+- the reviewed commit list shown at startup
+
+At the end of an **oracle-mode** run, the summary includes:
+
+- the number of oracle review rounds
+- the oracle's verdict (if the oracle accepted the work)
+
+Both summaries double as a work log.
+
+## Configuration
+
+Create `~/.pi/ultrathink.json`: 
+
+```json
+{
+  "maxIterations": 4,
+  "continuationPromptTemplate": "Optional custom review prompt body appended after the fixed task/diff header",
+  "commitBodyMaxChars": 4000,
+  "naming": {
+    "provider": "openai",
+    "modelId": "gpt-4.1-mini"
+  },
+  "oracle": {
+    "provider": "anthropic",
+    "modelId": "claude-sonnet-4",
+    "thinkingLevel": "high",
+    "maxRounds": 5
+  }
+}
+```
+
+### Options
+
+- `maxIterations`: maximum number of assistant iterations
+- `continuationPromptTemplate`: default text shown in the review-prompt editor
+- `commitBodyMaxChars`: truncation limit for generated commit bodies
+- `naming.provider`: provider id for the small naming model
+- `naming.modelId`: model id for the small naming model
+
+- `oracle.provider`: provider id for the oracle model
+- `oracle.modelId`: model id for the oracle model
+- `oracle.thinkingLevel`: default thinking level for the oracle (default: `"high"`)
+- `oracle.systemPromptTemplate`: override the built-in oracle system prompt
+- `oracle.maxRounds`: max oracle review rounds (default: `5`)
+
+## Installation
+
+Install from npm:
+
+```bash
+pi install @brain0pia/pi-ultrathink
+```
+
+Quick try without installation:
+
+```bash
+pi -e npm:@brain0pia/pi-ultrathink
+```
+
+Local development load:
+
+```bash
+pi -e ./src/index.ts
+```
+
+## Development
+
+Install dependencies and run checks:
+
+```bash
+npm install
+npm run check
+```
+
+Run the deterministic SDK demo:
+
+```bash
+npm run demo
+```
+
+The demo uses a scripted provider and does not require real model credentials.

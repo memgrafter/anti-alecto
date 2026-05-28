@@ -1,0 +1,600 @@
+for those that don't know this article
+is clearly designed for me how we saved
+98% in Cloud cost by writing our own
+database I don't see how that's ever a
+good idea like yo dog why not just host
+postgress like how is building your own
+database the move I we'll find out here
+we go uh what is the first rule of
+programming maybe something like do not
+repeat yourself or if it works don't
+touch it or how about do not write your
+own database this actually is a great
+first rule of of programming it should
+be don't write your first don't write
+your own language which is why we
+have all the languages uh and two should
+be don't write your own database well
+too late I feel like databases are the
+only things growing faster than
+JavaScript Frameworks right now is that
+fair to say so Jonathan Blow disagrees I
+think the thing is is that I think
+Jonathan Blow disagrees but when you
+write your own language usually you
+start writing it after decades SL
+Decades of experience and I think at
+that point it's pretty okay to say hey I
+think I have an objectively better way
+to do something I actually do agree with
+that statement Jonathan blows a walking
+LTE l meaning lovely perfect he he has a
+lot of good takes I think he has a lot
+of bad takes especially his ones about
+open source I I'm like half in half out
+on those ones I don't really know where
+I land you know they're they're pretty
+good anyways that's a good one uh
+databases are a nightmare to write from
+autonity consistency isolation and
+durability uh requirements to sharding
+to fault recovery to admin rtion
+everything is hard beyond belief if you
+haven't seen the video we I have a video
+on my Channel about tiger beetle the
+presentation for it starts off a little
+slow but man it gets so good and then it
+turns into a video game they wrote in
+Zig to represent what's happening in the
+tiger beetle database it is wild it is
+wild like writing a good database and
+how they go about with testing and
+everything is just incredible
+fortunately there are amazing databases
+out there that have been polished over
+decades and don't cost a cent so why on
+Earth would we be foolish enough to
+write one from
+scratch well here's the thing this is
+actually how every bet this is how every
+bad meeting started for
+me all right we are running a cloud
+platform that tracks tens of thousands
+of people and vehicles
+simultaneously FBI
+NSA what's the name of your
+company oh it just it it just happens to
+be NSA okay cool what does NSA stand for
+uh every location updated is stored and
+can be retrieved via a history API the
+amount of simultaneous connected
+vehicles and the frequency of their
+location updates varies widely over time
+but having around 13,000 oh they're from
+the EU okay hey this is hey hey this
+isn't America people this ain't America
+this this not America that's not us
+that's you guys that's that's you that's
+on your side of the pond that's not my
+problem this must be
+marron's M Cron's creation okay uh
+simultaneous connections each sending
+around one update a second wow that is
+that's a decent amount of updates come
+flying in uh via just persistent
+connections right a squish mess our
+customers use this data in very
+different ways uh some use CA cases are
+very coarse EG when a car rental company
+wants to show an outline of the route a
+customer took that day this sort of
+requirement could be handled with uh 30
+to 100 location points for a 1-hour trip
+and allows us to heavily Aggregate and
+compress the location data before
+storing it oh yeah that makes sense okay
+I'm start I'm starting to understand
+what they're doing what they're tracking
+and kind of what they're reporting but
+there are many other use cases where
+that's not the option delivery companies
+that want to be able to replay the exact
+seconds leading up to an accident Minds
+that with very precise on-site location
+trackers that want to generate reports
+of which worker stepped into which
+restricted Zone by as little as half a
+meter what's the accuracy of a GPS I
+thought it was like 6 M has that uh has
+that changed three meters these days
+okay when I was doing stuff in college
+and and at post colle it was six well I
+mean 6 m is super accurate rtk can get
+down to 10 cm what the hell is rtk so I
+don't know I don't know rtk what's rtk
+rtk makes it even better what what is
+that I've never heard of rtk you
+wouldn't use GPS for this okay okay rtk
+so yep this beyond my abilities I
+haven't been I haven't been in the
+hardware bids for uh over a decade real
+time kinematics oh interesting so given
+that we don't know upfront what level of
+granularity each customer will need we
+store every single location update okay
+this makes sense in other words you have
+uh you have like a table then you have
+aggregate tables or some sort of
+post-processing tables I wonder why that
+doesn't work uh at 13,000 Vehicles
+that's 3.5 billion updates per month and
+that will only grow from here so far
+we've been using aw Aurora with the post
+gist uh extension for GE geospatial data
+storage but Aurora costs us upwards of
+$10,000 a month already just for the
+database alone and that will only become
+more expensive in the future okay but
+it's not just about Aurora pricing while
+Aurora holds up quite well under load
+many of our customers are using our on
+premise version and there they have to
+run their own database clusters which
+are easily overwhelmed by this volume of
+updates okay okay this makes sense I'm
+not going to lie these costs are pretty
+tame these costs are pretty tame as far
+as like a uh you know a tech company
+goes I mean they they actually have
+customers here they have literal they
+have literal captures right so we burnt
+about 28,000 on our Aurora migration
+this week yeah yeah I I figure a lot of
+people spend a lot more why aren't we
+just let's see this is such an
+interesting choice to make at this L I
+mean I guess if you're trying to Future
+proof yourself knowing it's going to go
+from 10,000 to say 100,000 over the
+course of the next two years maybe it
+makes more sense to start pre- preparing
+for this stuff but I'm just curious if
+maybe just not having a managed database
+but just hosting your own database would
+have been a better choice right maybe
+you could have reduced it without so
+much engineering talent and time and and
+and and all the things that go with you
+know what I mean uh unfortunately there
+is no such thing if there is and we
+somehow overlooked it in our research
+please let me know many databases from
+uh and H2 to reddis support redis
+boo can we Boo Boo redis Boo uh so for
+those that don't know uh redis uh is not
+Reedus the original open source as we
+learned like two days ago reddis is
+actually a company that usurped redus
+the open source what appears to be kind
+of pressured the guy to sell the IP the
+guy didn't really want to be a maintain
+or he wanted to go off and write
+Hardware or something so he was like all
+right whatever and he left and then
+reddis the company which was called
+something else it was called like redis
+redus online or something like that then
+became reddis and then changed the the
+labs redis labs they were from reddis
+labs to reddis and then Chang the
+license and all that yeah g gargan or
+garanta garanta or however it was and so
+anyways there's a good video on that but
+they are exclusively extensions that sit
+on top of existing DBS post just built
+on top of post squeal uh is probably the
+most famous one there are others like uh
+geomesa that offer great Geo spatial uh
+spatial queering capabilities on top of
+other storage engines unfortunately
+that's not what we need uh here's our
+requirement profile looks like extremely
+high right performance we want to be
+able to handle up to 30,000 location
+updates per second per node they can be
+buffered before writing leading to a
+much lower of uh iops so the thing is I
+don't know much about geospatial
+databases I know they exist and
+obviously there's some level of already
+solved nature to this in the industry
+and I I don't want to like just on
+something being recreated because
+obviously tiger beetle got created and
+it and it turned out to be incredible
+for TIG tiger beetle right you wouldn't
+want to use Cassandra you'd want to use
+Sila right Sila's the the way to go for
+any of those things uh Sila is just
+Cassandra but written in in a fast
+language not jbm um but 30,000 updates
+per second doesn't sound
+wild right this doesn't sound like for
+for larger companies I mean obviously
+for for smaller companies right for
+anyone with 20 or less Engineers this is
+probably uh probably really you know
+this would be a much harder thing to
+solve because now you have to actually
+have a dedicated staff to trying to
+solve these things maybe two dedicated
+staff trying to solve these things right
+which could be a real big hit to your
+bottom line but it doesn't seem like
+this isn't already there well you got
+you know you got man you got on call you
+got stuff you got things you got to
+think about right if you to try to go
+from a manage service to you managing a
+service I mean there's uptime
+requirements being you know setting up
+all the infrastructure and all that it's
+per
+node yeah per node okay so per per node
+per database H I'm still not sure I I
+mean hey I could be wrong remember tiger
+beetle came from necessity that I
+probably would not have understood and
+probably would have been like hey that's
+kind of silly to write your own database
+and then tiger beetle is absolutely
+amazing 30,000 privacy violations a
+second it doesn't look like privacy
+violations I actually don't think this
+is privacy violations at all because
+it's talking about tracking uh uh
+workers in sensitive uh areas and uh
+rental car stuff when you do rental cars
+of course you're you're getting tracked
+on that that makes perfect sense that
+the rental cars want to be able to
+ensure that they're you you did what you
+did right you guys made a contractual
+agreement that you D would drive their
+car like this they would get this out of
+it right right uh keep saying per node
+per node I know I see per node okay so
+per node that maybe that makes more
+sense 30,000 uh you know write
+operations per second uh unlimited
+parallelism multiple nodes need to be
+able to write data simult simultaneously
+with no upper limit small size on dis
+given the volume of data we need to make
+sure that it takes little space on the
+disk as possible to be fair when you
+have your own data format and this is
+all you need to store and you know that
+this isn't changing much it technically
+is most efficient to write your own
+bespoke storage for this specific
+operation but man you'd have to have
+like you'd have to really convince me
+that this is a good idea cuz it is I
+mean you really just hired five
+Engineers to do this right you can do
+yeah famous last words I know I I'm just
+saying this is crazy this is this is
+very interesting moderate performance
+from read uh reads from dis our servers
+uh our server is built around an
+inmemory architecture queries and
+filters uh for real-time streams run
+against data in memory and as a result
+are very fast reads from dis only happen
+when a new server comes online when a
+client uses the history API or soon when
+a user app rewinds time on on our
+digital twine interface these disc reads
+need to be fast enough for good user
+experiences but they are comparatively
+infrequent and low in volume okay so
+optimizing for rights okay low
+consistency guarantees we are okay with
+losing some data we buffer about 1
+second worth of updates twin our digital
+twin interface okay stop making fun of
+it I said twine okay whatever uh in the
+rare instance where a server goes down
+and another takes over we are okay with
+losing one second of location updates in
+the current buffer okay they even have
+full tolerance I I am curious why the
+other Solutions didn't work out for this
+uh what sort of data do we need to store
+the main type of entity that we need to
+persist uh is an object basically any
+vehicle person sensor or machine objects
+have an ID label location and arbitrary
+key value data uh for fuel levels or
+current Rider ID locations consist of
+longitude latitude accuracy speed
+heading altitude and and altitude
+accuracy though each update can only
+change a subset of these fields in
+addition we also need to store areas
+tasks something and object has to do and
+instructions tiny bits of spatial logic
+uh The Hive kit server executes based on
+the incoming data altitude yeah like how
+high up they are what we built we've
+created a uh purpose-built inprocess
+storage engine that's part of the same
+executable as our core server it uh
+writes a minimal deltaab based binary
+format a single entry looks like this
+okay entry length nice okay okay so this
+is starting to look like a TCP protocol
+it almost looks like something you could
+also just UDP over to another server
+kind of interesting kind of interesting
+that because given the fact that they
+don't need consistency they could
+technically UDP it on too many servers
+to be stored right it's got it's
+interesting right Flags ID uh type index
+timestamp okay uh latitude longitude
+um uh bite length data bite length label
+okay interesting sounds like Overkill it
+I
+mean I'm sure we're missing many pieces
+of information here that make this make
+sense but let's see they might lose data
+they said they're okay with losing data
+which I think is probably fine right uh
+UDP reliability doesn't work great in
+lossy Fabrics yeah that's fair uh each
+block represents a bite the two bytes
+labeled flags are the list of yes no
+switches that uh spec uh specify has
+altitude and has longitude has data
+telling our Purser what to look for in
+the remaining bytes of the entry we
+store the full state of an object every
+200 rights between those uh these we
+Only Store Deltas that means that the
+single location update complete with
+time and ID latitude and longitude takes
+only 34 bytes this means we can cram
+about 30 million location updates in a
+gigabyte of
+space okay okay very interesting I
+wonder how they I I wonder how they
+decide when to do like iframes right so
+iframes if you don't know what an iframe
+is iframe is the frame of video that's
+coming down that has the like the full
+position and then then you do p frames
+which P frames are the differentials
+right and there's also p frames which is
+like backward forward differentials but
+we're not going to talk about that uh
+and so like how often do you do diffs
+versus how often do you do full data
+point storage pretty interesting stuff
+it's kind of like they've created their
+own video encoding on top of spatial
+data right every 200 oh every 200 oh
+yeah you know when you say it out loud
+like that it makes perfect sense pread
+pre-read uh we also maintained a
+separate index file that translates the
+static string ID for each entry and its
+type it's uh to a unique 4 byte
+identifier uh since we know that it
+fixes uh that this fixed size identifier
+is always byte index 6 through n of each
+entry retrieving the history for a
+specific object is extremely fast
+interesting it's a b tree probably
+somewhere uh the result 98% reduction in
+Cloud cost and faster everything the
+storage engine is a part of our server
+binary so the cost of running it hasn't
+changed what has changed though is that
+we replaced our $10,000 a month Aurora
+instance with a $200 a month elastic
+block storage volume we are using
+provisioned iops SSD io2 with 3,000 iops
+and are batching updates to one right
+per second per node and realm I sure a
+lot of people are thinking something
+very similar that I am which is the
+engineering cost has to be significantly
+more than $10,000 a month for this to
+actually be written tested validated all
+that kind of stuff improvements you now
+have a binary storage which means you
+need versioning one thing I can see
+right away that they goofed up right
+here if you look at this the header does
+not have a version field like one of the
+biggest mistakes people make when they
+do novice binary encoding is not
+considering a version field this is like
+probably the single most important thing
+to do and the thing is is one bite is
+probably enough for your
+version uh field but two btes if you
+want to be super safe like real talk
+like how are they gonna know right how
+are they gonna know when they need to
+change the format right so for me the
+the version is a dead giveaway that this
+is maybe a bit more novice of a binary
+encoding uh attempt so each block
+represents a bite the two bite labels uh
+labeled flags are a list of yes no
+switches okay so there you go like has
+altitude has longitude has data so again
+again so this is what of again this is
+why you would desperately want a version
+field right here because again imagine
+if you needed more than 16 Flags all of
+a sudden you might find yourself needing
+to change your header format very very
+important to do uh let's see we start oh
+okay we already talked about that uh all
+right as a result so cool they've saved
+some money I'm very skeptical I mean
+obviously the layman in me says you save
+$10,000 a month but you might have cost
+yourself $50,000 a month of engineering
+effort which theoretically would get
+paid back but I think the thing that
+they're that they alluded to earlier
+makes this make a lot more sense which
+was they uh on on premise part there you
+go on premise version so they have an on
+premise version so maybe my guess is
+that this is what it's attempting to
+solve also is they have the on-prem kind
+of like thing that's kind of coming down
+on them that's actually causing a lot of
+difficulty why we added a a version
+field to our DB I really hope they do
+add a version field because honestly it
+is dude the the boy just bet that he
+could get it right first try and trust
+me every single binary protocol I've
+ever written in fact if you go to uh Vim
+with me Vim with me uh and we go in here
+and we look at what what do we got do we
+got do I have any word anything that's
+called encoding TCP
+uh the first thing I did when building
+our own TCP packets was put a version in
+it version is the first part of our
+encoding right this is Step requirement
+Numero Uno right because you just have
+to whenever you build anything that
+involves just raw dog and TCP or any of
+these type of stuff oh man you got to be
+ready for you to screw up you screwed up
+that's all there is to it you didn't
+foresee something it has to be step one
+uh EBS has an automated backups and
+Recovery built in in high high uptime
+guarantees so we don't feel that we've
+missed out on any reliability guarantees
+that Aurora offered we currently produce
+about 100 gigabytes of data per month
+but since our customers rarely uh query
+uh entries older than 10 days we've
+started moving everything above 30
+gigabytes to uh a AWS Glacier uh by the
+way Glacier I thought was one of the
+coolest
+characters and Killer Instinct for those
+that are just wondering thus reducing
+our EBS costs but it's not just costs
+writing to a local EBS via the file
+system is a lot quicker and has lower
+overhead than writing to uh queries have
+gotten a lot faster too it's hard to
+qualify or quantify since the queries
+aren't exactly analogous but for
+instance recreating a particular point
+in time in a realm's history went from
+around 2 seconds to 13
+milliseconds super cool again I feel
+like I've said this more than once which
+is creating your own storage for your
+specific needs will always be and if
+you're good at it of course assuming you
+have no skill issues will always be the
+single best way to store your data cuz
+it's bespoke to you but it is also
+absolutely the hardest most challenging
+probably you shouldn't do it move
+throwing that out there okay just saying
+you probably shouldn't do that but this
+is very very impressive cuz this is
+several orders of magnitude it's a
+nightmare of skill issues it is it is a
+nightmare to do and you should
+effectively never do it unless if you're
+tiger beetle or apparently these guys of
+course that's an unfair comparison after
+all postgress in general uh uh purpose
+let's see postgress is a general purpose
+database with an expressive query
+language and what we've built is just a
+cursor streaming a binary file feed with
+a very limited set of functionality but
+then again it's the extra it's the exact
+functionality we need and we didn't lose
+any features if they have started
+archiving everything after 30 GB then I
+probably would have started by keeping
+everything in Ram and buffering 3x
+machines yeah that's kind of interesting
+and then you could do that whole like
+UDP talk cycle right cuz once you hit
+the backbone you're you're probably
+going to get very low packet loss and
+you could just like have some sort of
+crazy round robin everything stays up
+have a node that can just kind of handle
+it at all times and then hit hit it with
+the cold storage the glacier afterwards
+we do not have skill issues the riter
+very very interesting yeah that feels
+like a little Overkill but still I mean
+it's super cool though let see you can
+learn more about Hive kits API and
+features oh cool okay so then they did
+they open source this as well location
+infrastructure for the internet hi kid
+provides okay when you say it this way
+it does make you feel like this is
+actually the NSA again okay I know you
+tried to trick me NSA with your European
+unit writing with periods instead of
+commas but you're not faking me this
+time I know what's happening here I know
+what's happening here you're trying to
+bamboozle me absolutely uh moral the
+story just use ETS constant in memory
+store built in erlang dude shy never
+misses an
+opportunity never miss an opportunity
+every every good story can be made
+better by mentioning erlang it's just a
+fact of life that was really cool though
+I actually really genuinely liked this I
+really genuinely liked this article
+again just please if I if somehow this
+gets out to you creators of said product
+um I didn't even realize that we are we
+were reading like an actual product with
+pricing and all this I didn't realize
+this till now is this an ad did I just
+get an ad can can you pay me money you
+want to pay me money for this uh no
+anyways please For the Love of All
+Things good and holy put a virgin field
+in here you will never be sad that you
+put it and you will always be sad that
+you didn't have it hasht did we just add
+ourselves did I just give you guys some
+AIDS I think I might have SL NSA NSA if
+you could pay me I don't know what I
+don't know how much money I'd need from
+the NSA to sell out my soul for being
+able to track people but I mean I assume
+we're getting the bag
+NSA all right hey that was awesome now
+let's talk about being un unplayed the
+name is the database aen is the is the
+binary aen

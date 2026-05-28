@@ -1,0 +1,42 @@
+How to Use This
+Category Map
+mindmap root((Ideation Jukebox)) Collision Audiobooks/Podcasts Forums & Complaints Adjacent Industries Changelogs & Launches Constraint Time Limits Feature Limits Audience Limits Platform Limits Inversion Opposites Excluded Users Post-Close Workflows Kill the Incumbent Inventory & Remix Skill Stack Mashup Past Project Autopsy Half-Idea Merging Pattern Transfer Destruction Unbundle Kill Middleman Strip to One Deregulate Observation Shoulder Surfing Search History Tool Switching Lurking Temporal 5-Year Obvious Retro Revival Second-Order Effects Day-After Needs Somatic & Emotional Walk Shower Incubation Exercise Clarity Anger Fuel Social & Dialogue Explain Worst Idea What Would You Pay Argue Opposite Hot Take Products Random & Chaos Word + SaaS Product Hunt Riff AI Bad Ideas Dice Roll Backlog
+When to Use What
+Match your current situation to the best method categories:
+All Methods
+💥 1. Collision Methods
+Feed external input, let it crash into what you already know. Your brain is a loaded library — these are the shaking hands that knock books off shelves.
+🔒 2. Constraint Methods
+Force artificial limits. Creativity sneaks through gaps that logic can't fill. Constraints kill the paradox of choice.
+🔄 3. Inversion Methods
+Flip, negate, reverse what exists. If everyone's going left, look right. Inversion doesn't need new info — just new angles on old info.
+🗃️ 4. Inventory & Remix Methods
+Shuffle and recombine what's already in your head. You have more raw material than you think — the gold is in the combinations.
+💣 5. Destruction Methods
+Break something, rebuild from the rubble. Decomposition reveals structure. Destruction is creative.
+👁️ 6. Observation & Ethnography Methods
+Watch real humans. The gap between what people say and what they do is where products live.
+⏳ 7. Temporal Methods
+Shift the time horizon. The present is noisy. The past and future contain signal if you look at the right resolution.
+🧘 8. Emotional & Somatic Methods
+Use your body and mood state, not just your prefrontal cortex. Different neurochemical states unlock different associative pathways.
+🎲 10. Random & Chaos Methods
+Pure pattern interrupt. Trust the noise. When your default neural pathways are grooved too deep, randomness is the only escape.
+Decision Flow
+Quick routing when you can't decide.
+flowchart TD START([Got 2-10 minutes?]) --> Q1{At a screen?} Q1 -->|Yes| Q2{Alone?} Q1 -->|No| Q3{Moving?} Q2 -->|Yes| Q4{Energy level?} Q2 -->|No| SOCIAL[🗣️ Social Methods] Q4 -->|High| COLLISION[💥 Collision] Q4 -->|Medium| CONSTRAINT[🔒 Constraint] Q4 -->|Low| CHAOS[🎲 Random / Chaos] Q3 -->|Walking/Running| SOMATIC[🧘 Somatic] Q3 -->|Sitting/Waiting| Q5{Mentally sharp?} Q5 -->|Yes| TEMPORAL[⏳ Temporal] Q5 -->|No| INVENTORY[🗃️ Inventory Remix] COLLISION --> CAPTURE([📝 Capture immediately]) CONSTRAINT --> CAPTURE CHAOS --> CAPTURE SOMATIC --> CAPTURE TEMPORAL --> CAPTURE INVENTORY --> CAPTURE SOCIAL --> CAPTURE style START fill:#2563eb,color:#fff,stroke:none style CAPTURE fill:#16a34a,color:#fff,stroke:none style COLLISION fill:#fff7ed,color:#9a3412,stroke:#d97706 style CONSTRAINT fill:#fef3c7,color:#92400e,stroke:#d97706 style CHAOS fill:#ede9fe,color:#5b21b6,stroke:#7c3aed style SOMATIC fill:#d1fae5,color:#065f46,stroke:#16a34a style TEMPORAL fill:#dbeafe,color:#1e40af,stroke:#2563eb style INVENTORY fill:#fce7f3,color:#9d174d,stroke:#be185d style SOCIAL fill:#fce7f3,color:#9d174d,stroke:#be185d
+Methods by Category
+Capture Systems
+Lowest friction. Hit record, stream of consciousness. Transcribe later or never — the act of speaking crystallizes the thought.
+One dedicated place. Not organized. Not tagged. Just a single append-only list. Search it when needed.
+For the 10-minute sessions: Problem → Who → Why Now → What's the Wedge? Four fields max. Don't over-template it.
+Power Combos
+Chain two methods for exponential results. First method loads the chamber, second method fires.
+| Load | → | Fire | Why It Works |
+|---|---|---|---|
+| 🎧 Podcast tunnel | → | 🚶 Walk without headphones | Input primes associations, silence lets them bloom |
+| 📋 Complaint forum scan | → | 🔒 "Weekend build" constraint | Real pain + forced simplicity = viable MVP |
+| 💣 Unbundle a monolith | → | ⏳ "What's obvious in 5 years?" | Today's feature, tomorrow's category |
+| 😡 Anger-fueled ideation | → | 🗣️ Explain to someone | Raw energy + forced articulation = conviction |
+| 🎲 AI generates 20 bad ideas | → | 🗃️ Merge with your half-ideas | Random seed + personal context = unique mashup |
+| 🔄 "Opposite of [product]" | → | 👁️ Watch real user struggle | Inversion hypothesis + ethnographic validation |

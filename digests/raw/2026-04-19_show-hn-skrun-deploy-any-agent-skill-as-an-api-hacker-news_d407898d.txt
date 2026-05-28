@@ -1,0 +1,30 @@
+Hacker News thread capture
+
+Thread URL: https://news.ycombinator.com/item?id=47689319
+Item ID: 47689319
+Title: Show HN: Skrun – Deploy any agent skill as an API
+Author: frizull
+Points: 62
+Linked URL: https://github.com/skrun-dev/skrun
+Top-level comments captured: 4
+Total comments captured: 9
+
+## Top comment (highest-score top-level, verbatim)
+u/frizull (0): Hey HN.My colleague built this because he wanted to use his skills outside of Claude Code.With this project you can expose your skills as an API endpoint in under 2 minutes.If you could have a look at the repo and give your feedback, it would be much appreciated.Thanks!
+
+## Prominent viewpoints (top-level comments)
+1. (0) u/frizull: Hey HN.My colleague built this because he wanted to use his skills outside of Claude Code.With this project you can expose your skills as an API endpoint in under 2 minutes.If you could have a look at the repo and give your feedback, it would be much appreciated.Thanks!
+2. (0) u/sergioisidoro: This looks like a security nightmare in case someone decides to publish this interface publicly. Prompt injection to exfiltrate sensitive Information being on the top of the list.
+3. (0) u/7777777phil: Auto-switching across model providers basically concedes the model layer is commodity, which I think is right (1)tbd whether the skill registry develops network effects or just stays a flat directory. Portable skills as APIs tracks with the broader pattern of agent stacks decomposing into specialized swappable layers, where the defensible asset is whatever process knowledge orgs encode, not the deployment infra.(1) wrote about it here from an enterprise perspective: https://philippdubach.com/posts/dont-go-monolithic-the-agent... (https://philippdubach.com/posts/dont-go-monolithic-the-agent-stack-is-stratifying/)
+4. (0) u/rohitghumare: https://Skillkit.sh (https://Skillkit.sh) already does this by default and ranked #3 on Product Hunt.
+
+## Thread discussion sample
+- (0) u/frizull: Hey HN.My colleague built this because he wanted to use his skills outside of Claude Code.With this project you can expose your skills as an API endpoint in under 2 minutes.If you could have a look at the repo and give your feedback, it would be much appreciated.Thanks!
+  - (0) u/jonnycoder: This is clever and provides a clean alternative to using custom plugins and mcp servers for doing code reviews.For example, with the degradation of Claude in the past 1-2 months, I am always asking Codex to review Claude's plans and vice versa and I get excellent results that way.Also, making a skill an API call allows for easy deployment if the security around tool calling could be isolated in an ephemeral sandbox.
+    - (0) u/Tarcroi: Thanks! Sandbox deployment is planned in the roadmap. I already have a RuntimeAdapter interface in my architecture that I'll use to isolate the VMs. I'm doing exactly the same thing: I'm cross-referencing the models to challenge their plan, and my code reviewer agent's API is a big help.
+- (0) u/sergioisidoro: This looks like a security nightmare in case someone decides to publish this interface publicly. Prompt injection to exfiltrate sensitive Information being on the top of the list.
+  - (0) u/Tarcroi: You're right. For now, it's only local. For a public deployment, the idea is to have sandboxes and verification steps. That won't completely eliminate the risk of prompt injection, but so far no solution has managed to completely resolve this problem.
+- (0) u/7777777phil: Auto-switching across model providers basically concedes the model layer is commodity, which I think is right (1)tbd whether the skill registry develops network effects or just stays a flat directory. Portable skills as APIs tracks with the broader pattern of agent stacks decomposing into specialized swappable layers, where the defensible asset is whatever process knowledge orgs encode, not the deployment infra.(1) wrote about it here from an enterprise perspective: https://philippdubach.com/posts/dont-go-monolithic-the-agent... (https://philippdubach.com/posts/dont-go-monolithic-the-agent-stack-is-stratifying/)
+  - (0) u/Tarcroi: I agree on the commodity point, that's why I went multi-model from start.The registry question is the one I'm thinking about the most. Right now it's flat. I plan to integrate usage data (success rates, cost, trust scores). So the registry tells you which skills actually work well, and that's valuable.Your article looks interesting, I'll read it.
+- (0) u/rohitghumare: https://Skillkit.sh (https://Skillkit.sh) already does this by default and ranked #3 on Product Hunt.
+  - (0) u/Tarcroi: Different thing. SkillKit distributes skills to agents. Skrun runs them as APIs.

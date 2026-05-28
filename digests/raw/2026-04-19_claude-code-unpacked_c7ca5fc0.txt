@@ -1,0 +1,60 @@
+Claude Code Unpacked
+What actually happens when you type a message into Claude Code? The agent loop, 50+ tools, multi-agent orchestration, and unreleased features, mapped straight from the source.
+0+
+Files
+0K+
+Lines of Code
+0+
+Tools
+0+
+Commands
+01
+The Agent Loop
+From keypress to rendered response, step by step through the source.
+Watch what happens when you send a message to Claude Code
+1User Input
+src/components/TextInput.tsxUser types a message or pipes input through stdin
+● claude-code
+$
+Keyboard input comes from Ink's TextInput
+component. In non-interactive mode, it reads from piped stdin
+instead.
+1/11
+02
+Architecture Explorer
+Click around the source tree to explore what's inside.
+Tools & Commands
+Core Processing
+UI Layer
+Infrastructure
+Support & Utilities
+Personality & UX
+03
+Tool System
+Every built-in tool Claude Code can call, sorted by what it does.
+File Operations
+6 tools
+Execution
+3 tools
+Search & Fetch
+4 tools
+Agents & Tasks
+11 tools
+Planning
+5 tools
+MCP
+4 tools
+System
+11 tools
+Experimental
+8 tools
+Click a tool to see details and source code
+04
+Command Catalog
+Every slash command available in Claude Code, sorted by what it does.
+Setup & Config12
+Daily Workflow24
+Code Review & Git13
+Debugging & Diagnostics23
+Advanced & Experimental23
+Click a command to see details and source code

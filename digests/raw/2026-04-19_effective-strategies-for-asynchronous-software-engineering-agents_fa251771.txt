@@ -1,0 +1,414 @@
+Effective Strategies for
+Asynchronous Software Engineering Agents
+Abstract
+AI agents have become increasingly capable at isolated software engineering (SWE) tasks such as resolving issues on Github. Yet long-horizon tasks involving multiple interdependent subtasks still pose challenges both with respect to accuracy, and with respect to timely completion. A natural approach to solving these long-horizon tasks in a timely manner is asynchronous multi-agent collaboration, where multiple agents work on different parts of the task at the same time. But effective application of multi-agent systems has proven surprisingly difficult: concurrent edits by multiple agents interfere with each other, dependencies are difficult to synchronize, and combining partial progress into a coherent whole is challenging. On the other hand, human developers have long relied on mature collaboration infrastructure to manage these challenges in large software projects. Inspired by these collaboration primitives, we introduce Centralized Asynchronous Isolated Delegation (CAID), a structured multi-agent coordination paradigm grounded in three core SWE primitives: centralized task delegation, asynchronous execution, and isolated workspaces. CAID constructs dependency-aware task plans through a central manager, executes subtasks concurrently in isolated workspaces, and consolidates progress via structured integration with executable test-based verification. In empirical evaluation, we find that CAID improves accuracy over single-agent baselines by 26.7% absolute on paper reproduction tasks (PaperBench) and 14.3% on Python library development tasks (Commit0). Through systematic analysis, we find that branch-and-merge is a central coordination mechanism for multi-agent collaboration, and that SWE primitives such as git worktree, git commit, and git merge enable it to be realized in a reliable and executable manner.
+1 Introduction
+As LLM-based software engineering agents improve, we have come to expect more of them. Whereas fixing isolated github issues on real-world repositories was a major challenge a few years ago (Jimenez et al., 2023; Yang et al., 2024; Wang et al., 2024), we are now asking agents to build large apps from scratch (Zhao et al., 2024) or implement entire research papers (Starace et al., 2025).
+One method for performing this implementation is tasking a single agent with a large task, and hoping that it can execute on it from start to finish. While task-completion horizons of agents continue to grow rapidly (Kwa et al., 2025), these systems are still limited in the scope of tasks they can perform reliably, and a single agent performing a large task also takes significant wall-clock time. To this end, in this paper, we study the question: “how can multiple agents be coordinated to asynchronously collaborate over a shared artifact in an effective way?”
+While much research has focused on coordinating multiple agents, ranging from role-based pipelines that mirror human software engineering teams (Hong et al., 2023; Qian et al., 2024a), to hierarchical managers that decompose and delegate subtasks (Benkovich and Valkov, 2026), to include verification mechanisms in multi-agent systems (Venkataramani et al., 2026), and to automated searches over communication topologies (Zhang et al., 2025a)—most of these approaches primarily address how tasks are decomposed and allocated across agents. However, the core challenges of asynchronous multi-agent collaboration over shared artifacts remain unsolved. When multiple agents need to modify a shared resource, their edits can interfere with each other: one agent’s change may silently break an assumption that another agent is relying on (Khatua et al., 2026). Even when each agent produces high-quality output in isolation, integration frequently can fail because parallel agents develop inconsistent views of the shared state, leading to incompatible changes and execution conflicts (Cemri et al., 2025). Imagine two agents editing the same file: one renames a function, while the other writes new code that still calls its old name. Both agents complete their work correctly in isolation, yet the integrated result fails to run. Such conflicts are often discovered only at integration time, where the fix is not a one-line patch but a full revision of at least one agent’s work (Cognition AI, 2025).
+Human software engineering teams face these coordination failures routinely, and they have developed a mature infrastructure to mitigate them. Developers work in isolated copies of the repository (e.g., via git worktrees), so parallel edits do not overwrite one another. When changes are ready, version-control integration protocols (e.g., merge-based workflows) consolidate contributions and surface conflicts explicitly rather than allowing silent interference. The dependency graphs determine which modules can be developed in parallel and which have a lower priority and must wait for upstream components. Test suites verify each change automatically through executable tests, so the correctness does not rely solely on any single developer’s judgment. These SWE primitives can map directly onto the coordination mechanisms to help us design the multi-agent systems for shared-artifact work.
+With SWE primitives, we build CAID (Figure LABEL:fig:teaser), a multi-agent system grounded in SWE primitives, in which a manager agent dynamically decomposes and delegates tasks to multiple engineer agents who execute concurrently in isolated workspaces. In particular, each engineer operates in its own git worktree, a fully isolated workspace with the versioned copy of the repository to ensure parallel edits remain physically separated and non-interfering. When an engineer finishes, its changes are integrated back through git merge, which surfaces conflicts explicitly rather than allowing silent interference in the final repository state. As in human software teams, each engineer is responsible not only for implementation, but also for executable self-verification and conflict resolution at commit time. All communication between the manager and engineers uses structured JSON instructions and git commits rather than free-form dialog, avoiding the inter-agent misalignment that has been identified as the primary failure mode in multi-agent systems (Cemri et al., 2025). We provide further details on the design of CAID in Section 2. Our results suggest that grounding multi-agent coordination in existing primitives from human SWE offers a practical and scalable architectural foundation for long-horizon shared-artifact tasks.
+We evaluate CAID on two long-horizon, complex software engineering tasks because they provide a natural testbed for shared-artifact collaboration. Specifically, we test CAID on Commit0 (Zhao et al., 2024), which requires agents to implement Python libraries from scratch (e.g., tinydb, minitorch, jinja), and on PaperBench (Starace et al., 2025), which needs agents to reproduce the main contributions and results of a conference paper. Together, these benchmarks allow us to evaluate CAID with the lens of branch-and-merge coordination in long-horizon multi-agent software engineering. Our contributions are threefold. First, we introduce CAID, a multi-agent system for long-horizon software engineering. Second, we show that branch-and-merge is central to effective multi-agent software engineering, and that SWE primitives provide the basis for implementing it. Third, our experiments show that CAID consistently improves the performance of Commit0 and PaperBench across multiple models.
+2 Branch-and-Merge Multi-Agent Coordination with SWE Primitives
+| SWE Primitive | Coordination Mechanism | Role in Caid |
+| Dependency graph | Scheduling constraints | Dependency order determines safe task delegation |
+| git worktree | Workspace isolation | Each agent works in an independent worktree |
+| git commit / git pull request | Structured signaling | Agents report completion by making the commits |
+| git merge | Output integration | Completed changes are merged into the main |
+| Merge conflict resolution | Conflict handling | Engineer resolves integration conflicts by themselves |
+| Code review | Verification | Engineer does the self-verification |
+| asyncio parallel execution | Concurrent execution | Multiple agents run concurrently |
+| Event loop + await | Coordination cycle | Await completion integrate reassign tasks |
+| git reset --hard HEAD | State synchronization | Worktrees sync to latest integrated state |
+We formalize CAID as a coordination architecture centered on branch-and-merge which is supported by SWE primitives. These primitives support the core operations of CAID, including task decomposition, isolated development, integration, and verification. In Table 1, we summarize the mapping between concrete SWE primitives (e.g., git worktree, git merge, dependency graphs, and test suites) and their corresponding coordination roles in CAID. CAID consists of task specification and dependency modeling (Section 2.1), dependency-aware task delegation (Section 2.2), workspace isolation and integration (Section 2.3), structured communication with asynchronous execution (Section 2.4), and self-verification with termination control (Section 2.5).
+2.1 Task Specification and Dependency Graph
+In order to perform multi-agent delegation, we need to first split the overall task into a set of sub-tasks and decide their ordering. In our preliminary experience, if we allow agents to split the task in an arbitrary manner, they may miss important parts of the task as they proceed through the implementation. Therefore, to proceed with task delegation in a structured way, we instead have the manager create a dependency graph of the repository to organize the work to be done.
+The repository structure is represented as a directed graph , where each node corresponds to a unit of work and each directed edge indicates that depends on . Let denote the set of units that have been completed and successfully integrated into the main branch at round . A unit is eligible for delegation only if all its dependencies have been satisfied: . At each round, the manager selects executable units from the ready set and converts them into task assignments.
+Depending on the variety of task, the unit of work and method for dependency analysis can be defined in different ways. In subsection 3.2 and subsection 3.3, we describe how we define these for the tasks in the Commit0 and PaperBench benchmarks respectively. Although the granularity differs across the benchmarks, in both settings, the manager constructs a dependency structure before delegating the task. Engineers are assigned tasks only after this dependency structure is established.
+2.2 Dependency-Aware Task Delegation
+We prompt (see Appendix A.1 and A.2) the manager to convert the dependency structure constructed in Section 2.1 into the small executable task units and assign them to each engineer. We instruct the manager to split the implementation work into at most major task groups, where is the maximum number of engineers allowed to work in parallel. The manager activates up to engineers for task groups whose dependencies have already been satisfied and not all engineers are necessarily activated. Files with strong or circular dependencies are grouped together and assigned to the same engineer to reduce cross-agent coordination.
+At each delegation step, the manager selects next tasks with top priority from the major task group. We prompt the manager to prioritize the tasks that enable earlier test execution, expose more evaluation signals, or that lie closer to the upstream end of the dependency chain are preferred. We suggest to the manager that engineers typically start with simpler functions before moving on to more complex ones. The manager dynamically updates the dependency state after the implementation of the intermediate engineer and decides whether to assign the next task or keep the engineer idle. We define one round as a complete cycle of delegation, implementation, and dependency update. The process continues until no executable task groups remain or predefined execution limits are reached.
+2.3 Workspace Isolation and Integration
+We use git worktree to ensure that each engineer then works in its own worktree and modifies files only within that workspace. This workspace is derived from the main branch. Before delegation, we ask the manager to perform the necessary setup to ensure that the repository is in an executable state. This includes preparing the runtime environment, organizing entry points, or adding minimal function stubs when required by the task. These preparatory changes are committed to the main branch so that all subsequent engineer branches are created from a consistent base state. Certain shared files, such as package initialization files (e.g., __init__.py), are marked as restricted, and engineers are explicitly instructed not to commit changes to them. Worktrees are deleted after all assigned tasks are completed or when the engineer reaches the predefined iteration limit.
+Integration is performed through standard git commit and git merge operations. After completing implementation and self-verification, an engineer submits a commit from its branch. The manager attempts to merge this branch into the main branch. If a merge conflict occurs, the engineer who produced the conflicting commit is responsible for resolving it. To solve the conflict, we ask the engineer to pull the latest main branch into its worktree, resolve conflicts locally, and resubmit the updated commit. As the results, the main branch remains the single source of integrated state throughout execution. We observe that this branch-based isolation, combined with explicit merge responsibilities, prevents parallel development from corrupting the shared codebase.
+2.4 Communication and Asynchronous Execution
+We use a structured JSON protocol as the communication interface between the manager and the engineer agents. When delegated the task, the manager outputs a machine-parsable JSON specification that defines task assignments, file paths, target functions, and dependency information. We provide the details in Appendix A.1. This ensures that the task boundaries, responsibilities, and outputs are explicitly defined and can be programmatically validated.
+The execution is organized around an asynchronous manager-controlled event loop. Once tasks are delegated, each engineer operates as an independent coroutine. Engineers invoke language model calls, modify code in their worktrees, and execute verification commands such as running tests. These operations are executed concurrently up to a predefined maximum number of active engineers. The manager listens for completion signals and dynamically updates the dependency state when commits are submitted. Engineers who finish early can be assigned new executable task units, while engineers whose dependencies are not yet satisfied remain idle. To manage context growth, the manager maintains a compressed execution history. We use LLMSummarizingCondenser to periodically summarize prior interaction rounds while preserving key structured artifacts such as the dependency graph, completed tasks, and unresolved errors. This separation prevents unnecessary context expansion while preserving execution traceability.
+2.5 Self-Verification and Termination
+To ensure the quality of the implementation, we require each engineer to verify its own implementation before submitting a commit. After completing the assigned functions, the engineer executes verification within its worktree. When executable tests are available, the engineer runs the subset of tests that directly import or reference the modified files. If there is no explicit mapping, the engineer runs the repository’s default test command or a minimally runnable entry point. Any failed test or runtime exception must be resolved before submission, and engineers iteratively refine the implementation using concrete error logs and tracebacks. After a verified commit is submitted, the manager integrates it into the main branch and updates the dependency state. The manager does not perform a detailed code review at every step, but monitors the overall progress and remaining implementation units. We terminate execution when all units in the dependency structure have been completed and integrated, or when predefined limits, such as maximum rounds or iteration budgets, are reached. If termination occurs due to limit exhaustion while unresolved units remain, the task is considered incomplete.
+3 Main Results
+3.1 Evaluation Benchmarks
+We evaluate CAID on two long-horizon software engineering benchmarks that require agents to coordinate multiple interdependent edits over shared repositories.
+3.2 Commit0
+Commit0 Zhao et al. (2024) tests whether agents can implement a Python library from scratch given a repository skeleton and a suite of unit tests. The task is considered successful only if all tests pass, making it a repository-level integration problem rather than a collection of independent code completions. We use Commit0-Lite as our primary evaluation set, following the official leaderboard setup.111https://commit-0.github.io/
+In Commit0, the manager receives an instruction and the path to a repository directory that contains executable tests. We provide the user instruction in Appendix A.1. The manager first checks the import statements to identify the file-level dependencies, collects executable test cases from the repository, and examines which files those tests exercise. These tests indicate which files are required for specific tests to pass and help the manager understand the expected behavior of the overall implementation task. Based on these explorations, the manager can identify which components need to be implemented earlier so that dependent tests can pass. When delegating tasks, the manager first considers delegating at the file level.. However, if a single file contains a large number of unimplemented functions, the manager can further divide the work at the function level, ensuring that the function sets assigned to different engineers do not overlap.
+After assigning the first tasks to multiple engineers, the manager can continue to explore the repository and optimizing the rest of task delegation plan until one engineer completes the current tasks, submits a commit for merge, and is ready for the next task.
+3.3 PaperBench
+PaperBench Starace et al. (2025) evaluates an agent’s ability to reproduce the main contributions of a published conference paper, typically involving multi-step implementation, experimental setup, and result verification. The benchmark emphasizes long-horizon reasoning and structured execution over complex codebases. Due to computational cost constraints, we adopt the Code-Dev evaluation protocol instead of running the full evaluation pipeline. Following the benchmark’s evaluation paradigm, we use gpt-5-mini (OpenAI, 2025) as the judge model to assess functional correctness and completion quality.
+As an open-ended task, explicit test-to-file mappings are not always available. The manager reads the paper by considering the main contribution described in the paper as the central implementation objective and infers the required implementation order from it. We provide the prompt in Appendix A.2.
+3.4 Experimental Setup
+We build CAID using the open-source OpenHands agent SDK (Wang et al., 2024, 2025b) (v1.11.0). CAID instantiates a centralized manager responsible for dependency-aware task delegation and multiple software-engineer agents operating in isolated workspaces. We evaluate CAID with three language models: two open-source models (GLM 4.7 (Zeng et al., 2025) and MiniMax 2.5 (MiniMax, 2024)) and one closed-source model (Claude-4.5-Sonnet (Anthropic, 2024)).
+Following the Commit0 leaderboard configuration, we use a single-agent setup with on both Commit0 and PaperBench. For multi-agent runs, we set for the central manager and for each software-engineer agent. For both Commit0 and PaperBench, we use implementation rounds. In the main results, we use one central manager with engineer agents on PaperBench and engineer agents on Commit0. We provide a more detailed analysis of configuration choices in Section 4.222All configurations are fixed prior to experimentation to balance correctness and runtime efficiency.
+3.5 Baselines
+Our primary baseline is a matched single-agent system built on the same OpenHands agent. We use this baseline to isolate the effect of branch-and-merge coordination while holding the underlying agent framework fixed. This controlled comparison allows us to measure the incremental contribution of dependency-aware delegation, isolated workspaces, and merge-and-branch integration without introducing additional variation from framework-level differences such as prompting structure, tool interfaces, memory mechanisms, or execution policies.
+We therefore do not treat the main evaluation as a benchmark across heterogeneous multi-agent frameworks. Instead, our goal is to test whether branch-and-merge coordination improves software-engineering performance within a fixed agent substrate. To further analyze this design choice, we include ablations in Section 4 that vary coordination and isolation mechanisms within the same stack.
+3.6 Branch-and-Merge Based Coordination Improves Multi-Agent Performance
+| \rowcolorgray!15 PaperBench | ||||||||||
+| Single-Agent | CAID (2 Engineers) | Single-Agent + CAID | ||||||||
+| Model | SDK | Score | Runtime | Cost | Score | Runtime | Cost | Score | Runtime | Cost |
+| Claude Sonnet 4.5 | v1.11.0 | 57.2 | 1803.5 | 3.3 | 63.3 | 2080.4 | 9.3 | 66.8 | 3883.9 | 12.6 |
+| MiniMax 2.5 | v1.11.0 | 10.4 | 2525.3 | 1.1 | 36.7 | 2999.4 | 2.6 | 36.7 | 5524.7 | 3.7 |
+| GLM 4.7 | v1.11.0 | 38.0 | 1177.6 | 2.8 | 45.4 | 1449.4 | 4.7 | 48.5 | 2626.9 | 7.5 |
+| \rowcolorgray!15 Commit0-Lite | ||||||||||
+| Single-Agent | CAID (4 Engineers) | Single-Agent + CAID | ||||||||
+| Model | SDK | Score | Runtime | Cost | Score | Runtime | Cost | Score | Runtime | Cost |
+| Claude Sonnet 4.5 | v1.11.0 | 53.1 | 692.6 | 1.9 | 59.1 | 1583.2 | 8.1 | 59.5 | 2275.8 | 10.1 |
+| MiniMax 2.5 | v1.11.0 | 42.3 | 752.1 | 1.6 | 57.0 | 1908.6 | 4.5 | 57.0 | 2660.7 | 6.1 |
+| GLM 4.7 | v1.11.0 | 42.8 | 871.0 | 2.5 | 46.5 | 1387.8 | 7.3 | 46.5 | 2257.8 | 9.8 |
+We compare CAID with the single-agent baseline in Table 3.6 and observe a consistent advantage for the branch-and-merge-based multi-agent system across both benchmarks and three LLMs. On PaperBench, we observe that multi-agent coordination yields large gains for weaker single-agent runs: MiniMax 2.5 reaches 36.7% under multi-agent execution, while its single-agent score is only 10.4%. The improvement is not limited to weaker models. With Claude 4.5, multi-agent execution achieves 63.3% compared to 57.2% for single-agent. In Commit0-Lite, we find the same pattern. Claude 4.5 improves from 53.1% to 59.1%, and MiniMax 2.5 reaches 57.0% under multi-agent execution. These results indicate that the performance gap is not explained by changing the underlying model, but by changing the execution method. In CAID, engineers work in separate branches and changes enter the main branch only through explicit merge and test validation. This makes parallel work usable by separating implementation from integration: engineers can iterate locally without overwriting each other’s intermediate states, while integration failures are surfaced at merge time with concrete test signals tied to specific updates. Our results in Table 3.6 are consistent with the benefit of making integration explicit and test-gated under long-horizon execution. We provide one-sided t-tests in Appendix C.
+Table 3.6 further reveals an important strategic implication. In long-horizon shared-artifact tasks, multi-agent coordination should not be treated as a fallback after single-agent failure. The Single-Agent + Multi-Agent setting approximates a practical strategy in which a single agent is first attempted, followed by coordinated execution if necessary. However, this sequential strategy incurs nearly additive runtime and cost, while the final performance remains close to the direct multi-agent result. For example, on PaperBench with Claude Sonnet 4.5, the combined strategy reaches 66.8%, only slightly above the multi-agent score of 63.3%, yet runtime increases from 2080.4s to 3883.9s and cost rises from 9.3 to 12.6. On Commit0-Lite with MiniMax 2.5, the multi-agent score is 57.0%, and the combined strategy remains 57.0%, while both runtime and cost increase substantially. These results give us a clear strategy insight for long-horizon shared-artifact tasks. Treating multi-agent coordination as a fallback after a single-agent attempt is inefficient. A more cost-effective strategy is to adopt coordinated multi-agent execution from the outset rather than switching only after failure.
+3.7 Single Agents Fail to Utilize More Iterations
+Can a single agent overcome long-horizon shared-artifact challenges simply by running longer? To study this, we run a single agent with and . We control computation through a max iteration budget rather than enforcing a fixed runtime, which better reflects practical agent deployment where iteration-based control is commonly used. As shown in Figure 2, doubling the iteration limit yields only marginal improvements in the final performance and, in some cases, even degraded results. In PaperBench, from 100 to 200 iterations remains small for GLM 4.7 and MiniMax 2.5, and becomes negative for Claude Sonnet 4.5. In Commit0-Lite, the improvement is similarly limited, and MiniMax 2.5 shows a negative delta when the iteration budget is increased. This trend is consistent with the findings reported in PaperBench, where forcing the agent to run until a time limit does not reliably improve the judge score (Starace et al., 2025). In Figure 2, we also show the score gain obtained by CAID relative to the baseline of 100 iterations of a single-agent. Across both benchmarks, these gains are substantially larger than those achieved simply by increasing the single-agent iteration budget. For example, on PaperBench the multi-agent improvement for MiniMax 2.5 exceeds 25 percentage points, while doubling the iteration limit yields only a small change. A similar gap appears in Commit0-Lite. These results show that extending the iteration budget alone does not resolve the fundamental bottleneck of a single agent and does not reliably improve final performance on long-horizon tasks, whereas multi-agent coordination produces significantly larger gains under the same baseline reference.
+4 Analysis
+4.1 Git worktree Isolation
+| \rowcolorgray!15 PaperBench | |||||
+| single agent | CAID (worktree isolation) | multi-agent (soft isolation) | |||
+| score | iterations | score | iterations | score | iterations |
+| 57.2 | 66.8 | 63.3 | 168.3 | 55.5 | 190.0 |
+| \rowcolorgray!15 Commit0-Lite | |||||
+| single agent | CAID (worktree isolation) | multi-agent (soft isolation) | |||
+| score | iterations | score | iterations | score | iterations |
+| 53.1 | 84.5 | 59.1 | 313.3 | 56.1 | 335.9 |
+In Table 4.1, we study whether “worktree isolation” is necessary. We study worktree isolation not as an isolated engineering choice, but as the primitive that realizes the branch side of branch-and-merge coordination. In Table 3.6, we compare the results of single-agent, multi-agent (CAID) with “worktree isolation” (git worktree), and multi-agent with soft isolation with the same configuration. In the soft isolation setup, all engineers share one workspace, and the central manager attempts to prevent conflicts through instruction-level constraints, such as assigning non-overlapping files and explicitly warning against interference. The “worktree isolation” creates separate git worktrees for each engineer, so concurrent edits are physically separated and only interact through explicit git merge. On Commit0-Lite, soft isolation improves over single-agent from 53.1% to 56.1%, showing that central manager-driven delegation alone already helps when repository structure and file dependencies are explicit. “worktree isolation” further increases performance to 59.1%, indicating that instruction-level separation is not sufficient to fully eliminate interference over longer trajectories. On PaperBench, the pattern differs. Soft isolation drops to 55.5%, below the single-agent score of 57.2%, while “worktree isolation” reaches 63.3%. Unlike Commit0, PaperBench does not provide explicit file structure or dependency graphs, and the manager must first infer the global implementation plan from the paper itself. When this decomposition is imperfect, sharing a workspace amplifies miscoordination, whereas “worktree isolation” stabilizes parallel execution. Our ablation experiments suggest that isolation and delegation are complementary: soft managerial separation can help when dependencies are explicit, but for open-ended long-horizon tasks, “worktree isolation” becomes necessary to prevent execution instability.
+4.2 Choosing the Degree of Parallel Execution
+We analyze how the number of asynchronous engineer agents affects the performance in Figure 3. We find that increasing the number of engineers does not monotonically improve the performance, which align with the results in (Yang et al., 2026). The optimal degree of parallelism depends on two factors: the intrinsic parallel structure of the task and the delegation capacity of the central manager. First, tasks differ in how many components can be implemented independently. In Commit0-Lite, performance improves when increasing engineers from 2 to 4 (53.1% single-agent to 59.1%), but decreases when expanding to 8 engineers. Although more agents increase theoretical parallelism, overly fine-grained task delegation introduces integration overhead and conflict resolution cost, especially when multiple engineers modify closely related modules. However, too few engineers can exploit the independent files available in clear-structured repositories, limiting progress within a fixed iteration budget. Second, scalability is constrained by the manager’s coordination ability. The central manager must track dependency states, monitor the progress of the engineers, and dynamically assign tasks. When the number of engineers increases, delegation errors or delayed synchronization can propagate and destabilize the overall trajectory. This effect is visible in Commit0-Lite at 8 engineers, where performance declines despite higher computation cost. On PaperBench, where task decomposition is less structurally explicit, increasing engineers beyond 2 yields minimal gain in score while runtime and cost increase steadily. These results show that the number of subagents should be matched to both the inherent modularity of the task and the effective delegation capacity of the manager. Excess parallelism without reliable coordination degrades stability, rather than improving performance. We provide examples of failure in the Appendix D.
+4.3 Delegation Shapes Execution Trajectory
+In Figure 4, we show two CAID runs and one single-agent run in the Commit0-Lite minitorch repository under different prompts to study how task delegation affects execution outcomes. We find that the performance difference between CAID Run 1 (8.7% pass rate) and CAID Run 2 (34.3%) is not simply due to the number of modules implemented, but to which modules are assigned and actively pursued. In Run 2, the manager assigns an engineer to autodiff.py, a file that is critical for passing tests, and sustained effort on this file is followed by broader progress across dependent components. In contrast, Run 1 assigns engineers to several other files, but never assigns work to autodiff.py. Although multiple engineers are active, the absence of this key dependency limits the overall pass rate. We observe that the single-agent run touches autodiff.py during exploration and implements part of the logic, but the file remains incomplete and the final pass rate reaches only 17.4%. This example shows that the manager’s delegation ability, particularly the ability to identify and assign high-impact dependencies, is critical for the success of long-horizon SWE tasks.
+4.4 Scaling Asynchronous Parallelism
+During our exploration of the multi-agent design, we experimented with different prompt engineering strategies that emphasize distinct objectives, such as prioritizing correctness or efficiency. Figure 5 shows the results on a subset of nine repositories (i.e., babel, chardet, cookiecutter, imapclient, jinja, minitorch, simply, tinydb) of Commit0-Lite. In Round-Manager Review, the manager explicitly reviews code quality at every implementation round before integration for each engineer, placing stronger emphasis on correctness. In Engineer Self-Verification, engineers conduct self-review without repeated managerial inspection, which is closest to the main results we report in Section 3. In Efficiency-Prioritized, both manager and engineer agents are explicitly instructed to prioritize runtime efficiency and are reminded that execution time will be evaluated, thereby assigning higher weight to the runtime of implementation in the user instruction. We observe a clear pattern: Round-Manager Review achieves the highest pass rate (60.2%) but also incurs the longest runtime (3689.1s), Self-Verification yields intermediate performance (55.1%) with moderate runtime (2243.9s), and Efficiency-Prioritized runs fastest (1908.6s) but achieves the lowest pass rate (54.0%). This development-stage result suggests a trade-off between verification intensity and execution efficiency: emphasizing efficiency can shorten runtime but may reduce integration robustness, while stricter review improves stability at additional computational cost.
+5 Related Work
+5.1 Multi-Agent Architectures
+Recent studies have explored diverse architectural choices for LLM-based multi-agent systems, spanning from static, predefined role-playing topologies to dynamic, task-adaptive orchestrations. Early frameworks such as CAMEL (Li et al., 2023) and Generative Agents (Park et al., 2023) established the foundation for communicative interaction, which was later structured into a natural language communication pipeline from ChatDev (Qian et al., 2024a). To enhance flexibility, EvoMAC Hu et al. (2024) explores self-evolving collaboration and AutoAgents Chen et al. (2023) focuses on automated agent generation. Advanced orchestrators like AgentOrchestra Zhang et al. (2025b) introduce standardized protocols (e.g., TEA), while MASS (Zhou et al., 2025) and DyLAN (Liu et al., 2023) optimize inter-agent topologies for adaptive task decomposition. Despite achieving higher autonomy in personnel allocation, these architectures still struggle with high-density communication and cognitive overload in long-horizon tasks. To address this, MegaAgent Wang et al. (2025a) and subsequent scaling laws (Qian et al., 2024b) examine the decay of efficiency in large clusters, leading to optimization strategies such as sequential aggregation in Chain-of-Agents (Zhang et al., 2024), and memory abstractions in MemGPT (Packer et al., 2023). Many open-source agents such as OpenHands (Wang et al., 2024) further reduce context explosion through history condensation.
+Although many multi-agent systems optimize information flow, they largely rely on "standardized operating procedures" to maintain agent coordination (Hong et al., 2023; Nguyen et al., 2025) and incorporate agile methodologies for lifecycle management. Deeper coordination is studied through implicit co-player inference (Meulemans et al., 2024), consensus-based evaluation in agent-as-judge (Zhuge et al., 2024). However, in shared-artifact environments like software engineering, these linguistically-governed architectures frequently encounter execution conflicts when multiple agents concurrently modify the codebase. Khatua et al. (2026) suggest that this critical bottleneck for multi-agent execution remains under-explored. This gap reveals that we need an architectural design that physically coordinates multiple agents in an execution-aware paradigm.
+5.2 Multi-Agent Coordination Challenges
+Despite advances in multi-agent architectures, coordination stability remains constrained by communication workflows, which is directly reflected in task delegation under the uncertainty of complex tasks and explicit conflicts within shared workspaces. In dialogue-driven systems (Wu et al., 2024), delegation typically emerges implicitly through conversational interaction rather than explicit authority modeling, which can lead to redundant effort or delayed escalation. While recent studies propose more structured approaches—including orchestrator-executor handoffs and hierarchical organizations (Song et al., 2025; Xu et al., 2025) to regulate task delegation, scaling analyses (Qian et al., 2024b; Li et al., 2024c) demonstrate that increasing the agent population without disciplined delegation amplifies communication overhead and may degrade overall performance. Another critical challenge caused by unstructured communication is physical interference: planning-oriented analyses (Li et al., 2024a) report severe task overlap and inconsistent action sequences, while empirical scaling results (Qian et al., 2024b; Li et al., 2024c) quantify a "coordination tax" in which synchronization costs grow superlinearly with agent count. These findings indicate that linguistic alignment can harmonize intent but cannot inherently serialize concurrent state transitions or guarantee integration consistency. To address these challenges, we use a central manager to explicitly delegate tasks and physically isolate the workspaces of concurrent agents to prevent integration conflicts.
+5.3 Software Engineering for Multi-Agent Coordination
+Before the emergence of LLM-based agents, software engineering had already developed mechanisms for coordinating parallel work over shared artifacts, including branching and merging, dependency management, continuous integration, and code review. These mechanisms treat coordination as explicit control over versioned artifacts and their integration. Recent multi-agent work has begun to implicitly adopt parts of the SWE paradigm. Process-driven frameworks such as MetaGPT (Hong et al., 2023) and AgileCoder (Nguyen et al., 2025) mirror role decomposition and lifecycle management. Sandbox-based systems, including the SWE-agent Yang et al. (2024), incorporate build–test feedback loops analogous to continuous integration. However, recent empirical studies Khatua et al. (2026) still report that concurrent modification and merge conflicts remain a primary failure mode when these engineering primitives are not explicitly modeled. These observations suggest that, in shared repositories, the central issue is not only how agents are organized into roles or workflows, but also how concurrent work is isolated, integrated, and verified. In this paper, we focus on branch-and-merge coordination and the SWE primitives that support it in multi-agent software engineering.
+5.4 Software Engineering Evaluation Benchmarks
+Software Engineering (SWE) tasks, which evaluate agents on their ability to autonomously carry out diverse real-world development activities across complex codebases, have become the core benchmarks for measuring the practical capabilities of LLM-based coding agents. SWE-bench Jimenez et al. (2023) provides the initial benchmark for autonomous issue resolution. SWE-bench Verified Chowdhury et al. (2024) refines the evaluation methodology to enhance fidelity and robustness, whereas SWE-bench Pro Deng et al. (2025) expands the task design to include professionally curated, multi-step engineering problems that better approximate complex real-world development workflows. To move beyond issue-level resolution, several benchmarks isolate specific capabilities of software engineering agents. TerminalBench Merrill et al. (2026) and InterCode Yang et al. (2023) evaluate the use of terminal-based tools, while DevBench Li et al. (2024b) extends the assessment to the broader software development lifecycle. For long-horizon and reasoning-intensive scenarios, SciCode (Tian et al., 2024) and LongCLI (Feng et al., 2026) introduce multi-step algorithmic or decentralized workflows. At a larger granularity, Commit0 Zhao et al. (2024) and PaperBench Starace et al. (2025) introduce long-horizon SWE tasks that move beyond localized reasoning. Long-horizon, complex SWE tasks naturally constitute a rigorous testbed for multi-agent systems, as coordinated multi-file modifications, interdependent subtasks, and explicit merge conflicts systematically expose challenges in synchronization, consistency maintenance, and progress integration across agents. In this paper, we evaluate CAID on Commit0 and PaperBench.
+6 Limitations and Future Directions
+Cost and Runtime.
+Although CAID improves success rates on long-horizon shared-artifact tasks, it introduces non-trivial coordination overhead. In our experiments, multi-agent execution consistently incurs higher API cost than single-agent baselines, and wall-clock runtime is not substantially reduced despite parallel execution. This reflects a fundamental trade-off: structured isolation, integration, and verification improve stability, but require additional communication rounds, merge operations, and test executions. In particular, while engineers operate concurrently, integration remains sequential and test-gated, limiting end-to-end acceleration. Prior analyses of multi-agent systems have similarly noted that coordination complexity can offset gains from specialization and parallelism when not carefully optimized (Radar, 2024). For the long-horizon shared-artifact tasks we study, however, such coordination may still be necessary, since simply extending single-agent execution does not reliably achieve comparable gains. Therefore, promising next steps include improving scheduling efficiency, reducing redundant verification cycles, and learning when to merge or prune intermediate states. Optimizing the cost–performance frontier of structured multi-agent execution remains an important area for future work.
+Isolated Task Delegation Capabilities of Agents.
+A second limitation lies in the central manager’s task decomposition and delegation capability. In the current implementation, task assignment relies primarily on prompt engineering heuristics rather than learned delegation policies. While our results indicate that architectural isolation and integration are the dominant factors for stability, weak or suboptimal task decomposition can still reduce overall effectiveness. Existing analyses of multi-agent systems identify imprecise task handoffs and underspecified subgoals as major sources of coordination failure (Bhavsar, 2026). Our findings align with this observation: when delegation is coarse-grained or misaligned with dependency structure, engineers may produce locally correct outputs that are globally inefficient to integrate. Future work may explore reinforcement learning–based delegation policies, dependency-aware planning modules, or adaptive subtask refinement strategies that improve alignment between global objectives and isolated execution. Strengthening delegation capability would allow the architectural benefits of isolation and structured integration to scale more reliably.
+Generalization Beyond Software Engineering Tasks.
+Finally, our evaluation focuses on software engineering benchmarks, which provide a natural testbed for structured multi-agent execution due to explicit workspace boundaries, version control infrastructure, and executable test suites. These properties make software development uniquely suitable for studying isolation, integration, and dependency-aware coordination. However, not all long-horizon shared-artifact tasks possess such clearly defined boundaries or objective verification mechanisms. Extending CAID to non-coding domains—such as document synthesis, research planning, or multimodal artifact construction—will require adapting isolation mechanisms and designing alternative forms of integration and validation. Evaluating the framework in such settings is necessary to determine whether the architectural principles demonstrated here generalize beyond SWE-specific workflows.
+7 Conclusion
+In this paper, we introduce CAID, a branch-and-merge based multi-agent system for long-horizon software engineering tasks. We use a manager to break a task into dependency-aware units, assign them to engineers, and keep each engineer working in an isolated branch and worktree. Progress is integrated only through git commit and git merge on the main branch, with tests used as the executable check for whether an update should be kept. Across Commit0 and PaperBench, our CAID consistently improves over single-agent baselines, even when the underlying model is unchanged. Our results also show that simply increasing the single agent iteration budget does not reliably improve outcomes, and a fallback strategy that runs a single agent first and then switches to multi-agent mainly wastes runtime and cost. Overall, we show that branch-and-merge is important for effective multi-agent software engineering and that SWE primitives provide a practical way to support it. For complex long-horizon, dependency-aware software engineering tasks, CAID is the default paradigm for structuring solutions to enable parallel and coordinated development.
+Acknowledgments
+This paper was supported by grants from Fujitsu. We thank Apurva Gandhi, Lintang Sutawika, Emmy Liu, and Howard Chen for their valuable feedback and discussion.
+References
+- Claude 4.5 sonnet. Note: https://www.anthropic.comLarge language model developed by Anthropic Cited by: §3.4.
+- Agyn: a multi-agent system for team-based autonomous software engineering. arXiv preprint arXiv:2602.01465. Cited by: §1.
+- Why do multi-agent systems fail even when agents work perfectly in isolation?. Note: Galileo Blog External Links: Link Cited by: §6.
+- Why do multi-agent llm systems fail?. arXiv preprint arXiv:2503.13657. Cited by: §1, §1.
+- Autoagents: a framework for automatic agent generation. arXiv preprint arXiv:2309.17288. Cited by: §5.1.
+- Introducing swe-bench verified. External Links: Link Cited by: §5.4.
+- Don’t build multi-agents. Note: https://cognition.ai/blog/dont-build-multi-agentsAccessed: 2026-02-20 Cited by: §1.
+- Swe-bench pro: can ai agents solve long-horizon software engineering tasks?. arXiv preprint arXiv:2509.16941. Cited by: §5.4.
+- LongCLI-bench: a preliminary benchmark and study for long-horizon agentic programming in command-line interfaces. arXiv preprint arXiv:2602.14337. Cited by: §5.4.
+- MetaGPT: meta programming for a multi-agent collaborative framework. In The twelfth international conference on learning representations, Cited by: §1, §5.1, §5.3.
+- Self-evolving multi-agent collaboration networks for software development. arXiv preprint arXiv:2410.16946. Cited by: §5.1.
+- Swe-bench: can language models resolve real-world github issues?. arXiv preprint arXiv:2310.06770. Cited by: §1, §5.4.
+- CooperBench: why coding agents cannot be your teammates yet. arXiv preprint arXiv:2601.13295. Cited by: §1, §5.1, §5.3.
+- Measuring ai ability to complete long tasks. arXiv preprint arXiv:2503.14499. Cited by: §1.
+- Agent-oriented planning in multi-agent systems. arXiv preprint arXiv:2410.02189. Cited by: §5.2.
+- Devbench: a comprehensive benchmark for software development. arXiv preprint arXiv:2403.08604 3. Cited by: §5.4.
+- Camel: communicative agents for" mind" exploration of large language model society. Advances in neural information processing systems 36, pp. 51991–52008. Cited by: §5.1.
+- More agents is all you need. arXiv preprint arXiv:2402.05120. Cited by: §5.2.
+- Dynamic llm-agent network: an llm-agent collaboration framework with agent team optimization. arXiv preprint arXiv:2310.02170. Cited by: §5.1.
+- Terminal-bench: benchmarking agents on hard, realistic tasks in command line interfaces. arXiv preprint arXiv:2601.11868. Cited by: §5.4.
+- Multi-agent cooperation through learning-aware policy gradients. arXiv preprint arXiv:2410.18636. Cited by: §5.1.
+- MiniMax 2.5. Note: https://www.minimaxi.comLarge language model developed by MiniMax Cited by: §3.4.
+- Agilecoder: dynamic collaborative agents for software development based on agile methodology. In 2025 IEEE/ACM Second International Conference on AI Foundation Models and Software Engineering (Forge), pp. 156–167. Cited by: §5.1, §5.3.
+- GPT-5-mini. Note: https://www.openai.comLarge language model developed by OpenAI Cited by: §3.3.
+- MemGPT: towards llms as operating systems.. Cited by: §5.1.
+- Generative agents: interactive simulacra of human behavior. In Proceedings of the 36th annual acm symposium on user interface software and technology, pp. 1–22. Cited by: §5.1.
+- Chatdev: communicative agents for software development. In Proceedings of the 62nd annual meeting of the association for computational linguistics (volume 1: Long papers), pp. 15174–15186. Cited by: §1, §5.1.
+- Scaling large language model-based multi-agent collaboration. arXiv preprint arXiv:2406.07155. Cited by: §5.1, §5.2.
+- Designing effective multi-agent architectures. Note: https://www.oreilly.com/radar/designing-effective-multi-agent-architectures/Accessed 2026 Cited by: §6.
+- Coact-1: computer-using agents with coding as actions. arXiv preprint arXiv:2508.03923. Cited by: §5.2.
+- PaperBench: evaluating ai’s ability to replicate ai research. arXiv preprint arXiv:2504.01848. Cited by: §1, §1, §3.3, §3.7, §5.4.
+- Scicode: a research coding benchmark curated by scientists. Advances in Neural Information Processing Systems 37, pp. 30624–30650. Cited by: §5.4.
+- MAS-prove: understanding the process verification of multi-agent systems. arXiv preprint arXiv:2602.03053. Cited by: §1.
+- MegaAgent: a large-scale autonomous llm-based multi-agent system without predefined sops. In Findings of the Association for Computational Linguistics: ACL 2025, pp. 4998–5036. Cited by: §5.1.
+- Openhands: an open platform for ai software developers as generalist agents. arXiv preprint arXiv:2407.16741. Cited by: §1, §3.4, §5.1.
+- The openhands software agent sdk: a composable and extensible foundation for production agents. arXiv preprint arXiv:2511.03690. Cited by: §3.4.
+- Autogen: enabling next-gen llm applications via multi-agent conversations. In First conference on language modeling, Cited by: §5.2.
+- BOAD: discovering hierarchical software engineering agents via bandit optimization. arXiv preprint arXiv:2512.23631. Cited by: §5.2.
+- Swe-agent: agent-computer interfaces enable automated software engineering. Advances in Neural Information Processing Systems 37, pp. 50528–50652. Cited by: §1, §5.3.
+- Intercode: standardizing and benchmarking interactive coding with execution feedback. Advances in Neural Information Processing Systems 36, pp. 23826–23854. Cited by: §5.4.
+- Understanding agent scaling in llm-based multi-agent systems via diversity. arXiv preprint arXiv:2602.03794. Cited by: §4.2.
+- Glm-4.5: agentic, reasoning, and coding (arc) foundation models. arXiv preprint arXiv:2508.06471. Cited by: §3.4.
+- Multi-agent architecture search via agentic supernet. arXiv preprint arXiv:2502.04180. Cited by: §1.
+- AgentOrchestra: orchestrating hierarchical multi-agent intelligence with the tool-environment-agent (tea) protocol. Cited by: §5.1.
+- Chain of agents: large language models collaborating on long-context tasks. Advances in Neural Information Processing Systems 37, pp. 132208–132237. Cited by: §5.1.
+- Commit0: library generation from scratch. arXiv preprint arXiv:2412.01769. Cited by: §1, §1, §3.2, §5.4.
+- Multi-agent design: optimizing agents with better prompts and topologies. arXiv preprint arXiv:2502.02533. Cited by: §5.1.
+- Agent-as-a-judge: evaluate agents with agents. arXiv preprint arXiv:2410.10934. Cited by: §5.1.
+Appendix A Prompt Engineering for Multi-Agent Task Delegation
+We provide the prompts of user instruction and task delegation for both Commit0 in Section A.1 and PaperBench in A.2.
+A.1 Commit0 Prompts
+A.2 PaperBench Prompts
+Appendix B Full Results
+We provide the full results of Claude 4.5 Sonnet of each repository on Commit0-Lite and each paper on PaperBench across three LLMs.
+Single-Agent (100 iters)
+CAID (4 engineers)
+Single+CAID
+paper_id
+Pass
+Time
+Cost
+Iter
+Pass
+Time
+Cost
+Iter
+Pass
+Time
+Cost
+Iter
+babel
+cachetools
+chardet
+cookiecutter
+deprecated
+imapclient
+jinja
+marshmallow
+minitorch
+parsel
+portalocker
+pyjwt
+simpy
+tinydb
+voluptuous
+wcwidth
+AVERAGE
+Table 4: Claude 4.5 Sonnet results on Commit0-Lite across different configurations.
+Single-Agent (100 iters)
+Multi-Agent (4 engineers)
+Single+Multi-Agent (100 iters)
+repo_id
+Pass
+Time
+Cost
+Iter
+Pass
+Time
+Cost
+Iter
+Pass
+Time
+Cost
+Iter
+babel
+cachetools
+chardet
+cookiecutter
+deprecated
+imapclient
+jinja
+marshmallow
+minitorch
+parsel
+portalocker
+pyjwt
+simpy
+tinydb
+voluptuous
+wcwidth
+AVERAGE
+Table 5: GLM 4.7 results on Commit0-Lite across different configurations.
+Single-Agent (100 iters)
+Multi-Agent (4 engineers)
+Single+Multi-Agent (100 iters)
+repo_id
+Pass
+Time
+Cost
+Iter
+Pass
+Time
+Cost
+Iter
+Pass
+Time
+Cost
+Iter
+babel
+cachetools
+chardet
+cookiecutter
+deprecated
+imapclient
+jinja
+marshmallow
+minitorch
+parsel
+portalocker
+pyjwt
+simpy
+tinydb
+voluptuous
+wcwidth
+AVERAGE
+Table 6: MiniMax 2.5 results on Commit0-Lite across different configurations.
+Single-Agent (100 iters)
+CAID (2 engineers)
+Single+CAID
+paper_id
+Scores
+Time
+Cost
+Iter
+Scores
+Time
+Cost
+Iter
+Scores
+Time
+Cost
+Iter
+adaptive-pruning
+all-in-one
+bam
+bbox
+bridging-data-gaps
+fre
+ftrl
+lbcs
+lca-on-the-line
+mechanistic-understanding
+pinn
+rice
+robust-clip
+sample-specific-masks
+sapg
+sequential-neural-score-estimation
+stay-on-topic-with-classifier-free-guidance
+stochastic-interpolants
+test-time-model-adaptation
+what-will-my-model-forget
+AVERAGE
+Table 7: Claude 4.5 Sonnet results on PaperBench Code-Dev across different configurations.
+Single-Agent (100 iters)
+Multi-Agent (2 engineers)
+Single+Multi-Agent
+paper_id
+Scores
+Time
+Cost
+Iter
+Scores
+Time
+Cost
+Iter
+Scores
+Time
+Cost
+Iter
+adaptive-pruning
+all-in-one
+bam
+bbox
+bridging-data-gaps
+fre
+ftrl
+lbcs
+lca-on-the-line
+mechanistic-understanding
+pinn
+rice
+robust-clip
+sample-specific-masks
+sapg
+sequential-neural-score-estimation
+stay-on-topic-with-classifier-free-guidance
+stochastic-interpolants
+test-time-model-adaptation
+what-will-my-model-forget
+AVERAGE
+Table 8: GLM 4.7 results on PaperBench Code-Dev across different configurations.
+Single-Agent (100 iters)
+Multi-Agent (2 engineers)
+Single+Multi-Agent
+paper_id
+Scores
+Time
+Cost
+Iter
+Scores
+Time
+Cost
+Iter
+Scores
+Time
+Cost
+Iter
+adaptive-pruning
+all-in-one
+bam
+bbox
+bridging-data-gaps
+fre
+ftrl
+lbcs
+lca-on-the-line
+mechanistic-understanding
+pinn
+rice
+robust-clip
+sample-specific-masks
+sapg
+sequential-neural-score-estimation
+stay-on-topic-with-classifier-free-guidance
+stochastic-interpolants
+test-time-model-adaptation
+what-will-my-model-forget
+AVERAGE
+Table 9: MiniMax 2.5 results on PaperBench Code-Dev across different configurations.
+Appendix C One-sided t-test
+Benchmark
+Model
+Commit0
+Claude 4.5
++6.0
+2.87
+0.006
+GLM 4.7
++3.6
+1.37
+0.095
+MiniMax 2.5
++14.7
+2.81
+0.007
+PaperBench
+Claude 4.5
++6.1
+1.78
+0.046
+GLM 4.7
++7.4
+1.93
+0.034
+MiniMax 2.5
++0.8
+0.23
+0.408
+Table 10: One-sided paired -test (: CAID Single-Agent). : mean score improvement. Bold: .
+We compute one-sided paired -tests (: CAID Single-Agent) across all repositories or papers for each model in Table 10. On Commit0-Lite, the improvement is significant for Claude Sonnet 4.5 (, ) and MiniMax 2.5 (, ), with mean gains of 6.0 and 14.7 percentage points respectively. GLM 4.7 improves by 3.6 points on average but does not reach significance (), largely because the per-repository variance is high: CAID brings large gains on some repositories (e.g., +30.7 on simpy) but regresses on others (e.g., on tinydb), which inflates the standard error with only 16 paired samples. On PaperBench, both Claude Sonnet 4.5 (, ) and GLM 4.7 (, ) are significant. The only non-significant case is MiniMax 2.5 on PaperBench (), where the mean gain is only 0.8 points. As discussed in Section 4.3, CAID’s effectiveness depends on the manager’s ability to construct accurate dependency graphs and delegate tasks accordingly. A weaker base model produces less reliable task decomposition on the open-ended PaperBench tasks, limiting the gains that multi-agent coordination can deliver.
+Appendix D Failure on Scaling the Parallel Execution
+We provide an example to show why scaling the parallel execution is not always help. Figure 6 shows the execution timelines on the simpy repository under different numbers of engineers (). The performance difference is not solely explained by the number of files touched, but by how the manager structures delegation across engineers. For , delegation remains clean and non-overlapping. Each engineer is assigned distinct files (e.g., events.py, core.py, container.py, resource.py), and their implementations proceed largely without interference. The manager avoids assigning closely coupled modules to different engineers simultaneously, and no two engineers work on the same file at the same time. As a result, integration remains stable and the run reaches a pass rate of 92.1%.
+For , although more files are modified and parallel activity increases, the delegation becomes less disciplined. Multiple engineers are assigned different functions within the same file (notably events.py), creating overlapping write regions within a shared module. While these edits are logically separable at the function level, they introduce integration risk at the file level. The main branch receives competing updates on the same module, increasing the likelihood of merge conflicts or inconsistent intermediate states. This fragmentation of responsibility prevents clean consolidation and ultimately limits performance to 44.3%. The degradation in therefore does not arise from excessive parallelism alone, but from a delegation that ignores the ownership boundaries of the file-level. When parallel execution exceeds the manager’s ability to enforce coherent task partitioning, local productivity no longer translates into stable global progress. This example illustrates that scaling the number of engineers requires disciplined delegation, not simply increasing concurrency.

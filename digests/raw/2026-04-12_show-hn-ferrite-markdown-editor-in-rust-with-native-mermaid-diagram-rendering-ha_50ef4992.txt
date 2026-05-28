@@ -1,0 +1,11 @@
+Ferrite: Fast Markdown/Text/Code editor in Rust with native Mermaid diagrams
+Built a Markdown editor using Rust + egui. v0.2.1 just dropped with major Mermaid improvements:
+→ Native Mermaid diagrams - Flowcharts, sequence, state, ER, git graphs - pure Rust, no JS
+→ Split view - Raw + rendered side-by-side with sync scrolling
+→ Syntax highlighting - 40+ languages with large file optimization
+→ JSON/YAML/TOML tree viewer - Structured editing with expand/collapse
+→ Git integration - File tree shows modified/staged/untracked status
+Also: minimap, zen mode, auto-save, session restore, code folding indicators.
+~15MB binary, instant startup. Windows/Linux/macOS.
+GitHub: https://github.com/OlaProeis/Ferrite
+v0.2.2 coming soon with performance improvements for large files. Looking for feedback!

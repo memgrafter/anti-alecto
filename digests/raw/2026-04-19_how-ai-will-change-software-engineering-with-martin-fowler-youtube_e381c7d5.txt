@@ -1,0 +1,3105 @@
+What similar changes have you seen that
+could compare to some extent to AI in
+the technology field?
+>> It's the biggest I think in my career. I
+think if we looked back at the history
+of software development as a whole, the
+comparable thing would be the shift from
+assembly language to the very first
+highle languages. The biggest part of it
+is the shift from determinism to
+non-determinism and suddenly you're
+working in a non with an environment
+that's non-deterministic which
+completely changes.
+>> What is your understanding and take on
+vibe coding? I think it's good for
+explorations. It's good for throwaways,
+disposable stuff, but you don't want to
+be using it for anything that's going to
+have any long-term capability. When
+you're using vibe coding, you're
+actually removing a very important part
+of something, which is the learning
+loop. What are some either new workflows
+or new software engineering approaches
+that you've kind of observed? One area
+that's really interesting is Martin
+Fowler is a highly influential author
+and software engineer [music] in domains
+like agile, software architecture, and
+refactoring. He is one of the authors of
+the Agile Manifesto in 2001, the author
+of the popular book Refactoring, [music]
+and regularly publishes articles on
+software engineering on his blog. In
+today's episode, we discuss how AI is
+changing software engineering, and
+[music] some interesting and new
+software engineering approaches LLMs
+enable, why refracting as a practice
+[music] will probably get more relevant
+with AI coding tools, why design
+patterns seem to have gone out of style
+the last decade, what the impact of AI
+is on agile practices, and [music] many
+more. This podcast episode is presented
+by Statsig, the unified platform for
+flags, [music] analytics, experiments,
+and more. Check out the show notes to
+learn more about them and our other
+season sponsor. If you enjoy the show,
+please subscribe to the podcast on any
+podcast platform and on YouTube. So,
+Martin, welcome to the podcast.
+>> Well, thank you very much for having me.
+I didn't expect to be actually doing it
+face to face with you. That was rather
+nice.
+>> It's all the better this way. Uh I
+wanted to start with learning a little
+bit on how you got into software
+development which was what 40ish years
+ago.
+>> Yeah. It was yeah it would have been uh
+late 70s early 80s. Yeah. I mean like so
+many things it was kind of accidental
+really. Um at school I was clearly no
+good at writing because I got lousy
+marks for anything to do with writing.
+>> Really?
+>> Yeah. Oh absolutely. Um, but I was quite
+good at mathematics and that kind of
+thing and physics. So, I kind of leaned
+towards engineering stuff and I was
+interested in electronics and things cuz
+the other thing is I'm hopeless with my
+hands. I can't do anything requires
+strength or physical coordination.
+So, all sorts of areas of engineering
+and building things, you know, I've
+tried looking after my car and, you
+know, I couldn't get the the rusted nuts
+off or anything. You know, it was
+hopeless. So, but electronics is okay
+because that's all very, you know, it's
+more than in the brain than, you know,
+you need to be able to handle a
+soldering iron, but that was about as
+much as I needed to do. And then
+computers and it step easy. I don't even
+need a soldering iron. So, I kind of
+drifted into computers in that kind of
+way. And uh that was my route into into
+software development. Before I went to
+university, I had a year um at working
+with the UK at Atomic Energy Authority.
+Wow. or ukulele as as we call it. Um and
+I did some programming in forran 4 and
+um it seemed like a good thing to be
+able to do. And then when I finished my
+degree, which was a mix of electronic
+engineering, computer science, I looked
+around and I thought, well, I could go
+into traditional engineering jobs, which
+weren't terribly well paid and weren't
+terribly high status, or I could go into
+computing where it looked like there was
+a lot more opportunity. And so I just
+drifted into computing. And and this was
+before the internet took off. This was
+>> what what what kind of jobs were there
+back then that that you could get into?
+What was and what was your first job?
+>> Well, my first job was with a consulting
+company Koopers and Librand or as I
+refer to them, Cheetum and Lightum
+and um we were doing advice on
+information strategy in the particular
+group I was with although that wasn't my
+job. My job was I was one of the few
+people who knew Unix because I'd done
+Unix at college and so I looked after a
+bunch of workstations that they needed
+to do to run this weird software that
+they were running to help them do their
+strategy work and then I got interested
+in the what they were doing with their
+strategy work and kind of drifted into
+that. I look at it back now and think,
+god, that was a lot of snake oil
+involved. But hey, it was my route into
+the into the industry and it got me
+early into the world of object-oriented
+thinking and that was extremely useful
+to get into objects in the mid80s
+>> and and how how did you get into like
+object-oriented was back then back we're
+talking probably the mid80s that was a
+very kind of radical thing
+>> and you said you were working at a
+consulting company which didn't seem
+like the most cutting edge. So how does
+a two plus two get together? How did you
+get to do cutting edge stuff?
+>> Because this little group was into
+cutting edge stuff and they had run into
+this guy who had some interesting ideas,
+some some very good ideas as well as
+some slightly crazy ideas. And he
+packaged it up with the term object
+orientation, which wasn't really the
+case, but it was it kind of, you know,
+it's part of a snake oil as it were. I
+mean, that's a little bit cruel to call
+it snake oil because he had some very
+good ideas as well. Um but that kind of
+led me into that direction and and of
+course in time I've found out more about
+what object orientation was really about
+and uh that events led to my whole
+career
+>> in in the next 10 or 15 years. How did
+you make your way and eventually end up
+at Thought Works and and also you
+started to write some some books, you
+started to publish on the side. How did
+you go go from like someone who was
+brand new to the industry and kind of
+wideeyed and just taking it all in,
+learning things to starting to slowly
+become someone who was teaching others?
+>> Well, here again bundles of accidents,
+right? So, while I was at that
+consulting company, I met another guy
+that they had brought in to help them
+work with this kind of area, an American
+guy um who became the really the biggest
+mentor and influence upon my early
+career. His name is Jim Odell and he had
+been an early um adopter of information
+engineering and had worked with in that
+area and he was he saw the good parts of
+uh these ideas that these these folks
+were doing and he was an independent
+consultant and a teacher and so he spent
+a lot of his time doing work along those
+lines. I left Coopers and Librand after
+about a couple of years to actually join
+this the crazy company which is called
+PEK. Um and um I was with them for a
+couple of years. It was a small company.
+There was a grand total of four of us in
+the UK office and that was the largest
+office in the company.
+>> Wow. [laughter]
+>> Kind of thing. Um and um so I did I saw
+a bit of you know having seen a big
+company's um craziness. I then saw a
+small company's craziness. did that for
+a couple of years and then I was in a
+position to go independent and I did um
+helped greatly by Jim Odell who was um
+who fed me a lot of work basically um
+and also by some other work I got in the
+U in the UK and that was great. I I
+remember leaving PEK and thinking that's
+it independence life for me. I'm never
+going to work for a company again.
+>> Famous last words.
+>> Exactly. And um I carried on. I did well
+as an independent consultant um
+throughout the '9s and during that time
+I wrote my first books. I moved to the
+United States in 93
+um and I was doing very very happily and
+obviously got the rise of the internet,
+lots of stuff going on in the late 90s.
+It was a it was a good time and I ran
+into this company called Fort Works and
+they were just a client. I would just go
+there and help them out. Yeah. The story
+gets more. I had had met Kent Beck and
+worked with Kent at Chrysler, the famous
+C3 project, which is kind of the birth
+project of extreme programming. So I'd
+worked on that,
+>> seen extreme programming, seen the agile
+thing. So I'd got the object orientation
+stuff, I got the agile stuff, and then I
+came to Fort Works and uh they were in
+tackling a big project, a big project
+for them at the time. Still sizable,
+about 100 people working on the project.
+So, it's a sizable piece of work and it
+it was clearly going to crash and burn.
+Um, but I was able to help them um both
+see what was going on and how to avoid
+crashing and burning and they figured
+out how to sort of recover from the from
+the problem. Um, but then invited me to
+join them and I thought, hey, you know,
+join a company again maybe for a couple
+of years. They're really nice people.
+They're my favorite client. You know, I
+I always thought of it as other clients
+would say, "These are really good ideas,
+but they're really hard to implement."
+And while Thoughtworks would say, "These
+are really good ideas. They're really
+hard to implement, but we'll give it a
+try." And they usually pulled it off.
+And so I thought, "Hey, with a client
+like that, I might as well join them for
+a little while and and see what we can
+do." That was 25 years ago.
+>> Yeah. And then fast forward today, your
+title has been for I think over a
+decade, chief scientist.
+>> Since I joined, that was my title at
+join.
+>> Since you joined. So I have to ask what
+does a chief scientist at Thought Works
+do?
+>> Well, it's important to remember I'm
+chief of nobody and I don't do any
+science. [laughter]
+The title was given because that title
+was used a fair bit around that time for
+some kind of public facing ideas kind of
+person. If I remember correctly, Grady
+Buch was chief scientist at Rational um
+at the time
+>> actually. True.
+>> And um and there were other people who
+had that title. So it was a it was a
+high looting very pretentious title but
+they felt it was necessary. It was weird
+because one of the things of
+Thoughtworks at that time was you could
+choose your own job title. Anybody could
+choose whatever job title they like. But
+I didn't get to choose mine. I had to
+take the chief scientist one. They
+didn't like titles like flagpole or
+battering ram or um [laughter]
+or loudmouth which is the one I most
+prefer. And one thing that Thought Works
+does every six months and the latest one
+just came out is the Thought Works Radar
+>> and this latest radar, it just came out
+I think a few days ago. It's the
+>> Today it was launched I think
+>> actually it was today. So by the time
+this is in production it will have been
+a few weeks but
+>> uh it's actually really really fresh. So
+I just looked at it and things that it
+it lists. But I'll just list a few
+things that I saw there and the adopting
+which is the the ones that they
+recommend using pre-commit hooks click
+house for database analytics vlm this is
+for learning LLM on on cloud or on
+on-rem in a really efficient way for
+trialing cloud code fast MCP which is an
+MC framework for MCB servers and they're
+they're also recommending a lot of
+different things related for example to
+AI and LMS to assess uh can you share a
+little bit of how Thorkworks comes up
+with this technology radar what's the
+process And it it feels very very kind
+of on the pulse every time like it feels
+close to the pulse of the industry and
+again I I talk with a lot of other
+people. How do people at Thought Works
+stay this close to what is happening in
+the industry?
+>> Okay. Yeah. Well, this will be a bit of
+a story. Okay. So, it started just over
+10 years or so ago. Its origin was one
+of the things that we've really pushed
+at footworks is to have technical
+people, practitioners
+really involved at v or various levels
+of running the business and one of the
+leaders of that um was our former CTO
+Rebecca Parsons. So Rebecca became CTO
+and she said I want an advisory board
+who will keep me connected with what's
+going on in projects. So she created
+this technology advisory board and it
+had a bunch of people whose job was to
+brief her as to what was going on. We'd
+meet you know two or three times a year.
+She had me on the advisory board not so
+much for that reason but because I was
+very much sort of a public face of a
+company. She wanted me present and
+involved in that. And originally that
+was just our brief. We would just get
+together and we'd talk through this
+stuff. And then one of these meetings um
+Daryl Smith who was actually her TA at
+the time technical assistant
+um he um said we what we got all these
+projects going on it would be good to
+get some picture what kinds of
+technologies we're using and how useful
+they are and so as to better exchange
+ideas because we like so many companies
+we struggle to percolate good ideas
+around enough I mean even then when
+we're only just a few thousand it
+struggled and we're 10,000 now so yeah
+it's So we thought okay this is a nice
+idea and he came up with this idea of
+the radar metaphor and the rings of the
+radar that we see today and we had
+little meeting and we created the radar
+and it's it's a habit if we do something
+for internal purposes we try and just
+make it public
+>> and that's always been a strong part of
+the works ethos it's part of why I'm
+there of course is you know we just we
+talk about everything that we do and we
+share everything we we we give away our
+secret source all the time so we did
+that and people were very interested and
+so we continued doing it now the process
+has changed changed a bit over time. At
+that original meeting, many of the
+people that were in the room were
+actually hands-on on projects, advising
+clients all the time. Now, as we've
+grown an order of magnitude, um it's
+much harder to do that. And we've also
+created more of a process where people
+can submit blips, nominate them. A blip
+is being a point on the radar, an entry
+>> and um they will go to somebody that uh
+either connected through geographically
+or through the line of business or or
+technology or whatever and say, "Hey, we
+think this technology is interesting."
+They'll brief us a little bit about it.
+And then they brief the members of the
+what's now called the Doppler group
+because we make a radar. Yeah. I mean,
+we can be a bit loose with our metaphors
+at times. Um and they and then at the
+meeting we'll decide which of these
+blips to put on the radar and not and
+obviously you get some crosspollination
+because somebody will say oh yeah I
+talked to somebody about this as well
+and and so it's very much this bottomup
+exercise
+and that's how it's created now. So we
+will have these we will do blip
+gathering sessions about a month or two
+before the radar meeting and gradually
+shake them up and then in the meeting
+itself we go through them one by one and
+for me it's a bit weird because I'm so
+detached from the day-to-day these days
+that it's just this this lineup of
+technologies and things I have no idea
+what most of them are but interesting to
+hear about and sometimes I latch on to
+certain themes or something like that.
+Um and that was an important part of
+microservices about 10 years ago because
+that came up in through that radar
+process and uh we got together with
+James Lewis and we ended up writing a
+good bit further about that. Um but
+that's really what happens is we go
+through this process of spotting this
+stuff.
+>> Yeah. And and the the radar analogy I
+know some companies also take the idea
+which by the way Thoughtworks encourages
+saying make your own radar take it in
+your own company. You can I think they
+even like have tools around it. I really
+like how Thoughtworks never said like
+this is the thing for the industry. They
+said this is the thing for us. This is
+what we see. This is what we recommend
+our team our team members or or maybe
+our our clients to consider or there's
+also I like that there's a hold maybe
+just be beware. We're we're not seeing
+great results with this and and here's
+the reasons for it. And yeah, I guess
+the reason it feels fresh is uh probably
+a lot of work that Thork works does is
+it feels cutting edge because it's all
+it's all about half of it or a third of
+it feels that it is around the hottest
+topic right now AI LMS and and all the
+techniques that people are trying to see
+if they work or are the things that we
+are seeing that actually starts to work.
+Yeah, I mean what I mean for works has
+basically got several thousand
+technologists all over the world doing
+projects of various kinds to all sorts
+of different organizations
+and the radar is a mechanism that we've
+discovered is a way of getting some of
+that information out of their heads and
+spreading it around both internally and
+to the industry as a whole. And you're
+right, I it is a recommended thing for
+clients to do is to try and do their own
+radars. It's slightly different when
+it's a client radar thing because
+sometimes there it can be more of a this
+is what we think you should be doing
+with a bit more of a forcefulness to it
+than than we would give and also they
+can be a bit more choosy in the sense of
+they can say yeah we're just not
+interested in doing certain technologies
+while for us it's a case if our clients
+are doing it then we we're going to find
+out about it right we have to use it
+>> of course the the radar is full with a
+lot of AI and LM related things because
+this is a huge change in in my
+professional career, it it feels by far
+the biggest technology innovation
+changes coming in. Looking back on your
+career, what similar changes have you
+seen that could compare to some extent
+to AI in the technology field? I
+>> it's the biggest I think for my career.
+I think if we looked back at the history
+of software development as a whole, the
+comparable thing would be the shift from
+assembly language to the very first
+highle languages which is before my time
+right when we when first started coming
+up with cobalt and forran and the like I
+would imagine that would be a similar
+level of shift.
+>> So you started to work with forran and
+you probably knew people who were still
+doing assembly or at least knew knew
+some of people from that generation.
+>> There was a bit of assemble around when
+I was working still from from what you
+picked up around that time. uh what was
+that shift like in terms of mindset or
+or you know like because it it was a big
+change right you really needed to know
+the internals of the hardware and the
+instructions and the the different
+>> uh I I did very little assembly at
+university but it it's been very useful
+because I never want to do it again
+[laughter]
+>> very wise but but what did you pick up
+in in terms of what needed to change and
+and how it changed the industry just
+moving from mostly assembly to mostly
+higher level languages
+>> well I mean for a start as you said
+things were very specific to individual
+chips. You had the instructions were
+different on every chip. The you know as
+well things like registers where you
+access memory. You had these very
+convoluted ways of doing even the
+simplest thing because your only
+instruction was for something like move
+this value from a memory location to
+this register. Um and you so you've
+always got to be thinking in these very
+very low-level forms and even the very
+relatively poor um high level language
+like forran at least I can write things
+like conditional statements and loops
+else is in my conditional statements in
+forran 4 but I can at least go if and I
+can get one statement I can't do a block
+of statements I have to use go-tos but
+you know it's better than what you can
+do in assembly right and so there's a
+definite shift of moving away from the
+hardware to thinking in terms of
+something a bit more abstract and I
+think that is a very very big shift and
+then of course once I'm using forran I
+can be insulated to some degree away
+from the hardware I'm running on. I'm
+now am I running this on a main on a
+mainframe? Am I running this on a mini
+computer? I mean there's there's issues
+because the language is always varied a
+little bit from place to place but
+you've got a degree of decoupling there.
+Um that was really quite significant I
+think. I mean I only did it on small uh
+microprocessor like units because again
+it was the electronic engineering part
+right so we were fairly close to the
+metal anyway for some of that um but um
+you you definitely had that mind shift
+and I I think it's with LLMs it's a
+similar degree of mind shift although as
+I've you know written about it I the
+interesting thing is the shift is not so
+much of an increase of a level of
+abstraction although there is a bit of
+that the biggest part of it is the shift
+from determinism to non-determinism and
+suddenly you're working in a non with an
+environment that's non-deterministic
+which completely changes you have to
+think about it Martin just talked about
+how AI is the most disruptive change
+since the move from assembly to highle
+languages that transition wasn't just
+about changing the language we use they
+required entirely new tool chains
+similarly AI accelerated development
+isn't just about shipping faster it's
+about measuring whether what you ship
+actually delivers value that's where
+modern experimentation infrastructure
+comes in and we're presenting sponsor
+stats can help. With stats, instead of
+stitching together point solutions, you
+get feature flags, analytics, and
+session replay all using the same user
+assignments and event tracking. For
+example, you ship a feature to 10% of
+users. As you do, the other 90%
+automatically become your control group
+with the same event taxonomy. You can
+immediately see conversion rate
+differences between groups. drill down
+to see where treatment users drop off in
+your funnel. Then watch session
+recordings of specific users who didn't
+convert to understand what went wrong.
+The alternative is running jobs between
+different services to sync user segments
+between your feature flag service and
+your analytics warehouse and then
+manually linking up data that might have
+different user identification logic.
+It's a lot of work and it can also go
+wrong. Static has a generous free tier
+to get started and pro pricricing for
+teams starts at $150 per month. To learn
+more and get a 30-day enterprise trial,
+go to stats.com/pragmatic.
+And now, let's get back to the shift in
+abstraction with LLMs. Can we talk about
+that shift in abstraction? Because one
+very naive or naive way of looking at is
+saying like, well, we we've had the
+three levels, right? We have assembly
+where you have commands for the
+hardware. You need to be intimately
+aware of the hardware. We have high
+level programming languages starting
+with C later Java later JavaScript and
+uh where you don't need to be aware of
+the hardware you're aware of the logic
+and what you might say as well we have a
+new abstraction is you have the English
+language which will you know generate
+this code you're saying you don't think
+it's an abstraction jump why do you
+think this is
+>> I think there's a bit of an abstraction
+jump I think the abstraction jump
+difference is smaller than the
+determinism nondeterminism jump and it's
+it's worth remembering one of the key
+things about highle languages anguages
+which I didn't mention as I was talking
+about earlier on is the ability to
+create your own abstractions in that
+language that is particularly important
+as you get to things like object
+orientation towards u more um expressive
+functional languages like lisp which
+didn't really have so much in I mean
+forran and cobalt you could do that to
+some extent um because because at least
+with forran you can create subutines and
+build abstractions out of that but
+you've got so many more tools for
+building abstractions when you've got
+the the abilities of more modern
+languages and that ability to build
+abstractions is crucial.
+>> So you can build a building block inside
+of the language that sets you and of
+course here we have like domain driven
+development later enables these things
+and so on.
+>> Exactly. I mean an old lisp adage is
+really what you want to do is to create
+your own language in lisp and then solve
+your problem using the language that
+you've created. And I think that way of
+thinking is a good way of thinking in
+any programming language. you're both
+solving the problem and creating a
+language to to describe the kinds of
+problems you're trying to solve in. And
+if you can balance those two nicely,
+that is what leads to very maintainable
+and flexible code. So the building of
+abstractions that's I think to me a key
+element of high level languages and AI
+helps us a little bit in that because we
+can build abstractions a bit more easily
+a bit more fluidly but we have this
+problem and now we're talking about
+non-deterministic implementations of
+those abstractions which is an issue and
+we've got to sort of learn a whole new
+set of balancing tricks um to get around
+that. My colleague Unmesh Jooshi has
+been has written a couple of things um
+that I really been really enjoying about
+his thinking about how because he's
+really pushing this using the LLM to
+co-build an abstraction and then using
+the abstraction to talk more effectively
+to the LLM and that I'm finding really
+really interesting way of thinking about
+how he's working with that because he's
+really pushing that direction. There's a
+a thing I read in and I can't remember
+the book off the top of my head. We'll
+have to dig it out later that talked
+about how apparently if you can describe
+to an LLM a whole load of chess matches
+and describe it just in plain English
+and the LLM when you do that the LLM
+can't really understand how to play
+chess. But if you take those same chess
+matches and describe the LLM to those
+chess matches in chess notation then it
+can. And I thought that was really
+interesting that you that by obviously
+you're shrinking down the the token size
+because you've but you're also using a
+rigorous a much more rigorous notation
+to describe the problem. So maybe that's
+an angle of how we use LLM. What we have
+to come up is a rigorous way of speaking
+and we can get more traction that way.
+And of course that has great parallels
+in with the ideas of domain driven
+design in ubiquitous languages and also
+some of the stuff that I was working on
+a decade or so ago around domain
+specific languages and language
+workbenches. So I there's some
+fascinating stuff around there that be
+interesting to see how that plays out.
+>> Yeah. Yeah. And I guess is this the
+first time we're seeing a tool that is
+so wide in software engineering that is
+nondeterministic because we did have
+neural nets for example in the past they
+were not but they were more I feel the
+application of those was a lot more kind
+of niche and not not everywhere now
+every single developer is I mean if
+you're using code generation you are
+using non-deterministic things of course
+we're integrating them left and right
+trying out where it works. Is is it fair
+to say that this is probably the first
+time we're facing this challenge of
+deterministic computers which we know
+very well. We know their their limits
+and all those things and of course
+there's some race conditions and some
+exotic things but now we have
+>> exactly problem to solve for
+>> it's a whole new way of thinking. It's
+got some interesting parallels to other
+forms of engineering. Other forms of
+engineering you think in terms of
+tolerances and my wife's a structural
+engineer right? She always thinks in
+terms of what are the tolerances? How
+much how much extra stuff do I have to
+do beyond what the math tells me because
+I need it for tolerances because yeah, I
+mean I mostly know what the properties
+of wood or concrete or steel are, but
+I've got to, you know, go for the worst
+case. We need probably some of that kind
+of thinking ourselves. What are the
+tolerances of the non-determinism that
+we have to deal with and realizing that
+we can't skate too close to the edge
+because otherwise we're going to have
+some bridges collapsing. I I suspect
+we're going to do that particularly on
+the security side. We're going to have
+some noticeable crashes. I I fear um
+because people have got skated way too
+close to the edge in terms of the
+non-determinism of the tools they're
+using.
+>> Oh, for sure. But before we go into
+where we could crash, what are some
+either new workflows or new software
+engineuring approaches that you've kind
+of observed or or aware of that that
+sound kind of exciting that we we can
+now now do with LMS or at least we can
+try to give them a goal that would have
+been impossible with, you know, our old
+deterministic toolkit,
+>> right? One area is one one that has got
+lots of attention already is the being
+able to knock up a prototype in a matter
+of days. That's just way more than you
+could have done previously. So, this is
+the vibe coding thing. Um, but it's it's
+more than just that because it's also an
+ability to try explorations. Um, people
+can go, hey, I not really quite sure
+what to do with this, but I can spend a
+couple of days exploring the idea much
+much more rapidly than I could have
+before. And so for throwaway
+explorations for disposable little tools
+and things of that kind um and including
+stuff by people who aren't don't think
+of themselves as software developers. I
+think there's a whole area and you know
+we can with good reason be very
+suspicious of taking that too far
+because there's a danger there. But we
+also realize that as long as you treat
+that within its right bounds, that's a
+very valuable area and I think we'll
+that's that's really good on a
+completely opposite end of scale. U one
+area that's really interesting is
+helping to understand existing legacy
+systems. So my colleagues have have put
+a good bit of work in this um year or
+two ago. And basically the idea is you
+take the code itself um do the the
+essentially the the semantic analysis on
+on it. populate a graph database
+essentially with that kind of
+information and then use that graph
+database as kind of in a ragl like style
+and you can begin to interrogate and say
+well what happens to this piece of data
+which bits of code touch this data as it
+flows through the program incredibly
+effective and in fact if I remember
+correctly we put actually understanding
+of legacy systems into the adopt ring
+because we said yeah you if you're if
+you're doing any work with legacy
+systems you should be using LLMs in some
+way to help you understand
+>> so so in this ring in the thought force
+radar the the fewest things are in the
+adopt adopt says we strongly suggest
+that you look at this at least you know
+thought works themselves look at it
+there's only four items and one of them
+is yes uh to to to use genai to
+understand legacy code which to me tells
+that you have seen great success which
+is it's refreshing to hear by the way I
+did not hear this as much and I guess it
+helps at thought works I'm sure you have
+to work with a lot of
+>> well I mean it came from the fact that
+some of the folks who had done some
+really interesting work on on legacy
+code stuff um happened to bump into and
+look at this and say, "Hey, let's try
+this out." And they found it to be very
+effective and it also has been an
+ongoing interest for many of us at
+Thoughtworks because we have to do it
+all the time. And how do you effectively
+work with the the modernization of
+legacy systems because every big company
+that you know is older than a few years
+has got this problem. Y
+>> and they have it in spades
+>> and then especially just simple things
+people leave right as as as simple as
+that and having uh Gen AI that can help
+you make some progress is it's already
+better than making no progress.
+>> Exactly. So those are two areas that are
+clearly um right away I would say those
+are there's great success for using LLMs
+and then there's the areas that we're
+still figuring out. I mean, I'm
+certainly seeing some interest more in
+more and more interesting stuff as
+people try to figure out how to work
+with an LLM on a one-to-one basis to
+build decent quality software. We're
+seeing some definite signs of how you
+you got to work with very thin, rapid
+slices, small slices. You've got to
+treat every slice as a PR from a rather
+dodgy collaborator who's very productive
+in the lines of code sense of
+productivity. Um, but you know, you
+can't trust a thing that they're they're
+doing. So, you've got to review
+everything very carefully when you play
+with the genie like that. The genie is
+GK Kent's term for it. Or or Dusty the
+uh sort of the anthropomorphic donkey,
+which is how Bita
+I love her take.
+>> Yeah. But using it well, you can
+actually definitely get some speed up in
+your process. It's not the kind of speed
+up that the the the advocates are
+talking about, but it is non-trivial.
+It's certainly worth learning how to to
+make some use of this and it's folks
+like Burgita or Kent or um Steve Jagg
+those are the those are the folks I
+think who are pushing this. We're still
+I think learning how to do this.
+>> Everyone is learning it. Absolutely.
+>> And it's still the question and most of
+the experience we're gaining is building
+in a green field environment. So that
+leaves big questions in terms of a the
+brownfield environment. Well, we know
+that that LLMs can help us understand
+legacy code. Can they help us modify
+legacy code in a safe way? [screaming]
+It's still a question. I mean, I was
+just chatting with with James Lewis
+because he's in town as well this
+morning and he was commenting about he
+was playing with cursor and he's been
+was just building something like this
+and he said, "Oh, I I wanted to change
+the name of a class um in a not too big
+program and he sets it off to do that."
+and comes back an hour and a half later
+and has used you know 10% of his monthly
+allocation of tokens and all he's doing
+is changing the name of a class
+>> and and we actually in IDs we actually
+have functionality which which I I still
+remember when was cutting edge this was
+probably 20 years ago when Visual Studio
+it wasn't even Visual Studio it was Jet
+Brains who came out with an extension
+called ReSharper which helped refactor
+code and people paid serious money this
+was like $200 per year or something to
+get this plugin and now you could right
+click and say rename class and it went
+and it built that the graph behind the
+scenes somehow it went and changed you
+could rename variables and again this
+was a a huge deal in fact uh in Xcode
+Apple's developer uh plat uh ID for a
+while when swift came out you couldn't
+do these refactors and it was you know
+people were like so it's interesting how
+some things are easy we've solved it and
+LMS are not very very efficient at not
+very good at it
+>> y
+>> yes and then I mean he did that just to
+see what it was going to be like right
+cuz he knows you can just I mean we've
+had this for a long technology for a
+long time so it's kind of amusing I mean
+but it's also to the point that when
+working with an existing system and
+modifying an existing system we that's
+still really up in the air and then
+another area that's really up in the air
+both green field and brownfield is what
+happens when you've got a team of people
+because most software has been built by
+teams and will continue to be built with
+teams because even if and I don't think
+it will um AI makes us order of
+magnitude more productive
+We still need a team of 10 people to
+build what a team of 100 people needed
+to build and we will always want this
+stuff. There's no sign of demand
+dropping for software. So we will always
+want teams and then the question is of
+course how do we best operate with AI in
+the team environment and we're still
+trying to figure that one out as well.
+So there's lots of questions we got some
+an some answers some beginnings of
+answers and it's just a fascinating time
+to watch it all.
+>> You mentioned vibe coding. what what is
+your understanding and take on vibe
+coding?
+>> Well, when I use the term vibe coding, I
+used I try to go back to the original
+term which is basically you don't look
+at the output code at all. Maybe, you
+know, take a glance at it out of
+curiosity, but you you really don't care
+and maybe you don't look don't know what
+you're doing because you don't you've
+got no knowledge of programming. It's
+just spitting out stuff for you. So,
+that's my how I define vibe coding. Um,
+and my my take on it is kind of as I've
+indicated, I think it it's good for
+explorations. It's good for throwaways,
+disposable stuff. Um, but you don't want
+to be using it for anything that's going
+to have any long-term capability because
+it's I mean, again, just this is a a
+silly anecdote, but I was working um my
+colleague Unesh, he's just wrote
+something that we published yesterday.
+And uh as part of doing this, we we
+create this little pseudo graph of
+capability over time kind of thing,
+which is, you know, one of those silly
+little pseudo graphs that helps
+illustrate a point. And he asked the uh
+at LLM to create this. He described the
+curves he wanted and produ came up with
+and put it up there. And I and he he
+committed it to our repo. And I was
+looking at it and thinking, yeah, that's
+a good good enough graph. I want to
+tweak it a little bit. I want to, you
+know, the labels are a bit far away from
+the lines they're labeling, so I'd like
+to bring them closer. So I open up the
+SVG of what the LLB has produced and oh
+I mean it was astonishingly how
+complicated and convoluted it was for
+something that I had written the
+previous one myself and I knew it was
+you know a dozen lines of SVG and SVG is
+not exactly a compact language right
+because it's XML but this thing was
+gobsmackingly um weird and I mean that's
+the thing when you vibe code stuff it's
+going to produce god knows what and
+often it really is and you cannot then
+tweak it a little bit.
+>> You have to basically throw it away and
+hope that you can generate whatever it
+is you're trying to tweak. And the other
+thing of course that's the difference
+and this is the the heart of the article
+that Unmesh wrote um that we published
+yesterday is when you're using vibe
+coding in this kind of way, you're
+actually removing a very important part
+of of something which is the learning
+loop. If you're not looking at the
+output, you're not learning. And the
+thing is that so much of what we do is
+we come up with ideas, we try them out
+on the computer with this constant back
+and forth between what the computer does
+with what we're thinking. We're
+constantly going through that learning
+loop program approach and unash's point,
+which I think is absolutely true, is you
+cannot shortcut that process. And what
+LLM do, they just kind of skim over all
+of that and you're not learning. And
+when you're not learning, that means
+that when you produce something, you
+don't know how to tweak it and modify it
+and evolve it and grow it. All you can
+do is nuke it from orbit and start
+again. The other thing I've done
+occasionally with vibe coding is oh vibe
+coding as a consulting company, so many
+problems to fix
+for sure. But you are right on the
+learning the the the learning side both
+on on vibe coding and AI. One one thing
+that I'm noticing on on myself is it is
+so easy to you know give a prompt you
+get a bunch of output and you know you
+should be reviewing a lot of this code
+either yourself or or in a code review
+but what I'm seeing on myself is I'm at
+some point I start to get a bit tired
+and I just let it let let it go and this
+is also what I'm hearing when talking
+with software engineers is the ones who
+are working at companies which are
+adopting these tools which is pretty
+much every company it's there's a lot
+more code going out there, a lot more
+code to review, and [clears throat]
+they're asking, "How can I be vigorous
+at code reviews when there's just more
+and more of them than before?" Have you
+seen approaches that help people, both
+less experienced people and also more
+experienced engineers, keep learning
+with these tools? Just approaches that
+seem promising.
+>> Not a huge amount. Um I do I am very
+much paying attention to what Unmesh um
+is doing with this because his approach
+very much is that notion of let's try
+and build a language to talk to the LLM
+with work with the LLM to produce a
+language to communicate to the LLM more
+precisely and carefully what it is that
+we're looking for. And I do feel that is
+a promising and very much a more
+promising line attack. make sure do we
+create our own specialized language for
+working with whatever problem that we're
+working on and I think that actually
+brings another um we're talking about
+things we know LLM are useful for
+another thing and this is again
+something unme has highlighted is
+understanding an unfamiliar environment
+again I was chatting with James he was
+working with um he's he's working on a
+Mac with C which is not a language he's
+terribly familiar with using this game
+engine called God.
+>> Godo. Yeah.
+>> Yeah. Go.
+>> And he doesn't know anything about this,
+right? But with the LLM, he can learn a
+bit about it because he can try things
+out. And if you take it with that
+exploring sense, and I mean, I I mean, I
+can't remember. I've I've certainly got
+to the point where I'm typing in to the
+L. Oh, well, how do I do so and so in R
+that I've I've done 20 times, but I
+still can't remember how to do it. And
+you and exploring and Umash makes a
+point again setting up initial
+environments. you know, give me a
+starting project, a sk a sample starting
+skeleton project so I can just get
+moving. Um, and so that kind of
+exploratory stuff and helping in an
+unfamiliar environment and just learning
+your way around an unfamiliar set of
+APIs and and coding ideas and the like.
+it can be quite handy for I
+>> I wonder if this is not all that new in
+the sense that I remember you know one
+of the last kind of big productivity
+boosts in the industry uh about 10 or 15
+years ago was Stack Overflow appearing.
+So before Stack Overflow when you
+Googled for questions you bumped into
+this site called experts to change and
+there was the question and you had to
+pay money to see the answer or you had
+to pay money to get an expert to answer
+but usually there was nothing behind it
+even if you paid and most of us I was a
+college student I just didn't pay right
+>> so you just couldn't find the answer and
+you were all frustrated but then Stack
+Overflow came along and suddenly you had
+code snippets that you could copy and of
+course what a lot of young people or
+like less experienced developers even
+like myself did is you just take the
+code, put it in there and see if it
+works. As you got to more experienced
+engineers or developers, you started to
+tell the junior engineers like you need
+to understand that first like or even if
+it works, you need to understand why it
+works. You need to you should read the
+code. And I I feel we've been there was
+a few years where where we were going
+back and forth of people mindlessly
+copying pasting uh snippets. There were
+problems with uh I think there was a
+question about email validation and a
+top voted answer was not entirely
+correct. And turns out that a good part
+of software and developers just use that
+one.
+>> I feel we kind of been around this
+already.
+>> Yeah, it's a similar kind of thing, but
+>> maybe at a smaller scale.
+>> Yeah. But even more boosted and on
+steroids and with the question of, you
+know, how how are things going to
+populate in the future because who's
+going to be writing Stack Overflow
+answers anymore?
+>> Yeah. So, I I I wonder if what we're
+getting to is like you need to care
+about the craft. you you need to
+understand what the LLM's output is and
+it's there to help you and if you're not
+doing it I mean like you should but but
+if you're not you'll eventually be no
+better than someone just prompting it
+mindlessly.
+>> Exactly. Yeah. I mean it I mean I have
+no problem with taking something from
+the LLM and stick putting it in to see
+if it works but then once you've done
+that understand why it works as you say
+and also look at it and say is this
+really structured the way I'd like it to
+be don't be afraid to refactor it don't
+be afraid to put it in and then of
+course the testing combo anything you
+put in that works you need to have a
+test for and and if you constantly are
+doing that back and forth with the
+testing process Martin Fowler was just
+talking about the importance of testing
+when working with LMS and in general
+when building quality software. Speaking
+of the quality software, I need to
+mention our season sponsor, Linear. I
+recently sat on one of Linear's internal
+weekly meetings called Quality
+Wednesdays, and I was completely blown
+away. This was a 30-minute meeting that
+happens weekly. In this session, the
+team went through 17 different quality
+improvements in half an hour. 17. It's a
+fast and super efficient meeting. Boom,
+boom, boom. Every developer shows a
+quality improvement or performance fix
+that they made that week. And it can be
+anything from massive backend
+performance wins that save thousands of
+dollars to the tiniest UI polish that
+most people wouldn't even notice. For
+example, one fix was fixing the height
+of the composer window very slightly
+changing when you entered the new line.
+Another one was fixing this one pixel
+misalignment. Can you imagine caring
+that much about about the details? After
+doing this every single week for years,
+their entire engineering team has
+developed this incredible eye for
+quality. They catch these issues before
+they even ship. Now, one of their
+engineers told me that since they
+trained this muscle over time, they
+start noticing patterns while building
+stuff. So, fewer of these paper cuts
+ship in the first place. This is why
+Linear feels so different from other
+issue tracking and project management
+tools. Thousands of tiny improvements do
+add up and you feel the difference. When
+you use Linear, you're experiencing the
+results of literally hundreds of these
+quality Wednesday sessions. Thomas,
+their CTO, recently wrote a piece about
+this week ritual, and I'll link it in
+the show notes below. If your team cares
+about craftsmanship and building
+products that people actually love
+using, check out Linear at
+linear.app/pragmatic.
+Because honestly, after seeing how they
+work up close, I understand why so many
+of the best engineering teams are
+switching. And now, let's get back to
+the importance of testing when working
+with LLMs. I mean, one of the people I I
+particularly uh focus on in this space
+is Simon Willis and something he
+stresses constantly is the importance of
+tests, but testing is a huge deal to to
+him and being able to make these things
+work. And of course, you know, Bea is is
+from Fort Works. We're very much an
+extreme programming company. So, she's
+steeped in in in testing as well. So,
+she will say the same thing. You got to
+really focus a lot on making sure that
+the tests work together. And of course,
+this is where the LLM struggle because
+you tell them to do the tests and I'm
+I'm only hearing problems [laughter]
+or experiencing them myself like when
+the LLM tells me, "Oh, and I ran all the
+tests. Everything's fine. You got npm
+test five failures." H yeah, I I I see
+some improvements there by the way with
+with clock code also like other agents.
+But yes, it's the nondeterministic
+angle. Sometimes they can lie to you,
+which is weird, right? I'm I'm still not
+>> They do lie to you all the time. In
+fact, if if if they were truly a junior
+developer, which is how sometimes people
+like to say they should be
+characterized, I would be having some
+words with HR.
+>> Yeah. Like I the other day I just had
+this really weird experience, which is
+the simplest thing. I have a
+configuration file where I add just new
+items, a new JSON, you know, blob, and I
+I put the date of when I added it just
+in the comments saying added on, you
+know, October 2nd, added on November
+1st. It's always a current date. And I
+told the LM, can you please add this
+configuration thing and add the current
+date? And it added it and it added it
+just copied the last date. And I said
+that is not today's date. I said, oh,
+I'm so sorry. You know, let me correct
+that for you. And it put yesterday's
+date. [laughter]
+And and I I feel you need to get this
+experience to see that it can gaslight
+you for a simple thing of today's date
+which uh you know you know you could
+call a function whatnot but it's it's
+down to which who knows which model I
+was using how that model works whether
+the company creating it is optimizing
+for token usage or not etc etc etc so
+like in the end even for the simplest
+things you are as as a when you're a
+professional working on important stuff
+you should not trust Yeah, absolutely.
+Never. Yeah, it's got to you've got to
+don't trust, but do verify.
+>> Verify. Yes. Uh, speaking with
+developers at at Thought Works and and
+the people you're you're chatting with,
+what areas
+that they are successfully using LM's
+day-to-day though, like we we we did
+mention just right now testing. We we
+also mentioned things like prototyping,
+but do you see some other things where
+starting to become a bit of a routine?
+Like if if I'm doing this thing, let me
+reach for an LLM. it can probably help
+me
+>> that yeah I mean I'm I've mentioned many
+of that right the prototyping the legacy
+code understanding oh yes the fact that
+um you can use it to explore um new
+technology areas um potentially even new
+domains as long as you you know you
+trust it significantly less than you
+would trust Wikipedia 10 years ago those
+are the things that I'm hearing so far
+>> yeah one interesting area that Burgetta
+is exploring ing is spec development.
+There's this idea of what well you know
+LMS have have their own limitations but
+what if we define pretty well what we
+want it to do and give it this like
+really good specification and you know
+it can run with it it can run long it
+had iterations and so on. What is your
+take on this and do you have a bit of a
+dja vu because we we've heard this once
+right your your career started around
+this thing called waterfall development.
+So how how how are you seeing it similar
+but also different this time? Well, the
+the this the similar to waterfall is
+where people try and say let's create a
+large amount of spec and not pay much
+attention to the code. And here I mean
+whether you whether you talk again this
+is what you mean by speciment is it so
+much focusing on that or is it doing
+small bits of spec do the tight loop I
+mean to me the key thing is you want to
+you want to avoid the the waterfall
+problem of trying to build the whole
+spec first. It's got to be do a do the
+smallest amount of spec you can probably
+you can possibly get to make some
+forward progress. Cycle with that, build
+it, get it tested, get it in production
+if possible, and then cycle with these
+thin slices. What role a spec may play
+to drive in either case could be argued
+to be a spec form of spec driven
+development. But to me, what matters is
+the tight the tight loops, the the thin
+slices, that kind of thing.
+>> And I know big definitely agrees on that
+point. coming because she and you have
+to be the human in the loop verifying
+every time that's that's clearly crucial
+where the spectrum and development then
+ties in interesting again it comes back
+to this thinking of building domain
+languages and domain specific languages
+and things of that kind can we craft
+some kind of more rigorous spec to talk
+about and that's you know I mentioned
+what the wood mesh was doing there using
+it to build an abstraction because
+essentially what we're saying is that it
+gives us the ability to build and
+express abstractions in a slightly more
+fluid form than we would be able to do
+if we were building them purely within
+the codebase itself. But we still don't
+want them to deviate too much from the
+codebase, right? We still want the
+ubiquitous language notion that it's the
+same language in our head as is in the
+code and we're seeing the same names and
+they're doing the same kinds of things.
+The structure is clearly parallel, but
+obviously the way we think is a bit more
+flexible than the way the code can be.
+and then you know can we blur that
+boundary a bit by using the LLM as a
+tool in that area. So that's the area
+that I think is interesting in in that
+direction. It
+>> it's interesting as new because I I feel
+we've never been able to use language as
+close to representing code ever or or
+like business logic and this is very
+new.
+>> Yeah. Although again people I mean there
+are plenty of people who take that kind
+of DSL like thinking into their
+programming and I would to I know people
+who would say yeah I would I would get
+to the point where I could write certain
+parts of the business logic in you know
+a programming language like say Ruby and
+show it to a domain expert and they
+could understand it. They wouldn't feel
+the ability to be able to write it
+themselves but they could understand it
+enough to point out whether what was
+wrong or what was right in there. And
+this is just programming code, but it it
+that requires a certain degree of the
+way you go about projecting the language
+in order to be able to get that kind of
+fluidity. And so it's but that kind of
+thinking like trying to make an internal
+DSL of a programming language or maybe
+building your own external DSL
+DSL meaning domain specific language
+like if you're working with accountants,
+you're going to have the terms that they
+they use, the way they use it and so on.
+>> Yeah. And what you're trying to do, of
+course, is create that communication
+route where pe where a non-programmer
+can at least read what's going on and
+understand it enough to to be able to
+find what's wrong about it and and to
+suggest changes which may not be
+syntactically correct, but you can
+easily fix them because you as a
+programmer, you can see how to do that.
+And that's the kind of goal and some
+people have reached that goal in some
+places. So the interesting thing is
+whether whether LLMs will enable us to
+make more progress in that direction and
+see that happening more widely
+>> and I guess this must be I'm just
+assuming correct me if I'm wrong this
+must be especially important in
+enterprises these very large companies
+where software developers are not the
+majority of people let's say they're 10
+or 20% of staff and there's going to be
+accounting marketing special business
+divisions who all want software written
+for them and they know what they want
+and historically there's been layers of
+people translating this may that be the
+project manager the technical pro etc.
+So you're saying that there could be a
+pretty interesting opportunity or or
+just an experiment uh with LM that maybe
+we can we can make this a bit easier for
+both sides.
+>> That is the world I'm most familiar with
+right is that world. I mean um one I
+mean I I my sense is you're very
+familiar with the big tech company and
+the startup worlds but this corporate
+enterprise world of course is a whole
+different kettle of fish because exactly
+the reason that you said suddenly the
+software developers are a small part of
+the picture and there's very complex
+business things going on that we've got
+to somehow interface in and of course
+also there's usually a much worse legacy
+system problem as well. Um and and
+there's going to be regulation, there's
+going to be a history, there's going to
+be exceptions because of all the
+knowledge. I I think we can all just
+think of banks of all the things cuz
+there's there's perfect storm, right?
+They have regulation that changes all
+the time. They have incidents that they
+want to avoid going future. They'll have
+special VIP, I don't know, accounts or
+whatever that they'll want to do. And of
+course, they have all these business
+units that all know their own rules and
+and frameworks. And they've been around
+since before technology. Some of some of
+the banks have been around for, you
+know, 100 plus years.
+>> Yeah. And remember, the banks tend to be
+more technological advanced than most
+other corporations in software.
+[laughter]
+>> That's a good one.
+>> You're looking at the at the good bit
+when you're talking about banks.
+[laughter]
+>> You you have worked with some with some
+of the less advanced folks as well.
+>> I mean, yeah, retailers, airlines,
+government agencies, things of that
+kind. I mean, it was interesting. I was
+chatting with some folks working in the
+Federal Reserve in Boston and uh you
+know they're
+they have to be extremely cautious. They
+are not allowed to touch LLMs at the
+moment because
+you know the the consequences of error
+when you're dealing with you know a
+major um government banking organization
+are pretty damn serious. So you've got
+to be really really careful about that
+kind of stuff. and and yeah, their
+constraints are very different and and
+it it it brought to mind this there's a
+an adage that says that to understand
+how the software development
+organization works, you have to look at
+the core business of the organization
+and see what they do. Interesting. I I
+was at this agile conference for the
+Federal Reserve in Boston and they took
+me a tour of the Federal Reserve, but
+where they handle the money. And so I
+saw the places where they bring in the
+the notes that have been brought in from
+the banks and they kind of clean them
+and count them and all the rest of it
+and and send out the stuff again. And
+you look at the degree of care and
+control that they go through. own as you
+could imagine. I mean, when you're
+bringing in huge wges of cash and it has
+to be sorted and counted and all the
+rest of it, the controls have to be
+really really strenuous. And you look at
+that and you look at the care with which
+they do all of this and you say, "Yep, I
+can see why in the software development
+side that mindset percolates because
+they are used to the fact that they
+really have to be c careful about every
+little thing here." A lot of
+corporations of course have that similar
+notion. you're you're involved in an
+airline, you are really concerned about
+safety. You're really concerned about um
+getting people to their death that
+affects your whole way of thinking or
+ought to and it does and I guess this is
+a reason we are clearly seeing we always
+see a divide in technology usage because
+you have the startups which is a group
+of people they just raised some funding
+or they have no funding. They have
+nothing to lose. They have they have
+zero customers. They have everything to
+gain. They they need to jump on the
+latest bandwagon. They want to try out
+the latest technologies. oftentimes
+build on top of them or sell tools to
+use the latest technology and they're
+here to break the rules and you know
+midway when there's when you start to
+have a few customers in a business
+you're starting to be a bit more careful
+and of course you know 50 or 70 years
+down the road when the founders have
+gone and and now it's a large enterprise
+you will just have different risk
+tolerance right
+>> exactly yeah
+>> but what what what what I find
+fascinating talking about this that I'm
+unsure if there has been any new
+technology that has been so rapidly
+adopted everywhere. You mentioned that
+let's say the Federal Reserve or some
+other government organizations might say
+let's not touch this yet but they are
+also evaluating it sounds like it. So if
+they're you know they're the one of the
+most I guess behind in the technology
+curve for very good reason they're
+already aware of it or using it which
+probably means that it's everywhere now.
+Oh, it is. I mean, it is. I mean, we see
+it all over the place, but again, with
+that with with more caution in the
+enterprise world where they're saying,
+"Yeah, we we also see the dangers here."
+>> And then you're you're seeing kind of
+more nimble companies that you work with
+and the more enterprise focused. What
+would you say is the biggest difference
+between their relationship of of AI uh
+their approach? Is it is it this caution
+or are there other characteristics that
+the the the big more traditional less
+more riskaverse companies approach it
+differently? The the important thing to
+remember with any of these big
+enterprises is they are not monolithic.
+So it'll be small portions of these
+companies can be very adventurous and
+other portions can be extremely not so.
+And so what you'll see is small I mean
+like you know when I when I started at
+cheetah lightwe right and I was in this
+little bit that was being very very
+aggressively doing really wacky things,
+right? I mean you'll find that in any
+any big organization you'll find some
+small bits doing some stuff. Um, and so
+it's really the variation within an
+enterprise often is bigger than the
+variation between enterprises.
+>> Good to keep that in mind. So speaking
+about refactoring, LM are very good at
+refactoring and and you you've written
+the book back in 1999 called
+Refactoring. This is now the second
+edition which 20 years later it's it's
+been refreshed. And it's it's actually a
+really detailed book going through
+different code smells uh that could show
+that where the code is, techniques of of
+refactoring it. On the first page
+already, it has I really like this. It
+has a list of refactorings on I don't
+know how the publisher printed this
+because it's so so unusual, but it's
+it's it's right here on the table of
+contents. Why did you decide to write
+this book back in 1999? Can you bring us
+back on what the envir environment was
+like and what was the impact of the
+first edition of this book? Okay. So, I
+first came across refactoring at
+Chrysler. Yeah. When I was working with
+Kemp Beck, right early on in the
+project. Um, we we I remember
+in my hotel room, the courtyard or
+whatever in Detroit, him showing me how
+he would refactor some small talk code.
+And what I mean, I was always someone
+who liked going back to my something I'd
+already written and make it more
+understandable. I've always cared a lot
+about something being comprehensible.
+That's true in my pros writing and in my
+software writing. And so that I knew,
+but what he was doing was taking these
+tiny little steps and and I was just
+astonished at how small each step was,
+but how because they were small, they
+didn't go wrong and they would compose
+beautifully and you could do a huge
+amount with this sequence of little
+steps. And that really blew blew my mind
+away. I thought, "Wow, this is a big big
+deal." But Kent was at the time his
+energy was to write the first extreme
+programming book, the white book. He
+didn't have the energy to write a
+refactoring book. So I thought, well,
+I'm going to do it then. [laughter]
+And I started by, you know, whenever I
+was refactoring something, I would write
+careful notes. And partly to because I
+needed it for myself. How do I extract a
+a extract a method so as I don't screw
+it up? And so I would write careful
+those turned it the mechanics in the
+refactoring book would be that step. And
+then I' I'd make an example for each
+one. And that was the first edition in a
+book. And that and I did it in Java, not
+in small talk because small talk was
+dying sadly. And Java was the language
+of the future, the only programming
+language we'd ever need in the future in
+the in the late 90s. And so that's what
+led to the um to the first book. And um
+the impact well I mean and also
+refactoring. I should also stress it
+wasn't invented by Kent. I mean it was
+very much um developed by um Ralph
+Johnson's crew at the University of
+Illinois the Bona Champagne. They built
+the first refactoring browser in Small
+Talk which is the first tool that did
+the automatic refactoring. that we talk
+about now. That was the original the
+refactoring browser built by um um I'm
+blanking on John Brandt and Don Roberts
+>> um did that and um then when the book
+came out that got more interest there
+was already some interest from the IBM
+visual age folks because they came out
+of Small Talk. the original versions of
+Visual Age were in fact built in Small
+Talk. Um, and so they were already aware
+of what was going on to some degree, but
+it was the Jet Brains folks that really
+caught the imagination because they put
+it into the early versions of Intelligj
+idea and really ran with it. Then you
+ran into it with ReSharper, of course.
+Um, and um, they really made the
+automated refactorings become something
+that people could rely on, but it's
+still good to know how to do them
+yourself because often you're in a
+language where you haven't got those
+refactorings available to you. So it's
+nice to be able to pull out that stuff
+and some of them aren't obviously in
+there and yeah so the impact it's had is
+refactoring became a word and of course
+like all of these words got horribly
+misused and people use refactoring to
+mean any kind of change to a program
+which of course it isn't because
+refactoring is very strictly these very
+small semantics pres behavior preserving
+changes that you make tiny tiny steps I
+always like to say each step is so small
+that it's not worth doing but you string
+them together and you can really do
+amazing things I I I think we've all had
+that story. At least I had a story where
+one of my colleagues or you know it
+could have been me but often times one
+of my colleagues would say like oh stand
+up saying like oh I'm I'm just going to
+do a refactoring and then next day oh
+I'm still doing the refactoring next day
+oh I'm still doing the refactoring and
+[laughter]
+you know that that that missed a part of
+the small changes for sure. What made
+you do a second edition for the book 20
+years later in 2019 which was fairly
+recent? Well, it was a sense of um
+wanting to refresh
+um some of the things that were in it.
+Some there were some new things that I
+had. I was also concerned that I mean
+when you've got a book that's written in
+late 1990s Java, it it shows its age a
+bit.
+>> Yes. [laughter]
+>> And although the core ideas I felt were
+sound and people could still use it, I
+felt you coming giving it a more doing
+it in a more modern environment. And
+then the question was which you know
+would I stay with Java or did I switch
+to another language and in in the end I
+decided to switch to JavaScript. I felt
+it would reach a broader audience that
+way and also allow a less
+object-oriented centered way of
+describing things. So instead of extract
+method it's extract function because of
+course it's the same process for
+functions and also some things that you
+you don't wouldn't necessarily think of
+doing in an object-oriented language.
+But um it was mainly just to to get that
+refresh um to redo the examples to
+really hopefully give it another 20
+years of life because it's got to keep
+me going until I croak, you know.
+[laughter]
+>> Yeah. So you published this book 25
+years ago or 26 years ago in the
+industry based on your interactions with
+developers. How has the perception of
+refactoring changed? because in the book
+you you specifically wrote that you you
+see refactoring as a key element in the
+software development life cycle and
+you've also talked about how when you
+refactor uh the overall cost of changing
+code over time can be a lot cheaper. Was
+there a time where there was a lot more
+uptake on this or is there still or or
+do you feel it's kind of like a little
+bit like being
+maybe refracting went a little bit out
+of style as some of those really
+innovative tools at the time like Jet
+Brains and others. They're maybe not as
+as uh kind of referenced even though
+they're everywhere.
+>> It's hard to say for me. Um because I
+mean again most of the interaction I
+have is with folks at Fort Works. they
+tend to be more clued up with this kind
+of stuff than the average developer.
+Certainly, I read plenty of things on
+the internet that make me just shake my
+head at
+>> how even refactoring is being described,
+let alone the lack of doing it in the
+and certainly in the kind of structured
+way, controlled way that that I like to
+do it because I like doing it quickly
+and effectively. And you know, it's one
+of those things where the disciplined
+approach actually is faster, even though
+it may seem strange to describe it that
+way. But I mean, I I have to it's at
+least been part of our language now.
+People talk about doing it. It's in
+these tools and they do it very
+effectively. The refactorings that they
+do, I mean, it's wonderful to work in in
+an environment where you can actually
+automatically do so many of these
+things. And so I feel we've definitely
+made some progress. Maybe not as much as
+I'd have hoped for, but you know, that's
+often the way with these things.
+>> Looking ahead with AI tools, they they
+generate a lot more code a lot faster.
+So, we're just going to have a lot more
+code. We already have a lot more code.
+>> How do you think the value of of
+refactoring thinking about the your
+intended meaning of of those small
+ongoing changes is going to be
+important? And are you already seeing
+some of this being important?
+>> I wouldn't say I'm already seeing it.
+Um,
+but I I can certainly expect it to be
+increasingly important. Um, because
+again, if you're going to produce a lot
+of code of questionable quality,
+but it works, then refactoring is a way
+to get it to into a better state while
+keeping it working. Um, these tools at
+the moment can't definitely cannot
+refactor on their own. Although we've
+combined with other things. Adam
+Tornhill does some interesting stuff
+with combining LLMs with other tools to
+be able to get a much more effective
+route and I think that kind of approach
+combining could be a good way to do it.
+Um but definitely the refactoring
+mindset and thinking how do I make
+changes by basically boiling them down
+to really small steps that compose
+easily. That's really the trick of it.
+The the the smallalness and the
+composability. combine those two and you
+can make a lot of progress.
+>> It's interesting because because right
+now if you want to refactor you need to
+have your IDE open for sure. And I mean
+the fast way is just just using the
+built-in tools or you moving things
+around. What what I found as well is
+describing it when I have a command line
+open with like cloth code or something
+similar. It's it's tough or I I spend
+more time explaining it than me doing
+that that small change. And I do wonder
+if uh if we will see more integrations
+in this end as well so that LMS can
+actually do it or some of them might do
+it automatically cuz as you say it it
+doesn't work out of the box but I think
+for any quality software that I mean we
+we all learn the hard way that if you
+just kind of leave it there and don't go
+back and don't change it up when your
+when your functions get just the simple
+things right when your function gets too
+long when your class gets too long you
+break it up otherwise you're not going
+to understand it later. Yeah, it'll be
+interesting as well to see if it
+provides a way for us to control the
+tool. I mean, one of the things that
+interests me is where people are using
+LLMs to describe queries against um
+relational databases that turn into SQL.
+You don't know how to get the SQL right,
+but if you type the thing at the LLM, it
+will give you back the SQL and you can
+then look at it and say, "Oh, this is
+right or not right." And tweak it and it
+gets you started, right? And so
+similarly with refactoring, it may allow
+you to get started and say, "Oh, these
+are the kinds of changes I'm looking at
+and be able to make some uh progress in
+that. I mean, particularly where you're
+talking about these automated changes
+across log large code bases." There was
+an example of this was it a year ago or
+so when one of these big companies
+talked about this massive change and
+made to change APIs and and clean up the
+code and they mentioned it as an LM
+thing, but it wasn't an LLM. It was a it
+was that different tool and I'm
+completely blanking on what the names of
+all of these things were. Oh, I'd have a
+60-y old brain and I can't be able to
+remember anything anymore. It'll come to
+me at some point. But actually, it was
+it was a combination of, you know, maybe
+10% LLM and 90% this other tool. Um, but
+that was it again provided that extra
+leverage that allowed them to to make
+the progress. I think those kinds of
+things are really quite interesting
+using the LLM as a starting point to
+drive a deterministic tool and then
+you're able to see what the
+deterministic tool is doing. That's I
+think where there's some interesting
+interplay. Speaking about going on from
+refactoring to software architecture,
+you were very busy writing books around
+the early 2000. You wrote the book
+patterns of enterprise application
+architecture in 2002 and this was a
+collection of more than 40 patterns uh
+things like lazy load identity map
+template view and many others and I
+remember around this time there was your
+book about enterprise uh architecture
+patterns there was also the gang of four
+book there was a lot of talk when I was
+interviewing around that time on
+interviews they were asking me questions
+about how to do a factory pattern and
+singleton and and all of these things
+software architecture was talked about
+my sense was in a lot of places or a lot
+more. Then something happened something
+starting from the 2010s I I no longer
+hear most technologists talk about
+patterns or architecture patterns. How
+have you observed this period of when
+the book came out? what was the impact
+of it and why why was it important to to
+talk about it and and put it into the
+industry and how have you seen this
+change of where we stopped talking more
+on on patterns and why do you think it
+happened?
+>> Yeah, that I mean I've always found it a
+I mean what you're doing with patents is
+you're trying to create a vocabulary to
+talk more effectively about this kind of
+these kind of situations. I mean it's
+just like in you know in the medical
+world they come up with this jargon in
+Greek and Latin to more precisely talk
+about things that are quite involved and
+complex. Yes.
+>> And with patents what we're trying to do
+is trying to evolve that same kind of
+language except we're not doing it in
+Greek and Latin. I certainly feel that
+they they do help communication flow
+more effectively. You know once people
+are familiar with that terminology. I
+mean you don't look at them as some kind
+of you know how many of them can you
+cram into the system you're building.
+It's more a sense of how can you use it
+to describe your alternatives and the
+options that you have and also think
+about more about when to apply things or
+not apply them. I mean patterns are only
+useful in certain contexts. So you you
+you very much got to understand the
+context of when to use them. And yeah,
+it's it's kind of a shame that some of
+the the wind has gone out of the sails
+of that perhaps because people were
+overusing them in terms of trying to use
+them as a sort of a like pinning medals
+on a chest. But it can still be very I
+mean I I mean I worked very recently
+with Unmesh on his book on dist patterns
+in distributed systems and I felt that
+was a very good way of coming up with
+again a language to describe how we
+think about the core elements and better
+gain an understanding of how distributed
+systems work which is an important
+aspect of how to deal with life these
+days because we're all building these
+kinds of distributed systems. So I still
+feel that they can be a very good way of
+expressing that. I it's hard for me to
+to get a sense of of why they can be
+they kind of became less fashionable.
+Maybe they'll become more fashionable
+again. Who knows? But I I I'm always
+looking for ways to try to spread
+knowledge around and make things more
+understandable. And I do feel that this
+idea of trying to identify these create
+these nouns that we can talk about
+things more precisely is a good way of
+part of doing that. I I wonder if
+because I I've I' I've seen I've worked
+at places where we we used these things
+and then places where we just like threw
+them out the window, no one was using
+it. And a difference was honestly just
+kind of the age and the attitude of the
+company cuz there was a sense at some
+point that the patterns there were for
+legacy companies. So startups would just
+start from a blank sheet of paper, you
+know, a whiteboard, you know, UML was a
+perfect example where UML had pretty
+strict rules on how to do the arrows.
+And if you do that, right, you could
+even generate code and do all these
+things. And at startups, the software
+architecture still exists, but you just
+put it on the whiteboard and you just
+drew a box or a circle and you didn't
+care about the arrows. And it was just
+uh I guess we we're not going to lock
+ourselves into existing ways of doing
+things. And it's a bit of an education
+as well like you do need to onboard to
+these things. You all need to have a
+shared understanding and maybe it's just
+a combination of of of these two things.
+And I guess it's a generational thing as
+well. you know, every every few years a
+new generation comes out and the same
+way where at some point uh I I was one
+of the first people in college where it
+was super cool to use Facebook and it
+was just all scholar students and then
+when my parents went on there it was
+super uncool to use Facebook or my
+grandparents came on there like I I kind
+of like stopped using it when they
+started using it. So I I wonder if there
+there's like like these waves going back
+and forth because inside of these
+startups there is a language uh like you
+know lingo uh about how they talk about
+the architecture and it starts to form
+over time. You start to see it whether
+it's longer tenure people you get more
+and more of the jargon except it's not
+in a book that anyone can read but you
+have to go in there or go to similar
+company where they take the jargon with
+them.
+>> Exactly. and and people will create
+these jarens. Um, and it's an inevitable
+part of communication. You need to you
+need to can't explain everything from
+first principles requiring five
+paragraphs every single time. If you're
+using the term all the time, you just
+make a word out of it. And then
+everybody creates their own words. And
+all you're doing when you're coming up
+with a book like the patterns of
+distributed systems is you're trying to
+say, "Okay, here's a set of words with a
+lot of definition and explanation of
+them. and let's hope we can kind of
+converge on that so that we can
+communicate a bit more widely. Um, but
+it's also quite natural for people to
+say, you know, within our little
+environment, we create our own little
+jargon. So, we don't take notice of that
+and and then you get the the mismatches
+that occur as you only you only really
+notice that as you cross these different
+environments.
+>> Grady BHC had a interesting take on this
+by the way. So I asked him about the
+same thing because he's he's been so
+much into software he still is into
+software architecture and he's
+progressed the field a lot and he said
+that what he thinks happened is that
+starting in like 20 cuz the patterns
+died out from mainstream industry I'll
+say again it's it's still in some
+pockets but around the 2010s one
+interesting thing that happened around
+that time is cloud the cloud started to
+get bigger AWS Google cloud and a lot of
+companies started to build similar
+things. They started to build either
+initially on on premise backend services
+where you had most of your business
+logic later it moved to the cloud and
+Grady said that the these hyperscalers
+the cloud providers AWS for example they
+they built all these services that are
+really well architected so you can kind
+of use one after the other and it's it's
+well done you don't need to worry too
+much about your data storage you just
+use let's say Dynamob or or a managed
+Postgress service so suddenly
+architecture is not all that important
+because these blocks take it care of
+you. You have these building blocks and
+now you're talking about using this
+database on top of this system. His
+observation was maybe architecture was
+solved with a well architectured
+building block that you could use and
+you didn't have to reinvent the wheel.
+>> Yeah. or but I suspect there's still
+patterns of using these things and
+that's something I haven't delved into
+because I just haven't had the the
+opportunity to
+>> focus on that or more precisely I
+haven't had enough of my colleagues uh
+banging my banging me on the door with
+with uh draft articles to be able to
+publish on it.
+>> Well, one pattern that I do see is every
+every company you know names their
+system. Some have wacky names, some have
+logical names. But when you talk about
+architecture, you typically talk about
+like you know like like at at at Uber we
+had the the bank emoji service which
+called which was be migrated to Gulfream
+which was you know these all sound like
+doesn't make too much sense if if if
+you're from the outside. Sometimes they
+have like proper names they try with
+that the payment profile service but
+then there's a new version and that's
+now the payment pro that's PP PP2
+anyway. But inside any every company
+like you will talk about these specific
+names and you will talk about how they
+work, how small they are, how large they
+are and that's kind of I feel that's
+oftentimes the lingo.
+>> Yeah, it is. It becomes that's again
+again part of the lingo of larger
+organizations and again you take a
+company that's been around for much
+longer than Uber and of course that
+lingo is baked into the organization.
+can take you several years just to
+figure out what the hell's going on
+because it just takes you that long to
+learn all of these systems and how they
+interconnect.
+>> Well, one of the fascinating
+conversation that I had many years ago
+was someone very high up in American
+Express and we were talking about how uh
+he was responsible for rearchitecting
+their system to the next generation. And
+uh he was just getting ideas on how to
+socialize ideas and and get things out.
+And I asked how long have you been
+working on this? It has been 3 years.
+And I was like, "Okay, so we're we're
+like where are you are you like done?"
+He's like, "No, no, this is just a
+planning like like [laughter] we're
+we're close to finishing the planning."
+And to me, it didn't compute because
+like in 3 years of planning. But again,
+once you I started to understand the the
+the scale of the business, how much
+money, how many legacy systems they
+have, half of half of what he did was
+talk with business stakeholders to
+convince them or get buy in. Um I guess
+this event eventually happens with like
+most companies except when you're at the
+younger company or digital first or tech
+first companies meaning founded in 2010
+or later. You still don't see this but
+it it might come in 10 years.
+>> Oh yeah it it certainly will. Oh, it's
+interesting. It there's I remember
+chatting I was chatting with somebody
+who had joined a bank uh an established
+bank and they had joined from a startup
+and one of their jobs was to modernize
+the way the bank stuff was going and the
+comment was now we've been here 3 years
+now I think I can understand the problem
+I've got some idea of what what I can do
+what can be done but it just takes you
+that long to just really understand the
+land where you are in this new landscape
+because it's it's big and it's been
+around a long time and it's complicated
+and it's not logical because it's built
+by humans, not by computers. And it's
+not a logical system. And there's all
+sorts of history in there because all
+sorts of things happen because so and so
+met so and so and had an arrow with so
+and so. And all of these things kind of
+percolate over time and this vendor came
+in here and was popular over here and
+then the person who liked this vendor
+got moved to a different part of the
+organization. and somebody else came in
+who wanted a different vendor. And all
+of this stuff builds up over time to a
+complicated mess. And any big company is
+going to have that kind of complicated
+mess cuz it's very hard to not get that
+that situation. And yeah, I mean, the
+Uber's lucky that it's only, you know,
+relatively young company, but it will
+be, you know, assuming it survives in 50
+years time, it'll be like American
+Expresses, right?
+>> Yep. you can already see the the changes
+the the the layers of processes and so
+on which is kind of nec like it's
+necessary so as you grow speaking of uh
+change and iteration uh on and agile so
+you were part of the 17 people who
+created the agile manifesto and I
+previously asked Ken Beck about this who
+was another person involved can you tell
+me from your perspective what was the
+story there on on how you all came
+together how this pretty chaotic I I
+think day played out And what was the
+reception as as you recall back then?
+This was 2001,
+>> right? So I mean the the origin of it I
+always feel was actually a meeting we
+had that Kent ran about a year before we
+did the agile manifesto and it was a
+gathering of extreme programming folks
+who were working with extreme
+programming and we had it at this uh
+place near where Kent was living at the
+time in middle of nowhere Oregon and uh
+he also invited some people who weren't
+directly part of the extreme programming
+group folks like Jim Highmith um along
+as well and part of The discussion we
+had was should extreme programming be
+the relatively narrow thing that Kent
+was describing in the white book or
+should it be something more broad that
+had many of the similar kind of
+principles in mind and Kent decided he
+wanted something more concrete and
+narrow and then the question is well
+what do we do with this broader thing
+and how it overlaps with things like
+what the scrum people were doing and all
+that kind of stuff that's what led to
+the idea of getting together people from
+these different groups and we had the
+argument about whether we were going to
+hold it in Utah because Alistister
+wanted it in Utah and then Dave Thomas
+wanted to have it in Anguila in the
+Caribbean and for whatever reason we
+ended up in Utah um and the skiing
+and so we and we gathered together the
+people that we did and of course it was
+a case of who actually came along and
+because obviously lots of people were
+invited who didn't come um and I wasn't
+terribly involved with that although Bob
+Martin does insist that I was involved
+got involved in he mentioned some lunch
+in Chicago which is very likely because
+I was going to Chicago all the time for
+works at the time. So, I probably did,
+but I don't remember. Um, and of the
+meeting itself, I actually don't
+remember very much of it, which is a
+shame. I I I, you know, curse myself for
+not writing a detailed journal of of
+those few days. Um, I'd love to know,
+you know, how did we come up with that
+this over that um structure for the
+values, for instance, which I think was
+really wonderful, but I have no idea how
+it got how that got put together. So,
+unfortunately, I get very vague about
+the actual doing of it. I do remember
+have a have a fairly clear memory
+although we should be wary about that.
+I'll come to that perhaps later about
+why of uh Bob Martin being the one who
+was really insistent on I want to make a
+manifesto and me thinking oh well yeah
+we can do that it'll the manifesto
+itself will be a complete useless and
+ignored of course but the exercise of
+writing it will be interesting it
+>> um and that was my reaction to it and
+matter how I felt about the manifesto I
+felt ah nobody will take any notice of
+this oh wow
+>> but um hey we're having fun writing it
+and we're going we're understanding each
+other etc. And that will be the value,
+right? We'll understand each other
+better.
+>> And then of course the fact that it made
+a bit of an impact was kind of a shock.
+And then of course it it gets misused by
+by most of the time because there's
+there's that lovely quote from
+Alistister Cobin that your brilliant
+idea will either be ignored or
+misinterpreted and you don't get to
+choose which of the two it is.
+>> Well, it also helps that the manifest to
+us four different lines and so people
+just pick and choose which one they want
+to point.
+>> 12 principles.
+>> Oh, and the 12 principles which Yes. and
+and the fact that it says and says at
+the beginning we are uncovering
+um and that this is a continuous process
+and what the manifesto is just this is
+what we've got how how we got so far um
+so it's a snapshot of a point in time of
+where we were in 20201 yeah all sorts of
+subtleties to to the to the manifesto
+but um it I think it had an impact in
+the sense that I my feelings were was a
+certain way that we wanted to write
+software at Fort Works for our clients
+in 2000 000 and it was a real struggle
+because they didn't want to work the way
+we wanted to. We've said we want to put
+all this effort into writing tests and
+we was we want to have a build pro an
+automated build process and we want to
+do these kinds of things. We want to be
+able to progress in small increments.
+all of these kinds of things which were
+anathema. You know, no, we got to we've
+got to have a big plan over five years
+and we'll spend two years doing a design
+and we'll produce a design and then
+it'll get implemented over the next year
+or so and then we'll start testing,
+right? I mean, that was the the
+mentality of how things ought to be
+done.
+>> Yeah. That was just the common the
+commonly understood wisdom, right?
+>> Yeah. And our notion of no, we we'd like
+to do that entire process for a subset
+of requirements in one month, please.
+Only a month. And of course we really
+wanted to do it in a week but you know
+baby steps. And so to me the great thing
+about agile is that we can actually go
+into organizations and operate it much
+closer to the way that we'd like to be
+able to do. Our clients will let us work
+the way we want to to much greater
+extent than we would were able to do
+back in 2000. And so that is the
+success. I just wanted the world to be
+safe for those people that wanted to
+work that way to be able to work that
+way. Yeah. there's all sorts of other
+bad things that have happened as a
+result of all of this. But um on the
+whole I think we are a bit better off
+>> and and do you see like the the way you
+look especially when you look at the
+enterprise clients that that you have a
+lot more visibility to you see the
+definite change from like 25 years ago
+to like the the concepts of agile are
+way more accepted like working with the
+customer having a lot more incremental
+delivery forgetting about these like
+very long pieces of work like this is
+it's just common everywhere right can we
+say that or at least
+>> I would We've made significant progress,
+but compared to how we'd like it to be
+and where our vision is, it is still a
+pale shadow of what we want of what we
+wanted. I mean, and I suspect most of
+the 17 that are still with us would
+agree with that. We still feel we can go
+much much better than we c than we've
+been, but we have actually made material
+progress. And the thing is that we we
+were always in that situation where you
+know we're kind of nudging our our way
+forwards much at a much slower rate than
+we'd like to be. Yeah. Now of course AI
+is is coming and it it is now every it
+is everywhere and it will be everywhere
+and one things with with AI so the core
+idea behind agile was that you make
+incremental improvements and the shorter
+the better. Now with and you could then
+build software that incrementally start
+to improve. But today with AI,
+especially with AI, there's going to be
+more software everywhere. There already
+is. And there's a sense that customers
+don't necessarily want to wait for
+incremental improvements. They they want
+to see quality upfront. Do you think
+that agile will work just as well with
+with with AI with even shorter
+increments or do you think we might
+start to think about like some different
+way to work with with AI putting on the
+quality lens up front as well and
+getting back to a little bit of you know
+the spec driven development like getting
+a version of the software that is just
+great to start with. I don't know how
+the AI thing is going to play out
+because we're still in the early days. I
+still feel that building things in terms
+of small slices with the human sort of
+humans reviewing it is still the way to
+bet. What AI hopefully will allow us to
+do is to be able to do those slices
+faster um and maybe do a bit more in
+each slice, but we need to it's I'd
+rather get smaller, more frequent slices
+than more stuff in each slice. improving
+the frequency is usually what we I think
+we need to do and just cycled out those
+steps more rapidly. That's where I felt
+we've had our biggest gains is is
+through that more rapid cycle rather
+than trying to do more stuff in the same
+cycle as it were. And I I still get a
+sense of that when talking to people
+still saying, you know, can you look at
+all of the things that you do in
+software development and and increase
+the frequency? Do half as much but in
+half the time and and and speed up that
+cycle. Look for ways to speed that
+through. And also, you know, just look
+at where what you're doing. Look for the
+cues in your flow and figure out how to
+cut those cues down. If you were able to
+get some ideas from idea to running code
+in two weeks, how do you get it down to
+a week? Just try to constantly improve
+that cycle time. And I still feel that
+that's our best form of leverage at the
+moment is improving cycle time.
+>> Yeah. And I I've been talking with some
+of the leading AI labs on how they use
+it because of course they're going to be
+on the bleeding edge. They will use
+this. They're also in their own interest
+to use their own tools. at Entrophic uh
+the cloud the cloud code team one of the
+creators of clot code Boris he shared
+how he did 20 prototypes of of a feature
+of how the progress bar when when you do
+a task how it lists out different steps
+and how it shows you where it's at and
+he built 20 different prototypes that he
+all tried out and and got feedback on
+and decided which one to go in two days
+and he and and he showed me so actually
+he has he had videos he just recorded
+these as he went the exact prompt that
+he used the output and these were
+interactive proto protypes. So they were
+not just, you know, like on the paper,
+but they were inside.
+>> And to me, this was like, wow. Like if
+if you would have told me I built 20
+prototypes and you asked me how long it
+took it, I would have said two weeks,
+maybe a week if you if they were small
+like paper prototypes. But as you can
+still speed it up and it is still
+manageable. Some of them he threw it
+away. Some of them he show shared with
+small group, bigger group. So I I I feel
+I feel you're right on how we have not
+reached the limit of of how quickly can
+we look at things.
+>> Yeah, it comes back to feedback loops. I
+mean so much of it is trying how do we
+introduce feedback loops into the
+process? I mean how do we tighten those
+feedback loops so we get the feedback
+faster so that we're able to learn
+because in the end again it it comes
+back to you know we have to be learning
+about what it is we're trying to do.
+Speaking about learning uh and keeping
+up to date uh how do you learn about AI?
+How do you keep up to date with with
+what's happening? What approaches work
+for you? And what are approaches you see
+your colleagues uh follow who are also
+staying up with you know what's going
+on? Well, the main way I learn these
+days is by working with people who are
+writing articles that um are going on
+onto my site because my primary effort
+these days is getting good articles onto
+my site and and my view is that I'm not
+the best person to write this stuff
+because I'm not doing the day-to-day
+production work. Haven't been doing for
+a long time. The only production code I
+write is ironically the code that runs
+the website. I still write code. I still
+generate stack traces but it's only
+within this very very esoteric little
+area. Um so as a result I it's better
+for me to work with people who actually
+are doing this kind of work and help
+them get their ideas and what their
+lessons and express them to the as many
+people as possible. So I'm learning
+through the process of working with
+people to write their ideas down which
+is a very interesting way of learning
+because of course you're you're very
+deeply involved in in the editing
+process for a lot of that material and
+that was that's my primary form. I do do
+some experimentation when I get the
+chance not as much as I'd like but I do
+see that as a second priority to working
+with people. So you know it's necessity
+only in the in the off time that I get
+to do that. Um and of course reading
+from where I feel are some of the better
+sources. I mean fortunately one of those
+better sources is Bita who has been um
+writing with me. So that's good. Um
+Simon
+>> he's excellent. Yeah.
+>> Spittita stuff is superb. Um Simon
+Willis I keep an eye on what he's doing
+all the time. Um I wish I had his energy
+work rate for getting stuff out.
+Actually I wish I had your energy you
+the man of stuff you get out these days.
+And so I look for sources like that. I'm
+always interested in what folks like
+Kent are up up to because let's face it,
+so much of my career has been leeching
+off Kent's ideas and um there's no
+reason to stop doing that if it's still
+working, right? Um and so those are the
+kinds of sources I mean then sometimes
+some books that come out that come
+through and and work through those. So a
+lot of it is in that kind of direction.
+I might even watch a video occasionally
+although I really hate watching videos.
+So yeah. So sounds like find the sources
+of the people you trust, the sources you
+trust. Again, your your blog I can very
+much recommend it because you have
+several people writing on it. Uh so you
+actually have a pretty good frequency of
+in-depth articles about interesting like
+I I I rarely see topics that have been
+discussed in depth and so I I enjoy
+checking checking out because of because
+of it. I mean one of the questions that
+I've been I've been pondering on is when
+asked of so how do you identify what a
+good source is of information and this
+is more general this is due to to our
+profession but of course due to to the
+world generally as we seem to be in an
+epistemological crisis of trying to
+understand what's going on in the world
+and and at some point I'm going to sit
+down and write this down and I'll get a
+more coherent um answer from it but part
+of what I'm always looking for is um a
+lack of certainty is I think a good
+thing when people tell me oh I know the
+answer to this I'm usually a good bit
+more suspicious and I'm much more
+conscious of when people say this is
+what I understand at the moment but it's
+fairly unclear I I remember one of my
+favorite early books when I was writing
+on the the um software architecture
+um I was des I remember desperately
+looking for something in the Microsoft
+world as opposed to something in the
+Java world there was a lot being written
+written in Java world. This is back
+around the late 90s. Lots of stuff was
+being written in Java land, not much in
+Microsoft land. And when I discovered
+this Swedish guy, Jimmy Nielson. And his
+book was full of stuff that says, well,
+this is how I'm feeling about this is
+the way to approach this stuff. He was
+very tentative all the time, very much
+clear of this was how he was currently
+feeling, but he understood that things
+might change. I've since got to know
+Jimmy really well and he's a fantastic
+guy. But what impressed me so much and
+what influenced me so much is I felt
+very much the degree to which oh this is
+somebody I can trust because they're not
+trying to give me this false sense of
+certainty and confidence and I think
+that's important also someone who's keen
+to explore nuances and saying well this
+works in these circumstances not if
+somebody tells me oh you should always
+use microservices or somebody says you
+should never use microservices I mean
+those both of those arguments can
+completely discounted. It's when you
+say, "Ah, these are the factors that you
+should be considering about whether to
+go in this direction or that direction."
+Whenever someone is stepping back and
+saying, "Ah, it's it's a trade-off.
+There's various things involved. Here's
+the factors you should go." And it's not
+going to be a simple answer. You've got
+to dig into the nuances. Then again,
+that increases my confidence because
+again, I'm feeling this is someone who's
+thinking these things through and not
+just coming on a on a sort of simple
+railroad and and going down it. And I
+guess with these sources, you can also
+trust that everything we do in software
+engineering, it's going to be
+trade-offs, right? The the most common
+answer of of like how long will it take
+is it depends. It depends on on are we
+doing a prototype, it depends on on do I
+know the technology, etc. So if you if
+you're reading sources or if you're
+accessing sources where they tell you,
+okay, in my situation, you actually
+learn about their situation and you can
+figure out like, okay, in this specific
+case for them, this worked or it didn't
+work and later you can probably apply it
+a bit better because again, it's it's
+very different if you're going to be
+working as a software engineer inside a
+highly regulated retailer that's 70
+years old versus you've just started a
+brand new startup where go and knock
+yourself out, zero customers.
+a huge difference. Yeah. And then that's
+I mean and again you see it I mean we
+see it with we frankly we see it with
+clients a lot of clients say give us the
+answer give us the the the cookbook
+straightforward answer that I just need
+to apply. Yeah. If you're looking for
+that kind of cookbook answer you're
+going to get in trouble because anybody
+who will tell you there's a cookbook
+answer. They either don't understand it
+or they're deliberately covering it up
+for you because there's always tons of
+nuance involved. We we we keep going
+back to this like now more than 50 year
+old art the no silver bullets right one
+question uh I got from online I asked
+what people would like to ask from you
+is what would your advice be today for
+junior software engineers who are
+starting out there's all this AI stuff
+going on we know with with learning I
+think you also mentioned or it might
+have been Umesh who mentioned with
+junior engineers it it it could be a bit
+iffy of if you're relying too much on AI
+will that hinder your learning because
+learning is important. If one of these
+engineers asked you like, "Hey, I'm a
+junior engineer. I'd like to eventually
+become a more experienced engineer, what
+tactics would you advise me, especially
+with AI tools? Should I rely on them?
+Should I not? Is is there something that
+might work better than other things?"
+>> Well, I mean, certainly we have to be
+using AI tools and exploring their use.
+The hard part with if you're more junior
+is you don't have this sense of is to
+what extent is the output I'm getting
+good and in many ways the answer is what
+it's always been find some good senior
+engineers who will mentor you because
+that's the best way that you're going to
+learn this stuff and a a good
+experienced mentor is worth their weight
+in gold and in fact many ways it's worth
+prioritizing that above many other
+things that you when it comes to your
+career is is getting that met. I mean,
+again, me finding Jim Odell early on in
+my career was enormously valuable. The
+best thing that could have possibly
+happened to me was just blind luck. Um,
+but seek out somebody like that who can
+be your mentor. I mean, although we're
+peers in some ways, I often see think of
+Kemp Beck as a mentor. Um, because you
+know, we may be the same age or
+whatever, but his thinking is always
+leaping forwards. And so, watching what
+he's doing has been very val. So again,
+find somebody like that. The AI can be
+handy, but always remember it's gullible
+and it's likely to lie to you. So be
+probing on asking it. Okay, why do you
+giving me this advice? What are your
+sources?
+What what's leading you to say this? I
+mean I I remember this this is generally
+a good thing is whenever people are pro
+giving you something is to say what is
+leading you to say that? What is the
+background? what is the context you're
+coming from? What are the things that
+are leading you to this point of view?
+And by probing that, you can get a
+better understanding of where where
+they're coming from. And you I think you
+have to do the same thing with the AI
+because in the end the AI is is it's
+it's just regurgitating something it saw
+on the internet. So the question is did
+it see good stuff on the internet or did
+it see most of the crap that's on the
+internet, right? And but if you can find
+your way to the good stuff, then that
+can be much more useful.
+>> And looking at all this change that
+that's happening right now with AI LMS,
+how do you feel about the tech industry
+in in general?
+>> I mean, in in a broad sense, I'm
+positive because I' I still feel there's
+a hu so many huge things that can be
+done with technology and software. Um,
+and we are on, you know, we're still in
+a situation where demand is way more
+than we can imagine. But that's a
+long-term view. I mean at the moment
+we're in this very I'm going to say very
+str it's life has always been a strange
+phase. I mean in strange in different
+ways. The current strangeness is we're
+basically in a huge certainly in um in
+uh the developed world depression. I
+mean we've seen a huge amount of job
+layoffs. I mean I I've heard numbers
+banded around of quarter million half a
+million jobs lost. I mean it's that kind
+of magnitude. I mean, we're seeing it. I
+mean, at Fort Works, we used to be
+growing at 20% a year all the time until
+about 2021. I mean, we've we've we've
+hit a wall, and we see our clients are
+just not spending the money on um this
+stuff. I mean, AI is doing its own
+separate thing, but it's almost like a
+separate thing going on, and it's
+clearly bubbly, but we don't But the
+thing with bubbles is you never know how
+big they're going to grow. You don't
+know how long it's going to take before
+they pop. and you don't know what's
+going to be after the pop. I mean, all
+this stuff is unpredictable. I do think
+there's value in AI in a way that say
+there wasn't with blockchain and crypto.
+There's definitely stuff in AI, but
+exactly how it's going to pan out, who
+knows? And I mean, I went through this
+cycle with stuff in in the '9s and 2000.
+So, it's it's it's a repeat of that only
+at probably an order of magnitude more
+scale. Um, so all of that's going on,
+but really what's happening, the most
+important thing that's hit us is not AI.
+It's the end of zero interest rates.
+That's the big thing that really hit us.
+And that's what the job losses started
+before AI because of that kicking in and
+we don't know how that's going to change
+because this is a this is a much more
+macroeconomic thing. We have Looney
+driving the bus in the in the United
+States. We have all sorts of other
+pressures going on in internationally.
+Great uncertainty at the moment and
+that's affecting us because it means
+that businesses aren't investing. And
+while businesses aren't investing, it's
+hard for to to make much progress in in
+the software world. And so we have this
+weird mix of no investment pretty much
+depression in the in the software
+industry with an AI bubble going on. And
+they're both happening at the same time.
+>> And one of mass the other end, yeah,
+depends on where you are. Like I was in
+Silicon Valley and if you're an AI
+company, it all inside it looks all
+great. If you're outside, again, you can
+benefit from it, but it's it's it's a
+lot more careful. And if you're outside
+of this bubble, let's say you're at a a
+startup or or a company that is not in
+AI, it's it's just tough. So, you you
+have these these worlds happening. I
+mean, this is still, I think, an
+industry with plenty of potential in the
+future. I think it's a it's a good one
+to get into. It's not uh you know, the
+timing is not as great as it would be
+getting into this industry in say 2005.
+Um but you know it I still feel there's
+a there's a good profession here. I
+don't think AI is going to wipe out
+software development. Um I think it'll
+change it in a really manifest way like
+the change from assembly to high level
+languages did but the core skills are
+still there and the core skills of being
+a good software developer in my view are
+still it's not so much about writing
+code. That's part of the skill. A lot of
+the skill is understanding what to write
+which is communication and particularly
+communication with the users of software
+and crossing that divide which has
+always been the most critical um
+communication path
+>> and and you've also mentioned the expert
+general is becoming a lot more important
+which all of that when I looked into the
+details we'll link it in the the show
+again
+>> unmesh has been on fire he's on fire but
+but it all all the traits seem to do
+nothing to do with AI. It's about
+curiosity. It's about going deep. Uh
+it's about going broad. It it it sounds
+like I'm I'm hearing more and more
+people who are thinking longer of like
+what it means to be a standout software
+engineer. The basics don't seem to
+change,
+>> right? Yeah. I and I I do think that and
+it is it is always been communication
+and being able to collaborate
+effectively with people has always been
+to my mind the outstanding quality of
+what really makes the the very best
+developers. um come through certainly in
+the enterprise commercial world which is
+the one I'm most familiar with because
+every soft all the software we're
+writing for is for people who doing
+something very different to what we do.
+I remember when I was working in health
+service I mean I always said you know
+here I am doing this conceptual modeling
+of health care. I understand a huge
+amount about the process of of health
+care. You are not going to want me to
+treat whatever your medical problems are
+because I am never going to have that
+skill because I'm not a doctor. Yeah.
+>> And so therefore the doctors have to be
+involved in the process.
+>> So as closing I just wanted to do some
+rapid questions where I I'll fire and
+then you come what comes to mind. What
+is your favorite programming language
+and why?
+>> Um I would say at the moment my favorite
+programming language is Ruby because
+it's become it's I'm so familiar with
+it. I've been using it for so long. But
+the one that is my love is small talk
+without a doubt. Small talk. There was
+nothing as much fun as programming in
+Small Talk when I was able to do it in
+the uh in the '9s. That that was such a
+fantastic environment.
+>> You and Kenbeck and Kenbeck is is
+writing his Small Talk server. It's it's
+it's his baby. I I think he's making
+progress
+>> and and I mean there is still stuff
+going on. There is the Pharaoh project
+in Small Talk. And I keep thinking, you
+know, I if I could just take off some
+weeks and and stop everything else I was
+doing, maybe investigate, see what's
+going on in the small talk world again,
+cuz it was I mean, and has still so much
+power in that language.
+>> What are one or two books you would
+recommend? Uh, and why?
+>> So, a book I I do particularly like to
+recommend is Thinking Fast and Slow by
+Daniel Kaneman. I like it because um he
+does a really good job of trying to give
+you an intuition about numbers in and
+spotting some of the many mistakes and
+fallacies we make when we're thinking in
+terms of probability and statistics. And
+this is important in software
+development and because I mean a lot of
+what we do is greatly enhanced by the
+fact if we could understand um the
+statistical effects of what we see but
+also in life in general because I think
+uh our world would be a hell of a lot
+better if way more people understood a
+bit more about probability and
+statistics. Yeah. Than they do. I mean I
+like most kids probably when they did
+maths at school it was heavily
+calculus-based. I really do feel that it
+would have been a lot better if you know
+it was much more statistics based
+because that the knowledge of being able
+to use that. Well, I mean, one of the
+things that has helped me more with
+probabil probability is and
+probabilistic reasoning has been the
+fact that I'm heavily into tabletop
+gaming where you have to constantly
+think in terms of probabilistics and um
+I I just honestly feel that knowing that
+is important and this book is I think a
+great way to get into that and so it was
+one of the best reads I've had in the
+last few years. Another book that I'd
+mention that is completely separate and
+is in challenging in a completely
+different way that I've been totally
+obsessed with is a book called The Power
+Broker. Um, so this is a book about uh a
+guy called Robert Moses who most people
+have never heard of but was the most
+powerful official in New York City for
+about 40 years um from about 192 to
+1960. He was never elected to any
+office. He controlled more money than
+the mayor or the governor of New York
+during that time. And this book is about
+how he rose to power. Um how power works
+in a in a democratic society often in
+not in plain sight. Um and it's a
+fascinating book for that. It's also a
+fascinating book because it is so well
+written. There have been moments when I
+would just, you know, I've been reading
+a several page passage of something and
+I would just have to stop to just
+appreciate how brilliant what was just
+read was. And that's valuable because to
+be a better writer, and I think we all
+gain by being a better writer, it's
+really important to read really good
+writing. And his writing is magnificent.
+The downside is it's 1,200 pages. It's a
+really long book, but I was enjoying it
+so much that I didn't mind. And then
+once you go on from that, you move on to
+his second biography because he's only
+written two biographies and that's his
+currently five volume biography of
+Lyndon Baines Johnson, LBJ, which is
+equally brilliant and I've been reading
+it, but it's a lot more to ask because
+it's four volumes so far and he still
+hasn't finished the fifth. But again,
+there are moments when I was just
+gobsmacked by how brilliant the writing
+was and gossmacked by the way again
+power works in a democratic society and
+uh I think to understand how our world
+works. These kinds of books are really
+really valuable.
+>> And finally, can you give us a board
+game recommendation? You are very
+heavily into board games. Your your
+website has a list of them as well.
+Yeah, it's a tricky one because it's
+kind of like saying I'm really
+interested in getting into watching
+movies. Which would be the movie you
+would recommend? Right. Because I get
+it. So many different tastes and things.
+If I'm going to pick something that's I
+think not too complicated for someone to
+get into that I think is is still got
+quite a lot of richness at the moment, I
+think the game I'd pick out would be
+something called Concordia. It's fairly
+abstract in its nature, but it's easy to
+get into and it's got quite a good bit
+of uh decision making in in the process.
+>> Well, Martin, thank you so much. It was
+great that we could make it happen in
+person as well.
+>> Yes, having that that worked out really
+well. I just happened to be in Amsterdam
+for something else and uh I know
+somebody in Amsterdam, so I thought I'd
+get in touch and we finally get the
+chance to meet face to face.
+>> It was amazing. Thank you.
+>> Thank you. Thanks very much to Martin
+for this interesting conversation. One
+of the things that really stuck with me
+is how the single biggest change with AI
+is about how we're going from
+deterministic systems to
+non-deterministic ones. This means that
+our existing software engineering
+approaches that were based on assuming a
+fully deterministic system like testing,
+refactoring and so on, this probably
+won't work that well and we might need
+new ones unless we can make elements
+more deterministic. That is I also liked
+how Martin mentioned to us that the
+problem with vibe coding is that when
+you stop paying attention to the code
+generated you stop learning and then you
+stop understanding and you might end up
+with software that you have no
+understanding of. So be mindful in the
+cases when you are happy with this
+trade-off. For more reading on AI
+engineering best practices and an
+overview of how the software engineering
+field changed in the past 50 years check
+out related deep dives in the pragmatic
+engineer which are linked in the show
+podcast, please do subscribe on your
+favorite podcast platform and on
+YouTube. This helps more people discover
+the podcast and a special thank you if
+you leave a rating as well. Thanks and
+see you in the next

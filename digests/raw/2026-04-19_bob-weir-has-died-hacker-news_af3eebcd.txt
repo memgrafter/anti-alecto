@@ -1,0 +1,71 @@
+Hacker News thread capture
+
+Thread URL: https://news.ycombinator.com/item?id=46571707
+Item ID: 46571707
+Title: Bob Weir has died
+Author: asix66
+Points: 147
+Linked URL: https://www.rollingstone.com/music/music-news/bob-weir-grateful-dead-dead-obituary-1234810106/
+Top-level comments captured: 14
+Total comments captured: 22
+
+## Top comment (highest-score top-level, verbatim)
+u/toomuchtodo (0): https://en.wikipedia.org/wiki/Bob_Weir (https://en.wikipedia.org/wiki/Bob_Weir)https://en.wikipedia.org/wiki/Grateful_Dead (https://en.wikipedia.org/wiki/Grateful_Dead)https://bobweir.net/bobby/ (https://bobweir.net/bobby/)
+
+## Prominent viewpoints (top-level comments)
+1. (0) u/toomuchtodo: https://en.wikipedia.org/wiki/Bob_Weir (https://en.wikipedia.org/wiki/Bob_Weir)https://en.wikipedia.org/wiki/Grateful_Dead (https://en.wikipedia.org/wiki/Grateful_Dead)https://bobweir.net/bobby/ (https://bobweir.net/bobby/)
+2. (0) u/SoleilAbsolu: Fare thee well Bob! What a life in music.
+3. (0) u/adzm: End of an era
+4. (0) u/__mharrison__: RIP.I wonder if Mayer will continue to carry the torch, or if the music will stop.
+5. (0) u/dnw: Besides their music, their mail-order ticketing system and the resulting fan envelope art are quite amazing:
+[Apologies for the scary link]https://www.gdao.org/fan-art?filters[match]=all&filters[quer... (https://www.gdao.org/fan-art?filters[match]=all&filters[queries][0][field]=dcterms_title&filters[queries][0][operator]=matches_pattern&filters[queries][0][term]=A*)
+6. (0) u/shmoe: Truly a long, strange, trip. RIP.
+7. (0) u/driggs: Particularly relevant to HN is that Bobby's primary writing partner for decades was John Perry Barlow, cofounder of the Electronic Frontier Foundation (EFF):https://www.eff.org/john-perry-barlow (https://www.eff.org/john-perry-barlow) A Declaration of the Independence of Cyberspace
+ by John Perry Barlow
+ 
+ Governments of the Industrial World, you weary giants of flesh and steel,
+ I come from Cyberspace, the new home of Mind. On behalf of the future, I
+ ask you of the past to leave us alone. You are not welcome among us. You
+ have no sovereignty where we gather.
+ 
+ We have no elected government, nor are we likely to have one, so I address
+ you with no greater authority than that with which liberty itself always
+ speaks. I declare the global social space we are building to be naturally
+ independent of the tyrannies you seek to impose on us.
+ 
+https://www.eff.org/cyberspace-independence#mai
+8. (0) u/sswaner: May the four winds blow you safely home.It was a privilege to see him perform many times.
+
+## Thread discussion sample
+- (0) u/toomuchtodo: https://en.wikipedia.org/wiki/Bob_Weir (https://en.wikipedia.org/wiki/Bob_Weir)https://en.wikipedia.org/wiki/Grateful_Dead (https://en.wikipedia.org/wiki/Grateful_Dead)https://bobweir.net/bobby/ (https://bobweir.net/bobby/)
+  - (0) u/derwiki: And tons of free tunes on relisten.net!
+    - (0) u/kQq9oHeAz6wLLS: archive.org has a ton as well
+      - (0) u/toomuchtodo: https://archive.org/details/gd1980-08-21.sbd.miller.99034.sb... (https://archive.org/details/gd1980-08-21.sbd.miller.99034.sbeok.flac16/) is one I can recommend (Grateful Dead Live at Uptown Theatre on 1980-08-21)
+- (0) u/SoleilAbsolu: Fare thee well Bob! What a life in music.
+- (0) u/adzm: End of an era
+- (0) u/__mharrison__: RIP.I wonder if Mayer will continue to carry the torch, or if the music will stop.
+  - (0) u/kQq9oHeAz6wLLS: The music never stops
+  - (0) u/matchagaucho: He would want us to be stewards of the music... and people still talking about it in 300 years.
+- (0) u/dnw: Besides their music, their mail-order ticketing system and the resulting fan envelope art are quite amazing:
+[Apologies for the scary link]https://www.gdao.org/fan-art?filters[match]=all&filters[quer... (https://www.gdao.org/fan-art?filters[match]=all&filters[queries][0][field]=dcterms_title&filters[queries][0][operator]=matches_pattern&filters[queries][0][term]=A*)
+  - (0) u/mistrial9: quite the flood of painted envelopes, some days!
+- (0) u/shmoe: Truly a long, strange, trip. RIP.
+- (0) u/driggs: Particularly relevant to HN is that Bobby's primary writing partner for decades was John Perry Barlow, cofounder of the Electronic Frontier Foundation (EFF):https://www.eff.org/john-perry-barlow (https://www.eff.org/john-perry-barlow) A Declaration of the Independence of Cyberspace
+ by John Perry Barlow
+ 
+ Governments of the Industrial World, you weary giants of flesh and steel,
+ I come from Cyberspace, the new home of Mind. On behalf of the future, I
+ ask you of the past to leave us alone. You are not welcome among us. You
+ have no sovereignty where we gather.
+ 
+ We have no elected government, nor are we likely to have one, so I address
+ you with no greater authority than that with which li
+  - (0) u/davidwritesbugs: This always makes me laugh. Comically pretentious & naive. Like schoolboy poetry.
+    - (0) u/windowpains: The EFF, FOSS, Stallman, Barlow, so many things seem childish or naive now, but not back then. Maybe it’s just me. I wish I could go back.
+- (0) u/sswaner: May the four winds blow you safely home.It was a privilege to see him perform many times.
+- (0) u/zabzonk: This made me think that, for a band known for its guitarists, what great vocalists the Dead had - Weir, Garcia, Lesh, Pigpen, particularly when doing harmonies.Anyway, bye-bye Bob, thanks for all the music.
+- (0) u/iancmceachern: As my wife said, Bobby was our Jerry. We never got to see Jerry play, but we saw Bob several times and are so grateful for it.
+- (0) u/evanb: > Winter rain, now tell me why> Summers fade and roses die> The answer came, the wind and rain> [...]> Circle songs and sands of time> And seasons will end in tumbled rhyme> And little change, the wind and rainFare thee well, Bob.
+- (0) u/user3939382: Sad. Rest in peace Bob. Thank you for your art.
+- (0) u/zebomon: I saw him perform 26 times in my life, and still those were rookie numbers. Still I thought there would be so many more too. Thanks for all the music, Bobby Weir.
+- (0) u/adfm: This is definitely sad news. From I remember, the early Internet seemed to be inhabited mostly by deadheads. When you think of open source, remember the music and the thousands who would tape and share the experience of Bobby playing with the band to millions.

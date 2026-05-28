@@ -1,0 +1,164 @@
+Title: From Vibe-Coding to Systems Engineering: How I Scaled My AI Dev Workflow
+
+URL Source: http://medium.com/@peterohsw/from-vibe-coding-to-systems-engineering-how-i-scaled-my-ai-dev-workflow-744e00ec0041
+
+Published Time: 2025-12-16T14:16:54Z
+
+Markdown Content:
+Press enter or click to view image in full size
+
+[![Image 1: Peter Oh](https://miro.medium.com/v2/resize:fill:64:64/1*6EI8jD1z81Dq7MqS_HirWg.jpeg)](https://medium.com/@peterohsw?source=post_page---byline--744e00ec0041---------------------------------------)
+
+6 min read
+
+Dec 16, 2025
+
+--
+
+I didn’t start out trying to build a “system.”
+
+I had an idea for a personal knowledge base — something that could ingest my documents, journals, emails, WhatsApp chats, and Notion notes and eventually reason over them using Custom GPT. Like many people, I started by **vibe-coding** with ChatGPT: one-off scripts, quick integrations, and glue code to connect Supabase, Railway, and a custom GPT.
+
+It worked. Until it didn’t.
+
+As the scope expanded — more data sources, more query types, more persistence, more correctness requirements — the cracks started to show. What began as a simple app quietly turned into a sprawling piece of software. And vibe-coding stopped being enough.
+
+The core insight that followed was uncomfortable but clarifying:
+
+> AI doesn’t break when it gets smarter. It breaks when the system around it doesn’t scale.
+
+### From Scripts to a System (The Breaking Point)
+
+At first, my velocity felt infinite, especially when it was a completely green field! I jumped between tools as needed:
+
+* **VS Code** for local edits
+
+* **Cursor** for fast refactors
+
+* **Antigravity** and **Claude-code** for deeper reasoning
+
+* **ChatGPT** for exploration and one-off scripts generation
+
+Each tool was good at something. None of them shared context well.
+
+Over time, several problems compounded. Token usage ballooned, and rate limits became real constraints. Context switching between tools meant I had to repeat myself constantly. Worse, each agent documented its own plans, but nothing was canonical. Refactors became risky because there was no stable “fallback point,” and the codebase grew faster than my mental model could keep up.
+
+What started as a handful of scripts became:
+
+* 30,000+ lines of code
+
+* 150+ scripts, test, source files
+
+* 10+ modules
+
+* 25+ tables
+
+At that point, rewriting wasn’t an option. What I needed wasn’t a better prompt or a smarter model. **_I needed a system that could evolve without collapsing under its own growing complexity._**
+
+### Mental Model: From Assistant to Teammate
+
+The shift was not technical. It was conceptual.
+
+Most AI coding workflows assume a single assistant that writes code, reviews it, and implicitly approves itself. That model collapses the moment the codebase becomes non-trivial.
+
+Instead, I adopted a model I already trusted from real-world experience leading engineering teams:
+
+1. One role **writes**.
+
+2. One role **reviews**.
+
+3. Another role **owns intent and decisions**.
+
+In my setup, **Codex** acts as the **_Writer/_ Claude-code** acts as the **_Reader/Architect_**, and I remain the **_Orchestrator_**. All actions happen in iTerm2 between the AI coding agents. No more IDEs.
+
+This wasn’t about slowing things down. It was about restoring **cognitive independence**. Once creation and review stopped sharing the same loop, quality stopped being accidental.
+
+### System Architecture (Where Truth Lives)
+
+This system is not defined by which tools I used. It’s defined by **where the truth lives**.
+
+At a high level:
+
+* Jira **holds intent:** Scope, acceptance criteria, and workflow state.
+
+* **GitHub holds execution:** Branches, PRs, and review history.
+
+* **AI agents operate through contracts:** Explicit roles, permissions, and a set of tools they have access to
+
+* **A bot identity represents automation:** Not a personal account, and not an invisible actor.
+
+The result isn’t just an automation pipeline. It’s an **_execution ledger_**— a durable record of why a functionality exists or why a particular software behavior performs the way it does, how it was built, and who/what validated it. Jira and GitHub serve as the conduit for shared context, with a clear contract between two AI coding agents and the human in the loop, who remains entirely in control. I could inspect the Jira ticket, its history and comments, and the specific PR linked in the Jira ticket.
+
+### The Joy of a Working System
+
+This structure brought a profound shift to my work on my personal project. There is a distinct, almost tactile satisfaction in watching a Jira ticket move across the board — not because I dragged it, but because the system did.
+
+Press enter or click to view image in full size
+
+Snapshot of the Jira Board
+
+Press enter or click to view image in full size
+
+Example of a Jira ticket
+
+Press enter or click to view image in full size
+
+An epic with pretty decent amount of work done!
+
+Seeing a PR generated by the ‘Writer’ agent, then receiving a thoughtful critique from the ‘Reviewer’ agent, felt like watching a well-oiled machine. The back-and-forth was captured, the decisions were recorded, and when I finally clicked merge, it wasn’t a leap of faith.
+
+Press enter or click to view image in full size
+
+Selection of PRs
+
+When the deployment pipeline turned green, and I opened my knowledge base to use the new capability, the joy wasn’t just in the feature itself. It was in the deep, confident knowledge of its history. I knew exactly why it existed, how it came to be, and that its creation was repeatable. It wasn’t magic; it was engineering.
+
+Claude-code and Codex have completed 30+ Jira tickets, including bug fixes that would normally require careful human review. That throughput is only possible because the system now absorbs complexity — allowing velocity to increase without pushing either the AI agents or me into cognitive overload.
+
+### Why This Matters for Agentic Memory
+
+The irony wasn’t lost on me.
+
+I was building an **agentic memory layer** — schemas, episodic storage, reference tracking, TTLs — a system designed to **_remember_**. But the way the code was being produced had no memory of its own.
+
+Without traceability, refactors become fear-driven and regressions become mysterious. If AI is going to help build memory systems, the process that creates those systems must itself be **memorable**: inspectable, explainable, and reconstructable months later. In fact, I was able to prompt one of them to review all completed Jira tickets and PRs, write up a retrospective, and compare the work done against the plan!
+
+> Vibe-coding produces output. Systems need history, traceability, and auditability.
+
+### Tradeoffs & Failure Modes
+
+This approach is not free.
+
+**1. Slower than demos**
+
+I give up the illusion of infinite speed. Reviews take time. Acceptance criteria matter.
+
+**2. More friction upfront**
+
+Roles must be defined. Boundaries enforced. Nothing “just happens” anymore — and that’s the point.
+
+**3. Tooling won’t save you**
+
+The hardest failures I hit weren’t model-related. They were filesystem permission issues, sandbox boundaries, and identity confusion. AI accelerates you straight into infrastructure reality.
+
+**4. The biggest misconception**
+
+People think AI fails because it lacks context. While partially true, in practice, AI fails because **we don’t give it structure** to ensure context is preserved and shared.
+
+### Synthesis: What Experienced Engineers See Differently
+
+Experienced engineers don’t obsess over which editor or model is best. They obsess over ownership, review boundaries, rollback paths, and decision records.
+
+> This system made something very clear to me: **AI doesn’t reduce the need for engineering discipline. It raises the cost of not having it.**
+
+When AI is treated as a first-class participant — with roles, identity, and limits — it becomes more reliable, not less. Not because the model is smarter, but because the system is.
+
+### The Real Shift
+
+I believe there’s still a place for “vibe-coding”, especially for rapid prototyping, ideation, etc. This shift is more appropriate when the scope and complexity of the software exceed the ability of a single AI tool to support at scale, with quality and predictability.
+
+The future of AI-assisted engineering isn’t about faster typing. It’s about **designing workflows where intelligence compounds instead of evaporates** as systems grow.
+
+Agentic systems don’t need more autonomy; they need better constraints that enable shared context and clear contracts for how they work together, with the human in complete control of the workflow.
+
+A final thought. If you want AI to help you build long-lived systems — memory layers, platforms, infrastructure — start by giving it something most demos ignore: **A place in the team, not just the editor.**

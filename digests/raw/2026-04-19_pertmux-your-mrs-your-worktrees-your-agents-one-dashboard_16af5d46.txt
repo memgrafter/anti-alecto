@@ -1,0 +1,37 @@
+Your MRs. Your worktrees. Your agents. One dashboard.
+A Rust TUI that links GitLab/GitHub merge requests to local branches, tmux sessions, and AI coding agents — one place for everything.
+cargo install pertmux
+Every layer, linked automatically
+pertmux connects merge requests to branches, worktrees, tmux panes, and coding agents — so selecting an MR reveals your entire workflow context.
+What's in the box
+Multi-Forge
+GitHub + GitLab behind one interface. Pipeline dots, comments, unread indicators.
+Worktree Management
+Create, remove, merge worktrees without leaving the dashboard. Powered by worktrunk.
+Agent Monitoring
+Track Claude and opencode instances across tmux panes. Status, tokens, todos.
+Notifications
+Daemon job polls for MR updates, shows any updated status's on refocus.
+Multi-Project
+Fuzzy finder for instant project switching. Overview panel with MR counts.
+Daemon Architecture
+Background daemon keeps data fresh. TUI connects instantly via Unix socket.
+Why I built this
+One of the lovely things about AI now is I have both the time and the resources to build hyper specific tools to my workflows. Pertmux is exactly that. It is designed to fit into my workflows around neovim, tmux and opencode.
+Specifically, since the rise of terminal coding agents I have found myself juggling multiple workflows, worktrees and more MRs than ever before. I found myself checking multiple "dashboards" - MR dashboards in github/gitlab. Jumping between various tmux sessions, and list and switching between a multitude of worktrees. Agents would sit idle, MRs would need rebasing and I would miss these opportunities for active work to be done whilst I hyperfocused on whatever my main task is at the time.
+Now that we can delegate much of this "meta-maintenance" work for managing work (rebasing MRs, fixing lint issues etc) to AI. We just need a better workflow and dashboard to manage all this in one place. This was the goal of pertmux. There are other solutions out there, all of which great (I was using workmux before building this!), but none quite worked for me and my specific workflows.
+I write this all as a disclaimer - I built this tool for myself. Any generic'ness and customisability is very much an after thought. Therefore whilst this tool might be useful to you, I encourage you to fork and modify this to your OWN workflows, or better still use this as inspiration to build your own tools for your own workflows! This is the age of agents, the `agents.md` file is there to quickly onboard agents so you can customise this to your hearts content.
+Up and running in 60 seconds
+Install
+$ cargo install pertmux
+Configure
+# ~/.config/pertmux.toml
+[[project]]
+name = "My App"
+source = "github"
+local_path = "~/repos/my-app"
+Run
+# Start the background daemon
+$ pertmux serve
+# Connect the TUI
+$ pertmux connect

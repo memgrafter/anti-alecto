@@ -1,0 +1,381 @@
+Active
+Recent
+Comments
+Search
+Login
+Login
+Newest
+Top
+Stories sorted by last comment to foster active discussions
+10
+Surely there must be a way to make container secrets less dangerous?
+devops
+security
+dalmatian.life
+authored by
+Spots
+10 hours ago
+|
+caches
+|
+10 comments
+Archive.org
+|
+Ghostarchive
+10
+47
+No one owes you supply-chain security
+security
+purplesyringa.moe
+via
+Jackevansevo
+13 hours ago
+|
+caches
+|
+22 comments
+Archive.org
+|
+Ghostarchive
+22
+17
+High-Level Rust: Getting 80% of the Benefits with 20% of the Pain
+rust
+vibecoding
+hamy.xyz
+via
+deejayy
+21 hours ago
+|
+caches
+|
+16 comments
+Archive.org
+|
+Ghostarchive
+16
+3
+The End of Eleventy
+web
+brennan.day
+via
+henrycatalinismith
+4 hours ago
+|
+caches
+|
+2 comments
+Archive.org
+|
+Ghostarchive
+2
+50
+What text editor (cli or gui) are you using for writing non-code?
+☶
+ask
+practices
+authored by
+oceanhaiyang
+4 days ago
+|
+131 comments
+131
+11
+Bringing Rust to the Pixel Baseband
+rust
+security.googleblog.com
+via
+vaguelytagged
+15 hours ago
+|
+caches
+|
+2 comments
+Archive.org
+|
+Ghostarchive
+2
+6
+IrDA
+historical
+networking
+computer.rip
+via
+binjip978
+3 hours ago
+|
+caches
+|
+1 comment
+Archive.org
+|
+Ghostarchive
+1
+18
+Writing design docs
+practices
+blog.ceejbot.com
+via
+robey
+15 hours ago
+|
+caches
+|
+2 comments
+Archive.org
+|
+Ghostarchive
+2
+50
+A bet on whether ML-KEM-768 or X25519 will break first
+cryptography
+github.com/filosottile
+via
+figsoda
+33 hours ago
+|
+caches
+|
+6 comments
+Archive.org
+|
+Ghostarchive
+6
+35
+Windows Defender is being used to hack Windows
+security
+windows
+hackingpassion.com
+via
+jeremiahlee
+23 hours ago
+|
+caches
+|
+1 comment
+Archive.org
+|
+Ghostarchive
+1
+19
+Linux Kernel AI Coding Assistants Policy
+vibecoding
+github.com/torvalds
+via
+gmem
+24 hours ago
+|
+caches
+|
+6 comments
+Archive.org
+|
+Ghostarchive
+6
+14
+My Login Shell in Assembly
+assembly
+vibecoding
+isene.org
+authored by
+isene
+2 days ago
+|
+caches
+|
+51 comments
+Archive.org
+|
+Ghostarchive
+51
+20
+What are you doing this weekend?
+☶
+ask
+programming
+authored by
+caius
+2 days ago
+|
+49 comments
+49
+14
+A trillion transactions
+video
+databases
+distributed
+practices
+youtu.be
+via
+ysun
+14 days ago
+|
+caches
+|
+2 comments
+Archive.org
+|
+Ghostarchive
+2
+28
+Git fixup is magic (and Magit is too)
+emacs
+vcs
+arialdomartini.github.io
+via
+facundoolano
+21 hours ago
+|
+caches
+|
+12 comments
+Archive.org
+|
+Ghostarchive
+12
+33
+Advanced Mac Substitute
+retrocomputing
+v68k.org
+via
+lorddimwit
+29 hours ago
+|
+caches
+|
+6 comments
+Archive.org
+|
+Ghostarchive
+6
+59
+I Just Want Simple S3
+osdev
+scaling
+blog.feld.me
+via
+kwas
+24 hours ago
+|
+caches
+|
+16 comments
+Archive.org
+|
+Ghostarchive
+16
+26
+Brocards for vulnerability triage
+security
+blog.yossarian.net
+authored by
+yossarian
+14 hours ago
+|
+caches
+|
+4 comments
+Archive.org
+|
+Ghostarchive
+4
+154
+What are your programming "hunches" you haven't yet investigated?
+☶
+ask
+programming
+authored by
+WilhelmVonWeiner
+3 days ago
+|
+245 comments
+245
+39
+Why Aren't We uv Yet?
+python
+aleyan.com
+authored by
+aleyan
+44 hours ago
+|
+caches
+|
+55 comments
+Archive.org
+|
+Ghostarchive
+55
+55
+Favorite programmer website?
+☶
+ask
+programming
+authored by
+schmudde
+2 days ago
+|
+37 comments
+37
+64
+SQLite 3.53.0
+databases
+release
+sqlite.org
+via
+EvanHahn
+23 hours ago
+|
+caches
+|
+8 comments
+Archive.org
+|
+Ghostarchive
+8
+11
+Investigating Split Locks on x86-64
+performance
+chipsandcheese.com
+via
+hmpc
+18 hours ago
+|
+caches
+|
+1 comment
+Archive.org
+|
+Ghostarchive
+1
+45
+20 Years on AWS and Never Not My Job
+freebsd
+daemonology.net
+via
+fuzzy
+27 hours ago
+|
+caches
+|
+5 comments
+Archive.org
+|
+Ghostarchive
+5
+56
+Put your SSH keys in your TPM chip
+linux
+security
+raymii.org
+authored by
+raymii
+40 hours ago
+|
+caches
+|
+14 comments
+Archive.org
+|
+Ghostarchive
+14
+Page 2

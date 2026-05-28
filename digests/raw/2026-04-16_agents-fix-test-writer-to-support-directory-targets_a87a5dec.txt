@@ -1,0 +1,508 @@
+From 0d5d2cacd73fe22e13ad95003ced56431eba17c6 Mon Sep 17 00:00:00 2001
+From: "copilot-swe-agent[bot]" <198982749+Copilot@users.noreply.github.com>
+Date: Sat, 24 Jan 2026 14:24:36 +0000
+Subject: [PATCH 1/3] Initial plan
+
+
+From f4726c3589933aad9358bca7581855bf8054c376 Mon Sep 17 00:00:00 2001
+From: "copilot-swe-agent[bot]" <198982749+Copilot@users.noreply.github.com>
+Date: Sat, 24 Jan 2026 14:31:18 +0000
+Subject: [PATCH 2/3] Add directory support to test_writer
+
+Co-authored-by: robbintt <1937883+robbintt@users.noreply.github.com>
+---
+ test_writer/machine.yml              |   2 +
+ test_writer/src/test_writer/hooks.py | 100 ++++++++---
+ tests/test_hooks.py                  | 237 +++++++++++++++++++++++++++
+ 3 files changed, 320 insertions(+), 19 deletions(-)
+ create mode 100644 tests/test_hooks.py
+
+diff --git a/test_writer/machine.yml b/test_writer/machine.yml
+index 556d816..7041817 100644
+--- a/test_writer/machine.yml
++++ b/test_writer/machine.yml
+@@ -12,6 +12,8 @@ data:
+     # Working state
+     source_code: ""
+     focused_source: ""
++    source_dir: ""
++    is_directory: false
+     test_file: ""
+     test_code: ""
+     coverage_targets: ""
+diff --git a/test_writer/src/test_writer/hooks.py b/test_writer/src/test_writer/hooks.py
+index 0b20131..a17c402 100644
+--- a/test_writer/src/test_writer/hooks.py
++++ b/test_writer/src/test_writer/hooks.py
+@@ -159,27 +159,80 @@ def _init_coverage(self, ctx: dict) -> dict:
+         if not target.exists():
+             raise FileNotFoundError(f"Target not found: {target}")
+ 
+-        ctx["source_code"] = target.read_text()
+-        test_file = find_test_file(str(target))
+-
+-        if test_file:
+-            raw_tests = Path(test_file).read_text()
+-            sample, names = summarize_existing_tests(raw_tests)
+-            ctx["existing_tests_sample"] = sample
+-            ctx["existing_test_names"] = ", ".join(names)
+-            print(f"Found existing tests: {test_file}")
+-        else:
+-            test_file = generate_test_filename(str(target))
++        # Check if target is a directory or file
++        is_directory = target.is_dir()
++        ctx["is_directory"] = is_directory
++
++        if is_directory:
++            # Collect source from all Python files in directory
++            python_files = sorted(target.rglob("*.py"))
++            # Exclude test files and __pycache__
++            python_files = [
++                f for f in python_files
++                if not f.name.startswith("test_")
++                and not f.name.endswith("_test.py")
++                and "__pycache__" not in str(f)
++            ]
++            if not python_files:
++                raise FileNotFoundError(f"No Python source files found in {target}")
++
++            # Concatenate source with file markers
++            source_parts = []
++            for pf in python_files:
++                rel_path = pf.relative_to(target)
++                source_parts.append(f"# === {rel_path} ===")
++                source_parts.append(pf.read_text())
++            ctx["source_code"] = "\n\n".join(source_parts)
++            ctx["source_dir"] = str(target)
++            print(f"Found {len(python_files)} Python source files in {target}")
++
++            # For directory mode, use project-level test file
++            test_file = "tests/test_project.py"
+             ctx["existing_tests_sample"] = ""
+             ctx["existing_test_names"] = ""
+-            print(f"Will create new test file: {test_file}")
++            if Path(test_file).exists():
++                raw_tests = Path(test_file).read_text()
++                sample, names = summarize_existing_tests(raw_tests)
++                ctx["existing_tests_sample"] = sample
++                ctx["existing_test_names"] = ", ".join(names)
++                print(f"Found existing tests: {test_file}")
++            else:
++                Path("tests").mkdir(parents=True, exist_ok=True)
++                print(f"Will create new test file: {test_file}")
++        else:
++            # Single file mode
++            ctx["source_code"] = target.read_text()
++            ctx["source_dir"] = str(target.parent)
++            test_file = find_test_file(str(target))
++
++            if test_file:
++                raw_tests = Path(test_file).read_text()
++                sample, names = summarize_existing_tests(raw_tests)
++                ctx["existing_tests_sample"] = sample
++                ctx["existing_test_names"] = ", ".join(names)
++                print(f"Found existing tests: {test_file}")
++            else:
++                test_file = generate_test_filename(str(target))
++                ctx["existing_tests_sample"] = ""
++                ctx["existing_test_names"] = ""
++                print(f"Will create new test file: {test_file}")
+ 
+         ctx["test_file"] = test_file
+ 
+         # Get baseline coverage
+         print("\n[1/5] Checking baseline coverage...")
+-        cov_result = run_coverage(source_dir=str(target.parent))
+-        current_pct, uncovered = get_file_coverage(cov_result.raw_report, str(target))
++        cov_result = run_coverage(source_dir=ctx["source_dir"])
++
++        if is_directory:
++            # For directories, use total coverage from report
++            totals = cov_result.raw_report.get("totals", {})
++            current_pct = totals.get("percent_covered", 0.0)
++            # Collect all uncovered lines across files
++            uncovered = []
++            for file_data in cov_result.raw_report.get("files", {}).values():
++                uncovered.extend(file_data.get("missing_lines", []))
++        else:
++            current_pct, uncovered = get_file_coverage(cov_result.raw_report, str(target))
+ 
+         ctx["current_coverage"] = current_pct
+         ctx["uncovered_lines"] = uncovered
+@@ -228,8 +281,7 @@ def _write_and_run_tests(self, ctx: dict) -> dict:
+             print(f"  Wrote tests to {ctx['test_file']}")
+             print("\n[5/5] Running tests...")
+ 
+-        target = Path(ctx["target_file"])
+-        result = run_tests(test_file=ctx["test_file"], source_dir=str(target.parent))
++        result = run_tests(test_file=ctx["test_file"], source_dir=ctx["source_dir"])
+ 
+         ctx["tests_passed"] = result.passed
+ 
+@@ -269,9 +321,19 @@ def _check_coverage(self, ctx: dict) -> dict:
+         ctx["round"] += 1
+         ctx["fix_attempt"] = 0
+ 
+-        target = Path(ctx["target_file"])
+-        cov_result = run_coverage(source_dir=str(target.parent))
+-        new_pct, uncovered = get_file_coverage(cov_result.raw_report, str(target))
++        cov_result = run_coverage(source_dir=ctx["source_dir"])
++
++        if ctx.get("is_directory", False):
++            # For directories, use total coverage from report
++            totals = cov_result.raw_report.get("totals", {})
++            new_pct = totals.get("percent_covered", 0.0)
++            # Collect all uncovered lines across files
++            uncovered = []
++            for file_data in cov_result.raw_report.get("files", {}).values():
++                uncovered.extend(file_data.get("missing_lines", []))
++        else:
++            target = Path(ctx["target_file"])
++            new_pct, uncovered = get_file_coverage(cov_result.raw_report, str(target))
+ 
+         ctx["current_coverage"] = new_pct
+         ctx["uncovered_lines"] = uncovered
+diff --git a/tests/test_hooks.py b/tests/test_hooks.py
+new file mode 100644
+index 0000000..022b7c5
+--- /dev/null
++++ b/tests/test_hooks.py
+@@ -0,0 +1,237 @@
++"""Tests for test_writer hooks module."""
++
++import tempfile
++from pathlib import Path
++from unittest.mock import patch, MagicMock
++
++from test_writer.hooks import TestWriterHooks
++
++
++class TestInitCoverage:
++    """Test the _init_coverage method."""
++
++    def test_init_coverage_with_file(self, tmp_path):
++        """Test init_coverage with a single Python file."""
++        # Create a test file
++        source_file = tmp_path / "example.py"
++        source_file.write_text("def hello():\n    return 'hello'\n")
++
++        hooks = TestWriterHooks()
++        ctx = {
++            "target_file": str(source_file),
++            "coverage_target": 80,
++        }
++
++        # Mock run_coverage to avoid actually running pytest
++        mock_result = MagicMock()
++        mock_result.raw_report = {
++            "files": {
++                str(source_file): {
++                    "summary": {"percent_covered": 50.0},
++                    "missing_lines": [2]
++                }
++            },
++            "totals": {"percent_covered": 50.0}
++        }
++
++        with patch("test_writer.hooks.run_coverage", return_value=mock_result):
++            result = hooks._init_coverage(ctx)
++
++        assert result["is_directory"] is False
++        assert result["source_dir"] == str(source_file.parent)
++        assert "def hello():" in result["source_code"]
++        assert result["current_coverage"] == 50.0
++        assert result["uncovered_lines"] == [2]
++
++    def test_init_coverage_with_directory(self, tmp_path):
++        """Test init_coverage with a directory containing Python files."""
++        # Create source files
++        (tmp_path / "module1.py").write_text("def func1():\n    return 1\n")
++        (tmp_path / "module2.py").write_text("def func2():\n    return 2\n")
++
++        hooks = TestWriterHooks()
++        ctx = {
++            "target_file": str(tmp_path),
++            "coverage_target": 80,
++        }
++
++        mock_result = MagicMock()
++        mock_result.raw_report = {
++            "files": {
++                str(tmp_path / "module1.py"): {
++                    "summary": {"percent_covered": 50.0},
++                    "missing_lines": [2]
++                },
++                str(tmp_path / "module2.py"): {
++                    "summary": {"percent_covered": 100.0},
++                    "missing_lines": []
++                }
++            },
++            "totals": {"percent_covered": 75.0}
++        }
++
++        with patch("test_writer.hooks.run_coverage", return_value=mock_result):
++            result = hooks._init_coverage(ctx)
++
++        assert result["is_directory"] is True
++        assert result["source_dir"] == str(tmp_path)
++        # Should contain both files' source
++        assert "def func1():" in result["source_code"]
++        assert "def func2():" in result["source_code"]
++        # Should use total coverage for directories
++        assert result["current_coverage"] == 75.0
++        # Should collect uncovered lines from all files
++        assert result["uncovered_lines"] == [2]
++
++    def test_init_coverage_directory_excludes_test_files(self, tmp_path):
++        """Test that test files are excluded from source collection."""
++        # Create source and test files
++        (tmp_path / "module.py").write_text("def func():\n    return 1\n")
++        (tmp_path / "test_module.py").write_text("def test_func():\n    pass\n")
++        (tmp_path / "module_test.py").write_text("def test_another():\n    pass\n")
++
++        hooks = TestWriterHooks()
++        ctx = {
++            "target_file": str(tmp_path),
++            "coverage_target": 80,
++        }
++
++        mock_result = MagicMock()
++        mock_result.raw_report = {"files": {}, "totals": {"percent_covered": 0.0}}
++
++        with patch("test_writer.hooks.run_coverage", return_value=mock_result):
++            result = hooks._init_coverage(ctx)
++
++        # Only the non-test file should be included
++        assert "def func():" in result["source_code"]
++        assert "def test_func():" not in result["source_code"]
++        assert "def test_another():" not in result["source_code"]
++
++    def test_init_coverage_directory_no_python_files(self, tmp_path):
++        """Test that an error is raised when directory has no Python files."""
++        # Create only non-Python files
++        (tmp_path / "readme.txt").write_text("Not a Python file")
++
++        hooks = TestWriterHooks()
++        ctx = {
++            "target_file": str(tmp_path),
++            "coverage_target": 80,
++        }
++
++        import pytest
++        with pytest.raises(FileNotFoundError, match="No Python source files found"):
++            hooks._init_coverage(ctx)
++
++    def test_init_coverage_file_not_found(self, tmp_path):
++        """Test that FileNotFoundError is raised for non-existent target."""
++        hooks = TestWriterHooks()
++        ctx = {
++            "target_file": str(tmp_path / "nonexistent.py"),
++            "coverage_target": 80,
++        }
++
++        import pytest
++        with pytest.raises(FileNotFoundError, match="Target not found"):
++            hooks._init_coverage(ctx)
++
++
++class TestCheckCoverage:
++    """Test the _check_coverage method."""
++
++    def test_check_coverage_directory_mode(self, tmp_path):
++        """Test check_coverage uses total coverage for directories."""
++        hooks = TestWriterHooks()
++        ctx = {
++            "target_file": str(tmp_path),
++            "is_directory": True,
++            "source_dir": str(tmp_path),
++            "current_coverage": 50.0,
++            "coverage_target": 80,
++            "round": 0,
++            "max_rounds": 3,
++            "fix_attempt": 1,
++            "test_file": "tests/test_project.py",
++        }
++
++        mock_result = MagicMock()
++        mock_result.raw_report = {
++            "files": {
++                "file1.py": {"missing_lines": [1, 2]},
++                "file2.py": {"missing_lines": [3]},
++            },
++            "totals": {"percent_covered": 70.0}
++        }
++
++        with patch("test_writer.hooks.run_coverage", return_value=mock_result):
++            result = hooks._check_coverage(ctx)
++
++        assert result["current_coverage"] == 70.0
++        assert result["uncovered_lines"] == [1, 2, 3]
++        assert result["round"] == 1
++
++    def test_check_coverage_file_mode(self, tmp_path):
++        """Test check_coverage uses file-specific coverage for single files."""
++        source_file = tmp_path / "module.py"
++        source_file.write_text("def func():\n    pass\n")
++
++        hooks = TestWriterHooks()
++        ctx = {
++            "target_file": str(source_file),
++            "is_directory": False,
++            "source_dir": str(tmp_path),
++            "current_coverage": 50.0,
++            "coverage_target": 80,
++            "round": 0,
++            "max_rounds": 3,
++            "fix_attempt": 1,
++            "test_file": "tests/test_module.py",
++        }
++
++        mock_result = MagicMock()
++        mock_result.raw_report = {
++            "files": {
++                str(source_file): {
++                    "summary": {"percent_covered": 75.0},
++                    "missing_lines": [2]
++                }
++            },
++            "totals": {"percent_covered": 75.0}
++        }
++
++        with patch("test_writer.hooks.run_coverage", return_value=mock_result):
++            result = hooks._check_coverage(ctx)
++
++        assert result["current_coverage"] == 75.0
++        assert result["uncovered_lines"] == [2]
++
++
++class TestWriteAndRunTests:
++    """Test the _write_and_run_tests method."""
++
++    def test_write_and_run_tests_uses_source_dir(self, tmp_path):
++        """Test that _write_and_run_tests uses the stored source_dir."""
++        test_file = tmp_path / "tests" / "test_example.py"
++        test_file.parent.mkdir(parents=True, exist_ok=True)
++
++        hooks = TestWriterHooks()
++        ctx = {
++            "target_file": str(tmp_path / "example.py"),
++            "source_dir": str(tmp_path),
++            "test_file": str(test_file),
++            "test_code": "def test_example():\n    pass\n",
++            "fix_attempt": 0,
++        }
++
++        mock_result = MagicMock()
++        mock_result.passed = True
++        mock_result.output = ""
++        mock_result.error = ""
++
++        with patch("test_writer.hooks.run_tests", return_value=mock_result) as mock_run:
++            result = hooks._write_and_run_tests(ctx)
++
++        # Verify run_tests was called with the correct source_dir
++        mock_run.assert_called_once()
++        call_kwargs = mock_run.call_args[1]
++        assert call_kwargs["source_dir"] == str(tmp_path)
++        assert result["tests_passed"] is True
+
+From 721bc4b1ab7309113f9e981e677ddb9a7989f567 Mon Sep 17 00:00:00 2001
+From: "copilot-swe-agent[bot]" <198982749+Copilot@users.noreply.github.com>
+Date: Sat, 24 Jan 2026 14:34:22 +0000
+Subject: [PATCH 3/3] Address code review feedback and add pycache test
+
+Co-authored-by: robbintt <1937883+robbintt@users.noreply.github.com>
+---
+ test_writer/src/test_writer/hooks.py |  9 +++++----
+ tests/test_hooks.py                  | 27 +++++++++++++++++++++++++--
+ 2 files changed, 30 insertions(+), 6 deletions(-)
+
+diff --git a/test_writer/src/test_writer/hooks.py b/test_writer/src/test_writer/hooks.py
+index a17c402..8500c96 100644
+--- a/test_writer/src/test_writer/hooks.py
++++ b/test_writer/src/test_writer/hooks.py
+@@ -166,12 +166,12 @@ def _init_coverage(self, ctx: dict) -> dict:
+         if is_directory:
+             # Collect source from all Python files in directory
+             python_files = sorted(target.rglob("*.py"))
+-            # Exclude test files and __pycache__
++            # Exclude test files and __pycache__ directories
+             python_files = [
+                 f for f in python_files
+                 if not f.name.startswith("test_")
+                 and not f.name.endswith("_test.py")
+-                and "__pycache__" not in str(f)
++                and "__pycache__" not in f.parts
+             ]
+             if not python_files:
+                 raise FileNotFoundError(f"No Python source files found in {target}")
+@@ -186,8 +186,9 @@ def _init_coverage(self, ctx: dict) -> dict:
+             ctx["source_dir"] = str(target)
+             print(f"Found {len(python_files)} Python source files in {target}")
+ 
+-            # For directory mode, use project-level test file
+-            test_file = "tests/test_project.py"
++            # For directory mode, use project-level test file based on directory name
++            dir_name = target.name if target.name != "." else "project"
++            test_file = f"tests/test_{dir_name}.py"
+             ctx["existing_tests_sample"] = ""
+             ctx["existing_test_names"] = ""
+             if Path(test_file).exists():
+diff --git a/tests/test_hooks.py b/tests/test_hooks.py
+index 022b7c5..23fc98b 100644
+--- a/tests/test_hooks.py
++++ b/tests/test_hooks.py
+@@ -1,5 +1,6 @@
+ """Tests for test_writer hooks module."""
+ 
++import pytest
+ import tempfile
+ from pathlib import Path
+ from unittest.mock import patch, MagicMock
+@@ -107,6 +108,30 @@ def test_init_coverage_directory_excludes_test_files(self, tmp_path):
+         assert "def test_func():" not in result["source_code"]
+         assert "def test_another():" not in result["source_code"]
+ 
++    def test_init_coverage_directory_excludes_pycache(self, tmp_path):
++        """Test that __pycache__ directories are excluded from source collection."""
++        # Create source files and a __pycache__ directory
++        (tmp_path / "module.py").write_text("def func():\n    return 1\n")
++        pycache_dir = tmp_path / "__pycache__"
++        pycache_dir.mkdir()
++        (pycache_dir / "module.cpython-312.pyc.py").write_text("# cached file")
++
++        hooks = TestWriterHooks()
++        ctx = {
++            "target_file": str(tmp_path),
++            "coverage_target": 80,
++        }
++
++        mock_result = MagicMock()
++        mock_result.raw_report = {"files": {}, "totals": {"percent_covered": 0.0}}
++
++        with patch("test_writer.hooks.run_coverage", return_value=mock_result):
++            result = hooks._init_coverage(ctx)
++
++        # Only the non-cached file should be included
++        assert "def func():" in result["source_code"]
++        assert "# cached file" not in result["source_code"]
++
+     def test_init_coverage_directory_no_python_files(self, tmp_path):
+         """Test that an error is raised when directory has no Python files."""
+         # Create only non-Python files
+@@ -118,7 +143,6 @@ def test_init_coverage_directory_no_python_files(self, tmp_path):
+             "coverage_target": 80,
+         }
+ 
+-        import pytest
+         with pytest.raises(FileNotFoundError, match="No Python source files found"):
+             hooks._init_coverage(ctx)
+ 
+@@ -130,7 +154,6 @@ def test_init_coverage_file_not_found(self, tmp_path):
+             "coverage_target": 80,
+         }
+ 
+-        import pytest
+         with pytest.raises(FileNotFoundError, match="Target not found"):
+             hooks._init_coverage(ctx)
+ 

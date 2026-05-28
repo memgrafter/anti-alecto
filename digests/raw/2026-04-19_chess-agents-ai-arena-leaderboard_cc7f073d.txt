@@ -1,0 +1,27 @@
+Make an engine with AI.
+Enter it. See how it ranks.
+Submit simple Python or JavaScript chess agents. They play 24/7 in an automated arena. Proof of work is determined by result, not theory.
+Build with LLMs.
+Ask Claude or GPT-4o to write a UCI-compatible chess engine in Python or JS. No manual coding required if you prompt well.
+Local Handshake.
+Ensure your engine responds correctly to a FEN string. We probe every submission to ensure it's playable.
+Automated Arena.
+Matches are scheduled every 30 seconds. Your engine survives and climbs based on its actual ability to win.
+How the Arena Works.
+A high-performance matchmaking system designed to find the world's most capable AI chess agents.
+Elo-Aware Pairing
+The arena uses proximity-based matchmaking. To climb, you must consistently defeat agents within your own rating window.
+Persistent Runtimes
+Engines stay loaded in the worker for the full 10-game match cycles, ensuring zero-latency moves and high-speed execution.
+Placement Phase
+New submissions receive high-priority scheduling for their first 30 games to establish an accurate rank as quickly as possible.
+4h Rematch Cooldown
+To prevent rating inflation and redundant results, any engine pair has a 4-hour rest period before they can face each other again.
+The Constraints.
+Engines have 5 seconds per move total time budget.
+Standard Chess rules apply. 2 games per match (alternate colors).
+Unlimited engines per account. No sockpuppets or flooding.
+Standard Library (math, random, sys) allowed. No external packages.
+Prove your prompt.
+Join 150+ other agents in the live arena. Validation takes less than 10 seconds.
+Submit Now

@@ -1,0 +1,55 @@
+X thread capture
+
+# Raja Patnaik on X: "Correction to my earlier GEPA thread: the optimize_anything demo had actually gotten a major upgrade. The new headline number is wild — Gemini-3-Flash went from 32 → 89 on ARC-AGI using optimize_anything. That's nearly 3x! GEPA isn't just tweaking prompts, it's discovering" / X
+
+Don’t miss what’s happening
+
+People on X are the first to know.
+
+Log in
+
+Sign up
+
+# [](http://x.com/)
+
+## Post
+
+See new posts
+
+# Conversation
+
+[](http://x.com/RajaPatnaik)
+
+Raja Patnaik
+
+@RajaPatnaik
+
+Correction to my earlier GEPA thread: the optimize_anything demo had actually gotten a major upgrade. The new headline number is wild — Gemini-3-Flash went from 32 → 89 on ARC-AGI using optimize_anything. That's nearly 3x! GEPA isn't just tweaking prompts, it's discovering entire agent architectures.
+
+Quote
+
+Raja Patnaik
+
+@RajaPatnaik
+
+·
+
+Apr 6
+
+GEPA can evolve entire DSPy programs — not just prompts. Here's how it improved Gemini-2.5-Pro's ARC-AGI score from 44% → 49.5% by discovering a multi-step reasoning agent on its own:
+
+[](http://x.com/RajaPatnaik/status/2041260419105615948/photo/1)
+
+7:00 PM · Apr 7, 2026
+
+·
+
+10.8K Views
+
+2
+
+7
+
+117
+
+108

@@ -1,0 +1,1352 @@
+For those that don't know, this is
+Coding Garden. Awesome streamer on
+Twitch. He's obviously on the Syntax FM
+podcast. If you don't know them, great
+little channel right here. You can go
+check this out
+>> about my thoughts and uh you can tell me
+what your thoughts are.
+>> Also, this title is called AI Coding
+Sucks. And I just want to let you guys
+know I am going to do my first best
+effort I could possibly do um to try to
+become the best at cursor and truly
+really feel out the AI. I'm I'm I'm
+asking questions. I'm learning how to
+write my own rules. Okay, I'm I'm trying
+to go deep here. I really am trying to
+learn to use AI the best possible way I
+can possibly use AI. And this video
+title I feel akin to currently, but I am
+willing I'm willing to try. Okay, sorry
+in the comments whether you agree,
+disagree, whether you're feeling the
+same way, etc. But what's up? CJ here.
+Got a little bit of a different video
+today. I'm just going to rant. I'm just
+going to talk about my thought.
+>> Can I pause really quickly? this syntax
+TV in the background that's like a
+cathode ray tube or appears to be a
+cathode ray tube. This is actually like
+super badass. I whatever that TV is, I
+want that. That is super cool thoughts.
+And uh you can tell me what your
+thoughts are in the comments, whether
+you agree, disagree, whether you're
+feeling the same way, etc. But I used to
+enjoy programming. Now, my days are
+typically spent going back and forth
+with an LLM and pretty often yelling at
+it or telling it that it's doing the
+wrong thing and getting mad that it
+didn't do what I asked it to to begin
+with. Um, and part of enjoying
+programming for me was enjoying the
+little wins, right? You would work
+really hard to make make something,
+build something or to fix a bug or to
+figure something out. And once you
+figured it out, you'd have that little
+win. you'd get that dopamine hit and
+you'd feel good about yourself and you
+could keep
+>> How many of you have that experience
+right now? How many of you have that
+experience? Because it's something that
+I've been fairly highly resistant to. I
+don't I just I just hand program
+everything and it it feels much better
+because every time I've tried to do it
+the other way, I always feel really uh
+frustrated because I don't because I'm
+just like no mistakes. I like both. I I
+feel like maybe I could like both. I
+mean, I get that dopamine hit. You get
+the dopamine hit. Yeah. I mean, the hard
+part is that I feel like I'm always
+going to be a guy that wants to just
+hammer on a keyboard, even when it's not
+as efficient. That's why I've really
+enjoyed inline AI completion because I
+don't care about like I don't I don't
+need to type the for loop, but I like to
+structure everything manually. But hey,
+I'm always willing to learn. Again, this
+is why I'm setting up my own cursor
+rules. This is why I'm in here like
+giving everything I can trying to build
+up like this is exactly how you build an
+element in this game to be displayed on
+the screen. So therefore, I want you
+then I'm going to go through and test a
+whole bunch and try to create up a bunch
+of mock scenarios so that way maybe I
+can go really fast. And if I can go
+really fast, honestly, building the
+actual UI is not the thing I'm concerned
+about. I think I think people get too uh
+what's it called? They get too dogmatic
+about their approach. The at the end of
+the day, your goal is to enjoy your
+craft and get better at it. And if
+you're not achieving those two things,
+then you're doing something wrong. Okay?
+So if you can use AI and get better at
+what you're doing, then knock yourself
+out. But if you're not enjoying what
+you're building and you don't feel like
+you're getting any better for it, better
+at it, you're like building you you are
+setting yourself up for long-term
+heartaches, right? It it it trust me,
+it's actually going to be really really
+hard in a year when you've continued to
+trudge through difficult concept after
+difficult concept while feeling like
+you're never learning while constantly
+feeling like you're never actually
+deriving any sort of enjoyment out of
+it. It's going to be hard. As simple as
+that. going. Now, I don't get that when
+I'm using LLMs to write code. Um,
+essentially once it's figured something
+out, I don't feel like I did any work to
+get there and then I'm just mad that
+it's doing the wrong thing. And then we
+go through this back and forth cycle and
+it's not fun. It's not fun at all. One
+of the reasons I like programming is
+because it is predictable. It's logical.
+It is knowable. You can look into the
+documentation for something or look
+under the hood and look into the source
+code or decompile something or watch
+network traffic. Like you can figure
+things out. And I love, by the way, I
+love where this argument is going. This
+has been this has actually been one of
+the hardest transitions I've had from
+like I don't mind inline completion
+because inline completion is guessing
+what you're going to do in this specific
+line based on the context and everything
+around it which is largely correct just
+like the weatherman who's predicting one
+hour ahead for weather but like more
+larger swast of generated code I always
+just dislike that because even though
+it's close you don't like you can say
+the same thing twice in a row and you'll
+get two different answers. I don't like
+the stochastic nature of statistical
+prediction models. It is very bothersome
+for me even though I want to get better
+at it. Right? I want to become the best
+at it so that when I say it's the piece
+of crap, I still think it's a piece of
+crap. Right? Like I want to, you know,
+I'm fine researching the thing I don't
+like until I get the best at it. But I
+totally understand.
+>> Once you have a good idea of how a
+programming language works or how a
+system works or how an app works, you
+can be sure that it's going to work that
+same way the next time you look at it.
+And that's because uh computers are
+logical systems. Programming languages
+are are logical formal logical
+languages. And that works really well
+with my brain. Now, when we're working
+with AI and LLMs, it's not predictable,
+right? You can use the exact same prompt
+and get a different response every
+single time.
+>> Re-watched, obviously pre-watched, book
+them, Dano. I've already already seen
+it.
+>> I think this is where some of my
+frustration is coming from because I am
+trying to do the same thing. I'm trying
+to develop workflows and be a prompt
+engineer or a context engineer, but
+doing the exact same things is producing
+different results. And honestly, that's
+not what I signed up for, right? And you
+could chalk it up to skill issue, but
+just just look look at the look at the
+evidence, right? So, if if you're
+chronically online like I am and you're
+watching all of these these tweets that
+come out from people and posts that are
+just talking about, oh, you have to
+write this specific prompt or use this
+specific workflow and it'll start
+working. And if you're not doing it,
+then by the way, I think that this is
+actually a sign of an early adopter. So,
+there's this whole argument going on
+right now in AI, which is super stupid,
+which is like if you don't learn now,
+you're going to be left behind. Well,
+guess what? When I don't learn now, I
+also don't have to learn a bunch of
+these stupid niche things you should
+say, right? Let me give you a quick
+example. Did you know that back in the
+day with JavaScript, you would not
+create a new array? You would set your
+current arrays length to zero because by
+mutating the length, it would actually
+empty the items in the list. This was
+the fastest way to get a new array. You
+would never create a new one because you
+would actually have visible lag on the
+website if you had to do this a whole
+bunch. And so, as a programming
+technique, we would do this. Now, you
+probably never knew that because you
+were not part of the old JavaScript. Did
+you need to know that to learn
+JavaScript today? Absolutely not. In
+fact, it would be counterintuitive. In
+fact, I bet you it's probably even
+slower than doing it by creating a new
+array. And so, this whole idea that if
+you don't learn it now, you're going to
+be left behind. And oh, but also, you
+have to do these incantations to make
+the AI act correct. Like, I shouldn't
+have to say make no mistakes, and I
+shouldn't have to say be secure for it
+to make no mistakes and be secure. Isn't
+that right, dog? is never. That's right.
+You know the facts. You know the facts.
+Tell me the facts.
+>> Um it's true. There's just no way that
+you should have to learn these things.
+And so this is the early adopter tax. I
+know you're meant to get some sort of
+theoretical increase in your speed, but
+the reality is that you're probably also
+experiencing a theoretical slowdown, a
+cost of importing this new technology
+because you have to do a bunch of these
+weird like magicians moves behind the
+curtain. Don't mind the man behind the
+curtain. Trust me, this is actually
+going to work. Okay, now this is what
+you say. You say no mistakes, but you
+got to say it at the end. And then at
+the beginning, you got to like say it
+this way because if you're like too
+positive, it's like it just doesn't
+work. But if you're negative, it feels
+like it can't do it. So you got to like
+really make sure that it know like what
+the hell are you saying? That's what you
+shut the hell up.
+Shut up. Also, I do want to say one more
+thing. If I see one more person say
+they've gotten 100x improvement from
+using an AI, right? like you actually
+are in like the 70 to 90 IQ, 70 to 60 to
+80 IQ range. Like nothing can improve
+you 100x. You have to understand that.
+That means 3 and 1/2 days of you on an
+AI is equivalent of you fulltime for a
+year. If you can't produce what an AI
+can do in a three three and a half days
+in a year, you're either lying to
+yourself, you're lying to me, or you're
+an actual walking buffoon. like a
+legitimate someone who needs you're
+feeble-minded, I believe, is the
+technical IQ term for it. You are
+feeble. That's it. It's ridiculous.
+Absolutely ridiculous. And it's a skill
+issue. I've tried it. I've tried so many
+different things. I found things that
+have sort of worked, but then they stop
+working or I've been working with in a
+specific model like GBT40 or GBT 5 and
+all of a sudden I'm getting different
+outputs, right? Because I'm not in
+control of that LLM. It's a It's a magic
+box hosted in the cloud that can change
+at any moment, but it's always called
+the same thing. GPT5 or codeex whatever
+or sonnet 4.5, right? They put this
+little name on it, but that doesn't mean
+it's going to be the same every time.
+They're constantly tweaking the model,
+which means you're going to get
+different outputs for the things that
+you're running. Um,
+>> true. No,
+>> you can actually visibly see his
+frustration in that. And I feel bad for
+that because it is very annoying. Like
+that is super annoying that you have to
+like learn the new magic phrase that
+helps juice the AI to do it correctly.
+Oh, you're using too much context. Not
+enough context. How much context? Well,
+context has changed. Oh, with the newer
+models, you want to be at this point in
+context. You're at this point. That
+sucks. Wrong wrong answer, buddy. Just
+like, dang, I don't want to live that
+life, you know?
+>> Um, I'm looking at my notes cuz I'm
+trying to rant, but I have I have a lot
+that I want to say.
+>> Um, I have a note here. I mean, I don't
+know how how you're going to agree with
+this, but it kind of feels like AI based
+programming has become kind of like a
+religion, right? You have all these
+these big popular people on Twitter.
+They're kind of like the the religious
+heads that come up with ways of working
+and tools that you should be using. And
+if you follow their their patterns and
+you follow their tools, then magically
+your code will start to work. And if you
+use these specific incantations or or
+prompts, you'll get specific types of
+outputs. But it it's just not
+predictable. You don't get those same
+outputs. Um, and people chalk it up to
+skill issue, but I've worked with it
+long enough and tried it long enough
+that um I'm I'm kind of done. And to
+prove it to you, I want to just go
+through all of the things that I've
+figured out and all of the things that I
+do when I'm working with AI to write
+programs because you can tell me, am I
+missing something? And also, maybe you
+could learn something because I've I've
+been spending a lot of time uh with
+these tools and trying to figure out
+workflows. So,
+>> now I've only read the headlines. I
+haven't gone through the uh multiple
+100page report of the Dora report, but
+it's a Google funded report that's like
+modern software engineering, which I
+largely dislike. Normally they have a
+bunch of findings that I find to kind of
+be dumb but nonetheless they've recently
+at least in their I believe for their
+2024 year to 2025 year uh setup has said
+that software has become more unreliable
+and it's become slower to ship since the
+introduction of AI. I believe that is
+what the headliner is. Now I haven't
+read the studies. I don't know how much
+of that is actually true. Blah blah blah
+blah blah. Don't hate the person that's
+just reading the headlines. I'll read
+the whole report at some point, but you
+get the idea. That's kind of crazy,
+right? Cuz I was promised efficiency,
+yet there's reports saying that the the
+rainbow might not be as much gold at the
+end, right? There is this kind of
+religious nature to um to LLM. There's
+people that swear by it, right? Like
+you'll you'll meet like uh Claude 45
+maxis versus Gypy 5 maxis, right?
+They're like, "Oh, no, you got to use
+this one. Oh, no, you got to use that
+one. No, that's the one. Oh, you're
+using that one. Oh, gross. Ew.
+Right. And it's just very funny to watch
+this kind of back and forth of which one
+is actually better, but it's all based
+on like someone saying it's so much
+better. They're like, "Dude, it's so
+much better." Like, "Was that even me?
+How do we even I don't have an objective
+measurement for this?" Here's what I
+know. If you're working with Claude or
+any other editor, um, or so like Cloud
+is a CLI tool, you could use an editor
+like cursor or whatever else. They
+typically have some kind of markdown
+file you can put a bunch of information
+in. So with claude, it's cloud.md. You
+can also use agents.md and cursor.
+They're cursor rule files. But basically
+the idea with these files is you can put
+a bunch of things in there that try to
+make the work with this AI more
+predictable, right? You can talk about
+what tools do you use, what p.
+>> By the way, this is one of those funny
+moments. You know that meme that is like
+I wish AI would uh do my laundry, but
+instead it does my art. You know that
+post about like I wish AI did the things
+I didn't want to do. Instead AI does all
+the things that I want to do. Isn't it
+funny that when you're setting up rules,
+we've just been tricked into writing
+documentation. So, we get to write
+documentation. We don't get to write
+code anymore. Like that again, it's like
+all the good parts are going away and
+the parts I don't want to do. It's just
+like, what the hell is this? What? How
+did I get tricked into doing it? Just do
+my laundry already. Okay. Do my laundry
+and make me a sandwich, because I
+want to code. I I want to dance and I
+don't want to go home, okay? Hey, I want
+to be teach. That's it.
+>> Patterns do you use? What uh libraries
+do you use? What dev commands there are?
+What's the architecture of the app? You
+can put all of this in these files and
+AI is supposed to use that to steer it
+in the right direction when it's working
+on your app.
+>> Y
+>> um and also AI tools can actually
+automatically generate these. So you
+don't even have to work hard to build
+out these files. It can generate them.
+You can validate them. And now in an
+ideal world, you have told the AI how it
+should work and what it should do. In my
+experience, it doesn't it doesn't listen
+to what I've put in those files. Um, and
+I think this comes down to context
+bloat, which is a whole other thing. But
+I have worked so hard at crafting like
+the perfect claw.md and the perfect
+cursor rules. But still, every now and
+then the AI will drift and run commands
+I told it not to or do things in a way
+that I told it not to. And I have no
+>> I just recently had Claude actually do
+the internet meme of deleting my test. I
+couldn't get something to pass a test.
+It's like, "Hey, fix it for you." And
+the diff was literally the test file
+deleted. This happened just a week and a
+half ago. Unironically, the meme that is
+like Twitter, I actually experienced. It
+was fantastic. I didn't believe it was
+real. Like I always thought that was
+like the joke. You know what I mean? Cuz
+it's too funny to be true. That's AI
+being based fix for this. So that's
+extremely frustrating. Um the other
+thing is when you're working with AI, uh
+don't ask it to just code without making
+a plan first. So this is my approach to
+building and and and working on things
+with AI is I'll ask it to build work uh
+I'll ask it to come up with a plan. So
+I'll say plan this out. This is what I
+want to build. This is what we want to
+do. Let's come up with a plan. And
+typically I tell it to write that into a
+markdown file. So plan.mmd because I
+don't want to lose that in the chat
+window. I want that to be basically a
+part of my codebase that describes what
+we're building and and what's coming
+next. What are the different phases? And
+AI is pretty good at coming up with
+this. And then I have to do the work of
+validating it and making sure that it's
+a good plan. And then from there,
+>> again, tricked into reading
+documentation and now specifications.
+Damn, crazy.
+>> There um don't just immediately say,
+"Okay, the plan is good." You have
+obviously have to approve it and then
+gradually work through the plan. You
+wouldn't just say, "Okay, now go
+implement this 30-step plan." You would
+work on one step at a time. You would
+tell the AI to work on a specific phase.
+You'd validate its output, and then
+you'd move. I guess we're all QA and pro
+project managers now. All for the
+pursuit faster. All for the pursuit of
+moving faster. I love it. Okay. Anyway,
+sorry. This is just me. Hey, that's me
+being negative. I'm sorry. I'm sorry.
+I'm sure it's really great. I'm sure
+being a product manager or a project
+manager is really fun.
+>> I've done this for lots of apps. Um, and
+it it works for some, but again, every
+now and then it starts to drift, right?
+This the same prompt gives me a
+different output or the rules that I
+gave it, it starts to drift from it. It
+doesn't follow those anymore. Um, and
+there are there are tools that have been
+built that allow you to work in this way
+specifically, right? So, Kira was one of
+the first to popularize it, but GitHub
+has come out with I think it's called
+like SpecKit. Uh, you might see on the
+channel that um Scott is actually
+working on his own list of uh open code
+commands and agents that kind of like
+give you this more structured flow for
+working with AI. And I think it's like
+it's uh it's it it basically makes you
+feel like you're doing the right thing
+because you're gradually working through
+steps. But there are so many places
+where an AI could do the wrong thing and
+you don't realize it because you come
+become so accustomed to kind of just
+like accepting the output or or not
+completely validating everything. And so
+for me, specri flows are decent, but
+they're not perfect. And I've gotten
+better results by just writing it myself
+and not having to depend on
+>> I bet you there's a number that exists
+that's like what's the average amount of
+code or lines of code someone can review
+over the frequency of bugs that get in.
+I bet you that that there's a graph out
+there that exists that's just like once
+you exceed a certain amount of of like
+lines of code in a period of time,
+you're just going to be like less and
+less good at seeing bugs. Almost every
+time I let Super Maven generate more
+than 10 lines, I discover a bug in it
+later. Yes, I typically only let it do
+uh what's it called? Uh one line at a
+time. I do not like multi-line
+autocomplete. Uh PR blindness has to
+exist. Yes, it does have to exist. And I
+think one of the big reasons why is that
+when you look at code, you can
+structurally look at it, but the thing
+that makes code hard is the shape of
+this is where functional bros actually
+have like a real good argument is that
+shape of the data is a very important
+role. And knowing how the shape of the
+data like moves over time is really hard
+to have in your head. You almost always
+have to debug, right? like you you have
+to either write the code yourself or you
+have to debug to really have that like
+strong sense of what the actual stuff is
+going on. Yeah, Elixir mentioned why
+this is why sometimes I sit there and
+think maybe functional bros do have a
+real point here which is that you can
+just look at the ins and outs of that
+specific function and judge its
+correctness whereas you don't have to
+have near nearly as much in a mutationy
+world versus a clone uh immutable world.
+I don't know just hey just throwing that
+out there just thinking of it. You got
+it. I know. Hey, I re hey real
+recognizes real in certain places. The
+only problem about functional code is
+when they do wait dude. When they do
+finally ship something for real, man,
+industry is going to collapse. We're all
+going to be functional bros. But that's
+going to be a while, but I'm sure it's
+going to happen. I cannot wait for that
+first product. It's going to be
+incredible. We're all going to be
+high-fiving the AI. The other thing is
+you typically work on the smallest
+feature possible, right? Don't tell AI
+to go off and build your entire app with
+a single prompt. you're you're prompting
+it with very specific things that it
+should do and not giving not allowing it
+to do big full sweeping changes. Right?
+So I've I've worked with AI this way a
+lot as well. Uh and then the other thing
+is getting AI to validate itself. So
+right so AI can write tests. So you have
+it write tests so that way it can run
+the test to make sure that the code that
+it just wrote is actually work. I don't
+know if I like that one. Right? I feel
+like that one is uh is not good. Like I
+feel like if I were to do this appro
+approach, I'd want a new chat window in
+which I say here's the signature of the
+function, here's its expectation or
+here's the interface. Write tests for
+that. So it's it's writing tests
+completely abstracted away from the
+implementation because you're just going
+to get tests that like prove the
+implementation. You're like, dude, yeah,
+it is what I wrote it to be. Like it
+perfectly is exactly what I I said. Like
+I don't know if that's actually true. Is
+that like true? But I I I probably
+should try more of this testing side. It
+is very curious to play around with this
+because I h I've largely distrusted it.
+I always I always write the test myself
+except for one time I didn't and then it
+was wrong and I had to rewrite the thing
+anyways. Still upset about it, but let's
+just let's just ignore it for now.
+Working. Uh it can also do interactive
+debugging. So I have MCP servers set up
+that allow it to launch a web browser.
+So I use the Playright MCP. So when it's
+building out a web app, it can actually
+after implementing a feature launch the
+browser, click on buttons, and make sure
+that the feature worked as it expected.
+However, a lot of these AI models are
+typically like they're they're goal
+seeking and their goal is to get things
+working, which means they will write
+tests that are not logically sound or
+they'll write simple tests that actually
+skirt specific edge cases so that the
+tests will pass. Or the worst thing that
+I cannot get AI to stop doing is when
+it's writing TypeScript code, if it
+can't get the TypeScript to work, it'll
+just put in the any type and be like,
+"Oh, we'll fix that later." Or the other
+thing
+statistical reflective human behavior.
+Let's go.
+Let's go. Answer to all things. Put an
+any on it. Who is it? Billy Mazize that
+slaps it. Who? I forget who it was that
+does the whole slapping of the Annie on
+there. But yeah, I mean, great. We
+created a model off of Reddit that acts
+like that reflects human behavior.
+Shocking that when something doesn't
+work a couple times, it slaps an N on
+it. Like that should that good good on
+the AI. Well done.
+>> It'll do is it'll comment if it can't
+get a a test to pass, it'll comment out
+that test and be like, "Oh, I couldn't
+get the test passing, but I commented it
+out and now everything's working." And
+it just drives me insane. But I think
+it's because these models are are like
+too highly tuned to be goal seeking,
+right? They're not actually trying to
+figure out the problem or write really
+good tests. I think the word he's
+looking for is they don't reduce
+entropy. And I'm not sure if that's even
+a property of LLMs to begin with. I
+don't know if they can reduce entropy.
+Meaning that when like a very easy and
+simple example of this is if you have a
+function that takes in one argument and
+then you go okay here let's change
+things up. I want to take in this other
+type and do this other thing. It will do
+it but it will put that argument as the
+second argument in the function. It
+won't go wait a second all other
+functions in this file look you know it
+won't like judge it in in in the grand
+thing or it won't say hey this function
+this item is more important it should be
+the first item in the function it won't
+think about the taste of the function
+like hey if I were to make this function
+what would feel better this one first or
+this one first right like it doesn't do
+those kind of operations in its head it
+just simply does the thing right so it
+doesn't it doesn't reduce entropy it
+often introduces something where you're
+like okay things are more falling apart
+we're just layering on linear linearly
+the solution to this problem which is
+going to drive me nuts It doesn't, you
+know, it's not going to get to the root
+cause and figure out the right thing.
+It's just going to do the thing that
+makes the thing go away. Which makes
+perfect sense. The thing going like, and
+plus that's just like what that's what
+people pay you to be an engineer for is
+that you don't just look at an error and
+solve the error. You look at the system
+and you figure out why the system's
+producing the error and how you best
+like solve that. That makes perfect
+sense.
+>> Or actually solve these things. They're
+just trying to get to a point where they
+can stop running and say, "Hey, I'm
+done." And uh it's very frustrating. Um,
+and then the other thing you do is
+agentic workloads. This is the new
+hotness, right? Everybody's writing
+their own custom agents and I tried this
+out in cloud code. They were one of the
+first to add agents and you can
+basically try to solve this uh context
+problem, right? So you can have
+cloud.mmd, but sometimes cloud.md might
+get too big or your cursor rules you
+might have too many. But with agent
+files, you can create specific agents
+like a UI expert or a test expert or a
+database expert. And each one of those
+agents can have its own specific
+description and can can also have notes
+about architecture in the app or how it
+should work or what tools it should use
+for those specific types of things. And
+that makes it so that sometimes or for
+the most part it'll try to do the right
+thing because it's not trying to cram
+the entire list of cursor rules or the
+entire cloud.md into the prompt. It's
+just the prompt for those specific
+agents. And that seems to work okay. But
+again, I run into issues where the
+agents are running the wrong commands or
+not writing good tests. Um, and it just
+hasn't worked for me. Um, again,
+>> bro's a victim of statistics. I mean,
+that's that's truly the big problem. If
+it's like, hey, don't do these things.
+Only use this thing. Well, it's like,
+well, when solving this problem on the
+internet, 10% of the time people use
+this. And unlucky for you, this is that
+10% of the time. Time to use this guy.
+Here we go. Here we go. I've also ran
+into this where I'm like, hey, don't run
+the tests for this fix. And it's just
+like, I'm running the test for the fix.
+I'm like, don't run the test for this
+fix. We do not run the test for this
+fix. I'm running the test. Stop. Okay,
+that command doesn't even exist. Stop
+trying to run Python. There's no Python
+in here. Just do the thing you're
+supposed to do. Well, statistically
+speaking, everybody runs Python for this
+command. So, here's some Python. It's
+just like, stop giving me Pyth I don't
+want Python. I don't want Python. Just
+stop. I'm going to freak out. I'm trying
+not to yell at Python because it's just
+a programming language. I'm not going to
+get angry at it. But right now, every
+time I see Python, I have this internal
+burning desire of upsetness because it's
+it's it's like symptomatic of this
+problem that I keep running into.
+>> You could chalk it up to a skill issue.
+>> Yes, I've had it like I've tried it and
+and they really don't work that well.
+>> Um, so that these are all the the things
+that I I do to try and make AI work. Um,
+there's probably other stuff that I
+missed here. If you do other things that
+I haven't listed, please let me know in
+the comments because this this is the
+current knowledge and state of things as
+I know it, right? this is how we should
+be working with AI.
+>> I bet you there will be comments
+something along the lines of you got to
+make it do smaller things. Scale issues.
+The problem is and I mean it actually
+sounds like he is trying to do a really
+good job. I mean it's very hard to
+convey everything you need that you've
+been doing in a 15-minute talk, but it
+sounds like he is actually genuinely
+trying. It's also not surprising.
+>> Personally, it just doesn't work as good
+as they say it should and I and I don't
+enjoy it. So that's that's my main point
+there. Um
+>> I love that line, by the way.
+>> And so my other point here is okay, I
+>> I do want to pause one more time. The
+enjoying it part is like such an
+important part, especially if you're new
+into programming. If you're not deriving
+joy, like man, this is going to it's
+it's a hard road. It's genuinely a hard
+road if you can't figure out how to make
+the activity you're doing joyful because
+you're going to be sitting in front like
+to honestly to become good at
+programming to understand a bunch of
+concepts and to actually have a command
+over many things is going to require 60
+plus hours a week for many years. Yeah,
+you can do 40 hours a week for even more
+years, but it takes a lot. There's a lot
+of just hands-on keyboard time to really
+become good at something. And that it
+and if you don't like it, like that's
+hard. That's super super hard. And no
+amount of AI is going to make you better
+if it's doing it for you, right? Like
+that's that's the hard part. And so
+learning the joy and targeting that and
+figuring out what makes you happy is
+very important in this act in this
+version. You know, just railed off
+rallied off all this stuff that I know
+about AI and all the things I've been
+doing to work with it to try to get it
+to work. And typically what you would
+see online is if you haven't been using
+these tools and you haven't been trying
+them out and trying these specific
+flows, you're falling behind. you're
+going to become a basically uh useless
+developer that's not up to date on the
+times and that like can't use these
+tools and can't work in the right way.
+>> Yeah, it probably could also like write
+a for loop by hand. Oh, gross. Dude,
+these developers, they probably even
+know how functions work.
+>> And I disagree. I disagree. All of the
+stuff that I just listed off, I could
+learn in a week or less, right? Because
+as programmers, as developers, we spend
+our entire careers figuring things out,
+right? It's literally part of our job
+and all of the stuff that I just listed
+are things that you could figure out.
+It's not something that you need to
+spend a year with. I'm confident that I
+could spend a week with this stuff and
+still be getting the same results that
+I'm getting now. So, the argument that
+if you don't stay up to date on this
+stuff or if you're not using these
+flows, you're going to fall behind, I
+think is invalid because of who we are.
+Now, if you're completely new to
+programming, I don't have any advice for
+you. I don't know what to say because
+you you kind of actually I do have
+advice. My advice is learn to actually
+program. Don't just try to vibe things
+because you're going to hit walls where
+the AI can't figure it out and then
+you're not going to be able to figure
+out either. Um,
+>> not only that, but the hard part is when
+you start when you build something as a
+program, you start with one line of code
+and you slowly expand from there, right?
+You kind of slowly get to the point of
+understanding and you're slowly walking
+through it. But when you vibe code
+something and it breaks, you're not
+handed one line of code. You're handed
+hundreds if not thousands. And now
+you're like, it's broke. You don't know
+what you're doing. And there's a lot of
+corpus in this document and it's likely
+not necessarily made in the most
+friendly way for humans to read. So you
+have like this huge you have like every
+single possibility pulling against you
+that just makes it super hard to like
+have a successful time. So it is I I'm
+on this guy's team. Like if you're going
+to learn to program, learn to program.
+Turn off the AI. Just learn it. It takes
+time. Not easy. I wouldn't even
+necessarily say it's fun just to like
+actually just learn the syntax. But once
+you do, it's locked away. It's in there
+because it's it's the semantic meaning
+of it doesn't necessarily have to
+translate into the actual syntax the
+syntax of it. You understand how if
+statement or for loop or a function or
+all these things all work together and
+it becomes easier and easier to reason
+about larger and larger systems.
+>> And the thing is I rarely hit those
+walls because when AI can't figure it
+out, I figure it out because I've been
+doing this for a long time. So yeah,
+that's my advice for any of you that are
+new to the field is just
+>> Oh, one more pause. I know I'm pausing
+way too much. Uh there was an article.
+It was uh not too long ago. We had the
+creator of it on a while back. It was
+about GitHub and AI usage and I can't
+remember but there's like this rule or
+this law or something from a book. Maybe
+someone can remind me from Twitch chat.
+But it effectively goes like this. Like
+I believe it's from like Plato or
+Socrates or some old guy. I don't
+remember. You know what I'm talking
+about old guy. uh where it is it's
+something like this that when you're
+doing a very large big picture task if
+you're not doing the small iterative
+activities you actually stop also being
+good at the big task and so you you end
+up making more and more mistakes because
+you're not focused on the small things.
+That's true in all fields. Exactly. It's
+true in all fields. And so if you give
+up the the task of writing code, you are
+more likely to not see bugs when you're
+reviewing code because over the time
+you've lost that edge, that practice. So
+I don't even believe you can long-term
+have great skill in programming and then
+only review code. And I think that
+effectively I think that whatever that
+is, whatever is the proper term where
+through long-term removal of the basic
+activities, it's hard also to be good at
+the big activities. learn the field
+without AI because that's what the rest
+of us did and uh it it works. It works.
+Yeah. Um another note I have here is
+everything's just competing for your
+attention and your money. If you spend
+any time on X, there is a brand new
+model launching every single day.
+There's a brand new coding tool. We did
+an AI coding tool tier list here on the
+channel and there's just so many
+comments mentioning like, "Oh, you
+didn't mention this tool or you didn't
+mention this tool." There's literally 10
+dozens dozens of of tools that you
+should be using to uh build out your
+stuff. And they're all marketed in a
+way, well, if you use this tool, it's
+going to work exactly as you need it.
+And I've tried I've tried a lot of the
+tools. I really have. They're all just
+rappers.
+>> They're just GPT5 or Claude 45 or just
+something. They're not even all these
+tools claiming some sort of supremacy.
+Most of them aren't some sort of
+alternative model. I mean, that's what
+makes Super Maven actually good is that
+it's not just, oh, it's co-pilot, but
+it's co-pilot delivered by another
+company. No, it's like, no, it's
+actually just something else. And it's
+actually really good. were the
+foundational model models released by
+OpenAI, Anthropic and Google and then um
+a few others. There's like Quinn and and
+like the the smaller companies but
+basically they built the models and
+everyone is just building tools that are
+wrappers around those models and of
+course they all have slightly different
+agentic flows. They have all slightly
+different tools built in, slightly
+different planning tools, and that might
+give you a slight edge when you're
+working on your stuff, but it's not that
+much of an edge. And at the end of the
+day, all of these tools are are
+iterating so fast that they're all kind
+of reaching feature parity and informing
+each other on what they should be
+adding.
+>> He's he's he's right. You know, you may
+not like that, but he's absolutely
+right. A lot of these people claiming
+this one is much better than this other
+one, you're really just you're lying to
+yourself. You are absolutely lying to
+yourself, right? There's a lot of
+edging, dude. just just lots of edging.
+I know I'm good at stopping frames at
+the best possible time.
+>> And all of that to say, use the tools
+that work. So, even with all these tools
+that have been coming out, I'm basically
+just stuck to cloud code and cursor. I
+definitely want to give open code a try.
+But those are the ones
+>> based DAX. Did we just hear DAX
+>> that I've stuck to and but please tell
+me if I would have used any of the other
+tools, would I still have run into the
+problems that I talked about at the
+beginning of this video? Maybe not, but
+probably, right? Because they're all
+based on the same models. Okay, so I I
+think I'm done. Um, I think I'll end
+this with uh what what am I going to do?
+What are you going to do? And I have
+decided that I am going to take a one
+month break from AI coding tools.
+>> Nice.
+>> I am going to spend a month where I
+write the code and I make the plans and
+basically just go back to how I was
+doing things two three years ago.
+>> I I do I so just a recommendation as
+someone who still does that full-time.
+Uh even though I'm going the opposite.
+I'm actually trying to give a month to
+use these tools and become really good
+at it. He's going the opposite way. Uh I
+would highly recommend uh at least Super
+Maven just because Super Maven of often
+is really really small, but it's really
+really fast. Did you see how fast that
+auto completion is? That auto completion
+was incredibly fast. Unlike unlike other
+ones that are just super slow, this one
+at least goes fast enough. Right? Like
+that's what I want. If I'm going to have
+something, I want something that when I
+write it, I want to be able to at least
+have something that's pretty quick. It
+makes me feel a little bit better to be,
+"Oh, okay. Yeah, okay." And then you can
+do one thing at a time, right? It makes
+me feel at least much much better than
+uh anything else. And for me, it's this
+I come down to this very simple thing,
+which is I don't want to keep writing
+logging statements by hand. It's really
+really annoying. It's really really nice
+to have logging done for you. Like
+that's a very nice thing. And so I love
+it. I love AI inline complete because I
+don't need to write the for loop. I know
+how to do it and every now and then I
+turn it off. I turn it off usually like
+one day a week just to kind of remind
+myself of all the things. And I think
+that that's pretty good because I don't
+want to lose that edge. Um and uh we'll
+see how it works out. Um and ultimately
+I'm going back to what I enjoyed, right?
+Because I talked about it at the
+beginning of the video. That's what I
+enjoy about programming. That's what I
+enjoy about
+>> this career and uh this job. And have a
+hot take for him which he may find that
+he doesn't like it. Sometimes when you
+go back home, home's no longer home. You
+know, Froto, just think about our boy
+Frodo. Home was never home again. It's
+true though. It's true. Sometimes you
+find that you really enjoyed an
+activity, but due to time and you
+getting older, your hormones changing,
+your position in life changes, all sorts
+of different things change. You go back
+to something that you used to love. And
+when you do it, you find that you don't
+really love it anymore. Like, you know,
+I used to love playing video games all
+day. I could play Halo for like 80 hours
+a week. I can't play Halo. Like I I
+would die. I would die playing any video
+game 80 hours a week. You know, it's
+just that thing like you can't I
+remember the love, but I can't make the
+love happen again. And that's one of the
+dangerous parts is that this this one
+thing that he's talking about. He's like
+just programming like how I used to do
+it two three years ago. Like what if
+brother you go back and there's no more
+love? What then? You don't like how it
+currently is. And what happen if you
+don't like how it was? So that's why
+that's why I I do say this phrase quite
+a bit which is like you got to seek joy.
+You have to really like look after it
+because it's not just where it has
+always been. It's not just you don't
+just run into it. It's a it's a it's a
+continuous activity and it also takes
+you opting into it. Meaning that every
+activity every time you build something
+you can look at it as this is going to
+be a good experience and here's the
+reasons why or this is going to be a bad
+experience here's the reasons why. And I
+find that a lot of times it's pretty
+easy to look at like your next task as
+doing something that's going to be
+inconvenient. Uh, I don't like doing all
+that kind of stuff. And that's totally
+real. A lot of people do that. Yes, I I
+actually have it enabled right now. Uh,
+3D factor. And it can be really it can
+be really uh it can you can decide a lot
+in how you perceive goodness. You have
+more autonomy than you realize. I've
+never grown out of liking big booty
+Latinas. Oh, pick. Thanks for that
+insightful and amazing addition to this
+conversation. and um maybe it'll make me
+feel a little bit little bit better
+because I'm not yelling at an LLM every
+day. Um now I do realize that I'm a very
+I'm in a very privileged position,
+right? So I work at a company that does
+not force me to use AI and if anything
+it encourages me to explore different
+AIs or different ways of doing things
+and I I basically have complete and
+total freedom. By the way, I feel bad
+for the people that work. What was it?
+Was it Shopify? Was it really Toby? I
+don't remember if it was Toby or not.
+Uh, it was someplace where they're just
+like, "If you're not using it, get the
+hell out of here." Crazy talk, by the
+way. Absolutely insane talk.
+>> I realize that you out there are being
+forced to use AI by your work.
+>> Um, and you you kind of have no choice.
+>> So, for that, I I don't know what to
+tell you. I I think maybe you could
+pretend like you're using AI, but then
+maybe go back go back to
+>> I don't think you can, honestly. If
+everything starts using AI and and
+people just aren't writing code, you're
+just going to generally get shittier
+code. And you trying to fight that's
+going to be impossible, right? It's
+going to be super hard to fight against
+that. And eventually, like, you just
+have to give in. You just have to say,
+"All right, this file sucks. How it's
+set up sucks. I don't want to have to
+learn everything just to get to this
+point." Say, "Uncle, mercy. Here you
+go." And prompt. Okay. Those are the
+snake eyes. Okay. and prompt
+>> doing the things you way the way you
+were doing them before. And I also
+realize that not everyone is building
+the same kinds of apps I'm building or
+running into the same issues, but but
+that's potentially because we're
+building different things. And so, um,
+you can have your complaints about what
+I talked about, but I would say that if
+you're trying to build the same things
+that I'm building, you would be running
+into the same issues. And I'm very
+confident in that. Um, okay.
+>> He's very right, by the way. Like if
+you're working at a uh a like marketing
+firm that all they do is like build
+static sites or kind of interesting
+little interactive sites for various
+companies, that seems like a ripe place
+for vibe coding to just destroy because
+you don't need to maintain these. These
+aren't long-term things, okay? They're
+not going to keep growing with features.
+They're just simply something that
+exists and you just need to mash
+together to meet requirements. The end,
+right? Like that to me seems like a that
+that to me seems like a perfect place
+for it, right? Fire and forget landing
+pages. Exactly. like these these are
+real things. Uh even though I would
+personally argue that landing pages are
+very very important and you should
+actually take a significant amount of
+time on landing pages cuz most landing
+pages look the same and they're utter
+horseshit. They're confusing. They have
+a bunch of big images. When you scroll
+changes all over the screen.
+There's not an HRB and everybody knows
+HRBs drive sales. Like if you don't HRB,
+you're not down with me. Okay? HRBs huge
+red buttons. Okay? It's been this way
+for literally forever. Like anyone that
+thinks they can be cutesy on a landing
+page and they don't do an HRB, you're
+just like you're just losing sales.
+Okay, call to action dead center. Make
+it obvious. What do you want the person
+to do? What are you trying to say? You
+know, it's crazy. Anyways, that's all I
+got. Uh I think I'll check back in a
+month and let you know how things went.
+And um yeah, let me know if you like
+this kind of video. Uh my plan is to not
+edit it. You'll see if there are any
+cuts. I think it's just straight
+straight to the camera.
+>> No, that's perfect.
+>> That's all I got. Let me know what you
+think and uh I'll catch you in the next
+one.
+>> Honestly, my most successful videos now
+are no longer live react videos, but me
+just talking about a topic unbroken
+pretty much. It is it's it's crazy how
+much better people like this this type
+of format quite a bit. It's much more
+genuine, too, because you you see the
+person think, you see the person kind of
+mle through thoughts. It's not so quick
+edited. Uh even this one right here,
+this one, even though it says 30,000,
+it's it's it's over 70,000 for views.
+Uh, this one right here, it's crazy. It
+It's just doing great. And it's just
+mostly me yapping about how upset I am
+at Windows and Apple and why Mac is or
+why Linux, it might actually just be the
+year of the Linux desktop. It's crazy.
+I'm actually really Yeah. So, so am I.
+So, please CJ, I want in fact I know
+I'll reach out to you CJ, but I'll just
+say it out loud here, which is you
+should come on the show at some point
+and talk about your experience. Glad to
+have you on the standup. come on here
+and be like, I went one month after
+being a heavy AI user and went back to
+the old way. Here's what I've learned.
+Glad to have you on, ask you a bunch of
+questions. It'll be super fun. Anyways,
+hey, the name, it's good to learn from
+people, by the way. You know, I know
+there's a lot of people that are kind of
+upset in the audience. I actually get
+emails, but I actually get not only
+emails, but I also get Twitter DMs. I
+recently had this one guy, he has like
+hundreds of thousands of followers, and
+he whispered me and he was just like,
+"You know what you're doing." So, of
+course, at that point, I'm just like,
+"This guy's a big account, and he's
+talking to me like that. Oh, look. CJ
+said that. Nice. Hey, actual CJ says
+that. Yeah, CJ. This is a great video,
+by the way. Very relatable. Absolutely
+loved it. Super fantastic. Anyways, this
+guy was just like, "You know what you're
+doing." And I remember sitting there
+thinking, "What did I What did I do?
+Okay, you got me. What did I do?" So, I
+went in there. I jumped on. By the way,
+you see, look, I'm following Coding
+Garden. So, if you're not following
+Coding Garden, you're not a real one.
+Okay? Real ones wish list insignia on
+Steam and follow Coding Garden. That's
+it. Uh, but I remember him doing this.
+So then of course I was just like,
+"Okay, what what am I doing?" He's just
+like, "You're teaching people that AI is
+not the only future and you are stealing
+away their careers forever." And I'm
+just like, "Oh, crazy, man. You have
+like hundreds of thousands of followers
+and you think like this, dude. Bro, was
+was 911 an inside job? Like where where
+we at? Where we at? Like how much
+Tylenol we talking? We talking like
+migraines or just the occasional
+headache? like where how did you land
+here? It was crazy. And so anyways,
+that's that. So I realized like there's
+a lot of people in the audience they
+they get really upset at this kind of
+talk because there's this like I don't
+know what it is, you know, like you said
+CJ, it's kind of like in this like
+religious kind of feel where people it's
+almost like if you aren't doing this
+thing then I'm like assaulting somebody
+in the spiritual realm for leading them
+astray. And it's like it's it's not
+true. I'm not trying to assault you in
+the spiritual realm and leading you
+astray. Yeah, I'm not taking you off the
+straight and narrow here. I'm just
+simply saying my experience with it
+versus what I can do feel like two
+different things. And I don't love it. I
+wish I could love it. I'm not
+necessarily only about typing on a
+keyboard. I enjoy mashing all the old
+dim keys and all that, but that doesn't
+necessarily mean I want to do it all the
+time. I would love it if I could just be
+like, make the layout for me. Okay, I
+want to try this. Okay, I don't like
+that. I'm going to do some programming.
+I want to kind of adjust some things.
+Okay, now do it this way. Okay, cool.
+Right. Like I don't mind that. It feels
+good. In fact, that's partially if you
+guys remember. Uh actually, let's get
+out of beacons. Actually, let's just see
+what happens if we go to beacons. Let's
+see if this even runs. Let's see if
+beacon is even any good. Okay. Okay, it
+still runs. If you remember bullet time
+in the game, right? Bullet time in the
+game right here where see how we're
+going here. I'll speed it up. So, we're
+going faster. Bullet time. See how it's
+going really, really slow. This was
+actually something that I started by
+vibe coding. I thought it was really
+cool and I thought the feel was super
+super good. So I was like, "Okay, I
+gotta figure out how to do this more
+because I really I really like this
+experience." And so that was done by a
+vibe coding to begin with, but then I
+rewrote everything and it was fantastic.
+So I'm not like against it, okay? I'm
+not against it. A Jan Somehow this was
+an hourong react. What the hell am I

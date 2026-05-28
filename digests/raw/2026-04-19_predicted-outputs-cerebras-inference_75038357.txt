@@ -1,0 +1,309 @@
+Title: Predicted Outputs - Cerebras Inference
+
+URL Source: http://inference-docs.cerebras.ai/capabilities/predicted-outputs
+
+Markdown Content:
+# Predicted Outputs - Cerebras Inference
+
+![Image 1: Revisit consent button](https://cdn-cookieyes.com/assets/images/revisit.svg)
+
+![Image 2](https://cdn-cookieyes.com/assets/images/close.svg)
+
+We value your privacy
+
+This website or its third-party tools process personal data. You can opt out of the sale of your personal information by clicking on the “Do Not Sell or Share My Personal Information” link.
+
+Do Not Sell or Share My Personal Information
+
+Opt-out Preferences![Image 3](https://cdn-cookieyes.com/assets/images/close.svg)
+
+We use third-party cookies that help us analyse how you use this website, store your preferences, and provide the content and advertisements that are relevant to you. However, you can opt out of these cookies by checking "Do Not Sell or Share My Personal Information" and clicking the "Save My Preferences" button. Once you opt out, you can opt in again at any time by unchecking "Do Not Sell or Share My Personal Information" and clicking the "Save My Preferences" button.
+
+- [x] 
+
+Do Not Sell or Share My Personal Information
+
+Cancel Save My Preferences
+
+Your opt-out preference has been honored.
+
+Banner closes automatically in  s...
+
+Powered by [![Image 4: Cookieyes logo](https://cdn-cookieyes.com/assets/images/poweredbtcky.svg)](https://www.cookieyes.com/product/cookie-consent/?ref=cypbcyb&utm_source=cookie-banner&utm_medium=powered-by-cookieyes)
+
+[Skip to main content](http://inference-docs.cerebras.ai/capabilities/predicted-outputs#content-area)
+
+[Cerebras Inference home page![Image 5: light logo](https://mintcdn.com/cerebras-inference/b3jx4ZXgBWCXv7Rn/logo/2.png?fit=max&auto=format&n=b3jx4ZXgBWCXv7Rn&q=85&s=98684d23487c722617419a5dbeb0c678)![Image 6: dark logo](https://mintcdn.com/cerebras-inference/b3jx4ZXgBWCXv7Rn/logo/1.png?fit=max&auto=format&n=b3jx4ZXgBWCXv7Rn&q=85&s=7710d16c35881e9aa3b9c98143774cbb)](http://inference-docs.cerebras.ai/)
+
+[Docs](http://inference-docs.cerebras.ai/introduction)[API Reference](http://inference-docs.cerebras.ai/api-reference/authentication)[Cookbook](http://inference-docs.cerebras.ai/cookbook)
+
+*   [Community](https://discord.com/invite/q6bZcMWJVu)
+*   [Blog](https://www.cerebras.net/blog)
+*   [Get an API Key](https://cloud.cerebras.ai/?utm_source=3pi_docs&utm_campaign=navigation)
+*   [Get an API Key](https://cloud.cerebras.ai/?utm_source=3pi_docs&utm_campaign=navigation)
+
+Search...
+
+Navigation
+
+Capabilities
+
+Predicted Outputs
+
+Search...
+
+Ctrl K
+
+*   [Python SDK](https://github.com/Cerebras/cerebras-cloud-sdk-python)
+*   [Node.js SDK](https://github.com/Cerebras/cerebras-cloud-sdk-node)
+
+##### Get Started
+
+*   [Overview](http://inference-docs.cerebras.ai/introduction)
+*   [Quickstart](http://inference-docs.cerebras.ai/quickstart)
+*   [Pricing](https://www.cerebras.ai/pricing)
+*   Models  
+*   [Rate Limits](http://inference-docs.cerebras.ai/support/rate-limits)
+
+##### Capabilities
+
+*   [Reasoning](http://inference-docs.cerebras.ai/capabilities/reasoning)
+*   [Streaming Responses](http://inference-docs.cerebras.ai/capabilities/streaming)
+*   [Predicted Outputs Preview](http://inference-docs.cerebras.ai/capabilities/predicted-outputs)
+*   [Structured Outputs](http://inference-docs.cerebras.ai/capabilities/structured-outputs)
+*   [Tool Calling](http://inference-docs.cerebras.ai/capabilities/tool-use)
+*   [Prompt Caching](http://inference-docs.cerebras.ai/capabilities/prompt-caching)
+*   [Payload Optimization](http://inference-docs.cerebras.ai/capabilities/payload-optimization)
+*   [CePO: Cerebras Planning & Optimization​](http://inference-docs.cerebras.ai/capabilities/cepo)
+
+##### Dedicated Endpoints
+
+*   [Dedicated Endpoints](http://inference-docs.cerebras.ai/dedicated/overview)
+*   Features  
+    *   [Batch Preview](http://inference-docs.cerebras.ai/capabilities/batch)
+    *   [Management API Preview](http://inference-docs.cerebras.ai/dedicated/management-api)
+    *   [Service Tiers Preview](http://inference-docs.cerebras.ai/capabilities/service-tiers)
+    *   [Metrics](http://inference-docs.cerebras.ai/capabilities/metrics)
+
+##### Compatibility
+
+*   [OpenAI Compatibility](http://inference-docs.cerebras.ai/resources/openai)
+*   [Migrate to GLM 4.7](http://inference-docs.cerebras.ai/resources/glm-47-migration)
+
+##### Cloud Console
+
+*   [Projects Preview](http://inference-docs.cerebras.ai/console/projects)
+
+##### Resources
+
+*   [Designing for Cerebras](http://inference-docs.cerebras.ai/resources/designing-for-cerebras)
+*   [Integrations](http://inference-docs.cerebras.ai/integrations)
+*   Cerebras Code  
+*   [API Playground](https://cloud.cerebras.ai/?utm_source=inferencedocs)
+
+##### Support
+
+*   [Service Status](https://status.cerebras.ai/)
+*   [Error Codes](http://inference-docs.cerebras.ai/support/error)
+*   [Change Log](http://inference-docs.cerebras.ai/support/change-log)
+*   [Deprecations](http://inference-docs.cerebras.ai/support/deprecation)
+*   [Policies](https://www.cerebras.ai/policies)
+*   [Preview Releases](http://inference-docs.cerebras.ai/support/preview-releases)
+
+On this page
+
+*   [When to Use Predicted Outputs](http://inference-docs.cerebras.ai/capabilities/predicted-outputs#when-to-use-predicted-outputs)
+*   [Usage](http://inference-docs.cerebras.ai/capabilities/predicted-outputs#usage)
+*   [Token-Reuse Metrics](http://inference-docs.cerebras.ai/capabilities/predicted-outputs#token-reuse-metrics)
+*   [Best Practices](http://inference-docs.cerebras.ai/capabilities/predicted-outputs#best-practices)
+*   [Limitations](http://inference-docs.cerebras.ai/capabilities/predicted-outputs#limitations)
+*   [FAQ](http://inference-docs.cerebras.ai/capabilities/predicted-outputs#faq)
+
+Copy page Copy MCP Server View as Markdown
+
+[Capabilities](http://inference-docs.cerebras.ai/capabilities/reasoning)
+
+# Predicted Outputs
+
+Reduce latency by specifying parts of the response that are already known.
+
+This feature is in [Public Preview](http://inference-docs.cerebras.ai/support/preview-releases#public-preview).
+
+Predicted Outputs is enabled for the following models:
+*   [`gpt-oss-120b`](http://inference-docs.cerebras.ai/models/openai-oss)
+*   [`llama3.1-8b`](http://inference-docs.cerebras.ai/models/llama-31-8b)
+*   [`zai-glm-4.7`](http://inference-docs.cerebras.ai/models/zai-glm-47)
+
+Predicted Outputs enable you to speed up response generation when parts of the output are already known. This is most useful when regenerating text or code that requires only minor changes. You can provide your draft using the [`prediction`](http://inference-docs.cerebras.ai/api-reference/chat-completions#param-prediction) request parameter. The model reuses matching tokens and regenerates only those that differ, improving output generation speed.
+## [​](http://inference-docs.cerebras.ai/capabilities/predicted-outputs#when-to-use-predicted-outputs)
+
+When to Use Predicted Outputs
+
+Use Predicted Outputs in scenarios where most of the model’s response is already known or can be pre-computed.Recommended use cases include:
+*   **Code Refactoring:** Modify known code without regenerating from scratch (e.g., tab/inline completion, full-file edits, structural transformations)
+*   **Document Editing:** Apply small edits to known documents (e.g., grammar fixes, tone adjustments)
+*   **Template Filling:** Update placeholders or small sections in predictable structured text
+
+Predicted Outputs improves generation speed only when one or more continuous token sequences from the `prediction` field appear in the model’s response. There’s no performance benefit when the output is completely unpredictable.
+
+## [​](http://inference-docs.cerebras.ai/capabilities/predicted-outputs#usage)
+
+Usage
+
+For example, imagine you want to modify a CSS file to change the color of all body text from green to blue. To use Predicted Outputs, include the code snippet below as both part of both your prompt and the predicted output:
+
+1
+
+[](http://inference-docs.cerebras.ai/capabilities/predicted-outputs#)
+
+Initial Setup
+
+Begin by importing the Cerebras SDK and setting up the client.
+
+Python
+
+Node.js
+
+```
+import os
+from cerebras.cloud.sdk import Cerebras
+
+client = Cerebras(
+    api_key=os.environ.get("CEREBRAS_API_KEY"),
+)
+```
+
+2
+
+[](http://inference-docs.cerebras.ai/capabilities/predicted-outputs#)
+
+Include expected content
+
+Include the `prediction` parameter in your chat completions request in addition to your normal `messages`. Set the `prediction` field to include the content you expect to be reused.
+
+Python
+
+Node.js
+
+```
+code = """
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+body {
+    font-family: Georgia, serif;
+    font-size: 14px;
+    line-height: 1.8;
+    background: #000000;
+    margin: 0; 
+    padding: 0;
+    color: #00FF00; 
+}
+"""
+
+instructions = "Change the color to blue. Respond only with code. Don't add comments."
+
+response = client.chat.completions.create(
+    model="gpt-oss-120b",
+    messages=[
+        {"role": "user", "content": instructions},
+        {"role": "user", "content": code}
+    ],
+    prediction={"type": "content", "content": code},
+    # stream=True,  # Uncomment to enable streaming
+)
+
+print(response)
+print(response.choices[0].message.content)
+```
+
+In this example, most of the code remains unchanged. Only the color value needs to be updated. By providing the original code as the prediction, the model can efficiently reuse the unchanged portions.
+
+When providing a prediction, any tokens provided that are not part of the final completion will be charged at completion token rates.
+
+## [​](http://inference-docs.cerebras.ai/capabilities/predicted-outputs#token-reuse-metrics)
+
+Token-Reuse Metrics
+
+For the best performance, your prediction should have a high token-reuse rate. The response includes usage metrics showing how many prediction tokens were accepted or rejected:
+
+```
+{
+  "usage": {
+    "completion_tokens": 224,           // Number of tokens in your response (billed at output rate)
+    "prompt_tokens": 204,               // Number of input tokens (billed at input rate)
+    "total_tokens": 428,                // Prompt + Completion tokens
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 76, // Tokens from prediction successfully reused
+      "rejected_prediction_tokens": 20  // Tokens rejected and regenerated (billed at output rate)
+    }
+  }
+}
+```
+
+These usage stats tell you how efficiently your prediction worked. A high ratio of accepted to rejected tokens indicates efficient prediction reuse, resulting in faster generation with minimal cost for rejected tokens.
+## [​](http://inference-docs.cerebras.ai/capabilities/predicted-outputs#best-practices)
+
+Best Practices
+
+*   **Use this when most of the output is known**: The larger the known section, the greater the efficiency gain. Predicted Outputs work best when you can anticipate significant portions of the response.
+*   **Set `temperature=0`**: Reduces randomness and increases the likelihood of token acceptance from your prediction.
+*   **Keep predictions accurate**: Misaligned predictions increase rejected tokens and can slow generation speed. Ensure your prediction closely matches the expected output.
+*   **Monitor prediction metrics**: Track accepted vs rejected tokens in the usage metadata to evaluate effectiveness.
+*   **Fallback gracefully**: If the rejection rate is high for a class of prompts or files, fall back to a standard completion request without the prediction field.
+
+[Reasoning](http://inference-docs.cerebras.ai/capabilities/reasoning) tokens are treated as completion tokens. When using a reasoning model with Predicted Outputs, the presence of reasoning tokens can generate a few additional `rejected_prediction_tokens`, which slightly increases cost.
+
+## [​](http://inference-docs.cerebras.ai/capabilities/predicted-outputs#limitations)
+
+Limitations
+
+Please consider the following limitations when using Predicted Outputs.
+*   The following models are currently supported: `gpt-oss-120b`, `zai-glm-4.7`
+*   When you provide a prediction, any tokens that do not appear in the final completion are still billed at completion-token rates. To determine how many predicted tokens were not used, review the [`rejected_prediction_tokens`](http://inference-docs.cerebras.ai/api-reference/chat-completions#param-rejected-prediction-tokens) property in the [`usage`](http://inference-docs.cerebras.ai/api-reference/chat-completions#param-usage) object.
+*   The following API parameters are not supported when using this feature: 
+    *   `logprobs`: not supported
+    *   `n`: values greater than 1 are not supported
+    *   `tools`: tool calling is not currently supported with Predicted Outputs
+
+## [​](http://inference-docs.cerebras.ai/capabilities/predicted-outputs#faq)
+
+FAQ
+
+Does this increase API costs?
+
+Only when predicted tokens are not accepted. Input and output tokens are billed at standard rates, while rejected prediction tokens are billed at the output token rate. Customers with dedicated endpoints are not affected by this pricing.
+
+How do I know if my prediction was accepted?
+
+Check `accepted_prediction_tokens` and `rejected_prediction_tokens` in the response’s `usage` object.
+
+What happens if my predicted text is wrong?
+
+The model rejects mismatched tokens and regenerates them, which may reduce output generation speed and increase costs since rejected tokens are billed as additional output tokens.
+
+Does Cerebras store prediction data?
+
+No, we do not store any prediction data.
+
+Was this page helpful?
+
+Yes No
+
+[Streaming Responses Previous](http://inference-docs.cerebras.ai/capabilities/streaming)[Structured Outputs Next](http://inference-docs.cerebras.ai/capabilities/structured-outputs)
+
+Ctrl+I
+
+Assistant
+
+Responses are generated using AI and may contain mistakes.
+
+Suggestions
+
+When should I use this feature?What are predicted outputs?How do I implement predicted outputs?

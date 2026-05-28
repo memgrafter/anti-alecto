@@ -1,0 +1,162 @@
+"Walk me through how an AI agent completes a multi-step task — from the moment a user sends a message to the final response. Assume the agent has access to external tools. Diagram it on the whiteboard, then describe how you'd implement the core loop in code, including how the agent knows what tools are available."
+Give the candidate a whiteboard marker and let them drive. The question is intentionally open — you're testing whether they understand the machinery, not whether they memorize a specific framework.
+Time allocation: 25–35 minutes total (10–12 min whiteboard, 12–15 min code walkthrough, 5 min follow-ups)
+Signal | Strong | Weak |
+Core loop understanding | Can articulate the iterative cycle: prompt → inference → parse → execute → append → re-infer | Describes a single request/response, no loop |
+Tool registration | Understands tools are declared as schemas passed with the prompt; the model selects tools, it doesn't execute them | Thinks tools are plugins the model "has access to" with no explanation of how |
+Separation of concerns | Clearly distinguishes the model (stateless text generator) from the orchestrator (loop controller) from the runtime (tool executor) | Conflates the model with the system; says "the AI calls the API" |
+State management | Knows the conversation/message array is the state; each loop iteration appends to it | Vague on how context accumulates across steps |
+Termination | Can articulate stop conditions: model returns text with no tool call, max iterations, error thresholds | Doesn't address when or how the loop ends |
+Error handling | Considers what happens when a tool fails, times out, or returns garbage | Happy path only |
+A strong candidate draws something resembling this flow:
+User message
+│
+▼
+┌─────────────────────────────────────────────────┐
+│ ORCHESTRATOR │
+│ │
+│ Assemble message array: │
+│ [system prompt + tool schemas + messages] │
+│ │ │
+│ ▼ │
+│ ┌─────────────┐ │
+│ │ LLM API │◄──────────────────┐ │
+│ │ (inference)│ │ │
+│ └──────┬──────┘ │ │
+│ │ │ │
+│ ▼ │ │
+│ Parse response │ │
+│ │ │ │
+│ ┌────┴─────┐ │ │
+│ │ │ │ │
+│ Text Tool call(s) │ │
+│ only detected │ │
+│ │ │ │ │
+│ ▼ ▼ │ │
+│ DONE Execute tool(s) │ │
+│ (runtime env) │ │
+│ │ │ │
+│ ▼ │ │
+│ Append tool result(s) │ │
+│ to message array ─────────┘ │
+│ │
+└─────────────────────────────────────────────────┘
+Key things to look for in their diagram:
+- The loop is explicit — an arrow goes back from "append result" to "call LLM again"
+- Tool schemas are shown as an input to the LLM call, not something separate
+- Tool execution happens outside the model
+- There's a clear termination path (response with no tool calls)
+Acceptable variations: The diagram doesn't need to look like the above. Some candidates draw a state machine, some draw a sequence diagram, some draw a simple numbered list with arrows. Format doesn't matter. The concepts do.
+The candidate should be able to sketch pseudocode or real code for two things: the loop and the tool registry.
+Strong answer (Python-ish pseudocode is fine):
+def run_agent(user_message, tools, system_prompt, max_iterations=10):
+messages = [
+{"role": "system", "content": system_prompt},
+{"role": "user", "content": user_message}
+]
+for i in range(max_iterations):
+response = llm_client.chat(
+model="claude-sonnet-4-20250514",
+messages=messages,
+tools=tools, # <-- tool schemas go WITH the request
+max_tokens=4096
+)
+# Append the assistant's full response to history
+messages.append({"role": "assistant", "content": response.content})
+# Check: did the model invoke any tools?
+tool_calls = [block for block in response.content
+if block.type == "tool_use"]
+if not tool_calls:
+# Model is done — returned a text response
+return extract_text(response)
+# Execute each tool call and append results
+for call in tool_calls:
+result = execute_tool(call.name, call.input)
+messages.append({
+"role": "tool",
+"tool_use_id": call.id,
+"content": result
+})
+return "Max iterations reached — agent did not converge."
+What to watch for:
+- They append the assistant response BEFORE processing tool calls (this is the most common mistake — skipping this means the conversation state is broken)
+- They pass tools as schemas alongside the messages, not as some separate config
+- They handle the loop termination (no tool calls = done)
+- The tool_use_id links the result back to the specific call
+Strong answer shows that tools are just JSON schemas the model reads:
+tools = [
+{
+"name": "search_database",
+"description": "Search the product database by query string. "
+"Returns matching products with name, price, and ID.",
+"input_schema": {
+"type": "object",
+"properties": {
+"query": {
+"type": "string",
+"description": "Natural language search query"
+},
+"limit": {
+"type": "integer",
+"description": "Max results to return",
+"default": 10
+}
+},
+"required": ["query"]
+}
+}
+]
+# The dispatch layer — maps schema names to actual functions
+tool_registry = {
+"search_database": search_database_fn,
+"send_email": send_email_fn,
+"get_calendar": get_calendar_fn,
+}
+def execute_tool(name, input_params):
+fn = tool_registry.get(name)
+if fn is None:
+return {"error": f"Unknown tool: {name}"}
+try:
+return fn(**input_params)
+except Exception as e:
+return {"error": str(e)}
+Key insight you're looking for: The candidate understands that the model never "sees" or "has" the function. It sees a JSON description and generates a structured request to call it. The orchestrator is the one that actually dispatches to real code. This is the conceptual heart of the question.
+- Draws the loop correctly without prompting
+- Explains that the model is stateless — it re-reads the full message array each iteration
+- Writes clean loop code with correct message ordering
+- Tool schemas are clearly explained as a "menu" the model reads to decide what to call
+- Proactively mentions at least one of: parallel tool calls, error handling, token limits, context window management
+- Can discuss tradeoffs (e.g., "you could let the model self-correct on tool errors by appending the error and re-inferring, or you could fail fast")
+- Gets the loop right, possibly with a small nudge
+- Understands the model/orchestrator/runtime separation
+- Code is reasonable — might miss the assistant message append ordering but self-corrects when asked
+- Understands tool schemas conceptually even if the JSON structure isn't perfectly recalled
+- Can answer follow-up questions competently
+- Understands there's a loop but is fuzzy on the mechanics
+- Confuses what the model does vs. what the orchestrator does (e.g., "the model runs the function")
+- Can write code that calls an LLM API but the looping/tool handling is incomplete or wrong
+- Needs significant prompting to get to tool registration
+- Limited or no error handling thinking
+- Cannot describe the loop; thinks it's a single request → response
+- No understanding of how tools are registered or selected
+- Cannot produce any reasonable code for the loop
+- Believes the model "executes" tools or "accesses the internet" directly
+- Cannot recover even with heavy prompting
+Use these to probe depth after the main walkthrough. Pick 2–3 based on where the candidate is strong or weak.
+"What happens if the model hallucinates a tool name that doesn't exist in the registry?" Good answer: The orchestrator catches it, returns an error message as the tool result, and the model gets a chance to self-correct on the next iteration. Great answer adds: you'd want to log this, and if it happens repeatedly, break the loop.
+"How does the model decide WHICH tool to call? What if there are 50 tools?" Good answer: The model reads all tool descriptions and schemas in the system prompt/tool parameter. It's doing in-context reasoning over the schema descriptions. With many tools, description quality matters enormously — poor descriptions lead to wrong tool selection. Great answer adds: you might need a retrieval or routing layer to select relevant tools before passing them to the model.
+"The user asks something that requires three API calls in sequence where each depends on the previous result. Walk me through exactly what the message array looks like after all three." This tests whether they truly understand the accumulation of state. They should be able to describe the array growing: user → assistant (tool_call_1) → tool_result_1 → assistant (tool_call_2) → tool_result_2 → assistant (tool_call_3) → tool_result_3 → assistant (final text).
+"How would you handle a tool that takes 30 seconds to respond?" Looking for: timeouts, async execution, streaming partial responses, UX considerations.
+"What's the risk of letting the agent loop indefinitely?" Looking for: runaway costs, infinite loops between tools, context window exhaustion, safety rails. Great answer mentions token cost accumulates with every iteration since the full history is resent.
+"If you needed to add a new tool to a running system, what changes?" Looking for: just add the schema to the tools array and a handler to the registry — no model retraining. This tests whether they understand the decoupling.
+"How would you make this observable in production? What would you instrument?" Looking for (especially relevant if hiring for an observability company): trace each loop iteration, log tool call inputs/outputs, track latency per tool, count iterations to completion, token usage per turn, error rates by tool. Great answer: each agent run is a trace, each iteration is a span.
+"What's the difference between this pattern and a fine-tuned model that just 'knows' how to do the task?" Looking for: tool-use is flexible and composable at runtime (new tools, no retraining); fine-tuning bakes capability into weights (faster inference, less flexible). Neither is strictly better — depends on the use case.
+Watch for these specific misconceptions:
+- "The AI calls the function" — No. The model outputs a structured request. The orchestrator calls the function.
+- "You train the model on your tools" — No. Tools are registered at runtime via schemas. No training or fine-tuning involved for tool use.
+- "The model remembers what happened last time" — No. The model is stateless. The orchestrator maintains the message array and passes it every time.
+- "You just use LangChain / CrewAI / AutoGen for this" — Framework familiarity is fine, but if they can't explain what the framework is doing under the hood, that's a red flag. Push with: "Okay, but what is LangChain doing when you call agent.run()?"
+- Senior / Staff candidates should nail the core loop, write clean code, and proactively discuss production concerns (observability, error handling, cost, context window limits) without prompting.
+- Mid-level candidates should get the loop and tool registration right with minimal prompting and handle at least some follow-ups well.
+- Junior candidates are not expected to have production-level depth but SHOULD understand the conceptual loop and the model/orchestrator separation. If they can draw it and explain it, they're showing the right foundation.
+Adjust expectations by role. A frontend engineer doesn't need to optimize token costs, but a platform/infra engineer absolutely should discuss it.

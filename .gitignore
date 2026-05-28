@@ -1,0 +1,24 @@
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+dist/
+build/
+.DS_Store
+
+# DB (local state)
+anti-alecto.db
+*.db-shm
+*.db-wal
+
+# Dumps are local data — user imports their own
+dumps/*.json
+
+# Old website-scraper artifacts (will be removed)
+url_registry.csv
+website_analysis/
+digests/raw
+dumps/
+
+# Scrape cache artifacts
+.cache/

@@ -1,0 +1,138 @@
+- Update 2025-08-31:
+- Elaborated more on my Python issues
+- MISC Other Issues
+- Related Articles, Reactions, Backlinks
+In 2023, I started to use NixOS. Please do read about the linked article in order to learn about my motivation, my background and my hopes for NixOS back then.
+This article covers my issues with NixOS and I also briefly summarize my reasons to choose Debian 13 Trixie as a replacement.
+My Hopes For NixOS
+My major motivation for NixOS might be summarized as:
+- one setup for multiple hosts
+- less or no UI settings for tools like my Xfce desktop environment
+- one configuration until the end of my life
+- easy setup on new hardware
+- (up to date packages)
+Its main features according to Wikipedia as of 2025-08-30 are:
+- Declarative configuration model
+- Reliable and atomic upgrades
+- Rollbacks
+- Reproducible system configurations
+- Source-based model with binary cache
+- Consistency
+- Multi-user package management
+- Flakes
+- Nix-shell
+So I jumped into the cold water and invested way too many hours of my life to come up with my NixOS setup for three hosts.
+My Issues With NixOS
+While it's really a nice thing to have large parts of your setup within a bunch of text files, NixOS did come with a hefty price in my case.
+In my opinion, you really need to become a Nix wizard in order to maintain a system configuration within NixOS. And this is not a weekend project. This seems more like a multi-month or even a lifetime achievement to me. Unfortunately.
+This is why I had so many issues where I relied on the really excellent Nix community. However, this is not a great situation for me. For many very, very basic and easy things that I'd be able to solve with any Linux-based OS within seconds or minutes, I had to ask around, find an expert or more and decide on how to integrate their output into my personal setup.
+If you get a good advice on something in Nix, it's not trivial to integrate it into your specific setup. There is no golden way of structuring your Nix files. There is no general pattern to follow for new users. There are hundreds if not thousands. You can find them, e.g., on GitHub where many Nix users publish their setups. Find my NixOS setup online as well. While this is absolutely an awesome win, it can also be a challenge because it's not easy to extract the right bits and pieces from another setup to be included into yours.
+It's as if you stumble over a great Python function within a large software and you assume that you can copy and paste one particular function into your software and assume it runs. Far from that. You need to understand the other person's setup, its depencencies, specific way of dealing with things and so forth. And this is a challenging task to do even for non Nix beginners.
+NixOS Can't Run (Many) Python Scripts In The Usual Way
+While the previous section being on a very high-level, I'd like to break it down to a very concrete issue that cost me too many evenings and whole weekends of my life: to run a rather simple Python3 script I wrote.
+To be fair: the Nix way is probably the cleanest approach to define dependencies in general. True. However, there are popular Python libraries like NumPy that also rely on some C libraries. With the typical Python dependency tools (venv, Poetry, ...) you can define dependencies to other Python libraries but not to system libraries. Nix is not doing anything at all if you don't specify all relevant dependencies. You might be able to make a Python script run once with a particular configuration with a NixShell. Unfortunately, all of them broke after a Python package upgrade. And trust me, I've tried many NixShell approaches from various Nix wizards on the web. Furthermore, even in the short time periods where my Nix shells were working with a specific setup, any primitive four-line shellscript to invoke a Python tool turned out as a 50+ line shellscript to build the Nix shell, adding all the complex boilerplate commands to run things. You would not believe what I had to go through here without a permanent solution.
+Maybe it would have helped when I turned my simple scripts into Nix packages, install them and make them run. However, that's no viable workflow when I work on a Python tool and need to re-package to run the next test with it. No way.
+So if you are not a Nix wizard and you don't want to re-package all tiny scripts into Nix packages in order to run them, Python is a really big handicap in the NixOS universe. With my personal background, I had to come to the conclusion that NixOS and Python are a no go.
+On all other operating systems I know, I never ever had any issue with Python. So the clean solution NixOS provides (or demands), is not a solution to any issue I had before.
+In NixOS You Can't Define Your Setup
+When I started with Nix, I was really curious how this is going to turn out: defining all my settings within Nix files.
+My desktop environment of choice was Xfce. Therefore, many settings related to my hosts were based on Xfce settings. There is no direct way of setting most Xfce settings. However, I found out that there is an indirect way of doing this.
+As you can see in my Nix Xfce configuration, there is a viable workaround: xfconf.settings
+allow for setting variables that control the Xfce desktop environment and its tools. Unfortunately, it's very tedious to find out which setting refers to which variable. Furthermore, some variables just don't seem to have any effect at all. I've had two very connected configuration options of the same module where one was working as expected and the other did not have any effect at all, regardless of its setting. Furthermore, there seems to be also variations in syntax. Sometime, it's True/False, sometime it is 0/1 or -1/1. And so forth. Working with this approach is hell on earth as it requires you to do constant try and error which involves reboots (or re-loggings).
+And xfce is rather a happy-case. There are many applications you can not configure within Nix.
+In case you don't care which tools you are running, you might as well switch to those hipster tools most Nix wizards seem to use. If you look around on GitHub and such, you get the impression that you need to switch to the Sway window manager with hand-picked solutions to get you a menu to browse your applications, display a panel and so forth.
+So yes, if you don't care about your tool choices, you can adapt the tools of the Nix community. This seems to work out better than having your own conservative thoughts on your tools.
+NixOS also seems to be a good tool for servers, which was not my personal use-case here.
+NixOS Is A Moving Target
+Nix and NixOS is a concept and a set of tools. It's not about solutions. It's like a programming language and it's up to you to use those awesome features to program your setup.
+Unfortunately, even this is not based on a defined set of tools and methods. The Nix community still builds on very basic parts of this concept. One of the major moving targets is the way you address packages.
+When I started with NixOS, Nix flakes were an "experimental feature". However, everybody was recommending me to start with Flakes not not with the old way of doing things. As of 2025-08, Flakes are still an "experimental feature".
+There were many other Nix concepts that were still part of discussions but I tried to stay away from using too many fancy Nix concepts in order to keep it as simple as possible.
+Sometimes, I faced very weird issues. Some of them were based on the fact that some things you could define in the Home Manager level - another promising Nix concept. Unfortunately, those either caused some errors or they simply had no effect. When I moved the same configuration from Home Manager level to NixOS system level (outside of Home Manager), it worked. This came with the downside of being less flexible with my configuration setup that sometimes varies between my different hosts.
+The Troubles With NixOS Documentation
+Directly related to the previous section on moving targets is the issue that you can find too much documentation that is describing some form of outdated or half-outdated way of doing things.
+As a non-Nix-wizard, you can't rely on anything you find. Another very unpleasant experience if you do not plan to become a Nix wizard.
+Simple Things Are Hard With NixOS
+While this aspect was mentioned multiple times already, I wanted to emphasize the high level of frustration. If you're using GNU/Linux systems for almost three decades, you know your basics on how to help yourself. With Nix, you start almost from scratch. Since almost everything is different with Nix, you have to invest up to many hours in order to find out how something is done on other systems by yourself within seconds or minutes.
+One particular example of many: I would have loved to use something like "if $HOSTNAME==foobar then ..." in my Nix configuration files on various spots. Unfortunately, I had to learn that this can't be done the easy way. To be honest, I didn't understand how to do that until now. As far as I remember, I would have needed to define the hostname variable in a very central part of my configuration and use it as an explicit argument for all hierarchies down to the spot where I want to access this variable. Something like that. I honestly don't care any more. It just didn't work for me that way. Just another frustrating aspect of many on the way.
+MISC Other Issues
+Here's a short list of unsorted other findings of mine:
+Be prepared to accept higher storage cost. In my desktop setup, the base system took over 30 Gigabytes (despite frequent garbage collecting) which is as bad as a typical Windows installation. My Debian installations are more in the 10 Gigabyte range. Without user data, of course. So it's not an OS for small storage situations.
+If you're not a Nix wizard, you face issues when you find out that a certain tool is not available in the large list of Nix packages. Then it gets really complicated if you're not a Nix wizard.
+I was not aware which packages I added to my setup come pre-compiled and which packages needs to be compiled on each machine with every update.
+- My updates took up to 2½ hours on a Lenovo x260 while being still slow at a Lenovo T490 (approx. 5-15min).
+Rebuilding your system fails if one source has an issue. Recovery varies from being trivial to very hard.
+You're totally depending on GitHub and other cloud sources of questionable ownership motivation and AI theft.
+- For example, you might want to read Could Microsoft master key hack impact Nix via Github? - Security - NixOS Discourse.
+I could not run AppImages: "NixOS cannot run dynamically linked executables intended for generic linux environments out of the box. For more information, see: https://nix.dev/permalink/stub-ld"
+I had to enter my root password to be able to change the brightness of my display. (I had no energy to debug that one. There might be solutions - I don't know or care any more.)
+My setup from the NixOS installer somehow did use the ordinary CPU and not the proper hardware acceleration method to verify the correctness of the LUKS passphrases for full disk encryption. So I had to wait approximately ten seconds for my passphrase to be verified on booting my machine. That might not sound severe but it really gets on your nerves the more you have to watch your computer without continuing the boot process. And mistyping your passphrase gets an additional level of frustration.
+You read about personal drama within the project like: The NixOS Conflict in Under 5 Minutes
+NixOS Advantages I Didn't Ask For
+NixOS main features according to Wikipedia as of 2025-08-30 are:
+- Declarative configuration model
+- Reliable and atomic upgrades
+- Rollbacks
+- Reproducible system configurations
+- Source-based model with binary cache
+- Consistency
+- Multi-user package management
+- Flakes
+- Nix-shell
+To be honest: I don't care about most of them. In almost three decades of working with GNU/Linux systems, I can rarely think of situations where I would have relied on rollback. Or where I got issues because of inconsistency. Or because my configuration was not reproducible. Or something related to package mangement on multi-user setups, which I don't run.
+To my surprise, Wikipedia mentions Flakes. As you've already learned above, this is still marked as experimental in 2025-08.
+Don't get me started on Nix-shells. While they really provide excellent tools for certain situations, I did consider them as some wizardry I didn't fully understand in situations where "the normal Linux way" just wasn't working. And even those workaround were very fragile in my case - remember my Python pain. I had a large collection of different Nix-shells just to run simple scripts relying on NumPy and all(!) of them failed after package upgrades.
+The Final Death Of NixOS
+The biggest joke from my point of view was the final reason why I had to re-install my last remaining NixOS machine. I did a firmware update via fwupdmgr
+which installed an update for my "intel ME". That required a reboot (totally understandable) and ended in a boot loop: I just could boot into my BIOS settings. All other boot entries were broken or ended up in the BIOS settings.
+So much about NixOS rollbacks: if the boot information is broken, the Nix rollbacks are worth nothing.
+On a normal Linux host, I could have saved the setup by booting into a USB Linux distro (grml for the win!), manually mounting the necessary LVM/LUKS/ext partitions, preparing a chroot environment and executing the commands to re-build the initramfs and grub. This most likely would have worked. Sadly, almost none of those steps are working that way with NixOS. Documentation on those edge-cases are really sparse. I had no energy to invest (too much) time for that. I just copied my data from the broken setup disk and re-gained control over my digital life by switching to the new Debian 13.
+NixOS Can Be Perfect
+Don't get me wrong here. NixOS can be perfect if you are a Nix wizard or plan to become one, have enough time to overcome all the issues in the migration phase, willing to follow all the ever-chancing features and concepts of Nix(OS) and love this weird Nix language syntax. I still would have challenged some language design decisions though.
+In sum, NixOS provided me solutions to problems I never had and introduced me to tons of additional problems I had solved outside of NixOS decades ago.
+To start with Nix was one of my worst IT ideas so far.
+My New Debian GNOME Setup
+Since a couple of days, I replaced the last NixOS installation of mine with Debian 13 Trixie. With that, I switched away from the Xfce Desktop Environment running on XOrg which I was using maybe for the last twenty years with Debian stable (desktop) and Xubuntu LTS (notebooks).
+I now switched to GNOME 48 running on a Wayland-based display server.
+My motivation for the switch was to take a look at one of the other major desktop environments and get some fresh perspectives.
+You can find some of my GNOME setup stuff on my blog.
+So far, I'm productive. I still need to figure out a few things:
+- How to do text snippets on OS level
+- How to integrate (shell) tools into Nautilus
+- How to fix the not always working "focus follows mouse"
+- Some spellcheck integration (therefore expect some typos in this article)
+- …
+I had to learn that GNOME is indeed much slower than Xfce. This is no deal-breaker up to now but it's something I was not expecting on my new and fast machine. Disabling animations helps a bit but GNOME Shell is not as flexible as I would like it to be. So one of its major performance pain is the unnecessary rendering of window contents thumbnails I can't disable or circumvent within the GNOME Shell.
+Many convenience things are better in GNOME in contrast to Xfce. I love the Extension concept and its ecosystem. I found some really cool nuggets in there.
+GNOME does have some optical appeal which Xfce could not deliver.
+Out of the box, I had to adapt many things. However, this most likely is necessary with any environment when you do have my list of requirements.
+So far, I can see myself sticking with GNOME at least for a while. No deal-breaker that let me switch back to XOrg/Xfce.
+And I even experiment with extracting and logging GNOME settings via a Python script named "gskeeper" I hacked. I might as well publish it somewhere in future.
+Related Articles, Reactions, Backlinks
+- Backlinks
+- read misc opinions in the Mastodon-thread that arise below my toot about this article
+- Similar viewpoints
+- 5 SHOCKING
+Reasons You Should AVOID NixOS! 😲 | #3 Will Surprise You! - YouTube
+- To save everyone time here’s the 5 reasons he gives (or my
+interpretation of them):
+- General Linux documentation resources aren’t useful
+- Range of packaged software is limited
+- Using NixOS doesn’t teach you how to use Linux
+- Not everyone uses flakes and how they work might change
+- Documentation sucks
+- To save everyone time here’s the 5 reasons he gives (or my
+interpretation of them):
+- In 2024-04, somebody
+asked for NixOS feedback on Mastodon.
+- My complaints start with this post and convers even more than mentioned in this article here, including performance issues.
+- A German comment of mine from 2024-10
+- NixOS has one fatal flaw "NixOS has one fatal flaw, which is the usability of Nix." + other interesting quotes in that one.
+- 5 SHOCKING
+Reasons You Should AVOID NixOS! 😲 | #3 Will Surprise You! - YouTube
+- Pro NixOS
+- NixOS
+is the endgame of distrohopping - The Universe of Joshua Blais
+- This guy seems to be a much better Nix wizard than I was and he's found somehow a way to actually run Python scripts. I'm impressed. He solved what many Nix wizards could not solve when I was crying for help on the Internet.
+- NixOS
+is the endgame of distrohopping - The Universe of Joshua Blais

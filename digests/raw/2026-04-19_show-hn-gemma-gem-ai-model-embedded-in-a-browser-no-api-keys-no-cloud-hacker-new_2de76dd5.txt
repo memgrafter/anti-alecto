@@ -1,0 +1,65 @@
+Hacker News thread capture
+
+Thread URL: https://news.ycombinator.com/item?id=47655367
+Item ID: 47655367
+Title: Show HN: Gemma Gem – AI model embedded in a browser – no API keys, no cloud
+Author: ikessler
+Points: 156
+Linked URL: https://github.com/kessler/gemma-gem
+Top-level comments captured: 7
+Total comments captured: 21
+
+## Original submission text
+Gemma Gem is a Chrome extension that loads Google's Gemma 4 (2B) through WebGPU in an offscreen document and gives it tools to interact with any webpage: read content, take screenshots, click elements, type text, scroll, and run JavaScript.You get a small chat overlay on every page. Ask it about the page and it (usually) figures out which tools to call. It has a thinking mode that shows chain-of-thought reasoning as it works.It's a 2B model in a browser. It works for simple page questions and running JavaScript, but multi-step tool chains are unreliable and it sometimes ignores its tools entirely. The agent loop has zero external dependencies and can be extracted as a standalone library if anyone wants to experiment with it.
+
+## Top comment (highest-score top-level, verbatim)
+u/avaer (0): There's also the Prompt API, currently in Origin Trial, which supports this api surface for sites:https://developer.chrome.com/docs/ai/prompt-api (https://developer.chrome.com/docs/ai/prompt-api)I just checked the stats: Model Name: v3Nano
+ Version: 2025.06.30.1229
+ Backend Type: GPU (highest quality)
+ Folder size: 4,072.13 MiB
+ 
+Different use case but a similar approach.I expect that at some point this will become a native web feature, but not anytime soon, since the model download is many multiples the size of the browser itself. Maybe at some point these APIs could use LLMs built into the OS, like we do for graphics drivers.
+
+## Prominent viewpoints (top-level comments)
+1. (0) u/avaer: There's also the Prompt API, currently in Origin Trial, which supports this api surface for sites:https://developer.chrome.com/docs/ai/prompt-api (https://developer.chrome.com/docs/ai/prompt-api)I just checked the stats: Model Name: v3Nano
+ Version: 2025.06.30.1229
+ Backend Type: GPU (highest quality)
+ Folder size: 4,072.13 MiB
+ 
+Different use case but a similar approach.I expect that at some point this will become a native web feature, but not anytime soon, since the model download is many multiples the size of the browser itself. Maybe at some point these APIs could use LLMs built into the OS, like we do for graphics drivers.
+2. (0) u/emregucerr: I would love to see someone build it as some kind of an SDK. App builders could use it as a local LLM plugin when dealing with data involving sensitive information.It's usually too much when an app asks someone to setup a local LLM but this I believe could solve that problem?
+3. (0) u/montroser: Not sure if I actually want this (pretty sure I don't) -- but very cool that such a thing is now possible...
+4. (0) u/eric_khun: it would be awesome if a local model would be directly embeded to chrome and developer could query them.Anyone know if this is somehow possible without going through an extension?
+5. (0) u/veunes: It’s a neat idea, but giving a 2B model full JS execution privileges on a live page is a bit sketchy from a security standpoint. Plus, why tie inference to the browser lifecycle at all? If Chrome crashes or the tab gets discarded, your agent's state is just gone. A local background daemon with a "dumb" extension client seems way more predictable and robust fwiw
+6. (0) u/dabrez: I have this written a a project I will attempt to do in the future, I also call it "weapons grade unemployment" in the notes I was proposing to use granite but the principle still stands. You beat me to it.
+7. (0) u/siddbudd: even Anthropic messed up LLM in a Chrome extension, not sure I would want this in my browser.
+
+## Thread discussion sample
+- (0) u/avaer: There's also the Prompt API, currently in Origin Trial, which supports this api surface for sites:https://developer.chrome.com/docs/ai/prompt-api (https://developer.chrome.com/docs/ai/prompt-api)I just checked the stats: Model Name: v3Nano
+ Version: 2025.06.30.1229
+ Backend Type: GPU (highest quality)
+ Folder size: 4,072.13 MiB
+ 
+Different use case but a similar approach.I expect that at some point this will become a native web feature, but not anytime soon, since the model download is many multiples the size of the browser itself. Maybe at some point these APIs could use LLMs built into the OS, like we do for graphics drivers.
+  - (0) u/oyebenny: Interesting!
+  - (0) u/sheept: The Summarizer API is already shipped, and any website can use it to quietly trigger a 2 GB download by simply calling Summarizer.create()
+ 
+(requires user activation)
+  - (0) u/veunes: That’s exactly where we’re headed. Architecturally it makes zero sense to spin up an LLM in every app's userspace. Since we have dedicated NPUs and GPUs now, we need a unified system-level orchestrator to balance inference queues across different programs - exactly how the OS handles access to the NIC or the audio stack. The browser should just be making an IPC call to the system instead of hauling its own heavy inference engine along for the ride
+  - (0) u/michaelbuckbee: FWIW - I did a real world experiment pitting the built in Gemini Nano vs a free equivalent from OpenRouter (server call) and the free+server side was better in literally every performance metric.That's not to say that the in browser isn't valuable for privacy+offline, just that the standard case currently is pretty rough.https://sendcheckit.com/blog/ai-powered-subject-line-alterna... (https://sendcheckit.com/blog/ai-powered-subject-line-alternatives)
+    - (0) u/spijdar: It's worth mentioning that "Gemini Nano 4" is going to be Gemma 4, and presumably when it becomes the default Nano model, it should improve performance quite a bit.(It's currently available for testing in Android's AICore under a developer preview)
+- (0) u/emregucerr: I would love to see someone build it as some kind of an SDK. App builders could use it as a local LLM plugin when dealing with data involving sensitive information.It's usually too much when an app asks someone to setup a local LLM but this I believe could solve that problem?
+  - (0) u/winstonp: Which apps have you seen ask for someone to setup a local LLM? Can't recall having ever seen one
+  - (0) u/jillesvangurp: It's not too hard to code together with an LLM. I've been playing with small embeddings models in browsers in the last weeks. You don't really need that much. The limitation is that these things are fairly limited and slow to begin with and they run slower in a browser even with webgpu. But you can do some cool stuff. Adding an LLM is just more of the same.If you want to see an example of this, https://querylight.tryformation.com/ (https://querylight.tryformation.com/) is where I put my search library and demo. It does vector search in the browser.
+- (0) u/montroser: Not sure if I actually want this (pretty sure I don't) -- but very cool that such a thing is now possible...
+- (0) u/eric_khun: it would be awesome if a local model would be directly embeded to chrome and developer could query them.Anyone know if this is somehow possible without going through an extension?
+  - (0) u/fastball: https://developer.chrome.com/docs/ai/get-started (https://developer.chrome.com/docs/ai/get-started)
+- (0) u/veunes: It’s a neat idea, but giving a 2B model full JS execution privileges on a live page is a bit sketchy from a security standpoint. Plus, why tie inference to the browser lifecycle at all? If Chrome crashes or the tab gets discarded, your agent's state is just gone. A local background daemon with a "dumb" extension client seems way more predictable and robust fwiw
+  - (0) u/jillesvangurp: There's indexed db, opfs, etc. Plenty of ways to store stuff in a browser that will survive your browser restarting. Background daemons don't work unless you install and start them yourself. That's a lot of installation friction. The whole point of a browser app is that you don't have to install stuff.And what you call sketchy is what billions of people default to every day when they use web applications.
+  - (0) u/shawabawa3: > but giving a 2B model full JS execution privileges on a live page is a bit sketchy from a security standpoint.Every webpage I've ever visited has full JS execution privileges and I trust half of them less than an LLM
+    - (0) u/saagarjha: Note that every webpage does not have full JS execution privileges on other parts of the web.
+      - (0) u/derefr: At least in this case (not so sure about the Prompt API case mentioned in another thread) the agent is "in" the page. And that means that the agent is constrained by the same CORS limits that constrain the behavior of the page's own JS.If you think about it, everything we've done to make malicious webpages unable to fiddle around with your state on other sites using XHRs, are exactly and already the proper set of constraints we'd want to prevent models working with webpages from doing the same thing.
+      - (0) u/veunes: CORS protects your Facebook from your Gmail, but it won't protect your Gmail from the agent itself since it already has access to the DOM and JS context. If that agent gets hit with a prompt injection and decides to "Delete all mail" or exfiltrates session tokens to a third-party endpoint, the browser sandbox will actually facilitate it because it views those as legitimate user-initiated actions
+  - (0) u/mark_l_watson: I was thinking the same thing: better to run models using a local service not in the wen browser. I use Ollama and LM Studio, switching between which service I have running depending on what I am working on. It should be straight forward to convert this open source project to use a different back end.That said this looks like a cool project. It is so valuable writing projects like this that use local models, both for tool building and self education. I am writing my own “Emacs native” agentic coding harness and I am learning a lot.
+- (0) u/dabrez: I have this written a a project I will attempt to do in the future, I also call it "weapons grade unemployment" in the notes I was proposing to use granite but the principle still stands. You beat me to it.
+- (0) u/siddbudd: even Anthropic messed up LLM in a Chrome extension, not sure I would want this in my browser.

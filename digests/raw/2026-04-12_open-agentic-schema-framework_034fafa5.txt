@@ -1,0 +1,121 @@
+Natural Language Understanding (NLU) focuses on the ability to interpret and comprehend human language, including understanding context, semantics, and identifying key entities within text.
+Understanding the context and nuances of text input to provide relevant responses.
+Grasping the meaning and intent behind words and phrases.
+Identifying and categorizing key entities within the text, such as names, dates, or locations.
+Natural Language Generation (NLG) describes the ability to generate human-like text from structured data or other inputs.
+Continuing a given text prompt in a coherent and contextually appropriate manner to generate fluent and contextually relevant content.
+Condensing longer texts into concise summaries while preserving essential information and maintaining coherence.
+Rewriting text to express the same ideas using different words and structures while maintaining the original meaning.
+Producing conversational responses that are contextually relevant and engaging within a dialogue context.
+Automatically generating relevant and meaningful questions from a given text or context.
+Rewriting text to match the style of a given reference text while preserving the original content.
+Generating a piece of text given a description or a first sentence to complete.
+Capabilities for retrieving relevant information from various sources and synthesizing it into coherent, contextually appropriate responses. This includes searching, extracting, combining, and presenting information in a meaningful way.
+Capability to identify and extract factual information from text documents or knowledge bases, including entities, relationships, and key data points.
+System capability to understand questions and provide accurate, relevant answers by analyzing available information sources.
+Capability to aggregate and combine information from multiple sources, creating comprehensive and coherent responses while maintaining context and relevance.
+Capability to analyze and determine the semantic similarity between sentences, supporting tasks like search, matching, and content comparison.
+Capability to identify and retrieve relevant documents or text passages based on specific criteria or queries from a larger collection of texts.
+Capability to perform efficient and accurate searches within large textual databases based on various criteria, including keywords, semantic meaning, or complex queries.
+Capabilities for generating various forms of creative content, including narratives, poetry, and other creative writing forms.
+Creating narratives, stories, or fictional content with creativity and coherence.
+Composing poems, prose, or other forms of creative literature.
+Capabilities for handling multiple languages, including translation and multilingual text processing.
+Converting text from one language to another while maintaining meaning and context.
+Recognizing and processing text in multiple languages.
+Capabilities for adapting and personalizing content based on user context and preferences.
+Tailoring responses based on user preferences, history, or context.
+Modifying the tone or style of generated text to suit specific audiences or purposes.
+Capabilities for performing logical analysis, inference, and problem-solving tasks.
+Making logical inferences based on provided information.
+Assisting with solving problems by generating potential solutions or strategies.
+Verifying facts and claims given a reference text.
+Capabilities for ensuring ethical, unbiased, and safe content generation and interaction.
+Reducing or eliminating biased language and ensuring fair and unbiased output.
+Avoiding the generation of harmful, inappropriate, or sensitive content.
+Capabilities for classifying and categorizing text into predefined categories or labels.
+Classifying a text as belong to one of several topics, which can be used to tag a text.
+Classify the sentiment of a text, that is, a positive movie review.
+Classifying the relation between two texts, like a contradiction, entailment, and others.
+Capabilities for extracting and representing textual features as vectors for downstream tasks.
+Representing parts of text with vectors to be used as input to other tasks.
+Capabilities for classifying individual tokens or words within text.
+Task to recognize names as entity, for example, people, locations, buildings, and so on.
+Tagging each part of a sentence as nouns, adjectives, verbs, and so on.
+Assigning labels or categories to images based on their visual content.
+Assigning labels or categories to entire videos or segments based on their visual and audio content.
+Assigning labels or categories to images based on their visual content.
+Identifying and locating specific objects within an image or video, often by drawing bounding boxes around them.
+Identifying and locating specific points of interest within an image or object.
+Creating new images from learned patterns or data using machine learning models.
+Predicting the distance or depth of objects within a scene from a single image or multiple images.
+Identifying and isolating key characteristics or patterns from an image to aid in tasks like classification or recognition.
+Producing segmented regions in an image to highlight specific areas or objects, typically represented as separate layers or overlays.
+Transforming one image into another using a learned mapping, often for tasks like style transfer, colorization, or image enhancement.
+The process of converting a 2D image into a 3D representation or model, often by inferring depth and spatial relationships.
+Assigning labels or classes to audio content based on its characteristics.
+Transforming audio through various manipulations including cutting, filtering, and mixing.
+Classifying data based on attributes using classical machine learning approaches.
+Predicting numerical values based on tabular attributes and features.
+Capabilities for solving mathematical problems and proving theorems.
+Executing pure mathematical operations, such as arithmetic calculations.
+Solving mathematical exercises presented in natural language format.
+Solving geometric problems and spatial reasoning tasks.
+Proving mathematical theorems using computational methods.
+Capabilities for code generation, documentation, and optimization.
+Translating natural language instructions into executable code.
+Generating natural language documentation for code segments.
+Automatically filling in code templates with appropriate content.
+Rewriting and optimizing existing code through refactoring techniques.
+Retrieval of information is the process of fetching relevant data or documents from a large dataset or database based on a specific query or input.
+Depth estimations the task of predicting the distance or depth of objects within a scene from a single image or multiple images.
+Search is the process of exploring a dataset or index to find relevant information or results based on a given query.
+Document retrieval is the process of retrieving relevant documents from a collection based on a specific query, typically through indexing and search techniques.
+Document or database question answering is the process of retrieving and using information from a document or database to answer a specific question.
+Generation of any is augmenting the creation of text, images, audio, or other media by incorporating retrieved information to improve or guide the generation process.
+Capabilities for processing and generating images from various inputs and generating textual descriptions of visual content.
+Generating textual descriptions or captions for images.
+Generating images based on textual descriptions or instructions.
+Generating video content based on textual descriptions or instructions.
+Generating 3D objects or scenes based on textual descriptions.
+Answering questions about images using natural language.
+Capabilities for processing audio, including speech synthesis and recognition.
+Converting text into natural-sounding speech audio.
+Converting spoken language into written text.
+Converting between any supported modalities (text, image, audio, video, or 3D).
+Identifying indicators of malicious activity, suspicious patterns, or emerging threats across logs and data sources.
+Reviewing code, configurations, or dependency manifests to surface potential security weaknesses and misconfigurations.
+Scanning artifacts (code, logs, documents) to identify exposed credentials, tokens, or other sensitive secrets.
+Evaluating data handling or user flows to surface potential privacy risks and recommend mitigations.
+Detecting and correcting errors, inconsistencies, and missing values to improve dataset quality.
+Deriving structural metadata (fields, types, relationships) from raw or semi-structured data.
+Constructing informative transformed variables to improve downstream model performance.
+Designing or explaining multi-step sequences that extract, transform, and load datasets.
+Evaluating datasets for completeness, validity, consistency, and timeliness.
+Breaking complex objectives into structured, atomic subtasks.
+Allocating responsibilities to agents based on capabilities and task requirements.
+Coordinating plans across multiple agents, resolving dependencies and optimizing sequencing.
+Managing real-time collaboration and state synchronization among agents.
+Facilitating negotiation, conflict handling, and consensus-building between agents.
+Running standardized benchmarks or evaluation suites and summarizing results.
+Creating targeted test inputs or scenarios to probe system behavior and edge cases.
+Assessing outputs for accuracy, relevance, coherence, safety, and style adherence.
+Identifying unusual patterns, drifts, or deviations in data or model outputs.
+Tracking latency, throughput, resource utilization, and service reliability over time.
+Defining or explaining steps to allocate and configure compute, storage, and networking resources.
+Coordinating multi-stage application or model deployments, rollbacks, and version transitions.
+Designing or modifying continuous integration and delivery workflows and pipelines.
+Tracking, promoting, and documenting different iterations of models and their artifacts.
+Configuring and interpreting telemetry signals, thresholds, and alerts for operational health.
+Translating organizational or regulatory policies into structured, enforceable rules or checklists.
+Evaluating processes or outputs against defined standards (e.g., GDPR, HIPAA) and identifying gaps.
+Condensing system event or transaction logs into human-readable compliance or oversight summaries.
+Categorizing potential operational or data-related risks by impact and likelihood for prioritization.
+Interpreting and explaining API specifications, endpoints, parameters, and expected payloads.
+Designing or describing automated sequences integrating multiple tools or services.
+Selecting and ordering tool invocations to accomplish a specified goal efficiently.
+Linking custom scripts or functions with external tools to extend capabilities.
+Formulating high-level multi-phase strategies aligned with long-term objectives.
+Maintaining coherent reasoning chains over extended sequences of steps or time.
+Organizing intermediate reasoning steps into clear, justifiable sequences.
+Proposing plausible explanations or solution pathways for incomplete or uncertain scenarios.

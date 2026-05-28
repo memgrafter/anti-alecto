@@ -1,0 +1,59 @@
+spec: flatmachine
+spec_version: "2.0.0"
+
+data:
+  name: triage
+
+  context:
+    urls: input.urls            # list of {url, title} dicts
+    interest_profile: "{{ input.interest_profile }}"
+    triage_output: ""
+    triage_decisions: []
+    triage_parsed: false
+
+  agents:
+    triager: ../agents/triager.yml
+
+  hooks: "anti-alecto-triage"
+
+  states:
+    start:
+      type: initial
+      transitions:
+        - to: triage
+
+    triage:
+      agent: triager
+      execution:
+        type: retry
+        backoffs: [2, 8]
+        jitter: 0.1
+      input:
+        urls: context.urls
+        interest_profile: "{{ context.interest_profile }}"
+      output_to_context:
+        triage_output: "{{ output.content }}"
+      on_error: error
+      transitions:
+        - to: parse_result
+
+    parse_result:
+      action: parse_triage_result
+      on_error: error
+      transitions:
+        - condition: "context.triage_parsed"
+          to: done
+        - to: error
+
+    done:
+      type: final
+      output:
+        decisions: context.triage_decisions
+
+    error:
+      type: final
+      output:
+        error: "{{ context.last_error }}"
+
+metadata:
+  description: "Batch triage URLs by relevance"

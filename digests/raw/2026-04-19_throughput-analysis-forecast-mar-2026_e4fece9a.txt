@@ -1,0 +1,166 @@
+The Trajectory
+Weekly Throughput Evolution
+| Week | Sessions | Turns | Commits | Mutations | Active Hrs | Commits/Active Hr | Mutations/Active Hr | Turns/Wall Hr | Projects |
+|---|---|---|---|---|---|---|---|---|---|
+| W1 (Feb 21-28) | 70 | 1,141 | 96 | 1,078 | 246.8 | 0.39 | 4.37 | 4.16 | 5 |
+| W2 (Feb 28-Mar 7) | 97 | 984 | 53 | 1,304 | 772.2 | 0.07 | 1.69 | 1.10 | 26 |
+| W3 (Mar 7-14) | 88 | 1,090 | 76 | 1,155 | 893.4 | 0.09 | 1.29 | 1.18 | 17 |
+| W4 (Mar 14-21) | 74 | 896 | 175 | 867 | 575.0 | 0.30 | 1.51 | 1.40 | 12 |
+| W5 (Mar 18-25) | 50 | 705 | 192 | 1,345 | 260.6 | 0.74 | 5.16 | 2.39 | 10 |
+The W2-W3 Trough: Anatomy of a Throughput Collapse
+What went wrong in W2-W3?
+The data tells a clear story:
+| Factor | W1 (healthy) | W2-W3 (trough) | W5 (peak) |
+|---|---|---|---|
+| Active hours | 247 | 833 avg | 261 |
+| Projects active | 5 | 22 avg | 10 |
+| Commits/active hr | 0.39 | 0.08 avg | 0.74 |
+| Error rate | 1.03% | 0.24% | 2.06% |
+Root cause: W2-W3 had 3-5× more active hours but spread across 3-5× more projects. Sessions were long-running, context-heavy exploration/R&D with no commit targets. Massive parallelism with no delivery pressure.
+The recovery (W4→W5): Project count dropped from 26 → 10. Session durations shortened. Commit-oriented work increased. Focus × intent = throughput.
+Daily Throughput Map
+The Throughput Formula
+Factor 1: Session Duration — The Sweet Spot
+| Duration | Sessions | Commits | Commits/Hr | Mutations/Hr | Turns/Hr | Avg Turns |
+|---|---|---|---|---|---|---|
+| < 30 min | 202 | 65 | 2.60 | 25.6 | 24.9 | 3.1 |
+| 30-60 min | 39 | 61 | 2.24 | 17.0 | 13.0 | 9.1 |
+| 1-2 hr | 40 | 108 | 1.79 | 14.7 | 14.6 | 22.1 |
+| 2-4 hr | 23 | 48 | 0.69 | 10.6 | 10.0 | 30.4 |
+| 4-8 hr | 20 | 149 | 1.25 | 7.9 | 5.6 | 33.5 |
+| 8 hr+ | 55 | 161 | 0.07 | 0.8 | 0.7 | 28.9 |
+Insight: Sub-60-min sessions deliver 2.2-2.6 commits/hr. Sessions over 8 hours collapse to 0.07. That's a 37× throughput difference. The 4-8 hour bucket is an exception — those are marathon autonomous flatagents sessions that still commit well.
+Factor 2: Session Tier Analysis
+| Tier | Sessions | Avg Commits/Hr | Avg Turns | Avg Hrs | Error % | Tools/Turn | Tool Mix (B/R/M) |
+|---|---|---|---|---|---|---|---|
+| Elite ≥3 c/hr, ≥3 commits | 29 | 9.17 | 22.9 | 1.64 | 0.17% | 13.3 | 56/22/20 |
+| High ≥1 c/hr, ≥2 commits | 23 | 4.62 | 22.3 | 3.83 | 0.17% | 10.8 | 55/24/19 |
+| Medium ≥1 commit | 64 | 1.20 | 20.8 | 20.78 | 0.32% | 11.3 | 52/31/15 |
+| Zero-commit | 133 | 0.00 | 15.7 | 9.54 | 0.70% | 8.2 | 51/34/14 |
+Key patterns in elite sessions: Higher tool density (13.3 tools/turn), shorter duration (1.6 hrs avg), very low error rate (0.17%), and slightly higher bash % / lower read % than slower tiers. Elite sessions execute more and explore less.
+Factor 3: Error Rate Impact
+| Error Bracket | Sessions | Commits/Hr | Mutations/Hr | Turns/Hr |
+|---|---|---|---|---|
+| 0% errors | 194 | 0.27 | 2.2 | 1.81 |
+| <1% errors | 24 | 0.15 | 2.1 | 1.67 |
+| 1-3% errors | 21 | 0.08 | 1.3 | 1.03 |
+| 3%+ errors | 10 | 0.09 | 3.1 | 3.3 |
+Insight: Zero-error sessions commit at 1.8× the rate of low-error sessions and 3× the rate of high-error sessions. Note: the 3%+ bracket has high mutation/turn rates but low commit rates — errors trigger churn without shipping.
+Factor 4: Focus Beats Parallelism
+| Focus Level | Days | Avg Commits/Day | Avg Mutations/Day | Commits/Active Hr | Avg Sessions/Day |
+|---|---|---|---|---|---|
+| 1-2 projects | 11 | 12.7 | 118.5 | 0.94 | 8.7 |
+| 3-5 projects | 12 | 24.4 | 191.7 | 0.75 | 10.6 |
+| 6+ projects | 9 | 17.7 | 238.4 | 0.40 | 17.3 |
+Insight: 1-2 project days produce 2.4× the commits/active-hr of 6+ project days. More projects = more sessions but lower efficiency per hour. The 3-5 project sweet spot gets more raw commits but at lower hourly rates.
+Factor 5: Compaction is a Kill Signal
+| Status | Sessions | Commits/Hr | Avg Turns | Avg Hours | Error % | Total Commits |
+|---|---|---|---|---|---|---|
+| No compaction | 107 | 4.14 | 18.5 | 12.1 | 0.23% | 502 |
+| Compacted | 9 | 0.66 | 58.9 | 18.8 | 0.52% | 74 |
+Insight: Compaction means context window overflow. Sessions hitting compaction run 3× longer, have 3× more turns, 2× higher error rate, and 6× lower commit rate. By the time you compact, the session is already inefficient. End it and start fresh.
+When Are You Most Productive?
+Peak Throughput Windows
+| Hour (PT) | Sessions | Commits | Active Hrs | Commits/Hr |
+|---|---|---|---|---|
+| 12 PM peak | 3 | 15 | 2.4 | 6.27 |
+| 8 PM | 19 | 41 | 11.2 | 3.67 |
+| 2 PM | 7 | 35 | 12.5 | 2.79 |
+| 5 PM | 5 | 35 | 15.3 | 2.29 |
+| 8 AM | 5 | 30 | 18.9 | 1.58 |
+Noon and 8 PM are your throughput peaks. The midnight–1 AM window (5 sessions, 43 commits) has high raw output but lower per-hour rate (1.17) because those sessions run long.
+Project Throughput Rankings
+| Project | Sessions | Commits | Mutations | Active Hrs | Commits/Hr | Mutations/Hr | Error % |
+|---|---|---|---|---|---|---|---|
+| pi-claude-cache-warming | 3 | 16 | 77 | 4.2 | 3.77 | 18.2 | 0.0% |
+| rerere | 2 | 6 | 17 | 1.7 | 3.64 | 10.3 | 0.0% |
+| flatmachines_manager | 1 | 25 | 39 | 7.2 | 3.49 | 5.4 | 0.0% |
+| prototyping | 12 | 54 | 255 | 20.6 | 2.63 | 12.4 | 0.06% |
+| sterling-swarm | 2 | 21 | 140 | 38.0 | 0.55 | 3.7 | 0.0% |
+| flatagents | 58 | 169 | 1,488 | 374.2 | 0.45 | 4.0 | 0.11% |
+| autocatalytic-infra | 169 | 258 | 2,314 | 1,150.6 | 0.22 | 2.0 | 1.03% |
+| skills-flatagents | 21 | 14 | 232 | 80.8 | 0.17 | 2.9 | 0.16% |
+| speed-kills | 8 | 1 | 224 | 112.7 | 0.01 | 2.0 | 0.29% |
+Peak Days — What Made Them Great?
+| Day | Sessions | Projects | Commits | Mutations | Active Hrs | Commits/Active Hr | Error % | Avg Turns/Session | Pattern |
+|---|---|---|---|---|---|---|---|---|---|
+| Mar 17 | 9 | 1 | 38 | 76 | 5.5 | 6.91 | 0.0% | 17.3 | Single-project focus day |
+| Mar 22 | 10 | 4 | 60 | 176 | 14.6 | 4.11 | 0.0% | 15.6 | High-focus, zero-error |
+| Mar 20 | 26 | 6 | 41 | 138 | 14.0 | 2.92 | 0.05% | 9.2 | High-session sprint day |
+| Mar 18 | 9 | 4 | 28 | 190 | 17.2 | 1.63 | 0.0% | 14.4 | Solid all-round |
+| Feb 22 | 12 | 2 | 40 | 214 | 26.5 | 1.51 | 0.03% | 13.9 | Focused + reliable |
+Elite Session Hall of Fame
+| Session | Project | Turns | Commits | Hours | Commits/Hr | Tools/Turn | Mutations | Error % |
+|---|---|---|---|---|---|---|---|---|
+9f50bb15 | autocatalytic-infra | 5 | 5 | 0.13 | 37.8 | 8.6 | 1 | 0.0% |
+d32b92cd | autocatalytic-infra | 4 | 3 | 0.14 | 21.5 | 9.5 | 7 | 0.0% |
+1541ddce | autocatalytic-infra | 3 | 3 | 0.16 | 17.8 | 21.7 | 7 | 3.2% |
+cfb3272b | flatagents | 32 | 11 | 0.79 | 14.0 | 6.6 | 31 | 0.0% |
+7ae66ff2 | autocatalytic-infra | 10 | 3 | 0.24 | 12.0 | 4.5 | 14 | 0.0% |
+fa834693 | skills-flatagents | 10 | 9 | 0.83 | 10.7 | 6.1 | 5 | 0.0% |
+7120d205 | autocatalytic-infra | 17 | 7 | 0.72 | 9.6 | 8.8 | 44 | 0.0% |
+003da903 | autocatalytic-infra | 14 | 6 | 0.65 | 9.0 | 7.3 | 13 | 0.0% |
+597e609b | flatagents | 22 | 14 | 1.48 | 9.0 | 12.4 | 84 | 0.0% |
+08a89901 | prototyping | 11 | 4 | 0.51 | 7.8 | 10.4 | 31 | 0.0% |
+Tool Mix: What Fast Sessions Do Differently
+| Speed Tier | Sessions | Bash % | Read % | Edit % | Write % | Tools/Turn | Avg Turns | Avg Hrs |
+|---|---|---|---|---|---|---|---|---|
+| Fast (≥3 c/hr) | 46 | 53% | 28% | 12% | 5% | 12.6 | 16.3 | 1.13 |
+| Medium (1-3 c/hr) | 26 | 56% | 24% | 15% | 4% | 11.0 | 21.6 | 3.55 |
+| Slow (<1 c/hr) | 44 | 53% | 29% | 13% | 4% | 11.1 | 27.3 | 30.0 |
+Insight: Tool mix is surprisingly similar across speed tiers. The dominant difference is session duration (1.1 hrs vs 30 hrs) and turn count (16 vs 27). Slow sessions read slightly more (29% vs 28%) — but the big lever is session shaping, not tool optimization.
+Throughput Forecast
+🔄 Status Quo Forecast
+0.85
+commits/active hr by W9
+Continue current trajectory with no changes. Organic improvement from growing familiarity with codebases and tooling. +15% from current.
+🎯 Optimized Forecast
+1.50
+commits/active hr by W9
+Apply session shaping + focus discipline from recommendations below. +103% from current. 2× current throughput.
+⚡ Maximum Forecast
+2.50
+commits/active hr by W9
+Operate entirely in "elite mode" patterns — sub-2-hour sessions, single-project focus, zero-error targeting. This is what your best sessions already achieve at the median.
+Recommendations — Ranked by Expected Impact
+1. Kill 8hr+ sessions HIGH IMPACT — estimated +60% throughput
+55 sessions lasted 8+ hours and committed at 0.07/hr — 37× worse than sub-30-min sessions. These sessions have 28.9 turns on average, so they aren't "abandoned" — they're actively used but stuck in exploratory loops.
+- Action: Hard-stop sessions at 2 hours. Save state (commit or WIP snapshot), start fresh.
+- Mechanism: If a session hits compaction, terminate immediately. Compacted sessions run at 0.66 c/hr vs 4.14 c/hr non-compacted — that's 6× worse.
+- Math: 55 sessions × 0.07 c/hr → if those hours ran at the 1-2hr bucket rate (1.79 c/hr), that's ~25× more commits per hour from the same active time.
+2. Single-project focus days HIGH IMPACT — estimated +25% throughput
+Days with 1-2 projects produce 0.94 commits/active hr vs 0.40 for 6+ project days. Your best day ever (Mar 17, 6.91 c/hr) was single-project.
+- Action: Designate 3-4 days/week as single-project focus days. Reserve 1-2 days for multi-project maintenance.
+- Why it works: Context switching between projects forces re-reading, re-orienting, and re-planning. Each switch costs 10-20 minutes of setup overhead.
+- Target: Achieve at least 2 days/week with ≤2 active projects.
+3. Target the <60-min session shape MEDIUM IMPACT — estimated +20% throughput
+The data shows a clear efficiency curve: sub-60-min sessions commit at 2.2-2.6/hr. The 1-2 hour bucket is still good (1.79). Beyond 2 hours, throughput degrades sharply.
+- Action: Design sessions with a clear commit target. "This session will ship X." When X is done, commit and close.
+- Batch size: 1-3 commits per session is the sweet spot. Elite sessions average 9.3 commits in 1.6 hours — about 1 commit every 10 minutes.
+- Anti-pattern: "Let me also look at Y while I'm here" — this is the #1 session expander. Save Y for the next session.
+4. Shift autonomous agentic work to burst mode MEDIUM IMPACT — structural improvement
+Long-running autonomous sessions (flatagents/sterling-swarm) produce significant raw output but at lower per-hour rates. Session c67e289a
+produced 34 changeset commits — but took 8.1 hours.
+- Action: Break autonomous work into 90-minute sprints with explicit phase checkpoints (design → implement → test → commit).
+- Evidence: Session
+cfb3272b
+(flatagents, 11 commits in 0.79 hours = 14.0 c/hr) proves the same type of work can be done in short bursts. - Target: No autonomous session exceeds 2 hours without a commit checkpoint.
+5. Protect zero-error operating mode DEFENSIVE — sustains existing gains
+Zero-error sessions commit at 0.27/hr vs 0.08 for 1-3% error sessions. Errors don't just cost retry time — they break flow state and trigger exploration spirals.
+- Action: Continue current reliability practices. Don't sacrifice error rate for speed.
+- Leading indicator: If error rate rises above 1%, expect throughput to drop proportionally.
+- Current status: Error rate at 0.06% — excellent. Protect this.
+6. Exploit peak hours SCHEDULING — free throughput
+Your 12 PM and 8 PM windows produce 3.7-6.3 commits/active-hr. Your 10 PM-midnight window (high volume) produces only 0.23/hr because it's dominated by long-running autonomous sessions.
+- Action: Schedule high-priority commit work for 12 PM and 8 PM windows. Reserve late night for autonomous/batch work.
+- Rationale: Matching high-intent work to high-throughput windows is free velocity.
+The Throughput Model
+flowchart TD subgraph Inputs["Throughput Inputs"] A["Session Duration\n(shorter = faster)"] B["Error Rate\n(lower = faster)"] C["Project Focus\n(fewer = faster)"] D["Session Intent\n(commit-target = faster)"] end subgraph Multipliers["Throughput Multipliers"] E["Zero-error mode\n(1.8× vs low-error)"] F["Sub-60min sessions\n(2.4 c/hr vs 0.07)"] G["Single-project days\n(2.4× vs scattered)"] H["No compaction\n(6.3× vs compacted)"] end subgraph Output["Output"] I["Commits per Active Hour"] end A --> F B --> E C --> G D --> H F --> I E --> I G --> I H --> I
+The Throughput Equation
+$$\text{Commits/Hr} = \text{Base Rate} \times \frac{1}{\text{Duration Factor}} \times \frac{1}{\text{Error Factor}} \times \text{Focus Multiplier}$$
+Where:
+- Base rate ≈ 2.4 c/hr (observed sub-60min average)
+- Duration factor: 1.0 for <1hr, 1.3 for 1-2hr, 3.5 for 2-4hr, 34× for 8hr+
+- Error factor: 1.0 for 0%, 1.8 for <1%, 3.4 for 1-3%
+- Focus multiplier: 1.25 for 1-2 projects, 1.0 for 3-5, 0.53 for 6+
+Ideal operating point: \(\text{2.4} \times \frac{1}{1.0} \times \frac{1}{1.0} \times 1.25 = \textbf{3.0 c/hr}\)

@@ -1,0 +1,712 @@
+[applause]
+Thanks everyone for swimming and thanks
+Amplify for hosting us and Blue and Pope
+for organizing. I want to start with a
+confession. I assume that I so I made an
+assumption. It's not correct. As soon as
+you going to go first set of things for
+the much more exciting coach than me. So
+what I'm going to do right now is try to
+contextualize the the the the content
+they discuss in the broader idea of what
+he aspired about. And I use the slides
+that were meant to introduce some of
+this stuff. But what I will do is um
+actually try to reflect on like
+philosophically why does GSI exist and
+why we think ESPI makes sense you know
+made sense when we started it in 2022
+why we think it makes sense in 2025 and
+why AGI or not we think it makes sense
+in 2030 and we think like this is
+something very deeply fundamental here
+and um the two previous talks were
+incredibly sort of deep and thorough on
+compactation but something that I like
+to repeat partly that surprises people
+but partly because it helps drive
+something ISM is actually not this about
+prompt optimization at all. Uh we are in
+fact and we have been as Chris uh
+discussed leading sort of the space of
+natural language learning and prompt
+optimization for a few years. Uh but
+that's just like one of the things um
+that implement the lawyer paradigm which
+is declarative self-improvement or
+declarative eye programming. So let me
+tell you about that. uh all of this work
+and everything that you know Chris and
+Lasha discussed uh is you know is is as
+they said work by a lot of amazing
+people many of whom are in the room we
+have IDA mother going next as well uh we
+have uh a lot of other folks here that
+probably recognize uh so let me let me
+just jump right in and uh give you a
+little bit of context here so the
+context of TSI and of this talk is I
+think something super remarkable has
+happened over the past like you know 3
+to 8 years which is we seem to have
+figured out how to train incredibly
+general and remarkably powerful AI
+assistance and that's no small feat but
+something that is taking a lot of people
+a little bit of time to realize is as
+amazing as these models are is actually
+something uh of a of a uh of a cheat
+that sort of makes them work as as well
+as they do which is they are interacting
+directly with you. they are virtually
+human in the Duke for every single
+interaction which means that when they
+make mistakes or when they seem to be a
+bit consistent or or where like you know
+they don't exactly adhere to your
+requirements you're sitting right there
+sort of in an HCI from the HCI angle you
+know ready to correct them or to
+slightly steer them here and there and
+you know as a human you're incredibly
+flexible and versatile anyway so you're
+able to sort of like kind of smooth over
+a lot of what they eat uh but what
+remains still hard and the reason like
+we're doing all of this is that we as
+the field are still fundamentally
+guessing how to engineer reliable AI
+software. Uh and the thing about AI
+software is that now you have this, you
+know, really powerful and sort of like
+super unpredictable language model
+inside a program. It's not talking to uh
+to to one of us. It's talking to Python
+to dumb Python variables and like
+control flow. And those things are much
+less uh versatile um than we are. Uh and
+in fact, that's they are this way for a
+reason. They're this way because we want
+to be able to reason about the programs.
+We want to be able to say, "Oh yeah,
+it's doing the thing is antisted. It's
+trying, you know, it's supposed to
+achieve where we we're supposed to be
+able to say this module and that module
+do not pass information, you know, with
+each other because that would be a
+privacy concern, right? So there is a
+reason that software is as structured as
+it is and that means though that
+building these types of AI software
+systems is really difficult still.
+This is as as uh Chris's talk sort of
+alluded to not something that
+improvements to language models is going
+to fall anytime soon. And the reason for
+this is um maybe more apparent if we
+reflect for a second on how these models
+exist. These models are not engineered.
+Uh we do not in fact understand uh
+exactly how they do what they do. What
+happens is we figured out a recipe much
+like cooking or maybe uh uh alchemy uh
+where basically we if we prepare data of
+enough scale and we iterate on it enough
+times and cover sort of like all of the
+obvious cases uh and you sort of run it
+with a whole lot of gradient descent in
+various different algorithms and
+objectives and shapes, you get models
+that sort of when you put them under
+audit and you test them for a while,
+they seem to be incredibly good and
+impressive and we can sort of iterate
+from there. But for the same reason that
+we get this amazing generalization where
+the models extrapolate and interpolate
+and pin the points they see. Um for that
+exact same reason we do not know
+precisely what they will do uh the
+farther out you go from these plays and
+sort of in this vastly high dimensional
+space. And for that reason you get
+models that are better and better and
+better all the time and yet they seem to
+be uh you know susceptible to all kinds
+of like weird sensitivities. Sometimes
+very weird contingent tricks make a lot
+of difference but other times their
+capabilities as as high as they go uh
+you know the models just remain wildly
+inconsistent in other ways.
+Why is that a problem? Well, if you're
+just chatting with the model uh and the
+company start to treat their models as
+systems, they can sort of iterate over
+these over these uh uh sort of uh uh
+out a lot of that behavior. But when
+your goal uh is to take a model now and
+build a product or build an artifact or
+some kind of system, you're always
+trying to extract the best possible
+trade-offs, the best quality, the best
+consistency, the this best uh uh
+efficiency out of today's generation of
+models. And what that invites in
+practice was it invite invites hacks. A
+few years ago, those hacks were, you
+know, people sort of introducing funny
+strings in the prompts. Uh but nowadays
+is people sort of um you know
+prioritizing which which things they
+repeat in the prompts or sort of which
+examples they they they select for their
+models or how exactly they break their
+system into multiple agents or any other
+number of sort of ephemeral decisions
+that you know the next time there's a
+better generation of models all of these
+things are going to be
+counterproductive.
+Now this phenomena is just one example
+of what is a much broader idea in AI
+which is the idea of the bits. If folks
+are not aware of this, this is sort of
+an essay uh by Rich Sutton, the pilator
+reforce learning who is the current
+year's um during award where where he
+basically says that a lesson from maybe
+the biggest lesson from decades of doing
+AI is that we're really bad at
+engineering around AI. Whenever we pick
+a specific problem and we start to
+encode our knowledge into things for our
+agents and our systems, what happens is
+you do see local improvement. the
+engineers and the researchers do
+actually see a lot of you know a bunch
+of return um that helps them celebrate
+on benchmarks or you know tasks that
+they're solving. But you give it a few
+more years and hardware improves and
+algorithms improve and the sort of
+search spaces we can explore with uh
+gradient descent or with discrete search
+improves and sort of like you find that
+simpler and more general approaches um
+that rely on scale are able to sort of
+invalidate or like sort of wash over a
+lot of the the handy engineer tricks.
+And you might think about this as
+something like that's specific to AI or
+that's fairly peculiar but I actually
+sort of implore people to realize that
+this is nothing but Donald K's 1974
+premature optimization is the root of
+all evil. Uh and it's sort of this idea
+that you know when engineers sort of
+like misprioritize where to spend their
+time and they sort of micro optimize and
+micro handineer we end up sort of making
+bad trade-offs either in terms of
+productivity of the developers or of
+maintain identity or portability of the
+systems or simply doing things that do
+not make sense given the rig of progress
+computer science in general and in AI in
+particular.
+So what is the Aspire about? uh DSpire
+to me is not around pro optimization.
+Although this is one of our best arms in
+making for solving a problem. Uh DSP is
+fundamentally about how do we take AI
+software and make it an actual field. I
+think there's very few people outside
+the AI the DSI ecosystem and its many
+derivatives that actually think and take
+AI software as a serious thing. This is
+not something you know some wrapper
+around the model. We're actually
+thinking that this is a discipline and
+an engineering discipline and one where
+we really want to be systematic. You can
+go back to the original DSP papers and
+the question is not how do we get the
+best quality out of today's models. The
+question is how do we turn this into a
+systematic discipline? Uh and the answer
+starts from well actually in order for
+AI software to be a systematic
+discipline the first thing you do is you
+actually say what is the AI system and
+what you're doing. The AI system is not
+about GBD5. It's not about text one or
+two when we started. Uh and it was sort
+of like the first instantiation of DSP
+was a homework assignment in the NLP
+class at Stanford this course in April
+of 2022. Um so this is before you had
+GTD 3.5. You had models that barely knew
+how to add up two numbers. uh but the
+core of the paradigm is that the core
+insight is actually inside each of these
+systems is some kind of AI specification
+and that AI specification should be
+decoupled from all of the machine
+learning techniques that we are
+ourselves inventing and other people are
+inventing but by decoupling the AI from
+the machine learning uh you're able to
+get people to express their systems much
+like how we express things in a in a
+programming language and you're able to
+get the graduate students the
+researchers the other engineers who
+built a lot of machine learning
+techniques and we can then compose these
+seamless kicks. If you have a bar
+algorithm, you have Jaffa now, we had
+Dro before, we had Dra Qot with random
+search before, we had Simba, we have a
+lot of these methods, this GRPO in air
+force learning, we had earlier assorted
+methods for offline air force learning.
+These compos seamlessly over your
+programs, you get new programs and new
+applications, you can sort of like run
+them uh with whatever the latest methods
+and algorithms are.
+All right, I have a piece of snippet uh
+uh you know a snippet of code here. Uh
+and I don't expect you to actually even
+see it, but this it's a bit of C code
+that's very messy. And what I normally
+like to ask instead of like when I use
+this slide is like unless you've seen me
+give this slide before or unless you
+like are deeply like I don't know a nerd
+in that part of uh in that part of
+programming, it's a piece of code that's
+just doing a bunch of bit shifting and
+most people have no idea what this is
+doing. Um, so this is kind of a snippet
+of code from Quake, uh, like a a late
+1990s game where in order to implement
+something in the in their inner loops,
+which is a fast inverse square root,
+they figured out sort of a bunch of
+tricks where for the floating point
+representation you're working with, uh,
+shifting and and adding and doing a
+bunch of these operations in a certain
+way gives [snorts] you an approximation
+of an inverse square root. Um, and I
+like I I I would like folks to think
+about this. If you open a piece of code
+and they don't have one function of
+that, they have a lot of functions and
+all their functions look like this and
+maybe you cannot actually make out what
+the name of the of the of the function
+is. It's just a whole bunch of this
+stuff. Would you say that these people
+are engineering those systems? Like
+maybe if there's like one part of the
+system that is super like core and is
+nobody else is doing it well. Maybe you
+get an excuse there, especially if it's
+well documented. But if the whole system
+is built like this, you can bet that's a
+team that who whose work is going to
+collapse. That's not a team that can
+iterate fast. Maybe the code is fast
+today, but I don't know if it's correct
+and I don't know if they're going to be
+able to sort of uh stay in the game. So
+the question is what did we do? Because
+most of us are not writing code that
+looks like this. Uh what we did though
+uh is we built higher level languages
+that allow people to think at the level
+of abstraction closer to the problem
+domain. uh and then we gave them as
+researchers and as engineers uh much
+faster compiles and much faster runtimes
+so they do not have to do a lot of this
+stuff by hand. Notice that the argument
+here is not that's actually the museum
+in practice but notice that the argument
+here is not if you use higher level
+languages and compilers your code would
+be faster although that's what we see in
+practice due to things like the bit
+lesson. uh the argument is you've
+already engineered there are important
+things you need to be thinking about
+please do not do bit shifts unless
+you've demonstrated that this is
+actually the bottleneck that we should
+be investing your time in
+so the answer uh to AI programming is
+exactly the same let's elevate ourselves
+above the level of handineered assembly
+and the shifts to the level of
+structured programming let's rediscover
+the 70s and 80s and 90s of programming
+uh but this time with natural language
+specification as a first class component
+and primitive in our programs. Um so
+this is the idea of not handine
+engineering one prompt steps with the um
+are iteratively evolved evolved with a
+specific model in mind because the model
+will change um but instead declative
+signatures which structure um your
+intent and actually allow you to express
+ambiguous uh sort of natural language um
+uh specifications but sort of localize
+it so that as much structure that can be
+expressed formally and symbolically in
+code is expressed formally and
+symbolically in code.
+So uh instead of a very long and messy
+prompt, we break down the task so that
+the task that is supposed to be executed
+is clearly specified and any
+requirements are clearly isolated from
+uh from the other components so that the
+inputs to your prompt are not just some
+fstrings uh but they're actually
+arguments that have types and they have
+descriptions that can sort of um stand
+on their own feet um and that the
+outputs are also types uh that can sort
+of be understood uh in independently of
+uh and and in conjunction with the other
+parts. So signatures is sort of like the
+core abstraction of DSP. DSPI has
+fundamentally a single abstraction. It's
+just signatures and everything else
+falls out of off of that. If you
+understand what signatures are and how
+they localize ambiguity in a larger
+program and how they open up the space
+after that to composition in a larger
+space of sort of like functions that
+operate on signatures uh functions that
+operate on intent essentially. uh you
+can sort of see how signatures allow us
+to approach the stage of making AI
+engineering actually an engineering
+field because now we can think about how
+we abstract the details of inference you
+know should I do chain of thought should
+my model be an agent should it do Monte
+Carlo to research I don't I don't know
+that's not the decision I'm trying to
+make I'm trying to build an application
+for I don't know like uh chap PDF or
+whatever it is that people do um it
+abstracts away the learning so if I want
+to try the enforcement learning that
+signature doesn't say I I I can't do
+that. That signature actually captures
+my task. And now the question is how do
+I turn that into a model reinforcement
+diagram? I want to use something like
+Japa genetic approaches for removing the
+prompt. Well, great because the
+signature captures what the what the
+prompt is supposed to do. And now the
+prompt can be generated according to the
+specification. Um plumbing, you know, is
+XML the right way to use your model? Uh
+there's this thing called what is it
+called? Like tune or something that came
+out a few days ago. uh or or maybe it's
+YAML or maybe it's CSVs or what I don't
+know but that's clearly not part of my
+task that's some kind of lower level uh
+optimization that should sort of be uh
+composable on top of my system.
+So so what what do we actually do in
+practice? What we do in practice in VSI
+is we give you the tools to take your
+signatures inside a larger program and
+then we do any number of the things that
+like described today. uh we allow you to
+go over the prompts. We can actually
+reinforce the weights. We've always
+actually been able to do this ever since
+February of 2023. Um and we also can
+optimize the pipeline. So I'll just give
+you a few highlights of those really
+quickly. I will not discuss jetack
+because you know I cannot do as as well
+as good of a job as as as lack did.
+Um I'm also going to skip this one
+because um I wanted to tell you that
+prompt optimizers um can be composed
+sort of with RL and DSP and then the two
+are better together. But actually both
+Chris and Lia told you about that. So
+I'll I'll I'll I'll move faster here.
+Although I want to highlight that the
+tool that enables this is uh is the
+team's arbor library which is sort of
+this integration with DSP. It handles
+all of the all of the finickiness of
+reinforcement learning so that you
+basically take your exact same DSP
+program. That's why it's declared is
+that it composes with different
+techniques um and simply run the
+enforcemental learning up front. Uh the
+one thing I will discuss pretty briefly
+is is the following.
+So far we've thought about language
+models as a bit of a black box, right?
+Like this is just this thing that we u
+pass this uh this this context to and
+that we maybe fine-tune with
+reinforcement learning. But today's
+language models and for the foreseeable
+future that might be the case as well um
+are transformers and it's actually an
+increasing you know a growing
+literature. It shows that transformers
+are actually a very limited u type of
+object maybe because they're really
+highly catalyzable. Uh for example, we
+al we're all familiar with the context
+drop phenomena and there's actually kind
+of um theoretical reasons to to believe
+that a lot of that is is going to be
+very difficult to remove um from the
+models like we can increase their
+context length but at some point and and
+fairly uh consistently they sort of just
+seem to struggle for difficult tasks if
+the context is long enough.
+But that kind of um causes a problem for
+the for the vision that we described a
+vision of the declarative modules. You
+want to be able to show up to your to
+your uh system and actually break it
+down in accordance to uh your
+engineering sort of design. And your
+engineering design might have you in
+some cases design modules that want to
+accept very long input or that do very
+long processing or that need to produce
+very long output. And the problem there
+is in practice uh at any given model
+generation if the task is large enough
+maybe quality is best uh you know if it
+maybe your quality is going to be best
+if you actually decompose or break down
+the task into multiple calls. Uh you're
+not breaking things down here because
+your specification calls for it. You're
+breaking things down because your model
+is just struggling. So so so what do we
+do? And and this is like well for the
+longest time we told you like well don't
+mess with the weights. Uh we can handle
+that. Don't mess with the prompts. We
+can handle that. But the answer for this
+one was like yeah you you got to do this
+one sorry. Um so so we're starting we're
+starting to think about that and one
+answer is uh evolving the prompt itself
+uh like like action describe. Uh but
+maybe a slightly more general answer is
+what we think could be a new paradigm
+for inference scaling in general which
+is what if we actually go to the
+language man and say hey you're very
+good at code generation uh and you know
+what kind of code we really like to
+write that's very powerful it's language
+model prolers. It's essentially DSP
+program owners. So what if we come to
+the model and we say actually I want to
+put you in a in a in a setting where we
+can generate code and that code can
+actually be language model programs. You
+one of your tools can be to code a
+language model. Um well if you just do
+that the problem is the prompt is still
+very long and so like the model still is
+is failing at reading that whole prompt.
+So you might say well okay maybe maybe
+in order to make this happen uh let's
+actually take that whole prompt and put
+it in a variable. If you put it in a
+variable in Python and you tell the
+model, hey, there's a variable name.
+It's called X and it includes the prompt
+and it has the following number of
+tokens. Well, now the model is not going
+to struggle to uh to sort of process the
+task. It just cannot see what's in
+there. Uh so maybe what we can do is we
+go to the model and we say, hey, do it
+in a job or a notebook. You're on a
+persistent ripple environment. Uh you
+can execute code, see what happens, and
+then write more code and see what
+happens and you can kind of persist that
+uh that state as you go. Um so this is
+exactly the paradigm. um sort of
+developed by my student at MIT, Alex
+Tang,
+which is called recursive language logs.
+It's incredibly simple. What we do is we
+basically draw long prompts into a
+Python variable. We put the agent
+essentially in the Jopa notebook and we
+tell it, hey, please poke around. You
+can look at the first, you know, key
+tokens. You can look at the last C
+tokens. And once you understand the
+structure enough, we should store it by
+key code. And when you write that code
+uh one of the tools you have is you can
+actually pass context to a language
+model. And what you see in practice is
+that the models are very good at
+discovering the structure uh inside
+these long strings. Uh launching pilot
+jobs or sort of like map reduce style
+jobs where like they call smaller models
+on small pieces and they say hey I'm
+trying to poke through this and
+understand what's in there to summarize
+what's happening and sort of iterate
+based on the based on the intermediate
+outputs they see in order to de compose
+uh very large problems. And the
+interesting thing is even before we
+bring our big tools like Jaka or GRPO to
+this uh to this kind of thing um we're
+able to see that the models are
+surprisingly good at this. It's one of
+the sort of reasons that we say well as
+the models get better it can actually be
+harder to figure out the best ways to
+use them. So what I have here is a plot
+that shows on a really difficult task
+with 130,000 um context length um that
+if you just call GPD5 and you sort of
+try to prompt it to do this task, the
+original paper as well as our
+experiments show that it's only able to
+handle around 30% um of the instances.
+But if you go to GPD5 mini, a far
+smaller model and a far cheaper model,
+uh maybe I think 20 times cheaper, I
+can't remember the exact number. uh it
+is more than twice as good uh if you put
+it in the recursive setting and it's
+actually still cheaper uh in the
+recursive setting than using GP5 with a
+single call. It's also better than
+calling GPD5 in a React agent.
+Um and this this structure although here
+it's able to improve sort of the problem
+of context. So cases where the context
+does fit in the technical context window
+uh but the model is not performing very
+well. uh it is also the case that we
+allows us to scale to far longer
+contexts than the actual sort of
+advertised um window of the model. So
+here to 10 million plus tokens. So let
+me wrap up. Um thanks to the
+contributions of a lot of the folks in
+this room uh and many others the DSP
+community is regularly putting out
+dozens of new applications every uh
+someone actually from the community
+started a DSP weekly um uh uh
+newsletter. Uh I subscribe maybe you
+also want to uh and can kind of track
+certain things that that he wants to
+highlight every week. Uh I have a number
+of these here that just kind of
+highlight a bunch of stuff like a
+Romanian hospital that builds a uh sort
+of an optimized DSPI program for their
+doctors to give better uh to better
+communicate with the with the with the
+tele medicine uh uh patients and then
+they actually found very large gains. uh
+reports from meta in using prompt
+optimization for the llama models. Uh
+reports from Amazon AWS and their Nova
+optimizer sort of suite. Um uh stuff
+from data bricks, the data bricks people
+winning uh machine learning competitions
+and many other types of things including
+you know many others that are not here
+that uh you know Lakia highlighted and
+others highlighted. Uh but thanks to the
+work of this huge community um we're
+able to see what you know sort of like
+uh I'm thinking I'm laughing because I'm
+thinking here sort of like uh the
+scaling laws of the models. We're able
+to see on a long scale what could sort
+of be conceived of as an exponential
+growth in the number of monthly
+downloads of DSP. Uh maybe that's a
+metric somebody cares about. Uh and so
+like right now we're at $3 million dose
+per month, but you could sort of see um
+a lot of the earlier stages sort of like
+a few hundreds and few thousands uh for
+the first half of 2023. So that's that's
+thanks to you guys and to the many other
+folks sort of in the in the in the wider
+community. So I I just wanted to kind of
+like um uh you know contextualize the
+prompt um optimization discussion and to
+sort of bring back like the essence of
+prompts in DSP. the the the the the most
+fundamental
+root role of proni is that we have this
+notion of signatures and signatures is
+our attempt at sort of answering the
+question of how do we bring English or
+other other natural languages inside
+structured programs and the answer is
+actually you should write in English
+what can only or can be best expressed
+in English but in a structured way and
+when you do that what you actually are
+writing are humanf facing props or
+developerf facing props are what crumps
+wanted to be when they grow up. And the
+association uh with prompt optimization
+is we can take these beautiful organized
+self-documenting
+uh human facing prompts and turn them
+into whatever ugly mess or whatever uh
+highly structured deacon set of
+requirements that maybe you did not
+think about because maybe they're very
+model specific or environmentally
+specific or data set specific uh or
+composition specific where you have
+multiple modules connected together uh
+and turn them into that through the uh
+search uh and learning methods that
+scale that allow you in your system to
+counteract uh the the effects of the
+bitter lesson or the fact that premature
+optimization is maybe the uh square root
+I guess uh of all evil. All right,
+thanks everyone.
+[applause]

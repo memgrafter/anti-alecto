@@ -1,0 +1,38 @@
+-
+-
+-
+In FreeBSD this is called failpoints.
+I built a small, internal Go package for this using Context values. I can inject an error return, but also a context cancellation or stall. In property tests, I break random code paths and check that invariants still hold.
+-
+Yeah, this is a really great technique and you can adapt it for any language. I've even done this in an RPC environment: there's a field that will trigger a failure that will let you customize how it fails (returning an error vs throwing an uncaught exception) as well as include a message so you can test that the error recovery properly propagates error messages. The teardown verifying that the tripwire was hit is a good trick for in-process stuff, though, I'll have to remember that!
+Though I wound up leaving it in in the release build because that way I don't have to worry about diverging codepaths. (They weren't in hot loops so the performance didn't matter.)
+-
+Interesting idea, I'd not seen this kind of thing before.
+I wonder if this could be done at the process level, without any cooperation from the program being tested. E.g. somehow declare which call (using DWARF source locations or similar) should fail with what (e.g. specify the return value, or a function that should be called instead of the original one), and a process wrapper that uses
+ptrace
+and/or related system calls to insert a breakpoint at the call point and call another function or return the specified value instead of calling the original functions.Can this be done? Is it already done?
+-
+Antithesis is one example of a system that can do this. https://antithesis.com/docs/environment/fault_injection
+-
+IIUC it injects failures at the network level (of whatever a "pod" controls, IIUC it's about networking). What I describe is more general. But yeah it's similar in some ways.
+What I have in mind is something like: "I want this particular function call to fail/call this function instead" when running a test. It could be an IO functions or even a pure one.
+-
+Maybe
+LD_PRELOAD
+shenanigans? Or cooperation from the OS that says 50% of calls to "syscall Foo" fails.On Linux you could - in theory - use ebpf to intercept syscalls, identify the process (so you don't mess with the wrong stuff), and fail a syscall. You could set
+errno
+or something:https://cylab.be/blog/471/offensive-ebpf-simulating-a-full-disk
+Sounds gnarly, tbh.
+-
+-
+This is great. I think we should generalize this to arbitrary calls (not just system calls -- I'm aware that this needs another mechanism, that's why I suggested ptrace and breakpoints in my original comment) and make it a usable package. This has so much potential.i
+-
+-
+I did that in an attempt to prove a point about unit testing. It is gnarly and my attempt involves a function that, in my mind, shouldn't exist (
+setenv()
+, but at least the code being tested isn't multithreaded).
+-
+-
+-
+-
+-

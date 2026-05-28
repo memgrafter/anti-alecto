@@ -1,0 +1,417 @@
+1. Why Events, Not Time
+The problem with time-based thinking
+- Variance is enormous — one founder hits $10K MRR in 3 months, another in 18. Same playbook, wildly different timelines.
+- Time creates false urgency — "I should be at $5K MRR by month 6" leads to panic-driven decisions instead of signal-driven ones.
+- Time creates false patience — "It's only month 2, too early to worry" when danger signals are already firing.
+- Calendar milestones aren't actionable — knowing "Phase 3 starts at month 4" tells you nothing about what to do right now.
+The event-based alternative
+- Signals are observable — you can instrument and detect them
+- Checkpoints are binary — you've either passed one or you haven't
+- Transitions are causal — Signal X fires → you enter State Y → action Z is correct
+- Speed-independent — works whether you reach PMF in 8 weeks or 18 months
+- Danger signals fire early — bad trajectories are detected by what's happening, not how long it's been
+Think of your business as emitting a continuous stream of events. Your job is to listen, classify them, and let them trigger the right state transitions.
+2. The Business State Machine
+States & transitions
+Your business is always in exactly one of these states. Transitions are triggered by signal events, never by time passing.
+stateDiagram-v2 [*] --> S0_IDLE S0_IDLE --> S1_SEARCHING : E01: Problem hypothesis formed S1_SEARCHING --> S2_VALIDATING : E02: First stranger says "I'd pay for that" S1_SEARCHING --> S0_IDLE : E_ABORT: No signal after exhausting 3+ niches S2_VALIDATING --> S3_BUILDING : E03: Demand proof collected S2_VALIDATING --> S1_SEARCHING : E_REJECT: Validation fails S3_BUILDING --> S4_LIVE : E04: First user completes core action S3_BUILDING --> S2_VALIDATING : E_PIVOT: Build reveals wrong problem S4_LIVE --> S5_PMF_TESTING : E05: First paying stranger S4_LIVE --> S3_BUILDING : E_REWORK: Zero conversions after exposure S5_PMF_TESTING --> S6_GROWING : E08: PMF confirmed S5_PMF_TESTING --> S4_LIVE : E_STALL: PMF signals absent S6_GROWING --> S7_SCALING : E12: Organic growth self-sustaining S6_GROWING --> S5_PMF_TESTING : E_REGRESS: Growth stalls, churn spikes S7_SCALING --> S8_MATURE : E15: Revenue plateaus with healthy margins S7_SCALING --> S6_GROWING : E_REGRESS: Scaling breaks unit economics S8_MATURE --> S9_EXIT : E18: Exit signal fires S5_PMF_TESTING --> DANGER : D_signals fire S6_GROWING --> DANGER : D_signals fire S7_SCALING --> DANGER : D_signals fire DANGER --> S5_PMF_TESTING : Recovery action DANGER --> S6_GROWING : Recovery action DANGER --> S9_EXIT : Unrecoverable note right of S0_IDLE : No commitment yet note right of S2_VALIDATING : Money or strong behavior signals only note right of S5_PMF_TESTING : Most critical state—\nlisten hardest here note right of DANGER : Interrupt state—\nimmediate response required
+State definitions
+| State | Code | You are here when… | Primary job | Exit condition |
+|---|---|---|---|---|
+| Idle | S0 | No active hypothesis | Generate problem hypotheses | Form a testable hypothesis |
+| Searching | S1 | You have a problem hypothesis but no external signal | Find people with the problem | A stranger confirms pain unprompted |
+| Validating | S2 | Strangers confirm pain; you're testing willingness to pay | Collect demand proof (money or high-cost behavior) | Demand proof threshold met |
+| Building | S3 | Demand proven; constructing MVP | Ship smallest thing that solves the core loop | First user completes core action |
+| Live | S4 | Product works; testing conversion | Get first paying stranger | Stranger pays without personal persuasion |
+| PMF Testing | S5 | Revenue exists; testing for product-market fit | Listen for PMF signals, iterate fast | PMF checkpoint passes |
+| Growing | S6 | PMF confirmed; scaling acquisition | Build repeatable growth loops | Organic growth self-sustaining |
+| Scaling | S7 | Growth loops working; optimizing efficiency | Improve unit economics, reduce founder dependency | Revenue stabilizes with healthy margins |
+| Mature | S8 | Stable, profitable, low-touch | Harvest or evolve | Exit signal fires |
+| Danger | D | Any danger signal fires (interrupt state) | Diagnose and respond immediately | Root cause addressed or exit |
+3. Signal Taxonomy
+Signals are observable business events. Each has a strength rating that determines how much weight to give it in decisions.
+MODERATE — medium-cost behavior (email, signup, demo request). Useful in aggregate.
+WEAK — low/zero-cost behavior (likes, comments, "cool!"). Noise unless overwhelming.
+ANTI-SIGNAL — looks like progress but isn't. Actively misleading.
+DANGER — requires immediate response regardless of current state.
+📡 Demand Signals
+Fire during S1→S2→S3. Answer: "Do people want this?"
+| Signal | Strength | What it means |
+|---|---|---|
+| Stranger pre-pays / deposits | STRONG | Real demand exists — build it |
+| Stranger describes your idea back to you unprompted | STRONG | Problem is real and top-of-mind |
+| Stranger shares their current ugly workaround | STRONG | Active pain; they're already "hiring" a solution |
+| Competitor exists with bad reviews | STRONG | Validated market, unsatisfied demand |
+| 5+ people ask the same question in a forum/week | MODERATE | Recurring pain; worth investigating |
+| Waitlist signup with real email | MODERATE | Interest exists; not yet commitment |
+| Social media engagement on problem post | WEAK | Attention, not demand |
+| Friends say "great idea!" | ANTI-SIGNAL | Politeness, not signal. Ignore completely. |
+| People ask for features before the core exists | ANTI-SIGNAL | Ideation addiction — they won't pay either |
+💰 Conversion Signals
+Fire during S4→S5. Answer: "Will people pay?"
+| Signal | Strength | What it means |
+|---|---|---|
+| Stranger pays without personal selling | STRONG | Self-serve conversion works — PMF signal |
+| Customer upgrades to higher tier unprompted | STRONG | Expansion revenue potential; value exceeds price |
+| Customer pays annual upfront | STRONG | High confidence in long-term value |
+| Trial→paid conversion >5% | MODERATE | Funnel is working at acceptable rate |
+| User completes core action in first session | MODERATE | Activation is healthy — value delivered fast |
+| Demo booked but no follow-up | WEAK | Curiosity, not intent |
+| Signup but never logs in | ANTI-SIGNAL | Acquisition works, activation broken |
+| High trial count but zero conversions | DANGER | Value proposition or pricing is wrong |
+🔁 Retention & PMF Signals
+Fire during S5→S6. Answer: "Do they keep using it?"
+| Signal | Strength | What it means |
+|---|---|---|
+| Sean Ellis test: 40%+ "very disappointed" if gone | STRONG | Canonical PMF signal |
+| Unprompted referral (user brings another user) | STRONG | Organic viral loop emerging |
+| Customer writes unsolicited positive review/tweet | STRONG | Emotional attachment — strong retention predictor |
+| User returns daily/weekly without prompting | STRONG | Habit formed — core loop is sticky |
+| Customer asks "can I do X with this too?" | MODERATE | Expanding their mental model of your tool — good |
+| Low support volume per customer | MODERATE | Product is intuitive — operational leverage |
+| Renewal after payment failure (active recovery) | MODERATE | Customer actively chose to stay |
+| User "activates" but never returns | ANTI-SIGNAL | Activation metric is wrong, or core loop has no habit trigger |
+| Month 2 cohort retention <40% | DANGER | Leaky bucket — growth won't help |
+📈 Growth Signals
+Fire during S6→S7. Answer: "Is this scaling?"
+| Signal | Strength | What it means |
+|---|---|---|
+| Organic signups exceed paid/manual for 4+ weeks | STRONG | Growth loop is self-sustaining |
+| Content ranks page 1 for target keywords | STRONG | SEO flywheel turning — compounding distribution |
+| Net revenue retention >100% | STRONG | Expansion exceeds churn — even zero new customers = growth |
+| Competitor mentions you in their marketing | MODERATE | You're on their radar — market validation |
+| Partnership inbound interest | MODERATE | Ecosystem value recognized |
+| Signup spike from single source then flatline | ANTI-SIGNAL | One-time event, not a loop. Don't build on it. |
+| Growth only while actively posting on social | ANTI-SIGNAL | Founder-dependent distribution — not scalable |
+| CAC rising faster than ARPU | DANGER | Unit economics deteriorating — growth is destroying value |
+⚙️ Maturity Signals
+Fire during S7→S8. Answer: "Is this sustainable without me?"
+| Signal | Strength | What it means |
+|---|---|---|
+| Revenue survives 2-week founder absence | STRONG | Business, not freelancing. You've built a machine. |
+| Support handled without founder for 1+ month | STRONG | Operations are documented and delegated |
+| No code deploys for 30 days, revenue stable | STRONG | Product is mature — features are right |
+| Gross margin >85% sustained 6+ months | MODERATE | Cost structure is optimized |
+| Monthly churn <3% sustained 6+ months | MODERATE | Product-market fit is deep — switching costs working |
+| Founder is bored | MODERATE | Legitimate signal! Business is on autopilot. Time to evolve or exit. |
+🏁 Exit Signals
+Fire during S8→S9. Answer: "Should I sell, hold, or evolve?"
+| Signal | Strength | What it means |
+|---|---|---|
+| Unsolicited acquisition offer | STRONG | Market values your asset — explore it |
+| Opportunity cost of your time exceeds business value | STRONG | Your time is worth more elsewhere |
+| Platform you depend on is declining | STRONG | Sell while asset still has value |
+| Revenue flat for 12+ months despite effort | MODERATE | Market ceiling reached — milk it or sell |
+| Founder motivation near zero | MODERATE | Unmotivated founder = declining product quality |
+| Acquirer could 10× the product's reach | MODERATE | Strategic premium available — timing advantage |
+4. Checkpoint Registry
+🔍 Problem Confirmed
+Transition: S1 (Searching) → S2 (Validating)
+Unlocked actions:
+- Create a landing page with clear value proposition
+- Set up waitlist with email capture
+- Begin concierge/manual validation
+- Start pre-sale conversations
+Anti-patterns to avoid:
+- ❌ Starting to code anything
+- ❌ Buying a domain and designing a logo
+- ❌ Counting friend/family feedback as stranger signals
+💵 Demand Proof
+Transition: S2 (Validating) → S3 (Building)
+Unlocked actions:
+- Commit to building MVP — scope locked to validated problem only
+- Choose tech stack
+- Set hard ship deadline (max 8 weeks from this checkpoint)
+⚡ Core Loop Complete
+Transition: S3 (Building) → S4 (Live)
+What "core action" means:
+The single workflow that delivers the primary value. Examples:
+- Form builder → user creates a form AND receives a submission
+- Analytics tool → user connects data source AND sees their first dashboard
+- Automation tool → user creates a rule AND it fires successfully
+Unlocked actions:
+- Set up billing (Stripe, Lemon Squeezy)
+- Launch to waitlist / pre-sale customers
+- Begin collecting NPS/feedback
+🎯 First Paying Stranger
+Transition: S4 (Live) → S5 (PMF Testing)
+This is the most emotionally significant checkpoint but not PMF. It's proof of concept for the conversion funnel. One person paid — now the question becomes whether this repeats.
+Unlocked actions:
+- Instrument every step of the user journey
+- Set up cohort tracking
+- Begin Sean Ellis survey with every new customer
+- Schedule customer calls (to understand, not to sell)
+🔂 Repeatable Conversion
+Transition: Still S5, but unlocks more aggressive investment
+What this proves:
+- Your conversion isn't a fluke or single-channel dependency
+- The value proposition resonates across at least two audiences
+- You can start reasoning about unit economics
+Unlocked actions:
+- Calculate real CAC and LTV
+- Begin testing pricing changes
+- Invest in the better-performing channel
+🔒 Retention Lock
+Transition: Still S5, but critical gate for PMF
+Without this checkpoint, nothing else matters. Growth with poor retention is filling a leaky bucket. This is the most important gate in the entire system.
+Unlocked actions:
+- Begin spending on growth (content, ads, partnerships)
+- You have permission to hire or outsource
+🏆 PMF Confirmed
+Transition: S5 (PMF Testing) → S6 (Growing)
+This is the compound checkpoint. No single signal proves PMF — the conjunction of all four gates does. Missing any one means you're still in S5.
+Unlocked actions:
+- Invest aggressively in distribution
+- Begin building second growth channel
+- Consider raising prices
+- Start annual plan option
+- Create "vs competitor" content
+🌀 Growth Loop Proven
+Transition: Within S6 — proof of repeatable growth engine
+What "organic" means:
+- SEO-sourced signups (not from your own tweets)
+- Referral-sourced signups
+- Marketplace-sourced signups
+- Direct traffic from brand search
+Unlocked actions:
+- Double down on the working loop
+- Start systematizing (SOPs, automation, delegation)
+- Consider first hire (support or content)
+💎 Expansion Revenue
+Transition: S6 → S7 (Scaling) when combined with CP-08
+Expansion revenue is the strongest signal that your product is becoming more valuable over time. This is the magic number for micro-SaaS sustainability.
+Unlocked actions:
+- Build usage-based pricing tiers
+- Create add-on features
+- Invest in enterprise/team features
+🤖 Founder Decoupled
+Transition: S7 → S8 (Mature)
+The ultimate lifestyle business checkpoint. Your business is a machine that runs without you. This is the moment you have optionality: hold for cash flow, sell, or start something new.
+Unlocked actions:
+- Explore exit options (Acquire.com listing, broker conversations)
+- Start a second product
+- Reduce hours to part-time maintenance
+5. Danger Signals — Interrupt Protocol
+Danger signal registry
+| Signal ID | Signal | Observable event | Immediate response | Recovery gate |
+|---|---|---|---|---|
+D-01 |
+Churn spike | Monthly logo churn >2× your trailing 3-month average | Pause all feature work. Call every churned customer. Categorize reasons. | Churn returns to baseline for 2 consecutive months |
+D-02 |
+Conversion collapse | Trial→paid drops >50% from baseline for 2+ weeks | Check: pricing page broken? Onboarding changed? Competitor launched? Review session recordings. | Conversion rate stabilizes at ≥70% of baseline |
+D-03 |
+Platform shock | Platform you depend on announces API change, pricing change, or competing feature | Assess impact. If existential: begin migration immediately. If not: build contingency plan within 1 week. | Dependency on platform reduced below 50% of revenue |
+D-04 |
+Cost explosion | Infrastructure/API costs exceed 30% of MRR | Audit costs. Implement caching/optimization. Consider usage-based pricing adjustment. | Costs return to <15% of MRR |
+D-05 |
+Negative viral loop | 3+ negative public reviews/posts within 2 weeks | Respond publicly and transparently. Fix root cause. Offer affected users remediation. | Sentiment recovers (no new negative signals for 4 weeks) |
+D-06 |
+Founder health crisis | Founder unable to work for 1+ week without business degrading | Activate runbook. This is the signal that S7→S8 (founder decoupled) hasn't been reached. | Runbook successfully handles 2-week absence |
+D-07 |
+Revenue regression | MRR declines for 3 consecutive months | Decompose: is it churn, contraction, or acquisition decline? Each requires different response. | Positive MRR movement for 2 consecutive months |
+D-08 |
+Security/data incident | Any breach, data leak, or vulnerability exploited | Contain. Notify affected users. Fix. Post-mortem. Everything else stops. | Incident fully resolved + post-mortem published |
+Danger signal response flowchart
+flowchart TD D["⚠️ Danger signal fires"] --> T{"Existential?
+Could kill the business
+within 30 days?"} T -->|Yes| E1["🚨 FULL STOP
+All other work paused"] T -->|No| E2["⏸️ PARTIAL PAUSE
+Growth paused, core ops continue"] E1 --> A1["Diagnose root cause
+Within 24 hours"] E2 --> A2["Diagnose root cause
+Within 1 week"] A1 --> F1{"Fixable within
+current resources?"} A2 --> F2{"Fixable within
+current resources?"} F1 -->|Yes| R1["Fix + verify recovery gate"] F1 -->|No| X1["Evaluate exit / pivot"] F2 -->|Yes| R2["Fix + verify recovery gate"] F2 -->|No| X2["Reduce exposure + plan mitigation"] R1 --> RG["Recovery gate met?"] R2 --> RG RG -->|Yes| RESUME["✅ Resume previous state"] RG -->|No| LOOP["Iterate fix → re-check gate"] LOOP --> RG style D fill:#fee2e2,stroke:#e11d48,color:#991b1b style E1 fill:#e11d48,stroke:#991b1b,color:#fff style E2 fill:#fef3c7,stroke:#d97706,color:#92400e style RESUME fill:#dcfce7,stroke:#16a34a,color:#166534
+6. Anti-Signals — Progress Illusions
+Anti-signals are the most dangerous category because they feel like forward motion. They consume resources and create false confidence. Learn to recognize and actively discount them.
+Anti-signal registry
+| Anti-signal | What it looks like | Why it's misleading | The real signal to watch instead |
+|---|---|---|---|
+| Vanity signups | 1,000 signups in first week | Signups without activation are a leaky top-of-funnel. Cost to acquire was real; value is zero. | % who complete core action within 24 hours |
+| Feature request volume | "Users love us — we have 200 feature requests!" | Feature requests ≠ willingness to pay more. Most requesters won't use what they asked for. | Requests that come with "I'd upgrade/pay more if…" + follow-through |
+| Social proof without revenue | Viral tweet, HN front page, 500 GitHub stars | Attention is perishable. Traffic spike ≠ sustainable acquisition channel. | Paid conversions from the same source 30 days later |
+| Busy-work velocity | "Shipped 12 features this month" | Features shipped is an input metric, not an output metric. Useless unless tied to activation/retention. | % of shipped features used by ≥20% of users within 2 weeks |
+| Revenue from friends | "I have 5 paying customers" (all friends/family) | Friends buy from guilt/support, not value. They'll churn when politeness wears off. | Paying strangers only. Friends/family revenue = $0 in your model. |
+| LTD cash injection | "Made $50K from AppSumo launch" | One-time cash ≠ MRR. LTD customers have different behavior patterns and often generate more support load per dollar. | Monthly recurring from non-LTD customers only |
+| Partnership "interest" | "Three companies want to partner with us" | Corporate interest costs them nothing to express. Until there's a signed agreement or revenue, it's noise. | Revenue or users delivered through the partnership |
+| Competitor validation | "A competitor just raised $5M — validates our market!" | Their raise means they'll outspend you on marketing. It validates the problem, but threatens your position. | Your retention and NRR relative to their product |
+Signal vs. anti-signal distinguisher
+The X-axis is the cost to the person emitting the signal. Higher-cost signals are more reliable. Free signals are noise.
+7. Signal-Driven Decision Trees
+Master decision: "What should I work on today?"
+flowchart TD START["What state am I in?"] --> CHK{"Any DANGER
+signals active?"} CHK -->|Yes| DANGER["🚨 Handle danger signal
+Everything else waits"] CHK -->|No| STATE{"Current state?"} STATE -->|S1: Searching| S1D["Talk to strangers
+about their problems"] STATE -->|S2: Validating| S2D{"Have demand proof?"} STATE -->|S3: Building| S3D["Ship core loop
+Nothing else"] STATE -->|S4: Live| S4D["Get first paying stranger
+Fix activation, not features"] STATE -->|S5: PMF Testing| S5D{"M2 retention ≥60%?"} STATE -->|S6: Growing| S6D["Feed the working growth loop
+Don't start new channels yet"] STATE -->|S7: Scaling| S7D["Systematize & delegate
+Reduce yourself as bottleneck"] STATE -->|S8: Mature| S8D["Decide: hold, sell, or build next thing"] S2D -->|No| S2A["Run validation experiments"] S2D -->|Yes| S2B["CP-02 passed → start building"] S5D -->|No| S5A["🛑 STOP GROWTH
+Fix retention first"] S5D -->|Yes| S5B{"Sean Ellis ≥40%?"} S5B -->|No| S5C["Iterate on core value
+Interview churned users"] S5B -->|Yes| S5E["CP-07 → start growing"] style DANGER fill:#e11d48,stroke:#991b1b,color:#fff style S5A fill:#fee2e2,stroke:#e11d48,color:#991b1b style S5E fill:#dcfce7,stroke:#16a34a,color:#166534
+Decision: "Should I add this feature?"
+flowchart TD REQ["Feature request received"] --> WHO{"Requested by
+paying customer?"} WHO -->|No| REJECT["Deprioritize.
+Free users don't drive roadmap."] WHO -->|Yes| HOW{"How many paying
+customers asked?"} HOW -->|1| WAIT["Log it. Wait for pattern."] HOW -->|2–4| EVAL{"Does it improve
+core loop?"} HOW -->|5+| EVAL EVAL -->|Yes| SCORE{"Will it improve
+retention or expansion?"} EVAL -->|No| REJECT2["Probably not.
+It's scope creep."] SCORE -->|Yes| BUILD["✅ Build it.
+Smallest version possible."] SCORE -->|No| DEFER["Defer. Nice-to-have ≠ need."] style BUILD fill:#dcfce7,stroke:#16a34a,color:#166534 style REJECT fill:#fee2e2,stroke:#e11d48,color:#991b1b style REJECT2 fill:#fee2e2,stroke:#e11d48,color:#991b1b style DEFER fill:#fef3c7,stroke:#d97706,color:#92400e
+Decision: "Should I raise prices?"
+flowchart TD P["Considering price increase"] --> PMF{"PMF confirmed?
+CP-07 passed?"} PMF -->|No| NOPE["Don't raise yet.
+Fix value delivery first."] PMF -->|Yes| CHURN{"Monthly churn
+below 5%?"} CHURN -->|No| FIX["Fix retention first.
+Price isn't the problem."] CHURN -->|Yes| EXPANSION{"Seeing organic
+upgrades?"} EXPANSION -->|No| SMALL["Small increase (10-20%)
+New customers only"] EXPANSION -->|Yes| BIGGER["Larger increase (25-50%)
+New customers only.
+Grandfather existing."] style NOPE fill:#fee2e2,stroke:#e11d48,color:#991b1b style FIX fill:#fef3c7,stroke:#d97706,color:#92400e style SMALL fill:#dbeafe,stroke:#2563eb,color:#1e40af style BIGGER fill:#dcfce7,stroke:#16a34a,color:#166534
+Decision: "Should I spend money on growth?"
+flowchart TD SPEND["Considering paid acquisition"] --> RET{"CP-06 passed?
+M2 retention ≥60%?"} RET -->|No| NO1["🛑 NO. Fix retention first.
+Paid growth + leaky bucket = burning cash."] RET -->|Yes| ECON{"Know your unit economics?
+CAC, LTV, payback period?"} ECON -->|No| CALC["Calculate them first.
+Can't evaluate ROI blind."] ECON -->|Yes| LTV{"LTV:CAC > 3:1?"} LTV -->|No| ORGANIC["Stick to organic channels.
+Unit economics don't support paid."] LTV -->|Yes| TEST{"Running small test
+or scaling?"} TEST -->|Small test| GO["✅ Test with ≤10% of MRR budget.
+Measure for 4+ weeks."] TEST -->|Scaling| PROVEN{"Test already proven
+profitable for 8+ weeks?"} PROVEN -->|No| GOTEST["Run the test first."] PROVEN -->|Yes| SCALE["✅ Scale gradually.
+Monitor CAC weekly."] style NO1 fill:#e11d48,stroke:#991b1b,color:#fff style ORGANIC fill:#fef3c7,stroke:#d97706,color:#92400e style GO fill:#dcfce7,stroke:#16a34a,color:#166534 style SCALE fill:#dcfce7,stroke:#16a34a,color:#166534
+8. Signal Instrumentation Guide
+Signals only work if you can observe them. Here's how to instrument each signal category.
+Event taxonomy for analytics
+| Event name | Fires when | Required properties | Feeds signal |
+|---|---|---|---|
+user.signed_up | Account created | source, referrer, utm_* | Acquisition tracking |
+user.activated | Core action completed first time | time_to_activate, session_count | CP-03, activation rate |
+user.converted | First payment | plan, amount, source, is_stranger | CP-04, conversion rate |
+user.expanded | Upgrade or usage increase | old_plan, new_plan, delta_mrr, prompted | CP-09, NRR |
+user.churned | Subscription cancelled / expired | tenure_days, plan, reason, mrr_lost | D-01, D-07, retention |
+user.referred | User's referral link used | referrer_id, method | PMF signal, viral coefficient |
+user.returned | Login after 7+ day absence | days_since_last, trigger | Retention, reactivation |
+support.ticket_created | Support request opened | category, severity, customer_mrr | Support load, product quality |
+feature.used | Any feature interaction | feature_name, frequency, context | Feature adoption, anti-signal detection |
+survey.response | NPS/Sean Ellis survey completed | score, segment, tenure | CP-07 (PMF), NPS trend |
+billing.failed | Payment attempt failed | reason, retry_count | Involuntary churn |
+billing.recovered | Failed payment recovered | method (dunning/manual/updated_card) | Retention signal |
+Minimum viable instrumentation by state
+| State | Must instrument | Nice to have |
+|---|---|---|
+| S1–S2 | Waitlist signups, source tracking | Conversation logs |
+| S3 | user.activated | Time-to-value measurement |
+| S4 | user.converted , trial→paid funnel | Session recordings |
+| S5 | All retention events, cohort analysis, Sean Ellis survey | Revenue decomposition (new/expansion/contraction/churn) |
+| S6 | Channel attribution, CAC by channel, NRR | Viral coefficient, referral tracking |
+| S7 | Operational metrics (support load, infra cost ratio), founder time tracking | Customer health scores |
+| S8 | Valuation metrics (ARR, growth, churn for buyers) | Transferability audit |
+Recommended tooling stack
+| Layer | Budget | Pro |
+|---|---|---|
+| Product analytics | PostHog (free tier) | Mixpanel / Amplitude |
+| Revenue analytics | Stripe Dashboard | Baremetrics / ChartMogul |
+| Cohort analysis | SQL + spreadsheet | PostHog / Mixpanel |
+| Session recording | PostHog / Hotjar free | FullStory |
+| Surveys | Tally / Google Forms | Refiner / Sprig |
+| Alerting | Cron + email | Custom dashboard + Slack alerts |
+9. Compound Signals & Derived Metrics
+Individual signals are useful. Combinations of signals are powerful. These compound signals synthesize multiple event streams into decision-grade indicators.
+Product-Market Fit Score
+A composite score from 0–100 that approximates PMF strength:
+$$\text{PMF Score} = 25 \cdot S_E + 25 \cdot S_R + 25 \cdot S_V + 25 \cdot S_G$$
+Where:
+- \(S_E\) = Sean Ellis score: \(\min\left(\frac{\text{very\_disappointed\_\%}}{40}, 1\right)\)
+- \(S_R\) = Retention score: \(\min\left(\frac{\text{M2\_retention}}{60}, 1\right)\)
+- \(S_V\) = Viral score: \(\min\left(\frac{\text{unprompted\_referrals}}{3}, 1\right)\)
+- \(S_G\) = Growth score: \(\min\left(\frac{\text{organic\_\%\_of\_signups}}{50}, 1\right)\)
+PMF Score ≥ 80 → CP-07 passed.
+PMF Score 50–79 → close, keep iterating.
+PMF Score < 50 → not yet. Don't invest in growth.
+Business Health Index
+A compound danger signal. When this drops below threshold, enter interrupt state:
+$$\text{BHI} = w_1 \cdot \hat{R} + w_2 \cdot \hat{C} + w_3 \cdot \hat{E} + w_4 \cdot \hat{M}$$
+Where (all normalized 0–1):
+- \(\hat{R}\) = Revenue trend (MRR growth rate, positive = healthy)
+- \(\hat{C}\) = Churn health: \(1 - \frac{\text{current\_churn}}{\text{danger\_threshold}}\)
+- \(\hat{E}\) = Economics health: \(\min\left(\frac{\text{LTV:CAC}}{3}, 1\right)\)
+- \(\hat{M}\) = Margin health: \(\min\left(\frac{\text{gross\_margin}}{85}, 1\right)\)
+Weights: \(w_1 = 0.3, w_2 = 0.3, w_3 = 0.2, w_4 = 0.2\)
+BHI < 0.4 → Danger state.
+Signal strength vs. business state heatmap
+Which signals matter most in each state:
+Darker = signal is more decision-relevant in that state. Listen to the signals that matter now, not the ones that matter later.
+10. Transition Velocity & Stall Detection
+Time doesn't determine state, but time spent in a state without progress signals is itself a danger signal. If no forward-transition signal has fired within the expected range, you may be stalled.
+Stall detection thresholds
+| State | Expected transition signal | Normal range | Stall alarm | Stall response |
+|---|---|---|---|---|
+| S1 (Searching) | Stranger confirms pain | 1–4 weeks | 6 weeks with no signal | Abandon niche. Try next hypothesis. |
+| S2 (Validating) | Demand proof | 2–8 weeks | 10 weeks with no pre-sale/deposit | Problem may not have WTP. Revisit or pivot. |
+| S3 (Building) | Core loop complete | 4–12 weeks | 14 weeks with no user testing | Scope is too large. Cut 50% of features. |
+| S4 (Live) | First paying stranger | 1–8 weeks after launch | 12 weeks with no conversion | Pricing, positioning, or onboarding is broken. Major iteration needed. |
+| S5 (PMF Testing) | PMF compound checkpoint | 3–12 months | 15 months without CP-07 | PMF may not exist for this product-market combination. Consider pivot or exit. |
+| S6 (Growing) | Self-sustaining organic growth | 6–18 months | 24 months founder-dependent | Growth channel may be wrong. Test alternatives or accept smaller scale. |
+| S7 (Scaling) | Founder decoupled | 6–24 months | 30 months still founder-dependent | Business model may require you. Consider if lifestyle business is acceptable. |
+Expected signal density by state
+Each state has an expected "signal density" — how frequently you should see forward-progress signals. Below the minimum threshold, you're likely stalled.
+11. Signal Chains — Event Sequences That Predict Outcomes
+Individual signals are events. Signal chains are sequences of events that, when observed in order, predict specific outcomes with high reliability. These are the patterns successful micro-SaaS businesses emit.
+🟢 Healthy chains
+Chain H1: "Organic flywheel starting"
+- Content piece ranks page 1
+- Signups from that content appear
+- Some convert to paid
+- One writes a review/tweet mentioning you
+- Review drives additional signups
+Prediction: self-sustaining growth within 3–6 months
+Chain H2: "Expansion revenue flywheel"
+- Customer hits usage limit
+- Customer upgrades (unprompted)
+- Customer invites team members
+- Team usage drives further expansion
+Prediction: NRR >100% achievable
+Chain H3: "PMF crystallization"
+- Support tickets shift from "how do I?" to "can I also?"
+- Churn rate drops two months in a row
+- First unprompted referral
+- Sean Ellis survey crosses 40%
+Prediction: CP-07 imminent
+🔴 Danger chains
+Chain D1: "Death spiral"
+- Churn increases for 2 consecutive months
+- Founder responds by building more features
+- Features add complexity, support load increases
+- Less time for growth/marketing
+- Acquisition drops → net MRR declines
+Intervention: STOP building. Call churned customers. Fix root cause.
+Chain D2: "Platform dependency trap"
+- 80%+ signups from one platform marketplace
+- Platform announces competing feature
+- Marketplace ranking drops
+- Revenue decline with no alternative channel
+Intervention: Diversify before step 2. If at step 3, diversification is urgent.
+Chain D3: "Premature scaling"
+- Initial launch spike (Product Hunt, HN)
+- Founder invests in paid ads to sustain momentum
+- Retention is <40% but masked by high acquisition
+- When ad spend stops, MRR collapses
+Intervention: Cut paid acquisition. Measure naked retention. Fix product first.
+Chain D4: "Boiling frog"
+- Churn is 6% monthly — "not great, not terrible"
+- Growth compensates, so MRR is flat/slow-rising
+- Founder focuses on growth, ignores churn
+- Cohorts get worse, not better
+- Eventually growth rate < churn rate → decline
+Intervention: Track cohort retention separately. Never let "aggregate looks OK" hide deteriorating cohorts.
+12. Building Your Checkpoint Dashboard
+Here's the blueprint for a dashboard that replaces your calendar-based progress tracking with signal-based checkpointing.
+Checkpoint progress tracker
+Weekly signal log template
+Record these every week. The pattern over time tells you everything.
+| Category | Signal observed | Strength | Count | Checkpoint affected | Action taken |
+|---|---|---|---|---|---|
+| Conversion | e.g., 2 strangers paid this week | STRONG | 2 | CP-05 | — |
+| Retention | e.g., M2 cohort at 55% | MODERATE | — | CP-06 | Reviewing onboarding |
+| Growth | e.g., first organic signup from SEO | MODERATE | 1 | CP-08 | — |
+| Danger | e.g., none | — | 0 | — | — |
+| Anti-signal | e.g., 50 signups, 3 activated | ANTI-SIGNAL | — | — | Activation flow needs work |

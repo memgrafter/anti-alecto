@@ -1,0 +1,18 @@
+Reddit thread capture
+
+Thread URL: https://reddit.com/r/SillyTavernAI/comments/15inz1q/export_chats_as_clean_text_file/
+Subreddit: r/SillyTavernAI
+Title: Export chats as clean text file?
+Author: u/Monkey_1505
+Score: 6
+Comment count (reported): 2
+
+## Original post
+I was hoping to get a; Char name: thing they did or said Other Char Name: thing they did or said format our of a chat history. Would be useful for using as a fine-tuning data source for novelAI. Is this possible? Existing json files far too noisy. Raw text tends to have a lot "I did this" without any mention of whom is speaking/acting.
+
+## Prominent viewpoints (top-level comments)
+1. (6) u/Sienne_: Click the menu icon on the lowest left (where you type a message). Click View Past Chats. Then on the right, click the icon for Download chat as plain text document.
+
+## Thread discussion sample
+- (6) u/Sienne_: Click the menu icon on the lowest left (where you type a message). Click View Past Chats. Then on the right, click the icon for Download chat as plain text document.
+  - (2) u/Monkey_1505: My god, thank you!

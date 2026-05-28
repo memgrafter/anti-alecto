@@ -1,0 +1,13 @@
+Hacker News thread capture
+
+Thread URL: https://news.ycombinator.com/item?id=47174556
+Item ID: 47174556
+Title: Show HN: Ambit-OpenCode – Cloud IDE with Seamless Mobile <> Desktop Handoff
+Author: cardellifan
+Points: 1
+Linked URL: https://github.com/ToxicPine/ambit-templates/blob/master/opencode/README.md
+Top-level comments captured: 0
+Total comments captured: 0
+
+## Original submission text
+You get an agent-driven IDE with seamless Mobile Desktop handoff, project storage, etc, powered by Tailscale and Fly.io.With a fully-featured built-in cloud shell, pre-configured for convenience.It's very easy to set-up, open-source, and there's a one-week free trial (thanks, Fly.io!). Without the trial, it's approx $5 month.

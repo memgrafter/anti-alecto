@@ -1,0 +1,43 @@
+X thread capture
+
+# Hamel Husain on X: "One thing that makes me feel that code factory has not arrived yet is the following experiment: 1.Ask a LLM to do an in-depth rigorous review of your code 2. In a new thread, as same/different LLM to consider those review comments independently and address issues it agrees with" / X
+
+Don’t miss what’s happening
+
+People on X are the first to know.
+
+Log in
+
+Sign up
+
+# [](http://x.com/)
+
+## Post
+
+See new posts
+
+# Conversation
+
+[](http://x.com/HamelHusain)
+
+Hamel Husain
+
+@HamelHusain
+
+One thing that makes me feel that code factory has not arrived yet is the following experiment: 1.Ask a LLM to do an in-depth rigorous review of your code 2. In a new thread, as same/different LLM to consider those review comments independently and address issues it agrees with 3. Keep repeating until no new concerns I find that this loop always goes on for a ridiculously long time, which means that there is a problem with the notion of claude-take-the-wheel. This seems to happen no matter the harness or the specificity of the specs. It works fine for simple applications, but in the limit if the LLMs have this much cognitive dissonance you cannot trust it. Either this, or LLM are RLHFd to always find some kind of issue.
+
+2:55 PM · Mar 17, 2026
+
+·
+
+27.1K Views
+
+69
+
+15
+
+250
+
+90
+
+Read 69 replies

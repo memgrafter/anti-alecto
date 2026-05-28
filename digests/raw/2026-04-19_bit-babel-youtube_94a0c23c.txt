@@ -1,0 +1,3289 @@
+Copy link.
+[snorts]
+Oh, you don't see what I'm doing. I'm
+I'm basically just
+chop chop chop. Bit and pave is awesome.
+I love it.
+>> Yeah.
+>> Okay. Um, let me just I I just need to
+pull up my YouTube live chat thing real
+quick. I I have a little program I
+wrote.
+>> How did I call it? God damn it. Cholei.
+That's what I called it. Okay, let's put
+it in here. Let's see if this
+>> I like that you also have so many
+guitars.
+>> Yeah, I used to play a lot, but I
+haven't in quite a while. Okay, cool.
+So, now I see
+the chat.
+So, if someone writes,
+there we go. And then let me just go on
+YouTube real quick and see if we
+actually live. What the delay is. Oh,
+>> uh, seems to work.
+>> Nice.
+>> Wait, let me just try if the screen
+share works via this as well
+with them. Babel and Oh, this is nice.
+This is so much easier than doing it
+with
+Oh, the latency is also good.
+>> Does it work?
+>> No, I can't at all.
+>> It just takes a It's like 5 seconds or
+10 seconds delay. That That's fine.
+Yeah, screen share works as well. And we
+get to see our faces while we screen
+share. Perfect.
+>> Okay,
+>> perfect.
+Then let's stop presenting and then so
+this is being recorded so people can
+later also uh listen to it. [snorts]
+Um so yeah you came up with the idea so
+you take the lead.
+>> Yeah. Um okay well hi Mario it's nice to
+meet you [snorts]
+[laughter]
+>> yeah first time almost in real life
+meet.
+>> Yes
+>> after having years online. Um, so I
+think for me, um, you know, LLM is
+something that we talk about all the
+time from a linguistics perspective and
+also just as academics in general
+because everybody's trying to figure
+out, um, how much we can do, how much is
+[ __ ] that they're pushing on us, um,
+how much, uh, we should be accepting it
+and how much not. And so I think it's
+really important from our perspective to
+actually hear the facts instead of
+hearing, you know, um, either the hype
+or the dumerism.
+>> Yeah. [laughter]
+And that's what I really appreciated
+about it today.
+>> Yeah. So from my end, I I have to say
+I'm an applied person. I I'm not someone
+who builds those large language models
+because I don't have the resources for
+it. But I know a thing or two. Uh and if
+the audience has a better idea about
+things, then it's always nice to hear
+from someone more knowledgeable than me
+or maybe Shena to chime in and and
+basically set our heads straight. Um so
+let me ask you a thing actually. So you
+said LLMs are being discussed a lot in
+modern linguistics. What what does that
+look like?
+>> Um so I would say that it's more from
+the direction of academia in general.
+We're because a lot of our students I
+have the feeling are using them and
+potentially more than we want to admit
+or think about. Um, and so it only comes
+out to us when it's things like a
+colleague saying that um, one of the
+essays that she was grading has
+something about, let's say, a paper
+referenced which includes something
+about WhatsApp from the 90s. I mean, the
+researcher was probably not doing
+research on WhatsApp in the 90s because
+it didn't exist. And that's the sort of
+thing where you immediately catch it.
+Um, and so this is just something that
+um, I would say it's primarily from this
+direction, but also from the direction
+of us ourselves. um you know you like
+the other day as I was saying on blue
+sky that I was um um looking at a or
+like reviewing a paper and I mean now I
+realize that it's completely LLM created
+because it has the exact same thing that
+you were
+>> you were you were reviewing a paper
+right
+>> I was reviewing it exactly yeah yeah and
+um it's and I just thought it was a
+young academic like me who maybe was
+coming from a different um background
+because English isn't their first
+language and so on and so forth because
+it really did go from like paragraphs to
+bullet points [snorts] and I was just
+like what why would it go to bullet
+points if they submit an early draft
+they must be so embarrassed or I don't
+know [laughter]
+you know um and so I think this is the
+part where and then you know you just
+feel like betrayed in a way because I
+mean now I put in my time into trying to
+review and giving constructive criticism
+um so I think unfortunately that's where
+we come from uh where we come at it from
+>> well Um, and are LLMs an a research
+subject as well? I mean, there's some I
+I read some articles about some fields
+like neurosarians now thinking they
+could use LLMs as like a similacum of
+the human brain, which is
+>> yes,
+>> but I feel for language there might
+actually be some um some use in
+inspecting what those things actually
+do. So there's definitely I've seen
+people um having interest in having them
+like replicate like be test subjects in
+the sense of you know it's kind of hard
+to get I don't know 20 whatever older
+African-American people or something
+like that. And so instead you'll have
+the LLM simulate the test subjects. And
+this is something that I would like I
+would love to know whether you think um
+research participant simulation
+is [laughter] something you could um
+because it sounds crazy to me but I mean
+what do I know? [laughter]
+I mean in le of uh actually human
+subjects I guess you could do some pre
+um some some some some
+hypothesis
+testing and possibly method testing but
+you shouldn't use those for your final
+paper for the final paper that just
+sounds like scientific fraud
+>> um because I mean obviously
+[clears throat] they are trained on lots
+of lots of human language text um but
+nowadays that might also include
+non-human text. So, who knows what the
+data distribution is and also obviously
+the like where I came from from computer
+science if we did any statistics we
+always try to stratify our training
+samples and whatever. So, we we know
+that
+>> while we will have biases in some way or
+form due to the way we process data, we
+strive for at least getting a sample
+that's not too biased.
+>> Yeah. Yeah. um you have no idea um what
+kind of sample sampling you do when you
+ask an LLM to answer a prompt. So you
+you have no idea what biases you have in
+the data that you then take to analyze
+linguistic features. So I
+>> I don't know I I would definitely not
+use an LLM as a proxy for a human in
+terms of linguistics, but I think
+>> Yeah, sorry. Go ahead.
+>> Yeah. No, but I mean um what what do you
+think about the idea of um because what
+I've also seen is people asking LMS for
+their
+>> [clears throat]
+>> uh for the response to let's say a
+dialect. Yeah. Yeah. Like if you know
+for example you put in like an Austrian
+language thing and then you have it um
+try to tell you whether it's friendly or
+whether it's whatever. Do you think that
+this is something that actually tells us
+something about the way that the LLM
+perceives
+not perceives I don't want to
+anthropomorphize it but do you think
+that it tells us anything about what is
+inside the model or is it I don't want
+to say random but more closer to random
+than um telling us what we would expect
+if we repeat this let's say two months
+later. Well, I mean, we can try. Let me
+[laughter]
+>> Sure.
+>> Let me pull up a thing. Uh, let me share
+the entire screen.
+So, you probably remember this little
+thing here, right?
+>> Yes. Oh, yes. Yes. And I showed it to my
+students. Um, I showed it to my students
+when I was teaching introduction to
+linguistics. [laughter]
+>> So, for the audience, what this does is
+basically it simulates an Austrian based
+on a very terrible prompt. uh it doesn't
+prompt the model to generate specific
+dialects. Um it just says talk in a
+dialect in an Austrian dialect and
+that's it. Um
+yeah, how could we test this? Like
+[snorts] so
+I think I need a better idea about what
+the question actually is. But I can tell
+you in advance something so there's a
+lot of variation in dialogues across
+Austria. my my my significant other
+would probably smack me on the head if I
+if I tried to explain any of that. So, I
+don't try to, but I can tell from my own
+experience as a Sister boy that it stean
+dialect is really terrible. So, let's
+see that pull up.
+So, stean poem
+who is
+>> Oh, wow. You really pulled that up.
+>> Yeah. um
+>> respect I don't know this. Yeah.
+>> Um so we can just slap that in and then
+ask the ask the LLM to complete it.
+Right. So it should follow [laughter]
+>> um please actually let's not do it in
+this light cultural mod thing. Let's do
+it in in a in an unprimed LLM that
+didn't happen to be a racist there. So
+>> um please complete
+this poem
+following the uh linguistic
+patterns of that specific dialect.
+>> I mean this is not an experiment, right?
+Like this is not a scientific thing,
+right?
+>> Yeah. Yeah.
+>> But it should give us a pretty good idea
+of where the model is in terms of
+understanding dialect.
+>> Um let's see.
+>> This is Claude. Yeah.
+>> This is Claude. Yeah. I prefer cloud for
+various reasons but
+>> oh yeah this is still working okay so
+>> so so I mean to explain more about what
+I have seen people do it's would be that
+they for example then take something
+like this poem and then have and then
+ask chachi pit or whatever to um give
+some kind of uh evaluation of it in the
+sense of like do you think this is a
+person I mean do you think that this is
+coming across as friendly do you think
+this is coming across as formal etc. And
+then uh you could do it with you know a
+more standard German or more standard
+English um and you could compare the
+chat's evaluation with human evaluation
+of the same prompts
+>> and see whether they match um in any
+way.
+>> Um so this is an experiment that I've
+seen.
+>> Yeah. [snorts]
+So the goal would then be to to again
+use a model as a judge basically or as a
+>> lab instead of human.
+>> Exactly. and also to some extent see
+whether there is um some kind of
+understanding inside the machine of
+what
+linguistic variation is or like what
+dialect or non-standard speech um is
+>> yeah there so anecdotally I can tell you
+that there is some understanding of that
+because my wife used an LLM to help her
+with analysis of some
+>> variational
+linguistic stuff for gratz and the
+surrounding area and the surrounding
+area and it definitely knows the terms.
+So it knows what you know you linguists
+use whether it can then apply those
+concepts to an analysis of a of a in in
+her case it was transcriptions of
+recorded audio
+>> which is probably better anyways than
+than this kind of semi transcribed thing
+here right but um it didn't do too well
+from what I remember
+>> and the reason is likely that all it
+sees is that um stuff like this right so
+this accessible to it through its
+training that and this is already
+useful.
+>> Yeah.
+>> But this doesn't cover the breath uh and
+also not the history of a local dialect
+in a way that
+>> I I don't know. Um just quickly on this
+one.
+>> Yeah. Yeah. Yeah. Let's see
+>> where I asked it. So it has copyright
+concerns. [laughter]
+>> Is it the right author? [clears throat]
+>> Uh I don't think it is.
+>> Okay. But at least
+>> unsceptly.
+>> I That guy was a Nazi. [laughter]
+>> Okay. Oops.
+>> Let's see. Just so
+>> Oh, Jesus.
+>> Uh, [groaning]
+yeah. Pretty sure he was a Nazi.
+>> It would be the right time
+>> because Yeah.
+It's not. The reason I know this is that
+my most favorite pup in in Gratz ever,
+the barbe
+has the nickname
+Keerugel.
+>> And the owner of that uh pup, Ani
+Anatin, she's like an Assat's grandma
+for me, right? Replacement grandma. I
+don't think she has any [ __ ] idea
+that this guy was a Nazi. [laughter]
+>> Yeah, fair. Yeah.
+Anyways, we're drifting off. Um,
+>> yeah. Yeah. Yeah. [laughter]
+>> Trivia.
+>> Um, so it did it realize that this is a
+steion dialect in this case. So,
+>> um, using authentical dialectical
+poetry. Now, I wonder if I had any cues
+in here that tell it that it's Styrion
+apart from the language itself.
+Oh, no cues in here. Uh, producing
+authentic dialectical reads for
+there's some people in the chat. You
+probably don't see chat. Oh, you should
+see the chat at the moment because I
+Yeah.
+>> Hello one coding and t-bone. Yes, let
+also read in my head.
+>> Hey, that's an insult to the light.
+>> Oh, it it can take a beating. It
+[laughter]
+>> um
+>> Okay. Any attempt made would likely lack
+the authenticity and cultural grounding
+of the original.
+>> But that's but you know that's something
+um I was at a talk by um what's her
+name? Tina Booker or something I think.
+Um and she was saying that one of the
+things that um
+would make an LLM or an AI be like more
+humanlike is whether it can say I will
+not respond to this you know or just not
+respond at all like be silent. Um
+because I mean in terms of communication
+the fact that we can say I don't want to
+um is something that especially these
+people pleasing robots um do not
+necessarily do. So the fact that it said
+any attempt I would I make with like
+lack of authenticity and cultural
+grounding is already I mean it's better
+than we often see.
+>> Yeah. I mean I can only speculate
+because I'm not part of the uh companies
+that built those models. But similarly
+to the copyright concern at the top here
+um those aren't
+>> those aren't traits or behaviors that
+the model would exhibit without special
+training to behave like that. Uh so this
+is trained in uh mostly because Mickey
+Mouse would otherwise sue the [ __ ] out
+of those companies.
+>> Yes.
+>> And this is trained in with something
+called reinforcement learning with human
+feedback. Um we discussed this earlier
+offline. Um, so basically you ask the
+model to to generate a text say um
+something that would violate copyright
+and then it says it gives you a
+copyright violation or it refuses to do
+this and then you basically say keep
+refusing
+>> and and and tell the model to to adjust
+its parameters. So the next time you ask
+it it's more likely to say copyright
+violation. I cannot answer that. And
+that basic principle of reinforcement
+learning you can also apply to other
+things like
+>> if there's any cultural sensitivity
+stuff um you could try to train that in
+and they definitely do this specifically
+anthropic which claim they're super
+about alignment of model which means
+>> is it a Nazi [ __ ] or not and they
+don't want a Nazi [ __ ] So
+>> yeah, I mean that's
+>> um
+>> yeah thing is people read too much into
+things like this and that.
+>> The the way it works is basically how I
+described to you. It's still a next
+token predictor
+>> and you give it example of jets
+>> that you want and examples of jets that
+you don't want and it just learns to
+prefer jets versions that you want as a
+human.
+>> Yeah. Yeah. Yeah. Yeah. Yeah. Yeah. So I
+I think the general theme here is are
+LLMs a good proxy for
+evaluating human speech or or or texts?
+I don't think they are um for more local
+things because there's not a lot of
+training data
+>> for that in its training set. So what
+you get is like a very lossy a very
+compressed a very wrong version of your
+local dialect um
+>> just because the rest of the training.
+So when you train an LLM, you basically
+anything that's in the data set a lot of
+times is probably also then factually
+correct when you ask it about it.
+Anything that's relatively less often in
+the training set is kind of only sort of
+there sort of in the model and it has a
+bit of an idea like we see here. Um
+so it probably has an idea about the
+form of steering dialect in in
+transcribed form like it is here.
+above that I would assume that it
+doesn't know any nuances just because
+there's not a lot of training data
+compared to say English language text
+and so on. So
+>> yeah yeah yeah
+>> generally I personally would not use an
+LLM as a proxy for anything apart apart
+from developing the methods that that
+would then apply to human language text
+or speech or
+>> interviewees or whatever. Sorry, wall of
+text again.
+>> Yeah. Yeah. No, no, no, no, no. I mean I
+mean it's not something that I'm
+particularly myself interested in in
+doing in the first place. Yeah. But it's
+something that I it's just something
+that I do see people um be interested
+in. And I mean, you know, to the extent
+that there is um a cultural bias that we
+can try to see to what extent there's a
+cultural bias in the um LLM, I can see
+the point of testing it because this is
+like one of the ways that you could
+theoretically get at it, right? Um but
+yeah, and I think that's what a lot of
+people obviously are interested in.
+>> Yeah. If you're interested in uh more
+about LMU use within the sciences, not
+just um the problem of students using it
+and so on and so forth, but actually
+things like using them as a proxy for
+human behavior or human outputs. Uh
+Klrom um is fantastic on that. like he
+has a lot of a lot of very interesting
+thoughts on that and uh you should read
+him. He also has the [ __ ]
+machines.com [laughter] site [gasps]
+>> um
+where he also has sections on AI and
+academia. He also publishes every now
+and then on that specific topic. So
+follow him. He has very good insights.
+There's another guy I forgot the name
+of. I probably not find him.
+I
+>> feel like I've read one of his papers
+maybe recently or saw his name anyway.
+>> Yeah. Yeah, it looks familiar.
+>> Okay, let's let's make us big biggie
+again and let me [laughter]
+>> Yes. Yeah. I mean I think this thing
+with the small languages is also of
+course very important to people. I mean
+this is what all the um you know those
+BERT uh variations which are then
+trained on for example like African
+various African languages or other
+indigenous languages. um where this
+comes in. I think one of the things I'm
+interested in there is I've heard that
+sometimes they try to feed LLM produced
+language back into the machine to
+because they need to make the training
+data more and I mean for me this sounds
+also slightly insane but I don't I mean
+maybe this is just me you know do you
+think that it could make the machine be
+somehow more robust? [snorts] So um
+synthetic training data generation has
+been something that's been done in
+machine learning forever.
+>> Yeah. Yeah. Yeah.
+>> The problem just to describe for the
+audience generally if you don't have a
+lot of examples of something the machine
+learning model has a really big bad time
+figuring out how to to learn about that.
+So what you can do is get more examples
+which might be costly or generate
+additional examples by taking existing
+examples and transforming them.
+I would I haven't looked into that
+specific thing you said taking uh small
+languages and uh taking text you have
+and [clears throat] and augmenting it
+generating additional examples from that
+but I would assume they take existing
+examples and transform them in some way
+>> just replacing words that they know
+deterministically
+are possible to be replaced with
+something else stuff like that
+>> like if you have the equivalent of an
+adjective if maybe a color or whatever.
+>> Yeah. Yeah. Yeah.
+>> That you look through all your existing
+training samples, find all the colors
+and switch them out for other color
+words from that.
+>> I suppose that's valid to some degree.
+But again, the question is given the
+universe of possible constructs in your
+language.
+>> Yeah,
+>> here is your training set that you have
+and now you add synthetic data. it
+probably doesn't go far outside of what
+you already have.
+>> So all of the space over here is
+probably not covered.
+>> So
+>> yeah, I don't know.
+>> I don't know if this is sensible. This
+is something that would need to be
+tested and that's hard
+>> because the way you test it is you
+actually take a big training set.
+[laughter]
+You only take a tiny little bit out of
+it, train a model, then train it with
+the augmentations, with the synthetic
+data, and then compare it to a model
+that you trained on the entire data set.
+>> And yeah,
+>> and then you can say, okay, this
+augmentation, this this synthetic data
+set generation
+>> that actually exhibits the same model
+behaviors later on than if you trained
+the model on the on the entire training
+set, you have.
+>> Yeah.
+>> Yeah. I mean because the other way that
+I was reading about it was that they
+would um that they take a model already
+trained on a similar language and then
+they would just um because then the
+model somehow understands I don't know
+word order or something that can it can
+be in this direction and that's somehow
+also made
+>> you as a linguist how do you feel about
+saying something like a similar language
+and how would like if you say take
+Ukrainian Russian those are similar
+right
+>> yeah so how would you feel about
+somebody coming up to you and saying oh
+we we have model for Russian. Um, and we
+just feed it some more Ukrainian text
+and we assume that this will now also
+speak and understand and analyze
+Ukrainian perfectly. What
+[clears throat] would be your
+expectation as a linguist?
+>> I mean the thing is that I guess first
+of all I would assume that um I mean I
+guess there's several parts of it,
+right? One would be that um I think it
+would do an okay job because um
+grammatically speaking Russian and
+Ukrainian are quite similar um like
+syntactically the thing that is
+different is the lexims. So the words um
+which are more similar to Polish um
+actually um and so when people speak in
+Ukrainian I understand it but I don't
+necessarily understand everything
+because I'm a Russian speaking
+Ukrainian. Um but I understand the
+grammar and that would be quite easy for
+me to learn. So I think in that sense I
+would assume that it would work fine. Um
+I think the other thing however would be
+that I would assume that there would be
+some kind of I would assume there would
+be some kind of bleed over so that
+things which do not work the same way
+would then become more Russified and if
+this is something that like for example
+is in the machine translation um that we
+get this Russianized version of
+Ukrainian um and then this is what
+people are more accustomed to and
+accustomed to seeing. they would start
+picking this up if they're a second
+language learner, for example, and
+eventually we would somehow have a
+language shift within Ukrainian to be
+more Russian. Um, politically speaking,
+that would probably not be amazing. But
+at the same time, um, it's something
+that we also saw during when, you know,
+the in the Soviet Union, for example,
+when the Ukrainian did become more
+Russified um, at certain times um,
+because of the language ideology there.
+So it's something that is somehow not
+exactly it's not novel in the sense you
+know it always comes down to um what uh
+script we're using whether we're using
+cerillic or um Latin script um things
+like this uh who's doing the lexic
+lexicography who's doing the
+dictionaries whether we include when
+we're standardizing the language whether
+we include the more Polish words or the
+more Russian words I mean that's that's
+that's been part of um language
+standardization since the 18th century
+or 19th century.
+>> Um,
+>> but I think that I would, um, you know,
+if I was a member of this language
+community, I would probably not be
+happy. Um, but this is in general
+something like what do we do with um,
+languages where there's not a lot in
+there? Um, do we ignore them? I mean,
+then theoretically they don't I mean, I
+don't know what resources we're trying
+to produce here, but let's say machine
+translation. Yeah, we can say that
+machine translation is useful for many
+things um in general and I mean if we
+leave Ukrainian out
+for example for example like deepel
+started you have an Ukrainian and it's
+with the start of the war the the full
+scale invasion before that it was just
+Russian and I mean deep is is is great
+um so I don't know [laughter]
+>> I don't know what they should train
+their model on
+>> so so for for our association our far um
+for Ukrainians in Austria I also used uh
+I used Google translate uh that was
+early 2022 to communicate with some of
+them.
+>> Uh first I had to learn about spotting
+the difference between uh Russian uh
+speaking Ukrainians and Ukrainian
+speaking Ukrainians which was a little
+not so nice in the beginning. Um but I
+also thought that Google Translate has
+Ukrainian as a dedicated kind of
+translation option. So that's that's
+interesting. So you would say that let's
+say the goal is to build a translation
+service or to build a Ukrainian speaking
+LLM that you could plug in instead of
+JPT. You would think that a model that
+is trained initially on Russian and then
+post post-trained on additional
+Ukrainian text could be good enough
+without rattling too many cages.
+>> I mean theoretically I mean when I tried
+to read into other languages like this
+and that is what they did and it seems
+to have worked you I mean I didn't read
+very deeply into those papers but like
+that is somehow what they did. Um so I
+suppose yeah I mean I I guess it depends
+on do we expect that the LLM I mean this
+goes back to the sarcastic parrots
+thing. Do we expect that the LLM has
+some understand or understanding or
+knowledge let's say of things like word
+order? I mean it must right because
+otherwise how would the attention thing
+work? Um,
+>> yeah,
+>> it couldn't construct syntactically and
+correct sentence if it didn't have an
+idea about language structure for a
+specific language.
+>> But actually, so
+when I think about Steph, my my
+significant other, she's also a linguist
+and she sometimes does quantitative
+linguistics or computational linguistics
+where she counts things. And you're also
+in I count a lot of things camp.
+>> I count a lot of things.
+>> So one of her recent works, I forgot
+what specific phenomena she was
+investigating.
+But the gist of it is that the signal
+she was trying to find within
+transcription is very small. So um that
+only works if you have reliable data
+that is data that has [snorts]
+>> no statistical biases. And I personally,
+if we come back to the can we use LLMs
+as generators for language texts that we
+can then analyze linguistically, I would
+expect that all of these signals that
+you have in actual transcriptions for
+example completely disappear if you let
+them generate by an LLM.
+>> So using LLMs as a proxy for linguistic
+research, I think for that kind of thing
+like phenomena with very tiny signals
+terrible idea.
+>> Mhm. Yeah. I mean um
+I wanted to go back to the translation
+thing as well because I mean the other
+way that I see people do it is of course
+over a pivot language right where it
+goes over English in particular and so
+um one of the yeah one of the examples
+that I had within the data when I asked
+because I did a pilot study with my
+professor Janice Androsoplos on u my
+supervisor about um how
+>> full name professor supervisor
+>> yeah you have to you know He's
+[laughter] he's the old boss, not the
+new boss.
+>> But anyway, um so we did this study on
+how uh Ukrainians use machine
+translation to get by in their everyday
+life. And um one of it was that uh the
+woman was asking uh trying to get a
+flat. So she was sent an email to a
+potential landlord saying um you know,
+can I come view the flat? Um which
+translated it completely incorrectly
+because the Russian that she was using
+is a little bit vague. And so it was
+like, "Do you want to come to my foot?"
+[laughter] Basically,
+which I mean that's nonsense, right? Um
+and then afterwards she's like, "Okay,
+then I learned to use the machine
+translation properly. I'd learned to
+really write it out, but she still used
+um in Russian uh she wrote uh the polite
+form. Can I come to you polite?" And
+instead of I mean Russian and German
+actually are very similar in this having
+the polite Z form but it because it went
+over English it still said do [laughter]
+>> I come to you impolite.
+>> Um and this is something that I mean
+this really shocked me to be honest
+because I would think that Russian and
+German would not have to go over
+English. Um
+>> do you know what what translation
+service was used there?
+>> It was Google translate.
+>> I translate. Yeah. Interesting. Very
+interesting.
+So it's like you know with this sort of
+thing I mean again if it's like somebody
+using it in their real life example she
+said that the way that she solved this
+problem was that then she would start
+adding to the end of it I am Ukrainian
+we are Ukrainian family and then people
+just you know they ignore this sort of
+thing but this is like a a um societal
+solution or a communicative solution to
+a technical problem. But I mean that's
+what language is for, right? Overcoming
+societal.
+>> True.
+>> And if you can just add a footnote
+saying this was translated. Uh
+>> yeah, exactly. Exactly.
+>> Anecdote from my end like a company I'm
+involved in has a very large market
+share in Asia and that company doesn't
+have any Asian employees in those areas.
+No native speakers, no anything. And
+that company has been using Google
+Translate for business communication
+with Japanese, Korean, and Chinese
+customers for 10 years now. And it just
+works. [laughter]
+>> It just works.
+>> And and they probably called their
+customers [ __ ] and whatever a
+[laughter] bunch of times
+by accident because the wrong, but
+nobody cares. Everybody's happy that the
+company's at least putting in the effort
+to use uh translation software. Um, so
+yeah, language is interesting in in in
+terms of interpersonal relationships.
+>> Yeah. Yeah. Yeah. Yeah.
+>> Especially across language boundaries. I
+I find that
+um you're opposite end of a
+communication channel. is like mo most
+often actually kind of enticed by you
+trying to be I don't know conformal to
+their language or um making the effort
+and being funny while you totally [ __ ]
+up using a translation soft.
+I mean, I will tell you to bring it back
+to Austrian um when my own relatives
+came um they were staying at my friend's
+place um and with her mom um because
+they have a house blah blah blah and um
+[laughter] they they tried to tell her,
+you know, the food that she gave us was
+delicious. And so they used Google
+translate which translated as lea. And
+so um [laughter] my friend's mom was
+like yeah
+[laughter]
+>> so then they had to that's when they had
+to call me over and be like why is she
+not happy with this? Are we insulting
+her accidentally?
+[laughter]
+>> Coming coming back to what do LLMs know
+about language? So I am a computer
+person right? So the only linguistic
+stuff we ever get exposed during our
+work and studies is Jumpsky.
+>> Okay.
+>> Yeah.
+>> Because he he's the guy responsible for
+formal grammarss.
+>> Yeah.
+>> Which are big and computer.
+>> Yeah. T-Bone said also a great excuse to
+tell customers what you think of them.
+Perfect. Yes. Oh, sorry. My translation
+just [ __ ] up. Uh let me just let me
+just share my screen real quick so
+people know what I'm talking about.
+Oh, I hope it's a tree.
+>> Of course, it's a tree. It's all trees.
+[laughter] Trees all the way down. So,
+for grammarss are basically not super
+um loved in linguistics as I understand.
+>> Well, well, the thing is that I was also
+raised on this in this tradition. Um and
+I started at Edinburgh and that's how we
+we were like yes trees.
+>> But yeah, at the place I'm at now,
+Hamburg, um we would say that we are not
+huge fans of this. Yeah. So, so you have
+something called the con chsky hierarchy
+of contextf free grammarss, regular
+grammars and so on and so forth. And for
+computer languages, uh, contextf free
+grammarss and regular grammarss are
+super big like all our programming
+language are kind of based on the
+principles here. And we construct
+harders that is programs that can read
+source code
+>> uh and take its syntax in its form and
+translate it into an executable program
+that basically is all based on this
+stuff right.
+>> Mhm. Um, [clears throat] so for natural
+language, this does not make any [ __ ]
+sense to me. And LLMs have kind of
+proven in my opinion that this is also
+not how they um process language because
+this is a strict formal deterministic
+thing.
+>> And we know that LLMs are not very good
+at forming encodings of deter
+deterministic systems in inside of their
+model parameters. So that means LLMs are
+able to encode
+grammar and then apply chromat
+grammatical rules uh to inputs not based
+on a super strict deterministic kind of
+thingy.
+>> Mhm.
+>> But based on something that's much more
+fuzzy.
+>> So now the question is what is that
+fuzzy thing?
+Any idea?
+Is there any linguistics equivalent of a
+fuzzy kind of grammar learning thing?
+>> Uh, yes. This is the thing that um my
+friends do and I'm going to Google it
+because again it's not the tradition I
+was raised in, but the idea is that it's
+um
+Oh my god, if a linguist sees me right
+now, they're all going to be screaming
+at me. Um, it's it starts with a C. Uh,
+oh my god, contextual grammar. No,
+that's not it.
+>> Constructive.
+>> Construction grabber. That's the one. Oh
+my god.
+>> Awesome. I I like this is great because
+I had a I had a an exchange with my with
+Steph with my so
+>> and I was like dude you explained
+constructivist grammarss to me and it
+feels like that is kind of what LLMs are
+actually doing.
+>> Yeah,
+>> that's awesome.
+So I mean that's kind of well no I have
+a friend who would then give it to you
+in more order but I suppose that is sort
+of the direction that we talk about it
+with this idea that um constructions
+they have you know it's not like we're
+saying that it's not um there's no
+structure to language of course not but
+rather that um it is not in this treel
+like way of this and that as much as
+it's more um yeah different
+constructions let's say of where
+something can fit into different parts I
+suppose. But yeah, like as it says here
+with the passive voice, for example,
+>> to find examples here.
+>> Yeah, maybe there's
+>> um
+>> Oh my god, I'm like panicking.
+[clears throat] that should represent
+>> construction
+grammar examples and you keep keep on
+explaining what this is what [laughter]
+>> yeah I mean um it is for example like
+it's way better at explaining how
+something like an idiom works or um yeah
+that because otherwise um you would um
+have very little you would have to keep
+saying it's an except exception. It's an
+exception, an exception. If it's
+something like he um is beating a dead
+horse, you know, you cannot combine it
+in any way to to do that. So, either
+it's just, you know, here's our rules,
+but then exception, exception,
+exception, or we talk about it more in
+this, let's say, a little bit more
+freeway where um yeah, man, there has to
+be some kind of like nice little because
+it's always done with these um
+>> Yeah. So the way I understood it is you
+kind of learn schemas for things like if
+if you want to communicate your name to
+someone there's only so many ways you
+can tell them what your name is right in
+terms of what kind of sentence will you
+construct.
+>> So as I totally [ __ ] this up this is
+me programmer guy trying to understand
+the linguistics concept to me is rocket
+science. So, so basically the way I
+understood it is you see a lot of or you
+hear as a child possibly a lot of
+examples of how to communicate specific
+things.
+uh and based on that you can derive
+additional
+um you can extra extrapolate how other
+constructions for communicating that
+same thing could look like and you
+derive those by example from
+constructions for other things you want
+to to to communicate. So it kind of
+>> if you learn to do A you might be able
+to extrapolate to also do B with an
+entirely different construction but it's
+still kind of similar. So you're able to
+extrapolate from that?
+>> Yes. Yeah. Yeah. And I would I mean
+>> do I get you in hot waters now by by
+trying to to say, "Yeah, Mario, this is
+kind of okay." And in reality, you're l
+Oh my god, Jenny, don't try to appease
+him. This is all wrong. He's a stupid
+[ __ ]
+>> No, I don't think I don't think that
+that's a Oh, there we go. No, wait. Um
+>> Yeah, this is not
+>> Thought I just I thought I just had a
+good example. Okay. Um but I think that
+I mean there's a different thing between
+I mean there's also this thing about
+like how children learn language which
+is like a whole very complicated topic
+and to what extent we believe that
+there's something because in terms of
+the choskian idea there is a universal
+grammar right there's something within
+our brains that we're born with which
+for example um you know let's say the
+default is subjectverb order he kicked
+the ball and then um if to talk uh if
+you speak a language which is subject
+object verb he the ball kicked then you
+have to have heard enough of that input
+so that then there's like a parameter
+which switches in your head and then
+this is how you start uh doing it
+instead um this is something which I
+think
+it's a little bit uh
+difficult to say whether the reason that
+we think something is more common is
+because of uh there's there something in
+our head that makes it better that or
+that that that that fits better to the
+way we are as humans or whether it's
+more that well English happened to wipe
+out all these other languages and if we
+were the ones being wiped out by let's
+say the Inca or whoever else then we
+would think well obviously that's the
+normal default so in a sense in terms of
+parameters it's something else and then
+the construction grammar I as far as I
+understand it again I was not raised in
+this tradition the idea would be that
+you know you can there is enough as a
+child to get these um inputs from a stat
+because you have like a statistical
+understanding of what it is. This is
+just what happens to co occur more often
+and that's why you pick it up.
+>> Yeah.
+>> Um
+>> so so chsky's universal grammar idea.
+>> Yeah. I I feel like with constructivist
+or construction grammarss
+and the way LLMs seem to work in terms
+of language understanding, there is
+something to it. Like [ __ ] his formal
+grammarss, right? [laughter]
+But
+>> I'm I'm not saying that there's
+universal grammar that can express all
+of those different that I don't care. I
+what I'm what I feel might be true is
+that there's the capacity to learn any
+kind of grammar because ultimately there
+is there is some form of pattern that
+they all kind of follow which kind of
+makes sense because they all originate
+from the same kind of kind of wet brain
+thingy. I don't know.
+>> Yeah. Yeah. Yeah. Yeah.
+>> And one that that's coming now back to
+linguistics and LLMs. So initially we
+talked about can linguists learn
+something from LLMs that might also
+apply to human languages and I feel one
+interesting aspect of LLMs is that they
+are kind of language independent. It's
+not entirely true obviously
+>> but somewhere inside of them when you
+push in some input.
+>> Mhm.
+>> Basically the language itself gets
+stripped out eventually.
+>> Yeah. Yeah. Yeah. Yeah. and semantic
+concepts and the relations remain and
+then you output stuff you you basically
+take that and and
+>> emit that in the language that the model
+is supposed to answer in but but there's
+a transformation between syntactic
+language based input extract the
+semantics do your thing answer the thing
+in a semantic kind of way
+>> and then translate it back out into into
+uh the language you're targeting
+>> and I feel like there's some there must
+be something in there that linguists can
+actually look at and say, "Yeah, this is
+interesting. How could this work in
+humans?"
+>> I mean, I think maybe one of the things
+that I'm curious about is when the
+machine translation works, right, is the
+idea that they're trying to find
+a vector which is in the same spot but
+from a different Do you [laughter] know
+what I mean?
+>> Yeah,
+>> it's kind of like that.
+>> Okay.
+>> I like Yeah. Oh, okay. Let me preface
+this. Right. So, there's something
+called interpretability
+research
+>> and I'm going to interpret interpret
+I'm I'm leanic so dyslexic so I'm having
+a hard time writing those words.
+[laughter]
+>> Looking for construction grammar stuff.
+Yeah.
+>> Um, so probably the best lab currently
+uh writing stuff about it though not
+peer reviewed and obviously only based
+on their models is entropic. Um
+>> and they did a bunch of interpretability
+studies where they try to not only
+mechanistically understand what the LLM
+is doing which is basically multiply
+matrices and vectors with each other and
+at the end you get the outputs
+>> but actually kind of check what the
+values within those matrices and vectors
+might represent semantically or
+conceptually.
+>> And I can't recite that research because
+it's been a while since I looked at it.
+Oh yeah, the Golden Gate thing. the
+what? Uh
+>> so if you feed that model
+>> uh images of the Golden Gate Bridge.
+>> Okay.
+>> Um then some parts of its parameters
+light up that are also responsible for
+outputting the world the word Golden
+Gate Bridge.
+>> Okay, I think I must have heard that.
+>> Yeah, it was pretty pretty popular. And
+then there's also abstract feature
+examples blah blah blah. So anybody
+interested please read this.
+>> Mhm.
+>> Um so wait what was the question?
+Something something vectors right
+>> something about Okay. So so so when when
+there is a translation between like I
+went to the store to
+or whatever is it that it really like it
+searches for and I in the same spots. Do
+we assume that different languages have
+the same concepts more or less?
+>> Well, I don't [laughter] I totally
+understand. So, but let me let me just
+>> share the screen again. So, just that
+we're talking about the same thing,
+right? Uh up and then XY
+draw.
+There we go. So uh in jet formal
+grammarss I hate love said an account
+with the name software at out. So people
+like me programmer we hate formal
+grammarss because because during our
+studies at university they torture us
+with that. They let us write formal
+grammarss for programming language that
+we need to make up and it's [ __ ]
+sucks.
+>> Let's see how can I reset
+>> that's so interesting. Okay. So, so one
+of my students um recently said that she
+learned about Chomsky from an LLM
+because she was like trying to find out
+a little bit more about linguistics or
+something and she got it from there and
+I was a little bit like oh we really are
+in my opinion we're not doing very well
+as a university if she's learning it
+[laughter] from JP and
+>> so I I only speak uh English and German
+so I can't make up Uh the the the same
+translation for the hungry poop in the
+back. So the hungry boy
+by Yeah. And that already doesn't work
+because word
+>> order is [ __ ] up. [laughter]
+>> Take out the ind.
+>> No.
+Okay. Yeah.
+See that's the linguist in you. You
+immediately [ __ ] this. Simplify.
+Simplify. [laughter]
+>> Well, because I was like, oh, it's an
+SVO language. They're both SVO
+languages.
+by a
+>> so
+>> so I'm again I'm I'm just
+I'm just making this up as we go right
+so this is super super super [ __ ]
+simplified this is and part of that also
+go back to this interpretability
+research
+>> basically what I'm trying to say is we
+still don't know how it works
+>> and [clears throat] by we I don't mean
+me personally because I'm not
+researching that but people researching
+that don't know how it works in detail
+but But the basic idea is this. So you
+start off Oh my god, what the [ __ ] is
+here? Uh, how do I get this smaller?
+Stroke width.
+Oh, stroke width. Let's see if this
+works. So you basically pick out what's
+called tokens. And for this discussion,
+let's just think of them as words,
+right? I'm not telling you anything new.
+I'm telling the two people watching
+this. [laughter]
+Okay. So, um and then you have a
+vocabulary,
+right, of of words. So, there's there in
+it. Oh my god, this doesn't work like
+that with the mouse. Let me just write
+it out with the with the text tool here.
+So in the vocabulary you have de hungry
+g
+the hungry
+boy by
+s a right so initially the LLM has a
+fixed set of fixed set vocabulary
+usually some some 100 thousand different
+tokens or words and as you can see the
+tokens aren't Actually
+[sighs]
+this is better.
+So here you see the tokens that the LLM
+actually would would get right. So the
+>> interesting
+>> space hungry is its own token. Again
+space hungry, right? This is different
+from just space. So
+>> hungry
+>> is not its own token. It's h and gree
+split up. Right? So depending on where
+you are within a construction uh you get
+different tokens for the same word.
+>> Mhm.
+>> Okay. Um also what you see here the
+numbers when I hover over one of these
+tokens
+>> those are basically the ID the
+identification number for that token
+right
+>> ah
+>> in the vocabulary. So you can think of
+this every word in here gets a number.
+>> Mhm.
+>> And this basically what we have here,
+right?
+>> So eventually if we come back down here,
+this gets converted to a set of numbers.
+So let's say this is that and that this
+is 233 and this is that and boop is uh
+this and cal is wait let's make it and
+this is whatever right
+>> and whoopsie we can do the same for the
+English version of that
+>> and those will be different numbers
+right it's Oh,
+whatever because the tokens aren't the
+same. The is not there and hungry is not
+hungrier and so on, right?
+>> So, different different idea from the
+vocabulary.
+>> So, on the first step of an LLM is
+called an embedding layer and we've
+talked about this offline before.
+>> That's it. Um,
+sorry, let me just put a little thingy
+above here. So, oh no. Oh, no. Oh, no.
+I'm sorry. Sorry, I should have I should
+have prepared this. How can I group
+this? Group. [laughter]
+There you go. So, you have an embedding
+layer here. And all what this does is
+you put all the token IDs in here
+and it spits out
+bad. It spits out a set of vectors
+which is just a list of numbers again
+for each of these tokens. And those are
+so anytime you put in hungrier, you get
+the same vector here.
+>> Um, anytime you put in boy, you get the
+same vector here, right?
+>> Mhm.
+>> Okay. And all an LLM does basically is
+um
+attention
+and
+just copy that
+attention and multi-layer perceptron.
+Okay. All it does it it puts those
+vectors in here
+and spits out new vectors here which get
+put in here
+>> again and that spits us vectors and so
+on and all of this is being done
+hundreds of times there's multiple
+layers and in each of these there's
+parameters that we learn this is
+actually where the learning happens so
+in the embedding and then the attention
+MLP layers this is where we learn uh
+based on on on training okay So vectors
+out, vectors in throughout this. And
+what do these vectors represent? They
+kind of sort of represent semantic um
+concepts.
+>> Mhm.
+>> So boop is just if you have a vector
+space, right? We only see two dimensions
+here, but the boop might be here and cal
+might be here and the might be here and
+might be here. Right? So what the
+attention layer does is basically it
+transfers meaning from one token to
+another token. So I have the boop here
+and there's a relationship between b and
+hungrier.
+>> Yeah.
+>> Right. So this is a adjective in this
+case and somehow the uh LLM when it's
+being trained learns that hungri in this
+specific setup in this sequence is
+related to boop. And then you can
+imagine if this is hungrier this vector
+here right and this is boop. It's not
+exactly like that but you can just
+imagine and I add the hungrier vector
+here.
+>> So this is my boop
+>> and now I have my boop
+plus hungri.
+>> Mhm.
+>> Right. Okay. So um this layer here
+actually learns to identify
+um the relationships between words for
+all kinds of languages and can then
+based on that say okay given boop is
+there a word before it that is an
+adjective? If yes then add that meaning
+to boop. So you end up with hungry boop
+>> right?
+>> Is there
+um a verb uh or sorry it's always
+backwards with LLM. So it cannot look
+forward. It only looks backward. No,
+this is not true. This is not true in
+this case.
+This attention layer will also associate
+cal with boop. So now that that boop
+vector that came in here, right, is now
+augmented with an additional vector.
+>> Uh that means the boop ced something.
+>> Yeah. Yeah.
+>> Right. So at the end you end up with a
+vector for this initial boop that says
+ah it's a boop
+>> and he's buying something
+>> and and he's hungry.
+>> So now all of a sudden you have
+transformed uh the meaning of a single
+word within your inputs into a semantic
+into a vector that encodes the semantics
+of that word
+>> given its surrounding context.
+>> And that is basically what LLMs do. Mhm.
+>> So then the question is how does it
+predict the next word? Well,
+um there's only so many words that can
+appear in this space given all of the
+[ __ ] that comes before, right?
+>> Yeah.
+>> Um
+is syntactically possible, semantically
+possible, but probably not likely.
+>> Yeah.
+So
+more likely.
+>> Yes.
+>> Still syntactically and semantically uh
+uh valid.
+>> Yeah. Yeah. Yeah. Yeah. Mhm.
+>> Semantically invalid would be the hungry
+uh
+nobody would ever say that.
+>> That's true.
+Yes. Yes. I Yeah. Mhm. Fair. I accept
+that from linguistics perspective
+>> it will not be in the training set that
+this sentence is not in the training
+set.
+>> Yeah. Yeah.
+>> Um so the likelihood of that happening
+is zero. Yeah.
+ically requires
+>> whatever.
+>> So by knowing what each of these are, we
+can limit what comes here and we can
+derive what comes here by basically
+having this semantically enriched
+vectors for each word in the sequence.
+And if we get the vector for the last
+word in the sequence,
+>> we can take that after transforming it
+here and then have we have the last ve
+uh layer which is projection
+>> that that takes that last vector
+and then maps it back to our dictionary.
+>> Maps it back to our dictionary.
+>> Yeah. So what you get
+>> not the English dictionary, the that
+dictionary. Yeah. Yeah. Yeah.
+>> The the token dictionary. Yeah. And for
+each token that the vector has an entry
+for each token in the dictionary
+>> and basically looks like this. Just the
+probabilities or the logics as they're
+called.
+>> Uh this will have uh 0%. I'm writing
+percent. No, it's not percent. It's
+logics. But let's keep it simple, right?
+Uh this is not it. Oopsie.
+not it for gay. This is not it. And we
+can do this for all the worlds in here,
+right?
+>> Yeah. Yeah.
+>> And then at the bottom I could have for
+example
+vector
+[laughter]
+>> whatever
+>> and those will have probabilities that
+are higher like
+>> and% whatever. Yeah. Depending on the
+training data.
+>> Okay. So challenge is this. This [ __ ]
+thing here learns to identify
+chromatic patterns and based on that
+will add the meaning of one token to the
+meaning of another token
+>> and that is the magic.
+>> Um, and now I forgot what the question
+was. I think it was [laughter]
+No, I mean I think I think there's two
+things in there in terms of I mean
+>> we were talking about construction
+grammarss and
+>> yeah can we pull anything in terms of
+how it does the attention. Can we pull
+anything in terms of grammatical meaning
+for us? I mean is there anything because
+I mean it's like a black box. We always
+talk about it like a black box, but I
+mean it's not very useful for linguists
+to say, well, somehow it does [laughter]
+attention in some in some way. I mean,
+is there is there anything that we can
+pull out of it?
+Do do you know what I mean?
+>> Yeah, I know what I mean. So, here's
+what I think what we can pull out.
+>> This attention layer here,
+>> yeah,
+>> is capable of learning grammatical
+pattern. No, it's it doesn't learn
+grammatical patterns. It learns how to
+identify relationships between
+input parts, right?
+>> Which encode grammar not just for a
+single language but any language you
+push in. And the thing is the the
+architecture the underlying um
+>> shape of this layer
+>> is the same for any language. It doesn't
+matter.
+>> And the second observation is
+>> we don't just train a single LLM on a
+single language. We train one LLM model
+on hundreds of languages in the best
+case. And this these layers there's
+multiple of them hundreds
+>> in big models um they are able to take
+this German sentence this English
+sentence push them through here and get
+vectors out of it which kind of do away
+with the surface form that is the actual
+language form of
+>> and just work in this conceptual space
+>> right so
+>> somewhere in this in this whole pipeline
+where we push through the words and then
+get vectors we strip we strip away the
+the language part so to speak
+>> and then reassemble it out here. So that
+to me kind of sounds like that universal
+grammar [ __ ] that Kchsky
+>> um was talking about.
+>> Ye
+yes I see what you mean. I see what you
+I mean I do see what you mean. Um,
+>> not the grammar, the universal grammar
+itself. It It's more like a we don't
+need grammar if
+>> Yeah. Yeah. Yeah. Yeah. Yeah. Yeah.
+Yeah. It's more of the
+>> It's [laughter]
+Yeah, I know. It's it's like a
+transformation from some grammar to a
+conceptual thing that doesn't require
+grammar where each part in that
+conceptual space has all the information
+encoded
+>> and be able to reconstruct a linguistic
+uh version of that conceptual kind of
+expression of some idea or information.
+It's not Trumpskist universal grammar
+but
+>> yeah yeah
+>> it's also something general something
+>> I mean I guess I mean the first question
+that arises out of it for me is so
+people who have
+who speak a language as a second
+language um then they have a they often
+have transfers so for example it's um
+things like I so in Russian there's no
+difference between hand and arm um or or
+foot and leg use the same word. I mean,
+there's like very specific words, but
+usually we just say, let's say leg. And
+so, I'm often like, "Oh man, I hurt my
+foot when I mean I hurt my knee." Like,
+this is something that that even though
+I speak English way more than I speak
+Russian, but it's just something that is
+kept for me. Um, or uh there's also
+things like how often like people in um
+Italian or other some other romance
+languages, they don't use the subject
+when it's a pronoun often. like they say
+went to the store instead of I went to
+the store. Um but then Italians who've
+been living let's say in America for a
+long time, they are more likely to start
+putting the I in when they shouldn't
+because they're so influenced by the
+other language. So I think for me the
+question is I mean to what extent are
+these LLMs
+I mean it they are are to what extent
+are they influenced by English then
+let's say because I mean at the end of
+the day there is more English in the
+data. Yeah, interestingly enough, um a
+recent model GPT5 code which is static
+>> um was specifically trained to be better
+in programming but behaves like a like
+you are used to in JPD
+>> um that occasionally starts spitting out
+Korean and Chinese
+[laughter]
+>> very very interesting but overall I
+would say that they are probably super
+influenced by English language. Yeah.
+>> That they saw in the training set.
+>> Yeah. Yeah. Yeah.
+>> And I guess I mean Yeah. I mean, you
+know, when we go back to like using it
+in a slightly like larger way than I
+mean we anyway have this big impact of
+English on all of our languages.
+[laughter] So you know this um I read a
+paper when I was still in undergrad
+where it was like uh what colonialism
+and didn't do in the first place. Now
+with the new media is they it's like the
+second wave in terms of English
+[laughter] influence and now we can say
+it's a third wave with the
+>> [laughter]
+>> Is that actually something that
+linguists are considering now? I mean
+there's social linguistics like that
+would that would No, not social
+linguist. I don't
+>> Yeah. Yeah. Yeah.
+>> There's a sub field that basically looks
+at how people use language in specific
+topics.
+>> Yes. Social linguistics. Yeah. Yeah.
+Yeah.
+>> So they are now looking at how LMS
+influence day-to-day
+language. Um well
+honestly
+I mean I think it's more general. It's
+like this whole algo speak thing right?
+Um that's something that people are
+definitely interested in to what extent
+people are changing their language to
+avoid um
+>> let's say getting caught by a by a
+filter or whatever like like saying
+grape instead of rape or whatever. This
+is a big um upcoming thing that people
+are interested in. Um in terms of LLMs
+actually I'm interested in it. just put
+it like that because I mean it goes back
+to the n dashes thing, right? to what
+extent we are now changing. I mean I
+have written something before my myself
+let me just say and I mean I like to use
+n dashes too and I was like oh god what
+if the what if like you know the
+professor or whoever thinks that I use
+chachi patina now because it has an end
+dash so I edited it out but it was all
+me you know and
+>> it's my end dash [laughter]
+>> it's my end dash and I mean this is
+where it feels like we're out running
+the machine if we're trying to um do it
+and I mean there is definitely things
+about things like delve right like this
+is also something I mentioned that
+there's these papers which say but the
+problem is that of of course people who
+are non-native English speakers are more
+likely to use these more formal terms
+and then we start you know accusing each
+other of witchcraft basically like a you
+no it's just not my first language
+[laughter]
+you know um
+>> but how do you feel about I mean we
+looked at newspapers uh
+>> using yand dashes and basically we we we
+tried to figure out if newspapers no
+letting write articles
+How how do you feel about like when I
+learned to write texts, it was basically
+an imitation game, right? Like I would
+read an essay and then I know how I
+read.
+>> Yeah. Yeah. Yeah. Yeah. Yeah. Yeah.
+>> So if people are confronted with more
+and more LLM generated text which
+follows an obvious statistical pattern.
+They they have a language that you as a
+human can actually kind of feel already.
+Like I I feel when something is written
+by an LLM and hasn't been post-processed
+in any kind
+>> Yeah. Um, so we old guard, we we
+geriatric millennials, we can still
+detect it, but but but kids growing up
+with an abundance of LLM generate the
+text not only in social media, but also
+in newspapers and more serious sources,
+like how in the [ __ ] are like like how
+in the [ __ ] [laughter] are they gonna
+>> gonna gonna
+how are they not going to sound like
+robots when they start writing them?
+>> Yeah. Yeah. Yeah. Yeah. I mean I guess
+there's like two ways to think about it
+right because on the one hand you can go
+in the direction of like well will they
+be writing at all or will they also be
+generating it via machine and I mean if
+that's um yeah that's a good that's a
+nice thing with a delve like again I
+love a delve I love this delves into
+[laughter]
+>> so it's like yeah the miss yeah um so so
+yes so I would say that one of the
+things would be um in that direction
+that people like to what extent are we
+are we sure that students are doing
+things themselves because I mean
+why would they to some extent? I mean I
+I mean no I know I don't want to say why
+would they to some extent because I
+think that students are very smart and
+capable people and children are too and
+so I don't like this idea that they're
+just so lazy and they're on TikTok and
+that's why they're producing with
+>> I wouldn't say lazy I would say
+effective if the system allows
+>> Yeah. Yeah. Yeah. Yeah. Yeah. Yeah. this
+this this for sure. I think that
+potentially they don't because I mean
+it's it's really hard to not think of it
+as a search tool. I think that was
+something that we were that you were
+talking about where
+like I'm really and I understand why
+because it's kind of marketed like a
+search tool and so um people like again
+I'm teaching this class right and so one
+of the students asked what about if wik
+if it says Wikipedia said
+this and there's no exact link to the
+Wikipedia I mean does this mean
+Wikipedia actually said it or not and
+it's like no no it's just generating it
+might be what Wikipedia said but not
+necessarily but I you know, nobody
+explains it to you. [laughter] This is
+how it works.
+>> Um, but to go back to the other thing is
+that of course technically I mean young
+people always want to be different from
+their elders, right? So actually young
+people to some extent I worry less about
+them that they will want to make up
+their new terms like what is it today
+that's crazy yes sir school or whatever.
+[laughter]
+So, but you know the real thing is more
+like writing like whether they'll have
+the chance to practice writing.
+>> But I mean like we only wrote like our
+house and and our
+um so basically homework and exams
+>> done in school and that was the only
+places where we practice writing. Right.
+>> Yeah. But now the house part
+theoretically
+>> there's no practice there. Yeah,
+>> theoretically. Yeah.
+>> I mean, kids would kids would be [ __ ]
+stupid if they didn't use an LLM to
+write all I would have used an LLM to
+write all my [ __ ] homework.
+[laughter]
+>> Yeah. I mean I mean when I was a kid it
+was like nobody read I mean like people
+didn't read the book, right? Like you
+Oh, well I just read it on what was it?
+Oh god, what is it called?
+>> Yeah, there was some I I remember that
+as well.
+>> Yeah. Yeah, exactly. Yeah.
+>> It would give you the synopsis and all
+what you need. Yeah,
+>> exactly. But I mean at least there they
+sought to produce the text themselves.
+[laughter]
+And you know in terms of you know going
+back to the more formal thing in
+academia like what are we supposed to
+do? Should we just do m exams from now
+on? Like
+because I mean obviously like being able
+to because the thing is that you know in
+the humanities I'm just I feel like the
+main thing the the humanities that we
+teach is the soft skills. I mean, most
+of my students uh will not go on to
+become linguists necessarily, but they
+will hopefully still be able to use this
+idea of gathering a lot of information,
+synthesizing it, and presenting it in a
+good way. And I would say that when I
+worked outside of linguistics, like when
+I do the running around and talking to
+politicians about Ukrainian refugees
+stuff, um that's the main thing that I
+learned that, you know, I can take a lot
+of info, I can store it in my head, and
+I can spit it out in a nice way, kind of
+like an echolan. [laughter]
+And I mean if if if the students are not
+getting this practice in then I'm not
+really sure what else we can give them
+because most job places are not
+interested in the fact that you know
+what universal grammar [laughter] is
+you know um and I feel like see that's
+the thing that I feel like the real
+thing that we should be teaching
+students is to sit down a day before the
+paper is due and to just like go for it.
+[laughter]
+>> Yeah. I mean
+>> you really
+>> you don't have to work under pressure.
+[laughter]
+>> Yeah. I mean we we have precedents for a
+technology kind of killing one part of
+educational norms like back when Google
+was available.
+>> Road learning kind of started to become
+less important
+>> because you could look up specific facts
+with some caveats on the web pretty
+easily. Um, so the focus more was more
+like in finding information, um,
+tracking information, combining
+information, transforming information,
+and I think that's super healthy. I I I
+think that's actually a better way to to
+learn how how to learn.
+>> Um, with L&M's,
+I feel like a ludite [laughter] when it
+comes to education,
+>> right?
+>> Yeah. I mean, so from a teacher's
+perspective, I I I I never was a real
+teacher. I just taught computational
+thinking at a at a school here in Gratz.
+>> Oh, I wasn't a real teacher. I just
+taught computational thinking.
+>> It I have utmost respect for real
+teachers who have to come up with actual
+study plans, do homework assignments,
+homework corrections, all that stupid
+[ __ ] I didn't have any of that. I could
+just sit down in a class and say like,
+"Hey, here's a piece of paper. Let's
+build a robot." Something like that.
+>> Um much easier. Um, but I can see also
+we have a lot of teachers in a in a
+circle of friends. I can see that LMS
+can help with some of the
+um, let's put it tedious work that's not
+very creative. Like um, for example, if
+you creating assignments and you need
+some examples that the pupils need to
+read and and kind of complete,
+>> I'm all for using LMS for that kind of
+thing
+>> unless there's a dactic reason or a
+better
+journal. I can
+>> Yeah. You know what I mean? Unless
+reason
+>> Yeah.
+>> not to do it in terms of dactics. Um
+>> yeah,
+>> why the [ __ ] not?
+>> But then when it comes to things like
+assessing a student using a model,
+that's not good.
+>> Yeah. I mean, see, I think it's not good
+on two parts, right? Because one is the
+one is the like how well does it do it?
+I don't think it does it [laughter] well
+with my like because I I did this with
+the students, right? I asked them to um
+do a little prompt and I mean it it just
+spits out some kind of nonsense um that
+you can't do much with. Um and but the
+other thing is kind of like why would I
+expect the student to put in any effort
+if I'm not putting in the effort. I
+mean, it's kind of unfair to tell them
+you have to write it, but then I'm
+[laughter]
+>> So, we're basically ending up with
+students using LLMs to generate the
+homework and then you as a teacher using
+an LM to judge the homework and then
+>> it's it's it's 100% the fake Shuja quote
+of like Yeah. And then the real learning
+happens while while that happens there.
+>> Yeah. So, at the end of the day, given
+that this technology is not going to go
+away and that students have ample access
+to it for free,
+>> we're kind of [ __ ] [laughter]
+>> Yeah. And so it comes back to selfm
+motivation. I think you said that as
+well.
+>> Um if you as a pupil aren't motivated
+enough to learn a thing, you don't any
+longer because you can probably fake it
+till you make it.
+>> Yeah. Yeah. Yeah. Yeah. Yeah. And I mean
+I mean it's also like again it's what we
+expect and I mean there is you know a
+change in education for the better in
+the fact that it's no longer I mean you
+don't have to have rich it's less likely
+that you need to have rich parents to be
+able to study for example but that means
+you have to work your way through the
+university and if we don't take into
+account that students are also like
+working like crazy for example then and
+we still give them the same amount as
+though all they do in the daytime is
+like drink [laughter]
+then we're not letting them to have the
+chance to succeed. So I mean it's kind
+of like on us to understand what it is.
+And I mean
+I don't know I I really really struggle
+with this because I mean what if for
+example you think this class is really
+interesting then this class is really
+boring but at the end of the day the
+fact that you had the training in the
+boring class will still help you in the
+interesting class to do even better.
+But then it's like I don't know do we
+sit down every student in the first year
+of the bachelors and be like humanities
+it's about learning how to [ __ ] your
+way through everything. You have to do
+this. I don't know.
+>> Isn't that how humanity's always worked,
+right?
+>> Well, we don't sit down and tell them.
+[laughter]
+>> Yeah, that's true.
+>> Yeah. I'm not sure. I'm I'm not
+optimistic that in our current
+environment there are enough people with
+leverages that will make sure that that
+we kind of kind of
+[clears throat and laughter]
+kind of keep our educational systems
+working. I I don't see this happening. I
+mean, just yesterday I I read this.
+>> You saw it, right? Let's not get into
+that. But it's it's horrible. It's like,
+>> yeah,
+>> this is [laughter] bad
+>> because teachers you you teachers have
+so much to do. You can't
+>> they're so overworked.
+>> Yeah. And then you expect them to also
+learn about all of these AI tools and
+how to use them in your how in the [ __ ]
+So you need some external experts to can
+your [ __ ] out and then give you
+guidelines, right?
+>> Yeah.
+>> But that's not happening. [laughter] But
+it's [gasps]
+but the thing is like you know I I mean
+no offense to the older generations but
+you know you talk sometimes to people
+who are actually in charge and you're
+just like oh man [laughter] you know
+like like it's great that you know but
+it's like it's great that you know what
+excel is but like I I don't know. I mean
+because again because I ended up talking
+to a lot of people with the telegram
+about the telegram communities and I
+mean you know some people were very
+enthusiastic and some of the thing it
+was just like well I understand that
+you're still stuck in Facebook time but
+[laughter] and these are the people
+running it you know um and so I think
+that this is a really big problem. So I
+mean in general I don't really see how
+universities are responding and this is
+something I'd like to ask you because I
+know that I read a paper recently which
+is talking about how before the models
+were being the research was being done
+at universities this is where the money
+was coming I mean it's not wasn't coming
+from academia [laughter] but was flowing
+into academia but nowadays obviously we
+can't compete at all with um the big uh
+models whatsoever. I mean we can maybe
+do some fine-tuning but I mean like what
+is our what is our role like it's all
+it's all market based now right?
+>> Yeah. So in my field of computer science
+there's the subject of natural natural
+language processing which is very
+related to linguistics
+>> basically teach the computer how to
+process natural language right and all
+the people who did their PhD in the past
+five years and didn't jump onto the deep
+learning and LLM and and transformer
+bandwagon
+>> they're really sad [laughter]
+basically out of an acade academic job
+and probably also out of an industry's
+job unless they
+>> had broad enough uh education also jump
+into the deep learning methods.
+>> Uh yeah, it's now a corporate game. I I
+don't think academia can contribute
+significantly to any of this because you
+need huge amounts of hardware and energy
+and no university, not even the Ivy
+League ones have that.
+>> Yeah.
+>> Uh yeah. I don't know. I don't know what
+to tell you. So I actually I actually I
+I I showed you this graph earlier,
+right? Where where everybody was
+assuming if we stuff more data and
+computed, they will get better and
+better and better and better
+>> and we're now at the stage where we
+realize that the exponentialists like
+usual in this universe with the
+thermodynamics are sigmoid, right? So we
+kind of plateauing out and they're not
+getting a lot better, not significantly
+better like we had before. That tells us
+that the transformer architecture, so
+the how the model works, the LM work now
+is not the end all be all.
+>> And that comes down to two things. And
+that also comes back to how children
+learn language. We we talked about
+construction grammar and how children
+pick up statistics basically.
+>> Yeah.
+>> And then form those
+>> placeholder constructions.
+>> Um they do this by being super sample
+efficient.
+Mhm.
+>> They don't need to see 13 trillion
+tokens. They need to hear mom and dad
+and grandma and friends say it like 10
+or 20 times.
+>> Mhm.
+>> And then it's like it's in here, right?
+>> Mhm.
+>> And there's no equivalent to that in
+machine learning. And I feel like for
+>> for the actual super intelligent
+[ __ ]
+>> um we will need something that is that
+sample efficient. So
+>> I don't need to see a gazillion examples
+of something to understand it. I only
+need see a handful of things and then I
+understand it.
+>> Mhm.
+>> And I think that's where academia can
+come back in because sample efficiency
+also means you need less compute.
+>> Yeah. Yeah. Yeah.
+>> Um however,
+>> nobody has a [ __ ] clue how to get
+there. [laughter]
+>> Okay.
+Because
+>> yeah,
+>> the things that have been working in the
+past 15 to 20 years, like all the deep
+learning stuff, that's basically brute
+force.
+>> As much data into as big of a computer
+and hope for the best.
+>> LLMs are a brute force model. They are
+not sophisticated at all. I mean,
+obviously they are sophisticated
+relatively,
+>> but conceptually they are not. Yeah. and
+they rely merely on the fact that you
+have a lot of parameters to tune and a
+lot of training data to tune them with.
+>> This won't fly. Um, and I think that's a
+chance for academia to come kind of get
+back on top of the
+>> crawling.
+>> Yeah.
+>> But again, all of academia has worked on
+this brute force approach for the past
+15 years too. So they are as blank as
+the corporate labs are. So
+>> Okay.
+>> Okay. I mean I I mean I understand what
+you mean conceptually. I guess I'm just
+like I wonder whether we'll get there
+from any in in our lifetime. Let's put
+it like this. I mean I suppose
+eventually
+>> but
+>> I I don't like to make predictions. I I
+do
+>> like to make the predictions that LLMs
+aren't it.
+>> Okay. Yeah. Yeah. They might be part of
+the thing that eventually becomes really
+really intelligent but
+>> well like we have different parts of our
+brain responsible vision and linguistics
+and all of that stuff and I think LLMs
+might be one of those parts of a bigger
+system that might be more intelligent
+but
+>> they aren't it they aren't the
+intelligence
+>> can we come back to this idea that we're
+talking about offline with a closed
+system open system
+>> oh
+>> thing where um Because the thing that I
+mean I do not really because you said
+that um the programming language still
+requires the rest of the language model
+to work and
+>> I mean what is I think in terms of what
+does this say about language I think
+that is like what does this say about
+language and what does this say about
+how we construct programming languages
+[laughter]
+um because then programming languages
+are constructed in the choskin way right
+and this like this is the rule this is
+whatever but why do they then need this
+addition additional
+>> because jumpsk context free grammarss
+don't encode semantics that's it
+basically
+>> ah
+>> they only encode the form the
+syntactical form of of a program they do
+not encode the semantics
+>> and now you could say okay then we teach
+the llm just the syntactical form and
+the semantics but only for programs
+right if I assign a value to a variable
+that means in memory there will be
+whatever yeah that how how does computer
+work basically.
+>> Uh but that also doesn't work out
+because I as a programmer want to tell
+that model what to do, right?
+>> Yeah. Yeah. Yeah. Yeah. Yeah. Yeah.
+Yeah. You need the mic. Yeah.
+>> Exactly.
+>> Plus, let me show you what
+>> programs look like. This is my super
+legal uh newspaper scraping program.
+[laughter]
+>> Let me show you what my programs look
+like. This is entirely lamb generated.
+I'm not even like I'm not even
+>> not even hiding it anymore because [ __ ]
+it. I'm I'm not wasting time writing
+this garbage code.
+>> Um anyways, so this is me talking to my
+coding agent. I'm telling it I basically
+want to get the blah blah blah blah and
+check their meta tags and if so we can
+get category blah blah blah scrapers
+blah blah. So this is very specific
+[ __ ] right? And then and then it goes
+in and let's see I have a falter scraper
+here and then modifies this code
+>> which also uses kind of like linguistic
+patterns by having varial names of that
+stuff.
+>> Um and fixes it up as I instructed it to
+do that right
+>> but if you look here category you need
+to have an understanding what a category
+in the context of newspapers is.
+>> Yeah. go into the code and modify that
+part that's responsible for that.
+>> A category in another context could be
+something entirely different.
+>> Yeah.
+>> Right.
+>> Yeah.
+>> Um Yeah. So that's why they can't just
+learn from code because of they need to
+they need to communicate with you and if
+you communicate with them they need to
+understand more concepts than just
+coding concepts.
+But do they do they need as much data as
+we need it right now or Okay. Okay. So
+theoretically it's not like it could
+work with I don't know let's say just
+putting Wikipedia in or whatever the
+early models used um whatever the book
+corpus.
+>> Yeah
+>> it needs more. Okay.
+>> Okay. So basically I mean
+I I I don't have the details right but
+GG5
+was heavily trained on coding on math
+and all of that stuff but the same model
+is exposed to you normal humans that
+don't need it for
+>> um
+>> um just because it doesn't hurt
+apparently if the model knows about code
+it does hurt if the model doesn't know
+about only knows about code. Yeah. Yeah.
+Yeah. Yeah. Yeah. Yeah. Yeah. Yeah.
+Yeah. I mean, you know, there's a
+there's like a interesting kind of like
+a summary of what a prediction for the
+future, which you don't love, but this
+idea of like our changing society that
+they're talking about how, you know, we
+either talk through the machine or with
+the machine. And that's kind of the
+direction that these um technologies are
+going, language technologies. So, one
+being things like machine translation,
+right? We talk through the machine or uh
+text to speech or whatever it is. And
+another one of us talking to it. And I
+guess you know if we put it in this kind
+of category um what do you think is
+doing better right now? Maybe do you
+think you know
+or what is Yeah. What is doing better
+right now? What do you see more future
+in us talking to the machine and the
+machine being able to answer back
+something intelligent or us talking
+through the machine because then it's
+more of a closed
+>> it's like a solution. there's a
+solution, there is the translation or
+there is whatever. M so I personally for
+my line of work it's more like talking
+through the machine if if I mean
+creating programs like
+>> talking to my computer to create
+computer [laughter] right um for me
+given the the current intelligence
+levels and that I don't define
+intelligence and I can't define the
+scale of of intelligence right but given
+the current capabilities um they they
+they can't be let loose on their own to
+build complex programs
+Yeah,
+>> they just they they can build small
+demos that look impressive like some 3D
+scene which you will see on social
+media. Every time a new model comes out,
+some media puts in, dear new model,
+please write me a program that looks
+super cool and is 3D and then it goes
+off and builds something 3D and it
+basically copies and pastes code from
+the internet.
+>> Yeah, [laughter]
+>> that's not a measure of intelligence.
+The real me measure of in or
+capabilities in in coding is hey model I
+have 500 lines of code that have been
+written by me and other programmers and
+even other LLMs. Now go in there and fix
+the database feature XYZ, right?
+>> That requires much more capabilities and
+intelligence and that's where they
+basically fall on on their head.
+>> Okay.
+>> Unless you handhold them because what
+they need to do is they need to unless
+you give them the information directly
+in which files to look and what lines
+blah blah blah they need to go into the
+codebase investigate all the files
+figure out which files are relevant to
+the task you gave them.
+>> Yeah. figure out what effects any
+changes to the code that they are about
+to change will have on the rest of the
+system. Terrible at that. They can't
+keep all of that in their tiny little
+heads.
+>> I see.
+>> So you end up with them making changes
+to some code that will break code in
+another part of your code. [laughter]
+>> So because of all of these reasons, my
+way of using LLM is basically putting
+them on a really tight leash.
+>> Yeah. giving them very detailed
+instructions plus context. That means I
+I I give them files, um, documentation
+and all the stuff they need to be very
+surgical
+>> and have and and have a better
+understanding of what they might break
+if they do it this way.
+>> Yeah. Yeah. Yeah. Yeah.
+>> But without them having to figure it
+out. I basically tell them, if you do
+this, you [ __ ] up. If you do this, you
+[ __ ] up. Only do it like this. Then it's
+not a [ __ ] But it's like okay but I
+mean the reason that you know how to do
+this is because at some point you
+programmed by hand right or I mean my
+brother said that for his exams they had
+to write it in h like by hand the code
+>> he was a master student or whatever.
+>> Let let me put it that way. I I don't
+think it's necessary to be able to write
+code by hand to
+>> No, no, no. I mean, okay. Not this.
+[laughter]
+Yeah, that's insane. But I mean, but at
+the very least that you code it by hand
+as in like Yeah. No,
+>> I mean, but how do people get to that
+level if they like young people young
+people right now?
+>> I honestly don't know.
+>> Okay.
+>> That doesn't mean it doesn't work. Um
+>> Okay. Okay.
+[snorts] The reason for that is that
+models are pretty good at explaining
+code.
+>> So if you're a a beginner and you
+pointed at some program, a short part of
+a program, the model is generally pretty
+okay in explaining you the basics.
+>> Mh.
+>> And when I learned programming, I
+basically had to figure out how a part
+of a program works on my own. And I do
+this by executing the program and then
+inspecting the internals like
+>> Yeah. Yeah. Yeah. Yeah,
+>> the values that are passed through the
+program. Debugging that's called. And
+and that's how I learned how to program.
+Basically reading other people's code
+and
+>> trying to come up with explanations for
+what things do by inspecting the running
+program.
+>> Yeah. Yeah.
+>> With LLMs,
+you let the LLM write code. So you as a
+user in the best case go then and read
+that code that the LLM [snorts]
+>> and if you don't understand that, you
+could potentially ask the LM what's this
+doing? What's this doing? What's this
+doing? [snorts]
+So, you also could potentially learn.
+>> Yeah.
+>> But [laughter]
+the reality as I see it in my younger
+peers is
+>> LLM write me a program. Okay.
+>> LLM writes a program, nobody reads it.
+Um, program gets deployed. Program
+breaks down in reality like doesn't
+provide first user contact.
+>> Um, then young programmer goes back in
+is like what the [ __ ] is all this? and
+the other
+>> I don't [ __ ] know because it's not
+all so big and I can't read it all at
+once. So I have no idea.
+>> And
+but I mean then it's the same problem as
+with us. It's it's the same. Yeah. I
+mean it's like it's like in a way we
+have the best of both worlds because we
+are not like we know I mean well you
+more than me but we know approximately
+what it can do and what it can't do but
+we still have the training from to do it
+ourselves to be able to control it
+whereas younger people just by nature of
+how it is
+they don't have the necessarily
+knowledge necessarily to know where it
+should be.
+>> Yeah.
+>> Yeah. where it might break.
+>> But but on the other hand, they also
+don't want to be a gatekeeper. Young
+kids might come up with ways of using
+these systems without having the base
+knowledge that are as effective and
+might might arrive at solutions that
+that are as good or bad as a human
+programmer would come up with. So I I
+don't
+>> Yeah, I don't want to judge that or them
+true doing it like that. I I personally
+obviously because of my history feel
+that learning the basics
+is necessary to be effective at using
+those systems and creating things that
+actually work.
+>> But that is my old grumpy yelling at
+computers guy kind of
+>> Yeah. Yeah. Yeah. Yeah. Yeah. Yeah.
+Yeah. I mean it's also obviously because
+I've taught programming to linguists
+before, you know, just basic um stuff.
+And I mean to be fair I did tell them I
+mean you're not trying to be a
+programmer. You're trying to be a
+linguist who can program. In which case
+fine use LLM. You just have to
+understand approximately
+what to tell it so that it does it
+properly and where the problem might be
+if it doesn't do it properly. But I mean
+I'm not I'm not teaching them to go out
+into the world and I don't know work for
+Microsoft or whatever.
+>> Yeah. No way.
+>> Yeah. Honestly, especially in the in the
+social sciences and in humanities, I
+think this is a huge potential uh using
+LMS as program generators for
+nontechnical people. Um Steph, my my
+significant other, she has some
+programming experience, very light.
+>> Um she recently wrote this paper and I
+taught her how to use a coding agent.
+So, an LLM that can code like the one
+you saw in my screen share. And it took
+like three hours or so, spread over
+three nights. And
+>> yeah,
+>> now she has a tool that she can instruct
+with natural language
+>> take her data, understand it, write a
+Python program that
+>> deterministically processes that data
+into a new form
+>> and then also have other Python programs
+that then take those transformed data
+and spit out visualizations.
+>> Yeah. Yeah. Yeah. Yeah. Yeah.
+>> [ __ ] amazing. And she can do that
+because she can judge the outputs of
+those programs that the LLM generates,
+but she doesn't have to understand the
+programs themselves.
+>> Yeah.
+>> Given an input, she can see the output
+of the program and she can say this is
+this is correct or not.
+>> Yeah. Yeah. Yeah. Yeah.
+>> All she needs and she never needs to
+program herself. [laughter]
+>> Yeah. I mean that really is I mean
+>> it's the same Lucas would be the ideal
+[ __ ] candidate for
+>> I [laughter] know, right? But like for
+real.
+>> Yeah. It's very
+>> Yeah. No, no, no. I think that I mean,
+for sure, for sure. I guess it's it's
+like I mean, the thing is that I'm sure
+that she knows basic or basic or more
+than basic statistics, right? So, it's
+>> it goes back to
+Yeah, we have to teach people the tools
+so they are able to evaluate the output.
+Let's put it like this. Yeah. That that
+they're able to evaluate the output. And
+then I mean whether it's through I mean
+if the way they do it is through running
+the program 10 times and seeing what the
+output is okay sure why not. Um
+>> yeah [clears throat] and and I think in
+terms of teaching educational methods
+>> we likely have to integrate LLMs in some
+way. I think the way you integrate is
+>> to actually teach them this process of
+okay the LLM is not perfect and it will
+[ __ ] out some bad [ __ ] M
+>> we don't want you to do the the the part
+the LLM can do like writing a lot of
+code or writing a lot of text or we
+don't care [ __ ] it the LM can do it
+right but you are the one with the fancy
+human brain
+>> so what you need to learn is first of
+all how to formulate
+how to construct your problems in a way
+that you yourself understand them as as
+pieces of things to do
+>> and communicate them to an LLM to
+produce an output that you can then use
+as the result and the sec second part is
+so structuring your problem and the
+second part is if you have an LLM then
+take this problem structure and data and
+create an artifact you need to
+understand how to evaluate if this
+artifact is good or not.
+>> Yeah.
+>> Anything in between writing text writing
+code doing road stuff doing boring stuff
+you can let the LLM do doesn't [ __ ]
+matter but you need to be able to check
+the inputs and outputs.
+>> Mhm. And I think that's the challenge of
+of um that we currently face both in in
+primary and secondary education that we
+need to figure out a way how to codify
+that into educational materials for
+people to understand that we actually
+want you to use those useful to tools.
+You just need to understand that at some
+places within the process you as the
+human are the important part and you
+need to check [ __ ]
+>> Yeah.
+>> Yeah. Yeah. And how to
+I mean I guess it's also do you I mean
+do you enjoy writing code?
+>> Yeah.
+>> Maybe I don't know if this is a personal
+question but like because I mean I enjoy
+writing you know like I
+>> Yeah.
+>> I wouldn't have done it if I don't enjoy
+reading.
+>> I guess writing for you is also thinking
+right?
+>> Yes. Yes.
+>> And it's
+>> but coding for you is also thinking
+right. So it's
+>> coding when I physically code it's a way
+for me to explore a problem space.
+>> Yeah. So I I don't just write the code
+and then it's done and it works
+[laughter]
+>> like with text. I I I I draft. I I
+scribble. I
+>> try things out. I take this and move it
+here and then I see if it has
+aesthetics, so to speak.
+>> Yeah. Yeah. Yeah. Yeah. No, I don't.
+Yeah.
+>> So
+this work, which might be boring on the
+surface, is a way for me to sort and
+order my my thinking for a problem.
+>> Yes. and kind of dissect the problem in
+in an very active way. And I think for
+writing it's the same thing.
+>> Yes. Yes. Yes. Yes.
+>> So not having that means that the way I
+understand the problem will be much more
+superficial.
+>> Yeah.
+>> Because by actively
+working through individual parts of a
+problem, I get to understand the actual
+problems that I need to solve. If
+[snorts] I delegate that to something, I
+don't know what the problems were like
+the nitty-gritty parts. And I don't know
+if the solution to these problems is
+actually the correct one or the best
+one.
+>> Yeah.
+>> Or the most aesthetically pleasing one.
+>> Yeah. Yeah. Yeah.
+>> For text, I think this is much much
+easier to evaluate because you can just
+read the text once the LLM has generated
+that and then you can see this is [ __ ]
+text or not.
+for a complicated program that's harder
+because you need to understand the
+interconnections between all those parts
+and you actually have potentially lethal
+[laughter] consequences
+>> like that. So, but but pro process is
+the same. I think I think you're taking
+away something from yourself if you if
+you remove that process.
+>> Exactly. Exactly. that it's I think
+that's the that's that's what I'm
+getting out of my own head that it's
+like I understand that I mean there's
+things that you know I find boring to
+write as in like an email to say I'm
+submitting my antra um this is because
+it's extremely formulaic text and all I
+need is to like know the correct German
+words to say it politely. So this is
+something that like I can understand the
+points that the LLM could like speeds
+things up for you if I'm not the one
+woring over the daddy das of Zantra,
+right? But the part but like the actual
+linguistic
+the the analysis and the and everything
+else or also like reading the papers and
+everything like I like it. I I wouldn't
+do it otherwise. And so maybe we just
+get back to the point of like what are
+we what do we want for the younger well
+I say it like I'm an old person but like
+the younger generation like I mean if
+you know are they I I I'm just like if
+you and I mean I've had boring classes
+too where I would have wished that
+something had written it for me but at
+the same time like linguistics is not
+really a career or geministic linguistic
+is not really an MA or BA that you do
+where you expect to get a lot of money
+out of it so if you don't enjoy doing it
+it's what What is the what is the
+[laughter]
+>> Yeah.
+>> And I mean it's the same with
+programming, right? That I mean I
+suppose I can understand more people who
+go into programming because they think
+they'll make good money whether they
+like it or not.
+But theoretically you should enjoy
+coding.
+>> Theoretically. Yeah. I mean that
+let me put it that way. To to have a
+career in coding that's longer than a
+couple of years, you probably have to
+have some mental problems. [laughter]
+Okay.
+>> Um and um well, not necessarily negative
+ones, but you you might you must
+probably have some kind of personality
+type to to endure the pain that is
+programming. [laughter]
+>> Yeah.
+>> Because it's very painful.
+>> Yeah.
+>> Um um
+I think the same is true for any kind of
+specialized discipline where you need to
+become kind of like a domain nerd and
+and suffer a lot. And and I think that
+also goes back to the learning thing and
+and exploring problems. Again, I believe
+that suffering is part of learning.
+>> [ __ ] stupid that that might sound
+like but maybe not suffering but
+friction. Friction is the thing that
+makes me grow.
+>> Everything is super smooth sailing. I
+have no incentive to learn a thing to to
+to grow.
+>> And so if we take away the friction by
+letting an LLM do stuff for us, I feel
+like that's detrimental to our growth.
+>> Yeah. Yeah. Yeah. Yeah. Yeah. I mean,
+now we sound really old. Now we sound
+>> Now we sound like old
+[laughter]
+take a punch card instead of a USB stick
+or whatever. Yeah. Yeah. That's that's
+us now. [laughter]
+>> Yeah. I mean I mean my mother So my
+mother used to be a programmer back when
+we lived in Ukraine. And I mean she said
+that she had to like look things up in
+those like big dictionaries. That's how
+she looked to for function. So I was
+like well thank god I'm you know maybe
+for her she's like yeah and that's when
+we learned the function. I can Google
+the function. [laughter] You know,
+>> to be fair, I am old enough to also have
+had a big fat printed out 400 pages
+Intel CPU manual with all the neonics
+for assembly code and stuff. I
+[laughter] know
+>> I have seen a lot of suffering in my
+days. Uh
+yeah, I don't know. So I I I don't want
+to blame kids for taking the easy road
+because I myself also took the easy road
+if I was able to.
+>> But then for some specific parts like
+programming, I found enough motivation
+to go through the suffering.
+>> Yeah.
+>> And I I skipped a lot of suffering by
+finding an efficient way to skipping it.
+And I think that today will probably do
+pretty much the same.
+>> So maybe it's not all doom and gloom. If
+you're really interested in something,
+you're probably still putting in the
+work.
+Yeah. Yeah. No, I mean it's it's like
+again I think that I mean it's it's this
+horrible thing of like the next
+generation is always whatever, right?
+And I don't I mean I don't really don't
+think that's true. I think that people
+are very very interested in doing and re
+researching a lot but maybe it's just
+the way that we approach it. Yeah.
+>> More concerned about old people.
+>> Yeah. getting [laughter] getting like
+first they got exposed to social media
+and [laughter]
+look at burnout and now they're go
+getting exposed to social media with
+shrimp cheeses.
+>> Yeah.
+>> This is not going to end well.
+>> Yeah. I mean and I you know on a on a I
+maybe I also want to hear your opinion
+because I talked to my dad at some point
+and he was saying that like when he was
+young they all thought that they'd be
+like on Mars or something, right? They
+there was so much I mean like my dad was
+a child when Gardinian went to space and
+so on, right? And this none of this
+happened. And the only thing that like
+really happened of what we kind of
+thought would happen is the this like
+gen AI thing right now that is happening
+this big boom um or the internet in
+general I suppose but also this and like
+with a robot that can talk to you. And
+so like he thinks that this is part of
+the reason that like especially his
+generation is just like
+[laughter] like thank God at least
+something. Maybe.
+>> But yeah, but I mean honestly like I
+really
+I don't know how to because I mean I
+definitely fall for it too. I'm very bad
+at the whole like distinguishing whether
+it's real or not. Sometimes I can tell
+but a lot of times I'm just like sure
+it's a picture of a panda. I don't know.
+>> And
+I Yeah. I honestly I it's really hard to
+estimate the societal effects of a new
+technology. Yeah.
+>> And I can understand your dad's kind of
+kind of thinking here that at least we
+got dead. We didn't get flying cars or
+go to Mars, but at least we got we have
+demented AI models
+generating shrimp cheeses for us. I
+mean, that's something. [laughter]
+>> Yeah. I mean, he doesn't use it himself
+or anything, but he's like he's like,
+"At some point, you will sit down and
+explain it to me or [laughter]
+something."
+>> That's actually interesting. I mean, you
+said your dad was also a programmer,
+right?
+>> He's a No, he's a theoretical
+>> mist. Yeah. Yeah. Sorry. Sorry. Sorry.
+Okay. Then let's talk about your mom who
+was a programmer. Is she actually
+>> Is she interacting with these sim
+systems now? What's her No,
+>> no, she is um so she stopped programming
+in 1999. So that was quite a while ago
+>> um when we started moving. Um, but in
+general, I think she I mean, she's done
+some like database work um recently, but
+I think that she's one of those people
+who's just like nervous. Not nervous,
+but just kind of like
+because there is definitely this like
+big anti- new technology trend like and
+she's always like the gadgets, the
+gadgets, everybody's on their gadgets.
+[laughter]
+>> Yeah. Yeah. So, I think that
+Yeah. Uh but but on the other hand, you
+know, like with the Ukrainians and the
+machine translation, right, where it's
+like the 65year-old plus granny still
+using machine translation because they
+need to use it. I mean, this is actually
+very impressive. I think it's very cool
+that we are at this level.
+>> Yeah,
+>> but yeah,
+>> but we're all doomed.
+>> Uh but we're all doomed.
+>> Like uh one coding says, this is exactly
+my grim prediction for the inflationary
+use. By that I mean outsourcing learning
+and other mechanisms. If a person never
+learns to learn, you have helpless
+future people and t-bone.
+[laughter]
+>> What a great name.
+>> It definitely removes value from
+concepts like homework. School on site
+may be able to regulate inflationary use
+if they're willing to, which actually
+might not be that likely. So, let me
+just chime in here on the homework part.
+>> Um,
+>> I
+>> starting in gymnasium third grade. M
+>> so at around the tender age of 13 or so
+14 stopped doing any kind of homework
+and
+>> and you passed I mean as in like never
+checked.
+>> Yeah. No, they kind of gave up on it. I
+was like no [ __ ] I'm sitting here six to
+eight hours a day and then you want me
+to do more [ __ ] at home. Go [ __ ]
+yourself. I'm learning this. No worries
+for sure. I know what I need to know.
+>> And that's how I passed. So what
+happened was that
+>> throughout my whole gymnasium career, I
+would only have uh A's and B's in
+subjects that I really liked.
+>> And these [laughter] E I mean we don't
+have the six number scale, we have the
+five number scale. So um FA
+>> for subjects I didn't care about.
+>> And then came Matura time and I was the
+only kind of guy. [laughter]
+And all the [ __ ] who did all the
+[ __ ] homework across all those
+[ __ ] years, they were like [laughter]
+very very very very uh satisfied.
+>> I mean [laughter]
+I mean that's that is very impressive
+but I always did my homework and I also
+finished [laughter]
+>> very well. Yeah, my point just being I
+don't think homework is the big
+differentiator when it comes to
+education
+>> and and I will say that I feel like I
+did my homework more because I was like
+a very anxious person who's like I need
+to do it well rather than because I mean
+I picked it up from school as well just
+like you right like you just listen you
+just pay attention in class as much as
+you can.
+>> Yeah. But yeah, I guess it is I guess it
+is really just a check-in. Like for
+example, like you know, I mean, I hope
+none of my students watch this, but I
+have an assignment for them coming up
+where they'll be at the end of the year,
+um they're going to write a little p
+little ethics essay, five pages on, um
+language technologies. Um and so our
+university basically says that, well,
+you should expect that they use it at
+home. Um there's no way to stop them
+from using it at home, and so you should
+just kind of take that into
+consideration. And you but they should
+have like a little thing where they like
+a grid where they say I use chatgpt for
+um producing the introduction. I used it
+to brainstorm. I used it whatever.
+>> Create that little grid where I tell you
+about using the [laughter]
+>> but so so so I told them well I mean
+these are the regulations. You've never
+seen them. I've never seen them.
+Nobody's ever done anything with them.
+But like hey they exist. So we're going
+to try to try them out. [laughter]
+And so now I'm imagining that I get back
+an essay with I brainstormed it with it.
+It did this for me. It did that for me.
+I'm not 100% sure how to grade it. You
+know what I mean? What do I say to this?
+>> I I honestly I would not give a single
+[ __ ] about that little grid.
+>> Yeah.
+>> It it doesn't help you evaluate the work
+at all.
+>> Yeah. So if your university is cool with
+them using assisted technologies, all
+bets are off. There's [laughter] no
+there's no [ __ ] way to say this is
+LLM and this is the student. So yeah,
+>> what's the point of giving homework and
+we're back to my [laughter]
+>> homework?
+>> I mean that's true. I could just give
+them all like Ein and like leave it at
+that theoretically. I mean
+>> yeah that I I guess that's a bigger
+problem in the humanities than with
+something like I don't know machine
+engineering or electronics where you
+actually have to kind of do physical
+things that work or don't and that can't
+be done by a machine yet.
+>> It's the same with program. We also have
+the same problem as you. Basically, all
+the
+>> bachelor study home assignments can now
+be easily done by
+>> Yeah.
+>> And with code, it's even harder to say
+if it's LLM generated.
+>> Yeah. Yeah. Yeah. Yeah. Yeah. Yeah.
+Sure. Sure.
+>> Yeah.
+>> Yeah. Yeah. It's I think but I think you
+know in the sense I feel like it's a um
+it's a failure of the university to not
+give me clear guidelines for example for
+this because I mean
+>> you don't always listening
+started your job don't do this to
+yourself.
+>> No but I mean well the [clears throat]
+thing is that when I started I started
+my job and the professor was like if you
+use LLMs you're out and so immediately
+the day afterwards you were like paper
+>> [laughter]
+>> which is why I had to go on this big
+rant and because she's she we're mutual.
+So, [laughter]
+>> but [snorts] um but I mean like you know
+like that's fair and I mean first of all
+I kind of like I agree with her in terms
+of what I'm doing of the research which
+is very qualitative at the moment. So
+you know I understand it for things like
+producing a graph actually I probably
+would use it for that but we are not
+producing graphs. [laughter]
+Um but you know uh at least she gave me
+like a very clear yes no thing here. The
+university kind of gives me a well you
+should just expect it and it's like okay
+well now I expect it great.
+Um
+>> I mean what's the like there's the
+flipped classroom thing where you give
+them the learning materials for at home
+and then during the class you have them
+do the work but that doesn't work in a
+university setting.
+Yeah. And I mean I don't I mean at that
+point it feels really like a school
+where it's like they're sitting down and
+like writing by hand the whatever.
+Yeah.
+>> There's no point also whatever future
+work they might have they will use those
+technologies. So
+>> Exactly. Exactly.
+>> Yeah.
+>> Yeah. I mean so that's I mean especially
+because this is what I'm teaching to
+them how the technology works on like a
+basic level. Um because I mean you know
+they don't need to know whatever
+[laughter]
+the all the different functions. they
+need to understand what it does. Um that
+it's generates tokens and so on. And I
+mean because of this I feel like at
+least this way it's like well now they
+know what it can be, what it can do and
+what it can't do. And at the very least
+this is what I'd like people to
+understand because I mean most people
+don't and I wouldn't have either and I
+mean I don't I didn't to some extent
+until I started looking into it.
+>> Yeah. Um
+>> I I g actually gave a work workshop um
+to to to some corporate people this
+>> and just basically showing them that if
+you put an image in and ask it to to
+count the circles in an image, it can't
+it can't.
+>> That alone just blew the [ __ ] minds.
+[laughter]
+>> Yeah. Yeah. Yeah.
+>> And and put into perspective them
+putting in like 10 PDFs and asking for a
+financial summary of the last two years
+of the company and blah blah blah.
+Knowledge is power, but nobody seems to
+want to gather the knowledge. They just
+want to have the power. So,
+>> yeah, it sucks.
+>> Yeah. Yeah. Yeah. I really wonder I mean
+because you know the the things that
+I I mean the thing is like you know as a
+linguist or as a person who uses words
+the thing
+>> I as [clears throat] a person
+>> as a person who uses words no but like
+for my job for my job. But I mean the
+thing is like I would be the thing that
+I would be the most scared of is that at
+some point this thing does it better
+than me, right? Because I mean it's not
+like I'm building something with a tool.
+I and only using it with my words,
+right?
+>> And so but it seems as though it's not,
+[laughter] but at the same time it seems
+as though people think that it will or
+does.
+>> That's the biggest problem actually.
+Like that's a problem in my in my line
+of work that people actually think they
+can replace programmers.
+>> Yeah. And like there's one way where
+replacement actually works. Say you have
+a company with like 10 programmers, a
+small one,
+>> and you don't want to hire new juniors.
+You just give programmer access to a
+tool like I've shown you before. Then
+yes, the reality is that that senior is
+likely going to be more efficient if
+they put in the time of learning the
+tool and can replace an additional
+junior.
+>> Okay. I mean,
+>> but then your problem is where did the
+new seniors come from?
+>> Yes. Yeah, exactly. I was going to say
+[laughter]
+I mean if there's no like interning the
+problem down the road you you so yeah
+>> um I I'm not sure if that's also the
+case for linguists I don't I don't think
+your line of work is easily replaceable
+with LLMs
+>> no but it's the fact that again the
+majority I mean even of like my friends
+who are finishing their PhDs the
+majority of them will probably not stay
+in academia because there's no space for
+us so then they'll be searching for
+other jobs where they will be using
+hopefully what they learned in terms of
+the more soft skills or the terms of the
+synthesizing knowledge, producing
+knowledge.
+So it's I mean it's it's I think it's
+pretty depressing honestly at the
+like a lot of people also don't really
+want to stay. I mean, it's a whole like,
+you know, it like let's say when I when
+I got my job, um, which is like a
+four-year contract, um, my my dad was
+like, "Okay, great. Now you have four
+years to learn how to write the grants
+to apply for the next job." [laughter]
+>> Yeah.
+>> And the P and my PhD supervisor was
+like, "Oh, yeah, fantastic. Now you have
+four years to learn new skills that and
+then if you don't forget your old
+>> for the next job." [laughter]
+So, it's like, you know, I can
+understand why people who don't want to
+have, I don't know, whatever mental
+breakdowns. [laughter]
+>> Yeah.
+>> Will will want to quit.
+>> Yeah.
+>> But I mean, it's like at the same time,
+you know, did you see did you look into
+the
+oatis
+that I [laughter]
+>> one of them is like the kund
+or something? No, it's like Yeah. Kind,
+right?
+>> Yeah. Yeah.
+Yeah, exactly. And I mean, is this
+happening? I don't know. [laughter] It's
+it's like no, right?
+>> Um, at least not at the scale that the
+companies would like you to believe.
+>> Yeah.
+>> So, there's there's data that says one
+thing and then there's data that says
+the other thing. I think it's probably a
+mix. There there might be some some
+vocations where there is replacement.
+>> Um, customer service jobs are probably
+>> Yeah.
+um things like uh what's it called in
+English? Lector art. God damn it. Copy
+editing.
+>> Yeah, copy editing.
+>> So that kind of has problems.
+>> Yeah,
+>> but there's no
+economywide kind of
+>> high firing spree. That's that's
+actually caused by AI, at least not what
+we can see in the data. Um I I I would
+not be surprised if there's some CEOs
+who think they should do this and we
+have some examples like there's a um a
+payment provider a predatory one called
+>> Cla
+>> you probably seen them in European
+websites for payment options.
+>> So that guy the CEO fired all of his
+customer support people only to hire
+them back six months later [laughter]
+because it turned out I can't do that
+job.
+>> Yeah. Yeah. Yeah. Yeah. Yeah.
+>> And there's quite a few of these
+examples, but in the statistics that
+then get published, you only have the
+first part of that story, but not the
+second part of that story.
+>> I also only heard the first part of the
+story.
+>> No.
+>> They hired back like
+>> Yeah. Okay. Yeah. [laughter]
+>> Yeah. I mean, I think the things that I
+know are more about like, for example,
+translation that a lot of especially a
+lot of the bread and butter of their
+work is now more like copy editing. And
+this is actually a field that really
+they have already shifted to how they
+teach um translation studies that they
+really are focusing a lot on like
+working with both um just general
+software you know that you can search
+for the legal terms for example if
+you're translating a legal text but also
+to know how to do uh post editing. But
+then a lot of the uh translators
+complain that especially when it's not a
+technical text, but it's a um something
+with a little bit more creativity, it's
+more effort to do po to to do post
+editing than to do it by hand,
+>> but they still get paid like it's
+post-editing, even if they have to
+rewrite it more or less from scratch.
+>> Um and I mean this I think it's just
+this is a this this is this is
+depressing. I I I do think especially
+because I mean if we go again by you
+should theoretically like your job
+probably most people who do go into
+translation do not necessarily get as
+inspired by post editing as they do yeah
+by thinking of the right word
+themselves.
+>> Actually we have a neighbor um who is
+also a translator I think for English
+and Spanish. I don't
+>> I don't remember what she said. Um Steph
+asked her I think recently how it is
+with AI and all this stuff but I don't
+really I I should I should get an update
+on that and maybe if we do another
+bitter babel [laughter]
+>> we should talk about that
+>> the great [clears throat] replacement
+but through AI and not through Nazi
+>> Jesus. Yeah.
+>> Yeah. Um there was one more thing I
+wanted to say but I forgot so it could
+not have been important.
+>> No. Yeah.
+>> Sha.
+>> Yes.
+>> We said 30 minutes. [laughter]
+How long has it been?
+>> It's been like two hours.
+>> Oh god. [laughter]
+Well, nobody will will watch this, but
+that's fine.
+>> Yeah.
+>> Have have a have an LLM break it up into
+like segments. [laughter]
+>> Honestly, I like I have my thing that
+does exactly that. I will give you
+[laughter]
+But uh let's let's
+>> and uh it was very nice getting to know
+you via camera at least and audio. Maybe
+we can do this again. Yeah, absolutely.
+Thanks for having me.
+>> You had me. You came up. [laughter]
+>> Yeah.
+>> Okay. Have a nice one.
+>> Good night. Good night.

@@ -1,0 +1,1270 @@
+Title: TUI Terminal Tools - Terminal Trove
+
+URL Source: http://terminaltrove.com/categories/tui/
+
+Markdown Content:
+# TUI Terminal Tools - Terminal Trove
+
+[Terminal Trove![Image 1: Terminal Trove](http://terminaltrove.com/static/assets/kwm/ttl.svg)](http://terminaltrove.com/ "Terminal Trove Home")
+
+- [x] [Explore](http://terminaltrove.com/explore/ "Explore")[New](http://terminaltrove.com/new/ "New")[List](http://terminaltrove.com/list/ "List")[Blog](http://terminaltrove.com/blog/ "Blog")[Sponsors](http://terminaltrove.com/sponsors/ "Sponsors")
+
+Compare 
+
+[Compare Terminals](http://terminaltrove.com/compare/terminals/)[Compare AI Coding Agents](http://terminaltrove.com/compare/ai-coding-agents/)
+
+More 
+
+[Terminals](http://terminaltrove.com/terminals/)[AI Coding Agents](http://terminaltrove.com/ai-coding-agents/)[About](http://terminaltrove.com/about/)
+
+[Post a Tool](http://terminaltrove.com/post/ "Post a Tool")
+
+[Explore](http://terminaltrove.com/explore/ "Explore")[New](http://terminaltrove.com/new/ "New")[List](http://terminaltrove.com/list/ "List")[Blog](http://terminaltrove.com/blog/ "Blog")[Sponsors](http://terminaltrove.com/sponsors/ "Sponsors")
+
+Compare 
+
+[Compare Terminals](http://terminaltrove.com/compare/terminals/)[Compare AI Coding Agents](http://terminaltrove.com/compare/ai-coding-agents/)
+
+More 
+
+[Terminals](http://terminaltrove.com/terminals/)[AI Coding Agents](http://terminaltrove.com/ai-coding-agents/)[About](http://terminaltrove.com/about/)[Tool of The Week](http://terminaltrove.com/tool-of-the-week/)
+
+[Post a Tool](http://terminaltrove.com/post/ "Post a Tool")
+
+# TUI Terminal Tools
+
+[Text User Interfaces](https://en.m.wikipedia.org/wiki/Text-based_user_interface "Text User Interfaces") (TUIs) emerged with early computing era, providing a text based layout, instead of graphical user interfaces (GUIs). They are useful in resource-constrained environments notably in server management, system administration programming, and file management.
+
+Even with the advent of graphical interfaces, TUIs still remain relevant, providing efficient, text based user interfaces for professionals and hobbyists and require less processing power where a GUI's overhead would be impractical.
+
+Below is a list of terminal tools that are TUIs.
+
+1.   [toolong](http://terminaltrove.com/toolong/) - A terminal application to view, tail, merge, and search log files (plus JSONL).
+
+1.   [apisnip](http://terminaltrove.com/apisnip/) - A TUI tool for trimming OpenAPI specifications down to size.
+
+1.   [mqttui](http://terminaltrove.com/mqttui/) - A TUI tool to publish/subscribe MQTT messages from the terminal.
+
+1.   [ugm](http://terminaltrove.com/ugm/) - A TUI to view information about UNIX users and groups
+
+1.   [smassh](http://terminaltrove.com/smassh/) - Smassh your Keyboard, TUI Edition.
+
+1.   [nping](http://terminaltrove.com/nping/) - A TUI concurrent ping tool developed in Rust.
+
+1.   [fztea](http://terminaltrove.com/fztea/) - A flipperzero remote control locally in the terminal and ssh.
+
+1.   [bluetuith](http://terminaltrove.com/bluetuith/) - A TUI bluetooth manager for Linux.
+
+1.   [outside](http://terminaltrove.com/outside/) - A multi-purpose weather client for your terminal.
+
+1.   [yatto](http://terminaltrove.com/yatto/) - Interactive Git-based todo-list for the command line.
+
+1.   [pqviewer](http://terminaltrove.com/pqviewer/) - View Apache Parquet Files In Your Terminal.
+
+1.   [jwt-ui](http://terminaltrove.com/jwt-ui/) - A CLI and TUI for decoding/encoding JSON Web Tokens.
+
+1.   [fx](http://terminaltrove.com/fx/) - command-line tool and terminal JSON viewer.
+
+1.   [braindrop](http://terminaltrove.com/braindrop/) - A terminal-based client for raindrop.io.
+
+1.   [gitu](http://terminaltrove.com/gitu/) - A TUI Git client inspired by Magit.
+
+1.   [sshs](http://terminaltrove.com/sshs/) - Terminal user interface for SSH
+
+1.   [flamelens](http://terminaltrove.com/flamelens/) - An interactive flamegraph viewer in the terminal.
+
+1.   [slack-term](http://terminaltrove.com/slack-term/) - A Slack client for your terminal.
+
+1.   [fq](http://terminaltrove.com/fq/) - jq for binary formats.
+
+1.   [spotify-player](http://terminaltrove.com/spotify-player/) - A Spotify player in the terminal with full feature parity.
+
+1.   [atop](http://terminaltrove.com/atop/) - An advanced interactive monitor for linux systems.
+
+1.   [desed](http://terminaltrove.com/desed/) - Demystify and debug your sed scripts, from the comfort of your terminal.
+
+1.   [lazyjournal](http://terminaltrove.com/lazyjournal/) - A terminal user interface for journalctl.
+
+1.   [hwatch](http://terminaltrove.com/hwatch/) - An alternative watch command.
+
+1.   [ssl-checker](http://terminaltrove.com/ssl-checker/) - Fast and beautiful program to check all your https endpoint.
+
+1.   [helix](http://terminaltrove.com/helix/) - A post-modern text editor.
+
+1.   [gtrash](http://terminaltrove.com/gtrash/) - A featureful trash CLI manager.
+
+1.   [theattyr](http://terminaltrove.com/theattyr/) - A terminal theater for playing VT100 art and animations.
+
+1.   [s-tui](http://terminaltrove.com/s-tui/) - terminal-based CPU stress and monitoring utility.
+
+1.   [hackernews-tui](http://terminaltrove.com/hackernews-tui/) - A Terminal UI (TUI) to browse Hacker News.
+
+1.   [meteor](http://terminaltrove.com/meteor/) - A highly configurable CLI tool for writing conventional commits.
+
+1.   [fork-cleaner](http://terminaltrove.com/fork-cleaner/) - A tool to clean up old and inactive forks on your GitHub account.
+
+1.   [havn](http://terminaltrove.com/havn/) - A fast configurable port scanner with reasonable defaults.
+
+1.   [lazysql](http://terminaltrove.com/lazysql/) - A cross-platform TUI database management tool.
+
+1.   [csvlens](http://terminaltrove.com/csvlens/) - a csv viewer like less but made for csv.
+
+1.   [vifm](http://terminaltrove.com/vifm/) - A file manager with curses interface.
+
+1.   [rainfrog](http://terminaltrove.com/rainfrog/) - A database management TUI for postgres.
+
+1.   [aider](http://terminaltrove.com/aider/) - AI pair programming in your terminal.
+
+1.   [mult](http://terminaltrove.com/mult/) - Run a command multiple times and glance at the outputs.
+
+1.   [netop](http://terminaltrove.com/netop/) - A network topology visualizer.
+
+1.   [hygg](http://terminaltrove.com/hygg/) - Minimalistic Vim-like TUI document reader.
+
+1.   [forgit](http://terminaltrove.com/forgit/) - A utility tool powered by fzf for using Git interactively.
+
+1.   [lobtui](http://terminaltrove.com/lobtui/) - A TUI for lobste.rs website.
+
+1.   [slumber](http://terminaltrove.com/slumber/) - Terminal-based HTTP/REST client.
+
+1.   [lexy](http://terminaltrove.com/lexy/) - A CLI for reading Learn X in Y Minutes directly into your terminal.
+
+1.   [tmux](http://terminaltrove.com/tmux/) - An open-source terminal multiplexer.
+
+1.   [tcpterm](http://terminaltrove.com/tcpterm/) - A terminal-based TCP dump viewer.
+
+1.   [termdbms](http://terminaltrove.com/termdbms/) - A terminal UI for editing database files
+
+1.   [cueitup](http://terminaltrove.com/cueitup/) - Inspect messages in an AWS SQS queue.
+
+1.   [exosphere](http://terminaltrove.com/exosphere/) - A CLI / TUI for aggregated patch reporting & system status monitoring via SSH.
+
+1.   [tuisky](http://terminaltrove.com/tuisky/) - A TUI client for Bluesky.
+
+1.   [mani](http://terminaltrove.com/mani/) - A CLI tool to help you manage multiple repositories.
+
+1.   [grv](http://terminaltrove.com/grv/) - A Git Repository Viewer.
+
+1.   [sampler](http://terminaltrove.com/sampler/) - Visualization for any shell command.
+
+1.   [simtool](http://terminaltrove.com/simtool/) - A beautiful and powerful TUI for managing iOS simulators.
+
+1.   [mitmproxy](http://terminaltrove.com/mitmproxy/) - A TLS/SSL-capable interception HTTP proxy.
+
+1.   [cmus](http://terminaltrove.com/cmus/) - Small, fast and powerful console music player for Unix-like operating systems.
+
+1.   [pysentation](http://terminaltrove.com/pysentation/) - TUI for displaying Python presentations
+
+1.   [sshclick](http://terminaltrove.com/sshclick/) - Terminal based assisted management of your SSH config files.
+
+1.   [castero](http://terminaltrove.com/castero/) - A TUI podcast client for the terminal.
+
+1.   [ggh](http://terminaltrove.com/ggh/) - Recall your SSH sessions.
+
+1.   [atac](http://terminaltrove.com/atac/) - A simple API client (postman like) in your terminal.
+
+1.   [calcure](http://terminaltrove.com/calcure/) - Modern, customizable TUI calendar and task manager.
+
+1.   [blueutil-tui](http://terminaltrove.com/blueutil-tui/) - A TUI for macOS to interact with bluetooth devices via blueutil.
+
+1.   [wiper](http://terminaltrove.com/wiper/) - A TUI disk analyser and cleanup tool.
+
+1.   [andcli](http://terminaltrove.com/andcli/) - A 2FA TUI for your shell.
+
+1.   [parqv](http://terminaltrove.com/parqv/) - A TUI for visualizing and analyzing files with multiple formats.
+
+1.   [bibiman](http://terminaltrove.com/bibiman/) - A simple TUI for handling your BibLaTeX database.
+
+1.   [tailspin](http://terminaltrove.com/tailspin/) - A log file highlighter
+
+1.   [kplay](http://terminaltrove.com/kplay/) - Inspect messages in a Kafka topic in a simple and deliberate manner.
+
+1.   [sntop](http://terminaltrove.com/sntop/) - A simple network top for monitoring connectivity
+
+1.   [posting](http://terminaltrove.com/posting/) - A powerful HTTP client that lives in your terminal.
+
+1.   [mdtt](http://terminaltrove.com/mdtt/) - Markdown Table Editor TUI.
+
+1.   [wordgrinder](http://terminaltrove.com/wordgrinder/) - A cross-platform word processor for the terminal
+
+1.   [fex](http://terminaltrove.com/fex/) - A command-line file explorer prioritizing quick navigation.
+
+1.   [tracexec](http://terminaltrove.com/tracexec/) - A small utility for tracing/debugging program execution.
+
+1.   [omm](http://terminaltrove.com/omm/) - A keyboard-driven task manager for the terminal.
+
+1.   [stu](http://terminaltrove.com/stu/) - A TUI application for AWS S3 written in Rust.
+
+1.   [taskwarrior-tui](http://terminaltrove.com/taskwarrior-tui/) - A terminal user interface for taskwarrior
+
+1.   [wtf](http://terminaltrove.com/wtf/) - The personal information dashboard for your terminal.
+
+1.   [ktop](http://terminaltrove.com/ktop/) - A top-like tool for your Kubernetes clusters.
+
+1.   [byobu](http://terminaltrove.com/byobu/) - Text-based window manager and terminal multiplexer
+
+1.   [netshow](http://terminaltrove.com/netshow/) - An interactive, process-aware network monitoring for your terminal.
+
+1.   [up](http://terminaltrove.com/up/) - A tool for writing Linux pipes with instant live preview.
+
+1.   [e1s](http://terminaltrove.com/e1s/) - A TUI for managing AWS ECS Resources.
+
+1.   [squall](http://terminaltrove.com/squall/) - A TUI SQLite viewer and editor.
+
+1.   [moc](http://terminaltrove.com/moc/) - A music player with a terminal user interface (TUI)
+
+1.   [fm](http://terminaltrove.com/fm/) - A minimalistic file manager for the terminal.
+
+1.   [ranger](http://terminaltrove.com/ranger/) - A vim-inspired file manager for the console.
+
+1.   [projectable](http://terminaltrove.com/projectable/) - A terminal-based project manager
+
+1.   [oxker](http://terminaltrove.com/oxker/) - A simple TUI to view & control docker containers.
+
+1.   [pacseek](http://terminaltrove.com/pacseek/) - A TUI for searching and installing Arch Linux packages.
+
+1.   [igrep](http://terminaltrove.com/igrep/) - Interactive Grep.
+
+1.   [goji](http://terminaltrove.com/goji/) - Commitizen-like tool for formatting commit messages using emojis.
+
+1.   [wiki-tui](http://terminaltrove.com/wiki-tui/) - A fast Wikipedia CLI/TUI client
+
+1.   [sttr](http://terminaltrove.com/sttr/) - A CLI/TUI tool to perform 30+ string transformations on text.
+
+1.   [tewi](http://terminaltrove.com/tewi/) - Text-based interface for the Transmission BitTorrent daemon.
+
+1.   [tatuin](http://terminaltrove.com/tatuin/) - Task Aggregator TUI for N providers.
+
+1.   [dijo](http://terminaltrove.com/dijo/) - scriptable, curses-based, digital habit tracker.
+
+1.   [pwdsafety](http://terminaltrove.com/pwdsafety/) - A command line tool checking password safety.
+
+1.   [tre](http://terminaltrove.com/tre/) - A modern and improved alternative to the tree(1) command.
+
+1.   [lazycelery](http://terminaltrove.com/lazycelery/) - A TUI for monitoring and managing Celery workers and tasks.
+
+1.   [goaccess](http://terminaltrove.com/goaccess/) - a real-time web log analyzer and interactive viewer.
+
+1.   [vim](http://terminaltrove.com/vim/) - The ubiquitous text editor
+
+1.   [blink](http://terminaltrove.com/blink/) - tiniest x86-64-linux emulator.
+
+1.   [openapi-tui](http://terminaltrove.com/openapi-tui/) - Browse and run APIs defined with OpenAPI v3.0 in the TUI
+
+1.   [renux](http://terminaltrove.com/renux/) - A terminal-based bulk file renamer with a TUI.
+
+1.   [mcp-probe](http://terminaltrove.com/mcp-probe/) - Advanced MCP Protocol Debugger & Interactive TUI.
+
+1.   [rssnix](http://terminaltrove.com/rssnix/) - filesystem-based rss/atom/json feed fetcher and reader
+
+1.   [crates-tui](http://terminaltrove.com/crates-tui/) - A TUI for exploring crates.io
+
+1.   [swaptop](http://terminaltrove.com/swaptop/) - A real-time swap usage monitor with a TUI.
+
+1.   [tz](http://terminaltrove.com/tz/) - A terminal based timezone helper
+
+1.   [tabiew](http://terminaltrove.com/tabiew/) - A lightweight TUI application to view and query tabular data files.
+
+1.   [bmon](http://terminaltrove.com/bmon/) - Bandwidth monitor and rate estimator
+
+1.   [cava](http://terminaltrove.com/cava/) - Cross-platform Audio Visualizer for Alsa
+
+1.   [heh](http://terminaltrove.com/heh/) - A terminal UI to edit bytes by the nibble.
+
+1.   [termshark](http://terminaltrove.com/termshark/) - A terminal UI (TUI) for tshark, inspired by Wireshark.
+
+1.   [slurm](http://terminaltrove.com/slurm/) - Realtime traffic statistics for network interfaces
+
+1.   [tukai](http://terminaltrove.com/tukai/) - Terminal based touch typing application.
+
+1.   [harlequin](http://terminaltrove.com/harlequin/) - The SQL IDE for Your Terminal.
+
+1.   [resto](http://terminaltrove.com/resto/) - Send pretty HTTP & API requests with TUI.
+
+1.   [rexi](http://terminaltrove.com/rexi/) - A terminal UI for regex testing.
+
+1.   [inspect-cert-chain](http://terminaltrove.com/inspect-cert-chain/) - Inspect and debug TLS certificate chains. (without OpenSSL)
+
+1.   [sig](http://terminaltrove.com/sig/) - interactive grep. (for streaming)
+
+1.   [serie](http://terminaltrove.com/serie/) - A rich git commit graph in your terminal, like magic!
+
+1.   [emacs](http://terminaltrove.com/emacs/) - The extensible, customizable, free/libre display editor.
+
+1.   [isd](http://terminaltrove.com/isd/) - A keyboard-focused, highly customizable systemd units TUI.
+
+1.   [gri](http://terminaltrove.com/gri/) - manage git/gerrit change requests in the terminal.
+
+1.   [typtea](http://terminaltrove.com/typtea/) - A minimal terminal-based type-speed tester.
+
+1.   [neomutt](http://terminaltrove.com/neomutt/) - A command line mail reader based on mutt
+
+1.   [ncspot](http://terminaltrove.com/ncspot/) - A cross-platform ncurses Spotify client.
+
+1.   [pumas](http://terminaltrove.com/pumas/) - Power Usage Monitor for Apple Silicon.
+
+1.   [peplum](http://terminaltrove.com/peplum/) - The TUI PEP lookup manager for your terminal.
+
+1.   [ktool](http://terminaltrove.com/ktool/) - A TUI Mach-O/ObjC analysis and editing toolkit in the terminal.
+
+1.   [typioca](http://terminaltrove.com/typioca/) - Cozy typing speed tester in terminal.
+
+1.   [bt](http://terminaltrove.com/bt/) - Interactive tree-like terminal file manager.
+
+1.   [scli](http://terminaltrove.com/scli/) - simple terminal user interface (TUI) for Signal.
+
+1.   [brows](http://terminaltrove.com/brows/) - A GitHub releases browser for the terminal
+
+1.   [bmm](http://terminaltrove.com/bmm/) - Get to your bookmarks in a flash.
+
+1.   [toot](http://terminaltrove.com/toot/) - Interact with Mastodon directly in the terminal.
+
+1.   [hledger-ui](http://terminaltrove.com/hledger-ui/) - Fast, friendly, robust plain text accounting software (TUI version)
+
+1.   [neoss](http://terminaltrove.com/neoss/) - User-friendly and detailed socket statistics with a TUI.
+
+1.   [moe](http://terminaltrove.com/moe/) - A command line Nim based editor inspired by Vim.
+
+1.   [ddv](http://terminaltrove.com/ddv/) - A TUI to view Amazon DynamoDB in the terminal.
+
+1.   [osintui](http://terminaltrove.com/osintui/) - Open Source Intelligence Terminal User Interface.
+
+1.   [pvw](http://terminaltrove.com/pvw/) - A terminal-based (TUI) port viewer in Go
+
+1.   [vi-mongo](http://terminaltrove.com/vi-mongo/) - A TUI for managing MongoDB databases.
+
+1.   [vtop](http://terminaltrove.com/vtop/) - Wow such top. So stats. More better than regular top
+
+1.   [redu](http://terminaltrove.com/redu/) - ncdu for your restic repository.
+
+1.   [elia](http://terminaltrove.com/elia/) - A TUI ChatGPT client built with Textual
+
+1.   [gobang](http://terminaltrove.com/gobang/) - A cross platform TUI database management tool written in Rust
+
+1.   [ssh-para](http://terminaltrove.com/ssh-para/) - Parallel SSH jobs manager interactive CLI.
+
+1.   [wiremix](http://terminaltrove.com/wiremix/) - A simple TUI audio mixer for PipeWire.
+
+1.   [tickrs](http://terminaltrove.com/tickrs/) - Realtime ticker data in your terminal.
+
+1.   [gollama](http://terminaltrove.com/gollama/) - Go manage your ollama models.
+
+1.   [aerc](http://terminaltrove.com/aerc/) - A pretty good email client.
+
+1.   [tut](http://terminaltrove.com/tut/) - A TUI for Mastodon with vim inspired keys
+
+1.   [daylight](http://terminaltrove.com/daylight/) - Track sunrise and sunset times in the terminal.
+
+1.   [zellij](http://terminaltrove.com/zellij/) - A terminal workspace with batteries included.
+
+1.   [mprocs](http://terminaltrove.com/mprocs/) - Run multiple commands in parallel.
+
+1.   [reader](http://terminaltrove.com/reader/) - Readability for the command line.
+
+1.   [gocovsh](http://terminaltrove.com/gocovsh/) - A shell for interacting with Go coverage profiles.
+
+1.   [sizeof](http://terminaltrove.com/sizeof/) - A command-line tool to calculate the size of data structures
+
+1.   [loggo](http://terminaltrove.com/loggo/) - A powerful terminal app for structured log streaming.
+
+1.   [nap](http://terminaltrove.com/nap/) - Code snippets in your terminal.
+
+1.   [asak](http://terminaltrove.com/asak/) - A cross-platform audio recording/playback CLI tool with a TUI.
+
+1.   [dotenvhub](http://terminaltrove.com/dotenvhub/) - A TUI to manage your .env files in the terminal.
+
+1.   [cashd](http://terminaltrove.com/cashd/) - A fast and cozy TUI for personal finance management.
+
+1.   [hnterm](http://terminaltrove.com/hnterm/) - Hacker News in the terminal.
+
+1.   [roumon](http://terminaltrove.com/roumon/) - A universal goroutine monitor with a TUI.
+
+1.   [ov](http://terminaltrove.com/ov/) - A feature rich terminal-based pager.
+
+1.   [bandwhich](http://terminaltrove.com/bandwhich/) - Terminal bandwidth utilization tool
+
+1.   [logshark](http://terminaltrove.com/logshark/) - A CLI / TUI debugger for JSON logs.
+
+1.   [patat](http://terminaltrove.com/patat/) - Terminal-based presentations using Pandoc.
+
+1.   [patch-hub](http://terminaltrove.com/patch-hub/) - TUI for lore.kernel.org
+
+1.   [jira-cli](http://terminaltrove.com/jira-cli/) - Interact with Jira in the Terminal with Jira CLI.
+
+1.   [portal](http://terminaltrove.com/portal/) - A quick and easy command-line file transfer utility.
+
+1.   [jnv](http://terminaltrove.com/jnv/) - Interactive JSON filter using jq.
+
+1.   [bbcli](http://terminaltrove.com/bbcli/) - A TUI and CLI for accessing BBC News in the terminal.
+
+1.   [dblab](http://terminaltrove.com/dblab/) - The database client designed for command line specialists.
+
+1.   [logss](http://terminaltrove.com/logss/) - A simple cli for logs splitting.
+
+1.   [tegratop](http://terminaltrove.com/tegratop/) - A TUI monitoring tool for Nvidia jetson boards.
+
+1.   [chiko](http://terminaltrove.com/chiko/) - A TUI gRPC client.
+
+1.   [xfr](http://terminaltrove.com/xfr/) - A modern iperf3 alternative with a live TUI.
+
+1.   [viddy](http://terminaltrove.com/viddy/) - A modern watch command, time machine and pager.
+
+1.   [dry](http://terminaltrove.com/dry/) - A Docker manager for the terminal.
+
+1.   [ox](http://terminaltrove.com/ox/) - A Rust text editor that runs in your terminal!
+
+1.   [basalt](http://terminaltrove.com/basalt/) - A TUI for managing Obsidian vaults and notes.
+
+1.   [cy](http://terminaltrove.com/cy/) - A time traveling terminal multiplexer.
+
+1.   [hazelnut](http://terminaltrove.com/hazelnut/) - A terminal based automated file organizer inspired by Hazel.
+
+1.   [twitch-tui](http://terminaltrove.com/twitch-tui/) - A Twitch chat TUI client for the terminal
+
+1.   [ssh-list](http://terminaltrove.com/ssh-list/) - An SSH connection manager with a TUI interface.
+
+1.   [keyb](http://terminaltrove.com/keyb/) - Create and view custom hotkey cheatsheets in the terminal.
+
+1.   [kl](http://terminaltrove.com/kl/) - An interactive Kubernetes log viewer for your terminal.
+
+1.   [enola](http://terminaltrove.com/enola/) - A CLI tool to search for usernames across social networks.
+
+1.   [qmassa](http://terminaltrove.com/qmassa/) - Terminal-based tool for displaying GPUs usage stats on Linux.
+
+1.   [carl](http://terminaltrove.com/carl/) - a cal(1) alternative calendar for the command-line.
+
+1.   [keep-alive](http://terminaltrove.com/keep-alive/) - A lightweight, cross-platform utility to prevent your system from sleeping.
+
+1.   [recoverpy](http://terminaltrove.com/recoverpy/) - A TUI to interactively recover overwritten or deleted data.
+
+1.   [rucola](http://terminaltrove.com/rucola/) - A terminal based markdown note manager.
+
+1.   [flawz](http://terminaltrove.com/flawz/) - A TUI for browsing CVE security vulnerabilities.
+
+1.   [gitui](http://terminaltrove.com/gitui/) - A blazing fast TUI for git written in rust
+
+1.   [mdns-scanner](http://terminaltrove.com/mdns-scanner/) - Scan a network and create a list of IPs and associated hostnames.
+
+1.   [sou](http://terminaltrove.com/sou/) - A tool for exploring files in container image layers.
+
+1.   [vscli](http://terminaltrove.com/vscli/) - A CLI/TUI making it easy to launch Visual Studio Code (vscode) projects.
+
+1.   [sunbeam](http://terminaltrove.com/sunbeam/) - A general purpose command-line launcher.
+
+1.   [astroterm](http://terminaltrove.com/astroterm/) - A terminal-based star map.
+
+1.   [sc-im](http://terminaltrove.com/sc-im/) - An ncurses spreadsheet program for terminal
+
+1.   [erldash](http://terminaltrove.com/erldash/) - A simple, terminal-based Erlang dashboard.
+
+1.   [pocker](http://terminaltrove.com/pocker/) - A TUI tool for Docker.
+
+1.   [gama](http://terminaltrove.com/gama/) - Manage your GitHub Actions from the terminal.
+
+1.   [slides](http://terminaltrove.com/slides/) - A terminal based presentation tool
+
+1.   [otti](http://terminaltrove.com/otti/) - one-time TUI password manager for the terminal.
+
+1.   [vignore](http://terminaltrove.com/vignore/) - A powerful tool to visualize ignored files.
+
+1.   [hike](http://terminaltrove.com/hike/) - A Markdown browser for the terminal.
+
+1.   [durdraw](http://terminaltrove.com/durdraw/) - Versatile ASCII and ANSI Art text editor for terminals.
+
+1.   [dive](http://terminaltrove.com/dive/) - A tool for exploring each layer in a docker image.
+
+1.   [tldr-pages](http://terminaltrove.com/tldr-pages/) - Collaborative cheatsheets for console commands.
+
+1.   [joshuto](http://terminaltrove.com/joshuto/) - ranger-like terminal file manager written in Rust.
+
+1.   [git-who](http://terminaltrove.com/git-who/) - Git blame for file trees.
+
+1.   [bitchat-tui](http://terminaltrove.com/bitchat-tui/) - A TUI client for bitchat.
+
+1.   [diskonaut](http://terminaltrove.com/diskonaut/) - terminal disk space navigator.
+
+1.   [cargo-seek](http://terminaltrove.com/cargo-seek/) - A TUI for searching, adding and installing cargo crates.
+
+1.   [tuistash](http://terminaltrove.com/tuistash/) - A terminal user interface for Logstash.
+
+1.   [hours](http://terminaltrove.com/hours/) - no-frills time tracking toolkit for the command line.
+
+1.   [dyff](http://terminaltrove.com/dyff/) - diff tool for YAML files, and sometimes JSON.
+
+1.   [ecscope](http://terminaltrove.com/ecscope/) - monitor AWS ECS resources from the terminal.
+
+1.   [yozefu](http://terminaltrove.com/yozefu/) - An TUI application for exploring data of a kafka cluster.
+
+1.   [oha](http://terminaltrove.com/oha/) - A tiny TUI program that sends some load to a web application.
+
+1.   [tufw](http://terminaltrove.com/tufw/) - Terminal UI for ufw.
+
+1.   [lazynpm](http://terminaltrove.com/lazynpm/) - A simple TUI for npm commands.
+
+1.   [typeinc](http://terminaltrove.com/typeinc/) - A cool ncurses based typing speed test tool.
+
+1.   [parllama](http://terminaltrove.com/parllama/) - TUI for ollama and other LLM providers.
+
+1.   [fuzpad](http://terminaltrove.com/fuzpad/) - A minimalistic note management solution. Powered by fzf.
+
+1.   [fli](http://terminaltrove.com/fli/) - A command-line tool that simplifies AWS VPC Flow Logs analysis.
+
+1.   [taproom](http://terminaltrove.com/taproom/) - An interactive TUI for Homebrew.
+
+1.   [circumflex](http://terminaltrove.com/circumflex/) - It's Hacker News in your terminal.
+
+1.   [weechat](http://terminaltrove.com/weechat/) - The extensible chat client
+
+1.   [xplr](http://terminaltrove.com/xplr/) - A hackable, minimal, fast TUI file explorer
+
+1.   [chmod-cli](http://terminaltrove.com/chmod-cli/) - effortlessly generate chmod commands.
+
+1.   [jocalsend](http://terminaltrove.com/jocalsend/) - A TUI file-sharing tool based on the LocalSend protocol.
+
+1.   [newsboat](http://terminaltrove.com/newsboat/) - An open-source RSS/Atom feed reader for text terminals
+
+1.   [dug](http://terminaltrove.com/dug/) - A global DNS propagation checker on your CLI
+
+1.   [froggit](http://terminaltrove.com/froggit/) - A modern, minimalist Git TUI.
+
+1.   [gomuks](http://terminaltrove.com/gomuks/) - A terminal based Matrix client written in Go.
+
+1.   [dtop](http://terminaltrove.com/dtop/) - A high-performance TUI for Docker container management.
+
+1.   [httplab](http://terminaltrove.com/httplab/) - Inspect HTTP requests and mock their responses in the terminal.
+
+1.   [regname](http://terminaltrove.com/regname/) - Mass renamer TUI written in Rust.
+
+1.   [jless](http://terminaltrove.com/jless/) - A command-line JSON viewer.
+
+1.   [spiel](http://terminaltrove.com/spiel/) - Display richly-styled presentations using your terminal.
+
+1.   [tgt](http://terminaltrove.com/tgt/) - A simple TUI for Telegram.
+
+1.   [goto](http://terminaltrove.com/goto/) - SSH manager for easy server access.
+
+1.   [nmail](http://terminaltrove.com/nmail/) - Terminal email client for Linux and macOS.
+
+1.   [ali](http://terminaltrove.com/ali/) - A load testing tool capable of performing real-time analysis.
+
+1.   [glow](http://terminaltrove.com/glow/) - Render markdown on the CLI, with pizzazz!
+
+1.   [lazydocker](http://terminaltrove.com/lazydocker/) - The lazier way to manage everything docker
+
+1.   [gh-dash](http://terminaltrove.com/gh-dash/) - An interactive GitHub Dashboard for your terminal.
+
+1.   [yai](http://terminaltrove.com/yai/) - Your AI powered terminal assistant
+
+1.   [tempy](http://terminaltrove.com/tempy/) - A simple TUI for displaying the current weather in the terminal
+
+1.   [dunk](http://terminaltrove.com/dunk/) - Prettier git diffs in the terminal 🎨
+
+1.   [kupo](http://terminaltrove.com/kupo/) - A terminal file manager / browser, kupo!
+
+1.   [humble-explorer](http://terminaltrove.com/humble-explorer/) - cross-platform, command-line Bluetooth Low Energy scanner.
+
+1.   [frogmouth](http://terminaltrove.com/frogmouth/) - A Markdown browser for your terminal
+
+1.   [tinboard](http://terminaltrove.com/tinboard/) - A terminal-based client for pinboard.in
+
+1.   [irssi](http://terminaltrove.com/irssi/) - A well known cross-platform and famous IRC client
+
+1.   [awsesh](http://terminaltrove.com/awsesh/) - A charming TUI for AWS SSO session management.
+
+1.   [servitor](http://terminaltrove.com/servitor/) - A fediverse client with a terminal interface
+
+1.   [comchan](http://terminaltrove.com/comchan/) - A blazingly fast, minimal, and beginner-friendly serial monitor.
+
+1.   [pkgtop](http://terminaltrove.com/pkgtop/) - An interactive linux package manager & resource monitor.
+
+1.   [tenere](http://terminaltrove.com/tenere/) - A TUI interface for LLMs.
+
+1.   [intermodal](http://terminaltrove.com/intermodal/) - A 40' shipping container for the Internet.
+
+1.   [hostctl](http://terminaltrove.com/hostctl/) - A CLI tool to manage /etc/hosts like a pro!
+
+1.   [cloctui](http://terminaltrove.com/cloctui/) - A TUI interface for CLOC (Count Lines of Code)
+
+1.   [godap](http://terminaltrove.com/godap/) - A complete terminal user interface (TUI) for LDAP.
+
+1.   [zeit](http://terminaltrove.com/zeit/) - A simple command-line tool to track your time
+
+1.   [cgdb](http://terminaltrove.com/cgdb/) - A curses (terminal-based) interface to the GNU Debugger (GDB)
+
+1.   [zrok](http://terminaltrove.com/zrok/) - a next-generation peer-to-peer sharing platform
+
+1.   [lf](http://terminaltrove.com/lf/) - A terminal file manager which "lists files".
+
+1.   [hexabyte](http://terminaltrove.com/hexabyte/) - A modern, modular, and robust TUI hex editor.
+
+1.   [sen](http://terminaltrove.com/sen/) - Terminal User Interface for containers.
+
+1.   [kat](http://terminaltrove.com/kat/) - A TUI and rule-based rendering engine for Kubernetes manifests.
+
+1.   [logmerger](http://terminaltrove.com/logmerger/) - A utility to view multiple log files with merged timeline.
+
+1.   [qq](http://terminaltrove.com/qq/) - A jq inspired interoperable config format transcoder with interactive querying.
+
+1.   [pspg](http://terminaltrove.com/pspg/) - A UNIX pager optimized for tabular data.
+
+1.   [puffin](http://terminaltrove.com/puffin/) - A beautiful terminal dashboard for hledger.
+
+1.   [netscanner](http://terminaltrove.com/netscanner/) - A network scanning tool.
+
+1.   [amfora](http://terminaltrove.com/amfora/) - A fancy terminal browser for the Gemini protocol.
+
+1.   [scooter](http://terminaltrove.com/scooter/) - Interactive find and replace in the terminal.
+
+1.   [lstr](http://terminaltrove.com/lstr/) - A fast, minimalist directory tree viewer.
+
+1.   [packemon](http://terminaltrove.com/packemon/) - A TUI for generating packets of arbitrary input and monitoring packets.
+
+1.   [lnav](http://terminaltrove.com/lnav/) - An ncurses-based log file viewer for the terminal.
+
+1.   [manly](http://terminaltrove.com/manly/) - A TUI for viewing man pages in the terminal.
+
+1.   [process-compose](http://terminaltrove.com/process-compose/) - A scheduler and orchestrator to manage non-containerized applications.
+
+1.   [tasktimer](http://terminaltrove.com/tasktimer/) - A dead simple TUI task timer.
+
+1.   [gdb](http://terminaltrove.com/gdb/) - The GNU Project Debugger
+
+1.   [vectro](http://terminaltrove.com/vectro/) - The rpn calculator for your terminal.
+
+1.   [navi](http://terminaltrove.com/navi/) - An interactive cheatsheet tool for the command line.
+
+1.   [oatmeal](http://terminaltrove.com/oatmeal/) - A TUI to chat with LLMs and direct integrations with your favourite editors.
+
+1.   [hstr](http://terminaltrove.com/hstr/) - A bash and zsh shell history suggestion box for your command history.
+
+1.   [heretek](http://terminaltrove.com/heretek/) - Yet Another GDB TUI Frontend.
+
+1.   [impala](http://terminaltrove.com/impala/) - TUI for managing WiFi on Linux.
+
+1.   [flameshow](http://terminaltrove.com/flameshow/) - A flamegraph viewer in the terminal.
+
+1.   [dua](http://terminaltrove.com/dua/) - View disk space usage and delete unwanted data, fast.
+
+1.   [passepartui](http://terminaltrove.com/passepartui/) - A TUI for pass.
+
+1.   [amp](http://terminaltrove.com/amp/) - A complete text editor for your terminal.
+
+1.   [zenith](http://terminaltrove.com/zenith/) - A terminal UI (TUI) for monitoring system resources
+
+1.   [diffnav](http://terminaltrove.com/diffnav/) - A git diff pager based on delta but with a file tree, à la GitHub.
+
+1.   [phetch](http://terminaltrove.com/phetch/) - A terminal client designed to help you quickly navigate the gophersphere.
+
+1.   [ctop](http://terminaltrove.com/ctop/) - A top-like interface for container metrics.
+
+1.   [pathos](http://terminaltrove.com/pathos/) - A terminal interface for editing and managing PATH environment variables.
+
+1.   [kbt](http://terminaltrove.com/kbt/) - A keyboard tester in terminal.
+
+1.   [kaskade](http://terminaltrove.com/kaskade/) - A text user interface (TUI) for Apache Kafka.
+
+1.   [tran](http://terminaltrove.com/tran/) - Securely transfer and send anything between computers with a TUI
+
+1.   [papis](http://terminaltrove.com/papis/) - A powerful and highly extensible CLI document and bibliography manager.
+
+1.   [kb](http://terminaltrove.com/kb/) - A minimalist knowledge base manager.
+
+1.   [mandown](http://terminaltrove.com/mandown/) - man-page inspired Markdown viewer.
+
+1.   [calcurse](http://terminaltrove.com/calcurse/) - A calendar and scheduling application for the command line.
+
+1.   [ttyper](http://terminaltrove.com/ttyper/) - A terminal-based typing test
+
+1.   [gpg-tui](http://terminaltrove.com/gpg-tui/) - A terminal user interface for GPG
+
+1.   [gpterminator](http://terminaltrove.com/gpterminator/) - A TUI for OpenAI's ChatGPT
+
+1.   [otree](http://terminaltrove.com/otree/) - A tool to view objects (JSON/YAML/TOML) in a TUI tree widget.
+
+1.   [lynx](http://terminaltrove.com/lynx/) - A TUI based web browser.
+
+1.   [tui-journal](http://terminaltrove.com/tui-journal/) - Your journal app if you live in a terminal.
+
+1.   [stormy](http://terminaltrove.com/stormy/) - Minimal, customizable, and neofetch-like weather CLI.
+
+1.   [procmux](http://terminaltrove.com/procmux/) - A terminal multiplexer for processes.
+
+1.   [kanban-tui](http://terminaltrove.com/kanban-tui/) - A customizable task manager in the terminal.
+
+1.   [nvtop](http://terminaltrove.com/nvtop/) - NVIDIA GPUs htop like monitoring tool
+
+1.   [caps-log](http://terminaltrove.com/caps-log/) - A small TUI journaling tool.
+
+1.   [gocker](http://terminaltrove.com/gocker/) - TUI for Docker management.
+
+1.   [prs](http://terminaltrove.com/prs/) - Stay updated on PRs without leaving the terminal.
+
+1.   [spotify-tui](http://terminaltrove.com/spotify-tui/) - Spotify for the terminal written in Rust
+
+1.   [presenterm](http://terminaltrove.com/presenterm/) - A TUI markdown terminal slideshow tool.
+
+1.   [hexpatch](http://terminaltrove.com/hexpatch/) - A binary patcher and editor with a terminal user interface.
+
+1.   [mufetch](http://terminaltrove.com/mufetch/) - neofetch-style CLI for music.
+
+1.   [gtt](http://terminaltrove.com/gtt/) - A TUI for Google Translate, ChatGPT, DeepL and other AI services.
+
+1.   [lazyjj](http://terminaltrove.com/lazyjj/) - A TUI for Jujutsu / jj.
+
+1.   [pik](http://terminaltrove.com/pik/) - A TUI for interactively stopping processes.
+
+1.   [k9s](http://terminaltrove.com/k9s/) - Kubernetes CLI and TUI To Manage Your Clusters In Style!
+
+1.   [s3scanner](http://terminaltrove.com/s3scanner/) - A tool to scan for misconfigured S3 buckets.
+
+1.   [gitnr](http://terminaltrove.com/gitnr/) - A CLI / TUI to generate .gitignore files using templates.
+
+1.   [delta](http://terminaltrove.com/delta/) - A viewer for git and diff output.
+
+1.   [kmon](http://terminaltrove.com/kmon/) - Linux Kernel Manager and Activity Monitor.
+
+1.   [mdp](http://terminaltrove.com/mdp/) - A command-line based markdown presentation tool
+
+1.   [oryx](http://terminaltrove.com/oryx/) - A TUI for sniffing network traffic using eBPF on Linux.
+
+1.   [hdf5_ui](http://terminaltrove.com/hdf5_ui/) - A TUI for inspection of HDF5 files.
+
+1.   [dooit](http://terminaltrove.com/dooit/) - A TUI todo manager for the terminal
+
+1.   [termscp](http://terminaltrove.com/termscp/) - A feature rich terminal file transfer tool.
+
+1.   [btop](http://terminaltrove.com/btop/) - A terminal monitor of resources.
+
+1.   [mapscii](http://terminaltrove.com/mapscii/) - The whole world in your console.
+
+1.   [planor](http://terminaltrove.com/planor/) - A TUI client for cloud services for aws, vultr, heroku, etc.
+
+1.   [bluetui](http://terminaltrove.com/bluetui/) - TUI for managing bluetooth on Linux.
+
+1.   [yazi](http://terminaltrove.com/yazi/) - Blazing fast terminal file manager written in Rust, based on async I/O.
+
+1.   [angryoxide](http://terminaltrove.com/angryoxide/) - A WiFi attack and pentesting tool built in Rust.
+
+1.   [jellex](http://terminaltrove.com/jellex/) - A TUI to filter JSON and JSON Lines data with Python syntax.
+
+1.   [ducker](http://terminaltrove.com/ducker/) - A slightly quackers Docker TUI.
+
+1.   [browsr](http://terminaltrove.com/browsr/) - A pleasant file explorer in your terminal supporting all filesystems.
+
+1.   [so](http://terminaltrove.com/so/) - A terminal interface for Stack Overflow.
+
+1.   [hwinfo-tui](http://terminaltrove.com/hwinfo-tui/) - A terminal visualization tool for monitoring real-time hardware sensor data from HWInfo.
+
+1.   [zizmor](http://terminaltrove.com/zizmor/) - A static analysis tool for GitHub Actions.
+
+1.   [trippy](http://terminaltrove.com/trippy/) - A TUI network diagnostics tool
+
+1.   [ntop](http://terminaltrove.com/ntop-windows/) - htop-like system-monitor for windows.
+
+1.   [television](http://terminaltrove.com/television/) - A blazingly fast general purpose fuzzy finder TUI.
+
+1.   [dns53](http://terminaltrove.com/dns53/) - Expose your EC2 quickly, easily and privately within a VPC.
+
+1.   [kyma](http://terminaltrove.com/kyma/) - A terminal-based presentation tool with smooth animated transitions.
+
+1.   [ncdu](http://terminaltrove.com/ncdu/) - A ncurses based disk usage analyzer
+
+1.   [lumon](http://terminaltrove.com/lumon/) - The work is mysterious and important...
+
+1.   [chdig](http://terminaltrove.com/chdig/) - Dig into ClickHouse with TUI interface.
+
+1.   [mop](http://terminaltrove.com/mop/) - stock market tracker for hackers.
+
+1.   [iamb](http://terminaltrove.com/iamb/) - A matrix client for vim addicts.
+
+1.   [repgrep](http://terminaltrove.com/repgrep/) - An interactive replacer for ripgrep.
+
+1.   [logria](http://terminaltrove.com/logria/) - A powerful CLI tool that puts log aggregation at your fingertips.
+
+1.   [nemu](http://terminaltrove.com/nemu/) - ncurses-based TUI for QEMU.
+
+1.   [wg-cmd](http://terminaltrove.com/wg-cmd/) - TUI for managing WireGuard configuration files
+
+1.   [serpl](http://terminaltrove.com/serpl/) - A simple TUI for search and replace, akin to VS Code.
+
+1.   [rizin](http://terminaltrove.com/rizin/) - open source reverse engineering tool based on radare2.
+
+1.   [pingtop](http://terminaltrove.com/pingtop/) - Ping multiple servers and show the result in a top like terminal UI.
+
+1.   [pug](http://terminaltrove.com/pug/) - Drive terraform at terminal velocity.
+
+1.   [superfile](http://terminaltrove.com/superfile/) - fancy, modern file manager in the terminal.
+
+1.   [wakey](http://terminaltrove.com/wakey/) - A TUI built for managing and waking your devices using Wake-on-LAN.
+
+1.   [dolphie](http://terminaltrove.com/dolphie/) - Realtime MySQL health monitoring in the terminal.
+
+1.   [wikiman](http://terminaltrove.com/wikiman/) - A universal offline documentation search engine for manual pages.
+
+1.   [noping](http://terminaltrove.com/noping/) - A C library to generate ICMP echo requests with a visualization
+
+1.   [caligula](http://terminaltrove.com/caligula/) - A user-friendly, lightweight TUI for disk imaging.
+
+1.   [ttyplot](http://terminaltrove.com/ttyplot/) - A realtime terminal plotting utility with data input from stdin.
+
+1.   [bbrew](http://terminaltrove.com/bbrew/) - A Homebrew TUI Manager.
+
+1.   [fnug](http://terminaltrove.com/fnug/) - Run all your lints, tests and commands at once, in the terminal.
+
+1.   [nnn](http://terminaltrove.com/nnn/) - The missing terminal file manager for X
+
+1.   [pctrl](http://terminaltrove.com/pctrl/) - A terminal-based process controller.
+
+1.   [ticker](http://terminaltrove.com/ticker/) - A terminal stock ticker with live updates and position tracking.
+
+1.   [gurk](http://terminaltrove.com/gurk/) - Signal Messenger client for terminal.
+
+1.   [xbps-tui](http://terminaltrove.com/xbps-tui/) - A TUI-wrapper for xbps package manager on Void Linux.
+
+1.   [bottom](http://terminaltrove.com/bottom/) - Yet another cross-platform graphical process/system monitor.
+
+1.   [wuzz](http://terminaltrove.com/wuzz/) - An interactive TUI tool for HTTP inspection.
+
+1.   [youtube-tui](http://terminaltrove.com/youtube-tui/) - An aesthetically pleasing YouTube TUI written in Rust
+
+1.   [glances](http://terminaltrove.com/glances/) - A cross platform top/htop alternative in python.
+
+1.   [meli](http://terminaltrove.com/meli/) - configurable and extensible terminal email client.
+
+1.   [gtop](http://terminaltrove.com/gtop/) - System monitoring dashboard for terminal.
+
+1.   [macmon](http://terminaltrove.com/macmon/) - Sudoless performance monitoring for Apple Silicon processors.
+
+1.   [gping](http://terminaltrove.com/gping/) - Ping, but with a graph.
+
+1.   [radare2](http://terminaltrove.com/radare2/) - unix-like reverse engineering framework and command-line toolset.
+
+1.   [stew](http://terminaltrove.com/stew/) - An independent package manager for compiled binaries.
+
+1.   [hishtory](http://terminaltrove.com/hishtory/) - Your shell history: synced, queryable, and in context.
+
+1.   [updo](http://terminaltrove.com/updo/) - Uptime monitoring CLI tool with alerting and advanced settings.
+
+1.   [oterm](http://terminaltrove.com/oterm/) - A text-based terminal client for ollama.
+
+1.   [duf](http://terminaltrove.com/duf/) - Disk Usage/Free Utility - a better 'df' alternative.
+
+1.   [tuime](http://terminaltrove.com/tuime/) - A colorful and customizable TUI clock written in Rust.
+
+1.   [broot](http://terminaltrove.com/broot/) - A new way to see and navigate directory trees.
+
+1.   [docfd](http://terminaltrove.com/docfd/) - TUI multiline fuzzy document finder.
+
+1.   [lazygit](http://terminaltrove.com/lazygit/) - Simple terminal UI for git commands.
+
+1.   [ly](http://terminaltrove.com/ly/) - A lightweight TUI (ncurses-like) display manager.
+
+1.   [csvi](http://terminaltrove.com/csvi/) - A simple cross-platform terminal CSV editor.
+
+1.   [dcv](http://terminaltrove.com/dcv/) - A TUI viewer for docker-compose.
+
+1.   [xleak](http://terminaltrove.com/xleak/) - Expose Excel files in your terminal, no Microsoft Excel required.
+
+1.   [turm](http://terminaltrove.com/turm/) - TUI for the Slurm Workload Manager.
+
+1.   [systemd-manager-tui](http://terminaltrove.com/systemd-manager-tui/) - A TUI for managing systemd services.
+
+1.   [endcord](http://terminaltrove.com/endcord/) - A feature rich Discord TUI client.
+
+1.   [systeroid](http://terminaltrove.com/systeroid/) - A more powerful alternative to sysctl(8).
+
+1.   [kakoune](http://terminaltrove.com/kakoune/) - A modern selection-based modal text editor.
+
+1.   [mastui](http://terminaltrove.com/mastui/) - A Modern Mastodon TUI Client.
+
+1.   [incplot](http://terminaltrove.com/incplot/) - A CLI tool for drawing great looking plots in the terminal using unicode characters.
+
+1.   [doxx](http://terminaltrove.com/doxx/) - A viewer for Microsoft Word .docx files in the terminal.
+
+1.   [micro](http://terminaltrove.com/micro/) - A modern and intuitive terminal-based text editor.
+
+1.   [rfc_reader](http://terminaltrove.com/rfc_reader/) - An RFC viewer with TUI.
+
+1.   [marchat](http://terminaltrove.com/marchat/) - A lightweight realtime terminal chat client and server with E2E support.
+
+1.   [bugstalker](http://terminaltrove.com/bugstalker/) - A Modern Rust debugger for Linux x86-64.
+
+1.   [pproftui](http://terminaltrove.com/pproftui/) - A terminal-based diagnostic tool for Go pprof data.
+
+1.   [gobackup](http://terminaltrove.com/gobackup/) - A CLI tool to backup your databases, files to cloud storage.
+
+1.   [glues](http://terminaltrove.com/glues/) - A vim-inspired, privacy-first TUI note-taking app with multiple storage options.
+
+1.   [models](http://terminaltrove.com/models/) - A fast CLI and TUI for browsing AI models and coding agents.
+
+1.   [mlbt](http://terminaltrove.com/mlbt/) - A TUI interface for the MLB Statcast API.
+
+1.   [bit](http://terminaltrove.com/bit/) - Terminal ANSI Logo Designer & Font Library.
+
+1.   [cliamp](http://terminaltrove.com/cliamp/) - A terminal music player inspired by winamp.
+
+1.   [cobib](http://terminaltrove.com/cobib/) - The Console Bibliography.
+
+1.   [gitv](http://terminaltrove.com/gitv/) - View and manage your GitHub issues directly from the terminal.
+
+1.   [podliner](http://terminaltrove.com/podliner/) - Podcasts in any terminal. Fast, clean, offline.
+
+1.   [offpunk](http://terminaltrove.com/offpunk/) - An offline-first command-line browser.
+
+1.   [omp-manager](http://terminaltrove.com/omp-manager/) - A TUI that sets up Oh My Posh from scratch.
+
+1.   [e2c](http://terminaltrove.com/e2c/) - A TUI application for managing AWS EC2 instances.
+
+1.   [fat](http://terminaltrove.com/fat/) - A modern, TUI file and archive viewer for your terminal.
+
+1.   [envx](http://terminaltrove.com/envx/) - A powerful and secure TUI environment variable manager.
+
+1.   [oq](http://terminaltrove.com/oq/) - A terminal-based OpenAPI Spec (OAS) viewer.
+
+1.   [bpftop](http://terminaltrove.com/bpftop/) - Dynamic real-time view of running eBPF programs.
+
+1.   [rustormy](http://terminaltrove.com/rustormy/) - Minimal neofetch-like weather CLI.
+
+1.   [opamui](http://terminaltrove.com/opamui/) - A TUI for browsing and searching OCaml opam packages.
+
+1.   [celerator](http://terminaltrove.com/celerator/) - Monitor and debug celery tasks in the terminal.
+
+1.   [cmdperf](http://terminaltrove.com/cmdperf/) - Benchmark and compare shell commands interactively.
+
+1.   [twig](http://terminaltrove.com/twig/) - A high-performance terminal UI for exploring JSON and YAML files interactively.
+
+1.   [gitlogue](http://terminaltrove.com/gitlogue/) - A git commit history replay tool for the terminal.
+
+1.   [jiratui](http://terminaltrove.com/jiratui/) - Manage JIRA issues directly from the terminal.
+
+1.   [branchlet](http://terminaltrove.com/branchlet/) - Manage Git worktrees with automation from the terminal.
+
+1.   [gruyere](http://terminaltrove.com/gruyere/) - A tiny (and pretty) program for viewing + killing listening ports.
+
+1.   [aptui](http://terminaltrove.com/aptui/) - A TUI package manager for APT-based Linux distributions.
+
+1.   [lazyssh](http://terminaltrove.com/lazyssh/) - A terminal-based SSH manager.
+
+1.   [surge](http://terminaltrove.com/surge/) - A blazing fast TUI download manager.
+
+1.   [dotstate](http://terminaltrove.com/dotstate/) - A modern, secure, and user-friendly dotfile manager.
+
+1.   [mc](http://terminaltrove.com/mc/) - Midnight Commander, a feature-rich visual file manager for the terminal.
+
+1.   [jqp](http://terminaltrove.com/jqp/) - A TUI playground to experiment with jq.
+
+1.   [ktea](http://terminaltrove.com/ktea/) - An Apache Kafka TUI client.
+
+1.   [claws](http://terminaltrove.com/claws/) - A TUI for AWS resource management.
+
+1.   [b4n](http://terminaltrove.com/b4n/) - A terminal user interface (TUI) for the Kubernetes API.
+
+1.   [sncli](http://terminaltrove.com/sncli/) - A TUI and CLI for Simplenote.
+
+1.   [lue](http://terminaltrove.com/lue/) - A TUI ebook reader with Text-to-Speech (TTS).
+
+1.   [sheets](http://terminaltrove.com/sheets/) - Minimal terminal based spreadsheet and CSV viewer.
+
+1.   [pikpaktui](http://terminaltrove.com/pikpaktui/) - A TUI and CLI client for PikPak cloud storage.
+
+1.   [claude-code](http://terminaltrove.com/claude-code/) - An agentic coding tool that lives in your terminal, from Anthropic.
+
+1.   [bookokrat](http://terminaltrove.com/bookokrat/) - A terminal EPUB / PDF ebook reader.
+
+1.   [soundscope](http://terminaltrove.com/soundscope/) - A TUI audio file analyzer tool.
+
+1.   [judo](http://terminaltrove.com/judo/) - A multi-database TUI for todo lists.
+
+1.   [fresh](http://terminaltrove.com/fresh/) - A text editor for your terminal, easy, powerful and fast.
+
+1.   [gittype](http://terminaltrove.com/gittype/) - A terminal code-typing game that turns your source code into typing challenges.
+
+1.   [handler](http://terminaltrove.com/handler/) - A2A Protocol client and developer toolkit.
+
+1.   [gonzo](http://terminaltrove.com/gonzo/) - The Go based TUI log analysis tool.
+
+1.   [edit](http://terminaltrove.com/microsoft-edit/) - A TUI editor inspired by MS-DOS for Windows.
+
+1.   [nexus](http://terminaltrove.com/nexus/) - A terminal-based HTTP client for API testing.
+
+1.   [oyo](http://terminaltrove.com/oyo/) - A step-through diff viewer.
+
+1.   [filessh](http://terminaltrove.com/filessh/) - A fast and convenient TUI file browser for remote servers.
+
+1.   [sidecar](http://terminaltrove.com/sidecar/) - A TUI dashboard for AI coding agents.
+
+1.   [gorae](http://terminaltrove.com/gorae/) - A TUI librarian for PDFs and EPUBs.
+
+1.   [hardcover-tui](http://terminaltrove.com/hardcover-tui/) - An unofficial terminal user interface (TUI) client for Hardcover.app
+
+1.   [gotop](http://terminaltrove.com/gotop/) - A terminal-based graphical activity monitor written in Go.
+
+1.   [tredis](http://terminaltrove.com/tredis/) - A modern TUI for managing Redis servers.
+
+1.   [cointop](http://terminaltrove.com/cointop/) - cryptocurrency tracking for hackers that like htop.
+
+1.   [aria2tui](http://terminaltrove.com/aria2tui/) - A TUI client for the aria2 download utility.
+
+1.   [neovim](http://terminaltrove.com/neovim/) - Hyperextensible Vim-based text editor
+
+1.   [intelli-shell](http://terminaltrove.com/intelli-shell/) - Like IntelliSense, but for shells!
+
+1.   [pygitzen](http://terminaltrove.com/pygitzen/) - A python native terminal based Git client.
+
+1.   [rustnet](http://terminaltrove.com/rustnet/) - A cross-platform network monitoring TUI tool.
+
+1.   [openclaw](http://terminaltrove.com/openclaw/) - A self-hosted personal AI assistant with a CLI / TUI control surface.
+
+1.   [lemurs](http://terminaltrove.com/lemurs/) - A customizable TUI display/login manager written in Rust.
+
+1.   [aic](http://terminaltrove.com/aic/) - Fetch the latest changelogs for popular AI coding assistants.
+
+1.   [cloudflare-speed-cli](http://terminaltrove.com/cloudflare-speed-cli/) - A terminal interface for cloudflare's internet speed tester.
+
+1.   [ereandel](http://terminaltrove.com/ereandel/) - A Gemini web browser using shell script.
+
+1.   [ugdb](http://terminaltrove.com/ugdb/) - An alternative TUI for gdb.
+
+1.   [ad](http://terminaltrove.com/ad/) - An adaptable text editor.
+
+1.   [snipt](http://terminaltrove.com/snipt/) - A powerful text snippet expansion tool.
+
+1.   [datui](http://terminaltrove.com/datui/) - Data Exploration in the Terminal.
+
+1.   [flowrs](http://terminaltrove.com/flowrs/) - A TUI application for Apache Airflow.
+
+1.   [auggie](http://terminaltrove.com/auggie/) - All the power of Augment Code in your terminal.
+
+1.   [intentrace](http://terminaltrove.com/intentrace/) - A better strace(1) for everyone.
+
+1.   [git-interactive-rebase-tool](http://terminaltrove.com/git-interactive-rebase-tool/) - An improved sequence editor for Git.
+
+1.   [sot](http://terminaltrove.com/sot/) - Command-line System Observation Tool.
+
+1.   [jjui](http://terminaltrove.com/jjui/) - A terminal user interface for working with Jujutsu.
+
+1.   [darya](http://terminaltrove.com/darya/) - A disk usage explorer with a TUI and live treemap.
+
+1.   [hexhog](http://terminaltrove.com/hexhog/) - A configurable hex viewer/editor.
+
+1.   [rgx](http://terminaltrove.com/rgx/) - A terminal regex tester with real-time matching and multi-engine support.
+
+1.   [az-tui](http://terminaltrove.com/az-tui/) - A TUI for managing Azure Container Apps.
+
+1.   [musikcube](http://terminaltrove.com/musikcube/) - A cross-platform terminal-based music player
+
+1.   [dhv](http://terminaltrove.com/dhv/) - A TUI for visually exploring disassembled Python bytecode.
+
+1.   [jjj](http://terminaltrove.com/jjj/) - A TUI interface for Jujutsu VCS.
+
+1.   [trex](http://terminaltrove.com/trex/) - A terminal app for RegEx visualization, 🦖 roar!
+
+1.   [framework-tool-tui](http://terminaltrove.com/framework-tool-tui/) - A TUI for controlling and monitoring Framework Computers hardware.
+
+1.   [pass-cli](http://terminaltrove.com/pass-cli/) - A secure, cross-platform, command-line password manager.
+
+1.   [squix](http://terminaltrove.com/squix/) - A minimal CLI tool for managing and executing SQL queries with a TUI.
+
+1.   [yt-x](http://terminaltrove.com/yt-x/) - Browse youtube from your terminal.
+
+1.   [octotype](http://terminaltrove.com/octotype/) - A typing trainer for your terminal.
+
+1.   [ec](http://terminaltrove.com/ec/) - An easy terminal native 3-way git conflict resolver.
+
+1.   [qman](http://terminaltrove.com/qman/) - A full-featured man page viewer for our terminals.
+
+1.   [envdiff](http://terminaltrove.com/envdiff/) - A CLI tool to snapshot and diff environments.
+
+1.   [zuse](http://terminaltrove.com/zuse/) - A sleek, minimal IRC client for your terminal.
+
+1.   [dealve-tui](http://terminaltrove.com/dealve-tui/) - Delve into game deals from your terminal.
+
+1.   [lazyenv](http://terminaltrove.com/lazyenv/) - A TUI tool for managing multiple .env files in the terminal.
+
+1.   [treemd](http://terminaltrove.com/treemd/) - A TUI and CLI dual pane markdown viewer
+
+1.   [qo](http://terminaltrove.com/qo/) - An interactive minimalist TUI to query JSON, CSV, and TSV using SQL.
+
+1.   [monitui](http://terminaltrove.com/monitui/) - A delightfully minimal TUI for wrangling Hyprland monitors.
+
+1.   [oeis-tui](http://terminaltrove.com/oeis-tui/) - A TUI and CLI for exploring the On-Line Encyclopedia of Integer Sequences (OEIS).
+
+1.   [whosthere](http://terminaltrove.com/whosthere/) - A local area network (LAN) discovery tool with a modern TUI interface.
+
+1.   [ralph-tui](http://terminaltrove.com/ralph-tui/) -  A terminal UI for orchestrating AI coding agents.
+
+1.   [austin-tui](http://terminaltrove.com/austin-tui/) - The top-like text-based user interface for Austin.
+
+1.   [codex](http://terminaltrove.com/codex/) - Lightweight coding agent that runs in your terminal from OpenAI.
+
+1.   [dawn](http://terminaltrove.com/dawn/) - A distraction-free writing environment. draft anything, write now.
+
+1.   [wifitui](http://terminaltrove.com/wifitui/) - A fast, featureful and friendly WiFi terminal UI.
+
+1.   [dotbins](http://terminaltrove.com/dotbins/) - Keep updated binaries in your dotfiles.
+
+1.   [tuios](http://terminaltrove.com/tuios/) - A TUI window manager for managing multiple terminal sessions. 
+
+1.   [msgvault](http://terminaltrove.com/msgvault/) - Archive a lifetime of email with analytics and search in milliseconds, entirely offline.
+
+1.   [binsider](http://terminaltrove.com/binsider/) - Analyze ELF binaries like a boss.
+
+1.   [tortuise](http://terminaltrove.com/tortuise/) - A 3D gaussian splat viewer that works in your terminal.
+
+1.   [lazykiq](http://terminaltrove.com/lazykiq/) - A rich terminal UI for Sidekiq.
+
+1.   [nethogs](http://terminaltrove.com/nethogs/) - A linux 'net top' tool.
+
+1.   [xpdig](http://terminaltrove.com/xpdig/) - A TUI to explore crossplane traces.
+
+1.   [gemini-cli](http://terminaltrove.com/gemini-cli/) - An AI agent that brings the power of Gemini directly into your terminal by Google.
+
+1.   [perch](http://terminaltrove.com/perch/) - A beautiful terminal social client for Mastodon and Bluesky.
+
+1.   [chatuino](http://terminaltrove.com/chatuino/) - A feature rich TUI Twitch chat client.
+
+1.   [jolt](http://terminaltrove.com/jolt/) - A beautiful TUI battery and energy monitor for your terminal.
+
+1.   [climp](http://terminaltrove.com/climp/) - A minimal CLI media player.
+
+1.   [mistral-vibe-cli](http://terminaltrove.com/mistral-vibe-cli/) - A Minimal CLI coding agent by Mistral.
+
+1.   [toktop](http://terminaltrove.com/toktop/) - htop but for LLM tokens.
+
+1.   [ekphos](http://terminaltrove.com/ekphos/) - A lightweight, fast, terminal-based markdown research tool inspired by Obsidian.
+
+1.   [reddix](http://terminaltrove.com/reddix/) - Reddit, refined for the terminal.
+
+1.   [vhs](http://terminaltrove.com/vhs/) - Your CLI home video recorder.
+
+1.   [pomo](http://terminaltrove.com/pomo/) - A terminal Pomodoro Timer.
+
+1.   [lazyworktree](http://terminaltrove.com/lazyworktree/) - Effortless Git worktree management for the terminal.
+
+1.   [kyanos](http://terminaltrove.com/kyanos/) - A simple & powerful eBPF-based network issue, analysis and tracing tool.
+
+1.   [wizu](http://terminaltrove.com/wizu/) - A fast, minimalist directory tree viewer.
+
+1.   [cronboard](http://terminaltrove.com/cronboard/) - A terminal tool for managing cron jobs locally and on servers.
+
+1.   [mcdu](http://terminaltrove.com/mcdu/) - A modern disk usage analyzer & developer cleanup tool with a TUI.
+
+1.   [benben](http://terminaltrove.com/benben/) - A fast and efficient command line audio player and audio converter.
+
+1.   [cpx](http://terminaltrove.com/cpx/) - A batteries-included Cargo-like CLI for C++.
+
+1.   [superseedr](http://terminaltrove.com/superseedr/) - A BitTorrent client in your terminal.
+
+1.   [tiki](http://terminaltrove.com/tiki/) - A Markdown based git versioned documentation and issue management.
+
+1.   [cull](http://terminaltrove.com/cull/) - Interactive TUI disk space analyzer.
+
+1.   [tori](http://terminaltrove.com/tori/) - A TUI for multi-server Docker and host monitoring over SSH.
+
+1.   [taskdog](http://terminaltrove.com/taskdog/) - A terminal task manager with intelligent schedule optimization.
+
+1.   [moltbook-tui](http://terminaltrove.com/moltbook-tui/) - A TUI client for Moltbook, the social network for AI Agents.
+
+1.   [sqlit](http://terminaltrove.com/sqlit/) - A user friendly TUI for SQL databases.
+
+1.   [rum](http://terminaltrove.com/rum/) - A TUI to list, search and run package.json scripts.
+
+1.   [pvetui](http://terminaltrove.com/pvetui/) - A Terminal UI for Proxmox VE.
+
+1.   [ibtop](http://terminaltrove.com/ibtop/) - Real-time terminal monitor for InfiniBand networks.
+
+1.   [tock](http://terminaltrove.com/tock/) - A powerful time tracking tool for the command line.
+
+1.   [gptop](http://terminaltrove.com/gptop/) - A TUI GPU monitor with support for both Apple Silicon and NVIDIA GPUs.
+
+1.   [mcat](http://terminaltrove.com/mcat/) - Parse, convert & preview images, videos & markdown in your terminal.
+
+1.   [torra](http://terminaltrove.com/torra/) - Find and download torrents without leaving your CLI.
+
+1.   [resterm](http://terminaltrove.com/resterm/) - A TUI REST, GraphQL, gRPC, WebSocket and SSE client.
+
+1.   [g1c](http://terminaltrove.com/g1c/) - Google Cloud Instances Terminal UI Manager.
+
+1.   [amux](http://terminaltrove.com/amux/) - A TUI for easily running parallel coding agents.
+
+1.   [rovr](http://terminaltrove.com/rovr/) - A post-modern terminal file manager.
+
+1.   [pop](http://terminaltrove.com/pop/) - Send emails from your terminal.
+
+1.   [rusticon](http://terminaltrove.com/rusticon/) - A mouse driven SVG favicon editor for your terminal.
+
+1.   [tig](http://terminaltrove.com/tig/) - A text-mode interface for Git.
+
+1.   [chawan](http://terminaltrove.com/chawan/) - A TUI web browser.
+
+1.   [jiq](http://terminaltrove.com/jiq/) - Interactive JSON query tool with real-time output and AI assistance.
+
+1.   [orbiton](http://terminaltrove.com/orbiton/) - A terminal-based text editor and a minimalistic IDE.
+
+1.   [flowcontrol](http://terminaltrove.com/flowcontrol/) - Flow Control: a programmer's text editor.
+
+1.   [snitch](http://terminaltrove.com/snitch/) - A TUI for inspecting network connections, like netstat for humans.
+
+1.   [siggy](http://terminaltrove.com/siggy/) - A terminal-based Signal messenger client with an IRC aesthetic.
+
+1.   [lazycut](http://terminaltrove.com/lazycut/) - A simple terminal UI for video trimming.
+
+1.   [strace-tui](http://terminaltrove.com/strace-tui/) - A terminal user interface (TUI) for visualizing and exploring strace output.
+
+1.   [lazyjira](http://terminaltrove.com/lazyjira/) - A TUI for Jira, like lazygit but for Jira.
+
+1.   [atuin](http://terminaltrove.com/atuin/) - Sync, search and backup shell history.
+
+1.   [htop](http://terminaltrove.com/htop/) - An interactive process viewer.
+
+1.   [hyprmoncfg](http://terminaltrove.com/hyprmoncfg/) - A terminal first monitor configurator and daemon for Hyprland.
+
+1.   [gittop](http://terminaltrove.com/gittop/) - A TUI for visualizing Git repository statistics. 
+
+1.   [micasa](http://terminaltrove.com/micasa/) - A terminal UI for tracking everything about your home.
+
+1.   [deadbranch](http://terminaltrove.com/deadbranch/) - Clean up stale git branches safely.
+
+1.   [drft](http://terminaltrove.com/drft/) - A diff re/viewer and file tree viewer.
+
+1.   [llmfit](http://terminaltrove.com/llmfit/) - A terminal tool that finds what LLM models can run on your system's RAM, CPU, and GPU. 
+
+1.   [gloomberb](http://terminaltrove.com/gloomberb/) - An extensive financial terminal, in your terminal.
+
+1.   [purple](http://terminaltrove.com/purple/) - A terminal SSH config manager and cockpit for your servers.
+
+1.   [netwatch](http://terminaltrove.com/netwatch/) - Real time network diagnostics in your terminal.
+
+1.   [artui](http://terminaltrove.com/artui/) - Read and track recent arXiv papers with a TUI.
+
+1.   [unifly](http://terminaltrove.com/unifly/) - A CLI/TUI for UniFi network controller management.
+
+1.   [rustlens](http://terminaltrove.com/rustlens/) - A blazing-fast Rust code inspector for the terminal.
+
+Know any TUI Terminal Tools based terminal tools that would be good for this list?[Post a Tool](http://terminaltrove.com/post/ "Post a Tool") here!
+
+## Get Updates On Terminal Trove.
+
+No spam, just updates on Terminal Trove.[See an example update.](https://news.terminaltrove.com/emails/webview/717057/109290368538772875)
+
+SIGN UP Loading...
+
+SIGN UP Loading...
+
+#### Email Signup Successful!
+
+Confirm your email to receive updates from Terminal Trove.
+
+[](https://x.com/terminaltrove "terminaltrove on x (twitter)")[](https://instagram.com/terminaltrove "terminaltrove on instagram")[](https://mastodon.social/@terminaltrove "terminaltrove on mastodon")[](https://bsky.app/profile/terminaltrove.bsky.social "terminaltrove on bluesky")[](https://threads.net/terminaltrove "terminaltrove on threads")[](https://github.com/terminaltrove "terminaltrove on github")[](https://tiktok.com/@terminaltrove "terminaltrove on tiktok")
+
+Terminal Trove![Image 2: Terminal Trove](http://terminaltrove.com/static/assets/kwm/ttl.svg)
+
+[privacy](http://terminaltrove.com/privacy/ "privacy")[terms](http://terminaltrove.com/terms/ "terms")[about](http://terminaltrove.com/about/ "about")[feeds](http://terminaltrove.com/feeds/ "feeds")[compare](http://terminaltrove.com/compare/ "compare")
+
+[categories](http://terminaltrove.com/categories/ "categories")[terminals](http://terminaltrove.com/terminals/ "terminals")[ai coding agents](http://terminaltrove.com/ai-coding-agents/ "ai coding agents")[contact](http://terminaltrove.com/about/ "contact")[tool of the week ★](http://terminaltrove.com/tool-of-the-week/ "tool of the week")
+
+The $HOME of all things in the terminal
+
+© 2026
+
+7ed7968

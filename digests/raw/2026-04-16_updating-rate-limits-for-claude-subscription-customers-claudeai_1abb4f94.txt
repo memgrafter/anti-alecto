@@ -1,0 +1,83 @@
+Reddit thread capture
+
+Thread URL: https://reddit.com/r/ClaudeAI/comments/1mbo1sb/updating_rate_limits_for_claude_subscription/
+Subreddit: r/ClaudeAI
+Title: Updating rate limits for Claude subscription customers
+Author: u/AnthropicOfficial
+Score: 577
+Comment count (reported): 594
+
+## Original post
+In late August, we're introducing weekly rate limits for Claude subscribers, affecting less than 5% of users based on current usage patterns. While Pro and Max plans offer generous Claude access, some advanced users have been running Claude continuously 24/7—consuming resources far beyond typical usage. One user consumed tens of thousands in model usage on a $200 plan. Though we're developing solutions for these advanced use cases, our new rate limits will ensure a more equitable experience for all users while also preventing policy violations like account sharing and reselling access. We take these decisions seriously. We're committed to supporting long-running use cases through other options in the future, but until then, weekly limits will help us maintain reliable service for everyone. Max 20x subscribers can purchase additional usage at standard API rates if needed. We also recognize that during this same period, users have encountered several reliability and performance issues. We've been working to fix these as quickly as possible and will continue addressing any remaining issues over the coming days and weeks.
+
+## Prominent viewpoints (top-level comments)
+1. (470) u/adilp: where are those leaderboard guys flexing 24/7 execution just to rack up compute for no reason.
+2. (325) u/andreeinprogress: Ok, fine. Then add a always-visible (toggable) percentage indicator of limits, per-model, with time frames.
+3. (231) u/Ambitious_Mastodon12: Why not directly punishing those using 24/7 instead of adjusting the limits.
+4. (120) u/LexyconG: Yeah sure, 5% 😂 We all know what that means.
+5. (89) u/LilyKatty: Wait, I’m confused. So instead of resetting at a later time in the day, you’ll have to wait a week instead?
+6. (74) u/Zealousideal_Map7931: I'm always slightly iffy when these sort of emails come through because surely you'd be able to tell me right now if I would have hit these limits based on my past usage. I'm all for this as it makes sense, but I don't have a real sense if I would be impacted (I suspect not being I don't really hit the 5 hour limits ever)!
+7. (59) u/[deleted]: [deleted]
+8. (49) u/masri87: This is such bullshit. Why is this collective punishment being dished out why can’t you just revoke the abusers ? It’s okay Claude. You’re not the only option.
+
+## Thread discussion sample
+- (1) u/ClaudeAI-ModTeam: Hey please comment all of this in the new Usage Limits Megathread and help us keep all concerns and thoughts about this in the one place and free the feed for other discussion. It is pinned to the front page of the subreddit. We will post a summary report of the subreddit's thoughts in one week. Thanks! Locking this and leaving it up.
+- (470) u/adilp: where are those leaderboard guys flexing 24/7 execution just to rack up compute for no reason.
+  - (76) u/Significant_Debt8289: They’re violating the terms of service. Anthropic could just ban them, but as all greedy corpos do… they’ll find some way to nickel and dime you out of everything of value. Same old song and dance.
+    - (51) u/HelpRespawnedAsDee: I won't defend Anthropic here but stop switching the blame away from people who are clearly abusing the subscription and ruining it for everybody else.
+      - (8) u/guico33: I don't know about that. You can't abuse the subscription as it is already limited by the 5h session window. If one makes sure to always start a new session as soon as the previous one expires, and hits the limit within 5h, are you saying they're abusing the subscription? To me that's just making the most of what they pay for. Not to mention CC is powerful enough that you can definitely find meaningful ways to max out your usage without doing anything nonsensical. Or do you think it's okay if one does "serious" development, as opposed to vibe coding with 20 parallel instances? People pay for it, they can use it however they want within the TOS. Also, if we follow your reasoning, this is only
+      - (5) u/blakeyuk: Tragedy of the commons, AI-style
+    - (45) u/[deleted]: [deleted]
+      - (29) u/CoreParad0x: The thing I think that hurts them here is it's hard to quantify your usage. The code CLI doesn't tell you, the web UI doesn't tell you. Nothing tells you. I use the $100 plan and a few weeks ago did legitimate work with it. I have no idea how much of the limits this work actually used. Nor can I see any way to tell. If your going to ding me or throttle or block me on usage limits, let me see what my current usage is so I can quantify what kind of work I can actually do on any given plan.
+      - (16) u/sojtf: How dare you want to know what you're paying for
+      - (3) u/Laudes1013: I agree with you , would be nice to know where we stand ( officialy ) and not rely on 3'rd party info ( [https://www.reddit.com/r/ClaudeAI/comments/1lh71x0/ccusage\_v1500\_live\_monitoring\_dashboard\_is\_here/](https://www.reddit.com/r/ClaudeAI/comments/1lh71x0/ccusage_v1500_live_monitoring_dashboard_is_here/) )
+    - (11) u/Perfect_Parsley_9919: Yea I’m pretty sure they prob thought that these guys might get multiple max accounts to get more limits
+      - (6) u/Significant_Debt8289: I’m tired boss
+      - (1) u/pepperysquid373: “Introducing Max Super Plus” 2000$/mo
+    - (1) u/elfd01: But 200$ is 200$
+    - (1) u/Zestyclose_Car503: you mean the ones that ran up a bill of tens of thousands? How does that help them?
+    - (1) u/drdailey: It’s a business. Good lord. The resource isn’t unlimited. This is the same goofy attitude people have about everything. Starlink, fiber, cable modems. Everybody can’t have unlimited access. 20x plan is a steal compared to api pricing. I use it far more and spend way less. I will gladly use the api when I run out.
+  - (65) u/CtrlAltDelve: The leaderboard tells me Claude needs to tighten its rate limiting to rein in the users they themselves call the top 5%. I don't buy that the leaderboard or CCusage posts triggered the throttling. Anthropic's got more metrics and raw data than we'll ever see. A tiered system would've been smarter, like how they handle the direct API. Clearer communication about those tiers would've helped too. Though I get why they stay vague; some folks would just use those details to game the system harder. We'll see if this "only affects 5%" claim holds up. I trust Anthropic knows who makes up that top 5%. They're not pulling that number out of thin air. I think the problem is the value proposition is sti
+    - (13) u/Saymos: I think a big issues here what the define as a "user". Is it just somebody who has once logged in to Claude and used it? Or is it somebody who has used Claude in the last month? Last week? At least had 5 sessions the last week? That makes hell of a difference about who the 5% of the affected top users are.
+      - (2) u/guico33: They're talking about _paid_ users so you can assume these are people who are actually using the product.
+  - (7) u/brandall10: There is that 50 session per month limit though... even though it's a soft limit, it definitely is an option. People who are letting it burn 24/7 could then get kicked in the butt by day 9.
+  - (1) u/Old-Remote-273: You mean the AI whisperers? Who vibe coded the s out it and knows how to say please,thank and threaten through multiple instances
+  - (1) u/shadows_lord: They ruin everything. They should be blamed for this non-stop.
+  - (1) u/TheGoodRobot: I’m kind of confused by the 24/7 thing everyone keeps talking about. I’m on the $100/mo plan. I’ll typically hit the 5-hr time window limit three or four times a day. When other people are referring to “leaderboard users”, does that mean they’re hitting the 5-hour cap 5 times a day? Am I one of the bad guys for doing that?
+  - (1) u/Significant-Toe88: Probably busy cashing checks, or driving their lamborghini's. Seriously though... this doesn't sound like a solution to stop multi-account sharing like they claim it is, there has to be a better way than just a blanket limit reduction than that. Just sounds like a generic limit reduction to sell more 20x plans under the guise of something else.
+- (325) u/andreeinprogress: Ok, fine. Then add a always-visible (toggable) percentage indicator of limits, per-model, with time frames.
+  - (97) u/outsideOfACircle: Yes exactly. How can you manage your token use through the chat interface when you don't know what the limit is or how many tokens you've actually used.
+  - (46) u/EpicFuturist: I don't believe they will do this. This is an intentional feature leave out. Their business practice relies on ambiguity. If they do this then they will be held accountable more often for backend changes that they don't make transparent.
+- (231) u/Ambitious_Mastodon12: Why not directly punishing those using 24/7 instead of adjusting the limits.
+  - (102) u/nizos-dev: I don't understand why the limit is not per day instead of per week. It is just more practical to know that it resets when you start a new work day.
+    - (52) u/2roK: The answer to all of these questions is that they want to maximize profits.
+      - (13) u/allinasecond: If you think the people who made this software are somewhat close to the "maximize for profit" stage, you've never worked at a similar company. They are just trying to not bleed.
+      - (2) u/bobbadouche: Yeah. I think this is about their outages not money.
+      - (9) u/uNki23: Maximize profits? They are not even close at earning money with Claude. It’s a money burner right now.
+    - (6) u/FootballSensei: Per week makes more sense in my opinion. A human might do a super intense 24 hour coding session that hits a really high daily limit. A human isn’t going to code intensely enough for 7 days to hit it unless they’re using it in an unintended way or sharing accounts. Humans can’t work continuously for a whole week without sleeping, but they can do that for one day.
+      - (2) u/nizos-dev: Good point! :)
+    - (2) u/[deleted]: exactly this is even less transparent than the "you're about to run out of opus" message. Now you'll happily use that up in the first half of the week forcing you to upgrade but I recon most people just switch to try out gemini so either way the servers will become less busy :)
+    - (1) u/Neat_Strength_2602: At work I do basically all of my real coding on two days of the week. I’d rather weekly so I can go hard those two days than hit weekly/7 each day. Better for bursts. Would be good if they can provide better tooling for limiting yourself though (e.g. setting your own daily limits so you don’t eat up your weekly on Monday if you want to use it other days).
+    - (1) u/buttery_nurple: Because that doesn’t fuck the dipshits sharing accounts and hammering opus 24/7 hard enough. I actually like it, and I’d be surprised if it has any appreciable effect on people using it like it’s intended to be used.
+  - (74) u/darkguy2008: For real, I hate this "collective punishment" culture that goes around everywhere, it's like they're lazy to do it properly so let's just do it for everyone because screw them all we don't need their money lol
+    - (28) u/Smile_lifeisgood: The goal is frustration marketing and by blaming heavy users/abusers companies get to impose draconian measures knowing that some % of their customers who are active online will actually defend it. Some number of users who were not abusing the system will now upgrade and they wouldn't have otherwise. They undoubtedly know what they're doing and rather than put in controls to limit abusers they're using the abusers as their excuse to try to flog us into upgrading to a higher tier plan.
+      - (5) u/darkguy2008: Exactly. Hopefully there'll be a better alternative by the end of August.
+    - (11) u/Difficult_Stuff3252: collective punishment is against the Geneva convention
+    - (2) u/vaheg: its really stupid for us to allow that. companies/governments do that to control but no reason for us to accept it. everywhere there are stupid rules because "what if" some criminals do something. its like criminals will definitely find ways around, and now you punishing everyone else. its like go find people who are on purpose doing wrong things and do something so they wouldn't, and leave everyone else alone.
+    - (1) u/pekz0r: I see it as the opposite. The users who are running 24/7 tasks are punishing normal paying users as they are consuming a lot more resources than what is reasonable. It is a lot more fair for everyone if they are limited and forced to pay for their extra usage than the alternative that is to increase the prices for everyone.
+  - (13) u/OneEngineer: There’s not a great way to directly punish those heavy users. Do you want to ban them? What if somebody is normally a mild user but has a particularly heavy day or week?
+    - (2) u/godofpumpkins: Doesn’t need to be punishment, just needs to be an effective rate limit saying “you’ve used $500 worth of API today. Come back tomorrow or use Sonnet”. It can even warn that you’re approaching that limit. Part of the issue here is the lack of clarity and expectation setting. It’s 20x of an unknown and unpredictable quantity, which is still unknown and unpredictable. IMO there should be a clearer “you get X concretely with your plan, and then you can get unused capacity with Y priority (based on plan) depending on load”
+    - (1) u/Puzzled_Employee_767: Not sure if they can do that with the existing TOS or how all of that would relate to this. But it's also not fair to let that top 5% of heavy users impact usage/availability for everyone else who is using it within reason. I'm guessing the use case you pointed out is why it's weekly. That way you can still go ham for a day or two if you need to, but you can't do that all the time. And honestly the real question is why don't they just make it a little more obvious what the usage limits are? Why can't they just give me some set usage limitations that I can monitor? This whole guessing game with usage just feels shady and dishonest.
+  - (13) u/no_witty_username: I think they are using them as a scapegoat to reduce load on their APi usage and save money. This was going to happen no matter what, even if everyone behaved, this is just a convenient excuse for them. Because otherwise they would have just implemented policies and restrictions that directly affect those users only, which would not be difficult for them to find out who those users are as they have all the metadata.
+  - (2) u/Howdyini: Because the 24/7 thing is a lie and everyone is costing them money.
+  - (2) u/amnesia0287: Because that part is complete bullshit. 24/7 usage is 50 sessions in under 11 days. It already would be restricted.
+  - (2) u/TekintetesUr: Because that's not how you maximize revenue.
+  - (2) u/kl__: Just an excuse to apply more limits and find ways to further monetise. They’ll continue taking steps in that direction, one small step at a time. If it was just about people violating their T&Cs, they can just ban their accounts, easily, but it’s just a way to frame the new limits.
+  - (1) u/agilius: They are pushing those using 24/7 BY adjusting the limits
+  - (1) u/[deleted]: because they're lying
+  - (1) u/attalbotmoonsays: Does it matter if you're unaffected by it?
+- (120) u/LexyconG: Yeah sure, 5% 😂 We all know what that means.
+  - (38) u/muuchthrows: Like any product, I’d bet 90%+ of users are hardly using it at all, maybe a hour a week, while the other 10% is using it a lot. Which is why I suspect a lot of people here will hit the limit.
+    - (23) u/paradoxally: The 10% are all in this sub lol
+    - (3) u/iWolfeeelol: we're all probably hitting week limit by Wednesday
+  - (9) u/Anrx: "I'm the only user that matters"

@@ -1,0 +1,113 @@
+New to Fireworks? Start with the Serverless Quickstart for a step-by-step guide to making your first API call.
+Chat Completions API
+- Python (Fireworks SDK)
+- Python (OpenAI SDK)
+- JavaScript
+- curl
+Alternative query methods
+Fireworks also supports Completions API and Responses API.Querying dedicated deployments
+For consistent performance, guaranteed capacity, or higher throughput, you can query on-demand deployments instead of serverless models. Deployments use the same APIs with a deployment-specific identifier:Common patterns
+Multi-turn conversations
+Maintain conversation history by including all previous messages:System prompts
+Override the default system prompt by setting the first message withrole: "system"
+:
+content
+to an empty string.
+Streaming responses
+Stream tokens as they’re generated for real time, interactive UX. Covered in detail in the Serverless Quickstart.Async requests
+Use async clients to make multiple concurrent requests for better throughput:- Python (Fireworks SDK)
+- Python (OpenAI SDK)
+- JavaScript
+Usage & performance tracking
+Every response includes token usage information and performance metrics for debugging and observability. For aggregate metrics over time, see the usage dashboard. Token usage (prompt, completion, total tokens) is included in the response body for all requests. Performance metrics (latency, time-to-first-token, etc.) are included in response headers for non-streaming requests. For streaming requests, use theperf_metrics_in_response
+parameter to include all metrics in the response body.
+- Non-streaming
+- Streaming (usage only)
+- Streaming (with performance metrics)
+Usage information is automatically included in the final chunk for streaming responses (the chunk with
+finish_reason
+set). This is a Fireworks extension - OpenAI SDK doesn’t return usage for streaming by default.Advanced capabilities
+Extend text models with additional features for structured outputs, tool integration, and performance optimization:Tool calling
+Connect models to external tools and APIs with type-safe parameters
+Structured outputs
+Enforce JSON schemas for reliable data extraction
+Responses API
+Multi-step reasoning for complex problem-solving
+Predicted outputs
+Speed up edits by predicting unchanged sections
+Prompt caching
+Cache common prompts to reduce latency and cost
+Batch inference
+Process large volumes of requests asynchronously
+Configuration & debugging
+Sampling parameters
+Sampling parameters
+Control how the model generates text. Fireworks automatically uses recommended sampling parameters from each model’s HuggingFace Important notes:See the API reference for detailed parameter descriptions.
+generation_config.json
+when you don’t specify them explicitly, ensuring optimal performance out-of-the-box.We pull temperature
+, top_k
+, top_p
+, min_p
+, and typical_p
+from the model’s configuration when not explicitly provided.Temperature
+Adjust randomness (0 = deterministic, higher = more creative):Max tokens
+Control the maximum number of tokens in the generated completion:- Default value is 2048 tokens if not specified
+- Most models support up to their full context window (e.g., 128K for DeepSeek R1)
+- When the limit is reached, you’ll see
+"finish_reason": "length"
+in the response
+Top-p (nucleus sampling)
+Consider only the most probable tokens summing totop_p
+probability mass:Top-k
+Consider only the k most probable tokens:Min-p
+Exclude tokens below a probability threshold:Typical-p
+Use typical sampling to select tokens with probability close to the entropy of the distribution:Repetition penalties
+Reduce repetitive text withfrequency_penalty
+, presence_penalty
+, or repetition_penalty
+:Sampling options header
+Thefireworks-sampling-options
+header contains the actual default sampling parameters used for the model, including values from the model’s HuggingFace generation_config.json
+:- Python
+- JavaScript
+Multiple generations
+Multiple generations
+Generate multiple completions in one request:
+Token probabilities (logprobs)
+Token probabilities (logprobs)
+Inspect token probabilities for debugging or analysis:
+Prompt inspection (echo & raw_output)
+Prompt inspection (echo & raw_output)
+Verify how your prompt was formatted:Echo: Return the prompt along with the generation:Raw output: See raw token IDs and prompt fragments:
+Ignore EOS token
+Ignore EOS token
+Force generation to continue past the end-of-sequence token (useful for benchmarking):
+Output quality may degrade when ignoring EOS. This API is experimental and should not be relied upon for production use cases.
+Logit bias
+Logit bias
+Modify token probabilities to encourage or discourage specific tokens:
+Mirostat sampling
+Mirostat sampling
+Control perplexity dynamically using the Mirostat algorithm:
+Understanding tokens
+Language models process text in chunks called tokens. In English, a token can be as short as one character or as long as one word. Different model families use different tokenizers, so the same text may translate to different token counts depending on the model. Why tokens matter:- Models have maximum context lengths measured in tokens
+- Pricing is based on token usage (prompt + completion)
+- Token count affects response time
+usage
+field of every API response.
+OpenAI SDK migration
+Fireworks provides an OpenAI-compatible API, making migration from OpenAI straightforward. For detailed information on setup, usage examples, and API compatibility notes, see the OpenAI compatibility guide.Next steps
+Vision models
+Process images alongside text
+Audio models
+Transcribe and translate audio
+Embeddings
+Generate vector representations for search
+On-demand deployments
+Deploy models on dedicated GPUs
+Fine-tuning
+Customize models for your use case
+Error codes
+Troubleshoot common inference errors
+API Reference
+Complete API documentation

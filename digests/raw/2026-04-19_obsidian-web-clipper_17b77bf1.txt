@@ -1,0 +1,19 @@
+Highlight and capture web pages in your favorite browser. Save anything and everything with just one click.
+Capture
+Templates allow you to customize how web pages are saved to your vault.
+Highlight
+Easily highlight important passages you want to save to Obsidian. Your highlights are always visible, so you can revisit them when you return to a page.
+Features
+Web Clipper is free, open source, and packed with useful features that make your favorite browser a sharper tool.
+- Stay private.
+- All your clipped content is stored locally in your Obsidian vault. Your thoughts are yours.
+- No lock-in.
+- Your clips are saved to durable Markdown files. All your highlights and settings are exportable to JSON.
+- Hotkeys.
+- Speed up your workflow with keyboard shortcuts to quickly add content to your vault.
+- Auto-apply templates.
+- Set up rules to automatically apply the right template based on the website you’re clipping from.
+- Extract anything.
+- Capture any data from the page: meta tags, Schema.org variables, and even element selectors.
+- Manipulate page data.
+- Powerful templating features allow you to modify page data before it’s saved to your vault.

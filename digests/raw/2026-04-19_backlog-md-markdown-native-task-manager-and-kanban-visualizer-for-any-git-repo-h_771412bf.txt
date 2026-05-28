@@ -1,0 +1,65 @@
+I threw Claude Code at an existing codebase a few months back and quickly quit—
+untangling its output was slower than writing from scratch. The fix turned out
+to be process, not model horsepower.
+Iteration timeline
+==================
+• 50 % task success - added README.md + CLAUDE.md so the model knew the project.
+• 75 % - wrote one markdown file per task; Codex plans, Claude codes.
+• 95 %+ - built Backlog.md, a CLI that turns a high-level spec into those task files automatically (yes, using Claude/Codex to build the tool).
+Three step loop that works for me
+1. Generate tasks - Codex / Claude Opus → self-review.
+2. Generate plan - same agent, “plan” mode → tweak if needed.
+Will definitely do.
+I am also planning to run a benchmark with various models to see which one is more effective at building a full product starting from a PRD and using backlog for managing tasks
+> MetaGPT takes a one line requirement as input and outputs user stories / competitive analysis / requirements / data structures / APIs / documents, etc.
+Internally, MetaGPT includes product managers / architects / project managers / engineers. It provides the entire process of a software company along with carefully orchestrated SOPs.
+You have compiled an interesting list of benchmarks and adjacent research. The implicit question is whether an established benchmark for building a full product exists.
+After reviewing all this, what is your actual conclusion, or are you asking? Is the takeaway that a comprehensive benchmark exists and we should be using it, or is the takeaway that the problem space is too multifaceted for any single benchmark to be meaningful?
+I've had same experience. Taskmaster-ai was pretty good, but sometimes the agent ignored it as the project grew larger (can probably prevent that now using claude code hooks).
+Trying this project today looks nice. I see you have sub-tasks. Any thoughts on a 'dependency' relation? I.e., don't do X if it is dependent on task A which is not complete.
+FYI, there is a 404 in the AGENTS.md GEMINI.md etc pointing to a non existing README.md.
+Would love more detail on your integration with claude. Are you telling claude to use backlog to plan X task? Feels like some MCP integration or something might make it feel more native?
+Though i've not had much luck in getting Claude to natively use MCPs, so maybe that's off base heh.
+When you initialize backlog in a folder it asks you if you want to set up agent’s instructions like CLAUDE.md. It is important to say yes here so that Claude knows how to use Backlog.md.
+Afterwards you can just write something like: Claude please have a look at the @prd.md file and use ultrathink to create relevant tasks to implement it. Make sure you correctly identify dependencies between tasks and use sub tasks when necessary.
+Or you can just paste your feature request directly without using extra files.
+Also I’m not fully sure about your setup. In my fresh pov I would next set up agents that check my github repo for backlog tasks and do pull requests on those tasks. If I write a good description and ideally tests I can optimize the results of these.
+This creates the possibility of agents checking your backlog and prepare the work.
+I usually work with aider everyday and I’m quite fast in achieving task, the next limitation would be the latency and some back and forth. I have some dead time in between. I can definitely define tasks faster than 1-1 AI.
+Yeah if you could share a bit more how you do this with Claude we would all be thankful, also I havent seen anywhere to sponsor/tip you, would love to!
+With aider you can run a second instance along with --watch-files and if you in your tasks do // #AI it will be added to the chat and with // !AI AI will then respond
+so you can do
+`backlog task create "Feature" --plan "1. Research\n2. Suggest Implementation// #AI AI!"` (yes weird order with the !)
+and in the background aider will propose solutions.
+I’m not sure how this compares to Claude Code or Codex, but its LLM-flexible. Downside is it doesn’t create a pull request. So it’s more helpful for local code.
+I would probably add some Readme.md files to the --watch-files session and I think you need to click once [D]ont ask again so it wont keep asking you to add files
+You can use this perfectly fine without AI agents, it just so happens to produce output which is easily ingestable by LLMs. It also has drag and drop visualisation and simple syntax for creating and tracking tasks in your codebase.
+I built myself a tool that does something quite similar. It's a single no-dependency Python script that parses "tasks.md" in the root of the repo which contains a Markdown table of tasks, then has basic support for BLOCKED/READY/DONE/CANCELLED, dependencies, titles, tags, etc.
+For a project that is just for me, it's exactly what I need – dependency tracking and not much more, stored offline with the code. Almost all of the code for it was written by Gemini.
+This is a good idea. But the screenshots you have show lots of tasks in a project; how are you dispatching tasks (once planned) to an agent, and how are agents navigating the large number of markdown task content you're producing without blowing out their context budget?
+Thanks for backlog.md. We love it for our project. The problem we face now is that we have two separate repo for BE (Golang) and FE (next.js). And we wanted to have one backlog for both projects. But backlog resides inside git repo.
+Seems like a great idea. How would that work with multiple branches ? One task might be implemented in a different branch, we might want to have a global overview of all the tasks being coded in the main branch
+All data is saved under backlog folder as human‑readable Markdown with the following format task-<task-id> - <task-title>.md (e.g. task-12 - Fix typo.md).
+If every "task" is one .md file, I believe AI have issues editing big files, it can't easily append text to a big file due to context window, we need to force a workaround launching a command line to append text instead of editing a file. So this means the tasks have to remain small, or we have to avoid putting too much information in each task.
+Correct. One of the instructions that ships with backlog.md is to make the tasks “as big as they would fit in a pr”. I know this is very subjective but Claude really gets much better because of this.
+1) How will it work with multiple branches?
+Simple: using git :)
+Git allows to fetch certain files from other branches including remote ones without checking out those branches.
+The state is always up to date no matter if you are running backlog.md from main branch or a feature branch.
+It works well when there are not many branches but I need to check if I can improve the performance when there are lots of branches.
+Nice, so there could be some kind of git kung fu command line to help with that. Maybe we could also have a separate folder using git worktree to post all the information in one branch. That'd duplicates all files though.
+Ooh, definitely trying this out! I ended up homebrewing a whole context maintainance ritual, but that was a pain to get an AI agent to consistently apply, so it spun out into building a whole project management... thing.
+This looks much more thought out, thanks for sharing!
+Neat! I am going to check this out.
+I recently built an MCP system similar to this called Nonlinear (so clever) that uses SQLite for storage that lives outside the repo.
+Honestly though, in repo is the better option.
+Is there an alternative that integrates with a Jira instance?
+Many of my tasks already exists in forms of a Jira ticket, would be interesting to prompt it to take over a specific ticket & update its ticket progress as well.
+I sent a message to someone telling that I was working on backlog.md and it turned the name into a link automatically.
+I wanted to remove the link and I clicked on it accidentally and discovered that not only there was nothing on that domain but was not registered yet. I got the domain few mins later :)
+It's the gTLD for Moldova, seems to have limited registrar availability[0] but there's no residency/association restriction like some countries impose so anyone can get one. I've seen markdown related projects use it here and there like obsidian.md
+Is there a proper way to use this project without commiting files to git ? I just want to try it out in a project I'm working on, but don't want to put it in the history.
+What I did is to add the backlog folder into the .gitignore file, but after every command I get a lengthy error about a git command error.
+And even if I were to add these files to my repository, I would want to add them manually.
+Backlog.md is still a bit rough on the edges but is definitely a proof that markdown files and AI Agents work really well together. I started working on it exactly a month ago
+It is so confusing that I had to add custom instructions for Codex telling him that Backlog.md is the project folder and not a file. He was wasting few mins trying to CAT Backlog.md instead of CD

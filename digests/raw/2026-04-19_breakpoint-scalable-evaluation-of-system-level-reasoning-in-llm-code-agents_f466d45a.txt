@@ -1,0 +1,293 @@
+Breakpoint:
+Scalable evaluation of system-level reasoning in LLM code agents
+Abstract
+Benchmarks for large language models (LLMs) have predominantly assessed short-horizon, localized reasoning. Existing long-horizon suites (e.g. SWE-lancer) rely on manually curated issues, so expanding or tuning difficulty demands expensive human effort and evaluations quickly saturate. However, many real-world tasks, such as software engineering or scientific research, require agents to rapidly comprehend and manipulate novel, complex structures dynamically; evaluating these capabilities requires the ability to construct large and varied sets of problems for agents to solve. We introduce Breakpoint, a benchmarking methodology that automatically generates code-repair tasks by adversarially corrupting functions within real-world software repositories. Breakpoint systematically controls task difficulty along two clear dimensions: local reasoning (characterized by code complexity metrics such as cyclomatic complexity) and system-level reasoning (characterized by call-graph centrality and the number of simultaneously corrupted interdependent functions). In experiments across more than 900 generated tasks we demonstrate that Breakpoint’s methodology can scale to arbitrary difficulty, with state-of-the-art models’ success rates ranging from 55% on the easiest tasks down to 0% on the hardest. We analyze how static parameters control task difficulty, characterize how improvements in models and inference-time budgets affect local versus system-level reasoning, and evaluate the strategies models use to gather information and iterate solutions—demonstrating Breakpoint’s effectiveness as a comprehensive evaluation suite for understanding agent behavior and capabilities.
+1 Introduction
+Language models (LMs) have rapidly advanced in recent years, achieving remarkable performance in mathematical problem-solving (Glazer et al., 2024) and programming tasks (Miserendino et al., 2025). Increasingly, LMs are used not just for fixed instruction following tasks, but as autonomous agents interacting with (and influencing) the outside world through code and digital interfaces (Liu et al., 2024).
+Long-horizon coding benchmarks have emerged as a particularly important testbed for LLM-agents since LLM agents commonly interface with the world by writing code. Software engineering is also the primary skill through which AI agents can accelerate research and development in machine learning. Success in these long-horizon coding tasks should ideally distinguish two separate abilities:
+-
+•
+Localized reasoning — fixing a self-contained bug or implementing a single, clearly-defined feature.
+-
+•
+System-level reasoning — diagnosing and coordinating changes across complex, interconnected codebases.
+While these are both required for effective software development, being a good local reasoner does not imply directly being a good systems reasoner. However, existing software-engineering benchmarks, such as SWEBench (Jimenez et al., 2024), predominantly emphasize localized reasoning by curating tasks derived from individual GitHub issues, or deliberately selecting problems that are isolated and straightforwardly evaluatable. Even benchmarks designed to test longer-horizon interactions, such as SWELancer (Miserendino et al., 2025), rely heavily on manual human curation and thus cannot easily scale in difficulty or scope. Consequently, despite impressive performance in isolated contexts, it has remained unclear whether today’s models truly understand and can reliably manipulate the complex systems they interact with.
+This paper describes Breakpoint, a benchmark (and benchmark construction framework) designed to explicitly evaluate and distinguish these capabilities through automatically generated code-repair tasks (Figure 1). Breakpoint adversarially corrupts or removes core, well-tested architectural components within real GitHub repositories (see Section 3.6 for selection criteria), and challenges agents to restore functionality solely by using feedback from induced test failures. Because the full call graph is observable, Breakpoint is able to systematically control and measure task difficulty along two distinct dimensions: Local complexity, characterized by the complexity of corrupted functions, and system-level complexity, characterized by both by call-graph centrality and the number of simultaneously corrupted, interdependent functions.
+These metrics enable fine-grained evaluation of whether improvements in models or increased computational budgets primarily affect localized reasoning, system-level reasoning, or both.
+Across 930 Breakpoint tasks, we find that current state-of-the-art models achieve meaningful success (up to 55%) on simpler single-function repairs but collapse completely (0%) on more challenging task settings. Our results show that task difficulty can be systematically controlled and decomposed into clear local and system-level reasoning components, enabling fine-grained analysis of model capabilities. Additionally, providing models with greater inference-time budgets substantially improves their performance, particularly on tasks requiring deeper systems understanding. Finally, detailed analysis on agent tool usage reveals that models engage in substantially different information gathering behaviors.
+In summary, this paper introduces:
+-
+1.
+Breakpoint benchmark. An benchmarking pipeline, alongside 930 repair tasks over 30 GitHub repositories, with tunable difficulty along orthogonal axes of centrality, corruption-set size, and cyclomatic complexity.
+-
+2.
+Experiments evaluating system-level reasoning. Tasks systematically vary in complexity, call-graph centrality, and number of simultaneous corruptions.
+-
+3.
+Experiments evaluating resource scaling. We investigate how performance scales with additional inference-time resources, showing significant improvements in models’ ability to solve complex, system-wide repairs.
+-
+4.
+Experiments analyzing agent debugging behavior. We examine detailed telemetry of agent tool usage, revealing patterns of exploration and information gathering that strongly correlate with success in realistic debugging scenarios.
+-
+5.
+Open-source toolkit. We release code for task generation, replayable evaluation, contamination-safe extension to new repositories, and human baselines, enabling the community to track and extend progress on system-level reasoning.
+Together, these findings enable clearer characterization of LMs’ capabilities in challenging coding tasks, and reasoning problems more generally.
+2 Related Work
+”Real-World” Code Evaluations
+Several recent benchmarks evaluate models on real-world software to assess coding ability. SWE-bench (Jimenez et al., 2024) tasks models with resolving actual GitHub issues within popular open-source repositories. SWELancer (Miserendino et al., 2025) benchmarks models against real-world freelance tasks from Upwork, incorporating tasks ranging from bug fixes to high-level project management. Breakpoint similarly targets coding ability on real world codebases, and uses existing test suites to validate correctness. However, while our inverse problem methodology requires no labeled problem data, these benchmarks rely on extensive human labeling or existing collaborative traces. This allows Breakpoint to easily scale to very challenging problems.
+Inverse Problems
+R2E similarly lifts the curation restriction by synthesising an “oracle harness”: models are tasked with recreating function bodies given context, and then the correctness is verified by equality on LLM-generated test cases (Jain et al., 2024). This method also does not require labeled curation, but R2E selects for tasks that can easily be separated from the codebase into their own environment. Breakpoint focuses on precisely those that are embedded deeply into the codebase as a better means of understanding long horizon ability.
+General Agent Benchmarks and Long-Horizon Reasoning.
+Recent work has begun to probe how well large language models retain goals and intermediate state over hundreds of steps. The METR Long-Task Report shows steady scaling in the maximum length of tasks that frontier models can complete (Kwa et al., 2025). AgentBench aggregates eight interactive environments and highlights persisting weaknesses in memory and decision consistency (Liu et al., 2024). Other domain-specific sets include MARPLE (multi-modal crime reconstruction) and FrontierMath (advanced proofs spanning pages of chain-of-thought) (Jin et al., 2024; Glazer et al., 2024). Breakpoint has a similar focus on long horizon ability, but Breakpoint’s methodology leverages the existing structure of codebases to generate long horizon problems grounded in the intrinsic structure of the system, without requiring manual creation or curation of long horizon tasks.
+3 Breakpoint Methodology
+3.1 Preliminaries
+Breakpoint tasks require agents to solve coding problems within pre-existing software repositories. Formally, we can represent a repository as a tuple , where:
+-
+•
+is a finite set of functions or classes, with each defined by signature, implementation, and documentation.
+-
+•
+is a set of tests, each , verifying the correctness of the repository’s functionality (1 indicating passing).
+-
+•
+is the call graph, a directed graph where vertices represent functions or classes, and edges represent their calls between one another, with an edge indicating calling .
+A benchmark task instance is then defined by adversarially modifying a function or set of functions , creating a corrupted version , and generating a corrupted repository:
+See Fig. 1 for an example such task instance.
+The goal for a model is to produce a repaired version of the function or the larger set of functions, such that the updated repository restores the original functionality as validated by tests:
+The model is allowed a fixed number of tool and test interactions to submit patches in a standard agent setup (see more info in Appendix A).
+3.2 Evaluation Metrics
+The performance metric is a binary score for whether the model was able to make all the tests pass, as a proxy for whether it restored the codebase to its original functionality.
+3.3 Corruption Methods
+We have three different corruption modes.
+-
+1.
+Function Deletion: The corrupted function retains only the original function signature and documentation, removing the implementation entirely.
+-
+2.
+Adversarial Corruption: Using a separate language model, we introduce subtle, syntactically valid corruptions into the function, creating . See Appendix B for more information on how the corruptions are generated.
+-
+3.
+Multifunction Corruption: Our hardest problems come from multifunction corruption, where a set of structurally related functions are simultaneously corrupted using adversarial corruption. We select sets of functions that have small chain distance in the codebase call graph, allowing us to create independent corruptions that accumulate in difficulty. By introducing simultaneous errors across multiple interdependent components, this corruption method generates more systemic bugs that are extremely challenging (Fig. 3(a)).
+3.4 Task Modes
+Different task creation methods also present information about the target function in different ways:
+Function deletion tasks are performed in what we call remove mode: the task description includes information on which function was deleted, and the model is only allowed to modify that function
+Corruption tasks are performed in discovery mode: the task specification does not describe where the corruption was made, only that a single corruption exists and the tests which are failing because of it. Agents must try to identify the corrupted functions to then repair them. To avoid reward hacking, if the problem is solved without modifying the right function it is counted as a failure. This setup mimicks realistic debugging scenarios where the model must first identify incorrect functions, and only then fix them.
+These two different kinds of tasks allow us to comprehensively test different forms of system reasoning. Remove focuses on the ability to gather information to fix a clearly specified problem, and discovery targets the ability to isolate a more subtle anomaly.
+3.5 Complexity Dimensions
+Throughout our work we quantify the following function properties, allowing us to scale difficulty and analyze model performance on different kinds of problems.
+Evaluating System-Level Reasoning.
+As a proxy to select functions or components that will require system-level reasoning, Twe measure the harmonic centrality of each function over the call graph . Harmonic centrality reflects how “close,” on average, the rest of the system is to . Formally,
+where is the length of the shortest path from to in . If is unreachable from we set the addend to .
+This metric therefore captures both direct and indirect dependencies without requiring an explicit depth cutoff or decay factor, while still emphasizing paths of shorter length.
+Intuitively, functions with higher centrality according to this metric significantly influence many other parts of the system, either directly or through short indirect call chains, thereby requiring deeper systemic understanding for effective repair. Empirically, harmonic centrality is correlated with other centrality measures, including PageRank, harmonic, and pure eigenvector centrality.
+Evaluating Local Reasoning.
+To measure intrinsic complexity within individual functions, we employ code-line complexity, a simple baseline that proxies a function’s complexity based on the number of lines of code it contains.
+While local reasoning encompasses more than just code length, this metric serves as a reasonable proxy because longer functions typically require understanding more logic branches, variables, and algorithmic steps within a bounded scope. Successfully repairing complex functions demonstrates at least some capacity for localized reasoning—the ability to comprehend and fix intricate logic without needing to trace through the broader system.
+Empirically, other complexity measures, such as Halstead complexity, lines-of-code, and nesting-depth metrics, are highly correlated with code-line count.
+3.6 Data selection
+We scrape codebases from GitHub to source problem instances. We choose repositories based on:
+-
+•
+Test Coverage: We select for inverse problems that make at least 5 previously passing tests fail, and we select for codebases where all tests initially pass.
+-
+•
+Test Efficiency: Test suites must execute within 60 seconds of wall-clock time, facilitating efficient benchmarking.
+-
+•
+Popularity and Quality: Repositories are required to have at least 1000 GitHub stars to ensure some standard of quality and testing.
+Currently, Breakpoint focuses on Python repositories for consistency and ease of automation, though the method generalizes broadly.
+4 Experiments and Results
+Our experimental evaluation addresses three core questions:
+-
+1.
+Controlling Task Difficulty: To what degree can we predict and control task difficulty through adjustments of static parameters in Breakpoint?
+-
+2.
+Model Scaling and Differentiating Capability Improvements: When models either improve through specialized reasoning abilities or are given increased inference-time computation (more tool-use iterations), do they primarily improve in localized problem-solving or in deeper system-level reasoning?
+-
+3.
+Understanding agent behavior: What information-gathering behaviors and iteration strategies characterize different models?
+By default, models are allocated four times as many tool-use calls as they have submission attempts, typically configured at 16 tool-use iterations and 4 submissions unless otherwise specified. To investigate scaling effects, we also specifically evaluate models o4-mini and gpt-4o across varying inference-time computation budgets (4/1, 8/2, 16/4, and 32/8 tool-use calls/submissions respectively). Detailed prompts and a full list of available tools are provided in the appendix.
+4.1 Finding a scaleable, static measure of problem difficulty in code environments
+4.1.1 Breakpoint Problems are Extremely Challenging for Frontier Models
+We can leverage Breakpoint’s inverse problem methodology to source a set of highly challenging problems. We find that we are able to scale the both the difficulty of the local reasoning and the system-level reasoning required to solve these problems.
+-
+1.
+Multifunction Corruption significantly increases Discovery Mode difficulty. We induce multiple simultaneous corruptions of interrelated functions (which we define as functions that are at most 4 steps apart on the call graph): in doing so, we generate challenging tasks that require strong diagnostic capabilities. We find that performance sharply deteriorates as the number of corruptions increases, ultimately rendering even state-of-the-art models unable to solve any scenarios with 4 simultaneous corruptions (see Figure 3(a)).
+-
+2.
+Targeted Selection of High Complexity-Centrality tasks substantially increases difficulty in Mode. Selecting functions high in both structural centrality and functional complexity creates difficult tests of both systemic and localized reasoning. Selecting problems that are at least 90th percentile in complexity and centrality measures reduces overall performance by nearly 40 % per model.
+4.1.2 Centrality & Complexity Jointly Explain Difficulty in Remove Mode
+We find that we can decompose difficulty in Remove tasks along two dimensions: (i) local code complexity and (ii) function centrality. This allows us to scale the the difficulty of Remove tasks and automatically generate hard questions.
+To disambiguate these terms, we perform a joint logistic‐regression analysis on z-scored code-line count (a proxy for cyclomatic complexity) and harmonic centrality (our default centrality metric). While these metrics show some correlation (see Appendix C), they capture distinct aspects of difficulty: individual models using only code-line count achieve McFadden’s R² = 0.216 (AIC: 4163.1), while models using only harmonic centrality achieve R² = 0.183 (AIC: 4340.9). The combined model improves to R² = 0.221 (AIC: 4141.4), demonstrating that both features contribute complementary information. We find that both predictors carry significant negative coefficients (two–sided Wald tests, for each), confirming that success probability falls off with increasing complexity and centrality. Effect sizes differ in magnitude: every +1SD in code lines suppresses the odds of success by , whereas a +1SD in harmonic centrality suppresses them by .
+Figure 4 visualises these trends across the full task space, whereas Figure 5 shows more granular per-model difficulty scaling, making it clear that the monotone difficulty gradient in these axes is robust to model choice and persists even for the best-performing systems.
+4.1.3 Discovery Mode Tests Practical ”Needle-in-the-Haystack” Reasoning
+Given the clear decomposition of difficulty provided by static complexity and centrality metrics in the Remove (targeted) mode (see Section 4.1.2), one might expect similar patterns to emerge in the Discovery mode. Surprisingly, we find that static metrics do not provide a clear decomposition in this more open-ended setting.
+In practice, models face two distinct challenges in Discovery mode: identifying the corrupted function(s) (diagnostic step) and subsequently repairing the identified issues (repair step). Empirically, we observe a strong but not absolute correlation between diagnostic success and overall task success (see Figure 6). Specifically, successfully pinpointing the corrupted function substantially improves the odds of solving the task—conditional success rates range between 59% and 92%—highlighting diagnosis as a critical bottleneck. However, a non-trivial gap remains, particularly for models that do less reasoning, suggesting that even after correct diagnosis, the repair step presents meaningful difficulties.
+4.2 Model Scaling and Differentiating Capability Improvements
+In this section, we study precisely how agent performance varies for different models and inference time compute budgets. We tease apart two different sources of improvement: (i) reasoning improvement (o4-mini vs. gpt-4o) and (ii) run-time interaction budgets (more tool–test cycles). For each source we ask which difficulty axis—local complexity or systems difficulty—is most explanatory. To do so, we use two complementary analysis.
+- •
+-
+•
+Mann–Whitney U tests compare the distributions of difficulty values among the tasks that each model actually solved. Because the test is rank-based, it is insensitive to the uniform-shift scenario: if model B simply solves “everything model A does, plus a few tougher items everywhere,” the rank distributions stay similar.
+We therefore use both: curves tell us how probability changes within a model, while Mann–Whitney tells us whether the extra wins cluster along one axis.
+4.2.1 Model performance improves with environmental interaction
+We study how the model performance scales with increased interaction with the environment and submission attempts. We find that the model performance increases with environmental interaction.
+In Figure 7 we measure performance as we scale max iterations and test submission budget (see Appendix A for agent details) simultaneously so that the model is able to iterate and submit more, and we find that the models are able to solve more questions when given more attempts and access to information, but that the improvements plateau.
+In Figure 8 we retroactively measure model performance on successive repair attempts in the same trajectory. Models are clearly able to to effectively diagnose failures and then gather information and improve to fix them. We find that most of the gains happen after the first test iteration.
+We find that most of the gain in the cumulative success rate comes in the first test iteration.
+4.2.2 Reasoning model improvements differentially benefit localized reasoning
+We study the centrality and complexity distributions of tasks solved by gpt-4o and o4-mini to understand how reasoning improvements manifest across different difficulty dimensions. A Mann–Whitney test on code-lines yields (), whereas the same test on harmonic centrality is non-significant ().
+This implies post-training reasoning gains differentially benefit solving longer, more complex functions: in other words, the jump in performance from reasoning is better explained by the model improving at localized reasoning than at system-level reasoning. Figure 14 in the Appendix visualizes these distributions through violin plots, clearly showing the shift toward higher complexity functions for o4-mini while centrality distributions remain similar.
+4.2.3 Both system-level reasoning and localized reasoning scales with inference time environmental interaction
+We compared the distribution of solved problems for a low iteration run of o4-mini (8 tool calls and 2 submissions) vs high iterations (32 tool calls and 8 submissions). The Mann-Whitney U test revealed that increased iterations resulted in statistically significant improvements for both centrality and complexity, but the effect size (Cohen’s d) is much stronger for centrality () than complexity ().
+This indicates that additional tool use and iterations significantly enhance the model’s performance in resolving issues within more centrally connected parts of the system. The gains are explained by the model being able to do both more localized, but especially more system-level reasoning via iteration. Figure 9 highlights this improvement evenly across difficulty dimensions, while the full distributions are visualized in Figure 13 in the Appendix.
+4.3 Studying how agents interact with the environment
+We analyze how models interact with the breakpoint code environment, and in particular tool usage behavior.
+4.3.1 Different models have different tool usages
+We find that the best models use more tools in general and are more information seeking, with o4-mini being the most proactive about tool usage (see Figure 10), although Claude 3.7 uses less tools and is as performant.
+We analyze different models’ strategies via their tool calling behavior, and measure their usage of different tools in Figure 11. We classify tools into those that read off information from the environment, and those that attempt to modify it to solve the task. We measure the average use of these two types in Figure 10.
+More successful models (1) gather more information before submitting, (2) use targeted search tools effectively, and (3) learn efficiently from test feedback - suggesting that progress in system-level reasoning may come from better environmental exploration strategies and ability to iterate as much as from improved reasoning capabilities.
+4.4 Human Evaluation of Task Difficulty
+To better contextualize the difficulty of Breakpoint tasks, we conducted a preliminary human evaluation with the authors solving a small set of benchmark tasks. Specifically, four problems from each of the remove and discovery modes were manually attempted. All eight tasks were successfully solved, with completion times ranging from 4 to 30 minutes per task. These results suggest that Breakpoint tasks—at least at lower corruption complexities—are within reasonable human solvability.
+Qualitatively, we found that single-corruption tasks in the discovery mode generally felt easier to solve compared to analogous tasks in the remove mode. Informal experiments further indicated that even moderate assistance from language models substantially accelerates human solving times, particularly in remove mode, highlighting potential synergies between human and model reasoning.
+We also qualitatively assessed the difficulty of the hardest Breakpoint problems by sampling one hard set problem for both remove and discovery. Based on our human evaluation, we found that the tasks are quite challenging and would require several hours of human time to understand and fix the codebase, although they are solvable. It qualitatively seems that models are better at quickly processing large amounts of information for coding but they struggle to solve the hardest problems that require longer time horizons, whereas humans are much slower but more reliably solve the problem.
+To facilitate future systematic comparisons, our benchmark release includes explicit support for human evaluations, providing users with interfaces to efficiently explore, diagnose, and repair tasks directly within the codebase environment.
+5 Discussion
+Using inverse problems to generate difficult yet evaluatable tasks.
+The difficulty of reliably benchmarking sophisticated reasoning capabilities often arises from an inherent tension between complexity and evaluability. Traditionally, hard reasoning tasks are created in isolation.
+Inverse problems resolve this tension by utilizing pre-existing, complex structures—such as extensive software codebases. By starting with an already functioning and verifiable system, and deliberately introducing adversarial corruptions, we generate challenging tasks that explicitly demand deep, systemic comprehension. Because the original, correct state of the system is known, performance can be precisely measured through objective metrics like existing test suites. This structure enables robust evaluation at scales and complexities beyond what single-question tasks typically allow, potentially even scaling to tasks beyond single-human generative capability, since they are generated by extensive collaborative processes over long periods of time.
+Evaluating system-level reasoning and testing models for real-world integration.
+system-level reasoning is what allows humans to quickly understand companies, research fields, codebases, etc. to then modify and improve them in precise ways. Real-world software systems contain this kind of systemic complexity—where a single modification can cascade through interconnected components, potentially causing unpredictable systemic failures.
+Most impactful decisions occur within complex, interdependent contexts rather than isolated tasks. Therefore, before we deploy AI systems effectively in the world for real use-cases, we need to understand the robustness of their system understanding. Failures in system-level reasoning can lead to subtle but catastrophic errors, and we need robust ways of evaluating this. By specifically targeting this capability, Breakpoint highlights the critical importance of reasoning about interconnected dependencies, structural coherence, and broader implications of local changes.
+Future research can leverage this notion of systemic reasoning as a target for training schemes or architectures that explicitly target this capability - potentially using insights from the fields of memory, human AI collaboration, and multi agent systems.
+Decomposing long horizon model reasoning for a science of agents
+Current methodologies for evaluating language model performance, such as measuring loss scaling, offer limited insight into the high-level capabilities models actually possess. Our approach and metric analysis propose decomposition of model abilities, and offer steps towards a better understanding of the inputs and outputs of resource scalings.
+Understanding precisely how these factors impact reasoning difficulty can inform theoretical frameworks and future model training strategies, moving beyond superficial performance measures towards deeper diagnostic tools capable of pinpointing specific cognitive or representational gaps in language models.
+This precise analysis along with the problem framing allow us to study the agentic behavior of different model in long horizon settings, and on various types of problems - answering what kind of tools they use, how they respond to failed attempts, and how much they seek information. We are excited about future work going deeper into a potential science of agent behavior.
+Limitations
+While Breakpoint offers valuable insights into the system-level reasoning capabilities of language models, we note two limitations:
+First, our evaluation metrics depend heavily on existing test suites, which, while objective, may not fully capture subtle errors or edge cases that are infrequently tested but nonetheless critical in real-world scenarios. To remedy this, we only source problems with several (at least 5) failing tests. Human or expert validation, static analysis, or runtime monitoring could complement these automated metrics to provide a more comprehensive assessment of model robustness.
+Second, inverse problems do not fully represent the diversity of real-world capabilities needed for system-level reasoning: for instance, it misses those involved in system design. Future research could explore different ways of testing these capabilities.
+References
+- Glazer et al. (2024) Elliot Glazer, Ege Erdil, Tamay Besiroglu, Diego Chicharro, Evan Chen, Alex Gunning, Caroline Falkman Olsson, Jean-Stanislas Denain, Anson Ho, Emily de Oliveira Santos, et al. Frontiermath: A benchmark for evaluating advanced mathematical reasoning in ai. arXiv preprint arXiv:2411.04872, 2024.
+- Jain et al. (2024) Naman Jain, Manish Shetty, Tianjun Zhang, King Han, Koushik Sen, and Ion Stoica. R2E: Turning Any GitHub Repository into a Programming Agent Environment. In Proceedings of the 41st International Conference on Machine Learning (ICML), 2024. URL https://proceedings.mlr.press/v235/jain24c.html.
+- Jimenez et al. (2024) Carlos E. Jimenez, John Yang, Alexander Wettig, Shunyu Yao, Kexin Pei, Ofir Press, and Karthik Narasimhan. SWE-bench: Can Language Models Resolve Real-World GitHub Issues? In International Conference on Learning Representations (ICLR), 2024. doi: 10.48550/arXiv.2310.06770.
+- Jin et al. (2024) Emily Jin, Zhuoyi Huang, Jan-Philipp Fränken, Weiyu Liu, Hannah Cha, Erik Brockbank, Sarah Wu, Ruohan Zhang, Jiajun Wu, and Tobias Gerstenberg. Marple: A benchmark for long-horizon inference, 2024. URL https://arxiv.org/abs/2410.01926.
+- Kwa et al. (2025) Thomas Kwa, Ben West, Joel Becker, Amy Deng, Katharyn Garcia, Max Hasin, Sami Jawhar, Megan Kinniment, Nate Rush, Sydney Von Arx, Ryan Bloom, Thomas Broadley, Haoxing Du, Brian Goodrich, Nikola Jurkovic, Luke Harold Miles, Seraphina Nix, Tao Lin, Neev Parikh, David Rein, Lucas Jun Koba Sato, Hjalmar Wijk, Daniel M. Ziegler, Elizabeth Barnes, and Lawrence Chan. Measuring ai ability to complete long tasks, 2025. URL https://arxiv.org/abs/2503.14499.
+- Lewkowycz et al. (2022) Aitor Lewkowycz, Anders Andreassen, David Dohan, Ethan Dyer, Henryk Michalewski, Vinay Ramasesh, Ambrose Slone, Cem Anil, Imanol Schlag, Theo Gutman-Solo, Yuhuai Wu, Behnam Neyshabur, Guy Gur-Ari, and Vedant Misra. Solving Quantitative Reasoning Problems with Language Models. arXiv preprint arXiv:2206.14858, 2022. doi: 10.48550/arXiv.2206.14858.
+- Li et al. (2022) Yujia Li, David Choi, Junyoung Chung, Nate Kushman, Julian Schrittwieser, Rémi Leblond, Tom Eccles, James Keeling, Felix Gimeno, Agustin Dal Lago, Thomas Hubert, Peter Choy, Cyprien de Masson d’Autume, Igor Babuschkin, Xinyun Chen, Po-Sen Huang, Johannes Welbl, Sven Gowal, Alexey Cherepanov, James Molloy, Daniel Mankowitz, Esme Sutherland Robson, Pushmeet Kohli, Nando de Freitas, Koray Kavukcuoglu, and Oriol Vinyals. Competition-Level Code Generation with AlphaCode. Science, 378(6624):1092–1097, 2022. doi: 10.1126/science.abq1158.
+- Liu et al. (2024) Xiao Liu, Hao Yu, Hanchen Zhang, Yifan Xu, Xuanyu Lei, Hanyu Lai, Yu Gu, Hangliang Ding, Kaiwen Men, Kejuan Yang, Shudan Zhang, Xiang Deng, Aohan Zeng, Zhengxiao Du, Chenhui Zhang, Sheng Shen, Tianjun Zhang, Yu Su, Huan Sun, Minlie Huang, Yuxiao Dong, and Jie Tang. AgentBench: Evaluating LLMs as Agents. In International Conference on Learning Representations (ICLR), 2024. doi: 10.48550/arXiv.2308.03688.
+- McAleese et al. (2024) Nat McAleese, Rai Michael Pokorny, Juan Felipe Ceron Uribe, Evgenia Nitishinskaya, Maja Trebacz, and Jan Leike. LLM Critics Help Catch LLM Bugs. arXiv preprint arXiv:2407.00215, 2024. doi: 10.48550/arXiv.2407.00215.
+- McFadden (2021) Daniel McFadden. Quantitative methods for analysing travel behaviour of individuals: some recent developments. In Behavioural travel modelling, pp. 279–318. Routledge, 2021.
+- Miserendino et al. (2025) Samuel Miserendino, Michele Wang, Tejal Patwardhan, and Johannes Heidecke. SWE-Lancer: Can Frontier LLMs Earn $1 Million from Real-World Freelance Software Engineering? arXiv preprint arXiv:2502.12115, 2025. doi: 10.48550/arXiv.2502.12115.
+- Song et al. (2025) Xinshuai Song, Weixing Chen, Yang Liu, Weikai Chen, Guanbin Li, and Liang Lin. Towards long-horizon vision-language navigation: Platform, benchmark and method, 2025. URL https://arxiv.org/abs/2412.09082.
+- Yang et al. (2024) John Yang, Carlos E. Jimenez, Alexander Wettig, Kilian Lieret, Shunyu Yao, Karthik Narasimhan, and Ofir Press. SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering. In Advances in Neural Information Processing Systems (NeurIPS), 2024. doi: 10.48550/arXiv.2405.15793.
+- Yao et al. (2023) Shunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du, Izhak Shafran, Karthik Narasimhan, and Yuan Cao. ReAct: Synergizing Reasoning and Acting in Language Models. In International Conference on Learning Representations (ICLR), 2023. doi: 10.48550/arXiv.2210.03629.
+Appendix A Agent details
+The LM agent is provided with a set of tools to interact with the codebase. They always include:
+-
+•
+list_directory: List files and directories at a specified path.
+-
+•
+search_code: Search for a text or regex pattern across all .py files.
+-
+•
+read_file: Read a file, if it’s too large the file functions are listed for a future read_function call.
+-
+•
+list_file_functions: Return a list of top-level function and class definitions in a file.
+-
+•
+read_function: Read the contents of a specified function or class from a file.
+In targeted mode (the modes are described in LABEL:subsection:task_modes), the agent has the additional tool:
+-
+•
+submit_attempt: Submit an attempt at fixing the targeted function or class.
+In discovery mode, where the target function is unknown the above tool is replaced with:
+-
+•
+replace_function: Submit new code for a target function or class by replacing its definition and the body.
+In discovery mode the modifications are persistent throughout a trajectory.
+We run the model with a tool-use budget max_tool_uses to limit the number of times the agent can interact with the codebase. We also set a separate max_attempts to the total number of times either submit_attempt or replace_function can be invoked; this is the maximum number of times the agent can test out the code it writes and get error reports.
+Appendix B Model Corruptions
+To generate corruptions, we prompt OpenAI’s o4-mini model with the following prompt template (below).
+It can iterate 5 times on the test feedback before it submits a final attempt for the corruption. This corruption is then stored and applied before the solving model tries to do the problem.
+You are an expert Python programmer tasked with introducing a bug in a function located in {function_path}. Your goal is to modify the following function so that some of the test cases fail. DO NOT INDICATE WITH COMMENTS OR GIVE ANY CLUE AS TO WHERE THE BUG IS, OR WHERE YOU MODIFIED THE FUNCTION, as your modified function will be a test for another agent. Use the following heuristic: if another agent were to get this codebase without knowing where the corruption is, and were to see the new test errors, it would be hard to find the function where it was caused and it would be hard to then, given the function, fix the problem with it. Your goal is to make it subtle, not necessarily to make all the original tests fail, although at least 2 tests should fail. Inserting some esoteric add-on or string that will show up in tests and can easily be found via searching the code would also not work well with this heuristic. For example, your corruption should involve the actual behavior of the function, a bad idea for this heuristic would just be a syntax error or making the function empty or whatever. A good idea using this heuristic would be to see how the function interacts with the rest of the code and identify an area where you can subtly damage the code. Motivate your corruptions by looking at how the tests work and what can make them fail. Do not change the function definition, just copy it over. Keep asking yourself: If I saw this error in this codebase, would I easily fix it? If yes, iterate and do better. Function to corrupt: {func_code} To help guide you to what is being tested, here are some relevant tests that you can try to make fail. {test_examples} You have access a submit_attempt tool that allows you to submit attempted patches for the function, and then get test feedback (max {self.test_budget} times). Reflect on the errors and if they are subtle/hard to debug. You can call tools at most {self.max_iterations} times. Remember that the only way to submit your code is via the submit_attempt tool. Again, DO NOT INDICATE WITH COMMENTS OR GIVE ANY CLUE AS TO WHERE THE BUG IS, OR WHERE YOU MODIFIED THE FUNCTION.
+Appendix C Complexity and Centrality Metrics
+In this appendix, we provide definitions of the complexity and centrality metrics used throughout our analysis. These metrics characterize both the local complexity of individual functions and their structural importance within the broader codebase. We then analyze the correlations between these metrics to understand their relationships and implications for debugging difficulty.
+C.1 Complexity Metrics
+We employ several established software complexity metrics to quantify the local difficulty of individual functions:
+Lines of Code (LOC)
+The simplest measure of function complexity, defined as the total number of coding (not comment or docstring) lines in a function’s implementation.
+Cyclomatic Complexity
+Cyclomatic complexity measures the number of linearly independent paths through a function’s control flow graph:
+where is the number of edges, is the number of nodes, and is the number of connected components (typically for a single function). In practice, we compute this as the number of decision points (conditionals, loops, exception handlers).
+Halstead Metrics
+Halstead metrics treat programs as collections of operators and operands:
+-
+•
+Halstead Difficulty: , where and are the numbers of distinct operators and operands respectively, and is the total count of operands.
+-
+•
+Halstead Volume: , where is the total number of operators and operands, and is the vocabulary size.
+C.2 Centrality Metrics
+To capture the structural importance of functions within the codebase, we compute several graph centrality measures on the function call graph :
+PageRank Centrality
+Adapted from page1999pagerank, PageRank measures a function’s importance based on the importance of its callers. For a function , its PageRank score is computed iteratively:
+where is the damping factor, denotes functions that call , and is the out-degree of function . High PageRank indicates functions that are called by many important functions, typically representing core utilities or fundamental components.
+Harmonic Centrality
+Following boldi2014axioms, harmonic centrality measures a function’s ability to efficiently reach other functions in the call graph:
+where is the shortest path distance from to , with if is unreachable from . This metric identifies high-level orchestrator functions that control many parts of the codebase.
+Distance Discount Centrality
+We introduce a decay-based centrality measure that captures diminishing influence over distance:
+where is the decay factor. This metric assigns exponentially decreasing weights to functions based on their distance: direct callees contribute 0.5, distance-2 functions contribute 0.25, and so forth.
+Betweenness Centrality
+Based on freeman1977set, betweenness centrality measures how often a function appears on shortest paths between other functions:
+where is the number of shortest paths from to , and is the number of those paths passing through . High betweenness indicates “bridge” functions that connect different modules of the codebase.
+Degree Centralities
+We also compute basic degree measures:
+-
+•
+In-degree: (number of callers)
+-
+•
+Out-degree: (number of callees)
+-
+•
+Total degree:
+C.3 Correlation Analysis
+Figure 12 presents the correlation matrix between all computed metrics. We observe several patterns:
+Strong Complexity Correlations
+Complexity metrics exhibit high mutual correlations ():
+-
+•
+LOC and cyclomatic complexity () correlate strongly, as longer functions typically contain more decision points.
+-
+•
+Cyclomatic complexity and Halstead volume () show the strongest correlation, indicating that control flow complexity closely tracks the total number of operations.
+-
+•
+Cyclomatic complexity and Halstead difficulty () also correlate highly, suggesting that complex control flow involves more intricate operator usage patterns.
+Centrality Metric Relationships
+Among centrality measures, we observe:
+-
+•
+Harmonic and distance discount centralities correlate moderately (), as both capture outgoing influence with different decay functions.
+-
+•
+PageRank shows low correlation with harmonic and distance discount centralities, reflecting their opposite directionality (incoming vs. outgoing calls).
+-
+•
+Degree metrics naturally correlate, with total degree and in-degree showing .
+Success Rate Correlations
+The relationship between metrics and debugging success reveals:
+-
+•
+Complexity metrics negatively correlate with success rates, confirming that more complex functions are harder to debug.
+-
+•
+Outgoing centrality measures (harmonic, distance discount) show stronger relationships with success than incoming measures, indicating that functions controlling many others present greater debugging challenges.
+Appendix D Violin Plots for Differentiating Capabilities
+To provide additional visual insight into how different sources of improvement affect model performance, we present violin plots showing the distribution of task difficulty metrics (code-line complexity and harmonic centrality) among problems successfully solved by each model or configuration. These plots complement the statistical analyses presented in the main text by visualizing the full distribution of solved tasks along each difficulty dimension.

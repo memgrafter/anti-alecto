@@ -1,0 +1,311 @@
+Blockchains Cryptography Economics Fun General Gitcoin Math Philosophy Translations
+-
+My self-sovereign / local / private / secure LLM setup, April 2026
+-
+Balance of power
+-
+Let a thousand societies bloom
+-
+Plinko PIR tutorial
+-
+Galaxy brain resistance
+-
+A GKR Tutorial
+-
+Memory access is O(N^[1/3])
+-
+The importance of full-stack openness and verifiability
+-
+Low-risk defi can be for Ethereum what search was for Google
+-
+"I support it only if it's open source" should be a more common viewpoint
+-
+On idea-driven ideas
+-
+My response to AI 2027
+-
+Why I used to prefer permissive licenses and now favor copyleft
+-
+Does digital ID have risks even if it's ZK-wrapped?
+-
+A simple explanation of a/(b+c) + b/(c+a) + c/(a+b) = 4
+-
+The math of when stage 1 and stage 2 make sense
+-
+Simplifying the L1
+-
+Why I support privacy
+-
+The tree ring model of culture and politics
+-
+We should talk less about public goods funding and more about open source funding
+-
+AI as the engine, humans as the steering wheel
+-
+Reasons to have higher L1 gas limits even in an L2-heavy Ethereum
+-
+Scaling Ethereum L1 and L2s in 2025 and beyond
+-
+d/acc: one year later
+-
+What I would love to see in a wallet
+-
+From prediction markets to info finance
+-
+Possible futures of the Ethereum protocol, part 6: The Splurge
+-
+Possible futures of the Ethereum protocol, part 5: The Purge
+-
+Possible futures of the Ethereum protocol, part 4: The Verge
+-
+Possible futures of the Ethereum protocol, part 3: The Scourge
+-
+Possible futures of the Ethereum protocol, part 2: The Surge
+-
+Possible futures of the Ethereum protocol, part 1: The Merge
+-
+Making Ethereum alignment legible
+-
+Glue and coprocessor architectures
+-
+Plurality philosophy in an incredibly oversized nutshell
+-
+Review: museums of the future, Dubai and Tokyo
+-
+Exploring circle STARKs
+-
+Against choosing your political allegiances based on who is "pro-crypto"
+-
+Epochs and slots all the way down: ways to give Ethereum users faster transaction confirmation times
+-
+Some reflections on the Bitcoin block size war
+-
+Layer 2s as cultural extensions of Ethereum
+-
+How do layer 2s really differ from execution sharding?
+-
+The near and mid-term future of improving the Ethereum network's permissionlessness and decentralization
+-
+Multidimensional gas pricing
+-
+Binius: highly efficient proofs over binary fields
+-
+Degen communism: the only correct political ideology
+-
+What else could memecoins be?
+-
+Ethereum has blobs. Where do we go from here?
+-
+Ask security questions
+-
+The end of my childhood
+-
+The promise and challenges of crypto + AI applications
+-
+Make Ethereum Cypherpunk Again
+-
+My techno-optimism
+-
+Exit games for EVM validiums: the return of Plasma
+-
+Different types of layer 2s
+-
+Should Ethereum be okay with enshrining more things in the protocol?
+-
+What do I think about Community Notes?
+-
+What do I think about biometric proof of personhood?
+-
+Deeper dive on cross-L2 reading for wallets and other use cases
+-
+The Three Transitions
+-
+Don't overload Ethereum's consensus
+-
+Travel time ~= 750 * distance ^ 0.6
+-
+How will Ethereum's multi-client philosophy interact with ZK-EVMs?
+-
+Some personal user experiences
+-
+An incomplete guide to stealth addresses
+-
+What even is an institution?
+-
+Updating my blog: a quick GPT chatbot coding experiment
+-
+What in the Ethereum application ecosystem excites me
+-
+Having a safe CEX: proof of solvency and beyond
+-
+The Revenue-Evil Curve: a different way to think about prioritizing public goods funding
+-
+DAOs are not corporations: where decentralization in autonomous organizations matters
+-
+What kind of layer 3s make sense?
+-
+Should there be demand-based recurring fees on ENS domains?
+-
+The different types of ZK-EVMs
+-
+What do I think about network states?
+-
+My 40-liter backpack travel guide
+-
+Some ways to use ZK-SNARKs for privacy
+-
+Where to use a blockchain in non-financial applications?
+-
+Two thought experiments to evaluate automated stablecoins
+-
+In Defense of Bitcoin Maximalism
+-
+The roads not taken
+-
+How do trusted setups work?
+-
+Encapsulated vs systemic complexity in protocol design
+-
+Soulbound
+-
+The bulldozer vs vetocracy political axis
+-
+Endgame
+-
+Review of Optimism retro funding round 1
+-
+Halo and more: exploring incremental verification and SNARKs without pairings
+-
+Crypto Cities
+-
+On Nathan Schneider on the limits of cryptoeconomics
+-
+Alternatives to selling at below-market-clearing prices for achieving fairness (or community sentiment, or fun)
+-
+Moving beyond coin voting governance
+-
+Against overuse of the Gini coefficient
+-
+Verkle trees
+-
+Blockchain voting is overrated among uninformed people but underrated among informed people
+-
+The Limits to Blockchain Scalability
+-
+Why sharding is great: demystifying the technical properties
+-
+Gitcoin Grants Round 9: The Next Phase of Growth
+-
+The Most Important Scarce Resource is Legitimacy
+-
+Prediction Markets: Tales from the Election
+-
+An approximate introduction to how zk-SNARKs are possible
+-
+Why we need wide adoption of social recovery wallets
+-
+An Incomplete Guide to Rollups
+-
+Endnotes on 2020: Crypto and Beyond
+-
+Convex and Concave Dispositions
+-
+Why Proof of Stake (Nov 2020)
+-
+Gitcoin Grants Round 7 Retrospective
+-
+Coordination, Good and Bad
+-
+Trust Models
+-
+A Philosophy of Blockchain Validation
+-
+Gitcoin Grants Round 6 Retrospective
+-
+Exploring Fully Homomorphic Encryption
+-
+Gitcoin Grants Round 5 Retrospective
+-
+A Quick Garbled Circuits Primer
+-
+Review of Gitcoin Quadratic Funding Round 4
+-
+Base Layers And Functionality Escape Velocity
+-
+Christmas Special
+-
+Quadratic Payments: A Primer
+-
+Hard Problems in Cryptocurrency: Five Years Later
+-
+Review of Gitcoin Quadratic Funding Round 3
+-
+In-person meatspace protocol to prove unconditional possession of a private key
+-
+Understanding PLONK
+-
+The Dawn of Hybrid Layer 2 Protocols
+-
+Sidechains vs Plasma vs Sharding
+-
+Fast Fourier Transforms
+-
+Control as Liability
+-
+On Free Speech
+-
+On Collusion
+-
+[Mirror] Cantor was Wrong: debunking the infinite set hierarchy
+-
+A CBC Casper Tutorial
+-
+[Mirror] Central Planning as Overfitting
+-
+Layer 1 Should Be Innovative in the Short Term but Less in the Long Term
+-
+A Guide to 99% Fault Tolerant Consensus
+-
+STARKs, Part 3: Into the Weeds
+-
+On Radical Markets
+-
+Governance, Part 2: Plutocracy Is Still Bad
+-
+Sharding FAQ
+-
+Proof of Stake FAQ
+-
+Notes on Blockchain Governance
+-
+A Quick Gasprice Market Analysis
+-
+STARKs, Part II: Thank Goodness It's FRI-day
+-
+STARKs, Part I: Proofs with Polynomials
+-
+On Medium-of-Exchange Token Valuations
+-
+A Prehistory of the Ethereum Protocol
+-
+A Note on Metcalfe's Law, Externalities and Ecosystem Splits
+-
+The Triangle of Harm
+-
+On Path Independence
+-
+Analyzing Token Sale Models
+-
+Engineering Security Through Coordination Problems
+-
+Hard Forks, Soft Forks, Defaults and Coercion
+-
+A Note On Charity Through Marginal Price Discrimination
+-
+[Mirror] Zk-SNARKs: Under the Hood
+-
+[Mirror] Exploring Elliptic Curve Pairings
+-
+[Mirror] A Proof of Stake Design Philosophy
+-
+[Mirror] Quadratic Arithmetic Programs: from Zero to Hero

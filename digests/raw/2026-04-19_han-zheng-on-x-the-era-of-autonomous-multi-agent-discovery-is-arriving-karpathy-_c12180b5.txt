@@ -1,0 +1,29 @@
+X thread capture
+
+## Post
+
+## Conversation
+
+Han Zheng
+
+@hanzheng_7
+
+The era of autonomous multi-agent discovery is arriving!
+
+@karpathy
+
+Excited to share CORAL, our new work on autonomous multi-agent systems for open-ended scientific discovery. A key limitation of many current “self-evolving” frameworks is that agents still operate inside tightly constrained loops — they mutate solutions, but they do not truly decide how to explore. In CORAL, we push toward genuine autonomy: Agents decide  what to explore  what knowledge to store  which ideas to reuse  when to test hypotheses One of the most interesting findings: A single autonomous agent already outperforms fixed evolutionary search, but the biggest gains emerge when multiple agents form a research community. Over 50% of breakthroughs in multi-agent runs come from building on other agents’ discoveries. This suggests that knowledge reuse and collaboration are central to scalable automated discovery. Across 10+ difficult tasks in algorithmic discovery and system optimization, CORAL achieves state-of-the-art performance while improving efficiency by 3–10×.  Paper: arxiv.org/abs/2604.01658 Code: github.com/Human-Agent-SoAlphaXiv: alphaxiv.org/abs/2604.01658#agentic#llms#selfevolvingagent#multiagent#autoresearch#alphaevolve
+
+[](https://x.com/hanzheng_7/status/2041291008378343707/photo/1)
+
+[](https://x.com/hanzheng_7/status/2041291008378343707/photo/2)
+
+[](https://x.com/hanzheng_7/status/2041291008378343707/photo/3)
+
+[](https://x.com/hanzheng_7/status/2041291008378343707/photo/4)
+
+Ao Qu and 4 others
+
+11:04 PM · Apr 6, 2026
+
+49.2K Views

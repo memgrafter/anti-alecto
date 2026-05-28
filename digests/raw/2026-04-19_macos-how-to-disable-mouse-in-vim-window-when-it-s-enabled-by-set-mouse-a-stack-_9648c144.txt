@@ -1,0 +1,4 @@
+Hi: I'm using vim and I've set mouse=a
+in my .vimrc, so upon startup, vim supports mouse cursor. But some times I need to copy text from terminal, so I need to shut down mouse support in vim. I tried set mouse=c
+but the mouse still works in my mac terminal.
+Is there a way to do this? Thanks!

@@ -1,0 +1,136 @@
+-
+-
+-
+You've articulated the dilemma clearly. The feedback loop means big players already have what they need, and as you note, withdrawal would only handicap open source LLMs while increasing corporate advantage.
+I think there might be a third path between these two bad options. In a recent post, I argue for what I call “training copyleft”—allowing LLM training on our code, but requiring the resulting models to be released as free software.
+F/OSS has faced enclosure before: binary distribution, Tivoization, the SaaS loophole. Each time, the solution wasn't access denial but evolved licensing that demanded reciprocity. The same principle could apply here.
+It's admittedly uncertain whether this can work, and enforcement would be challenging. But I think it's worth pursuing, because the alternative—watching this play out as you describe, with no meaningful resistance—seems worse.
+The rent-seeking dynamic you identify is real. The question is whether we can establish norms and legal frameworks now, while the conversation is still open, or whether we wait until those norms are set entirely by corporate interests.
+-
+"enforcement would be challenging" is hugely underselling it. The major AI training companies are basically entirely above the law at this point. Not even the extremely powerful lobby of intellectual property holders has been able to make any sorts of inroads. Not Disney, not Warner Brothers, not the New York Times, not UMG nor anybody else. Small-fry open source projects are completely hopeless. The slop shops will train on anything they damn well please, violate any laws they need to and not face any consequences.
+-
+Remember that "this point" was 2013 with the decision in Google Books.
+-
+-
+My main worry, at this point, is whether 'we' (and by 'we' I mean the imperfect collective of meatbag programmers on the internet) have anything competitive to offer.
+LLMs answer instantaneously, and they're always helpful and polite. Humans aren't always that way. I find Stack Overflow interesting, because it took moderation and governance very seriously; in the end it still managed to devolve into a place most people were afraid to ask for help.
+I think we have to recognize that the public good here is our willingness to be vulnerable, and big corporate LLM owners have a huge and real advantage over human-run alternatives.
+I firmly believe that legal norms follow from negotiating power, and not the other way around. Right now we're on the menu, and not at the table.
+-
+SO wasn’t optimized for helping the people who asked questions; it was optimized for collecting answers that would help people who found them by searching. It’s a subtle but important difference that strongly influenced the moderation system. Unbeknownst to them, it also optimized the answers for LLM training (as opposed to, say, Reddit).
+-
+That's definitely something I hadn't considered. It may also explain why SO has gone silent, while Reddit is still around; answering questions was never the objective, it was an emergent property, and some aspects of it (once in a while, a joke answer may get the most votes) continue to make it a more attractive place for humans than scrapers.
+-
+-
+LLMs answer instantaneously, and they're always helpful and polite.
+I personally find the sycophancy or agreeableness a big problem with LLMs. People in all fields need to be told when their ideas are bad, when what they're doing is unethical. Not that LLMs should start lecturing or preaching, higher powers save us from that. Just that LLMs need to be able to properly argue against the user.
+-
+when what they're doing is unethical
+And you, uh, trust the ethical judgement of Sam Altman?
+-
+Absolutely not. Which is why commercial offerings will likely remain untrustworthy in that aspect as well as many others.
+-
+Which entity behind an "open model" has sound ethical judgement?
+-
+-
+-
+Would it be good or bad if an LLM always replied with a link to xyproblem.info?
+-
+I think (I did experiment a bit although not much) for local models you can sysprompt an LLM into standing its ground on technical matters. With ethics it is honestly hard to predict even among the people who have previously pushed back on ethics grounds, and who are currently in a safer situation than when they pushed back, who will push back on what!
+Hosted LLMs structurally start with an asumption that MITM is always fine, actually, so those things trying to do ethics about engineering work scares me more than them not trying.
+-
+-
+-
+-
+StackOverflow may have been a crucial source of training data back in 2023-2024, but I'm not sure how essential it is going forward.
+My usage patterns for difficult coding questions have evolved thanks to the capabilities of the latest models. If I have a difficult question about an open source library I'll have Claude Code or Codex CLI clone that library from GitHub to my /tmp directory and answer my questions first by grepping the codebase and then by writing and executing experimental code against that library.
+This is a relatively new pattern - models a year ago didn't have the context window, reasoning ability or coding agent harnesses to make that approach viable.
+I've had little difficulty answering gnarly questions against code that lives entirely outside of the training data. I have Claude Code running strace right now to help figure out a networking issue in a compiled binary!
+My hunch is that LLMs have eclipsed the point where they need updated StackOverflow content in order to handle complex code questions.
+-
+Good to hear, but that either misses or confirms the point I was trying to make in the article.
+-
+No, it doesn't.
+Tempted to just leave the above sentence by itself, since it is 100% as helpful and informative as your comment, but I'll elaborate.
+I don't see how it proves your point. What the parent suggests is that LLMs have reached a point where they can understand material not just by relying on their training data, but by exploring the landscape of code in a semi-autonomous way. If so, then the lack of Stack Overflow data means nothing--the training process can have the models explore libraries on their own.
+Why do you think otherwise? Perhaps you're imagining that they can only do that when individual humans ask them questions about how to use a library? But that's not a given.
+Btw: there is precedent for this idea. Early AI based bots for Go were trained starting with data from human games, but starting with AlphaZero, the dominant model was to bootstrap AI by starting with completely self-play games starting from zero knowledge (other than the rules) and repeatedly training on the results of those to create a better model, which then engaged in self-play.
+-
+Yes, it does.
+Michiel wasn't making a point about the effectiveness of the models. He was making a point about ownership. Although StackOverflow was never a commons in the legal sense, in the cultural sense it was a lot closer to a commons than anything on offer today. Their business model (flawed as it may have been) was at least somewhat aligned with creating value for the general public. AI companies have effectively recycled all that intellectual property (from SO and elsewhere) while shrinking the commons: in other words, this is a case of textbook enclosure.
+-
+The fact we’re having trouble explaining this sort of intellectual sovereignty (of sorts) right now does not bode well for the future.
+How will we advocate for something that everyone has been trained to get from frontier models?
+AI is a power transfer mechanism.
+-
+-
+If the goal is not to beat TPTP-like setups (you are given a semantics-preserving scrambling of a formal representation of a problem, construct a formally verifiable solution), but to do a task defined as interacting with poorly-worder human questions, data on which disambiguations of human questions lead to less-frustrated-sounding reaction from humans is useful, even if the model is good at extracting the knowledge from the original sources.
+Basically this is a large dataset of Human Feedback part of Reinforcement Learning with Human Feedback. Such datasets are useful for training human-interacting models.
+-
+I think that's a valid point, and I'd agree that it's a real question how important something like Stack Overflow is.
+One observation: they still have the historical Stack Overflow questions, which gives the model data on how people ask questions. If you think of the model as just regurgitating text about specific technologies (the stochastic parrot idea), then it's going to be very worrying that there are not specific questions about new technologies. But if you see the models as seeing patterns in questions that go a bit deeper, combined with their ability to explore novel codebases, it's not so important that they see questions about specific technologies. On top of that, they might even be able to synthetically generate questions about those technologies.
+Anyway, I guess I personally don't have a strong opinion here. Presumably people who are deeper into the research on what models are capable of know in more detail how important Stack Overflow is. I can see it going either way.
+-
+It looks to me like better feedback than what you can deduce from SO, honestly, but I am not training models.
+(And for ambiguous questions it shouldn't hurt to have feedback on ambiguity resolution in the relevant context, not in general with different ambiguities.)
+-
+-
+-
+Thanks for explaining what Simon was referring to; I had trouble understanding how this related to human feedback.
+Maybe I'm missing something, but I think the example you give (assuming this is what Simon was referring to) does not apply; Go is a board game where everything is known, and every relevant move and game state can be represented digitally.
+The functionality of software cannot be completely inferred by simply by reading it, and a lot of code involves APIs where no source code is available, and documentation may be incomplete, missing or incorrect.
+AI training will need some sort of human in the loop for the foreseeable future.
+-
+From now on it may be just a matter of spending compute resources on AI making training data for AI.
+Even if there's a closed-source API with buggy or missing docs, you can instruct an agent to keep trying to figure it out the hard way: make guesses, try using it, investigate errors, test assumptions, reverse engineer. It may not have the information, but it has knowledge how to get the information. Right now it's a clumsy and slow process, but users of hosted LLM are paying to supervise the bots for free!
+-
+-
+-
+-
+But @simonw, that doesn't misalign with what the post makes at all. The post doesn't say that StackOverflow was or is a better place for questions to things, or that models haven't become better for problems today. It talks about how it will be harder for even open models to compete because debugging sessions will happen with private walled-off chatbots, so that those debugging sessions become a valuable training set and create a feedback loop that we can't get out of.
+-
+They may not need StackOverflow specifically, but they need some source of new knowledge as tools and practices evolve. What happens when
+strace
+is obsolete? Just because Unix-y tools have stagnated for decades doesn't mean it should or will remain that way in the future.I do think content such as blogs and and bug trackers will largely cover this need, so I'm not really worried. But it is definitely not the case that they can stop pretraining forever and solve 2036 engineering problems efficiently with first principles code exploration.
+-
+The impression I've got is that the big labs - Anthropic and OpenAI in particular - have realized that coding ability is one of the most commercially useful applications of their models and worth fiercely competing on.
+As such, they're investing a lot of money and effort into anything that can improve the model's ability to write code.
+I suspect this includes paying real human expert programmers to help tweak the models and track down (or generate) the best possible training data to get good results for whatever new libraries are in the most demand.
+https://outlier.ai/coding/en-us is an example of an outsourced platform specializing in this kind of training data - paying $25-$50/hour specifically for programmers to help train models.
+https://work.mercor.com/jobs/list_AAABm4Du-0oSjmvox2ZPZKFs/software-engineering-expert says it pays $50-$150/hour.
+-
+I suspect this includes paying real human expert programmers to help tweak the models and track down (or generate) the best possible training data to get good results for whatever new libraries are in the most demand.
+That makes perfect sense to me. But who helps you decide what's in demand?
+Also, I'm not sure if this is a salaried position, but $50 an hour is not a great rate for a contractor in the global North.
+-
+Definitely not salaried, it's pay-by-hour contracting. $50 isn't great but $150 isn't bad, especially as you edge towards "(15–25 hours/week, with flexibility up to 40 hours/week)"
+-
+-
+-
+-
+-
+I like this analogy and I don't disagree with the ideas, but I don't think LLMs are uniquely responsible for this. StackOverflow was in decline before LLMs, and people have been lamenting the shift to uninexable communities like Slack (like the Clojurians slack) and Discord (nearly every programming community I've joined since 2020 has been on Discord) for a very long time now - I remember that being a bugbear on this site and HN before ChatGPT was even a thing. With regards to SO specifically, you sort of gloss over it as "the atmosphere wasn't great", but I cannot understate how hostile SO felt to post to, and there's a reason the shift to Reddit and Discord happened before LLMs.
+-
+Didn't it play out like this with Google and its "competitors" (Bing, DuckDuckGo)? AFAIK Google tracked which search results users clicked on, which gave it feedback about the pages that users find helpful, which improved Googles search results, which drove more people to use Google (instead of using another search engine), which gave Google more feedback about pages. I guess at a certain point this feedback loop had progressed so far that Bing/DDG could not hope to catch up.
+-
+Bing and DuckDuckGo were not around when Google established itself. Google got its initial advantage because it took user experience seriously; PageRank gave it an edge over its competitors, but it was also faster than its competitors, managed to suppress hostile SEO (that was around even then), and it clearly labeled advertisements.
+TL;DR: Google's rise is more of a classic case of enshittification.
+Of course, right now, its name recognition and established userbase make it almost unavoidable.
+-
+Google got its initial advantage because it took user experience seriously […] TL;DR: Google's rise is more of a classic case of enshittification.
+No, Google’s decline is a classic case of ‘enshittification,’ if one must use that puerile word. Its rise, on the other hand, was because it was genuinely better than the competition.
+-
+the way I understand it, enshittification refers to the entire bait-and-switch cycle where customers are lured in with a "good" product first.
+Whether or not Google search was intended as a bait-and-switch from the beginning is hard to say, but the pattern has played out so often that it's hard to argue that it can't be.
+-
+-
+-
+-
+I do not think that the reasons indicated in this post are the main problem.
+StackOverflow collapsed not because people started asking LLMs, but because they started asking in "walled garden" chats, such as Telegram and Discord. The messages there are not public by default, and nobody cares enough to publish them.
+Therefore, LLMs, who are rewriting the questions and answers there to the point of being unrecognisable, are a good thing, because they are breaking the walls of the gardens.
+-
+Speaking of enclosure feedback loops, today's enclose.horse puzzle is quite good!
+-
+Do note that StackOverflow offers their own siloed knowledge base already, Stack Overflow for Teams, and did so before LLMs became widespread. StackOverflow also embraces AI in some ways now. It’s possible that just as with social networking and the fediverse, there needs to be a credible anti-corporate alternative, even if it’s small. Maybe it exists already.
+-

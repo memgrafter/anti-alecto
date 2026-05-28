@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Resolve project root
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
+VENV="$PROJECT_ROOT/.venv"
+
+if [[ ! -d "$VENV" ]]; then
+    echo "Run install.sh first:" >&2
+    echo "  cd $PROJECT_ROOT && ./install.sh" >&2
+    exit 1
+fi
+
+exec "$VENV/bin/python" -m anti_alecto.cli "$@"

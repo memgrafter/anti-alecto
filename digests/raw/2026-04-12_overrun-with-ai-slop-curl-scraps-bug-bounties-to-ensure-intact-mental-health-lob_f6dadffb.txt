@@ -1,0 +1,138 @@
+-
+-
+-
+This sucks, but having followed the blogging for months now, it's clear the curl maintainers are getting overrun by stupid shit. For every one real report (AI assisted or not) there's a stack of ones reporting vulnerabilities in functions that don't even exist.
+-
+That is not clear from their statistics that there is a 1 to N ratio https://curl.se/dashboard1.html#hackerone
+-
+-
+We have two bounty programs. Mozilla websites/infra on HackerOne and Firefox bounty on bugzilla. Both get slop but Firefox is doing better and gets less slop reports. I think this is because of the higher cost to reporting. Not $$$ cost, but because bugzilla is a bit discouraging and annoying to use.
+I suggest people think of their barrier to reporting in the context of slop reports.
+As a "way out" for people who need to do scalable reporting, we still have security@. It has an auto-reply for essentially everyone that explains them how to file bugs using bugzilla. Most incoming email will only see the auto reply. But those that deserve an individual responses typically get it.
+-
+I wonder if “all reports have to be submitted by GPG-encrypted email to this address” would be a sufficient barrier. It’s a bit sad, but GnuPG is user-unfriendly enough that it’s a significant barrier, especially when combined with email. Though maybe this hurdle is nowadays easy to overcome with AI agents …
+-
+Golang, for one, treats GPG’d security reports as a negative quality signal, per the quote in this post1.
+-
+-
+a private reporting tool can help short term, however the moment it becomes more popular everyone will get as much slop as others
+-
+You must understand that you are not the target. With platforms like HackerOne, they essentially target everyone by scaling their bad reports across all the programs.
+I would argue the benefit is in reducing the reporter’s ROI for at-scale reporting of low quality findings to your program. The benefit is not in privacy or obscurity.
+-
+I am not saying anyone cares about me as a single person, I am talking about small to medium businesses which most of us are a part of.
+I wonder if debian gets less slop because it has similar bug reporting model, plus firefox is less and less popular, even though it's my go to browser for years.
+What I was trying to say, discouraging and annoying software shouldn't be praised or advertised as something good. It does not help to solve an avalanche of ai slop we are dealing with. Look at topics like "Your subscribption is my weekend project"
+-
+-
+-
+-
+I've started get AI slop PRs on https://github.com/FreeRADIUS/freeradius-server/
+It's clear that the people didn't even bother testing the code. The path forward there is to not just close the PR, but to ban the person involved.
+AI slop isn't just garbage, it's abuse.
+-
+I've moved my projects off github for this reason.
+If you use a code hosting site that's run by the people who are selling this crap, it seems like it's just going to get worse.
+-
+On the other hand, if you self-host e.g. gitlab, you will soon find it DoSed by AI scrapers. Maybe using a big enough but still decently aligned forge like Codeberg is the way out?
+-
+I would never recommend using gitlab (self-hosted or otherwise) because it's a resource hog and full of bugs, but I've been self-hosting Trac on literally a Thinkpad from 2010 on my shitty home DSL line at https://dev.fennel-lang.org and as long as you put iocaine in front of it, it's fine.
+But yes, Codeberg is also a great choice; they deploy similar countermeasures, but those countermeasures aren't particularly difficult to use on your own. If you want the lowest-effort off-ramp from github, this is it.
+-
+A very large slice of the scrapers can be mitigated with three ifs in a trenchcoat: if you can add a few lines to your nginx config or Caddy config, you can make the crawlers much less of an issue.
+That, and banning Alibaba & Huawei's ASNs on the firewall, because their 800+ request/second waves mean your two weak virtual CPU cores in the €4/month VPS will be busy doing TLS handshakes.
+Even in this "wonderful" age of scrapers, self-hosting is still a viable option! The scrapers are dumb.
+-
+-
+-
+-
+Good on the cURL maintainers for taking the steps they need to take. I do wonder how the security scanning exploit community will survive this, as my experience with a larger API with HackerOne is most of the reports were garbage before LLMs. They'd find non-dangerous behavior and report it, which we would fix, but the bounty would be low because....the thing they found wasn't dangerous.
+-
+If someone found a bug that you fixed then .. the program works?
+-
+-
+The source PR linked in the article: https://github.com/curl/curl/pull/20312
+Couldn’t post the PR directly as the article link.
+-
+Maybe a related phenomenon: ggml prohibits vibe coded contributions to llama.cpp
+via Brian Campbell
+-
+I think an important distinction is that this decision by curl isn't a targeted ban: it impacts both LLM spammers as well as good-faithed human contributors. I see more parallels to the new tldraw contributions policy which due to an influx of low quality LLM contributions closed the gates on everyone—ironically in favor of the maintainers using LLMs themselves.
+-
+this decision by curl isn't a targeted ban: it impacts both LLM spammers as well as good-faithed human contributors.
+This is variously called an externality, the tragedy of the commons, or why we can’t have nice things.
+-
+It's ironic, but it's a consistent position. If you want to use LLMs but think that they're a difficult tool to use right, or you want to be 100% sure when you are and aren't interacting with one, then closing external contributions (or closing off unapproved LLM usage) makes a lot of sense.
+-
+-
+-
+The llvm security report system is getting more or less constant spam nowadays, which while typically correctly identifying bugs, seem incapable of reading the basic "bugs involving untrusted input are not security issues" instruction. For llvm security bugs are: incorrect codegen or errors the libraries (libc, libc++, etc). The last security bugs I've had to look at are untrusted input, and someone complaining (at length, and arguing constantly) that after resizing to shrink a std::string, if you read out of bounds you could se the old data??!?!?!
+[edit: the latter one was genuine human dumbness, not AI]
+-
+The Lua mailing list just received a spat of LLM-generated "bugs", one which included, "
+argv[0]
+not checked forNULL
+blah blah blah". Dude! Ifargv[0]
+isNULL
+, theruntime
+is broken! Garbage reports.-
+It's actually entirely possible to exec a program with argc==0. As the
+execve
+manpage says (emphasis mine):By convention, the first of these strings (i.e.
+argv[0]
+) should contain the filename associated with the file being executed.Hypothetically, a SUID program could wind up being exploitable if it does not handle argc==0 correctly!
+... but yeah, if you just have a NULL deref or whatever in that case and in particular if the program isn't privileged, it's entirely fair to say "you're holding it wrong" about this case.
+-
+time to verify argc is greater than zero :D
+-
+-
+The last security bugs I've had to look at are untrusted input, and someone complaining (at length, and arguing constantly) that after resizing to shrink a std::string, if you read out of bounds you could se the old data??!?!?! [edit: the latter one was genuine human dumbness, not AI]
+Your example is on the extreme end of what I've witnessed, but this reminds me of so many professional discussions. A key property of a (good) function contract is that it should be unambiguous who's to blame (caller or callee) when something goes wrong, and when you don't specify function contracts, type invariants, etc, people fall back on inevitably divergent and frequently strange headcanon.
+I don't think this directly applies in your std::string example since the relevant standard library UB is specified, but it might explain why the person in question was used to thinking this way.
+Example: I've worked with a surprising number of C programmers whose apparent headcanon is that if a function takes a const char * parameter for a zero-terminated string then (1) it should be valid to pass NULL and (2) a NULL pointer should behave like an empty string.
+-
+a (good) function contract is that it should be unambiguous who's to blame (caller or callee) when something goes wrong, and when you don't specify function contracts, type invariants, etc, people fall back on inevitably divergent and frequently strange headcanon.
+Oh that std::string one sticks with me simply because of how vehemently opposed to the idea that "reading outside of the bounds of the string is UB" the reporters were - literally they updated their test case to do a capacity check to ensure "they weren't reading outside of the buffer" and so weren't invoking UB. Basically they wanted a resize to be valid for security sensitive erasure, which it is not, and just refused to accept that reading outside of bounds being UB meant we did not need to allocate a new object. I can't recall the exact details but basically they said
+-
+The spec says "operation X creates a new string and assigns it to A"
+-
+Therefore A is replaced
+-
+Therefore the old data in A is no longer accessible
+And just refused to accept that being able to observe that observing that a new allocation did not happen, or the memory was not cleared, required UB, and therefore any code that did so was definitionally wrong. It was an absurdly long back and forth that took more than a fortnight in which they kept changing their test case to "remove UB" while refusing to understand that the act of accessing beyond the string size was UB, no matter what the capacity was.
+-
+-
+-
+-
+For context, the curl HackerOne program discloses all received reports. Most programs don't. HackerOne programs get a lot of reports. Every 90 days: curl gets 95 reports, crypto.com gets 613, Coinbase gets 682, Amazon gets 1,051, etc. Curl also has gotten some rather strange reports, like A quiet New Year wish for security researchers.
+-
+I think you got the numbers wrong. According to this chart the most busy year was 2025 with 180 reports
+-
+Interesting. I hadn't looked at that page. HackerOne shows 95 under "Reports received | 90 days". They could both be accurate though, as there does seem to be an influx in the last 90 days.
+-
+Disclosure is not an influx. It happens are random dates after Disclosure -> Remediation -> Resolving. Likely timed after Curl releases. So I don't think that is a good metric to look at from our perspective.
+-
+I looked at the disclosure in conjunction with the reports received metric on the HackerOne page. According to curl's own site, they have had a total of 206 reports in all of 2025 & 2026 (thus far), which would make 95 in the last 90 days a major spike.
+Yes, an influx in disclosure does not necessarily signify an influx in reporting, but the two are surely correlated no? Especially considering that curl seems to disclose bad reports same or next day. I have not checked each and every report, however I did note that none of the 98 disclosed in the last 90 days were marked as resolved, which on average might give a shorter timeline between initial disclosure and disclosure on Hackitivity. You may have a better take on this though at Mozilla.
+-
+-
+-
+-
+-
+I wonder if some sort of 'tiered' system similar in spirit to Wikipedia's protection policy would have helped prevent something like this.
+Specifically, in a similar way that pages that have Extended confirmed protection (Bluelocked) on Wikipedia can only be edited by accounts that have existed for 30 days and have made 500 non-reversed edits, important projects like cURL would not accept bug bounties from new accounts but only those with a track record.
+...actually never mind. At the end of the day, on Wikipedia even editors who can edit Bluelocked pages, if they start acting in a bad-faith way, can get banned from the site. GitHub certainly has no interest in repremanding users who waste people's time with spurious bug bounties (let alone banning them).
+-
+HackerOne is also, as it is common now, an AI company
+Secure at scale with humans + AI
+So I would be very surprised if they do anything related to this problem.
+-
+-
+If curl's problem is this bad, I wonder if malicious companies also have this problem. The Zerodiums/NSO Groups/etc. of the world.
+-
+-
+-
+-
+-
+Vibereporting maybe? :)
+-

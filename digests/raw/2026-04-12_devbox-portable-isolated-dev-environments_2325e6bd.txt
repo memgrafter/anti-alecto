@@ -1,0 +1,50 @@
+Used by teams at
+Share your dev environment with your team, and run your project on any machine with the exact same packages and configuration
+Start by defining a list of packages and scripts for your project, and Devbox builds an isolated dev environment. No Docker or virtual machines required.
+Devbox provides an approachable, intuitive interface for creating development environments with the Nix Package Manager, without the Nix language
+Devbox is an open-source project built by Jetify with support from the community. Join the core team and thousands of developers who love Devbox
+devbox shell
+Just add the packages you need and start a Devbox shell. All your dependencies and packages in an isolated, ephemeral environment
+Devbox provides a searchable index of over 400,000 versions of 80,000 packages powered by Nix, meaning you can find the exact package that you need
+Install multiple runtime and package versions on a single machine without Docker or a VM. Use your default tools and settings with no extra config.
+Devbox creates an isolated development environment based on your devbox.json in one step. No Dockerfiles or Nix required
+Devbox lets you install and synchronize environments across your machines using Git. Eliminate developer onboarding and code from anywhere
+Share config and packages between projects with Devbox Plugins. Automate package config so developers can start coding instantly
+devbox.json
+devbox services up
+Devbox can do more than just bundle packages. You can also define and share scripts, services, and entire runbooks with a single JSON config
+Devbox can define and run your project's services with process-compose. Spin up your entire dev environment with a single command
+Devbox makes it easy to run scripts and tasks within the context of your shell. Run tasks in the same reproducible dev environment, locally or on your CI/CD system.
+Using Devbox keeps your CI/CD and development environments in sync and reproducible and fast.
+Use our Devbox Install Action to automatically configure Devbox, and install your packages. Your dev and CI environments will never diverge again.
+Devbox can cache your Nix store automatically with the Github Actions Cache, so your environment setup is almost instantaneous.
+devbox-workflow.yml
+Your Devbox projects are fully portable, meaning you can run them locally, in a containerized environment, or on Jetify Devspace
+Spin up your project in the cloud with Jetify Devspace. Try out Devspace using one of our Templates for free.
+Easily generate a container for your project, so you can run your dev environment on any platform that supports Docker containers.
+Jetify Cloud can deploy your Devbox project as an autoscaling web service. Define your project with either Devbox or Docker, and ship directly from Github.
+Jetify Secrets provides easy and secure Secrets Management that automatically works with your Devbox Shells and Jetify Deploys.
+Jetify's Private and Prebuilt Caches can share binaries and packages across all your projects and deployments. Stop rebuilding and start shipping
+Get started with Devbox using one of our example projects. Get an isolated Python, NodeJS, Ruby, or Golang dev environment up and running on any operating system, or deploy a full Rails, PHP + Postgres, or Jekyll application anywhere
+EVERYTHING YOU NEED
+Trusted by Thousands of Developers
+Devbox is trusted by thousands of developers, across a wide range of industries and use cases. Devbox can help your team, whether you're focused on cloud development, data science, or open source packaging
+Our projects leverage Devbox to automate our dev environments. No more (outdated) getting started guides, missing dependencies, or "it works on my machine"... it runs anywhere including CI.
+Mike Nikles
+Founder, Webstone Technologies
+With Devbox, it's been so easy to share developer environment with my instructors and other developers. They're truly portable and don't require Docker to run.
+Tao Hansen
+Developer Advocate, Garden.io
+Onboarding new developers has never been easier and our CI/CD never looked cleaner. We highly recommend Devbox to any team looking to improve their development workflow.
+George Antoniadis
+Software Engineer, Nimona
+Devbox helps solve your dev environment provisioning headaches, and keeps developers productive and focused on what matters.
+Try new tools and frameworks without modifying your host machine. Install and run packages on demand, then delete the dev environment when finished.
+Automate the setup and package installation for your dev environment with init hooks. Bundle common development tasks into reusable scripts
+Devbox bundles your configuration with code, so you can preview branches or pull-requests for any repo. You can run preview environments in the browser with Devbox Cloud
+Ramp up and onboard new developers without complicated shell scripts or guides. Just install Devbox, run devbox shell
+, and get started coding
+Use Devbox to reproduce your test environment across localhost and CI/CD build hosts. Use Github Actions to create workflows from your scripts
+Devbox tracks the packages for each of your projects in an isolated and reproducible Nix shell. Develop isolated projects with conflicting dependencies on the same machine.
+© 2024 Jetify Inc. All rights reserved.
+Jetify Inc., formerly Jetpack Technologies Inc., is not associated with, sponsored by, or related to WordPress and WooCommerce.

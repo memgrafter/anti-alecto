@@ -1,0 +1,83 @@
+Reddit thread capture
+
+Thread URL: https://reddit.com/r/ClaudeCode/comments/1rsur5s/i_built_a_claude_code_skill_that_applies/
+Subreddit: r/ClaudeCode
+Title: I built a Claude Code skill that applies Karpathy's autoresearch to any task ... not just ML
+Author: u/uditgoenka
+Score: 381
+Comment count (reported): 73
+
+## Original post
+I built a Claude Code skill that applies Karpathy's autoresearch to any task ... not just ML Karpathy's autoresearch showed that constraint + mechanical metric + autonomous iteration = compounding gains. 630 lines of Python, 100 experiments per night, automatic rollback on failure. I generalized this into a Claude Code skill. You define a goal, a metric, and a verification command ... then Claude loops forever: make one atomic change → git commit → verify → keep if improved, revert if not → repeat. Never stops until you interrupt. Works for anything measurable: test coverage, bundle size, Lighthouse scores, API response time, SEO scores, ad copy quality, even SQL query optimization. Combines with MCP servers for database-driven or analytics-driven loops. Every improvement stacks. Every failure auto-reverts. Progress logged in TSV. You wake up to results. MIT licensed, open source: [github.com/uditgoenka/autoresearch](http://github.com/uditgoenka/autoresearch) Please do share your feedback or raise a PR, happy to implement newer ideas.
+
+## Prominent viewpoints (top-level comments)
+1. (26) u/jarec707: You did a great job providing use case examples with code. Bravo!
+2. (8) u/Overstay3461: Nice. I did the same thing. And used it to improve itself. Now going to compare yours to mine!
+3. (8) u/Business-Weekend-537: OP can you add a way to set a budget or only allow it to run until it hits Claude code monthly plan limit? I’m only semi technical and I’m worried if I try it that my credit card will burst into flames lol.
+4. (5) u/campionbouy123T: How much could it cost to run it to improve its ability to create educational material
+5. (4) u/ai_understands_me: Good work mate. Top marks
+6. (4) u/Relative_Register_79: This is really nice I love the core concept: You define a goal + a mechanical metric + a verification command, then Claude runs forever. I was thinking quickly that the repo assumes you already know your metric and verification command. But that’s actually the hardest part for most people. My idea was to adds a meta-layer that handles the translation didn’t try yet will give you a feedback Intent Layer (human) "I want faster API responses" ↓ Orchestration Layer (new) - Infers metric: p95 response time in ms - Generates verify command: npm run bench | grep p95 - Scopes files: src/api/** - Validates the loop is runnable ↓ autoresearch loop (existing) Modify → Verify → Keep/Discard → Repeat
+7. (2) u/Mishuri: This will not work. Unless i am mising something, the only way you enforce long-horizon is through prompt? doesn't matter how hard you prompt it needs ralph-like-looping and tasks for this
+8. (2) u/nginity: Great. I did the same and it is wonderfull to see what results are shaping the output, when the runs are completed.
+
+## Thread discussion sample
+- (26) u/jarec707: You did a great job providing use case examples with code. Bravo!
+  - (8) u/uditgoenka: Thank you! Wanted to make people's life easier by providing various samples, examples, ideas and how the skill can be used to make life easier and lazier 😅
+- (8) u/Overstay3461: Nice. I did the same thing. And used it to improve itself. Now going to compare yours to mine!
+  - (3) u/uditgoenka: Looking forward to it.
+    - (1) u/BetImaginary4945: I also build one that improves itself on all of yours +infinity
+      - (1) u/uditgoenka: Great!
+- (8) u/Business-Weekend-537: OP can you add a way to set a budget or only allow it to run until it hits Claude code monthly plan limit? I’m only semi technical and I’m worried if I try it that my credit card will burst into flames lol.
+  - (1) u/uditgoenka: You can define your goals, it will stop once it achieves the goal.
+    - (7) u/Business-Weekend-537: Right but what about budgeting for how many tokens it can consume while it pursues the goal?
+      - (2) u/nadanone: Just trust the LLM, bro. They deterministically adhere exactly to instructions now. :)
+  - (2) u/StardockEngineer: Create a hook to check the limits.
+- (5) u/campionbouy123T: How much could it cost to run it to improve its ability to create educational material
+  - (2) u/jeremynsl: It needs to be measurable. How can you quantify the ability to create educational material?
+    - (1) u/barrettj: Having an LLM score it based on criteria
+    - (1) u/uditgoenka: You have to define the result you are looking to achieve, AI will figure out from their
+  - (1) u/HeoJunKorea: [https://www.snowflake.com/en/engineering-blog/ai-agent-evaluation-gpa-framework/](https://www.snowflake.com/en/engineering-blog/ai-agent-evaluation-gpa-framework/)
+  - (-1) u/Business-Weekend-537: One approach might be to get a 20/mo plan and let it run until it hits the daily limit. This way you’re not spending infinite money but you’re seeing if it’s worthwhile to keep going. If it is then you could pay for api credits when prompted. OP does this approach make logical sense? It won’t go past Claude Code limits without you manually intervening right?
+    - (2) u/uditgoenka: Naa, you don't need to do this, just use your regular Max account, and you should be good to go.
+- (4) u/ai_understands_me: Good work mate. Top marks
+  - (2) u/uditgoenka: Thank you ☺️
+- (4) u/Relative_Register_79: This is really nice I love the core concept: You define a goal + a mechanical metric + a verification command, then Claude runs forever. I was thinking quickly that the repo assumes you already know your metric and verification command. But that’s actually the hardest part for most people. My idea was to adds a meta-layer that handles the translation didn’t try yet will give you a feedback Intent Layer (human) "I want faster API responses" ↓ Orchestration Layer (new) - Infers metric: p95 response time in ms - Generates verify command: npm run bench | grep p95 - Scopes files: src/api/** - Validates the loop is runnable ↓ autoresearch loop (existing) Modify → Verify → Keep/Discard → Repeat
+- (2) u/Mishuri: This will not work. Unless i am mising something, the only way you enforce long-horizon is through prompt? doesn't matter how hard you prompt it needs ralph-like-looping and tasks for this
+  - (0) u/uditgoenka: It works great, give it a try. I have shared lots of samples as well.
+- (2) u/nginity: Great. I did the same and it is wonderfull to see what results are shaping the output, when the runs are completed.
+- (2) u/Alert-Dare-8146: This is brilliant! The automated iteration loop concept is exactly what scheduled AI tasks excel at. With Fresh Focus AI, you could set up similar optimization workflows to run automatically overnight. We've had scheduled tasks since 2025 - you can configure any AI workflow (using 40+ models) to run on cron schedules, measure metrics, and email you improvements. At $15/month vs Claude Code's $100+ plans, it's designed for exactly this kind of continuous automated optimization. Perfect for SEO score improvements, code optimization, or any measurable task you want to iterate on automatically.
+- (2) u/Only_Management_1010: This is cool! In the original autoresearch I noticed that the agent has very limited observability into the training process and rarely looks beyond the final validation loss, so I added an analysis step where the agent uses Python to inspect training dynamics. Just this makes autoresearch 60% more efficient. Would you consider adding it to your skill too? https://preview.redd.it/kmphhrm127qg1.png?width=1746&format=png&auto=webp&s=a97b5b263d2ef7e2875da77fff3ed7bb8a759e25 More info here: [https://github.com/ottogin/auto-log-research](https://github.com/ottogin/auto-log-research)
+  - (1) u/uditgoenka: Can you please create a new issue with the details? [https://github.com/uditgoenka/autoresearch/issues](https://github.com/uditgoenka/autoresearch/issues)
+- (1) u/villsrk: Im not sure “when to activate” should go inside the skill itself. When AI agent reaches this section the skill is already fully loaded. For skill autoload to work this should be in the description in frontmatter.
+  - (1) u/uditgoenka: You can active this right from the get go when you are trying to build a new feature and combine it with other skills as well for chain of thoughts. Just ensure to write "Use multiple agent and sub-agents Team Swarms in parallel".
+    - (1) u/codeedog: Could you describe this mode more fully? Does this have the ability to run multiple variations on the same skill improvement or different skills or both?
+      - (2) u/uditgoenka: It can work with multiple skills as well to build a chain of thoughts. Just ensure to write "Use multiple agent and sub-agents Team Swarms in parallel" at the end.
+      - (1) u/codeedog: Nice!
+- (1) u/ApprehensiveChip8361: I’ve set a deliberately hard task and used this sort of loop (home grown) to run 4 approaches in parallel as a way to evaluate approaches. (So far a good CLAUDE.md beats attempts to enhance memory for instance). One thing this is very good for is burning tokens! It was all going very well until they hit the same hard bug and then they spent an entire night collectively beating their head against the wall. The most important thing is preventing reversion.
+  - (1) u/uditgoenka: It really depends on your instructions and context. The reason why self loop exists is because it constant analysis it's previous performance to decide the next step.
+    - (1) u/ApprehensiveChip8361: I agree. I’m thinking up rules to try and identify the brick wall problem. And even with intervention I’m still not past that particular brick wall yet.
+      - (1) u/uditgoenka: If their is any kind of human intervention then it kind of defeats the purpose of this concept of autoresearch 😅
+      - (1) u/ApprehensiveChip8361: After burning my week’s quota in one session, pragmatism beats purity! I’m running rounds and scoring each one. When 20 attempts all get nowhere and I’ve run out of tokens it’s time to switch it up.
+- (1) u/andruchs1: Does that really make sense on things like SEO or Ads? I mean testing in small time horizons doesn’t make any sense for these applications…
+  - (2) u/uditgoenka: You can always add an interval of few hours to run the test on ads, it's really up to you, and your use case. Also, it depends on the kind of volume you are doing. If someone is spending over $100k a month on ads, they need to make heavy data decision. So ideally it depends on your individual use case.
+    - (1) u/andruchs1: Great project man
+      - (1) u/uditgoenka: thank you
+- (1) u/Formal_Bat_3109: What do you use it for?
+  - (2) u/uditgoenka: Check the readme of the repo, I have added multiple use cases and samples
+- (1) u/Any_Baby_3888: Can you please share a demo for seo use case OP?
+- (1) u/Kewlb: How do you get it to loop endlessly? I have been playing with new /loop feature but it always writes commands that eventually force human approval and so far have not been able to avoid that no matter how I craft instructions or what I put in permissions.
+  - (1) u/uditgoenka: Just use /autoresearch “context” and it will get into endless loop!
+    - (1) u/Kewlb: Not for your solution I mean in general. Especially when you need Claude to issue a lot of bash, curl, and python commands often using pipes and methods that trigger user approval.
+      - (1) u/uditgoenka: Ya, autoresearch is built on the same principle. Because natively claude work on it, hence I built that skill which is open source and unlocks that power.
+- (1) u/r_rocks: A small skill /autoresearch:plan to help the user come up with the [Scope, Metric and Verify] based on the textual Goal. It could use the knowledge of the autoresearch principles, interact using QuestionsTool and validate both the Metric and Verify similar to Skills v2, before “launch” the real deal would make this so easy to assemble and execute it would be scary.
+  - (2) u/uditgoenka: Here you go, just shipped v1.0.2: [https://github.com/uditgoenka/autoresearch/releases/tag/v1.0.2](https://github.com/uditgoenka/autoresearch/releases/tag/v1.0.2) u/r_rocks
+    - (1) u/r_rocks: Amazing! I will try it tonight for sure!
+- (1) u/mrtrly: the approach you've generalized is exactly right. constraint + metric + autonomous loop is how I think about production Claude Code workflows too, not just ML. one thing I'd add from running long loops: your CLAUDE.md becomes critical as context grows. if Claude loses track of *why* a constraint exists, it starts optimizing around it. I have a section called "invariants" — things that must stay true no matter what the metric says. stops a lot of subtle drift before you even notice. also curious — are you running verification with stop hooks or polling? I use stop hooks to fire test runs automatically when Claude pauses. means Claude never has to be told 'run the tests' — it just happens, and
+- (1) u/StardockEngineer: I did the same thing, too!
+  - (1) u/uditgoenka: Great
+    - (1) u/StardockEngineer: I’ll check yours out, especially if you keep improving it.
+      - (2) u/uditgoenka: I built it for myself first but then decided to open source it, I have already pushed 3 major updates since the initial release just two days ago.
+- (1) u/Delicious-Storm-5243: We built something complementary — while your skill generalizes the metric-driven loop, we focused on the safety layer for production codebases. Ouro Loop adds formal constraints before the agent runs: - IRON LAWS: invariants that must always hold (e.g. All monetary values use Decimal, never float) - DANGER ZONES: files the agent must never modify blindly - Autonomous remediation: when verification fails, the agent consults a playbook, reverts, tries a different approach Real test: threw a consensus latency bug at it on an L1 blockchain. Agent tested 5 hypotheses overnight. First 4 wrong. On the 5th, it stepped back, re-examined the architecture from the network layer, found the real root ca
+- (1) u/General_Arrival_9176: this is a solid concept. the auto-revert on failure is the key part that makes it actually usable overnight. have you tried combining it with mcp servers for database-driven metrics yet? curious how it handles things like postgres query performance as the measurable target
+  - (1) u/uditgoenka: Yes, I did, and also provided the support for the same.
+- (1) u/sam-sonofralph: Looks good. How does it handle window context management?

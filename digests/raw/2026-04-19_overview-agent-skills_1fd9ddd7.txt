@@ -1,0 +1,169 @@
+Title: Overview - Agent Skills
+
+URL Source: http://agentskills.io/home
+
+Markdown Content:
+Agent Skills are folders of instructions, scripts, and resources that agents can discover and use to do things more accurately and efficiently.
+
+Agents are increasingly capable, but often don’t have the context they need to do real work reliably. Skills solve this by giving agents access to procedural knowledge and company-, team-, and user-specific context they can load on demand. Agents with access to a set of skills can extend their capabilities based on the task they’re working on.**For skill authors**: Build capabilities once and deploy them across multiple agent products.**For compatible agents**: Support for skills lets end users give agents new capabilities out of the box.**For teams and enterprises**: Capture organizational knowledge in portable, version-controlled packages.
+
+## What can Agent Skills enable?
+
+*   **Domain expertise**: Package specialized knowledge into reusable instructions, from legal review processes to data analysis pipelines.
+*   **New capabilities**: Give agents new capabilities (e.g. creating presentations, building MCP servers, analyzing datasets).
+*   **Repeatable workflows**: Turn multi-step tasks into consistent and auditable workflows.
+*   **Interoperability**: Reuse the same skill across different skills-compatible agent products.
+
+## Adoption
+
+Agent Skills are supported by leading AI development tools.
+
+[![Image 1: VT Code](https://agentskills.io/images/logos/vtcode/vt_code_light.svg)![Image 2: VT Code](https://agentskills.io/images/logos/vtcode/vt_code_dark.svg)](https://github.com/vinhnx/vtcode)
+
+[![Image 3: Letta](https://agentskills.io/images/logos/letta/Letta-logo-RGB_OffBlackonTransparent.svg)![Image 4: Letta](https://agentskills.io/images/logos/letta/Letta-logo-RGB_GreyonTransparent.svg)](https://www.letta.com/)
+
+[![Image 5: Cursor](https://agentskills.io/images/logos/cursor/LOCKUP_HORIZONTAL_2D_LIGHT.svg)![Image 6: Cursor](https://agentskills.io/images/logos/cursor/LOCKUP_HORIZONTAL_2D_DARK.svg)](https://cursor.com/)
+
+[![Image 7: Claude](https://agentskills.io/images/logos/claude-ai/Claude-logo-Slate.svg)![Image 8: Claude](https://agentskills.io/images/logos/claude-ai/Claude-logo-Ivory.svg)](https://claude.ai/)
+
+[![Image 9: OpenAI Codex](https://agentskills.io/images/logos/oai-codex/OAI_Codex-Lockup_400px.svg)![Image 10: OpenAI Codex](https://agentskills.io/images/logos/oai-codex/OAI_Codex-Lockup_400px_Darkmode.svg)](https://developers.openai.com/codex)
+
+[![Image 11: OpenHands](https://agentskills.io/images/logos/openhands/openhands-logo-light.svg)![Image 12: OpenHands](https://agentskills.io/images/logos/openhands/openhands-logo-dark.svg)](https://openhands.dev/)
+
+[![Image 13: OpenCode](https://agentskills.io/images/logos/opencode/opencode-wordmark-light.svg)![Image 14: OpenCode](https://agentskills.io/images/logos/opencode/opencode-wordmark-dark.svg)](https://opencode.ai/)
+
+[![Image 15: Gemini CLI](https://agentskills.io/images/logos/gemini-cli/gemini-cli-logo_light.svg)![Image 16: Gemini CLI](https://agentskills.io/images/logos/gemini-cli/gemini-cli-logo_dark.svg)](https://geminicli.com/)
+
+[![Image 17: GitHub Copilot](https://agentskills.io/images/logos/github/GitHub_Lockup_Dark.svg)![Image 18: GitHub Copilot](https://agentskills.io/images/logos/github/GitHub_Lockup_Light.svg)](https://github.com/)
+
+[![Image 19: Mistral AI Vibe](https://agentskills.io/images/logos/mistral-vibe/vibe-logo_black.svg)![Image 20: Mistral AI Vibe](https://agentskills.io/images/logos/mistral-vibe/vibe-logo_white.svg)](https://github.com/mistralai/mistral-vibe)
+
+[![Image 21: Spring AI](https://agentskills.io/images/logos/spring-ai/spring-ai-logo-light.svg)![Image 22: Spring AI](https://agentskills.io/images/logos/spring-ai/spring-ai-logo-dark.svg)](https://docs.spring.io/spring-ai/reference)
+
+[![Image 23: Amp](https://agentskills.io/images/logos/amp/amp-logo-light.svg)![Image 24: Amp](https://agentskills.io/images/logos/amp/amp-logo-dark.svg)](https://ampcode.com/)
+
+[![Image 25: Databricks Genie Code](https://agentskills.io/images/logos/databricks/databricks-logo-light.svg)![Image 26: Databricks Genie Code](https://agentskills.io/images/logos/databricks/databricks-logo-dark.svg)](https://databricks.com/)
+
+[![Image 27: pi](https://agentskills.io/images/logos/pi/pi-logo-light.svg)![Image 28: pi](https://agentskills.io/images/logos/pi/pi-logo-dark.svg)](https://shittycodingagent.ai/)
+
+[![Image 29: TRAE](https://agentskills.io/images/logos/trae/trae-logo-lightmode.svg)![Image 30: TRAE](https://agentskills.io/images/logos/trae/trae-logo-darkmode.svg)](https://trae.ai/)
+
+[![Image 31: Roo Code](https://agentskills.io/images/logos/roo-code/roo-code-logo-black.svg)![Image 32: Roo Code](https://agentskills.io/images/logos/roo-code/roo-code-logo-white.svg)](https://roocode.com/)
+
+[![Image 33: Workshop](https://agentskills.io/images/logos/workshop/workshop-logo-light.svg)![Image 34: Workshop](https://agentskills.io/images/logos/workshop/workshop-logo-dark.svg)](https://workshop.ai/)
+
+[![Image 35: Firebender](https://agentskills.io/images/logos/firebender/firebender-wordmark-light.svg)![Image 36: Firebender](https://agentskills.io/images/logos/firebender/firebender-wordmark-dark.svg)](https://firebender.com/)
+
+[![Image 37: VT Code](https://agentskills.io/images/logos/vtcode/vt_code_light.svg)![Image 38: VT Code](https://agentskills.io/images/logos/vtcode/vt_code_dark.svg)](https://github.com/vinhnx/vtcode)
+
+[![Image 39: Letta](https://agentskills.io/images/logos/letta/Letta-logo-RGB_OffBlackonTransparent.svg)![Image 40: Letta](https://agentskills.io/images/logos/letta/Letta-logo-RGB_GreyonTransparent.svg)](https://www.letta.com/)
+
+[![Image 41: Cursor](https://agentskills.io/images/logos/cursor/LOCKUP_HORIZONTAL_2D_LIGHT.svg)![Image 42: Cursor](https://agentskills.io/images/logos/cursor/LOCKUP_HORIZONTAL_2D_DARK.svg)](https://cursor.com/)
+
+[![Image 43: Claude](https://agentskills.io/images/logos/claude-ai/Claude-logo-Slate.svg)![Image 44: Claude](https://agentskills.io/images/logos/claude-ai/Claude-logo-Ivory.svg)](https://claude.ai/)
+
+[![Image 45: OpenAI Codex](https://agentskills.io/images/logos/oai-codex/OAI_Codex-Lockup_400px.svg)![Image 46: OpenAI Codex](https://agentskills.io/images/logos/oai-codex/OAI_Codex-Lockup_400px_Darkmode.svg)](https://developers.openai.com/codex)
+
+[![Image 47: OpenHands](https://agentskills.io/images/logos/openhands/openhands-logo-light.svg)![Image 48: OpenHands](https://agentskills.io/images/logos/openhands/openhands-logo-dark.svg)](https://openhands.dev/)
+
+[![Image 49: OpenCode](https://agentskills.io/images/logos/opencode/opencode-wordmark-light.svg)![Image 50: OpenCode](https://agentskills.io/images/logos/opencode/opencode-wordmark-dark.svg)](https://opencode.ai/)
+
+[![Image 51: Gemini CLI](https://agentskills.io/images/logos/gemini-cli/gemini-cli-logo_light.svg)![Image 52: Gemini CLI](https://agentskills.io/images/logos/gemini-cli/gemini-cli-logo_dark.svg)](https://geminicli.com/)
+
+[![Image 53: GitHub Copilot](https://agentskills.io/images/logos/github/GitHub_Lockup_Dark.svg)![Image 54: GitHub Copilot](https://agentskills.io/images/logos/github/GitHub_Lockup_Light.svg)](https://github.com/)
+
+[![Image 55: Mistral AI Vibe](https://agentskills.io/images/logos/mistral-vibe/vibe-logo_black.svg)![Image 56: Mistral AI Vibe](https://agentskills.io/images/logos/mistral-vibe/vibe-logo_white.svg)](https://github.com/mistralai/mistral-vibe)
+
+[![Image 57: Spring AI](https://agentskills.io/images/logos/spring-ai/spring-ai-logo-light.svg)![Image 58: Spring AI](https://agentskills.io/images/logos/spring-ai/spring-ai-logo-dark.svg)](https://docs.spring.io/spring-ai/reference)
+
+[![Image 59: Amp](https://agentskills.io/images/logos/amp/amp-logo-light.svg)![Image 60: Amp](https://agentskills.io/images/logos/amp/amp-logo-dark.svg)](https://ampcode.com/)
+
+[![Image 61: Databricks Genie Code](https://agentskills.io/images/logos/databricks/databricks-logo-light.svg)![Image 62: Databricks Genie Code](https://agentskills.io/images/logos/databricks/databricks-logo-dark.svg)](https://databricks.com/)
+
+[![Image 63: pi](https://agentskills.io/images/logos/pi/pi-logo-light.svg)![Image 64: pi](https://agentskills.io/images/logos/pi/pi-logo-dark.svg)](https://shittycodingagent.ai/)
+
+[![Image 65: TRAE](https://agentskills.io/images/logos/trae/trae-logo-lightmode.svg)![Image 66: TRAE](https://agentskills.io/images/logos/trae/trae-logo-darkmode.svg)](https://trae.ai/)
+
+[![Image 67: Roo Code](https://agentskills.io/images/logos/roo-code/roo-code-logo-black.svg)![Image 68: Roo Code](https://agentskills.io/images/logos/roo-code/roo-code-logo-white.svg)](https://roocode.com/)
+
+[![Image 69: Workshop](https://agentskills.io/images/logos/workshop/workshop-logo-light.svg)![Image 70: Workshop](https://agentskills.io/images/logos/workshop/workshop-logo-dark.svg)](https://workshop.ai/)
+
+[![Image 71: Firebender](https://agentskills.io/images/logos/firebender/firebender-wordmark-light.svg)![Image 72: Firebender](https://agentskills.io/images/logos/firebender/firebender-wordmark-dark.svg)](https://firebender.com/)
+
+[![Image 73: VS Code](https://agentskills.io/images/logos/vscode/vscode.svg)![Image 74: VS Code](https://agentskills.io/images/logos/vscode/vscode-alt.svg)](https://code.visualstudio.com/)
+
+[![Image 75: Mux](https://agentskills.io/images/logos/mux/mux-editor-light.svg)![Image 76: Mux](https://agentskills.io/images/logos/mux/mux-editor-dark.svg)](https://mux.coder.com/)
+
+[![Image 77: Factory](https://agentskills.io/images/logos/factory/factory-logo-light.svg)![Image 78: Factory](https://agentskills.io/images/logos/factory/factory-logo-dark.svg)](https://factory.ai/)
+
+[![Image 79: Agentman](https://agentskills.io/images/logos/agentman/agentman-wordmark-light.svg)![Image 80: Agentman](https://agentskills.io/images/logos/agentman/agentman-wordmark-dark.svg)](https://agentman.ai/)
+
+[![Image 81: Kiro](https://agentskills.io/images/logos/kiro/kiro-logo-light.svg)![Image 82: Kiro](https://agentskills.io/images/logos/kiro/kiro-logo-dark.svg)](https://kiro.dev/)
+
+[![Image 83: Google AI Edge Gallery](https://agentskills.io/images/logos/google-ai-edge-gallery/google-ai-edge-gallery-light.svg)![Image 84: Google AI Edge Gallery](https://agentskills.io/images/logos/google-ai-edge-gallery/google-ai-edge-gallery-dark.svg)](https://github.com/google-ai-edge/gallery)
+
+[![Image 85: Goose](https://agentskills.io/images/logos/goose/goose-logo-black.png)![Image 86: Goose](https://agentskills.io/images/logos/goose/goose-logo-white.png)](https://block.github.io/goose/)
+
+[![Image 87: Emdash](https://agentskills.io/images/logos/emdash/emdash-logo-light.svg)![Image 88: Emdash](https://agentskills.io/images/logos/emdash/emdash-logo-dark.svg)](https://emdash.sh/)
+
+[![Image 89: Laravel Boost](https://agentskills.io/images/logos/laravel-boost/boost-light-mode.svg)![Image 90: Laravel Boost](https://agentskills.io/images/logos/laravel-boost/boost-dark-mode.svg)](https://github.com/laravel/boost)
+
+[![Image 91: Ona](https://agentskills.io/images/logos/ona/ona-wordmark-light.svg)![Image 92: Ona](https://agentskills.io/images/logos/ona/ona-wordmark-dark.svg)](https://ona.com/)
+
+[![Image 93: Piebald](https://agentskills.io/images/logos/piebald/Piebald_wordmark_light.svg)![Image 94: Piebald](https://agentskills.io/images/logos/piebald/Piebald_wordmark_dark.svg)](https://piebald.ai/)
+
+[![Image 95: Junie](https://agentskills.io/images/logos/junie/junie-logo-on-white.svg)![Image 96: Junie](https://agentskills.io/images/logos/junie/junie-logo-on-dark.svg)](https://junie.jetbrains.com/)
+
+[![Image 97: Claude Code](https://agentskills.io/images/logos/claude-code/Claude-Code-logo-Slate.svg)![Image 98: Claude Code](https://agentskills.io/images/logos/claude-code/Claude-Code-logo-Ivory.svg)](https://claude.ai/code)
+
+[![Image 99: nanobot](https://agentskills.io/images/logos/nanobot/nanobot-logo-light.png)![Image 100: nanobot](https://agentskills.io/images/logos/nanobot/nanobot-logo-dark.png)](https://nanobot.wiki/)
+
+[![Image 101: Qodo](https://agentskills.io/images/logos/qodo/qodo-logo-light.png)![Image 102: Qodo](https://agentskills.io/images/logos/qodo/qodo-logo-dark.svg)](https://www.qodo.ai/)
+
+[![Image 103: Command Code](https://agentskills.io/images/logos/command-code/command-code-logo-for-light.svg)![Image 104: Command Code](https://agentskills.io/images/logos/command-code/command-code-logo-for-dark.svg)](https://commandcode.ai/)
+
+[![Image 105: Snowflake Cortex Code](https://agentskills.io/images/logos/snowflake/snowflake-logo-light.svg)![Image 106: Snowflake Cortex Code](https://agentskills.io/images/logos/snowflake/snowflake-logo-dark.svg)](https://docs.snowflake.com/en/user-guide/cortex-code/cortex-code)
+
+[![Image 107: Autohand Code CLI](https://agentskills.io/images/logos/autohand/autohand-light.svg)![Image 108: Autohand Code CLI](https://agentskills.io/images/logos/autohand/autohand-dark.svg)](https://autohand.ai/)
+
+[![Image 109: VS Code](https://agentskills.io/images/logos/vscode/vscode.svg)![Image 110: VS Code](https://agentskills.io/images/logos/vscode/vscode-alt.svg)](https://code.visualstudio.com/)
+
+[![Image 111: Mux](https://agentskills.io/images/logos/mux/mux-editor-light.svg)![Image 112: Mux](https://agentskills.io/images/logos/mux/mux-editor-dark.svg)](https://mux.coder.com/)
+
+[![Image 113: Factory](https://agentskills.io/images/logos/factory/factory-logo-light.svg)![Image 114: Factory](https://agentskills.io/images/logos/factory/factory-logo-dark.svg)](https://factory.ai/)
+
+[![Image 115: Agentman](https://agentskills.io/images/logos/agentman/agentman-wordmark-light.svg)![Image 116: Agentman](https://agentskills.io/images/logos/agentman/agentman-wordmark-dark.svg)](https://agentman.ai/)
+
+[![Image 117: Kiro](https://agentskills.io/images/logos/kiro/kiro-logo-light.svg)![Image 118: Kiro](https://agentskills.io/images/logos/kiro/kiro-logo-dark.svg)](https://kiro.dev/)
+
+[![Image 119: Google AI Edge Gallery](https://agentskills.io/images/logos/google-ai-edge-gallery/google-ai-edge-gallery-light.svg)![Image 120: Google AI Edge Gallery](https://agentskills.io/images/logos/google-ai-edge-gallery/google-ai-edge-gallery-dark.svg)](https://github.com/google-ai-edge/gallery)
+
+[![Image 121: Goose](https://agentskills.io/images/logos/goose/goose-logo-black.png)![Image 122: Goose](https://agentskills.io/images/logos/goose/goose-logo-white.png)](https://block.github.io/goose/)
+
+[![Image 123: Emdash](https://agentskills.io/images/logos/emdash/emdash-logo-light.svg)![Image 124: Emdash](https://agentskills.io/images/logos/emdash/emdash-logo-dark.svg)](https://emdash.sh/)
+
+[![Image 125: Laravel Boost](https://agentskills.io/images/logos/laravel-boost/boost-light-mode.svg)![Image 126: Laravel Boost](https://agentskills.io/images/logos/laravel-boost/boost-dark-mode.svg)](https://github.com/laravel/boost)
+
+[![Image 127: Ona](https://agentskills.io/images/logos/ona/ona-wordmark-light.svg)![Image 128: Ona](https://agentskills.io/images/logos/ona/ona-wordmark-dark.svg)](https://ona.com/)
+
+[![Image 129: Piebald](https://agentskills.io/images/logos/piebald/Piebald_wordmark_light.svg)![Image 130: Piebald](https://agentskills.io/images/logos/piebald/Piebald_wordmark_dark.svg)](https://piebald.ai/)
+
+[![Image 131: Junie](https://agentskills.io/images/logos/junie/junie-logo-on-white.svg)![Image 132: Junie](https://agentskills.io/images/logos/junie/junie-logo-on-dark.svg)](https://junie.jetbrains.com/)
+
+[![Image 133: Claude Code](https://agentskills.io/images/logos/claude-code/Claude-Code-logo-Slate.svg)![Image 134: Claude Code](https://agentskills.io/images/logos/claude-code/Claude-Code-logo-Ivory.svg)](https://claude.ai/code)
+
+[![Image 135: nanobot](https://agentskills.io/images/logos/nanobot/nanobot-logo-light.png)![Image 136: nanobot](https://agentskills.io/images/logos/nanobot/nanobot-logo-dark.png)](https://nanobot.wiki/)
+
+[![Image 137: Qodo](https://agentskills.io/images/logos/qodo/qodo-logo-light.png)![Image 138: Qodo](https://agentskills.io/images/logos/qodo/qodo-logo-dark.svg)](https://www.qodo.ai/)
+
+[![Image 139: Command Code](https://agentskills.io/images/logos/command-code/command-code-logo-for-light.svg)![Image 140: Command Code](https://agentskills.io/images/logos/command-code/command-code-logo-for-dark.svg)](https://commandcode.ai/)
+
+[![Image 141: Snowflake Cortex Code](https://agentskills.io/images/logos/snowflake/snowflake-logo-light.svg)![Image 142: Snowflake Cortex Code](https://agentskills.io/images/logos/snowflake/snowflake-logo-dark.svg)](https://docs.snowflake.com/en/user-guide/cortex-code/cortex-code)
+
+[![Image 143: Autohand Code CLI](https://agentskills.io/images/logos/autohand/autohand-light.svg)![Image 144: Autohand Code CLI](https://agentskills.io/images/logos/autohand/autohand-dark.svg)](https://autohand.ai/)
+
+## Open development
+
+The Agent Skills format was originally developed by [Anthropic](https://www.anthropic.com/), released as an open standard, and has been adopted by a growing number of agent products. The standard is open to contributions from the broader ecosystem.Come join the discussion on [GitHub](https://github.com/agentskills/agentskills) or [Discord](https://discord.gg/MKPE9g8aUy)!
+
+## Get started

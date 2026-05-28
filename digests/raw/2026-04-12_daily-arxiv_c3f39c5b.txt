@@ -1,0 +1,261 @@
+daily arXiv
+
+select topics and dates
+»
+Dates
+[Today]
+«	April, 2026	»
+Sun	Mon	Tue	Wed	Thu	Fri	Sat
+
+	
+	
+	
+1
+	
+2
+	
+3
+	
+4
+
+
+5
+	
+6
+	
+7
+	
+8
+	
+9
+	
+10
+	
+11
+
+
+12
+	
+13
+	
+14
+	
+15
+	
+16
+	
+17
+	
+18
+
+
+19
+	
+20
+	
+21
+	
+22
+	
+23
+	
+24
+	
+25
+
+
+26
+	
+27
+	
+28
+	
+29
+	
+30
+	
+	
+
+
+	
+	
+	
+	
+	
+	
+Please select one or more areas to read
+Physics
+Astrophysics
+Astrophysics of Galaxies
+Cosmology and Nongalactic Astrophysics
+Earth and Planetary Astrophysics
+High Energy Astrophysical Phenomena
+Instrumentation and Methods for Astrophysics
+Solar and Stella Astrophysics
+Condensed Matter Physics
+Disordered Systems and Neural Networks
+Materials Science
+Mesoscale and Nanoscale Physics
+Other Condensed Matter
+Quantum Gases
+Soft Condensed Matter
+Statistical Mechanics
+Strongly Correlated Electrons
+Superconductivity
+General Relativity and Quantum Cosmology
+High Energy Physics - Experiment
+High Energy Physics - Lattice
+High Energy Physics - Phenomenology
+High Energy Physics - Theory
+Mathematical Physics
+Nuclear Experiment
+Nuclear Theory
+Physics
+Accelerator Physics
+Atmospheric and Oceanic Physics
+Atomic Physics
+Atomic and Molecular Clusters
+Biological Physics
+Chemical Physics
+Classical Physics
+Computational Physics
+Data Analysis, Statistics and Probability
+Fluid Dynamics
+General Physics
+Geophysics
+History and Philosophy of Physics
+Instrumentation and Detectors
+Medical Physics
+Optics
+Physics Education
+Physics and Society
+Plasma Physics
+Popular Physics
+Space Physics
+Quantum Physics
+Mathematics
+Mathematics
+Algebraic Geometry
+Algebraic Topology
+Analysis of PDEs
+Category Theory
+Classical Analysis and ODEs
+Combinatorics
+Commutative Algebra
+Complex Variables
+Differential Geometry
+Dynamical Systems
+Functional Analysis
+General Mathematics
+General Topology
+Geometric Topology
+Group Theory
+History and Overview
+Information Theory
+K-Theory and Homology
+Logic
+Mathematical Physics
+Metric Geometry
+Number Theory
+Numerical Analysis
+Operator Algebras
+Optimization and Control
+Probability
+Quantum Algebra
+Representation Theory
+Rings and Algebras
+Spectral Theory
+Statistics Theory
+Symplectic Geometry
+Nonlinear Sciences
+Nonlinear Sciences
+Adaptation and Self-Organizing Systems
+Cellular Automata and Lattice Gases
+Chaotic Dynamics
+Exactly Solvable and Integrable Systems
+Pattern Formation and Solitons
+Computer Science
+Computer Research Repository
+Artificial Intelligence
+Computation and Language
+Computation Complexity
+Computation Engineering, Finance and Science
+Computational Geometry
+Computer Science and Game Theory
+Computer Vision and Pattern Recognition
+Computers and Society
+Cryptography and Security
+Data Structures and Algorithms
+Databases
+Digital Libraries
+Discrete Mathematics
+Distributed, Parallel, and Cluster Computing
+Emerging Technologies
+Formal Languages and Automata Theory
+General Literature
+Graphics
+Hardware Architecture
+Human-Computer Interaction
+Information Retrieval
+Information Theory
+Logic in Computer Science
+Machine Learning
+Mathematical Software
+Multiagent Systems
+Multimedia
+Networking and Internet Architecture
+Neural and Evolutionary Computing
+Numerical Analysis
+Operating System
+Other Computer Science
+Performance
+Programming Languages
+Robotics
+Social and Information Networks
+Software Engineering
+Sound
+Symbolic Computation
+Systems and Control
+Quantitative Biology
+Quantitative Biology
+Biomolecules
+Cell Behavior
+Genomics
+Molecular Networks
+Neurons and Cognition
+Other Quatitative Biology
+Populations and Evolution
+Quantitative Methods
+Subcellular Processes
+Tissues and Organs
+Quantitative Finance
+Quantitative Finance
+Computational Finance
+Economics
+General Finance
+Mathematical Finance
+Portfolio Management
+Pricing of Securities
+Risk Management
+Statistical Finance
+Trading and Market Microstructure
+Statistics
+Statistics
+Applications
+Computation
+Machine Learning
+Methodology
+Other Statistics
+Statistics Theory
+Electrical Engineerign and Systems Science
+Electrical Engineering and Systems Scicence
+Audio and Speech Processing
+Image and Video Processing
+Signal Processing
+Systems and Control
+Economics
+Economics
+Econometrics
+General Economics
+Theoretical Economics
+Daily Arxiv reader, (c) Juan José García Ripoll, All rights reserved.

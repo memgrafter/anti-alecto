@@ -1,0 +1,189 @@
+ESAA: Event Sourcing for Autonomous Agents in LLM-Based Software Engineering
+Abstract
+Autonomous agents based on Large Language Models (LLMs) have evolved from reactive assistants to systems capable of planning, executing actions via tools, and iterating over environment observations. However, they remain vulnerable to structural limitations: lack of native state, context degradation over long horizons, and the gap between probabilistic generation and deterministic execution requirements [17, 10]. This paper presents the ESAA (Event Sourcing for Autonomous Agents) architecture, which separates the agent’s cognitive intention from the project’s state mutation, inspired by the Event Sourcing pattern [4]. In ESAA, agents emit only structured intentions in validated JSON (agent.result or issue.report); a deterministic orchestrator validates, persists events in an append-only log (activity.jsonl), applies file-writing effects, and projects a verifiable materialized view (roadmap.json). The proposal incorporates boundary contracts (AGENT_CONTRACT.yaml), metaprompting profiles (PARCER), and replay verification with hashing (esaa verify), ensuring the immutability of completed tasks and forensic traceability. Two case studies validate the architecture: (i) a landing page project (9 tasks, 49 events, single-agent composition) and (ii) a clinical dashboard system (50 tasks, 86 events, 4 concurrent agents across 8 phases), both concluding with run.status=success and verify_status=ok. The multi-agent case study demonstrates real concurrent orchestration with heterogeneous LLMs (Claude Sonnet 4.6, Codex GPT-5, Antigravity/Gemini 3 Pro, and Claude Opus 4.6), providing empirical evidence of the architecture’s scalability beyond single-agent scenarios.
+Keywords: autonomous agents; event sourcing; software engineering; LLM; orchestration; constrained output; auditability; multi-agent systems.
+1 Introduction
+LLM-based software engineering is shifting from conversational interactions to agentic workflows that require long-horizon consistency—that is, maintaining coherence between goals, contracts, and effects over dozens of cycles and artifacts [17]. In brownfield scenarios, where the agent needs to navigate large repositories and modify multiple files with cross-dependencies, the risk of state drift increases: the agent may believe it has fixed a bug while the actual system remains unchanged, or it may rewrite specifications to bypass local compilation failures.
+A recurring empirical source for these difficulties is software engineering benchmarks on real GitHub issues, such as SWE-bench, which aims to measure the ability of agents to produce coherent and verifiable patches in real-world codebases, moving beyond synthetic and isolated problems [8]. Even when there is progress in configurations with human validation or restricted suites, the operational challenge of governance remains: auditing what the agent did, why it did it, and how to revert with forensic precision [12].
+Contemporary multi-agent frameworks like AutoGen [15], MetaGPT [7], and LangGraph [9] have made significant progress in agent coordination, role assignment, and workflow orchestration. However, these systems typically manage state through in-memory data structures or database snapshots, lacking the immutable audit trail and deterministic replay guarantees that are essential for production software engineering workflows where accountability and reversibility are non-negotiable.
+This work proposes that the core problem is not just "improving the prompt"; it is restructuring the system around verifiable invariants. ESAA applies the Event Sourcing pattern to the agent’s lifecycle: the source of truth is not the current snapshot of the repository, but an immutable log of intentions, decisions, and effects, from which the current state is deterministically projected [4]. In parallel, ESAA adopts Command Query Responsibility Segregation principles, aligned with the CQRS tradition, to reduce coupling between writing (changes) and reading (derived state) [5]. The architecture is validated through two case studies of increasing complexity: a landing page project orchestrated with single-agent composition (9 tasks, 49 events) and a clinical dashboard system (clinic-asr) orchestrated with four heterogeneous LLM agents operating concurrently (50 tasks, 86 events, 8 completed phases). Both cases demonstrate state reproducibility via replay and hash verification.
+2 Related Work
+2.1 Tool-Using Agents and Interleaved Reasoning
+The ReAct pattern describes a cycle where the model alternates between reasoning and acting via tools, incorporating environment observations into the next step [17]. While this interaction increases capability in tool-oriented tasks, it also amplifies vulnerabilities: noisy observations and tool outputs consume the context window, and errors can propagate through multiple turns.
+Benchmarks like SWE-bench formalize part of this problem by requiring patches that pass tests in real repositories, capturing a relevant fraction of real-world requirements [8]. "Verified" sets and more rigorous evaluation protocols are also emerging, aimed at reducing false positives from solutions that do not address the root of the defect [12]. Nevertheless, these benchmarks do not resolve the need for a governance kernel to control effects and maintain an audit trail.
+2.2 Multi-Agent Frameworks
+Recent multi-agent systems have explored various coordination strategies. AutoGen [15] enables conversational patterns between agents with role-based specialization. MetaGPT [7] assigns software engineering roles (architect, developer, tester) to different agents with structured output protocols. LangGraph [9] provides a graph-based state machine to define agent workflows with conditional edges and cycles.
+Although these frameworks advance agent coordination, they share common limitations from an auditability perspective: (i) state is typically mutable and stored as snapshots rather than a change log; (ii) there is no native mechanism for deterministic replay of the complete decision trail; (iii) the blast radius of a compromised agent is not formally bounded by contracts. ESAA addresses these gaps by applying event sourcing as the fundamental state management paradigm. Table˜1 presents a structured comparison.
+| Capability | AutoGen | MetaGPT | LangGraph | CrewAI | ESAA |
+|---|---|---|---|---|---|
+| Immutable event log | – | – | – | – | ✓ |
+| Deterministic replay | – | – | – | – | ✓ |
+| Boundary contracts | – | Partial | – | – | ✓ |
+| Constrained JSON output | – | ✓ | – | – | ✓ |
+| Multi-agent concurrency | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Hash-verified projection | – | – | – | – | ✓ |
+| Role-based specialization | ✓ | ✓ | ✓ | ✓ | ✓ |
+| "Done" immutability rule | – | – | – | – | ✓ |
+| Blast radius containment | – | Partial | – | – | ✓ |
+2.3 Context Limits and Long-Horizon Degradation
+Recent works point to systematic degradation in long context windows, with a drop in recall in the middle of the context (lost-in-the-middle), affecting tasks that depend on facts buried in logs, docs, or extensive histories [10]. This limitation creates recency bias and can induce the agent to ignore initial contracts, especially in environments requiring consistency with specifications and security policies.
+2.4 Event Sourcing and CQRS
+Event Sourcing records every state change as an immutable event in an append-only log; the current state is a projection of these events [4]. Alongside this, CQRS separates write and read models to optimize consistency and queries, reducing complexity in systems with strong audit and traceability requirements [5]. ESAA transposes these principles to LLM-assisted software engineering: the agent does not "write state"; it emits intentions and proposed diffs that are validated and applied by a deterministic orchestrator.
+2.5 Constrained Output and Syntactic Structure
+A practical bottleneck in agents is the structure gap: models generate probabilistic text, but systems require payloads compliant with schemas (JSON, API calls, patches). Constrained decoding and structured generation approaches guide sampling using grammars and schemas, reducing parsing failures and rejections [3, 16]. Inference and serving frameworks like SGLang also highlight the relevance of this layer by integrating mechanisms for structured outputs and high-throughput execution pipelines [14].
+3 ESAA Architecture
+ESAA establishes a strict separation between (i) the LLM’s heuristic cognition and (ii) the system’s deterministic execution. The agent does not have direct write permission to the project or the event store. Its role is to emit structured intentions and change proposals, always compliant with an output contract validatable by JSON Schema [1].
+Figure˜1 illustrates the complete orchestration cycle.
+3.1 Canonical Artifacts
+The ESAA implementation operates with a set of canonical artifacts (stored in .roadmap/):
+-
+(1)
+Event store (activity.jsonl): an append-only log of ordered events (event_seq), containing intentions, dispatches, effects, and run closures.
+-
+(2)
+Materialized view (roadmap.json): a read-model derived by pure projection; includes tasks, dependencies, indexes, and verification metadata (e.g., projection_hash_sha256).
+-
+(3)
+Boundary contracts (AGENT_CONTRACT.yaml, ORCHESTRATOR_CONTRACT.yaml): define permitted actions per task type (spec/impl/qa), output patterns, and hard prohibitions (e.g., denying direct file.write by the agent).
+-
+(4)
+PARCER profiles (PARCER_PROFILE.*.yaml): metaprompting profiles that suppress free-form output and force a strict JSON envelope. PARCER (Persona, Audience, Rules, Context, Execution, Response) defines six dimensions that constrain the agent’s output behavior, ensuring each agent receives instructions appropriate to its role with mandatory output schemas and specific prohibited actions per task type.
+3.2 Trace-First Model and Immutability
+ESAA adopts a "trace-first" model: the event is recorded as a fact before any irreversible effect, allowing for audit and containment controls. The immutability of done rule defines that completed tasks cannot regress. In case of a defect, an issue.report event creates a new correction path (hotfix) without reopening the history, preserving the decision trail.
+3.3 Determinism through Canonicalization and Hashing
+To ensure reproducibility via replay, ESAA specifies deterministic canonicalization of the projected state and hash calculation. The idea follows the principle of invariant representation for cryptographic operations, as per JSON canonicalization schemes [13]. The SHA-256 hash of the canonicalized read-model (projection_hash_sha256) allows for the detection of divergence between projection and materialization [2].
+3.4 Multi-Agent Dispatch and Concurrency
+ESAA supports heterogeneous multi-agent orchestration through the append-only semantics of the event store. The orchestrator assigns tasks to agents based on role-based specialization (e.g., specification agents, implementation agents, QA agents) and tracks claims and completions per agent via correlation identifiers. Concurrent execution is naturally serialized at the event level: multiple agents can work in parallel, but their results are validated and appended sequentially, preserving total ordering in the log. This design allows the orchestrator to detect conflicts (e.g., overlapping file modifications) before applying effects.
+4 Methodology
+4.1 Architectural Intervention Design
+The research follows an artifact-oriented technical validation design: an architecture is proposed (ESAA), formal contracts are defined (schemas, boundaries, event vocabulary), and reproducible execution is demonstrated in two case studies of increasing complexity. The unit of analysis is the orchestrator run, composed of a sequence of events in activity.jsonl and a derivable read-model in roadmap.json.
+4.2 Orchestrator Implementation and Validation Pipeline
+The orchestrator executes a transactional pipeline: (i) validates agent output via JSON Schema and boundary rules; (ii) emits output.rejected for violations; (iii) applies effects via orchestrator.file.write; (iv) appends events to the event store; (v) reprojects roadmap.json; (vi) executes esaa verify via replay and hash comparison. The choice of JSON Schema as a formal contract aims to reduce ambiguity and create observable, treatable failures [1].
+4.3 Experimental Setup and Reproducibility
+For open reproducibility purposes, the project’s public repository provides the architecture in its initial state (clean state), containing only the initialization event (run.init) in the event store. This allows other researchers to execute the pipeline from scratch and observe the deterministic state derivation documented in this study.
+5 Case Studies
+Two case studies validate the ESAA architecture across different complexity scales and agent compositions.
+5.1 Case Study 1: Landing Page (Single-Agent Composition)
+The example-landingpage project was structured as a pipeline with 9 sequential tasks (T-1000 to T-1210), covering specification, implementation, and QA. To simulate orchestrator behavior and validate the agents’ ability to adhere to constrained output contracts, the execution and artifact generation were conducted using a composition of advanced tools: GPT-5.3-Codex, Claude Code opus 4.6 (integrated with VSCode), and Antigravity (operating with the Gemini 3 Pro model).
+The consolidation of this workflow generated a local event store with 49 events, concluding with run.status=success and verify_status=ok. The produced artifact set included four specifications in .roadmap/specs/, code files in src/ (vanilla HTML/CSS/JS), and QA reports in .roadmap/qa/.
+The execution followed the cycle: attempt.create orchestrator.dispatch agent.result orchestrator.file.write task.update (repeat) verify.ok run.end. This trail materializes the idea that the project state is derived from facts, not direct edits [4].
+5.2 Case Study 2: Clinical Dashboard (Multi-Agent Concurrency)
+The clinic-asr project represents a substantially more complex validation scenario: a clinical dashboard system (POC) with real-time audio transcription capabilities, covering database schema design, REST API contracts, SSE event vocabulary, SPA architecture, configuration management, security policies, and end-to-end testing.
+5.2.1 Project Structure
+The roadmap comprised 15 phases (PH-19 to PH-33) and 50 tasks distributed across 7 components: web UI (16 tasks), API (11), database (7), testing (7), configuration (4), observability (3), and documentation/release (2). Tasks were organized into a dependency graph with a defined critical path of 9 tasks, from data persistence to final release.
+5.2.2 Multi-Agent Orchestration
+Four heterogeneous LLM agents were assigned to tasks based on specialization:
+-
+•
+Claude Sonnet 4.6 — 10 tasks: database schema specification, API contract definition, configuration system design;
+-
+•
+Codex GPT-5 — 10 tasks: UI architecture specification, configuration audit, API implementation, testing;
+-
+•
+Antigravity (Gemini 3 Pro) — 5 tasks: persistence implementation, repository layer, service integration;
+-
+•
+Claude Opus 4.6 — 5 tasks: security and privacy documentation, observability strategy, deployment guides.
+5.2.3 Event Store Analysis
+The execution generated 86 events over approximately 15 hours (2026-02-19 09:00 to 2026-02-20 00:14, America/Sao_Paulo), with the following distribution: 30 claims, 30 completions, 17 promotions (backlog ready), 8 phase completions, and 1 version initialization. All 30 task completions had acceptance_results with positive validation.
+A key observation is the evidence of concurrent multi-agent execution: at timestamp 2026-02-19T21:55, six claims were recorded within the same minute—Antigravity completing task T-2601 while Claude Opus 4.6 simultaneously claimed five tasks (T-2301, T-2302, T-2303, T-2401, T-2403). This demonstrates that the event store’s append-only semantics naturally serializes concurrent agent activities while preserving the temporal ordering necessary for replay.
+5.2.4 Progression and Current State
+At the time of analysis, 31 of 50 tasks (62%) were completed (done), 2 were in the ready state, and 17 remained in the backlog. Eight out of fifteen phases were completed. The remaining phases cover UI implementation (PH-27 to PH-32) and final hardening/release (PH-33), demonstrating that ESAA can manage an ongoing project with partial completion while maintaining full traceability of concluded work.
+5.3 Comparative Summary
+Table˜2 presents a quantitative comparison of the two case studies.
+| Metric | CS1: Landing Page | CS2: Clinic ASR |
+|---|---|---|
+| Total tasks | 9 | 50 |
+| Total events | 49 | 86 |
+| Distinct agents | 3 (composition) | 4 (concurrent) |
+| Phases | 1 pipeline | 15 (8 completed) |
+| Components | 3 (spec/impl/QA) | 7 (DB, API, UI, tests, config, obs, docs) |
+| Duration | Single session | 15 hours |
+| output.rejected | 0 | 0 |
+| verify_status | ok | ok (partial—31/50) |
+| Concurrent claims | No | Yes (6 in 1 min) |
+| Dependency graph | Linear | DAG with critical path |
+| Event vocabulary | 15 types | 5 types (simplified) |
+| Acceptance criteria | Implicit | Explicit per task |
+The evolution from CS1 to CS2 reveals a natural maturation of the protocol: the event vocabulary was simplified from 15 to 5 action types, suggesting that the core lifecycle (claim complete with promote for backlog management) captures essential state transitions. Internal orchestrator events (e.g., orchestrator.dispatch, orchestrator.file.write) can be inferred from the sequence rather than explicitly logged, reducing log verbosity while preserving traceability.
+6 Results and Discussion
+6.1 Structural Compliance and Reduction of Parsing Failures
+By restricting agent output to a validatable JSON envelope and a small vocabulary of actions, ESAA reduces the probability of parsing failures and "out-of-contract outputs." In both case studies, the output.rejected count was zero, suggesting that the constrained output regime was sufficient to keep the agents (operated by four distinct LLM providers) within the protocol. This strategy is consistent with the goals of structured generation libraries, which prioritize syntactic compliance to enable deterministic execution [3, 16].
+6.2 Auditability and Debugging through Replay
+The primary output of ESAA is not just the generated code, but the complete trail of events and their effects. This allows for "time-travel debugging" via replay: reprocessing the event store from event zero to reconstruct the read-model exactly and verify divergences. Using SHA-256 hashing as a state projection commitment follows best practices for change detection and message integrity [2]. To reduce serialization ambiguities, canonicalization through key sorting and string normalization aligns with the JSON Canonicalization Scheme [13].
+6.3 Multi-Agent Coordination via Event Store
+The clinic-asr case study demonstrates that the event store serves as a natural coordination mechanism for heterogeneous agents. Three properties emerge from the data:
+-
+1.
+Serialized accountability: despite concurrent execution, the append-only log preserves total ordering, allowing precise attribution of each state change to a specific agent and task.
+-
+2.
+Specialization tracking: the log reveals agent specialization patterns—Claude Sonnet handled specification tasks, Codex GPT-5 handled UI and testing, Antigravity handled implementation, and Claude Opus handled cross-cutting concerns. This information is forensically recoverable solely from the event store.
+-
+3.
+Phase-gated progression: the promote claim complete phase.complete sequence enforces dependency ordering without requiring agents to be aware of each other, reducing coordination overhead.
+6.4 Context Efficiency and Degradation Mitigation
+ESAA proposes that the agent should not carry long-term memory in the raw prompt; it should receive a purified view (roadmap + relevant facts) derived from the log. This approach addresses limitations like lost-in-the-middle, as the orchestrator selectively injects information needed for the current step, rather than relying on the model to maintain all details across long windows [10]. In the clinic-asr case, with 50 tasks and complex interdependencies, the purified view mechanism was essential for maintaining agent coherence over the 15 hours of execution.
+6.5 Security and Blast Radius
+By denying direct writing and imposing boundaries per task type, ESAA reduces the blast radius of a compromised agent (e.g., via prompt injection). The strategy aligns with broad recommendations of least privilege and prevention of integrity and logging failures in applications, as synthesized in critical risk guides [11]. It is also worth noting that parsing/grammar layers can have availability vulnerabilities when used in high-throughput pipelines; therefore, the implementation must treat grammar engines as components to be monitored and versioned [6].
+6.6 Overhead Considerations
+The ESAA architecture introduces overhead in three dimensions: (i) token overhead from the JSON envelope and validation preamble in each agent invocation (estimated at 200–500 tokens per invocation); (ii) latency overhead from schema validation and event persistence (sub-second per event in both case studies); and (iii) storage overhead of the append-only log (the 86-event log of clinic-asr occupies approximately 15 KB). These costs are negligible compared to LLM inference costs and provide substantial returns in auditability and reproducibility.
+7 Threats to Validity
+Internal validity. Both case studies were executed in controlled environments with defined project scopes. Although the clinic-asr pipeline demonstrates significantly higher complexity than the landing page (50 vs. 9 tasks, 4 agents, 7 components), strong causality regarding performance in enterprise repositories cannot be concluded without a larger sample. Furthermore, the use of temperature 0.0 reduces variability but may not reflect setups that explore sampling diversity [17].
+External validity. Results from a landing page and a clinical POC do not necessarily generalize to domains with continuous integration pipelines, database migrations, or monorepos at scale. Benchmarks on real issues suggest that repository complexity directly influences agent success, and ESAA must be tested on workloads aligned with SWE-bench and harder variants [8, 12].
+Construct validity. Measures such as output.rejected and verify_status capture compliance and state reproducibility but do not directly measure "design quality" or "business value" of the software. To broaden constructs, it is recommended to include human evaluations and quality metrics (e.g., test coverage, accessibility, maintainability).
+Conclusion validity. Two case studies (n=2) improve upon the initial single-case design but still limit statistical inferences. The appropriate conclusion is that ESAA demonstrates technical feasibility and produces verifiable invariants in scenarios of different complexities, not that it maximizes performance on any benchmark.
+8 Conclusion and Future Work
+ESAA proposes a paradigm shift: treating LLMs as intention emitters under contract, rather than "developers" with unrestricted permissions. By adopting Event Sourcing as the source of truth and applying verifiable projections through replay, the architecture offers native auditability, operational immutability, and state reproducibility [4]. In parallel, the use of formal contracts and constrained output reduces the structure gap and enables a deterministic execution pipeline [1, 3]. The two case studies provide complementary evidence: the landing page demonstrates the architecture’s core mechanics in a controlled single-pipeline scenario, while clinic-asr validates multi-agent concurrent orchestration with heterogeneous LLMs, complex dependency graphs, and phase-gated progression in a real-world application domain.
+Future work includes: (i) an official CLI (esaa init/run/verify) with integration to remote repositories; (ii) conflict detection and resolution strategies for concurrent file modifications; (iii) automated time-travel debugging with visual diff comparison of projections at arbitrary event points; (iv) systematic evaluation on real-world issue benchmarks (SWE-bench) and enterprise-scale projects [8, 12]; and (v) formal verification of orchestrator invariants using model checking techniques.
+References
+- [1] JSON Schema. (2020). JSON Schema specification (Draft 2020-12). https://json-schema.org/draft/2020-12/json-schema-core.html
+- [2] Dang, Q. H. (2013). Changes in Federal Information Processing Standard (FIPS) 180-4, Secure Hash Standard. National Institute of Standards and Technology. https://www.nist.gov/publications/changes-federal-information-processing-standard-fips-180-4-secure-hash-standard
+- [3] Outlines. (n.d.). Outlines: Structured generation for LLMs (software). GitHub. https://github.com/dottxt-ai/outlines
+- [4] Fowler, M. (2005). Event sourcing. MartinFowler.com. https://martinfowler.com/eaaDev/EventSourcing.html
+- [5] Fowler, M. (2011). CQRS. MartinFowler.com. https://martinfowler.com/bliki/CQRS.html
+- [6] GitLab. (2025). Advisory: DoS vulnerability in XGrammar used in vLLM (GHSA report mirror). https://gitlab.com/gitlab-org/advisories/GHSA-x73x-g4m2-94q2
+- [7] Hong, S., et al. (2023). MetaGPT: Meta programming for multi-agent collaborative framework. arXiv. https://arxiv.org/abs/2308.00352
+- [8] Jimenez, C. E., Yang, J., Narasimhan, K., & Press, O. (2024). SWE-bench: Can language models resolve real-world GitHub issues? In Proceedings of the 12th International Conference on Learning Representations (ICLR). https://openreview.net/forum?id=VTF8yN1YNt
+- [9] LangChain. (2024). LangGraph: Build resilient language agents as graphs. https://github.com/langchain-ai/langgraph
+- [10] Liu, N. F., Lin, K., Hewitt, J., Paranjape, A., Bevilacqua, M., & Liang, P. (2024). Lost in the middle: How language models use long contexts. Transactions of the Association for Computational Linguistics. https://aclanthology.org/2024.tacl-1.9/
+- [11] OWASP. (2021). OWASP Top 10:2021. https://owasp.org/Top10/2021/
+- [12] OpenAI. (2024). Introducing SWE-bench Verified. https://openai.com/index/introducing-swe-bench-verified/
+- [13] Rundgren, A., Jordan, B., & Erdtman, S. (2020). RFC 8785: JSON Canonicalization Scheme (JCS). IETF. https://datatracker.ietf.org/doc/html/rfc8785
+- [14] sgl-project. (n.d.). SGLang: Fast serving framework for LLMs (software). GitHub. https://github.com/sgl-project/sglang
+- [15] Wu, Q., et al. (2023). AutoGen: Enabling next-gen LLM applications via multi-agent conversation. arXiv. https://arxiv.org/abs/2308.08155
+- [16] mlc-ai. (n.d.). XGrammar: Efficient, flexible, and portable structured generation engine (software). GitHub. https://github.com/mlc-ai/xgrammar
+- [17] Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., & Cao, Y. (2022). ReAct: Synergizing reasoning and acting in language models. arXiv. https://arxiv.org/abs/2210.03629
+Appendix A Agent Output Contract JSON Schema
+Appendix B Roadmap Read-Model JSON Schema
+Appendix C Canonical Event Vocabulary
+Table˜3 presents the complete event vocabulary (v0.3.0) as specified in the architecture, and Table˜4 presents the simplified vocabulary observed in the clinic-asr case study.
+| Event | Description |
+|---|---|
+| run.init | Initializes a run (metadata and scope). |
+| attempt.create | Opens an attempt for a task and links an agent. |
+| attempt.timeout | Expires an attempt (TTL) without completing the task. |
+| orchestrator.dispatch | Triggers agent execution for an attempt. |
+| agent.result | Agent intention (patch proposals), validated by schema/boundary. |
+| issue.report | Record of defect/incident; may generate a hotfix task. |
+| output.rejected | Rejected output (violated schema, boundary, authority, or idempotency). |
+| orchestrator.file.write | Applied effect: writing to authorized files. |
+| orchestrator.view.mutate | Applied effect: read-model update (derived). |
+| task.create | Creates a new task (includes hotfix). |
+| task.update | Updates task state (e.g., todo in_progress done). |
+| verify.start | Starts audit via replay + deterministic hashing. |
+| verify.ok | Audit passed; records projection_hash_sha256. |
+| verify.fail | Audit failed; records divergence (expected vs computed). |
+| run.end | Finalizes run (success/failed) and closure criteria. |
+| Event | Description | Count |
+|---|---|---|
+| roadmap.version | Initializes the roadmap version. | 1 |
+| promote | Moves a task from backlog to ready. | 17 |
+| claim | Agent claims a task for execution. | 30 |
+| complete | Agent completes a task with acceptance results. | 30 |
+| phase.complete | All tasks in a phase are finished. | 8 |
+The simplification from 15 to 5 event types reflects a design insight: internal orchestrator events (dispatch, file.write, view.mutate) can be inferred from the claim complete sequence, reducing log verbosity while maintaining essential traceability guarantees. The full vocabulary remains available for environments requiring maximum granularity.
+Appendix D Canonicalization and Verify Pseudocode
+Appendix E Representative Extract from activity.jsonl (CS2: clinic-asr)
+The following extract illustrates concurrent multi-agent execution in the clinic-asr event store (lines 58–68), showing Claude Opus 4.6 claiming five tasks simultaneously:

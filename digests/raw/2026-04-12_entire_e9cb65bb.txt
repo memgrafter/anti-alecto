@@ -1,0 +1,26 @@
+Every commit tells a story.
+Now you can read it.
+Entire CLI hooks into your git workflow to capture AI agent sessions on every push. Sessions are indexed alongside commits, a searchable record of how code was written.
+curl -fsSL https://entire.io/install.sh | bash
+Open source · MIT licensed3.9k
+Works where you already operate
+Entire CLI hooks into your existing tools and workflow. No context switching, no new interfaces to learn.
+Setup the CLI
+One command to set up Entire CLI in your repository. Works with any git-based project, fully open source.
+Work with any agent
+Claude Code, Gemini CLI, OpenCode, Cursor, GitHub Copilot CLI, & FactoryAI are supported today. More integrations coming soon.
+Sessions sync with commits
+Every conversation is captured and linked to your git history creating a checkpoint automatically. No extra steps required.
+View your entire history
+Search, view, and understand the intent behind the code that was written. Share context with your team.
+Never start from zero
+Entire creates a checkpoint for every commit: the code change paired with the agent session that produced it. Context that's attached, not archived.
+"Why did we write it this way?"
+Every commit gets a checkpoint: the code change paired with the full agent session that produced it. Look at any change and the reasoning is right there.
+"Where does all this context actually go?"
+Nowhere new. Checkpoints are stored directly in your git history. No hosted service, no external database. Just your repo, your workflow, your data.
+"Why does the agent keep making the same mistakes?"
+Because it starts every session from zero. Checkpoints give agents the full history of how your codebase was built. Not just the code, but the decisions behind it.
+Start capturing your intent
+Entire is open source and free to use. Install it once, and never lose the context behind your commits again.
+curl -fsSL https://entire.io/install.sh | bash

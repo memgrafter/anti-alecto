@@ -1,0 +1,30 @@
+Reddit thread capture
+
+Thread URL: https://reddit.com/r/LocalLLaMA/comments/1q37jz3/glm_47_performances/
+Subreddit: r/LocalLLaMA
+Title: GLM 4.7 performances
+Author: u/AppealRare3699
+Score: 0
+Comment count (reported): 11
+
+
+## Original post
+hello, i've been using GLM 4.5, 4.6 and 4.7 and it's not really good for my tasks, always doing bad things in my CLI. Claude and Codex been working really fine though. But i started to think that maybe it was me, do you guys have the same problem with [z.ai](http://z.ai) models or do you have any tips on how to use it well?
+
+## Prominent viewpoints (top-level comments)
+1. (7) u/Zealousideal-Ice-847: Use open router not the zai one, they sneakily route some requests to 4.5 air and 4.6 for cache or response which lowers the output quality
+2. (2) u/Zealousideal-Ice-847: https://preview.redd.it/fkdx6ti5p7bg1.png?width=960&format=png&auto=webp&s=a87c7d312cdc6bc7d5cb1c4f8445f7cf93db675e
+3. (1) u/leonbollerup: Wait? What? Can you guys use openrouter ?
+
+## Thread discussion sample
+- (7) u/Zealousideal-Ice-847: Use open router not the zai one, they sneakily route some requests to 4.5 air and 4.6 for cache or response which lowers the output quality
+  - (2) u/Automatic-Outcome389: Yeah [z.ai](http://z.ai) has been sketchy with their routing lately, noticed the same thing when trying to debug some scripts - kept getting inconsistent outputs that made no sense Try running the same prompt a few times and you'll see what I mean, it's like they're playing model roulette behind the scenes
+  - (1) u/AppealRare3699: what if i use coding plan?
+    - (1) u/Zealousideal-Ice-847: Yes the coding plan look at the billing usage panel and you'll see
+      - (1) u/AppealRare3699: i see only glm 4.7 requests in the billing page not 4.5 air or 4.6
+    - (1) u/websitegest: Initially 429 errors on Lite/Pro GLM plans killed my productivity until I upgraded. GLM 4.7 on the Coding plan has way better availability - been running it hard for 2 weeks without hitting limits. Performance-wise it's not beating Opus on complex debugging, but for implementation cycles it's actually faster since I'm not waiting for rate limits to reset. If you're bouncing off Claude's limits, the GLM plan might be worth testing. For anyone considering the GLM plans there is also a 30% discount (current offers + an additional 10%) but I think will expire soon (Pro 1Y offer aready gone!) --> [https://z.ai/subscribe?ic=TLDEGES7AK](https://z.ai/subscribe?ic=TLDEGES7AK)
+- (2) u/Zealousideal-Ice-847: https://preview.redd.it/fkdx6ti5p7bg1.png?width=960&format=png&auto=webp&s=a87c7d312cdc6bc7d5cb1c4f8445f7cf93db675e
+  - (3) u/AppealRare3699: https://preview.redd.it/yjgm8qejr7bg1.png?width=1546&format=png&auto=webp&s=4b1d6256e3171a103d2ce1afaaf6c5b6bd82e968
+  - (1) u/No_Afternoon_4260: Seems you misconfigured something
+- (1) u/leonbollerup: Wait? What? Can you guys use openrouter ?
+  - (1) u/AlwaysInconsistant: Locally

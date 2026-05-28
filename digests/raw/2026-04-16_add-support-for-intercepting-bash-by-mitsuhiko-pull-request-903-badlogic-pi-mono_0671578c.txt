@@ -1,0 +1,1179 @@
+From 15b91544b5b9045ccaa283c6eb136951231fb89f Mon Sep 17 00:00:00 2001
+From: Armin Ronacher <armin.ronacher@active-4.com>
+Date: Thu, 22 Jan 2026 19:47:03 +0100
+Subject: [PATCH 1/3] feat(coding-agent): intercept bash execution
+
+---
+ packages/coding-agent/CHANGELOG.md            |  1 +
+ packages/coding-agent/README.md               | 18 ++++-
+ packages/coding-agent/docs/extensions.md      | 31 +++++++-
+ .../coding-agent/examples/extensions/uv.ts    | 76 +++++++++++++++++++
+ .../coding-agent/src/core/agent-session.ts    | 43 +++++++++--
+ .../coding-agent/src/core/bash-executor.ts    | 48 ++++++++++--
+ .../coding-agent/src/core/extensions/index.ts |  5 ++
+ .../src/core/extensions/runner.ts             | 76 +++++++++++++++++++
+ .../coding-agent/src/core/extensions/types.ts | 43 +++++++++++
+ .../src/core/extensions/wrapper.ts            | 71 +++++++++++++++--
+ packages/coding-agent/src/core/tools/bash.ts  | 33 ++++++--
+ packages/coding-agent/src/index.ts            |  5 ++
+ packages/coding-agent/src/utils/shell.ts      |  3 +-
+ 13 files changed, 424 insertions(+), 29 deletions(-)
+ create mode 100644 packages/coding-agent/examples/extensions/uv.ts
+
+diff --git a/packages/coding-agent/CHANGELOG.md b/packages/coding-agent/CHANGELOG.md
+index 04c91f5db0..4c2bb77394 100644
+--- a/packages/coding-agent/CHANGELOG.md
++++ b/packages/coding-agent/CHANGELOG.md
+@@ -13,6 +13,7 @@
+ - Extension package management with `pi install`, `pi remove`, `pi update`, and `pi list` commands ([#645](https://github.com/badlogic/pi-mono/issues/645))
+ - `/reload` command to reload extensions, skills, prompts, and themes ([#645](https://github.com/badlogic/pi-mono/issues/645))
+ - CLI flags for `--skill`, `--prompt-template`, `--theme`, `--no-prompt-templates`, and `--no-themes` ([#645](https://github.com/badlogic/pi-mono/issues/645))
++- `tool_result` handlers can return `errorMessage` to override tool errors or force a failure
+ 
+ ### Changed
+ 
+diff --git a/packages/coding-agent/README.md b/packages/coding-agent/README.md
+index 79d78c4350..cd1153f2a7 100644
+--- a/packages/coding-agent/README.md
++++ b/packages/coding-agent/README.md
+@@ -1101,7 +1101,23 @@ export default function (pi: ExtensionAPI) {
+   pi.on("tool_result", async (event, ctx) => {
+     if (event.toolName === "read") {
+       // Redact secrets from file contents
+-      return { modifiedResult: event.result.replace(/API_KEY=\w+/g, "API_KEY=***") };
++      return {
++        content: event.content.map((item) =>
++          item.type === "text"
++            ? { ...item, text: item.text.replace(/API_KEY=\w+/g, "API_KEY=***") }
++            : item
++        ),
++      };
++    }
++
++    if (event.isError) {
++      // Override the thrown error message (optional)
++      return { errorMessage: "Custom error message" };
++    }
++
++    if (event.toolName === "bash" && event.content.length > 0) {
++      // Force a successful tool to be treated as an error
++      return { errorMessage: "Tool output rejected by policy" };
+     }
+   });
+ 
+diff --git a/packages/coding-agent/docs/extensions.md b/packages/coding-agent/docs/extensions.md
+index 5149ef95b8..b0c60812fb 100644
+--- a/packages/coding-agent/docs/extensions.md
++++ b/packages/coding-agent/docs/extensions.md
+@@ -549,9 +549,34 @@ pi.on("tool_call", async (event, ctx) => {
+ 
+ **Examples:** [chalk-logger.ts](../examples/extensions/chalk-logger.ts), [permission-gate.ts](../examples/extensions/permission-gate.ts), [plan-mode/index.ts](../examples/extensions/plan-mode/index.ts), [protected-paths.ts](../examples/extensions/protected-paths.ts)
+ 
++#### before_bash_exec
++
++Fired before a bash command executes (tool calls and user `!`/`!!`). Use it to rewrite commands or override execution settings. You can also block execution by returning `{ block: true, reason?: string }`. For follow-up hints based on output, pair this with `tool_result`.
++
++```typescript
++pi.on("before_bash_exec", async (event) => {
++  if (event.command.includes("rm -rf")) {
++    return { block: true, reason: "Blocked by policy" };
++  }
++
++  if (event.source === "tool") {
++    return {
++      cwd: "/tmp",
++      env: {
++        ...event.env,
++        MY_VAR: "1",
++        PATH: undefined, // remove PATH
++      },
++    };
++  }
++});
++```
++
++Return a `BashExecOverrides` object to override fields, or return `{ block: true, reason?: string }` to reject the command. Any field set to a non-undefined value replaces the original (`command`, `cwd`, `env`, `shell`, `args`, `timeout`). For `env`, set a key to `undefined` to remove it.
++
+ #### tool_result
+ 
+-Fired after tool executes. **Can modify result.**
++Fired after tool executes. **Can modify result.** Use this to post-process outputs (for example, append hints or redact secrets) before the result is sent to the model.
+ 
+ ```typescript
+ import { isBashToolResult } from "@mariozechner/pi-coding-agent";
+@@ -565,10 +590,12 @@ pi.on("tool_result", async (event, ctx) => {
+   }
+ 
+   // Modify result:
+-  return { content: [...], details: {...}, isError: false };
++  return { content: [...], details: {...} };
+ });
+ ```
+ 
++If `event.isError` is true, return `{ errorMessage: "..." }` to override the thrown error message (optionally alongside `content`). Returning `errorMessage` on a successful tool result forces the tool to be treated as an error.
++
+ **Examples:** [git-checkpoint.ts](../examples/extensions/git-checkpoint.ts), [plan-mode/index.ts](../examples/extensions/plan-mode/index.ts)
+ 
+ ### User Bash Events
+diff --git a/packages/coding-agent/examples/extensions/uv.ts b/packages/coding-agent/examples/extensions/uv.ts
+new file mode 100644
+index 0000000000..41af0dc214
+--- /dev/null
++++ b/packages/coding-agent/examples/extensions/uv.ts
+@@ -0,0 +1,76 @@
++/**
++ * uv Python Interceptor
++ *
++ * Demonstrates before_bash_exec by redirecting python invocations through uv.
++ * This is a simple example that assumes basic whitespace-separated arguments.
++ *
++ * Usage:
++ *   pi -e examples/extensions/uv.ts
++ */
++
++import { type ExtensionAPI, isBashToolResult } from "@mariozechner/pi-coding-agent";
++
++const PYTHON_PREFIX = /^python3?(\s+|$)/;
++const UV_RUN_PYTHON_PREFIX = /^uv\s+run\s+python3?(\s+|$)/;
++const PIP_PREFIX = /^pip3?(\s+|$)/;
++const PIP_MODULE_PATTERN = /\s-m\s+pip3?(\s|$)/;
++const TRACEBACK_PATTERN = /Traceback \(most recent call last\):/;
++const IMPORT_ERROR_PATTERN = /\b(ModuleNotFoundError|ImportError):/;
++const MODULE_NOT_FOUND_PATTERN = /No module named ['"]([^'"]+)['"]/;
++
++const PIP_BLOCK_REASON =
++	"pip is disabled. Use uv run instead, particularly --with and --script for throwaway work. Do not use uv pip!";
++
++export default function (pi: ExtensionAPI) {
++	pi.on("before_bash_exec", (event) => {
++		const trimmed = event.originalCommand.trim();
++		const isPythonCommand = PYTHON_PREFIX.test(trimmed);
++		const isUvRunPythonCommand = UV_RUN_PYTHON_PREFIX.test(trimmed);
++		const isPipModule = PIP_MODULE_PATTERN.test(trimmed);
++
++		if (PIP_PREFIX.test(trimmed) || (isPipModule && (isPythonCommand || isUvRunPythonCommand))) {
++			return {
++				block: true,
++				reason: PIP_BLOCK_REASON,
++			};
++		}
++
++		if (!isPythonCommand) {
++			return;
++		}
++
++		const normalizedCommand = trimmed.replace(PYTHON_PREFIX, "python ").trimEnd();
++		const uvCommand = `uv run ${normalizedCommand}`;
++
++		return {
++			command: uvCommand,
++		};
++	});
++
++	pi.on("tool_result", (event) => {
++		if (!isBashToolResult(event)) return;
++
++		const text = event.content
++			.filter((item) => item.type === "text")
++			.map((item) => item.text)
++			.join("");
++
++		if (!TRACEBACK_PATTERN.test(text) || !IMPORT_ERROR_PATTERN.test(text)) {
++			return;
++		}
++
++		const moduleMatch = text.match(MODULE_NOT_FOUND_PATTERN);
++		const moduleName = moduleMatch?.[1];
++		const hintTarget = moduleName ? ` --with ${moduleName}` : "";
++		const hint =
++			"\n\nHint: Python import failed. Consider running with uv to fetch dependencies, " +
++			`e.g. \`uv run${hintTarget} python -c '...'\` or \`uv run --script\` for throwaway scripts.`;
++
++		const message = text + hint;
++
++		return {
++			content: [...event.content, { type: "text", text: hint }],
++			errorMessage: message,
++		};
++	});
++}
+diff --git a/packages/coding-agent/src/core/agent-session.ts b/packages/coding-agent/src/core/agent-session.ts
+index f5c86f0335..0e5ca9e129 100644
+--- a/packages/coding-agent/src/core/agent-session.ts
++++ b/packages/coding-agent/src/core/agent-session.ts
+@@ -27,6 +27,7 @@ import { isContextOverflow, modelsAreEqual, supportsXhigh } from "@mariozechner/
+ import { getAuthPath } from "../config.js";
+ import { theme } from "../modes/interactive/theme/theme.js";
+ import { stripFrontmatter } from "../utils/frontmatter.js";
++import { getShellConfig, getShellEnv } from "../utils/shell.js";
+ import { type BashResult, executeBash as executeBashCommand, executeBashWithOperations } from "./bash-executor.js";
+ import {
+ 	type CompactionResult,
+@@ -41,6 +42,7 @@ import {
+ import { exportSessionToHtml, type ToolHtmlRenderer } from "./export-html/index.js";
+ import { createToolHtmlRenderer } from "./export-html/tool-renderer.js";
+ import {
++	type BeforeBashExecEvent,
+ 	type ContextUsage,
+ 	type ExtensionCommandContextActions,
+ 	type ExtensionErrorListener,
+@@ -2018,19 +2020,48 @@ export class AgentSession {
+ 	): Promise<BashResult> {
+ 		this._bashAbortController = new AbortController();
+ 
+-		// Apply command prefix if configured (e.g., "shopt -s expand_aliases" for alias support)
+-		const prefix = this.settingsManager.getShellCommandPrefix();
+-		const resolvedCommand = prefix ? `${prefix}\n${command}` : command;
+-
+ 		try {
++			// Apply command prefix if configured (e.g., "shopt -s expand_aliases" for alias support)
++			const prefix = this.settingsManager.getShellCommandPrefix();
++			const resolvedCommand = prefix ? `${prefix}\n${command}` : command;
++			const shellConfig = getShellConfig();
++			const baseEvent: BeforeBashExecEvent = {
++				type: "before_bash_exec",
++				source: "user_bash",
++				command: resolvedCommand,
++				originalCommand: command,
++				cwd: process.cwd(),
++				env: { ...getShellEnv() },
++				shell: shellConfig.shell,
++				args: [...shellConfig.args],
++			};
++			const execEvent = this._extensionRunner?.hasHandlers("before_bash_exec")
++				? await this._extensionRunner.emitBeforeBashExec(baseEvent)
++				: baseEvent;
++			const execCommand = execEvent.command;
++			const execCwd = execEvent.cwd;
++			const execEnv = execEvent.env;
++			const execShell = execEvent.shell;
++			const execArgs = execEvent.args;
++			const execTimeout = execEvent.timeout;
++
+ 			const result = options?.operations
+-				? await executeBashWithOperations(resolvedCommand, process.cwd(), options.operations, {
++				? await executeBashWithOperations(execCommand, execCwd, options.operations, {
+ 						onChunk,
+ 						signal: this._bashAbortController.signal,
++						env: execEnv,
++						shell: execShell,
++						args: execArgs,
++						timeout: execTimeout,
+ 					})
+-				: await executeBashCommand(resolvedCommand, {
++				: await executeBashCommand(execCommand, {
+ 						onChunk,
+ 						signal: this._bashAbortController.signal,
++						cwd: execCwd,
++						env: execEnv,
++						shell: execShell,
++						args: execArgs,
++						timeout: execTimeout,
+ 					});
+ 
+ 			this.recordBashResult(command, result, options);
+diff --git a/packages/coding-agent/src/core/bash-executor.ts b/packages/coding-agent/src/core/bash-executor.ts
+index b249821862..e853f0f35b 100644
+--- a/packages/coding-agent/src/core/bash-executor.ts
++++ b/packages/coding-agent/src/core/bash-executor.ts
+@@ -25,6 +25,16 @@ export interface BashExecutorOptions {
+ 	onChunk?: (chunk: string) => void;
+ 	/** AbortSignal for cancellation */
+ 	signal?: AbortSignal;
++	/** Working directory override */
++	cwd?: string;
++	/** Environment override */
++	env?: NodeJS.ProcessEnv;
++	/** Shell executable override */
++	shell?: string;
++	/** Shell argument override */
++	args?: string[];
++	/** Timeout in seconds */
++	timeout?: number;
+ }
+ 
+ export interface BashResult {
+@@ -60,13 +70,29 @@ export interface BashResult {
+  */
+ export function executeBash(command: string, options?: BashExecutorOptions): Promise<BashResult> {
+ 	return new Promise((resolve, reject) => {
+-		const { shell, args } = getShellConfig();
+-		const child: ChildProcess = spawn(shell, [...args, command], {
++		const shellConfig = getShellConfig();
++		const resolvedShell = options?.shell ?? shellConfig.shell;
++		const resolvedArgs = options?.args ?? shellConfig.args;
++		const resolvedCwd = options?.cwd ?? process.cwd();
++		const resolvedEnv = { ...getShellEnv(), ...(options?.env ?? {}) };
++		const child: ChildProcess = spawn(resolvedShell, [...resolvedArgs, command], {
++			cwd: resolvedCwd,
++			env: resolvedEnv,
+ 			detached: true,
+-			env: getShellEnv(),
+ 			stdio: ["ignore", "pipe", "pipe"],
+ 		});
+ 
++		let timedOut = false;
++		let timeoutHandle: NodeJS.Timeout | undefined;
++		if (options?.timeout !== undefined && options.timeout > 0) {
++			timeoutHandle = setTimeout(() => {
++				timedOut = true;
++				if (child.pid) {
++					killProcessTree(child.pid);
++				}
++			}, options.timeout * 1000);
++		}
++
+ 		// Track sanitized output for truncation
+ 		const outputChunks: string[] = [];
+ 		let outputBytes = 0;
+@@ -88,6 +114,9 @@ export function executeBash(command: string, options?: BashExecutorOptions): Pro
+ 			if (options.signal.aborted) {
+ 				// Already aborted, don't even start
+ 				child.kill();
++				if (timeoutHandle) {
++					clearTimeout(timeoutHandle);
++				}
+ 				resolve({
+ 					output: "",
+ 					exitCode: undefined,
+@@ -144,6 +173,9 @@ export function executeBash(command: string, options?: BashExecutorOptions): Pro
+ 			if (options?.signal) {
+ 				options.signal.removeEventListener("abort", abortHandler);
+ 			}
++			if (timeoutHandle) {
++				clearTimeout(timeoutHandle);
++			}
+ 
+ 			if (tempFileStream) {
+ 				tempFileStream.end();
+@@ -153,8 +185,7 @@ export function executeBash(command: string, options?: BashExecutorOptions): Pro
+ 			const fullOutput = outputChunks.join("");
+ 			const truncationResult = truncateTail(fullOutput);
+ 
+-			// code === null means killed (cancelled)
+-			const cancelled = code === null;
++			const cancelled = code === null || timedOut;
+ 
+ 			resolve({
+ 				output: truncationResult.truncated ? truncationResult.content : fullOutput,
+@@ -170,6 +201,9 @@ export function executeBash(command: string, options?: BashExecutorOptions): Pro
+ 			if (options?.signal) {
+ 				options.signal.removeEventListener("abort", abortHandler);
+ 			}
++			if (timeoutHandle) {
++				clearTimeout(timeoutHandle);
++			}
+ 
+ 			if (tempFileStream) {
+ 				tempFileStream.end();
+@@ -238,6 +272,10 @@ export async function executeBashWithOperations(
+ 		const result = await operations.exec(command, cwd, {
+ 			onData,
+ 			signal: options?.signal,
++			timeout: options?.timeout,
++			env: options?.env,
++			shell: options?.shell,
++			args: options?.args,
+ 		});
+ 
+ 		if (tempFileStream) {
+diff --git a/packages/coding-agent/src/core/extensions/index.ts b/packages/coding-agent/src/core/extensions/index.ts
+index d10d0a1a5c..d3ccbe2488 100644
+--- a/packages/coding-agent/src/core/extensions/index.ts
++++ b/packages/coding-agent/src/core/extensions/index.ts
+@@ -25,9 +25,14 @@ export type {
+ 	// App keybindings (for custom editors)
+ 	AppAction,
+ 	AppendEntryHandler,
++	BashExecEvent,
++	BashExecOverrides,
++	BashExecSource,
+ 	BashToolResultEvent,
+ 	BeforeAgentStartEvent,
+ 	BeforeAgentStartEventResult,
++	BeforeBashExecEvent,
++	BeforeBashExecEventResult,
+ 	// Context
+ 	CompactOptions,
+ 	// Events - Agent
+diff --git a/packages/coding-agent/src/core/extensions/runner.ts b/packages/coding-agent/src/core/extensions/runner.ts
+index 289400a0bf..31eb0410d6 100644
+--- a/packages/coding-agent/src/core/extensions/runner.ts
++++ b/packages/coding-agent/src/core/extensions/runner.ts
+@@ -10,8 +10,12 @@ import type { KeyAction, KeybindingsConfig } from "../keybindings.js";
+ import type { ModelRegistry } from "../model-registry.js";
+ import type { SessionManager } from "../session-manager.js";
+ import type {
++	BashExecBlockResult,
++	BashExecOverrides,
+ 	BeforeAgentStartEvent,
+ 	BeforeAgentStartEventResult,
++	BeforeBashExecEvent,
++	BeforeBashExecEventResult,
+ 	CompactOptions,
+ 	ContextEvent,
+ 	ContextEventResult,
+@@ -83,6 +87,34 @@ const buildBuiltinKeybindings = (effectiveKeybindings: Required<KeybindingsConfi
+ 	return builtinKeybindings;
+ };
+ 
++const applyBashExecOverrides = (event: BeforeBashExecEvent, overrides: BashExecOverrides): BeforeBashExecEvent => {
++	let nextEnv = event.env;
++	if (overrides.env) {
++		nextEnv = { ...event.env };
++		for (const [key, value] of Object.entries(overrides.env)) {
++			if (value === undefined) {
++				delete nextEnv[key];
++			} else {
++				nextEnv[key] = value;
++			}
++		}
++	}
++
++	return {
++		...event,
++		command: overrides.command ?? event.command,
++		cwd: overrides.cwd ?? event.cwd,
++		env: nextEnv,
++		shell: overrides.shell ?? event.shell,
++		args: overrides.args ?? event.args,
++		timeout: overrides.timeout ?? event.timeout,
++	};
++};
++
++const isBashExecBlockResult = (result: BeforeBashExecEventResult): result is BashExecBlockResult => {
++	return "block" in result && result.block;
++};
++
+ /** Combined result from all before_agent_start handlers */
+ interface BeforeAgentStartCombinedResult {
+ 	messages?: NonNullable<BeforeAgentStartEventResult["message"]>[];
+@@ -474,6 +506,50 @@ export class ExtensionRunner {
+ 		return result;
+ 	}
+ 
++	async emitBeforeBashExec(event: BeforeBashExecEvent): Promise<BeforeBashExecEvent> {
++		const ctx = this.createContext();
++		let currentEvent: BeforeBashExecEvent = {
++			...event,
++			env: { ...event.env },
++			args: [...event.args],
++		};
++
++		for (const ext of this.extensions) {
++			const handlers = ext.handlers.get("before_bash_exec");
++			if (!handlers || handlers.length === 0) continue;
++
++			for (const handler of handlers) {
++				let handlerResult: unknown;
++				try {
++					handlerResult = await handler(currentEvent, ctx);
++				} catch (err) {
++					const message = err instanceof Error ? err.message : String(err);
++					const stack = err instanceof Error ? err.stack : undefined;
++					this.emitError({
++						extensionPath: ext.path,
++						event: "before_bash_exec",
++						error: message,
++						stack,
++					});
++					continue;
++				}
++
++				if (!handlerResult) {
++					continue;
++				}
++
++				const overrideResult = handlerResult as BeforeBashExecEventResult;
++				if (isBashExecBlockResult(overrideResult)) {
++					const reason = overrideResult.reason ?? "Bash execution was blocked by an extension";
++					throw new Error(reason);
++				}
++				currentEvent = applyBashExecOverrides(currentEvent, overrideResult);
++			}
++		}
++
++		return currentEvent;
++	}
++
+ 	async emitUserBash(event: UserBashEvent): Promise<UserBashEventResult | undefined> {
+ 		const ctx = this.createContext();
+ 
+diff --git a/packages/coding-agent/src/core/extensions/types.ts b/packages/coding-agent/src/core/extensions/types.ts
+index 2a058160e8..dd21c4ab1a 100644
+--- a/packages/coding-agent/src/core/extensions/types.ts
++++ b/packages/coding-agent/src/core/extensions/types.ts
+@@ -488,6 +488,43 @@ export interface UserBashEvent {
+ 	cwd: string;
+ }
+ 
++// ============================================================================
++// Bash Execution Events
++// ============================================================================
++
++export type BashExecSource = "tool" | "user_bash";
++
++export interface BashExecOverrides {
++	command?: string;
++	cwd?: string;
++	env?: Record<string, string | undefined>;
++	shell?: string;
++	args?: string[];
++	timeout?: number;
++}
++
++export interface BashExecBlockResult {
++	block: true;
++	reason?: string;
++}
++
++export interface BashExecEvent {
++	source: BashExecSource;
++	command: string;
++	originalCommand: string;
++	cwd: string;
++	env: NodeJS.ProcessEnv;
++	shell: string;
++	args: string[];
++	toolCallId?: string;
++	timeout?: number;
++}
++
++/** Fired before spawning a bash command (tool + user bash). */
++export interface BeforeBashExecEvent extends BashExecEvent {
++	type: "before_bash_exec";
++}
++
+ // ============================================================================
+ // Input Events
+ // ============================================================================
+@@ -617,6 +654,7 @@ export type ExtensionEvent =
+ 	| TurnEndEvent
+ 	| ModelSelectEvent
+ 	| UserBashEvent
++	| BeforeBashExecEvent
+ 	| InputEvent
+ 	| ToolCallEvent
+ 	| ToolResultEvent;
+@@ -642,10 +680,14 @@ export interface UserBashEventResult {
+ 	result?: BashResult;
+ }
+ 
++/** Result from before_bash_exec event handler */
++export type BeforeBashExecEventResult = BashExecOverrides | BashExecBlockResult;
++
+ export interface ToolResultEventResult {
+ 	content?: (TextContent | ImageContent)[];
+ 	details?: unknown;
+ 	isError?: boolean;
++	errorMessage?: string;
+ }
+ 
+ export interface BeforeAgentStartEventResult {
+@@ -749,6 +791,7 @@ export interface ExtensionAPI {
+ 	on(event: "tool_call", handler: ExtensionHandler<ToolCallEvent, ToolCallEventResult>): void;
+ 	on(event: "tool_result", handler: ExtensionHandler<ToolResultEvent, ToolResultEventResult>): void;
+ 	on(event: "user_bash", handler: ExtensionHandler<UserBashEvent, UserBashEventResult>): void;
++	on(event: "before_bash_exec", handler: ExtensionHandler<BeforeBashExecEvent, BeforeBashExecEventResult>): void;
+ 	on(event: "input", handler: ExtensionHandler<InputEvent, InputEventResult>): void;
+ 
+ 	// =========================================================================
+diff --git a/packages/coding-agent/src/core/extensions/wrapper.ts b/packages/coding-agent/src/core/extensions/wrapper.ts
+index 0626afaf54..5f404a4237 100644
+--- a/packages/coding-agent/src/core/extensions/wrapper.ts
++++ b/packages/coding-agent/src/core/extensions/wrapper.ts
+@@ -3,8 +3,9 @@
+  */
+ 
+ import type { AgentTool, AgentToolUpdateCallback } from "@mariozechner/pi-agent-core";
++import { getShellConfig, getShellEnv } from "../../utils/shell.js";
+ import type { ExtensionRunner } from "./runner.js";
+-import type { RegisteredTool, ToolCallEventResult, ToolResultEventResult } from "./types.js";
++import type { BeforeBashExecEvent, RegisteredTool, ToolCallEventResult, ToolResultEventResult } from "./types.js";
+ 
+ /**
+  * Wrap a RegisteredTool into an AgentTool.
+@@ -36,6 +37,47 @@ export function wrapRegisteredTools(registeredTools: RegisteredTool[], runner: E
+  * - Emits tool_result event after execution (can modify result)
+  */
+ export function wrapToolWithExtensions<T>(tool: AgentTool<any, T>, runner: ExtensionRunner): AgentTool<any, T> {
++	type BashToolParams = {
++		command: string;
++		timeout?: number;
++	};
++	type BashExecParams = BashToolParams & {
++		cwd?: string;
++		env?: NodeJS.ProcessEnv;
++		shell?: string;
++		args?: string[];
++	};
++	const applyBeforeBashExecOverrides = async (
++		toolCallId: string,
++		params: BashToolParams,
++		runner: ExtensionRunner,
++	): Promise<BashExecParams> => {
++		const shellConfig = getShellConfig();
++		const context = runner.createContext();
++		const baseEvent: BeforeBashExecEvent = {
++			type: "before_bash_exec",
++			source: "tool",
++			command: params.command,
++			originalCommand: params.command,
++			cwd: context.cwd,
++			env: { ...getShellEnv() },
++			shell: shellConfig.shell,
++			args: [...shellConfig.args],
++			toolCallId,
++			timeout: params.timeout,
++		};
++		const execEvent = await runner.emitBeforeBashExec(baseEvent);
++		return {
++			...params,
++			command: execEvent.command,
++			cwd: execEvent.cwd,
++			env: execEvent.env,
++			shell: execEvent.shell,
++			args: execEvent.args,
++			timeout: execEvent.timeout,
++		};
++	};
++
+ 	return {
+ 		...tool,
+ 		execute: async (
+@@ -44,6 +86,8 @@ export function wrapToolWithExtensions<T>(tool: AgentTool<any, T>, runner: Exten
+ 			signal?: AbortSignal,
+ 			onUpdate?: AgentToolUpdateCallback<T>,
+ 		) => {
++			let effectiveParams = params;
++
+ 			// Emit tool_call event - extensions can block execution
+ 			if (runner.hasHandlers("tool_call")) {
+ 				try {
+@@ -66,9 +110,13 @@ export function wrapToolWithExtensions<T>(tool: AgentTool<any, T>, runner: Exten
+ 				}
+ 			}
+ 
++			if (tool.name === "bash" && runner.hasHandlers("before_bash_exec")) {
++				effectiveParams = await applyBeforeBashExecOverrides(toolCallId, params as BashToolParams, runner);
++			}
++
+ 			// Execute the actual tool
+ 			try {
+-				const result = await tool.execute(toolCallId, params, signal, onUpdate);
++				const result = await tool.execute(toolCallId, effectiveParams, signal, onUpdate);
+ 
+ 				// Emit tool_result event - extensions can modify the result
+ 				if (runner.hasHandlers("tool_result")) {
+@@ -76,13 +124,17 @@ export function wrapToolWithExtensions<T>(tool: AgentTool<any, T>, runner: Exten
+ 						type: "tool_result",
+ 						toolName: tool.name,
+ 						toolCallId,
+-						input: params,
++						input: effectiveParams,
+ 						content: result.content,
+ 						details: result.details,
+ 						isError: false,
+ 					})) as ToolResultEventResult | undefined;
+ 
+ 					if (resultResult) {
++						if (resultResult.errorMessage !== undefined) {
++							throw new Error(resultResult.errorMessage);
++						}
++
+ 						return {
+ 							content: resultResult.content ?? result.content,
+ 							details: (resultResult.details ?? result.details) as T,
+@@ -94,15 +146,20 @@ export function wrapToolWithExtensions<T>(tool: AgentTool<any, T>, runner: Exten
+ 			} catch (err) {
+ 				// Emit tool_result event for errors
+ 				if (runner.hasHandlers("tool_result")) {
+-					await runner.emit({
++					const content = [{ type: "text" as const, text: err instanceof Error ? err.message : String(err) }];
++					const resultResult = (await runner.emit({
+ 						type: "tool_result",
+ 						toolName: tool.name,
+ 						toolCallId,
+-						input: params,
+-						content: [{ type: "text", text: err instanceof Error ? err.message : String(err) }],
++						input: effectiveParams,
++						content,
+ 						details: undefined,
+ 						isError: true,
+-					});
++					})) as ToolResultEventResult | undefined;
++
++					if (resultResult?.errorMessage !== undefined) {
++						throw new Error(resultResult.errorMessage);
++					}
+ 				}
+ 				throw err;
+ 			}
+diff --git a/packages/coding-agent/src/core/tools/bash.ts b/packages/coding-agent/src/core/tools/bash.ts
+index 3c312e52b6..09b35fdec6 100644
+--- a/packages/coding-agent/src/core/tools/bash.ts
++++ b/packages/coding-agent/src/core/tools/bash.ts
+@@ -45,6 +45,9 @@ export interface BashOperations {
+ 			onData: (data: Buffer) => void;
+ 			signal?: AbortSignal;
+ 			timeout?: number;
++			env?: NodeJS.ProcessEnv;
++			shell?: string;
++			args?: string[];
+ 		},
+ 	) => Promise<{ exitCode: number | null }>;
+ }
+@@ -53,19 +56,22 @@ export interface BashOperations {
+  * Default bash operations using local shell
+  */
+ const defaultBashOperations: BashOperations = {
+-	exec: (command, cwd, { onData, signal, timeout }) => {
++	exec: (command, cwd, { onData, signal, timeout, env, shell, args }) => {
+ 		return new Promise((resolve, reject) => {
+-			const { shell, args } = getShellConfig();
++			const shellConfig = getShellConfig();
++			const resolvedShell = shell ?? shellConfig.shell;
++			const resolvedArgs = args ?? shellConfig.args;
++			const resolvedEnv = { ...getShellEnv(), ...(env ?? {}) };
+ 
+ 			if (!existsSync(cwd)) {
+ 				reject(new Error(`Working directory does not exist: ${cwd}\nCannot execute bash commands.`));
+ 				return;
+ 			}
+ 
+-			const child = spawn(shell, [...args, command], {
++			const child = spawn(resolvedShell, [...resolvedArgs, command], {
+ 				cwd,
++				env: resolvedEnv,
+ 				detached: true,
+-				env: getShellEnv(),
+ 				stdio: ["ignore", "pipe", "pipe"],
+ 			});
+ 
+@@ -151,12 +157,27 @@ export function createBashTool(cwd: string, options?: BashToolOptions): AgentToo
+ 		parameters: bashSchema,
+ 		execute: async (
+ 			_toolCallId: string,
+-			{ command, timeout }: { command: string; timeout?: number },
++			{
++				command,
++				timeout,
++				cwd: overrideCwd,
++				env,
++				shell,
++				args,
++			}: {
++				command: string;
++				timeout?: number;
++				cwd?: string;
++				env?: NodeJS.ProcessEnv;
++				shell?: string;
++				args?: string[];
++			},
+ 			signal?: AbortSignal,
+ 			onUpdate?,
+ 		) => {
+ 			// Apply command prefix if configured (e.g., "shopt -s expand_aliases" for alias support)
+ 			const resolvedCommand = commandPrefix ? `${commandPrefix}\n${command}` : command;
++			const resolvedCwd = overrideCwd ?? cwd;
+ 
+ 			return new Promise((resolve, reject) => {
+ 				// We'll stream to a temp file if output gets large
+@@ -213,7 +234,7 @@ export function createBashTool(cwd: string, options?: BashToolOptions): AgentToo
+ 					}
+ 				};
+ 
+-				ops.exec(resolvedCommand, cwd, { onData: handleData, signal, timeout })
++				ops.exec(resolvedCommand, resolvedCwd, { onData: handleData, signal, timeout, env, shell, args })
+ 					.then(({ exitCode }) => {
+ 						// Close temp file stream
+ 						if (tempFileStream) {
+diff --git a/packages/coding-agent/src/index.ts b/packages/coding-agent/src/index.ts
+index ecf08a77e5..dfdb79d38a 100644
+--- a/packages/coding-agent/src/index.ts
++++ b/packages/coding-agent/src/index.ts
+@@ -44,7 +44,12 @@ export type {
+ 	AgentToolResult,
+ 	AgentToolUpdateCallback,
+ 	AppAction,
++	BashExecEvent,
++	BashExecOverrides,
++	BashExecSource,
+ 	BeforeAgentStartEvent,
++	BeforeBashExecEvent,
++	BeforeBashExecEventResult,
+ 	CompactOptions,
+ 	ContextEvent,
+ 	ContextUsage,
+diff --git a/packages/coding-agent/src/utils/shell.ts b/packages/coding-agent/src/utils/shell.ts
+index 62ff558afc..f8d2d7a182 100644
+--- a/packages/coding-agent/src/utils/shell.ts
++++ b/packages/coding-agent/src/utils/shell.ts
+@@ -1,8 +1,7 @@
+ import { existsSync } from "node:fs";
+ import { delimiter } from "node:path";
+ import { spawn, spawnSync } from "child_process";
+-import { getSettingsPath } from "../config.js";
+-import { getBinDir } from "../config.js";
++import { getBinDir, getSettingsPath } from "../config.js";
+ import { SettingsManager } from "../core/settings-manager.js";
+ 
+ let cachedShellConfig: { shell: string; args: string[] } | null = null;
+
+From e25be49907f074dee15d00955de4010550af5190 Mon Sep 17 00:00:00 2001
+From: Armin Ronacher <armin.ronacher@active-4.com>
+Date: Thu, 22 Jan 2026 20:00:15 +0100
+Subject: [PATCH 2/3] Reuse and recycle
+
+---
+ packages/coding-agent/CHANGELOG.md            |  1 -
+ packages/coding-agent/README.md               |  4 +-
+ packages/coding-agent/docs/extensions.md      |  2 +-
+ .../coding-agent/examples/extensions/uv.ts    |  6 +--
+ .../coding-agent/src/core/agent-session.ts    | 12 +++++-
+ .../coding-agent/src/core/bash-executor.ts    | 11 ++---
+ .../coding-agent/src/core/extensions/types.ts |  1 -
+ .../src/core/extensions/wrapper.ts            | 40 +++++++++++++++----
+ packages/coding-agent/src/core/messages.ts    |  1 +
+ packages/coding-agent/src/core/tools/bash.ts  | 11 ++---
+ packages/coding-agent/src/utils/shell.ts      | 28 +++++++++++++
+ 11 files changed, 89 insertions(+), 28 deletions(-)
+
+diff --git a/packages/coding-agent/CHANGELOG.md b/packages/coding-agent/CHANGELOG.md
+index 4c2bb77394..04c91f5db0 100644
+--- a/packages/coding-agent/CHANGELOG.md
++++ b/packages/coding-agent/CHANGELOG.md
+@@ -13,7 +13,6 @@
+ - Extension package management with `pi install`, `pi remove`, `pi update`, and `pi list` commands ([#645](https://github.com/badlogic/pi-mono/issues/645))
+ - `/reload` command to reload extensions, skills, prompts, and themes ([#645](https://github.com/badlogic/pi-mono/issues/645))
+ - CLI flags for `--skill`, `--prompt-template`, `--theme`, `--no-prompt-templates`, and `--no-themes` ([#645](https://github.com/badlogic/pi-mono/issues/645))
+-- `tool_result` handlers can return `errorMessage` to override tool errors or force a failure
+ 
+ ### Changed
+ 
+diff --git a/packages/coding-agent/README.md b/packages/coding-agent/README.md
+index cd1153f2a7..edb7f880af 100644
+--- a/packages/coding-agent/README.md
++++ b/packages/coding-agent/README.md
+@@ -1112,12 +1112,12 @@ export default function (pi: ExtensionAPI) {
+ 
+     if (event.isError) {
+       // Override the thrown error message (optional)
+-      return { errorMessage: "Custom error message" };
++      return { content: [{ type: "text", text: "Custom error message" }], isError: true };
+     }
+ 
+     if (event.toolName === "bash" && event.content.length > 0) {
+       // Force a successful tool to be treated as an error
+-      return { errorMessage: "Tool output rejected by policy" };
++      return { content: [{ type: "text", text: "Tool output rejected by policy" }], isError: true };
+     }
+   });
+ 
+diff --git a/packages/coding-agent/docs/extensions.md b/packages/coding-agent/docs/extensions.md
+index b0c60812fb..44aec04b3a 100644
+--- a/packages/coding-agent/docs/extensions.md
++++ b/packages/coding-agent/docs/extensions.md
+@@ -594,7 +594,7 @@ pi.on("tool_result", async (event, ctx) => {
+ });
+ ```
+ 
+-If `event.isError` is true, return `{ errorMessage: "..." }` to override the thrown error message (optionally alongside `content`). Returning `errorMessage` on a successful tool result forces the tool to be treated as an error.
++If `event.isError` is true, return `{ content: [...], isError: true }` to override the thrown error message (the text content becomes the error string). Returning `isError: true` on a successful tool result forces the tool to be treated as an error.
+ 
+ **Examples:** [git-checkpoint.ts](../examples/extensions/git-checkpoint.ts), [plan-mode/index.ts](../examples/extensions/plan-mode/index.ts)
+ 
+diff --git a/packages/coding-agent/examples/extensions/uv.ts b/packages/coding-agent/examples/extensions/uv.ts
+index 41af0dc214..a1a240713e 100644
+--- a/packages/coding-agent/examples/extensions/uv.ts
++++ b/packages/coding-agent/examples/extensions/uv.ts
+@@ -63,14 +63,12 @@ export default function (pi: ExtensionAPI) {
+ 		const moduleName = moduleMatch?.[1];
+ 		const hintTarget = moduleName ? ` --with ${moduleName}` : "";
+ 		const hint =
+-			"\n\nHint: Python import failed. Consider running with uv to fetch dependencies, " +
++			"\n\nHint: Python import failed. Use uv to fetch dependencies automatically without changing the system, " +
+ 			`e.g. \`uv run${hintTarget} python -c '...'\` or \`uv run --script\` for throwaway scripts.`;
+ 
+-		const message = text + hint;
+-
+ 		return {
+ 			content: [...event.content, { type: "text", text: hint }],
+-			errorMessage: message,
++			isError: true,
+ 		};
+ 	});
+ }
+diff --git a/packages/coding-agent/src/core/agent-session.ts b/packages/coding-agent/src/core/agent-session.ts
+index 0e5ca9e129..de4cba355b 100644
+--- a/packages/coding-agent/src/core/agent-session.ts
++++ b/packages/coding-agent/src/core/agent-session.ts
+@@ -2064,7 +2064,10 @@ export class AgentSession {
+ 						timeout: execTimeout,
+ 					});
+ 
+-			this.recordBashResult(command, result, options);
++			this.recordBashResult(command, result, {
++				excludeFromContext: options?.excludeFromContext,
++				executedCommand: execCommand === command ? undefined : execCommand,
++			});
+ 			return result;
+ 		} finally {
+ 			this._bashAbortController = undefined;
+@@ -2075,10 +2078,15 @@ export class AgentSession {
+ 	 * Record a bash execution result in session history.
+ 	 * Used by executeBash and by extensions that handle bash execution themselves.
+ 	 */
+-	recordBashResult(command: string, result: BashResult, options?: { excludeFromContext?: boolean }): void {
++	recordBashResult(
++		command: string,
++		result: BashResult,
++		options?: { excludeFromContext?: boolean; executedCommand?: string },
++	): void {
+ 		const bashMessage: BashExecutionMessage = {
+ 			role: "bashExecution",
+ 			command,
++			executedCommand: options?.executedCommand,
+ 			output: result.output,
+ 			exitCode: result.exitCode,
+ 			cancelled: result.cancelled,
+diff --git a/packages/coding-agent/src/core/bash-executor.ts b/packages/coding-agent/src/core/bash-executor.ts
+index e853f0f35b..0d753426f8 100644
+--- a/packages/coding-agent/src/core/bash-executor.ts
++++ b/packages/coding-agent/src/core/bash-executor.ts
+@@ -12,7 +12,7 @@ import { tmpdir } from "node:os";
+ import { join } from "node:path";
+ import { type ChildProcess, spawn } from "child_process";
+ import stripAnsi from "strip-ansi";
+-import { getShellConfig, getShellEnv, killProcessTree, sanitizeBinaryOutput } from "../utils/shell.js";
++import { killProcessTree, resolveShellExecutionOptions, sanitizeBinaryOutput } from "../utils/shell.js";
+ import type { BashOperations } from "./tools/bash.js";
+ import { DEFAULT_MAX_BYTES, truncateTail } from "./tools/truncate.js";
+ 
+@@ -70,11 +70,12 @@ export interface BashResult {
+  */
+ export function executeBash(command: string, options?: BashExecutorOptions): Promise<BashResult> {
+ 	return new Promise((resolve, reject) => {
+-		const shellConfig = getShellConfig();
+-		const resolvedShell = options?.shell ?? shellConfig.shell;
+-		const resolvedArgs = options?.args ?? shellConfig.args;
+ 		const resolvedCwd = options?.cwd ?? process.cwd();
+-		const resolvedEnv = { ...getShellEnv(), ...(options?.env ?? {}) };
++		const { resolvedShell, resolvedArgs, resolvedEnv } = resolveShellExecutionOptions({
++			shell: options?.shell,
++			args: options?.args,
++			env: options?.env,
++		});
+ 		const child: ChildProcess = spawn(resolvedShell, [...resolvedArgs, command], {
+ 			cwd: resolvedCwd,
+ 			env: resolvedEnv,
+diff --git a/packages/coding-agent/src/core/extensions/types.ts b/packages/coding-agent/src/core/extensions/types.ts
+index dd21c4ab1a..e0c5bbe89a 100644
+--- a/packages/coding-agent/src/core/extensions/types.ts
++++ b/packages/coding-agent/src/core/extensions/types.ts
+@@ -687,7 +687,6 @@ export interface ToolResultEventResult {
+ 	content?: (TextContent | ImageContent)[];
+ 	details?: unknown;
+ 	isError?: boolean;
+-	errorMessage?: string;
+ }
+ 
+ export interface BeforeAgentStartEventResult {
+diff --git a/packages/coding-agent/src/core/extensions/wrapper.ts b/packages/coding-agent/src/core/extensions/wrapper.ts
+index 5f404a4237..f38293e759 100644
+--- a/packages/coding-agent/src/core/extensions/wrapper.ts
++++ b/packages/coding-agent/src/core/extensions/wrapper.ts
+@@ -3,6 +3,7 @@
+  */
+ 
+ import type { AgentTool, AgentToolUpdateCallback } from "@mariozechner/pi-agent-core";
++import type { ImageContent, TextContent } from "@mariozechner/pi-ai";
+ import { getShellConfig, getShellEnv } from "../../utils/shell.js";
+ import type { ExtensionRunner } from "./runner.js";
+ import type { BeforeBashExecEvent, RegisteredTool, ToolCallEventResult, ToolResultEventResult } from "./types.js";
+@@ -77,6 +78,19 @@ export function wrapToolWithExtensions<T>(tool: AgentTool<any, T>, runner: Exten
+ 			timeout: execEvent.timeout,
+ 		};
+ 	};
++	const toolResultContentToErrorMessage = (
++		content: (TextContent | ImageContent)[] | undefined,
++		fallback: string,
++	): string => {
++		if (!content || content.length === 0) return fallback;
++		const text = content
++			.filter((item): item is TextContent => item.type === "text" && !!item.text)
++			.map((item) => item.text)
++			.join("")
++			.trim();
++		if (text) return text;
++		return `${fallback} [non-text content]`;
++	};
+ 
+ 	return {
+ 		...tool,
+@@ -87,6 +101,7 @@ export function wrapToolWithExtensions<T>(tool: AgentTool<any, T>, runner: Exten
+ 			onUpdate?: AgentToolUpdateCallback<T>,
+ 		) => {
+ 			let effectiveParams = params;
++			let forcedError = false;
+ 
+ 			// Emit tool_call event - extensions can block execution
+ 			if (runner.hasHandlers("tool_call")) {
+@@ -131,22 +146,29 @@ export function wrapToolWithExtensions<T>(tool: AgentTool<any, T>, runner: Exten
+ 					})) as ToolResultEventResult | undefined;
+ 
+ 					if (resultResult) {
+-						if (resultResult.errorMessage !== undefined) {
+-							throw new Error(resultResult.errorMessage);
++						const nextContent = resultResult.content ?? result.content;
++						const nextDetails = (resultResult.details ?? result.details) as T;
++						if (resultResult.isError) {
++							forcedError = true;
++							throw new Error(toolResultContentToErrorMessage(nextContent, "Tool execution failed."));
+ 						}
+ 
+ 						return {
+-							content: resultResult.content ?? result.content,
+-							details: (resultResult.details ?? result.details) as T,
++							content: nextContent,
++							details: nextDetails,
+ 						};
+ 					}
+ 				}
+ 
+ 				return result;
+ 			} catch (err) {
++				if (forcedError) {
++					throw err;
++				}
+ 				// Emit tool_result event for errors
+ 				if (runner.hasHandlers("tool_result")) {
+-					const content = [{ type: "text" as const, text: err instanceof Error ? err.message : String(err) }];
++					const fallbackMessage = err instanceof Error ? err.message : String(err);
++					const content = [{ type: "text" as const, text: fallbackMessage }];
+ 					const resultResult = (await runner.emit({
+ 						type: "tool_result",
+ 						toolName: tool.name,
+@@ -157,8 +179,12 @@ export function wrapToolWithExtensions<T>(tool: AgentTool<any, T>, runner: Exten
+ 						isError: true,
+ 					})) as ToolResultEventResult | undefined;
+ 
+-					if (resultResult?.errorMessage !== undefined) {
+-						throw new Error(resultResult.errorMessage);
++					if (resultResult) {
++						if (!resultResult.isError) {
++							throw err;
++						}
++						const nextContent = resultResult.content ?? content;
++						throw new Error(toolResultContentToErrorMessage(nextContent, fallbackMessage));
+ 					}
+ 				}
+ 				throw err;
+diff --git a/packages/coding-agent/src/core/messages.ts b/packages/coding-agent/src/core/messages.ts
+index f5a645e665..24106f3b4f 100644
+--- a/packages/coding-agent/src/core/messages.ts
++++ b/packages/coding-agent/src/core/messages.ts
+@@ -29,6 +29,7 @@ export const BRANCH_SUMMARY_SUFFIX = `</summary>`;
+ export interface BashExecutionMessage {
+ 	role: "bashExecution";
+ 	command: string;
++	executedCommand?: string;
+ 	output: string;
+ 	exitCode: number | undefined;
+ 	cancelled: boolean;
+diff --git a/packages/coding-agent/src/core/tools/bash.ts b/packages/coding-agent/src/core/tools/bash.ts
+index 09b35fdec6..b9ea6a9e27 100644
+--- a/packages/coding-agent/src/core/tools/bash.ts
++++ b/packages/coding-agent/src/core/tools/bash.ts
+@@ -5,7 +5,7 @@ import { join } from "node:path";
+ import type { AgentTool } from "@mariozechner/pi-agent-core";
+ import { Type } from "@sinclair/typebox";
+ import { spawn } from "child_process";
+-import { getShellConfig, getShellEnv, killProcessTree } from "../../utils/shell.js";
++import { killProcessTree, resolveShellExecutionOptions } from "../../utils/shell.js";
+ import { DEFAULT_MAX_BYTES, DEFAULT_MAX_LINES, formatSize, type TruncationResult, truncateTail } from "./truncate.js";
+ 
+ /**
+@@ -58,10 +58,11 @@ export interface BashOperations {
+ const defaultBashOperations: BashOperations = {
+ 	exec: (command, cwd, { onData, signal, timeout, env, shell, args }) => {
+ 		return new Promise((resolve, reject) => {
+-			const shellConfig = getShellConfig();
+-			const resolvedShell = shell ?? shellConfig.shell;
+-			const resolvedArgs = args ?? shellConfig.args;
+-			const resolvedEnv = { ...getShellEnv(), ...(env ?? {}) };
++			const { resolvedShell, resolvedArgs, resolvedEnv } = resolveShellExecutionOptions({
++				shell,
++				args,
++				env,
++			});
+ 
+ 			if (!existsSync(cwd)) {
+ 				reject(new Error(`Working directory does not exist: ${cwd}\nCannot execute bash commands.`));
+diff --git a/packages/coding-agent/src/utils/shell.ts b/packages/coding-agent/src/utils/shell.ts
+index f8d2d7a182..3c157c8d37 100644
+--- a/packages/coding-agent/src/utils/shell.ts
++++ b/packages/coding-agent/src/utils/shell.ts
+@@ -110,6 +110,34 @@ export function getShellEnv(): NodeJS.ProcessEnv {
+ 	};
+ }
+ 
++export interface ShellExecutionOptions {
++	shell?: string;
++	args?: string[];
++	env?: NodeJS.ProcessEnv;
++}
++
++export interface ResolvedShellExecutionOptions {
++	resolvedShell: string;
++	resolvedArgs: string[];
++	resolvedEnv: NodeJS.ProcessEnv;
++}
++
++export function resolveShellExecutionOptions(options?: ShellExecutionOptions): ResolvedShellExecutionOptions {
++	const shellConfig = getShellConfig();
++	const resolvedEnv = options?.env ? { ...options.env } : { ...getShellEnv() };
++	for (const [key, value] of Object.entries(resolvedEnv)) {
++		if (value === undefined) {
++			delete resolvedEnv[key];
++		}
++	}
++
++	return {
++		resolvedShell: options?.shell ?? shellConfig.shell,
++		resolvedArgs: options?.args ?? shellConfig.args,
++		resolvedEnv,
++	};
++}
++
+ /**
+  * Sanitize binary output for display/storage.
+  * Removes characters that crash string-width or cause display issues:
+
+From 95c03063adf375c82f4b43a2a3c17a9338538c88 Mon Sep 17 00:00:00 2001
+From: Armin Ronacher <armin.ronacher@active-4.com>
+Date: Thu, 22 Jan 2026 20:58:09 +0100
+Subject: [PATCH 3/3] Fix test
+
+---
+ packages/coding-agent/test/tools.test.ts | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/packages/coding-agent/test/tools.test.ts b/packages/coding-agent/test/tools.test.ts
+index 851633d221..83bfc44cea 100644
+--- a/packages/coding-agent/test/tools.test.ts
++++ b/packages/coding-agent/test/tools.test.ts
+@@ -290,9 +290,10 @@ describe("Coding Agent Tools", () => {
+ 		});
+ 
+ 		it("should handle process spawn errors", async () => {
+-			vi.spyOn(shellModule, "getShellConfig").mockReturnValueOnce({
+-				shell: "/nonexistent-shell-path-xyz123",
+-				args: ["-c"],
++			vi.spyOn(shellModule, "resolveShellExecutionOptions").mockReturnValueOnce({
++				resolvedShell: "/nonexistent-shell-path-xyz123",
++				resolvedArgs: ["-c"],
++				resolvedEnv: shellModule.getShellEnv(),
+ 			});
+ 
+ 			const bashWithBadShell = createBashTool(testDir);

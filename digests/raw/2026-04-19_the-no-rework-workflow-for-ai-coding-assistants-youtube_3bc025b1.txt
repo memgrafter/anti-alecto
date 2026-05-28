@@ -1,0 +1,1613 @@
+What's really interesting about this
+approach is like I use this all the
+time. Uh and I do in slightly different
+flavors, but the idea is like the more
+assumptions that you can bake in ahead
+of time and the more correct your design
+is, the more likely it is that your
+implementation will be correct. It's
+[music] 307% the dumb zone detection.
+Generally, the less context you use,
+that's that's a smart zone. So once you
+start hitting like 40 50 70 80 90%. It
+it's not that you're in the done zone,
+you're just being less efficient with
+answering questions.
+>> Yeah. you're you're getting worse. If
+your if your problem is really easy, you
+can solve things in the dumb zone. The
+harder your problem is, the more you
+want to optimize for doing most of the
+work in the smart part of the context
+window. By the way, here's the here's
+the learning test output that got added.
+So, we actually have like the observed
+output from the test, which shows
+exactly like how the state machine of
+the internal quad thing behaves when we
+feed additional messages into it. So,
+this is super valuable. This did exactly
+what I wanted.
+Hello everyone. I'm Bipal. I'm one of
+the [music] co-hosts of AI that works.
+Every Tuesday, Dexter and I get together
+and we like to go talk about AI stuff
+that kind of works. I work on BAML which
+is a programming language for building
+AI pipelines. And this is my co-host
+Dexter who works on human layer and has
+been known for context engineering.
+>> Amazing. Uh incredible intro. And today
+we are going to do uh a very fun segment
+that we do uh roughly once a month uh
+called No Vibes Allowed where we are
+going to put a bunch of this stuff into
+practice and we are just going to live
+stream me and Vib collaborating on a
+feature in uh one or both of our tools
+that we work on every day. So you're
+going to get a peak under the hood of
+how we build uh using all this stuff
+putting it all into practice. Uh so
+today uh I guess we can get into it. Um
+we are going to be building um if you've
+seen other live streams we use a tool
+called uh Riptide uh which is the
+working title for the human layer IDE uh
+named TBD uh but if you hear us say
+Riptide or code layer that is what we
+were talking about. So I'm going to pull
+this open. Riptide is basically a
+manager workflow thing. Um just to just
+to walk you through kind of what we're
+doing here. Um I'm just going to launch
+a Cloud Code session here. Um, and
+essentially what you're going to see is
+a demo of what we're going to build
+today. So I can say this, I can say, you
+know, bash sleep 10. And then the issue
+that we have with this is I cannot
+actually uh if I want to send another
+message when you're done sleep again.
+There's no way to cue this. I can
+interrupt the model and send another
+message which will cause this like
+interruption thing to flow through the
+tool call pipeline. But what we really
+want is the ability to cue a message.
+Does that sound right, VBOV?
+>> Exactly. Because one of the most
+annoying things that I love to do in
+other agent systems is I press enter and
+it waits until it's done and then cues
+it on.
+>> Yep. And we've actually done uh an
+episode before about interruptible
+agents and how to build message queuing
+and how to decide when and how to
+interrupt and what to provide in the
+interruption message. Right.
+>> Exactly. Because interruptions are
+slightly different than queuing, but the
+technology stack is the same.
+>> Yep.
+So, I'm just going to get this ready
+real quick. Um,
+I'm just going to make sure we have the
+latest main pulled. Okay, we're there.
+Um, and then basically what I've done is
+uh to prep for this episode is I've
+actually done the early parts of the
+workflow. So, we've talked about a
+little bit about um kind of the the
+workflow steps and I'm actually going to
+pull um so we have this long workflow of
+going from research questions through to
+research through to design. We're going
+to walk through this. We've walked
+through this on previous episodes as
+well. Um, since the last time we did one
+of these episodes, we kind of only made
+it through to the structure outline and
+the planning phase. We didn't actually
+ship any code. I have actually gone
+ahead and gone through to the design
+discussion. I haven't looked at it yet,
+but just this morning I kicked off a
+job. So, um, if we come into Rip Tide,
+we've created our research questions.
+Um, and you can come see here's the
+ticket that I wrote which has a couple
+comments between me and Kyle of like,
+hey, we want to support message queuing
+using the cloud agent SDK.
+And so those questions were used to
+create a large research doc which kind
+of outlines how we use the async
+prompting, how the state machine for
+sessions works,
+um the states in which we allow you to
+send a new message, the interrupt flow,
+the continue session flow, all this kind
+of stuff. Um Vibb, do you want to go a
+little bit deeper on any of this stuff
+or like you're you're kind of familiar
+with the tool and the architecture. So
+>> yeah. So um I'll hop into the doc really
+fast just to catch people up on what
+what we're going to be doing.
+>> Yeah,
+>> I'm at the bottom Dexter.
+>> Yep, I got you.
+>> So this ID uh and today what what the ID
+allows us to do is you can press this
+button and you can hit interrupt
+interrupt
+while the process is happening. That's
+the only way that you can actually go do
+things. I think the the default that
+we're trying to go do is make it so the
+default here changes from interrupt into
+Q. And of course, you should still be
+allowed to interrupt as before.
+>> Yeah,
+>> but by default when you press enter it
+should just add the message on and wait
+until the system is done and then
+proceed onwards. This isn't that hard
+especially because we're living in a
+single process machine that makes it
+life much easier. We're not doing a
+distributed system. So some of the race
+condition stuff is kind of handled for
+us for free which is kind of nice. And
+then the only other question to ask is
+how do we make it so that it's very easy
+to modify the cued messages? How are we
+allowed to cue multiple messages at
+once? Do they all can get concatenated
+together as a single message? Like what
+happens in the queueing behavior there?
+Um, but otherwise like I think this
+should hopefully be a straightforward
+task and hopefully people can get a
+pretty good idea of how we would
+technically what the difference is
+technically between an interrupt and a Q
+and we'll get to talk about some of the
+technical concepts as well.
+>> Yeah. And just to kind of demo how this
+works maybe briefly in the cloud code
+CLI itself. Um, I can launch claude
+here. I could say
+bash sleep 10 and then I can say when
+you're done sleep again.
+>> Yeah.
+>> Uh and so that gives the message. Yeah.
+This is the behavior we want to
+implement. The cloud SDK supports it and
+we've done some research. Um and I even
+had our one thing that's really fun is
+you can actually have claude I think one
+of these actually did like a rip gp
+through the SDK source code itself
+um
+>> to go find it. see to go find actually
+just like the types
+for let's see yeah cloud agent SDK. So
+we looked in node modules and actually
+like went through and found the types
+and the the interfaces and some [snorts]
+of the code inside cloud is minified but
+you can at least explore the types
+itself.
+>> Yeah. Uh, Riverside is not open source
+as of right now, but it's it's a you can
+go ahead and actively sign up for the
+weight list and then get access to it
+pretty easily. Yes,
+>> especially for people on the show.
+>> Yes. So, um, I've gone and created our
+design discussion um, which was just a
+session um, here used the create design
+discussion skill went through and did
+some analysis and then we've built this
+design discussion doc. So, I haven't
+looked at this yet. Um but one thing I
+want to do before we look at this is I
+know that we don't have we talked a lot
+about learning tests and about how do
+you create feedback for uh claude to
+understand especially libraries which
+are closed source like the cloud code
+SDK the the wrapper parts are open
+source but the binary itself is not. So
+we really really like to build some what
+I call learning tests here which um
+uh let's see let's find one here. So
+this is an example where we're actually
+going to run the cloud agent SDK and run
+it in bypass permissions and like make
+some assertions about how like what
+sorts of messages and JSON come out of
+this. Does that make sense?
+>> Yep.
+>> So I've actually primed it as well in
+another session of just like cool read
+the design discussion and then um
+and then basically like come up with a
+proposal for proving how this stuff
+works. And so one thing that we found
+was like our we do have a streaming
+input test but it uses a timeout and it
+doesn't actually test that you can like
+cue a message. So I think um this is
+probably the right one. So, I'm just
+going to come on here and um um can you
+just create exactly one test where the
+model has a tool approval for the bash
+tool and ask it to do bash sleep 10 and
+then immediately cue another message
+that says, you know, when you're done,
+sleep again. We'll actually do bash
+sleep 3 just so the test runs more
+quickly. Um but let's get this running
+and let's get enough example code that
+you're able to um update the design doc
+with any findings um with how the SDK
+actually behaves.
+Does that make sense?
+>> Yeah. And again, these models are really
+good at pattern recognition. So really
+what Dexter you're doing here is you're
+helping you've built a pattern in your
+repo that says we use this opaque tool
+called cloud code that doesn't really
+document very well its behavior. So in
+order to deal with that we have a
+pattern for how to explore the SDK in
+the form of learning test. We talked
+about this aentic back pressure.
+>> Yep. uh uh like either last two episodes
+back and then when now that the model
+can just replicate it doesn't have to
+innovate anything it's literally
+replicating its existing learning test
+and most importantly you're using the
+same terminology there called learning
+tests
+>> so like you're using the same word so it
+knows exactly what to do replicates a
+pattern really fast the harness knows
+what to make happen so then what's
+happening now is if it is able to go and
+confirm something about the queuing
+behavior it should be able to give you
+all the design information you need on
+your end
+>> to make that behave properly.
+>> Right? And this is kind of like one of
+the one of the challenges with this
+whole like planning workflow and we
+talked about this in the in in the back
+pressure episode, but like what happens
+if you have some assumption because you
+read the docs but the docs were wrong or
+misleading or you misunderstood them or
+Claude misunderstood them. Like you're
+not going to find that out till you're
+like two phases into your implementation
+and then you're going have to go rewind
+and redo all of this work. So, this is
+kind of a an opportunity to jump back
+and kind of do some like there's there's
+a couple flavors like there's research
+from code,
+>> there's research from the web, and then
+there's like research from like proofs.
+B, I call them proofs or learning tests
+or whatever you want. But there's like
+multiple different ways to build up
+knowledge about what is true about the
+world, whether it's my codebase or
+external things before we decide how
+we're going to approach building
+something. What's really interesting
+about this approach is like I use this
+all the time uh and I do it in slightly
+different flavors but the idea is like
+the more assumptions that you can bake
+in ahead of time and the more correct
+your design is the more likely it is
+that your implementation will be
+correct.
+>> Exactly. You want to minimize minimize
+the chance of surprises because then
+you're like deep in a thousand lines of
+code changes and you have to try to like
+ren your way out of it.
+>> Exactly. And now imagine a scenario and
+there's this I mean Amazon's famous for
+leadership principles but like and I
+know they're a meme almost in a lot of
+scenarios for I know them but there is
+one that I I personally abide by really
+well which is just that great leaders
+are right a lot and the fundamental
+matter is like the way that you get
+right a lot is you make really good
+decisions up front and when you're when
+you're right it's not that you're good
+because you're right. It's that when you
+are right, you move so much faster than
+any other competition because you don't
+have to go back and fix your mistakes.
+So what ends up happening in coding is
+the more the less mistakes you make even
+though it feels slower
+actually the way faster that you move
+because you're not backtracking. And
+backtracking is the hardest thing to go
+do. Even even though now in cloud code
+you can rewrite the whole system from
+scratch. If you're going to make a
+mistake, you will you will literally
+just move way slower. And especially if
+you make an architectural mistake, then
+you'll move even slower. And if you if
+you detect that mistake 5 days later
+after you already merged it, then you're
+still going to be even um make even more
+mistakes along the way. Like you really
+want to minimize the chance of mistakes
+and you want to be technically correct
+whenever possible.
+>> Yeah. It's like decisions take not a lot
+of time and have a lot of impact.
+Whereas execution can take a lot of time
+and so if you waste time in execution
+when you could have just made better
+decisions then uh you're you're not
+going to make as much progress as
+quickly.
+>> Exactly. So like that's why I think most
+people uh get like this learning test is
+going to be phenomenal because once we
+know exactly how to use the cloud code
+SDK for queuing
+>> and it's confirmed with a test that it
+works that way the design doc here is
+trivial.
+>> Yep. Well so I will say you mentioned
+this is not a distributed system. This
+this really is a distributed system. So
+the architecture here is like you're
+entering a form in a UI which then
+stores things in an API which has a
+database of like cued messages and then
+the demon is actually like fetching
+those and then relaying them down to
+cloud code multiple cloud code sessions.
+>> Yes.
+>> So we will have some interesting
+infrastructure stuff to go through here
+>> but it's not you don't have the same
+race conditions that you have across
+network packets.
+>> That's true. Okay.
+>> That's what I mean like uh networks
+packets coming in and out of order in
+various ways. Like it's basically
+the order of delay here is like sub a
+mil. It should be like one or two
+milliseconds.
+>> Yep.
+>> Which gets rid of a lot of like the
+human the human pressed enter and oops I
+I pressed enter again before the message
+came back to me on round trip what the
+state of the world was.
+>> Yep. Um so this is going to keep working
+while this is running. Um we can pop
+back to our kind of main design I'm
+going to archive that one. we can pop
+back to our kind of main design
+discussion and just start reading this.
+And I'm actually going to create a uh
+anyone can view link and I'm going to
+send this to you Vibb quickly in the
+chat if you want to kind of like skim it
+on your own.
+>> Perfect. And then while we're here, do
+people have questions? Uh have other
+people built queuing or interrupts or
+other workflows along the way? I know
+Josh, you asked a question. Uh is 37%
+the dumb zone detection? Generally, the
+less context you use, that's that's a
+smart zone. So once you start hitting
+like 40 50 70 80 90%. It it's not that
+you're in the dumb zone, you're just
+being less efficient with answering
+questions.
+>> Yeah. You're you're getting worse. If
+your if your problem is really easy, you
+can solve things in the dumb zone. The
+harder your problem is, the more you
+want to optimize for doing most of the
+work in the smart part of the context
+window.
+>> Exactly. Exactly. That's like the best
+way to frame it. All right. We're going
+to be a little silent while we go read.
+Um but um I will uh maybe perhaps
+entertain people while you go read this
+lecture really quickly.
+>> Uh saying you're asking if Riptide is
+like cloud code. I think Riptide is a
+more analogous to a harness around cloud
+code because if you think of cloud code
+as a way of doing work, Riptide is more
+like a workflow
+on top of cloud code. It's a slightly
+more opinionated in the fact that it
+makes you do a little bit more like
+thinking up front and helps you discuss
+and go back and forth with the system.
+Whereas typically with cloud code, even
+in plan mode, the default um work uh
+workflow is like when you do cloud code
+planning, it produces a plan and that's
+often it. I see most people just hit
+straight enter, clear context, go
+onward. And that's because most people
+don't actually read the plan in detail
+>> because it's not designed to be read in
+detail. Like you're let's be real, no
+one there's a reason we don't use less
+to read uh the less command and grab to
+go read our terminal. very very few
+people are reading like vamp most people
+like to open neoim or like some other ID
+to go read code because UIs are nice um
+and reading faster
+>> what what what I'm doing when I'm going
+through this doc right is I'm like
+making sure it understands what the end
+state is of like okay yes we need to
+show a message in the UI they're running
+in they're delivered in order the demon
+picks them up the existing flow works as
+is
+um I would also add one thing here which
+is like for desired end state we want to
+make the default action um when you
+command enter while the session is
+running to Q message. And so there's a
+new button for Q message and then
+there's another button that will be
+persistent for interrupt. And so rather
+than a single interrupt and send button
+while the session is running, we'll have
+those two buttons. So let's highlight
+that in the desired end state and
+reflect that throughout the doc.
+>> And again, this thing wouldn't have been
+caught unless Dexter was actually
+reading the doc, which is why sadly
+Dexter is That's why he's got to be
+silent for some time cuz like there's no
+way to talk and read at the same time.
+>> I could I could talk through kind of
+like open in my like just basically like
+talk thinking out loud of how I'm like
+reading this or what I'm looking for.
+Like we have the desired end state and
+then the next level down is patterns to
+follow. Right? We talked about how AI
+models are really really good at finding
+and understanding and like matching the
+patterns that already exist in your
+codebase. And so one of the reasons I've
+built this into my design doc system is
+basically because I want to get a brain
+dump of what the model is thinking and
+what it has seen because if the model
+goes and starts coding you might catch
+it in the middle of coding like oh you
+picked up the wrong pattern. Now, our
+codebase is only a couple months old, so
+it's got mostly good patterns.
+>> But when we work with people who have
+very old codebase, have been around for
+10 years, and have five different ways
+of doing something like let's say an
+atomic uh SQL update, we want to make
+sure that we're doing those inserts
+correctly.
+>> Exactly. And like the idea is like
+>> and really it's like look, one bad GP in
+your cloud code uh like code research
+system is all it takes for your system
+to be bad. like that. Great leaders make
+right decisions. That's one bad GP and
+you've made the wrong decision. And if
+you're not even reading it, let's be
+real, we don't read all the code
+generates. That's just slop that gets
+amplified over and over and over again.
+And that also has consequences because
+next time the odds of getting that bad
+GP go up because like it's like, oh, you
+just reinforce the pattern in a very
+modern way in a more recent time frame
+saying that pattern was acceptable. It's
+like, of course, I'll do it again. Your
+codebase will always regress to the
+average of the best pattern and the
+worst pattern in the codebase. It will
+just have more of the bad ones and also
+maybe sometimes pick up more of the good
+ones, but it will just
+>> you say your code will probably converge
+on the most common patterns in your
+codebase. It converges to the mode more
+so than anything else.
+>> Yeah,
+>> because like whatever it finds more
+often is what it works.
+>> Um, Alvaro, you've got a great question.
+How do you handle when agent when the
+agent is constantly getting into issues?
+I've been asking it to update its
+progress and blockers in an
+implementation summary file, but is
+there a point where I try a different
+approach? Do you persist these progress
+files somewhere after you're done with
+the done with the task? So, one of the
+other nice things about Riptide is you
+do get all these files preserved in a
+nice little like sharable link. So, like
+for example, Dexter just shared that
+with me.
+>> Well, I can tell you our workflow, I
+don't actually check in these plan files
+everywhere into my repo. Plan files are
+throwaway.
+>> Research files are throwaway. They're
+like task specific. It's very similar
+like um if any of you have ever worked
+in like a large company like for example
+like when I worked at Google we wrote
+design docs all the time but we also
+never referred back to design docs after
+the implementation and that's
+>> the code base as soon as it's shipped
+the code is the new source of truth.
+>> Exactly. So every time you want to go
+learn what the system does like sure
+maybe you'll give a design doc to a new
+hire that came in to understand it
+conceptually but I would never tell a
+new hire to be like this design doc is
+what is true.
+>> Yeah.
+>> If you want to know the truth read the
+code. So, and that's why we always
+generate the research on the fly as
+well. We don't we don't really rely on
+like codebased context, high level.
+>> And you definitely don't want to
+preserve. Yeah. You It's just so cheap
+and like timewise and moneywise to go
+determine um the research that it's
+literally not worth uh storing this
+information.
+>> Yep. So, here's
+>> by the way, here's the here's the
+learning test output that got added. So
+we actually have like the observed
+output from the test which shows exactly
+like how the state machine of the
+internal quad thing behaves when we feed
+additional messages into it. So this is
+super valuable. This did exactly what I
+wanted.
+>> Yeah. Uh Joshy, you've got a question.
+Um
+can you specify new patterns? Uh for
+example, let's say I'm creating a V2 API
+that's diff that uses a different
+pattern than V1 API. How can I say use
+the new V2 pattern? Well, that's really
+easy. You just tell it use the new V2
+pattern and like cloud code when it does
+the research like as a part of your
+ticket definition or your original task
+that you do before performing the
+research. You just say we strongly
+prefer V2 over V1. Then you let it
+discover the research, produce the
+design doc. Then you read the design doc
+to confirm that it made that critical
+design decision of your choice saying it
+better be using V2, not V1. and it might
+still reference V1 as like an older
+pattern, but it still says, "Hey, V2 is
+the more consistent pattern that we want
+to go use." Uh, but it's it's twofold.
+It's one about telling it to do it, and
+two about actually just verifying that
+it did do it. Again, it's very similar
+to hiring a junior engineer. Like when
+you're first implementing a design dog,
+you have a design dog that you wrote as
+a more senior engineer, you hand it off
+to a junior engineer,
+>> they're almost definitely going to mess
+it up somehow.
+>> Like almost definitely. And that's not
+because they're bad. It's probably
+because you missed something in the
+design dock or you had some small thing
+that was slightly off or you had a
+bakedin assumption that was in your head
+that you didn't feel necessary to write
+it down. So how do you validate that
+system? Well, you go read their system
+like whatever they implement that you go
+read and validate that it matches the
+doc at least for the most critical
+parts.
+>> Well, and the inverse is also true,
+right? So like Kyle, my CTO is like kind
+of the end all owner of this codebase.
+And I actually don't know the answer to
+like like in in this codebase, you
+consider me junior to Kyle in terms of
+like ownership and like opinions and
+like having the last word on how this
+stuff builds to make is built to make it
+the most maintainable. I actually don't
+know the right tradeoffs between option
+A and option C. Um, so I'm just going to
+take the recommendation, but if we
+weren't live on a podcast, I would
+actually just like copy the link to this
+and send it to him. Actually, I think we
+get them autolin to the to the linear
+issue, but I would just copy the link to
+this and send it to him and ask him to
+like tell me which of these options is
+correct or if we want to actually do
+like an option D that's not even
+surfaced.
+>> Let's what are the options here?
+>> So, the option one is basically we're
+going to add a new uh collection
+watching the conversation events table
+which is like
+>> it's a little bit over. So, conversation
+events powers all of the events in this
+stream. Um, so it's the the user
+messages that the user enters merged
+with all the events we got from the
+cloud SDK. So we already kind of use it.
+Um, I'm actually like,
+>> can you add more detail on the tradeoff
+>> between a option B is a terrible idea.
+It's like putting a cute messages JSON B
+array which makes it really hard to doc
+really hard to do atomic updates on that
+one.
+>> Yeah, exactly. Yeah, that's a no-go.
+That's like clearly a nogo. Option C is
+basically create a new table in a new
+collection. Um, I think like option C is
+a little cleaner slash safer, but option
+A seems simpler. I just don't know what
+the consequences will be of overloading
+that table even further since it's
+really meant to be a like display logic
+for what shows up in the session. Well,
+in some ways, Q messages actually are
+good to display the logic because they
+are basically also going to be displayed
+and the state of the message is going to
+be displayed. If you remember back to
+the Q and interrupt episode,
+>> I actually that's the right way to think
+about it. There's a single source of
+truth.
+>> Yeah, my take is that we might want a
+message Q table because that'll make it
+also easier to show in the UI and then
+we would just only show cued messages
+matching some filter that like they
+would get flagged as once they were
+delivered and acknowledged and we have
+the explicit life cycle. So, I'm leaning
+towards C, but add a little bit more
+detail and we'll come back to that one.
+>> Oh, I meant like keep it in the same I
+actually meant keep it in the original
+one and then just basically make all
+edits also like incremental on top of
+it. So, and then whenever you process
+the next event, you pop off all the all
+the cute events and you process them all
+together.
+>> Yeah, I mean I think we can do that with
+option option A or C. So, I'm going to
+>> I'm going to just actually fire that off
+and it's going to go do some thinking
+and searching. And while that's
+happening, I'm going to come to question
+two.
+>> Okay. And someone's got another question
+really fast. Is there a way in human
+layer to specify this? There's nothing
+specific. I mean, human layer is more of
+a process. Like rip tide is more of a
+process of how you use cloud code than
+like, hey, there's something uh and the
+process itself is highly opinionated,
+but it's still flexible enough to do the
+thing you need to go do. So like if I I
+Dexter, you you build the product. Like
+I at least I can I would personally hate
+it if they started opinionating very
+specific things like the way my code
+should be structured.
+>> Oh yeah. No, we won't do that. The whole
+point is like
+>> I don't want to make decisions about
+your codebase. Claude should you should
+not want Claude or Codeex or any agent
+to make decisions about your codebase.
+The idea of this design discussion doc
+is that like it forces the human to do
+the highstakes decisionm about the
+architecture of the system. But
+everything up until this point is
+something that AI is very good at
+automating of going and reading a
+100,000 lines of code and figuring out
+which ones are relevant and asking
+really good like architecture questions.
+But you the human are in the driver's
+seat. And again like we don't even have
+to answer option A or option B for this
+question. We can we can even um we can
+even say oh actually I want to do option
+C or like kind of resteer the whole
+thing. But this is your chance to before
+the model starts working and coding or
+even building a plan like do brain
+surgery on the model and like update the
+the patterns it's going to follow and
+the approaches it's going to take before
+we go further down this uh this process
+to um
+>> the structure and how we're going to
+break this down into tasks and then the
+actual code we're going to write and
+then actually going and shipping it. So
+for context, one of the things that I've
+been doing is we've been reworking our
+our proto system to be a lot more robust
+so that you can construct more arbitrary
+types and do more interesting things in
+BAML. And part of that was doing a whole
+migration on basically redefining our
+proto. And what that really meant was
+some of our types like media types and
+like prompt types aren't available to
+you inside the language of your choice.
+We're they are available in a slightly
+fuzzy way. We're making it much more
+wire friendly and relatable. So I
+actually went through and this was
+exactly what this was. We had a V1
+migration. We had a V1 version of the
+portal and a V2 version of the portal.
+And there's two ways that people can
+approach this. One way is you have the
+same codebase and you kind of create a
+you kind of um make it so you kind of
+kind of keep both alive together. That
+Joshy is the problem you're probably
+running into is like how do you tell the
+model that you need to keep one thing
+alive or not? Well, the way that you way
+that we found best work to actually
+solve this again because writing cheap
+code is so cheap, they're actually just
+creating a whole new folder at a at a
+new top level and almost a new package
+and just writing all the code in the new
+package. And then anytime you have code
+that's in the old package that needs to
+be migrated over, you just migrate it
+over and it's so so cheap to go
+implement this. It doesn't matter. And
+then I just went through the approach
+and I basically just went through and I
+did the research questions. I did the
+and it came up with a bunch of questions
+along the way about like what it needs
+to go answer. Then it went and produced
+the doc for what it needed to go do and
+understand the existing type system and
+actually like pulled out everything
+perfectly out of here. And once I did
+that, then I spent the 90% of my time
+basically just iterating on this one
+file over and over and over again until
+it produced a really good design doc.
+And you can actually see like once it
+produced a design doc and I iterated on
+this for quite some time, there's the
+chat log is pretty big. Then I actually
+did another thing which is it produced a
+structured outline for what I'm actually
+going to go code. And the problem is
+this is a massive refactor. So it has
+massive consequences across the whole
+codebase. Um and a lot
+>> you have to be really thoughtful about
+the order you make the changes in
+basically right.
+>> Not not just that but I need to be
+complete and I really can't have any
+bugs because if if I have bugs like
+testing this is like really freaking
+hard because I'm basically redoing the
+whole like serialization layer. So what
+I do is once I've produced the layer,
+not only do I read this structured
+outline really carefully,
+>> but then I do this really silly thing
+which is I start like multiple prompts
+that do this what's inconsistent missing
+for the structured outline and I just
+have the model rip on it and I discuss
+design decisions and then after that
+happens
+I ask it again
+what's missing inconsistent for the
+structured outline. I just keep on doing
+that and
+>> you're basically Ralph wiggleaming your
+structure outline. You're just throw
+more tokens at the problem and tell it
+to think more and it's giving you a more
+complete result.
+>> Well, no, it poses design question
+design decisions to me at every single
+stage of like, oh, here's what's bad,
+here's what's good, here's what's bad,
+here's what's good. And then I actually
+think about each of these individually
+>> and then I update the structured outline
+and then I produce a plan. And guess
+what? Once I did this, I actually
+oneshot the whole implementation. I
+never I never had to go edit this code
+again.
+And this was like maybe I I can I can
+pull up the PR um just to show you how
+many code was this
+>> 17,000 lines of code added 13,000 times
+removed.
+>> Wow.
+>> This was roughly what this was. But it
+one shot the whole thing.
+>> That's sick. Did you Did you check in in
+between the phases? Like did you do any
+verification or you just have it run the
+test at the end of each phase? I just
+had it run the test and it went through
+and then and then just to be very just
+to be very very transparent code rabbit
+uh which is our CI which is the thing
+that we use for validation actually
+found a bunch of bugs and like I don't
+know if I batch our code ra specifically
+all these tools are roughly the same and
+pretty good but like code rabbit's good
+enough for us and it found some bugs we
+addressed them I did a bunch more pushes
+and then I merged it but like end to end
+time you just look at my commit time
+because this will give you a better idea
+of
+>> like when did I make the first commit
+>> of how many commits there were so there
+like roughly 18 commits I'm making this
+Um, and this was two weeks ago all the
+way to five days ago. So, I made some I
+I got wasn't working a while ago and
+then I slowly made the whole prototype
+buffer stuff. So, like this is roughly
+the workflow. It's just more about like
+really quickly iterating in a really
+good way.
+>> Uh, that was a great that was a great
+detour while I'm over here uh coaching.
+>> Yeah. Um, so for question for question
+one, we remember I asked it to add a lot
+more detail and it kind of like figured
+out, okay, this is kind of noisy.
+There's no host ID column. There's a
+bunch of stuff. So I actually like
+steered it towards option three. And the
+cons are like dual infrastructure, dual
+right, and host ID. Like this is
+actually nice. This is going to make the
+system easier to maintain and debug. So
+I'm going to proceed with option C. Um,
+for question two, it's just asking about
+um like how do we pass this in? And it's
+like one of them is proven to work by
+the learning test. So I'm like cool,
+we're going to do that one. Um for the
+API endpoint, I'm want to extend the
+continue endpoint because when I send a
+I don't want a separate endpoint for
+queuing. I just like want an endpoint
+that is like send a message and let the
+API figure out the business logic
+>> and then you just give it like a boolean
+of like a continue or interrupt like Q
+or interrupt.
+>> Well, we we already have an interrupt
+endpoint. And so I was like, okay, do we
+extend the interrupt end on point? Do we
+extend the continue endpoint or do we
+add a new endpoint? And I'm like I like
+the idea of like cool there's just a
+thing to send a message and
+>> I would unify all three of them. I would
+literally just unify all three of them
+to a single message that comes in with a
+boolean
+>> that says like that comes in with like a
+state of like what kind of method you
+have and like one of the states say is
+auto
+>> that actually would I think that that
+will actually simplify your logic
+because again when you're designing the
+system what do I think about what I
+think about is like what I want is I
+want the UI to be dumb and the dumber
+that I make my and this is also
+applicable to everyone building like a
+chat app on their website the dumber
+your UI the easier it is for you to
+consolidate state and business logic on
+the back end when your server side which
+has a couple of benefits which means
+that when you eventually make your
+backend agent friendly and I believe
+everyone will eventually make their back
+ends agent friendly
+in that world now you have a uh really
+nice world where your your because your
+front end is dumb even the dumbest agent
+can use your back end without a mistake
+because the logic is consolidated in one
+place not in two
+and like even here like the back the
+front end is basically sending a request
+or a preference. It prefers that you
+cue. It prefers that you continue. It
+prefers that you interrupt. It prefers
+that you auto. But let's say like the
+back end has finished a message and you
+spent Q. Q automatically becomes a
+continue on the back end. Or let's say
+you hit Q and there's some race
+condition in the back end for that
+reason. Continue automatically becomes
+Q. Y
+>> it's a it's a preference on the UI side.
+So that deals with that's how you deal
+with race conditions in this world.
+>> Yeah. So, I've said basically we're
+going to pass an enome which is like Q
+or continue or interrupt or auto. And
+basically, if you try to continue while
+it's running, you'll get a 400. If you
+try to queue while it stopped, you'll
+get a 400. But if you do auto, it will
+basically route it to the right
+behavior.
+>> I Yeah, I would actually not even do the
+400. I would just make it do the right
+thing.
+>> Interesting.
+>> By default, so that way there's any lag.
+If there's any lag, then you just like
+>> like default to the best known state.
+just have a boolean interrupt
+bool that determines whether we
+>> instead of the enome. Yeah, I like that.
+Um
+>> cuz it's it's simpler, you know.
+>> Yeah.
+>> And like simplicity, I think, is key
+when designing these kinds of APIs
+because you're not really queuing.
+You're just pressing enter.
+>> Yeah.
+>> And you're it's just a question of do
+you press cancel and enter or just
+enter?
+>> Yep.
+And again, the logic is keep your front
+end dumb. Keep your front end as dumb as
+possible.
+>> Yep. Um,
+>> Russ, you asked a really good question.
+If engineering code is so cheap, why not
+build both or even all the options? Test
+which one works better?
+>> Well, it is cheap, but it does still
+cost finite time and finite brain power.
+So, let's say I could build all of them
+in parallel. I would still have to
+evaluate all of them in parallel.
+Instead, an alternative way to spend
+that same time is to build another
+feature in parallel to building this
+one. And that is a higher value prop
+than building one thing seven different
+ways. Especially if I know
+architecturally the right decision to
+make already.
+>> I'll have to explore bad paths.
+>> You're going to have to make that
+decision either way. Um like which which
+approach are we going to use? And so
+like yes, sometimes if I don't know what
+the right what the right approach is,
+then I maybe I will like what we did
+here is we forked off and did a learning
+test because I'm like, "Oh, I want to
+try a couple different approaches and
+find out which one actually works here
+versus the um versus versus just picking
+certain architectures and stuff. Um, and
+I'd rather review it at this stage,
+which is a shorter, you know, 200line
+artifact, than go have to review two
+versions of the same thousandline pull
+request
+>> and test that code end to end. Like,
+>> if you really have no idea, then you
+should go figure that out by building
+little PC's or building prototypes or
+like one thing we do a lot is we use
+storybook. Um,
+let me see if I have this in my history.
+>> Yeah, the premise is just like look, you
+have to do the work no matter what. It's
+just like how early can you do the work
+and the earlier that you can make the
+right decisions the better. The less
+data you need.
+>> You basically want to make decisions
+with the least amount of information
+possible.
+>> Yeah. So another thing we'll do for like
+back pressure and like design up front
+is like here's a bunch of like rich
+complicated components that we were
+working on that like instead of waiting
+until the implementation and building
+the whole feature end to end with each
+version of this we actually just like
+okay for UI stuff that the agent's not
+really going to be able to have good
+like back pressure or like bring taste
+on it. we can actually uh do this uh do
+this in storybook and kind of like carve
+off the parts of the decision making
+that we're gonna do. Does that make
+sense? I don't think we've talked about
+this by Bob. We were going to do an
+episode on this as well
+>> because like if you it's just again it's
+about moving decisions to making the
+fastest possible decision in the right
+system.
+>> Yeah. Yep.
+>> Um so
+>> and Jensen you asked the question of
+like did we cover where the docs live?
+Yes. They don't live anywhere. you
+delete the docs after you merge this in
+because it's pointless.
+>> So technically like I can open this in
+my editor and it does exist on my file
+system and I can edit it here.
+>> But the idea is like I have a ton of
+like go to archive tasks. I have a ton
+of archive tasks and like these are all
+things that I finished working on and
+like yeah technically I could come look
+at these old docs but you you don't want
+to think about managing them. You kind
+of just want them once once you're done
+with them.
+>> Yeah.
+>> Go back to traditional companies.
+Traditional companies have millions of
+design docs all over them. No one reads
+them. And that's okay.
+>> Yeah.
+>> Like we survived in software.
+>> Exactly. Design docs are purely an
+execution concept. They're they're to
+make it so that you don't make mistakes
+by accident because you made some
+fundamental architectural decision that
+someone else could have known if they
+just read one sentence in your design
+doc. That's the purpose of all these
+docs is to make sure that when cloud
+code actually executes, it makes no
+mistakes.
+Yeah. And it's it's just like it's it's
+it's so much easier to iterate on the
+design here of like, cool, we want a
+unified continue endpoint. Uh we want
+two buttons in the UX. It's just like,
+okay, now I know I have high confident
+that the agent's going to do what I
+want. And I didn't have to wait for it
+to start writing code and then have to
+try to rest steer it or start over or
+check out the code again because it's
+just going to it's it's it's just it's
+dumped out its understanding. And we are
+aligned.
+>> Gotcha. How far do you think we can get
+in the implementation? How close are we?
+Um, we can certainly
+>> turn on the auto advance and I can rip
+it through the next couple phase. Have
+you tried this yet, by the way?
+>> I have. It's great. I I auto advance
+through design discussions every single
+time. It's freaking pointless to do
+research with like a manual loop.
+>> Um, so
+give me the Ralph Wiggum loop that I
+want.
+>> I want to add that step. I want that I
+have that iteration step that I do which
+is like iterate on the structure because
+I do that every single time I create
+something really complicated and I've
+had 100% hit rate with that.
+>> That's actually the next thing is like
+the inverse of auto advance is like cue
+extra passes of just like go through the
+research vet every assumption add more
+detail find more things fill in more
+gaps and you can do that at every stage
+is basically just like cue another round
+through it. Yeah, with like I really
+like the message I have works really
+well. Literally just what's inconsistent
+>> uh missing and it works really freaking
+well. I'll let you finish reading this.
+There's like one more question. Brandon,
+you comment that your team has
+accumulated a lot of skills. I agree.
+You should probably prune the number of
+skills that your team is using to a
+minimum set that you can get away with.
+And the reason, and actually I don't
+know your opinion, but the reason I
+personally recommend that is because
+your team probably can't even remember
+all the skills that you have checked
+into your repo. It's way easier to have
+five or to seven skills that are
+phenomenal and being used all the time
+and actually being edited and maintained
+in your codebase than it is to have like
+70 of which all of them are one hop used
+by each individual randomly in like
+different totally different ways. And
+this is how I think about all tools
+actually is like people want to just
+like give everybody everything and every
+everybody figures stuff out and every
+everybody's kind of going their own path
+but like the things that give you
+compounding returns on engineering teams
+is like everybody is kind of using the
+same things and they're all iterating
+like every week your tooling gets a
+little bit better and that's really
+really hard if like you have 50 people
+and like two tools are being used by
+three people and six tools are being
+used by some other people. So it's like
+I would even say like like product
+manager like the the the skills you
+build for your team are products and a
+good PM goes and looks at their usage
+metrics and they find the features that
+only like 10% of users are using and
+they remove them from the product to
+kill the features that are not getting
+massive adoption and so I would focus on
+a small number of things that everybody
+uses that everybody I mean not every
+right you may have some backend
+engineers who never use your front-end
+skill right but like get good adoption
+on a small number of skills
+Because then then you're like guaranteed
+that like okay this is going to become
+part of our culture and the time the
+time we invest in making things better
+is actually going to pay off versus like
+having 70 things and not knowing which
+one is going to which one is going to
+help which people and not knowing where
+to invest because you yeah
+>> yeah prune prune prune prune prune that
+is the magic word
+>> cut scope iterate focus on a small
+number of of skills but like
+>> focus on your product not on your
+engineering workflow like like your
+engineering workflow like learn from
+other people, leverage it and like copy
+and paste. Don't reinvent. You will just
+move slower if you do. Uh Jenn, how do
+we deal with bike shedding or irrelevant
+uh design discussions like security
+stuff that comes up?
+>> So, is this human to human or human to
+agent? I
+>> I assume agent. Like agents proposing
+like stupid things. Um I suspect that's
+because you're probably just not
+prompting it well. I've actually never
+had it come up with like arbitrary
+that doesn't matter when I'm
+doing like the workflow well. Uh, and
+that's because like it really depends if
+you're working in an existing codebase
+or new codebase. In a new codebase, it's
+actually very likely to come up with
+that doesn't matter. But in an
+existing codebase, it really just
+follows the patterns that your codebase
+has. So if you have like dumb unit tests
+that basically check like no ops and
+like things that don't need to be unit
+tested, clawed code during the user
+phase will be like, I need to add unit
+test for every little thing that I do,
+which is actually a drag, not a value
+ad. If you're deliberate about what unit
+test you add in, it will also pick up
+that, oh, we only unit test this kind of
+pattern.
+>> And this is the interface we need to
+unit test, not every interface
+underneath the sun. And I and I think
+that's really what it replicates. It
+replicates the patterns that you already
+have in your codebase. And if you have
+no patterns in your codebase, that very
+beginning phase, like the green field
+phase, you have to replicate.
+>> Yeah.
+>> But 90% of code bases are not green
+field.
+>> And if they are like just you can just
+prompt it, you can simply ignore that
+concern. Yeah. Exactly.
+>> But even if you have a Greenfield
+codebase, it's going to become not
+Greenfield within like 3 to 6 months and
+then you're going to need to know how to
+do this or you're going to have to throw
+it out and rewrite it from scratch,
+which like at the rate that code gets
+written now,
+>> depending on how careful you are. Yeah.
+Um I'm going to talk about quickly
+what's happening here. Um so this is
+building. So we talked about like
+basically like the design discussion is
+figuring out where we're going. The
+structure outline, how we do this, um is
+basically like how do we get there? And
+so like the models by default tend to
+want to do what I call like horizontal
+planning which is so I'm going to delete
+all of this where it's like okay we're
+going to do the database and then we're
+going to do the service layer then we're
+going to do the front end we're going to
+do the API and then we're going to do
+the front end and like before you know
+it you're at the other side of 1200
+lines of code and there's been nothing
+along the way for you to test. And so
+this is what I call horizontal planning.
+The models love freaking doing this. I
+don't know why. Um, and so what I have
+found works really really well,
+especially for larger features where
+like you want to kind of check in and
+make sure it's good along the way is we
+do what's called vertical planning where
+we will like take a slice and like mock
+the API and do a stub frontend component
+and then we actually build out the
+front-end component on real data and
+then we mock the services layer and we
+wire the API through and then we do the
+database migrations and then we add more
+bit everything up. we wire everything up
+and then maybe here we add some like
+special like business logic stuff that
+is like the meat of the issue but is
+like the same way you would build you
+wouldn't write 1200 lines of code and
+not check on it. Um you would at least
+run the test in between phases and you
+might spot check a couple things in
+between to make sure it's good. This is
+the art of vertical phases.
+Um, and so the idea of the structure
+outline is like instead of reading the
+entire plan with every code change, you
+want to just kind of review the the
+approach that is being taken. Um, and so
+this is going to surface some of the
+stuff from before and then it's going to
+talk through it's like, okay, we're
+going to make the schema and a message Q
+table. Then we're going to make the
+route and the collection. Then we're
+going to like cue messages in the prompt
+generator. And then we're going to do
+this unified continue endpoint. Okay.
+Interesting.
+So the problem here is like we're not
+going to be able to test this endpoint
+until the very end. Like
+>> I would rather
+>> well so I would rather do the endpoint
+first because then we can at least check
+in the database that messages were like
+inserted correctly and then we'll do the
+actual logic that causes the cloud side
+because like you can't test this until
+you have a way to send the messages in.
+So why would we build the demon side
+before we build the API side?
+>> Oh, interesting. I I see I see why why
+you do that. Okay.
+>> Because like basically like this is a
+lot of complicated stuff. We're making
+new database tables. We're making new
+contracts. I want to be able to click
+something in the UI and just go look
+that a thing was inserted into the
+database at least. And by I I mean I
+mean Claude's I'm going to basically
+like click the thing and then like
+Claude's going to go check what's in the
+datab in my dev database on my local
+build. Um and then we'll go and actually
+wire it through to the other side.
+>> Yeah. And that's just like preference
+for what for other people like why are
+we doing this? Well, Dexter said a very
+good reason. He's like, "I want to test
+sooner, not later." And the sooner that
+you can test the system, the better it
+is. And if you have no way to test
+something, then what Dexter is basically
+betting on is not the fact that like his
+design is right or wrong. He's just
+reducing the probability that he has to
+backtrack.
+>> Yes. You want you want to optimize for
+for being able to finding surprises and
+finding incorrect things as early in the
+process as possible. So like if this
+front end thing looks like I want
+to like get that looking right and make
+sure I like the behavior there
+>> before we go and actually wire in real
+data because I want to not have to debug
+the data layer and the front-end
+experience at the same time. I want to
+like test and val validate one piece at
+a time.
+>> I also want to chime in on like one
+other point here. Like we're doing this
+live on the podcast. We there's no way
+Dexter had time to read this as
+thoroughly as he would normally if he's
+coding. So like part of that means well
+if I haven't test I haven't read
+everything super thoroughly I need to be
+more rigorous about testing earlier
+rather than later even more so than
+normal. So even though in like my
+example I showed you that I went all the
+way through and like the plan just
+executed one way through.
+>> Yeah.
+>> What I had to do was I had to go ahead
+and actually read everything super
+meticulously and you saw how many
+commits it took to actually get to the
+final point to make it work.
+>> Yeah. But it was very meticulous here.
+By moving the UI phase up and actually
+making sure the database gets correctly
+done, we're just reducing the risk that
+any design decisions we made were going
+to be incorrect along the way. And
+again, there's again no right or wrong
+answer. It's just a it's just a
+preference based on what tolerance you
+have for redoing work when something is
+incorrect.
+>> Yeah. And I'll sh I'll we won't actually
+finish this today unfortunately because
+I know Vib's got a hard stop. But the
+way I think about this is like you want
+to let me delete some of these things.
+Um, basically like the more time you
+spend on the plan
+chance you have to backtrack. The more
+time you spend on the like so vertical
+is like the correctness of the plan,
+right? The more time you spend on it,
+the closer you can get it to like full
+oneshotable.
+Um, but the idea is like there's some
+sweet spot where it's like, okay, if I
+can spend 10 minutes and get it 90% of
+the way there, then that's better than
+spending an hour to get it 99%. Cuz
+there still might be surprises. And at a
+certain point, it's easier to read the
+code and play with it than it is to like
+stare at a thousandline plan doc. Um,
+and so like this is actually split up
+into a number of different probability
+curves, which is like, okay, what's the
+chance that you have to iterate on it
+live? That's the area below this curve.
+So that goes down the longer you do it.
+And then what's the chance I might have
+to like resteer and restart the
+implementation and what's the chance I
+might have to restart the design. And
+it's like at every phase it's like the
+the chance you will have to backtrack
+goes down the more time you spend on it.
+But you're never going to guarantee that
+you can oneshot it. And so there's this
+weird like optimization problem that I
+think is like just takes a lot of
+intuition of like how much time should
+you spend at any phase making sure that
+it's good versus like how how big of a
+how much time will it waste if you have
+to backtrack.
+>> Yeah.
+>> Does that make sense?
+>> Exactly. And then David, you're asking a
+really good question of like are are you
+asking anyone else on team to review
+these docs? Um I know Dexter clearly
+said like if he had this question, he
+would have norally sent Kyle to go look
+at it. We kind of operate the same way
+as well, which is the way that we we we
+operate on our team is like by default
+we just trust individual developers to
+make good decisions. But that part of
+that making good decisions is to
+recognize when something is complicated
+and to bring someone else into the fold
+as they need to because it's impossible
+for everyone to read everything. It's
+just not worth it. But for really
+complicated things, you want more pe the
+more relevant people reading it whenever
+possible.
+>> Yeah. And it's optional in our process,
+but like I am incentivized to send Kyle
+this design discussion and have him
+review this and help me answer the
+questions because the alternative is I
+make the decision. I make the decision
+that he doesn't like and then I go spend
+all this time building it and testing it
+and playing with it and exploring it in
+the um
+>> in the um how do I say this? Like the
+the implementation phase and then by the
+time it gets to PR, it's like oh no,
+this is all wrong. we can't make another
+endpoint because of some random electric
+sequence.
+>> There's some reason like something or
+something Kyle's working on right now
+that's going to conflict with this
+>> that's going to conflict with this. So
+it's like basically everyone's like
+complaining about drowning in like AI
+developed PRs or like PRs written by
+people with AI that are slop and like I
+actually don't think the problem is too
+many PRs. I think the problem is too
+many bad PRs and like even even a 500
+line PR like not a big one if it needs
+20% rework that is like a huge like
+>> mental and emotional burden on both the
+submitter and the reviewer to go and
+give the feedback and coach the person
+and all this stuff and so it's like if
+you can elim if you can maximize the
+amount of time when like I send Kyle
+this PR and he's like yep that's what I
+asked for yes that's good yes you've
+done that right because we aligned on a
+lower stakes dock that I'm not attached
+to yet because I haven't dumped all this
+time into making sure it's right and
+polishing it. That is hugely valuable I
+think to any software team.
+>> It's the same reason that like look you
+just you want to you focus more on the
+plan than you do on the code. You focus
+more on the plan than you do you focus
+more on the design discussion you do on
+the plan.
+>> Yep.
+>> Bring people in earlier into the fold.
+That's that's the magic. Bring yourself
+in. Bring the agent in. Like spend more
+and more time earlier on the fold making
+good decisions. The better your
+decisions, the better your output. It's
+a direct onetoone correlation there.
+>> This was super fun, man. Uh, thanks for
+joining. I think we shared some some
+interesting lessons. Uh, hopefully this
+didn't just feel like a rip tie demo and
+you learned a little bit more about how
+we think and and and how we build stuff
+internally. Um, so thank you all. Uh,
+Vibb, any any last thoughts? Any big
+takeaways here?
+>> No. Uh, for everyone interested, next
+week we're going to talk about how to do
+PI redaction and how to actually design
+a system both on the eval side and the
+code side to go build that out. excited
+to share.
+>> Awesome.

@@ -1,0 +1,115 @@
+Answer
+Share
+Download Comet
+The basis of the ai is a new data storage system where all data is stored as structures in a high dimensional spactial reimannian manifold and at the base level those structures are constructed of quarks ( what I call the smallest data units) these Quark structures / graphs contain related data at the lowest level and could for example contain an llm token or something significantly more complex, the graphs can be seen as a neuro symbolic - formated hybrid, formated meaning, for example, a fragment of a json or csv file. Entire Files are stored as an array of nested graphs this meaning that a file will be stored as one graph that contains nodes which contain graphs, and then the nodes in those graphs also contain graphs like nesting dolls up until you reach the base quark graphs , this basically means that when data is stored into the system its pre processed and the logical structures are extracted , this allows the system to learn new logical patterns and thus get more intelligent from processing data . the higher level of the system where intellegence is really happening consists of a large graph consisting of both data and agent nodes , agent nodes don't act like agents in the normal sense where each is more like a highly advanced neuron (with internal data and logical graphs) when a data is passed into the system its always sent to an agent cell which processes it and decides which agent nodes to send information to and which actions it should take , the way agents decided what actions to take and what data graphs to send to other agents by scaffolding with the logical structures (through combinations of known logical structures) and then constructing the final output with the llm to just put the tokens into the form of the logic , that's a rough overview of some of the important features of the system (sorry if its a bad explanation but its pretty difficult explain)
+Show more
+Completed 2 steps
+
+Your architecture reads like a hierarchical property-graph storage layer plus a routed, message-passing compute layer that blends symbolic structure with neural learning—i.e., a neuro-symbolic design. The “agent-cell” routing you describe is close in spirit to conditional computation in Mixture-of-Experts systems, where inputs are dispatched to a subset of specialized units rather than processed densely everywhere.
+tutorialspoint
++5
+
+Map to known ideas
+
+Storing “files as nested graphs down to atomic units” matches the basic idea of representing information as nodes/relationships/properties in a property-graph model, just with an explicit hierarchical decomposition strategy. Your “agent nodes” passing structured signals to other nodes is very similar to the message-passing framing used in graph neural networks, where nodes aggregate neighbor information and update state iteratively. The overall blend of learned pattern recognition with explicit logical structures aligns with common definitions of neuro-symbolic AI.
+coursera
++4
+
+Storage layer decisions
+
+If you implement this as a property graph, you’ll want clear rules for what becomes a node vs an edge vs a property, because those choices strongly shape traversal/query patterns. Also decide whether “quark graphs” are immutable (content-addressed) or mutable, since immutability makes dedup/versioning easier while mutability simplifies in-place learning updates.
+bigbear
++1
+
+Manifold representation
+
+If the “high-dimensional Riemannian manifold” is meant to be the geometry of your learned embeddings, note that hyperbolic spaces (e.g., the Poincaré ball) are a standard choice for representing hierarchies compactly. Work on Poincaré embeddings explicitly uses Riemannian optimization to learn those representations, which lines up with your Riemannian framing.
+proceedings.mlr
++1
+
+Agent routing dynamics
+
+The agent-cell dispatch mechanism you describe resembles MoE routing work that focuses on balancing load across experts while keeping routing efficient. In practice, conditional routing can introduce overhead and load-imbalance issues that you have to design around (capacity limits, dropped/merged messages, scheduling). If you keep the “agent” behavior closer to message passing (local aggregation + update), you can often get more stable training than fully free-form agent-to-agent action spaces.
+research
++2
+
+Minimal prototype path
+
+Build a tiny end-to-end vertical slice: (1) a parser that turns JSON/CSV into a typed nested graph with stable IDs, (2) a GNN/embedding module that can do link prediction or “missing subgraph” reconstruction, and (3) a router that sends each new subgraph to 
+𝑘
+k “agent nodes” and learns to minimize a reconstruction/utility loss. Only after that works, add the LLM as a renderer/planner that converts between human I/O and your internal logical graphs, rather than making it responsible for the core memory mechanics.
+distill
++1
+
+What’s the first target behavior you want to beat a baseline on: long-horizon memory recall, formal reasoning over stored structure, data compression, or tool/action planning?
+
+Prepared using GPT-5.2 Thinking
+30 sources
+Uh, can you simplify that original statement and format it
+
+Here’s a simplified, formatted version of your original description (keeping your terminology).
+
+One-sentence pitch
+
+This AI is built on a new memory system that stores everything as nested graphs (down to tiny “quark” units) and runs “agent cells” that route and transform those graphs to produce actions and outputs.
+
+Core idea
+
+All data is stored as structures inside a high-dimensional spatial Riemannian manifold.
+
+The smallest data units are “quarks.”
+
+Quarks connect into small graphs that represent related meaning at the lowest level (this could represent a single LLM token, or something much more complex).
+
+How data is stored
+
+Data is converted into graphs when it enters the system.
+
+A “file” becomes one top-level graph.
+
+That graph contains nodes that themselves contain graphs, and so on (like nesting dolls).
+
+This nesting continues until you reach the base-level quark graphs.
+
+The system tries to extract logical structure during storage, so the stored representation is already “pre-structured,” not raw text.
+
+Why that helps learning
+
+Because the system stores extracted logical structure, it can notice new logical patterns while ingesting data.
+
+Over time, processing more data can make it “more intelligent” by expanding/recombining these learned structures.
+
+Intelligence / compute layer
+
+There is a large global graph that includes both:
+
+Data nodes (stored knowledge).
+
+Agent nodes (compute units).
+
+Agent nodes aren’t “agents” in the usual sense; each is more like an advanced neuron with internal data + internal logical graphs.
+
+Runtime flow (what happens on input)
+
+Incoming data is sent to an agent cell.
+
+That agent cell processes the input and decides:
+
+Which other agent nodes should receive which data graphs.
+
+What actions the system should take.
+
+Agents decide by “scaffolding” with known logical structures (combining/reusing patterns).
+
+The final output is constructed using an LLM mainly to render tokens into the required logical/structured format (rather than inventing the logic from scratch).
+
+If you tell me whether you want this to read like (a) a technical spec, (b) a whitepaper intro, or (c) an investor pitch, I can rewrite it in that style too.
+
+Prepared using GPT-5.2 Thinking
+Viewing a shared thread. Your follow-ups will be private to you.
+
+
+
+
+Ask a follow-up
+Model

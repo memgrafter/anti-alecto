@@ -1,0 +1,100 @@
+This blog post is a follow-up to Dawn of a new era in Search, published last year. A lot has changed: the legal case has advanced, AI has become the central battleground, and the need for open index access has only grown sharper.
+As of late 2025, one company decides what nearly 9 out of 10 people see when they search the web: Google. On August 5, 2024, a U.S. court officially ruled that Google is a monopolist in general search services. This ruling is not about ads or browser defaults alone. It is about who controls the index that powers both search and AI - and whether anyone else is allowed to build on it.
+The stakes have grown sharper over the past year. LLMs hallucinate without grounding in real-world information; every agent that answers questions about the real world, depends on search. LLMs themselves are a blend of proprietary and open source. Cloud compute is competitive. But search is different - only one company controls a comprehensive, fresh, high-quality web index. If one company controls the index, it controls the floor on how good AI can be - and who gets to build it. The innovation crunch in search is now an innovation crunch in AI.
+We are writing this from a position we believe in: people should have the choice to access information without behaviour-changing, ad-driven, intermediary standing between them and knowledge.
+Why does this matter? The information we consume shapes our understanding of the world as profoundly as the food we eat shapes our bodies. Search (directly, and indirectly through AI) is the primary mechanism through which we inform political judgments, financial decisions, medical choices, and countless other consequential aspects of our lives. When a single company controls the gateway to information - and operates that gateway in ways misaligned with user interests - it influences not only what we know, but how we reason.
+The problem: A search monopoly
+The data is stark.
+Worldwide search market share (October 2025, StatCounter):
+| Search Engine | Market Share |
+|---|---|
+| 90.06% | |
+| Bing | 4.31% |
+| Yandex | 1.84% |
+| Yahoo | 1.45% |
+| DuckDuckGo | 0.89% |
+| Baidu | 0.73% |
+The United States is similar: Google at 85%, Bing at 9%, everyone else in the noise.
+This is not a competitive market. It is a monopoly with a distant second place.
+The search index is irreplaceable infrastructure. Building a comparable one from scratch is like building a parallel national railroad. Microsoft spent roughly $100 billion over 20 years on Bing and still holds single-digit share. If Microsoft cannot close the gap, no startup can do it alone.
+This is exactly what the Sherman Act was designed to address: when one company's control of critical infrastructure prevents effective competition, regulators must force open access on fair terms.
+When a single, ad-driven gatekeeper controls the primary way humans reach information, it is not just competition that suffers - it is our collective ability to learn, to make informed medical and economic choices, and to participate meaningfully in democratic life.
+As Ian Bremmer put it: "The idea that we get our information as citizens through algorithms determined by the world's largest advertising company is my definition of dystopia."
+Google's own founders knew this. In their 1998 white paper, Sergey Brin and Larry Page sharply criticized the ad-supported search model for creating mixed motives and biasing results toward advertisers' interests. They wrote that "advertising funded search engines will be inherently biased towards the advertisers and away from the needs of the consumers" and that "advertising income often provides an incentive to provide poor quality search results." Those concerns have only grown more pressing as search has become the primary interface between humanity and the web.
+We tried to do it the right way
+Kagi has always tried to integrate the best sources of knowledge into one coherent, ad-free experience. We see ourselves as connective tissue: letting people reach high-quality information directly, without passing through an ad system whose incentives are misaligned with their needs.
+We approached every major index vendor seeking direct licensing on FRAND terms (Fair, Reasonable, And Non-Discriminatory): fair pricing, no mandatory ad syndication, ability to reorder and blend results. We succeeded with many, including:
+| Vendor | Status |
+|---|---|
+| Mojeek | Direct license |
+| Brave | Direct license |
+| Yandex | Direct license |
+| Wikipedia | Direct license |
+| TripAdvisor | Direct license |
+| Yelp | Direct license |
+| Apple | Direct license |
+| Wolfram Alpha | Direct license |
+| Our own Small Web Index | Proprietary |
+With Google and Bing, we failed - not for lack of trying.
+Bing: Their terms didn't work for us from the start. Microsoft's terms prohibited reordering results or merging them with other sources - restrictions incompatible with Kagi's approach. In February 2023, they announced price increases of up to 10x on some API tiers. Then in May 2025, they retired the Bing Search APIs entirely, effective August 2025, directing customers toward AI-focused alternatives like Azure AI Agents.
+Google: Google does not offer a public search API. The only available path is an ad-syndication bundle with no changes to result presentation - the model Startpage uses. Ad syndication is a non-starter for Kagi's ad-free subscription model.1
+The current interim approach
+Because direct licensing isn't available to us on compatible terms, we - like many others - use third-party API providers for SERP-style results (SERP meaning search engine results page). These providers serve major enterprises (according to their websites) including Nvidia, Adobe, Samsung, Stanford, DeepMind, Uber, and the United Nations.
+This is not our preferred solution. We plan to exit it as soon as direct, contractual access becomes available. There is no legitimate, paid path to comprehensive Google or Bing results for a company like Kagi. Our position is clear: open the search index, make it available on FRAND terms, and enable rapid innovation in the marketplace.
+The DOJ ruling
+The Google antitrust case began in 2020. On August 5, 2024, the court ruled Google violated Section 2 of the Sherman Act by unlawfully maintaining its monopoly through exclusive distribution agreements. (Full ruling)
+On September 2, 2025, the DOJ announced remedies (press release):
+- Limits on exclusivity: Google is prohibited from exclusive contracts related to Search, Chrome, Assistant, and Gemini.
+- Data sharing and syndication: Google must provide search index and interaction data to competitors and offer syndication services to help rivals build competitive search.
+- Addressing monopolization tactics: The remedies aim to dismantle a decade of exclusionary agreements.
+In December 2025, Judge Mehta issued a memorandum outlining the specific remedies the court intends to impose. The details are significant:
+- Mandatory syndication: Google must offer query-based search syndication to "Qualified Competitors" on terms no less favorable than those provided to current partners.
+- No ad bundling: Google cannot condition access to search results on the use of Google Ads; competitors are free to monetize via their own ads or third parties.
+- Index data access: Google must provide Web Search Index data (URLs, crawl metadata, spam scores) at marginal cost.
+- Duration: The judgment remains in effect for 6 years, with syndication licenses guaranteed for terms of 5 years.
+If implemented as outlined, this is exactly what we have been asking for. The legal trajectory is promising. Google will contest details, and final enforceable terms are still being worked out. The fight now is ensuring these remedies become real, practical access - not paper compliance.
+Why enforcement matters now
+Even as these remedies take shape, Google is moving to close the back door. In December 2025, Google sued SerpApi for scraping its results at scale.
+We take a measured, principled view:
+- Context matters: Google built its index by crawling the open web before robots.txt was a widespread norm, often over publishers' objections. Today, publishers "consent" to Google's crawling because the alternative - being invisible on a platform with 90% market share - is economically unacceptable. Google now enforces ToS and robots.txt against others from a position of monopoly power it accumulated without those constraints. The rules Google enforces today are not the rules it played by when building its dominance.
+- The structural problem remains: This lawsuit is only necessary because Google refuses to offer legitimate, paid index access.
+- Our position is unchanged: We have always wanted direct licensing. We would happily pay market rates for clean, contractual access. The fact that we - and companies like Stanford, Nvidia, Adobe, and the United Nations - have had to rely on third-party vendors is a symptom of the closed ecosystem, not a preference.
+The connection to DOJ remedies is direct: if Google is going to close the back door, regulators must ensure the front door is open. That is exactly what the DOJ's index syndication requirements are meant to achieve - and why we support their full implementation.
+What could be: A layered search ecosystem
+The DOJ ruling does not itself create a healthy market, but it makes one possible.
+And while this post focuses on remedies and their impact on Kagi, it is worth zooming out: even if those remedies work perfectly, long-term societal prosperity and resilience require a non-commercial baseline for access to information - something that is not dependent on ad incentives or a single vendor's business priorities. Think of it as a north-star model for a modern society where information access is a fundamental right.
+Here is what that could look like:
+Layer 1: Search as a public good
+This is a long-term possibility, not a near-term expectation. A government-backed, ad-free, intermediary-free, taxpayer-funded search service providing baseline, non-discriminatory access to information. Imagine search.org.
+This is not something the DOJ remedies create directly, nor something Kagi expects to exist soon. It is included here to make explicit what an open-index world could ultimately make possible.
+This layer would replace the role public libraries played for centuries - a role that effectively disappeared when commercial web search took over in the late 1990s. Our ancestors understood well the benefits that non-discriminatory, direct access to information brings to citizens, and ultimately society itself.
+It raises hard questions: governance, funding, political independence, precedent. But the principle is sound. Every citizen should have access to information without an ad-optimized algorithm standing between them and knowledge. If we can fund public libraries, we can fund public search.
+Layer 2: Free, ad-based search
+Commercial search engines with richer features, funded by advertising. Users understand the tradeoff and have a genuine public alternative. This is the space where most contemporary search engines operate.
+Layer 3: Paid, subscription-based search
+Premium search engines offering the highest possible quality, privacy, and advanced features for users who value this and are willing to pay. This is where Kagi operates - and where we are expanding as an integrator of knowledge across search, browser, mail, and AI assistants, without selling your attention.
+This layered model creates a diverse ecosystem:
+- A public baseline for information access.
+- Commercial free options for convenience and reach.
+- Premium paid options for those who want maximum quality and control.
+- Aligns with the primary purpose of the Sherman Act.2
+Conclusion
+The DOJ ruling is starting to do what antitrust is supposed to do: turn a closed, private choke point into shared infrastructure that others can build on. If the remedies land as real, usable access (APIs, cost-based pricing, no ad bundling), the web can support a layered ecosystem again: a public baseline for citizens, free ad-supported products for reach, and paid services that compete on quality, privacy, and power-user features.
+That is the world we are building Kagi for. We are ready to walk through the front door - not depend on gray-market workarounds. Our job now is to be ready when the door opens, and to help make sure it does: keep Kagi genuinely multi-source, keep investing in our Small Web Index, and keep shipping a subscription search experience that delivers the best results across providers. If we get this right, the next decade of search and AI does not have to be one funnel owned by one company. It can be a competitive stack of layers that treats information access as the public good it has always been.
+References
+DOJ v. Google
+- UNITED STATES OF AMERICA v. GOOGLE LLC, 1:20-cv-03010 – Full case docket on CourtListener
+- Memorandum Opinion – Judge Amit Mehta (PDF) – Court ruling finding Google violated antitrust law
+- Department of Justice Wins Significant Remedies Against Google – DOJ press release announcing remedies, September 2, 2025
+- Judge Mehta's Remedies Memorandum (PDF) – December 2025
+Market data and commentary
+- Search Engine Market Share Worldwide – StatCounter, October 2025
+- Search Engine Market Share United States – StatCounter, October 2025
+- Ian Bremmer on algorithmic information access – Commentary on ad-driven search
+- The Anatomy of a Large-Scale Hypertextual Web Search Engine – Original Google white paper by Brin & Page, Stanford, 1998
+Third-party search API providers
+- Google lobs lawsuit at search result scraping firm – Ars Technica coverage of Google's litigation
+Footnotes
+A note on Google's existing APIs: Google offers PSE, designed for adding search boxes to websites. It can return web results, but with reduced scope and terms tailored for that narrow use case. More recently, Google offers Grounding with Google Search through Vertex AI, intended for grounding LLM responses. Neither is general-purpose index access. Programmable Search Engine is not designed for building competitive search. Grounding with Google Search is priced at $35 per 1,000 requests - economically unviable for search at scale, and structured as an AI add-on rather than standalone index syndication. These are not the FRAND terms the market needs. ↩
+Our understanding of the primary purpose of the Sherman Act is not to shield competitors from the success of legitimate businesses or to prevent those businesses from earning fair profits. Rather, it is to preserve a competitive marketplace that protects consumers from harm (see Competition law and consumer protection, Kluwer Law International, pp. 291–293). Opening the search index would create healthy, real, and intense competition in the search space - including competition to Kagi - which aligns with our understanding of the Sherman Act's intent. The goal is not the elimination of dominant firms, but the prevention of a single, closed index from becoming the only gateway to information. ↩
+Published by Vladimir Prelovac and Raghu Murthi on January 21, 2026.

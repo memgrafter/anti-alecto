@@ -1,0 +1,9 @@
+X thread capture
+
+## Post
+
+## Conversation
+
+OK then let me offer more useful thoughts real quick :D An agent that has an LLM tool is one of the baselines in the paper. It's better than some other baselines, but not that good actually. It has three major problems that together mean that the root LLM cannot scalably use it to actually understand the context. 1) First, the context it's given is not symbolic. It's given an actual verbalized prompt as tokens. So you've got to externalize the user prompts. 2) Second, the root LLM calls it by verbalizing sub-calls. The root LLM has to "copy" stuff token by token, which means it can't launch Ω(N) sub-calls because it has to produce them one at a time. So you've got to write code that can contain loops or recursive helper functions or whatever else, and those loops should make the sub-calls. 3) Third, the difference in the "policy"/behavior. When the root model is given an LLM as a tool, it's simply trained/instructed to use it for task delegation. Task delegation is great but that only delegates nuggets of work, not the actual core processing of the input. Think the difference between "go think about this 1 small problem" versus "go understand every chunk of the input". BTW it might actually bring more conceptual clarity to play with dspy.RLM because the way it fits with Signatures makes it much more obvious how it's special.
+
+[](https://x.com/lateinteraction/status/2022747248841625741/photo/1)

@@ -1,0 +1,34 @@
+A set of skills to polish interfaces built by agents.
+npx skills add ibelick/ui-skills
+Support Claude Code, Cursor, OpenCode and more.
+/baseline-ui review src/
+Foundation skills for design engineering.
+baseline-ui
+Validates animation durations, enforces typography scale, checks component accessibility, and prevents layout anti-patterns in Tailwind CSS projects. Use when building UI components, reviewing CSS utilities, styling React views, or enforcing design consistency.
+fixing-accessibility
+Audit and fix HTML accessibility issues including ARIA labels, keyboard navigation, focus management, color contrast, and form errors. Use when adding interactive controls, forms, dialogs, or reviewing WCAG compliance.
+fixing-metadata
+Audit and fix HTML metadata including page titles, meta descriptions, canonical URLs, Open Graph tags, Twitter cards, favicons, JSON-LD structured data, and robots directives. Use when adding SEO metadata, fixing social share previews, reviewing Open Graph tags, setting up canonical URLs, or shipping new pages that need correct meta tags.
+fixing-motion-performance
+Audit and fix animation performance issues including layout thrashing, compositor properties, scroll-linked motion, and blur effects. Use when animations stutter, transitions jank, or reviewing CSS/JS animation performance.
+Best skills for UI work.
+12-principles-of-animation
+Apply Disney's 12 animation principles to web interfaces to make motion feel natural, organic, and human.
+canvas-design
+Create original visual designs and art on digital canvases using design philosophy, focusing on form, space, and color.
+design-lab
+Interactive design exploration workflow: conduct interviews, generate variants, and refine UI designs through feedback.
+frontend-design
+Create distinctive, production-grade frontend interfaces with high design quality. Generates creative, polished code and UI design that avoids generic AI aesthetics.
+interaction-design
+Design and implement microinteractions, motion design, transitions, and user feedback patterns for delightful user experiences.
+interface-design
+Specialized skill for interface design: dashboards, admin panels, and SaaS apps. Focused on craft and consistency.
+swiftui-ui-patterns
+Best practices and example-driven guidance for building SwiftUI views and components. Includes tab architecture and screen composition.
+ui-ux-pro-max
+Comprehensive UI/UX design intelligence with 50+ styles, 97 palettes, and 9 technology stacks for building professional interfaces.
+wcag-audit-patterns
+Conduct WCAG 2.2 accessibility audits with automated testing, manual verification, and remediation guidance. Use when auditing websites for accessibility, fixing WCAG violations, or implementing accessible design patterns.
+web-design-guidelines
+Review UI code for Web Interface Guidelines compliance. Audit design, accessibility, and UX against Vercel's best practices.

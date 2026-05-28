@@ -1,0 +1,2200 @@
+I would expect total compensation to be
+around $400,000
+a year. Rust is the most desirable
+language and I think part of it is
+because AI is overhyped. Why do you
+think so?
+>> I don't think it can understand. Oh,
+Rust is better than Go cuz it has types.
+>> Blockchain, web 3.
+>> Roughly speaking, gambling. I think my
+primary driver for for moving away from
+the US was um
+Every great tool starts with a problem,
+especially programming language. John
+Jain said,
+what problem was big enough to create
+trust? One of the early slogans for Rust
+was this sort of um safe, performant,
+ergonomic, or usable. Uh can you get all
+three or do you always need to trade one
+of them away? And it tries to give you
+all three of them at the same time. Uh
+and traditionally that's been very hard
+to achieve with a programming language.
+Like if you want it to be ergonomic,
+then often you give up speed because you
+need to have a runtime and a garbage
+collector. So, Rust was trying to sort
+of thread the needle of getting in
+between those.
+John Jain Sat, Rust live coder and
+evangelist, PhD from MIT, ex-Amazon, now
+principal engineer at Helsing, the
+biggest AI defense startup in Europe.
+You did your PhD at uh MIT.
+And that's well, engineering school
+number one. It's intense, it's isolated,
+it's brilliant. So,
+was it that way for you?
+The feeling I had at MIT was very much
+one of
+uh like collaboration and curiosity of
+everyone just
+wanting to know stuff and to learn
+stuff. Uh so, I ran a board game night
+at MIT for many, many years and a lot of
+the conversations we ended up having was
+just like while playing games was about
+oh, what's your research about? And oh,
+tell me more about that. And learning
+random facts about other fields of
+science. And that's really fun. But
+there was a culture of that being
+like that the exploration, the
+curiosity, the interest being a core
+part of being there. And then of course,
+you have a lot of very smart people both
+professors and students um
+and
+the
+there was always a almost all the
+professors have like an open door
+policy. You just walk in, you can talk
+to them about anything and they're
+interested in engaging in the
+conversation. So, it felt like a very
+collaborative environment. So, a lot of
+the work that I did during my PhD was
+work that was like in the open source
+space, in the Rust space because that's
+where I felt like I could expand my
+learning and also try to teach some of
+the things I was learning. Uh and I had
+the the space to explore using a new
+language because curiosity is king in a
+way. Um there was no pushback internally
+in my lab or from my professor to go try
+this brand new language for what was
+going to eventually become my PhD thesis
+project. So, did you start using Rust
+there? Yeah, so I started using Rust for
+the uh second prototype of my research
+database. So, the the first like draft
+of it, which I threw away after a couple
+of months, was written in Go. You know,
+I wrote it in Go and then realized that
+I wanted to design the system
+differently because I wanted the
+database to look different. And so, it
+wasn't a I don't want to use Go for
+this. It was more of a I need to rewrite
+this anyway. And then I saw the Rust 1.0
+announcement like a few months prior and
+I was thinking, well, this is going to
+be a highly concurrent codebase and I
+think programming languages are
+interesting. So, what if I just try
+doing it in this language? And then I
+just never stopped.
+We've got recently
+uh
+results of Stack Overflow survey.
+And uh Rust continues to be the the most
+most admired language for already 9
+years in a row. But uh if we look like
+how many developers use Rust, it's like
+12, maybe 13, 14%. So, not that much.
+What is the number one reason for that?
+Um So, so I think the the answer almost
+lies in the question in that Rust is the
+most desirable language and I think part
+of it is because people don't get to use
+it as much as they want to. It could be
+that if adoption was much bigger, the
+number of people who want to use it goes
+down. So, it's almost like because
+they're denied access to it, people want
+it more. That could be a part of the
+answer. But but I don't think that
+that's the end of it, right? I think
+that that's just a
+a facet to the answer. I think the other
+part of this is um the the biggest
+barrier to adoption maybe is um
+momentum in existing companies. Adopting
+a new language is seen as a big cost
+because it is, right? You have a bunch
+of talent already at your company that
+know the existing codebase, existing
+language. And if you were to switch
+Rust, all of those people would suddenly
+need to learn Rust, which is a huge
+investment. Um but also not to mention
+all your current code is not Rust. So,
+you either need to translate it or over
+time you need to build up like
+replacement components or you need to
+start like porting it bit by bit. Um and
+and all of this is like a very costly
+endeavor. And so, I think it's a um you
+know, the
+the switching cost is so high that most
+companies are not willing to do it
+unless there's a very, very strong
+reason. And to be fair, we are seeing
+some companies go down that adoption
+path. Like big players like like AWS,
+for example, are starting to build big
+components in Rust or replace existing
+components with Rust. But it's a gradual
+process. You you can't do it all at
+once. And so, as a result, you end up
+with this um slow adoption curve and I
+think it has to be. Does it have
+something in common with uh this
+learning curve? I actually think
+adoption is not that related to the
+learning curve. Like I do think Rust has
+a
+peculiar learning curve compared to many
+languages. Um but it's not clear to me
+that that's the barrier to adoption. I
+think it's the barrier maybe to why
+there aren't more Rust programmers,
+maybe. But I'm already seeing a lot of
+interest in Rust, especially from junior
+engineers, but also from senior
+engineers. And of course, juniors become
+seniors over time.
+Um
+but
+but I don't think that that's the reason
+why companies will not adopt it. Uh so,
+after MIT, you joined uh AWS and you
+worked on some Rust-built
+infrastructure.
+And what kinds of problems you were
+solving there?
+So, so at AWS, my job was to develop and
+maintain and support the Rust build
+system at AWS. So, any um
+Amazon codebase built in Rust was using
+my build system to build all of their
+Rust code. Over time, that that So, that
+started out as adopting a sort of
+grassroots build system someone had
+built internally um and growing that
+into a more mature internal tool. Um and
+then over time, it included things like
+working with security to make sure it
+integrates with all of the security
+tracking and provenance information and
+all of that stuff. Um improving the
+ergonomics so that it works with IDE
+integration and um
+uh you know, getting good debug logs and
+build logs and test logs. All the way up
+to, you know, how do we make the user
+experience really good so that you can
+actually run standard cargo tools rather
+than, you know, something completely
+custom that has to be built just for
+AWS. Was there any uh internal
+resistance? Amazon is an interesting
+company in that there's very little
+mandate for what language you use. Um
+it's not like people tell you you must
+use this language. At least that's
+uncommon. Um people choose language
+based on need and very often the answer
+to that is Java.
+But that's because so much of AWS is
+already built on Java. So, there's like
+supporting libraries for everything, the
+infrastructure for telemetry and
+debugging and logging and build system,
+like all of that stuff is so well built
+out. And so, it's very easy to integrate
+with everything by using Java and we
+have a lot of or
+engineers that use Java as well. And so,
+the the pool of people who can work on
+that and for whom that's the language of
+preference was large. Um
+And then I think Kotlin is a close
+number two. Like people increasingly
+wanting to use Kotlin over Java because
+it's a better experience. But that also
+meant that it was very easy for people
+to go, actually, we want to use Rust
+now. Um and then, you know, this
+grassroots build system for Rust popped
+up and then people started using Rust.
+Uh and it grew to the point where there
+was sort of a a decision to invest in,
+okay, let's officially support this
+language internally now.
+So, you like Rust and you work on
+introducing it. And then and then it
+looks like some people are supposed to
+use Rust.
+>> other way around. It's it's the other
+way around. It's not like I went to
+teams and tried to encourage them to
+adopt Rust. It's the teams came to me
+and said, we would also like to use
+Rust. Help us do that. Okay.
+>> the drive was very much from the teams
+who wanted to use it. The there wasn't
+really a need for a push operation
+because we already had so many people
+wanting to use it. Was it the right
+decision to switch some certain parts of
+codebase to Rust? In a way, I'm the
+wrong person to ask, right? Like you
+would have to ask the teams that ended
+up using it and ask about the pain
+they've gone through since. But but in
+general, I think there's been a a huge
+success story to it. Um especially in
+terms of like latency um and tail
+latency in particular because Java and
+Kotlin struggle with this like when you
+have a runtime and a garbage collector,
+it it's so easy that your tail latency
+ends up increasing quite a lot or your
+minimum latency is decently high because
+of startup costs. Whereas with Rust,
+many of those problems almost go away by
+construction. Um
+so, I don't think I've at least heard a
+lot of we regret the choice of Rust
+there. Quite to the contrary.
+All right. Uh some people say that uh
+Rust was created by geeks for geeks and
+business interests came second.
+I don't think it's because Rust is not
+designed for business. Because certainly
+we see it adopted at huge scale at AWS,
+at Meta, um you know, increasingly at
+Google with with uh Fuchsia. Um so, it's
+not as though it's not being used for
+business things. Um but it is the case
+that it's a it's a newer language and
+all of your stuff is not written in Rust
+today. So, it's more of a question of
+willingness to rewrite, access to
+talent, um access to training for your
+existing folks, um and even just sort of
+maturity of the ecosystem, right? It
+might be that you need
+a library that does something very
+specific to the protocols you implement
+and that just hasn't been built in Rust
+or it's been built, but it hasn't
+matured, whatever it might be. Like for
+example, there was a case with Discord,
+they started rewriting everything to
+Rust and they had a huge code base in
+Go, I think. And then at some point they
+stopped this transition. But what
+actually kills migrations like to Rust?
+It's hard to try to draw a generalized
+lesson from something like like the
+Discord story because we don't know
+behind the scenes what bottlenecks they
+ran into when trying to do this
+migration. There are some places where
+um Rust is not a great fit. Like for
+example, if
+if you really have to interface a lot
+with C++ heavy code bases. Like if you
+have to do extensive integration with,
+let's say, CUDA and Intel DPDK and uh
+some hardware vendor driver library and
+also with like Unity or something. You
+That's a bunch of C++ dependencies that
+have a lot of infrastructure around
+them. So, if you had to interface with
+all of those, trying to put Rust in the
+middle is going to be a lot of pain and
+it's unclear whether the gain is worth
+the cost. So, that can be one example of
+something that might
+you know, make you hesitant to adopt
+Rust in that space.
+The other is if you have a very
+battle-tested application that doesn't
+really need to change very often and it
+just it just kind of works. Um rewriting
+it is always a risk like it whether to
+Rust or something else. And the question
+is if you already have a well-behaving
+robust application, is it worth changing
+it? Uh and many times the answer could
+be no or at least no no not at the
+moment. It could be that they ran into
+some parts of their code base where that
+was the case. It could be that they ran
+into to um
+a hiring limitation, right? Like they
+don't have enough Rust programmers for
+everything to be Rust yet, right? And
+so, until they've hired to that point or
+trained their existing folks to be
+comfortable owning Rust code bases,
+they just can't move they make the move
+cuz they need people to maintain the
+other parts. And it's hard to say which
+of these things they ran into. AWS, it's
+kind of like they they have their own
+specific tasks and beyond AWS, like are
+there areas where Rust is really
+successful? Like which which
+industries or or tools are clearly like
+betting
+on it right now? The areas where I've
+seen the most eager adoption of Rust is
+embedded development. I've seen a lot of
+Rust. Um so, for embedded development,
+like really low-level embedded
+development where you want to directly
+program an ESP32 or something, um Rust
+has seen a lot of adoption because
+the choices you have are C or C++ or
+Rust. There's not a whole lot of other
+options and when given the choice
+between those, people would rather a
+more modern safer language that has good
+support for third-party ecosystems than
+C and C++.
+Uh and so, the the entryway into that
+space was pretty easy. I think the
+second one we've seen a decent amount of
+adoption is actually in command-line
+tools. Um so, Rust is and this is
+partially due to this a crate called
+clap that makes it really easy to build
+command-line interfaces. Um and so, that
+I think spurred on a lot of people
+going, "Oh, I'm just going to write this
+command-line tool in in Rust cuz it's
+easy." Uh safety-critical applications
+is the other space. So, that's both in
+um the defense sector, it's also in the
+automotive sector and to an extent in
+sort of space operations as well, where
+you really need systems that are very
+very robust. Um and traditionally those
+places
+don't use runtime languages. They tend
+to be like C or C++ shops. And what Rust
+is promising over C and C++ is addition
+of safety and so, that is a very
+attractive proposition for
+safety-critical applications. Um and
+it's sort of one step less than going to
+something like Ada, for example, um
+which is feels like maybe um
+uh
+too much of a burden on developers, at
+least for a subset of these systems. If
+your goal is to pitch Rust to some Go
+team, maybe like in one sentence, what
+would you say to them? To a Go team, I
+think what I would do is something like,
+"Isn't awful when your application
+crashes at runtime
+because you made an error?"
+In Rust, that is much less likely to
+happen.
+I think the argument is that simple. And
+it's it's one of those where people
+don't believe you at first. They go,
+"Well, I don't get null pointer
+exceptions in Go." Well, you get you
+kind of get nil pointer exceptions
+roughly. Um or like I don't get double
+freeze. That's true. You don't get like
+free freeing allocation errors and
+stuff. But you do get a lot of business
+logic errors and Rust can help you with
+those too. Right? It's not as though
+Rust only helps with memory safety. The
+expressive type system also means that
+you can
+establish more guarantees at compile
+time and that makes you way more
+comfortable with the code you've written
+being actually correct and much less
+likely for your code to be wrong at
+runtime. I like this game like C++ team.
+What would you tell them? I think for
+C++ Yeah, if they're ready to listen to
+you. I I think for C++ um the argument
+goes something like um
+okay, no use after free, no double free.
+You don't have to worry about free, it
+just happens automatically. You get that
+a lot already in C++ just because of
+RAII.
+But what you don't get as much of in C++
+is concurrency safety.
+So, in Rust, it is very hard for you to
+have concurrency bugs.
+Um in C++, it's very easy to have
+concurrency bugs because there's nothing
+that helps you get them right. You can
+run like address sanitizer and thread
+sanitizer and all of that, but
+fundamentally those only detect the
+errors that do happen, like that that
+actually manifest in this particular
+execution, whereas Rust can exclude them
+at compile time statically and that is a
+major difference for anything that's a
+concurrent program. So, I think that's
+that's the primary argument for C++ and
+then the secondary argument is,
+"Wouldn't it be nice if you had like a
+good build system with third-party
+dependencies?" And then they cry.
+You spent uh
+almost like I think a decade in the US.
+Uh like PhD at MIT, then Amazon and then
+in 2023,
+you moved back to Norway.
+So, why did you decide to move from the
+US to Europe?
+Um
+I think my primary driver for for moving
+away from the US was um
+I don't really like the US. Uh what I
+mean by that is um
+there are a lot of things that I found
+that I appreciate in a society and I
+mean society here not as in the people,
+but in the the things that the society
+and the societal structure around you
+provides that I don't see in the US, but
+I see in Europe. Um and there's I could
+sort of start a laundry list of the
+things in the US, right? But but just to
+take one example is the way that health
+care is approached in the US
+makes me really upset. I don't want to
+live in a society that operates health
+care that way. Um and so, and then there
+were sort of uh a large number of those
+things that actually meant that when I
+finished my PhD, it was when I was
+planning to move out of the US. Um and
+then my partner wanted to move to LA for
+work
+and so, we decided, "Okay, let's do that
+for a few years." Um and then after a
+few years, we went, "Okay, it's now time
+to leave." Um
+and at that point we then left for
+Europe. We were debating whether we
+would move somewhere else, but I have
+family in Norway, it would be nice to
+move back and see, you know, can we
+establish something here? Um
+Too early to tell whether that is going
+to be the the permanent place either. I
+I genuinely don't know, but it was a it
+was more of a well, I don't want to be
+in the US um and the alternative that
+the primary alternative seems to be
+Norway because I have connections there.
+Um we'll see how that goes and worst
+case, we'll move again. But I tend to be
+a person who enjoys to move anyway. So,
+I I consider the the threshold or the
+barrier to moving quite low. So, moving
+and then moving again is is fine by me.
+Was it uh easy to find the Rust role in
+Europe? And maybe in general, like is
+there difference between US market for
+Rust developers and European market?
+Um
+the US tends to be more remote-friendly.
+Um like especially a lot of the tech
+companies in Silicon Valley are happy to
+hire anywhere in the US, uh outside the
+US often as well. Uh whereas it seems
+like European companies are slightly
+less happy to hire remotely. Um the
+salary is lower in Europe um in in the
+in the computer science sector. Um
+and
+I think the other difference maybe is
+there there are just fewer companies in
+general in the tech sector in Europe
+than there are in the US. Uh and fewer
+of them seem to be using Rust. But
+certainly when I when I was moving from
+the US to Europe,
+I put out a sort of announcement on
+social media and everything that I was
+moving and looking for work and I got a
+lot of companies that reached out,
+including a bunch from Europe. So it's
+not like they don't exist. So as you
+mentioned salaries, so our team looked
+up numbers.
+So in Norway, a senior Java developer
+make around uh 94k
+a year.
+What's the realistic range for a Rust
+engineer in Norway? Very hard to say. I
+I think that the salaries vary quite a
+lot. But part of it is also whether
+you're working for a a startup or a more
+established company, right? Because for
+for a startup, you tend to get paid less
+in terms of cash value, but then
+obviously you're betting on the startup
+doing well, and so you get paid a bunch
+in equity that's not worth anything
+unless the company does well, in which
+case it's worth a lot. Um and so it's
+it's hard to say what the expected
+salary is, because I also think Rust is
+more likely to be used in startups,
+which sort of pulls the the expected
+compensation down. Um
+my expectation would be that it's
+somewhere around 150 maybe for like
+senior Rust person in Norway, maybe my
+guess. Um whereas if you're in the the
+US market, a senior Rust engineer,
+you would be paid like let's take um
+Amazon as an example. Um I think I mean
+these are slightly dated numbers now
+since when I left, but I would expect
+total compensation to be around $400,000
+a year. So it's like a significantly
+higher salary. Uh dollars not euros, but
+you know, they're not too far apart. Um
+The downside of course is you have a lot
+more expenses of things like healthcare
+and everything, but even adjusting for
+those, I think the salary is undeniably
+higher in the US than it is in Europe.
+And also vacation days. Yeah, yeah. I
+mean that I mean don't get me wrong. I
+would much rather work here than in the
+US. But just focused on salary, the
+salary is is undeniably higher there.
+And then the question is like how much
+Well, like what is those those extra
+dollars or euros worth to you? And to me
+they're not worth the things I'd be
+giving up. That's which is one of the
+reasons I moved. Uh you joined uh
+Helsing, which is a European defense AI
+company.
+>> Mhm.
+And with this defense thing, some people
+were like like in community were
+cheerful, but some of them were
+uncomfortable. Oh, I It's funny because
+I'm also uncomfortable with it, right? I
+I I'm I would expect everyone to be
+uncomfortable with the military and with
+the defense sector, because it's
+inherently an uncomfortable topic for
+humans. So like I was not at all
+surprised really that people were
+uncomfortable. If anything, that's sort
+of the reaction I expected. What uh Rust
+has in in this area? I think it's
+in a in a way it's obvious, right? Like
+this is a a sector where
+safety criticality is
+well, critical, right? It's it really is
+safety critical. If you get things
+wrong, the implications are severe. And
+so that means you really want to make
+sure the software you you write does
+what you intended it to do. Um and
+Rust helps you do that, right? By um
+statically eliminating bugs bugs for
+example. Like an example here is um the
+So I recently wrote a Rust library for
+um spatial math transformations, so like
+3D coordinate system and frame of
+reference uh conversions. And the
+library has almost no code. It has
+almost no implementation code, because
+it's just it's just matrix multiplies
+and quaternions and stuff. But what it
+does is it does um type state encoding
+of coordinate systems to make it
+basically impossible for you to take a
+coordinate that's in one frame of
+reference system and accidentally use it
+as though it was in in another one. And
+this is the kind of bug where if you
+didn't have a strong type system, you
+couldn't express this. You would just
+have a coordinate type, and you better
+remember which one is in which frame of
+reference system and don't use them
+incorrectly. Whereas in Rust I can
+actually enforce that at compile time,
+which means that I end up with software
+that's less likely to contain bugs of a
+certain kind. And then you can
+generalize this to more and more places
+where you can use the type system to
+ensure safety at compile time, and you
+end up with a a program better suited
+for safety critical applications. Are
+there analogous uh like similar
+libraries in Python? This library that I
+wrote has almost no implementation code.
+There's almost no math in there. All the
+math is in like a linear algebra
+libraries. I'm using an algebra in Rust.
+And in Python you would use I don't
+know, NumPy or SciPy or or any of the
+sort of linear algebra libraries in
+Python, and you would have the same
+code, but expressing it in the type
+system so that you get a a variable
+whose type is, you know, coordinate in
+ECEF or coordinate in this plane's NED
+system.
+You you don't have a way to express that
+in Python. And so you you couldn't port
+this library to Python, because porting
+it would mean removing all the types, at
+which point the library is empty.
+So there is nothing to port to Python.
+There there can't exist something like
+this in Python. And there are a few
+caveats here around maybe you could do
+something in my pie with like not using
+generics, but sort of
+long string generated type names
+something. But in Rust this is a very
+natural way to write a program.
+And so it feels very valuable to be able
+to make use of it, and I don't see an
+obvious way you could you make use of
+that in other languages. In Helsing you
+you hire Rust developers. Is it an easy
+task to find Rust developer?
+So yes and no. There are a lot of Rust
+developers on the market. Um what I've
+found though is that there tends to be
+more junior engineers than senior
+engineers on the Rust job market. Um
+which is a challenge for companies that
+are looking to grow very large in the
+Rust space, or or even just to adopt
+Rust for the first time, because what
+they need are senior engineers that can
+then guide up the junior engineers. You
+don't really want to start a company's
+Rust journey with junior Rust folks.
+Like they don't really have the the um
+accumulated experience to bootstrap the
+project in a safe or in a healthy way,
+right? Um you need the one or two senior
+people first that that you can then grow
+a team around. So at Helsing we've I
+think been
+uh like happily been able to hire like a
+decent number of senior Rust people, but
+you're still kind of capped on the
+number of junior people you can hire
+based on the number of senior people you
+currently have. So I think the
+biggest struggle for us maybe has been
+to hire more senior people, because not
+because we don't hire the juniors, but
+we need more seniors to fit more
+juniors, if you if that makes sense.
+Is your personal brand in the Rust
+community helping with this goal? I
+think so, but but I
+I think it's helping in a very
+particular way. So I think my my
+personal brand here helps in making
+people curious about Helsing as a
+company. Um and it makes them think that
+it must be an interesting place to work
+because John chooses to work there and
+talks about what it's like. Um
+but I don't think it makes senior
+engineers who are happy at other
+companies go, maybe I'll switch company.
+Like I don't think it it goes quite to
+that level. And the reality is that a
+lot of the senior Rust engineers you
+would want to hire are already employed
+elsewhere. And so it's it's not
+sufficient to make them interested. They
+also need to be willing to switch jobs.
+Um and my personal brand can't can't do
+that alone.
+When you were job hunting in Europe, you
+wrote in your LinkedIn I think uh I'm
+not looking for work in the
+cryptocurrency, blockchain, web3, or
+DeFi spaces. Why is that?
+I have this need for the work that I do
+to to feel like it
+matters in a positive way in the world.
+Like that's one of the reasons I do
+education is because I think it it
+matters. Um and and I feel the same way
+about my work that I want to work on
+something where I feel like there's a a
+positive impact on the world as a result
+of the work that I do. And for the
+crypto space,
+the work there is super interesting.
+Like the algorithms, the data
+structures, the many of the like
+distributed systems problems are are
+fascinating. There's a lot of
+intellectual depth to them.
+But I I have yet to see why it matters.
+I get a lot of the theoretical
+arguments, but in practice I just don't
+see them having the the the sort of
+promised impact, if you will. If
+anything, I feel like the the places
+where I see these spaces have found use
+is like more negative than positive. Um
+and that that that's no that's not to
+sort of dismiss the people who work in
+those industries, quite to the contrary.
+I think it's super interesting technical
+work, but for me that's not enough. If
+someone is looking for a job in Rust,
+they they see a lot of
+job postings in this crypto area. So
+what what what makes Rust so good for
+for this particular thing? It's
+something that's fascinated me of like
+why is Rust so commonly used in the in
+the crypto world. The best I can think
+of is that you end up building
+systems that need to be quite parallel.
+There's a lot of sort of distributed
+systems protocols. Correctness is quite
+important because you're building like
+things that need to be correct in some
+way. Um
+and so
+maybe that lends itself to Rust. Maybe
+it's also the fact that a lot of these
+things are built from scratch, and so
+you get free reign when choosing a
+programming language, and a lot of those
+people choose Rust. Maybe there's
+something here about smart contracts and
+web assembly compilation or or something
+in that space. But but I still don't
+know what the the full answer to to why
+it's so prominent there. Interestingly
+actually,
+so you know, crypto both means
+cryptocurrency, but it cryptography. And
+Rust is also quite widely used in
+cryptography, and there I see it a lot
+more because if you want really secure
+cryptographic libraries, that feels like
+something that's worth implementing in
+Rust to eliminate some of the potential
+error cases in the cryptography where
+the impact is is certainly high. The
+United States, they approved um
+uh
+exchange-traded funds on Bitcoin, so it
+looks like they're making it official
+part of financial system.
+So, do you think that this is somehow
+like changing how crypto is seen in this
+world or not? Like for you and maybe in
+general.
+To me,
+Bitcoin is
+roughly speaking, gambling in the same
+way that the stock market to an extent
+is gambling, although you you have more
+insight into the odds, maybe. To me, it
+feels almost purely speculative in the
+same way that much of the stock market
+is speculative. So, in a way, Bitcoin
+being traded, even if it's indirectly,
+on the stock exchange,
+feels to me like par for the course.
+That feels appropriate given what it is.
+And I mean, it's not clear to me that
+that adds any more credence to its value
+as a as a financial unit.
+On one of your streams, you you said AI
+is overhyped.
+Why do you think so?
+So, I'm going to sort of date myself
+here a little bit, or maybe date is even
+the wrong word. I'm going to like
+Luddite myself a little here. I think
+what's happened with AI is that people
+are seeing some of the things that are
+really impressive,
+and I think they're extrapolating from
+that abilities that the AI does not
+have, and that is not trivial to add.
+So, I think that um when we look at
+things like um
+I mean, the output of LLMs has gotten
+very
+good, very real-seeming, and very
+fluent. But where it falls short is on
+things like actually understanding the
+topic that they're talking about or that
+they're trying to express. Um
+And that to me is not something that's
+just like one fine-tuning of the model
+away. It's something where I haven't
+really seen it get better. I've seen it
+get better at maybe faking it, but
+when you ask it for things that are like
+there there was a recent study uh where
+they tried to figure out whether
+uh
+like LLMs or machine learning approaches
+could find the underlying physics model
+of like the movement of uh celestial
+bodies, and they basically found that
+no, they can't.
+They are really good at predicting the
+positions of planets, but they can't
+actually come up with what is the
+uh what is the underlying principle
+that's driving it. And it's because
+they're really good at the the pattern
+replication and extrapolation, but
+they're not good at understanding that
+there's an underlying model.
+Uh and I mean here like physics model,
+for example, not not machine learning
+model.
+Uh I I expect to see the same thing in
+in um agentic AI for coding, for
+example, where
+um it's very good at producing code,
+perhaps even correct code, when it can
+work from examples that already exist,
+or when it can adapt multiple examples
+and merge them together. Where it's less
+clear to me that it can do well are on
+tasks where you need to understand the
+underlying program structure at like a
+deeper level. You need to understand how
+the type system works because and this
+is where I'm I'm skeptical, I don't
+think it can understand. That's not to
+say that we could never build AI that
+does that, but I think that's more
+towards like general-purpose AI than the
+current like LLM-driven machine
+learning.
+Um and so that's where my skepticism
+comes in. But this is the kind of thing
+where
+I also feel like I'm speaking from
+speculation almost entirely. I don't
+have the hard facts for this. It's just
+a just a feeling. And so one of the
+things that I've sort of tasked myself
+with here is to do more to use agentic
+AI more precisely to try to test its
+limits here. And so I've set myself some
+like internal
+uh boundary measurements for things I
+think will be hard for it and where I
+want to see whether it could succeed or
+not. And we'll we'll we'll see over time
+whether I whether I manage to prove
+myself wrong here.
+I mean, that should always be the goal,
+right? Like come up with a hypothesis,
+like I don't think they can reason, and
+then try to prove myself wrong.
+But uh we should admit that AI these
+days writes more and more code. Oh, for
+sure. But I think the question becomes
+what code is it writing? And uh so, what
+do you think about this this uh idea
+that eventually it will take all
+developers' uh jobs? Yeah, I mean,
+that's the thing that I just do not
+believe because, again, I do not think
+it can reason.
+I think it can really well replicate
+um
+structure. It can really well replicate
+patterns. It can really well replicate
+even like even things where there's not
+really a pattern, just the the kinds of
+programs that people have written
+before, and it can figure out how to
+meld them together to make a reasonable
+like resulting code base, similar to how
+it can construct complex sentences and
+documents. But
+that doesn't mean that the thing it
+builds is um
+is reasonable or correct. I think what
+it's really good at and what um what we
+should be utilizing it for is for a lot
+of that work that is easily replicable,
+that a bunch of people have done before
+or have done something similar. Like
+let's take interacting with um Amazon S3
+or DynamoDB or something where there's
+so much code written to do those
+interactions or to do them in the same
+ways, and so we should expect that like
+an agentic AI coding thing should be
+able to also write code that does that
+well. And so I would love to use that
+for that so that I don't have to go look
+at all the documentation and look at all
+the Stack Overflow posts and write that
+code myself. I can just have it build
+something for me and then check it.
+Seems great. Saves me a bunch of time.
+But on the uh like to take the example
+from uh from my presentation that I gave
+at the the Rust Amsterdam meetup on
+Squaba, the Squaba is like a a type-safe
+library that's really just type coding.
+There's no implementation code for
+enforcing invariants in the type system.
+Not clear to me that you could use
+agentic AI to build that because it
+requires understanding how the type
+system works and how you can en- force
+particular behaviors using it. It's not
+really following established patterns in
+that way.
+But I would love to be proven wrong. So,
+you you mentioning like quite
+complicated designs for a library, and
+maybe for that AI is not that scary.
+But like just just imagine like there is
+someone
+watching us here, and they they have
+this fear of AI replacing them. So, what
+advice would you give to them?
+I think my answer is going to be split
+here. I think the fear to an extent is
+real
+um because there are
+software engineering jobs that I think
+machine learning can do really well.
+Like if your job is
+um
+designing WordPress templates, for
+example, is something that where there
+are a lot of examples for machine
+learning to learn from.
+Uh there So, there's there's a lot of
+pattern replication it can do to produce
+things that are reasonable.
+Um it's not like the resulting thing
+requires that you have a deep
+understanding or develop some new
+intuition.
+It's really just pattern replication and
+then figure out how you mutate the
+pattern to make it look the way the user
+wants.
+There I expect that it's going to be
+very hard to have a job as a template
+designer for WordPress
+in the coming years. Uh that seems to me
+like something that's probably going
+away.
+On the other extreme of the scale,
+right? If you're writing research papers
+about uh
+new like snippets of assembly code that
+perfectly optimizes doing a fast Fourier
+transform, not clear to me that the
+you could just prompt that to the
+agentic AI and it would give you better
+assembly. That seems to me unlikely.
+But then there's a whole spectrum in
+between, and the question becomes like
+where does the agentic AI go from uh it
+completely replaces your job to it
+replaces a part of your job to it's a
+tool that can help you to it's
+completely useless. Uh and I I think
+that we have the whole spectrum, and
+figure out where you sit on that
+spectrum is difficult.
+But I think part of what will happen is,
+you know, I saw a good example, I think
+it was on Blue Sky the other day, of
+someone saying
+uh quitting your job as a software
+engineer now because of agentic AI is
+like quitting being a carpenter because
+of the sawmill.
+It makes no sense, right? It's a better
+tool that we can make use of, and
+hopefully that means you're now capable
+of building more interesting things. So,
+lean into this, right? Like uh let's say
+that you're a developer who
+builds WordPress templates. Maybe now
+the agentic AI can build all those
+WordPress templates for you, and the
+thing that you get good at is building
+tooling for users to build their
+WordPress template themselves.
+So, you take one step up and build the
+the the thing that uses the tool. Think
+of it as a utility that you can do you
+can use to make your craft better and to
+improve what you're able to deliver as
+value rather than as a this will be a
+stand-in for me and therefore I'm now
+out of a job.
+But I do acknowledge the fear, right?
+Like this this is a disruptive
+technology. There there's no doubt about
+that. Let's focus on AI and Rust
+specifically.
+Uh do you think that applying generative
+AI to Rust is somehow different to
+applying it to some other programming
+languages like generating Java or C++ or
+Python?
+I do think generating Rust code is
+probably harder for LLM style AI.
+Um and and the reason this actually
+relates to one of the one of the other
+things we talked about, which is this
+idea that Rust has
+an additional mental component to many
+other languages. Like there's a there's
+a fundamental concept of Rust of this
+idea of lifetimes and the borrow checker
+that other languages don't have. And
+it's something where, you know, we see
+this with programmers who don't have
+that understanding, that mental model of
+the borrow checker, trying to write Rust
+as though it's some other language with
+different syntax. And then they
+immediately run into problems. Like it
+becomes really hard to write the
+programs they want to write. And the
+reason for that is because they're
+lacking that understanding and they're
+trying to write a program absent that
+understanding and then it's just wrong.
+And I think we will see the same thing
+with AI that when writing Rust code,
+they also need to, if not understand
+this other piece, be able to at least
+faithfully replicate it or replicate
+well enough that they produce a correct
+program. So that's it's it's not that
+it's impossible for it to do so, but it
+increases the complexity of the task. Is
+it possible to to use Rust as a basis
+for AI infrastructure? Like we know that
+a lot of things is implemented in Python
+right now and Rust is used with Python
+in many projects. So can we use it for
+AI? So I think we can, but I think
+there's an interesting question of
+whether we should.
+So so where I work now, we use machine
+learning both in production but also for
+research. And the reality is that I
+don't think we want to use Rust on the
+research side because for machine
+learning researchers, it's not clear to
+me that Rust is the right language. They
+do a lot of prototyping, rapid
+iteration, building things and throwing
+them away. And and Rust isn't really
+built for that. Right? As we as we
+talked about earlier, Rust tries to
+force you it gives you the headache up
+front. It tries to force you to think
+carefully through your program to make
+sure it's completely correct by the time
+it runs.
+But when you're iterating on like um an
+idea for how to restructure your model
+or your training, that's not important.
+What matters is that this run does
+something and you can look at the
+results and then you can iterate. And so
+Rust doesn't feel like the appropriate
+language. Not to mention all of the
+research out there in AI and machine
+learning tends to be Python based. All
+of the libraries that people write tend
+to be Python.
+And so I actually think we should lean
+into that and say, on the machine
+learning side, we want people to keep
+using Python. On the production side
+though, like you don't really want to
+deploy Python in your car. That seems
+unwise, certainly in like anything that
+resembles the safety critical systems or
+self-driving systems, you don't want
+Python there. You want a language like
+Rust. And so the question becomes how do
+we bridge the gap? How do we take the
+output of the machine learning research
+and make it usable
+with Rust in production? And there are
+ways to do this. Like you have things
+like ONNX runtime that lets you build a
+model in Python but use it from Rust.
+You have things like Candle that allows
+you to basically do PyTorch in Rust and
+so you can port the Python code-ish to
+Rust. So there are a bunch of mechanisms
+here and I think that's the way to
+approach the problem is
+I want to use Rust for more machine
+learning bits, but only for the part
+after the research has happened.
+And so I I want us to focus on making
+that experience as good as it can,
+rather than trying to make all the
+machine learning researchers use Rust
+instead of Python. Let's speculate a
+little bit and take a
+10 years horizon.
+Do you predict any changes in how human
+software engineers work in 10 years?
+I think the answer to this depends on
+how wrong I am about my my light light
+approach to AI. Right? If it turns out
+that actually machine learning models
+and and the the agentic AI we have
+is or will become really good at
+reasoning. Like they'll be really good
+at just
+flawlessly making changes from the
+beginning or requiring very little
+prompting to get even very sophisticated
+software systems, including things that
+are innovative that haven't been built
+before, being creative, then yes, I
+think things would change a lot. I'm
+skeptical that that will change in the
+next 10 years. I think what we will
+probably see is the tooling getting so
+good that you can accelerate yourself a
+lot by using these tools, especially for
+repetitive tasks, tasks that look a lot
+like what other people have developed in
+the past, stuff like,
+you know, I recently wrote a Slack bot
+for playing a particular card game
+through DMs to Slack.
+That thing not super complicated. Like
+it's a bunch of it is just figuring out
+how to interact with the Slack APIs,
+encoding the rules of the game and then
+hooking it all together in like a a
+thing that runs an Axum web server that
+listens to API events. That thing I
+could probably vibe code without too
+much problems. And I think in the next
+10 years I could probably do so very
+quickly and efficiently. These days my
+guess is I would I would need to do
+quite a lot of coaching to get it to
+work end to end, but I probably could.
+So I think for a lot of things that we
+build either for fun or as throwaways or
+things that resemble production systems
+that have built a lot before, I I think
+this is a an accelerator for existing
+software engineers that we will only see
+grow bigger and more widely used. Um and
+that of course does change the makeup of
+human software engineers. It changes our
+job in a way for at least a
+you know, on on the sort of spectrum
+from
+uh very very straightforward repetitive
+uh almost like copy paste work to very
+innovative research, it changes where on
+that spectrum people use more of agentic
+AI, but I don't think it's going to tip
+all the way over where human software
+engineers just become prompters or just
+babysit a bunch of agentic AI. I think
+that will happen for a a subset of the
+space, but I don't think it's going to
+replace what everyone does all of all
+the all of the time. You are optimistic
+about the future. Yeah.
+I don't know whether I'm optimistic or
+pessimistic. I think it depends on the
+topic. I think for software engineering
+and AI, I'm optimistic.
+But it's because of this
+assumption I have maybe or speculation I
+have that AI is is somewhat overhyped
+and therefore
+I don't think it'll be as bad as people
+think it will be.
+But I think it's partially also a
+mentality thing that I see this as a
+a tool that I can make use of rather
+than something that is out to replace my
+job.
+But part of that also comes from a
+position of privilege, right? Like
+the software engineering that I do is
+fairly involved maybe or or it's like
+further on the the spectrum towards
+doing new stuff, things that require a
+decent amount of creativity or new
+thinking where it hasn't been done
+before where I'm much less worried that
+agentic AI is going to do that thing
+that that I think I have a a knack for.
+And so therefore I can I can afford to
+see it as a tool. I think if you're more
+on the boilerplate copy paste type work,
+then then I think I would be more
+pessimistic maybe.
+But for the industry as a whole, I I
+think I'm optimistic. Okay, now now we
+have several questions as I said like
+Rust vs. some other programming
+language. So we we expect to have some
+fun content here. Okay.
+Um
+Uh where Rust is really better than Go?
+Oh, Rust is better than Go cuz it has
+types.
+Uh this is this was super easy. So Go,
+when you when they made Go, they chose
+to ignore basically all programming
+research from the past like since the
+1970s. And when they made Rust, they
+decided to learn from programming
+innovation in programming languages
+since the 1970s. And so you ended up
+with a language that is yes, more
+complex, but also way more fun to write
+and way more expressive. And that to me
+is like the big difference and the
+reason why I don't want to use Go.
+Are there reasons where you would still
+choose C++ for your project?
+I would use C++ if I have to interface
+with a bunch of other C++ projects
+extensively over time. So if I have to
+integrate with all of this like complex
+C++ stuff, I don't really want to
+maintain all the Rust bindings. The only
+exception would be if I expect that I
+need to use the same C++ project or
+library in a bunch of Rust code bases,
+then I would swallow the pill and write
+the the Rust like bindings once and then
+just do Rust for everywhere. But if it's
+just like one project that needs to
+interface with one, two, three big C++
+projects, I I would use C++. So what do
+you think about this statement? Rust is
+only for those who write C++. No, I
+don't think this is true. Quite to the
+contrary actually. I think if you're
+writing C++, you already have a language
+that's fine for you. I I think
+you could do better, but it it works
+fine. I actually think Rust is even
+better for those who come from a Java or
+Go or JavaScript background where you
+realize you've hit the borders of what
+you can do with this language in terms
+of performance, in terms of
+expressivity, and you want something
+that is actually way faster and safer
+and more expressive. And Rust gives you
+all those things. So it's it's almost a
+the the cell is easier to those coming
+from a more dynamic programming
+background. What Rust feature annoys you
+the most? So I think there are two
+answers to this. The first answer to
+this is the borrow checker because it is
+the thing that I run into issues with
+the most. I still love it. I still want
+it to be there, but it is the thing that
+annoys me the most.
+I I think, you know, more realistically,
+the answer is
+I still find the experience of of
+finding third-party dependencies for
+things frustrating in Rust. Um
+not not because they things don't exist,
+but because
+many of them are like one person wrote
+it cuz they needed it, and then they
+haven't touched it in 3 years cuz they
+stopped needing it. And so there's a
+decent amount of libraries like I think
+at this point you have library
+implementation for lots of services and
+APIs out there, but so many of them are
+like not widely used and therefore not
+super well maintained.
+And that I run into time and time again,
+and it makes me sad. But I think it's
+something that gets better as you see
+more adoption as well. So I'm not really
+concerned, but it does annoy me because
+usually these libraries work fine.
+They're just like they haven't been
+updated in ages. So I'm using something
+that's old and not really thought
+through, and I know it can be better and
+and that annoys me. Many people say that
+it's difficult to learn Rust. So what's
+the the hardest moment there when you
+were trying to learn it? I think the
+biggest thing is because Rust is not
+just a different syntax for the
+languages that people are used to.
+Right? If you were to move from um
+you know, Java to Go or or to an extent
+like C++ to Go, um
+those are
+syntactically different, but they feel
+very similar in the sense that you don't
+really need to learn new concepts. Maybe
+you need to learn about what a Go
+routine is, but it's not that
+complicated or what a channel is. It's
+not that complicated. Whereas with Rust,
+you need to like
+learn a new skill almost. Like there's a
+there's a part of your programmer brain
+that you haven't built yet, and it's the
+borrow checker. Like most developers do
+not have a borrow checker in their head.
+One second. We have We have some Reddit
+comment here. Let me read it actually.
+That's that's exactly about borrow
+checker. So I wanted to learn Rust for a
+while now, but I got discouraged because
+people on the internet say the Rust
+borrow checker is tough to understand.
+This made me unsure about learning Rust,
+and I'm kind of scared to even try. So
+could you explain the borrow checker for
+for this guy on Reddit? Okay, so I I
+think I think this is a great question
+because in a way
+my answer is yes, the borrow checker is
+hard, but it is a great way to make you
+a better programmer.
+Like the way in which you write C and
+C++ code without making mistakes is that
+you start to develop an internal borrow
+checker. Like if you talk to really good
+C and C++ programmers, they have in this
+idea of oh, it's not safe to free this
+thing here because it's still used
+somewhere. Or oh, you can't use this
+here cuz it's already been freed. That
+is a borrow checker. So what they're
+doing in their head is borrow checking,
+but a a weak version of it. So in a way,
+that's a skill that you kind of need to
+start learning in order to write in at
+least the the languages like C and C++.
+In garbage collected languages, this is
+not a skill you really need at all. Rust
+forces you to learn that skill, but I
+think it's a skill that makes you a
+better programmer because it gives you a
+better sense of how data flows through
+your program and when different parts of
+it are used and needed. And that gives
+you in turn a sense for what is the
+right decom- composition for your
+program. So so
+it is an additional thing to learn, but
+I think it's a worthwhile thing to
+learn. And certainly my experience has
+been that you know, at this point I have
+a little talking borrow checker in my
+head,
+and that one makes me better at writing
+JavaScript code, Go code, C++ code
+because that those that that information
+that it gives me is useful in those
+contexts, too.
+So can you give me like like three
+examples of how you are better
+programmer if you have that borrow
+checker in your head? Yeah, so um in in
+JavaScript for example, one of the
+things you want to be careful about is
+um making sure that you don't ever wind
+up with a memory leak in your
+application. And the way you do that is
+you think really carefully about when
+something might be collectible by the
+JavaScript runtime. And the way you do
+that is you think about which things are
+alive and which things have references
+to them. There's no representation of
+that in the JavaScript language, but it
+is information that's used by the
+runtime to figure out whether it's safe
+to free something. So by having a sort
+of mental mapping of the lifetimes of
+the variables and objects in my program
+in JavaScript, I make fewer mistakes
+that mean that I get a memory leak in
+the first place. It's not perfect
+because the language isn't helping you
+the way Rust is, but it does help. In
+Go, it's um
+it doesn't help that much for like
+performance optimization, but where it
+can help is for things like Go decides
+whether something gets heap or stack
+allocated automatically. And it does so
+by look doing escape analysis, right?
+Like is this this variable that I
+allocate inside of a function, does it
+escape outside the function? If so, I
+will heap allocate it for you. I will I
+will box it for you in in Rust terms.
+That happens behind the scenes. Go
+doesn't tell you whether it does that or
+not, but the borrow checker in your head
+does. Because if I return an object from
+inside a function,
+then in Rust that would be illegal. It
+would tell you, well, this gets
+destroyed when the function ends, and so
+you're not allowed to return it. In Go,
+that's allowed. It gets auto heap
+allocated, which means that when my
+borrow checker in my head goes this is
+not allowed, it actually means oh, this
+one gets heap allocated and I should
+think about the performance
+implications. Um
+and I think for C and C++ it it's it's
+obvious in a way. You you would not
+write a correct program if you did not
+have a rough borrow checker in your head
+because you need to know whether
+something can be accessed, when it can
+be freed, whether pointers are valid,
+double frees, all of that stuff, which
+is borrow checking. So in Rust, when you
+when you see those error messages, you
+mean that they are helping you. It's not
+like they they are on on your way. Not
+at all. I I think I think of the Rust
+compiler as being sort of instructing
+you in constructing the right mental
+model yourself. Um the I I heard a good
+quote. I think it was from
+uh Niko Matsakis, maybe, that uh Rust
+gives you the headache up front. So the
+idea is that you will have to fix these
+bugs. The question is just would you
+rather fix them at compile time or would
+you rather fix them 6 months later when
+your production system crashes? I know
+which one I would choose. Right? But it
+does mean that it takes you longer to
+get to a running program because Rust
+doesn't let you get away with making
+those mistakes even in the early days.
+We're switching topic a little bit here.
+So what's the best thing about Rust
+compiler?
+The best thing about the Rust compiler,
+I I I think it's the I think it's the
+error messages. The fact that it tries
+really hard
+to be helpful while being concise, I
+think is relatively unique.
+Um and the fact that this is practiced
+so rigorously across the compiler, I
+think it makes a huge difference. It's
+something you see where
+when people try to pick up Rust for the
+first time,
+if they're programmers from another
+language, they get like outputs from the
+Rust compiler and they ignore them, and
+then they wonder why did my program not
+work? And so often the answer is the
+compiler message actually told you.
+Whereas if you're a new programmer and
+you pick up Rust, you start reading the
+error messages and you go, oh, great,
+that's helpful, and you just do what it
+tells you to do. So so I I think it's
+one of those like
+I don't know if it's underappreciated
+because people appreciate it a lot, but
+it is a hugely helpful thing especially
+in the language where the learning curve
+is as it is, and there are enough weird
+concepts where you just need the
+compiler to help you. So it's it's just
+enough to read them and figure out
+what's going on, you think?
+So some of the time some of the error
+messages also have links to these
+e-codes that give you a further
+explanation of a concept.
+Um and sometimes you need to read those.
+Sometimes you're just going to be lost,
+right? It's talking about some concept
+you haven't learned in your in your Rust
+journey yet, and you need to go read the
+book or something. Um but but very often
+the compiler message is sufficiently
+helpful that you can figure out what
+went wrong at least, if not how to fix
+it.
+When I'm talking about Rust with the
+developers in other programming
+languages, they even if they are not
+very happy about Rust itself, they
+always mention Cargo, Rust package
+manager. They say that it's amazing, and
+they know about it at least. So is it is
+it really so amazing?
+So I think the answer is yes, but I
+think the question becomes in relation
+to what?
+I think the reality is many programming
+languages have bad package managers
+or or build tools. And Rust tried really
+hard to learn from all the lessons of
+the ones that existed at the time of its
+inception. And so it is maybe the best
+of the ones that are there. It's not
+clear to me that it's like
+the ultimate build tool, that you
+couldn't build anything better. But it
+is very good. Like it very rarely gets
+in my way. There are a bunch of things
+that I think, you know, Cargo could be
+better at or where Cargo's behavior is
+maybe um counterintuitive. Some of the
+stuff around Rust flags and
+cross-compilation, for example. That
+there are a bunch of like hairy depths
+of Cargo that I think are sometimes
+painful or it's visible that they've
+evolved organically rather than as a
+principled this is how we want this tool
+to work. But I think overall, it's a
+very good build tool. And it's a it's a
+fantastic build tool compared to what
+people are usually coming from. When I
+read the recent state of Rust survey,
+participant mentions several several big
+biggest challenges when writing code in
+Rust, including slow compilation time,
+sub-par debugging experience, high disk
+space usage.
+Do you think those are valid concerns?
+Is it possible to fix these issues? Any
+concern that's raised by like more than
+10% of respondents or more than 5% of is
+a valid concern, right? And the question
+becomes what can we do about them? So so
+slow compile times is um
+it's it's is a property of a couple of
+different things. It's a property of
+Rust's use of uh extensive type system,
+which inherently brings some amount of
+complexity to the compiler, which
+results in compile time cost. Um some of
+it is the fact that you have many
+third-party dependencies, and so you
+need this more elaborate sort of
+distributed or or
+topological build. Um
+some of it is down to uh when you have
+multiple crates, you need more like link
+time optimization to make sure that if
+you have cross crate dependencies, you
+still get inlining, for instance. So
+there's a decent amount of that kind of
+complexity.
+Um
+the
+those are hard to fix. It's it's not as
+though the compiler can't get faster.
+Obviously, it can. But there's been a
+decent amount of work on optimizing the
+Rust compiler, and so the the
+low-hanging fruit, I think, is mostly
+dealt with. And now it's more almost uh
+more fundamental things that need to
+change in order to make these things
+feasible. And and not all of those come
+without tradeoffs, right? Some of them
+might be that you get faster compile
+times, but you get a worse resulting
+binary. Like a less optimized. And
+even just the the difference between
+Cargo build and Cargo build {dash}
+{dash} release is an example of this.
+Cargo build runs much faster, but you
+end up with a slower binary. And there
+are probably more levels of that pyramid
+we could explore.
+The the
+large disk usage is partially related to
+this, partially related to the lack of
+of um automatic cleanup, although that
+has now landed in Cargo, I believe. So
+now it will start to prune its own uh
+its own cache.
+Um and it's partially related to
+um monomorphization. So you end up
+keeping multiple like in in the compiled
+binary artifacts, you might end up end
+up keeping multiple copies of data
+structures and and functions just
+because they're generic, and you need to
+keep the generated intermediate
+representation or assembly code for each
+instantiation of that type or or method.
+And so that obviously inflates the the
+disk size.
+Um
+so
+valid concerns? Yes.
+Uh
+can we do something about them?
+Some of them some of them will be
+harder.
+I need to ask this question about uh
+Rust macros. Some people say that they
+are heavily overused in in the Rust
+community, and they create a lot of
+issues for a compiler, and even for
+especially for slow compilation time
+that you've mentioned. So is it really
+the case? What's are there issues with
+these tools or or not? Macros are macros
+macros are really useful, right? They're
+they're useful both in your own crate
+for things like avoiding repeating
+yourself a bunch, but they're also
+really useful for library vendors to
+give a better experience like a better
+user experience, better ergonomics for
+your library.
+I don't know that I agree that they're
+overused, maybe in some spaces, but
+usually people go to a macro because
+there's not an obvious way to do it
+without one. And part of this is maybe
+uh you know, lack of certain features in
+Rust that mean that a macro is the only
+way to do something, and where where
+that's the case, we should try to
+improve Rust itself to make that not be
+necessary. But very often the users are
+the ones sort of saying, I I want the
+macro because I want this particular
+user experience.
+And so it's not like the developers are
+putting in macros just for fun, it's
+because that's what's needed to give
+that user experience that they want to
+give. I do think maybe there's a
+there's an overly strong
+inclination to use a procedural macro
+rather than a declarative macro, because
+in a way they're easier to write, right?
+Just because you get to write actual
+Rust code rather than the the slightly
+weird macro syntax that people need to
+absorb in their in their brains.
+Um but partially also because they are
+more powerful, and so you can do nicer
+things with them uh than you're able to
+do with a declarative macro. But
+sometimes that's just lack of
+creativity, maybe, or or lack of
+knowledge in how to really massage
+declarative macros.
+Um the the
+I think really this is a tradeoff
+question, right? Because procedural
+macros do come with a
+um a potentially significant compile
+time cost. And the question is is that
+additional compile time cost worth the
+improvement in ergonomics? Um and and
+sometimes we probably make that tradeoff
+in the wrong way as as library authors.
+But I don't think the answer is to throw
+them away entirely. I think some of this
+is going to be figuring out how we can
+make
+procedural macros be faster. How do we
+improve the compilation model so they're
+actually feasible to use to the extent
+that we want to use them. What's your
+editor of choice when it comes to
+writing Rust code? Oh, this one's easy.
+I So I use Neovim. I've been a Vim user
+for many many years, and now I use
+Neovim. Um
+and you know, I've I've tried IDEs up
+through the years. Uh you know, the
+first one I think I tried was Eclipse,
+and that was that was an experience. Um
+and none of them really sat right with
+me, but I think it's maybe because I
+have a very terminal-focused workflow.
+So on my computer, I only ever really
+have two windows open, and it's my
+browser and my terminal, and nothing
+else. Everything happens in the context
+of those two programs. As a result, it
+feels very weird to me to have an
+additional window open that is my UI,
+because so often I want to do things on
+the terminal, and if my editor is in my
+terminal, it's very easy to switch out
+of. So like the number of times I quit
+and reopen my editor in a day is like
+all the time, like
+several times an hour, because I exit, I
+run some command, and then I enter my
+editor again, and that's fine.
+Uh and that's the workflow that's like
+built into my brain and my hands. So
+it's very hard to get out of. Trying to
+move to an IDE,
+I mean, I know I can get a terminal in
+the IDE, but that's a
+subpar terminal, right? I want my
+full-screen terminal with the full TUI,
+and like everything is is is terminal.
+Uh and so then having an editor inside
+my terminal makes more sense to my brain
+somehow.
+Um although I acknowledge that IDEs have
+a a richer graphical space in which to
+render your environment, which gives you
+more expressive power. But I just
+haven't found it to be a drawback. Like
+I I haven't found things that I just
+cannot do in my current editor that I
+would like to do. And that could be lack
+of um
+lack of exposure, right? Like if I
+really tried an IDE for a month, then
+I would discover all these things that I
+can't go back to a terminal editor for.
+But at least at the moment, that that's
+just not a need that I have. Have you
+ever tried RustRover, JetBrains IDE for
+Rust? I think I tried it for a solid 30
+minutes. So no, I think is the real
+answer to that. And and again, it's
+because there's nothing that draws me to
+them. Like I there's nothing I feel like
+I'm missing in my current experience.
+How many lines do you have in your
+Neovim config?
+Uh it's not that bad. It's um like 500
+lines, maybe.
+Um but this is like 500 lines of that
+includes defining all of the plugins
+that I want to use and their
+configuration. So it's like
+that that is a fairly decent size, but
+it's not as though it's manageable. It
+used to be in Vim script, and then it
+was a pain. And then recently I rewrote
+it to be in Lua, and now it's actually
+decently readable. Do you think that uh
+Rust as a language uh is a good fit for
+general software development pipeline?
+Like these modern CI/CD practices, like
+some cloud infrastructure.
+There are some things that
+can be a little annoying, things like um
+if your CI is set up to capture your all
+of your test runs, like think JUnit, for
+example, then you can't do that with
+Cargo test. You have to use something
+like Cargo next test, which has a way to
+emit JUnit information. And some of it
+So so some of it is like not as native
+as maybe we would like it to be.
+Um
+and there are other bits like setting up
+test coverage requires figuring out like
+you need to use something like Cargo LVM
+LVM cov or something. So there's there's
+certainly a bit of you need to find the
+right tool to get those things to work.
+Um but that's already the case in other
+languages, too. It's just that the tools
+are more established or more like
+already built into platforms. Um so I
+think there's like there's a delta here
+of we could make the experience better,
+and I think we should, but I don't think
+it's like fundamentally lacking the
+capabilities for for most of the stuff.
+And what do you think about using Rust
+alongside other languages? Like is it
+does it have a good connection to them?
+Depends on the other language. Rust is
+fairly friendly to to to foreign
+languages, right? So um
+you see this a lot in the Python space,
+for example, and in the Ruby space,
+where they increasingly now write native
+modules in Rust instead of C and C++
+because it's all just a C ABI anyway,
+and so you can just write it in Rust and
+then use use it the same way from from
+Ruby and Python.
+You see it in the
+um
+the C and C++ world, where you can
+pretty easily use a Rust module, and you
+can pretty easily use a C module from
+Rust. The C++ and Rust compatibility is
+still
+I'd say in in its young phase, right?
+Like there there's more we can do there
+to make that more ergonomic. Stuff like
+CXX helps a lot here, the the CXX crate.
+That feels like a space where there's
+room for it to get a lot better.
+I know um was it last year that uh there
+was sort of an investment into the Rust
+Foundation specifically to improve this,
+and I think that is a good investment
+but I because I think that's somewhere
+where
+um it's not like the integration there
+is worse than it is for other languages,
+but it's that it feels like it could be
+better because the languages have some
+similarities that it feels like we can
+make use of. I think interfacing with
+things like Java, it's less clear. Like
+having to use JNI, for example, is
+you can do it, but it it's a little bit
+painful. It comes with overhead. Um so
+so that one I think is
+workable but not the best. But in a way,
+the answer I just gave is
+Rust actually interoperates with a lot
+of things, right? If you took Java as
+the example here, trying to get Java to
+cooperate with Ruby, for example, or or
+Ruby Ruby is maybe a bad example cuz you
+have JRuby, but with Python is probably
+more painful because you now you have
+two runtimes that are competing for the
+the the the ownership of resources.
+Several years ago, Graydon Hoare, which
+is
+um original creator of Rust,
+he he wrote
+blog post with this title, "The Rust I
+Wanted Has No Future."
+It looks like there was some engineering
+dream originally,
+and now Rust is a mainstream language.
+Do you think that uh
+Rust is missing something because of
+this transformation?
+I think first of all, that that article
+is really good and people should read it
+if they haven't. The kinds of points
+that Graydon brings up there are not so
+much
+um
+things that he thinks are wrong with the
+Rust programming language. It's just
+that if if he were like the benevolent
+dictator for life of Rust, choices he
+would have made that is not what Rust
+ended up making.
+Uh and as he acknowledges in the post,
+some of those are probably for the
+better, where the the community made a
+better choice than he could have done
+based on at the time the conviction he
+had himself. And then there are some
+things that he just disagrees with, and
+there are some things where
+fundamentally there's a there's a
+trade-off, and he prefers one trade-off,
+and the community ended up preferring
+the other. And
+which trade-off was more correct is like
+anyone's guess, but the fact that Rust
+has seen mainstream adoption to the
+scale that it has suggests that many of
+the trade-offs were made made in the
+right way. So there's there are some
+things where you might end up with a
+cleaner language from like a programming
+language perspective, but that a cleaner
+language is not the thing that gets you
+adoption, right? Sometimes you actually
+want to favor the more complicated thing
+because it gives you more flexibility in
+the programs you can write or the
+performance you can achieve, uh and
+you're willing to pay the complexity
+price.
+Uh and so again, like Graydon talks
+about this in that blog post of places
+where he would have made a different
+call, but that's not it's not clear that
+would have made a better language. It
+would just made a different language. If
+you see something going on with uh Rust
+and you are not happy with some some of
+the decisions, what what would you do?
+Well, so a lot of the discussion about
+Rust happens in the open. It happens in
+in RFCs. It happens in in pull requests
+and in in issue tracker things. It
+happens in the
+um
+the Rust lang Zulip. Uh it happens in
+the Rust users and internals forums.
+There are a lot of sources to monitor if
+you want to keep track of everything,
+but in general, like when I come across
+either a feature that I care about a bug
+that I'm missing or um you know, a uh a
+feature that's announced and where I'm
+interested, I tend to go find the
+underlying thread and I subscribe to it
+over time to to monitor it for
+are there things here where I might feel
+strongly about something? And then
+there'll be some discussions where
+I see the feature coming and I go, "I
+don't think this is the right call." And
+then I will jump into that thread with,
+you know, my reasoning for why I think
+it should be different.
+But it's not as though, you know, I go
+into those threads and then have the
+authority to just decide. That's not how
+it works. Usually, like the people who
+put in the time are the ones who get to
+decide. Like let's take Cargo as an
+example. Um I'm not on the Cargo team.
+I'm not spending most of my time
+contributing to Cargo. I have strong
+opinions on build systems, and I can
+provide those opinions and provide as
+much, you know, um evidence or
+experience into those opinions as I can,
+but I don't get to make the choice
+because I haven't
+devoted the time and effort needed to
+get to be the person who decides. And so
+that means that sometimes they'll make
+decisions that I disagree with, but
+that's okay. That's how a community
+works is that one person doesn't get to
+just decide. But in general, do you like
+the the way Rust is taking?
+Like about the whole evolution of Rust,
+are you happy with it? I I think Rust is
+broadly speaking on a good trajectory. I
+don't I don't feel like I've seen lots
+of very objectionable decisions. Um you
+know, there obviously pieces here and
+there where I disagree with one call or
+another, or where I disagree with maybe
+with prioritization where I think this
+thing should have been done before that
+thing. But but I think overall, it's not
+like I feel a a deep sense of like the
+language has gone astray, not at all. I
+I think it's I think it's on a very good
+path. What is the the the leading
+leading force in in Rust development? Is
+it community or maybe big corporations
+these days? I I don't think big
+corporations actually have that much
+sway over the direction of Rust.
+Certainly, if you look at the way the
+the AWS Rust team worked, um that was
+very much a
+fund people to work on Rust and do what
+you think is right for the language. And
+then there was some amount of like they
+needed to argue for why these priorities
+also mattered to AWS for AWS to continue
+paying them, but it wasn't really AWS
+says you must do these things as much as
+it was, you know, very senior people on
+the Rust team saying, "This is what we
+believe we should be doing and why." And
+then articulating that to AWS and saying
+and then going, "Okay, great. That that
+seems reasonable. Go do it." Um and I
+think it's the same with like Meta, for
+example, which used Rust extensively but
+also contribute to Rust. I I don't see
+them deeply affecting the trajectory of
+Rust. A lot more of that resides with
+with the individual teams. And there are
+some of the team leads in the Rust uh in
+the Rust the larger Rust team that
+are paid by companies, but
+at least the ones I've interacted with,
+I don't get the sense that they're doing
+so based on a sort of steering from
+their company. Quite to the contrary,
+the reason they were hired was because
+they had a strong sense of judgment to
+begin with and a strong technical
+capability. And I actually think
+what I've seen so far, I would expect
+that if they felt a strong steer from
+the company that employs them, they
+would rather either leave their team
+lead position or leave the company than
+allow that steering to to really take
+foot. So I'm I'm not really seeing a
+sort of commercial steer of Rust to any
+any significant degree. If Rust
+disappears tomorrow,
+what would the world lose? Well, it
+depends how literally you take your your
+your prompt here, but I
+I don't think there's an obvious
+replacement for Rust. Um I think we have
+a lot of non-obvious replacements. We
+have languages like D, which never
+really took off cuz it was a bit of a
+pain to work with. We have languages
+like Zig, which are
+like Zig is very good at basically the
+subset of Rust where you write unsafe,
+but it doesn't really have a safe
+version to capture the the places where
+Rust can actually buy you additional
+safety. And so it would fill maybe the
+unsafety niche of a being a better C or
+C++ in that space, but it wouldn't fill
+the safety part. Um
+and we we have languages like Julia,
+which tries to be a sort of allows you
+to write high-performance code, but it
+also is pretty safe and and stuff, but
+wouldn't really fill the like, "Can you
+run this on cars?" You probably wouldn't
+run Julia there. And so I think we would
+be left with a a gap, a vacuum that
+needed to be filled by something. And
+maybe that's an extension to an existing
+language, but I I
+I don't see what would go there. Maybe
+the closest one would be something like
+Swift, um but Swift has the problem that
+um
+it it favors more more things at run
+time than compile time. Uh and it's also
+very strongly controlled by one
+commercial entity, which I think is to
+the detriment of wide adoption. Like it
+would be hard probably to adopt Swift in
+aerospace, for example, because the
+language is so tightly controlled by
+Apple. And I think this is one of the
+features that Rust has is that it's not
+as tied to one vendor. If Rust
+disappears tomorrow,
+what would you personally lose?
+I would lose a community, I think. Like
+for for me, the
+the work stuff
+matters less. Uh I I think I could be a
+programmer in any language then it would
+be fine. I think I could be an educator
+in other languages, too. But what I
+would lose is is that community of
+people who care about this intersection
+of things that Rust tries to give, and
+that
+are interested in taking on a
+programming language that is harder in
+some ways
+because they care. They think it's
+interesting. They think it's fun. And I
+don't want to lose that community.
+I think that was the last question.
+Uh but uh by the way, you mentioned
+your your book Rust for Rustaceans, and
+we happen to have it in our library in
+our JetBrains library.
+So I would like to ask you to sign it
+for us. Of course, I'd be happy to. Now,
+the interesting thing is you have to
+decide which page you want the signature
+on because there's a big debate in the
+community about whether the signature
+should be on the first page or whether
+it should be next to the name.
+Let's make it next to your name. Next to
+the name. Next to the name.
+>> All
+>> All right.
+So, I also um I number all of the
+signatures.
+So, that every signature is unique. So,
+this is uh book number 120.
+That's amazing. That's amazing. Thank
+you. Thank you so much.

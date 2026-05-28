@@ -1,0 +1,185 @@
+Modalities
+Attributes
+Clear
+UUID
+	
+MODEL
+	
+PROVIDER
+	
+STATUS
+	
+INPUT
+$/MTOK
+	
+OUTPUT
+$/MTOK
+	MODALITIES
+	FEATURES
+	
+CONTEXT
+TOKENS
+	
+MAX OUT.
+TOKENS
+	
+QUANT.
+	
+TOK/SEC
+	
+TTFT
+MS
+	MISC $
+	DATA POLICY
+	LIMITS
+	
+ADDED
+MODEL
+	
+GONE
+ENDPOINT
+
+ccba27	
+Trinity Large Thinking
+arcee-ai/trinity-large-thinking
+	
+Arcee AI
+arcee-ai
+	
+	$0.25	$0.90	
+	
+	262,144	80,000	?	102	785	
+	
+	
+	2026-04-01	
+c1f9f8	
+Trinity Large Thinking
+arcee-ai/trinity-large-thinking
+	
+Parasail
+parasail/fp8
+	
+	$0.22	$0.85	
+	
+	262,144	262,144	FP8	65	818	
+	
+	
+	2026-04-01	
+89257a	
+Trinity Large Thinking
+arcee-ai/trinity-large-thinking
+	
+Venice
+venice/fp8
+	
+	$0.3125	$1.125	
+	
+	256,000	65,536	FP8	104	755	
+	
+	
+	2026-04-01	
+b9d818	
+Trinity Large Preview (free)
+arcee-ai/trinity-large-preview:free
+	
+Arcee (Modal)
+arcee-ai/modal
+	
+	–	–	
+	
+	131,000	131,000	?	17	1,145	
+	
+	
+	2026-01-27	2026-03-30
+239c00	
+Trinity Large Preview (free)
+arcee-ai/trinity-large-preview:free
+	
+Arcee (Prime Intellect)
+arcee-ai/prime
+	
+	–	–	
+	
+	131,000	131,000	?	12	1,005	
+	
+	
+	2026-01-27	
+73d82c	
+Trinity Mini
+arcee-ai/trinity-mini
+	
+Clarifai
+clarifai/bf16
+	
+	$0.045	$0.15	
+	
+	131,072	131,072	BF16	179	100	
+	
+	
+	2025-12-01	
+57299f	
+Trinity Mini (free)
+arcee-ai/trinity-mini:free
+	
+Arcee AI
+arcee-ai/bf16
+	
+	–	–	
+	
+	131,072	131,072	BF16	140	720	
+	
+	
+	2025-12-01	2026-04-09
+a9b3fe	
+Spotlight
+arcee-ai/spotlight
+	
+Together
+together
+	
+	$0.18	$0.18	
+	
+	131,072	65,537	?	–	–	
+	
+	
+	2025-05-05	
+0edd51	
+Maestro Reasoning
+arcee-ai/maestro-reasoning
+	
+Together
+together
+	
+	$0.90	$3.30	
+	
+	131,072	32,000	?	–	–	
+	
+	
+	2025-05-05	
+6ea266	
+Virtuoso Large
+arcee-ai/virtuoso-large
+	
+Together
+together
+	
+	$0.75	$1.20	
+	
+	131,072	64,000	?	–	–	
+	
+	
+	2025-05-05	
+650746	
+Coder Large
+arcee-ai/coder-large
+	
+Together
+together
+	
+	$0.50	$0.80	
+	
+	32,768	32,768	?	–	–	
+	
+	
+	2025-05-05	
+11 / 940 endpoints

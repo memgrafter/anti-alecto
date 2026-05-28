@@ -1,0 +1,29 @@
+How could this lend insight into why Fast Fourier Transform approximates self-attention?
+> Because self-attention can be replaced with FFT for a loss in accuracy and a reduction in kWh [1], I suspect that the Quantum Fourier Transform can also be substituted for attention in LLMs.
+Can the QFT Quantum Fourier Transform (and IQFT Inverse Quantum Fourier Transform) also be substituted for self-attention in LLMs, and do Lean formalisms provide any insight into how or why?
+> Because self-attention can be replaced with FFT for a loss in accuracy and a reduction in kWh [1], I suspect that the Quantum Fourier Transform can also be substituted for attention in LLMs.
+Couldn't figure out where you are quoting this from.
+> Can the QFT Quantum Fourier Transform (and IQFT Inverse Quantum Fourier Transform) also be substituted for self-attention in LLMs
+No. The quantum Fourier transform is just a particular factorization of the QFT as run on a quantum computer. It's not any faster if you run it on a classical computer. And to run (part of) LLMs would be more expensive on a quantum computer (because using arbitrary classical data with a quantum computer is expensive).
+Is quantum logic more appropriate for universal function approximation than LLMs (self-attention,), which must not do better than next word prediction unless asked (due to copyright)?
+If quantum probabilistic logic is appropriate for all physical things, then quantum probabilistic logic is probably better at simulating physical things.
+If LLMs, like [classical Fourier] convolution, are an approximation and they don't do quantum logic, then they cannot be sufficient at simulating physical things.
+But we won't know until we have enough coherent qubits and we determine how to quantum embed these wave states. (And I have some notes on this; involving stars in rectangular lattices and nitrogenated lignin and solitons.)
+Or, it's possible to reason about what will be possible given sufficient QC to host an artificial neural network. How to quantum embed a trained LLM into qubit registers (or qubit storage) and use programmable/reconfigurable quantum circuits to lookup embeddings and do only feed-forward better than convolution?
+But QFT and IQFT solve the discrete inverse logarithm problem.
+There's probably a place for quantum statistical mechanics in LLMs. Probably also counterfactuals including Constructor Theory counterfactuals.
+This is just standard Fourier theory of being able to apply dense global convolutions with pointwise operations in frequency space? There’s no mystery here. It’s no different than a more general learnable parameterization of “Efficient Channel Attention (ECA)”
+Yes and no. Yeah, no mystery because for some reason there's this belief that studying math is useless and by suggesting it's good that you're gatekeeping. But no because there are some deeper and more nuanced questions, but of course there are because for some reason we are proud of our black boxes and act like there's no other way
+It would be good if we can use formal verification to see to which extent the quantization will overflow in intermediate results. There are some widely-known annoying bugs that SageAttention (int8 quantized attention) works on some models but produces black images on other models because of overflow, and currently no one knows how to use it in training. There should be a better way to prevent this.
+The standard definition of quantized arithmetic for neural networks is not the same as the one used for floating point or double floating point values in the IEEE standardization of "real" arithmetic: https://arxiv.org/abs/1712.05877
+In that paper they frequently say "integer quantization" for a reason. They relax to quantization because it's natural
+4-bit NormalFloat Quantization The NormalFloat (NF) data type builds on Quantile Quantization[15] which is an information-theoretically optimal data type that ensures each quantization bin has an equal number of values assigned from the input tensor.
+- QLoRA: Efficient Finetuning of Quantized LLMs https://arxiv.org/abs/2305.14314
+3. Float8 Quantized Fine-tuning, for speeding up fine-tuning by dynamically quantizing high precision weights and activations to float8, similar to pre-training in float8.
+- https://docs.pytorch.org/ao/stable/eager_tutorials/finetuning.html
+If you want to be really pedantic you could have just said everything implemented on digital computers is quantized since it's all just boolean arithmetic on some finite bit vectors.
+Do you mean the distribution of representable numbers as floats or do you mean real numbers? I always assumed infinity was stored between 0-1 because you can 1/x everything. But I have never had enough free opportunity time for maths.
+I'm not sure how to answer because I'm not sure which question you're asking.
+For infinity, neither can you calculate +/-inf but there also aren't an infinite set of representable numbers on [0,1]. You get more with fp64 and more with fp128 but it's still finite. This is what leads to that thing where you might add numbers and get something like 1.9999999998 (I did not count the number of 9s). Look at how numbers are represented on computers. It uses a system with mantissa and exponents. You'll see there are more representable numbers on [-1,1] than in other ranges. Makes that kind of normalization important when doing math work on computers.
+This also causes breakdowns in seemingly ordinary math. Such as adding and multiplying not being associative. It doesn't work with finite precision, which means you don't want fields to with in. This is regardless of the precision level, which is why I made my previous comment.
+For real numbers, we're talking about computers. Computers only use a finite subset of the real numbers. I'm not sure why you're bringing them up

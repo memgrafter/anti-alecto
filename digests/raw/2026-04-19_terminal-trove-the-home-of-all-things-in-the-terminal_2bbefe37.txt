@@ -1,0 +1,31 @@
+Title: Terminal Trove - The $HOME of all things in the terminal.
+
+URL Source: http://terminaltrove.com/
+
+Markdown Content:
+[NEW: Weekly sponsorship slots now available. Book in under 5 mins →](https://terminaltrove.com/sponsors/)
+## Find your next [TUI](https://terminaltrove.com/categories/tui/) tool at Terminal Trove
+
+![Image 1: Terminal Trove](https://terminaltrove.com/static/assets/kwm/tts.svg)
+
+[Explore All Tools](https://terminaltrove.com/explore/)[...or a random one?](https://terminaltrove.com/dev/random/)
+
+Sponsored By
+
+[![Image 2: Cut Code Review Time & Bugs in Half. Supports TypeScript, Python, Java, Rust, and more.](https://cdn.terminaltrove.com/m/d81943a6-efae-4882-acd5-4d68f7f1727d.png) Cut Code Review Time & Bugs in Half. Supports TypeScript, Python, Java, Rust, and more.Install CodeRabbit CLI](https://coderabbit.link/terminaltrove)
+
+Browse By [Categories](https://terminaltrove.com/categories/)
+
+[Terminal Tool of The Week](https://terminaltrove.com/tool-of-the-week/)
+
+[![Image 3: Real time network diagnostics in your terminal.](https://cdn.terminaltrove.com/m/750ed8c7-f73f-4f24-a4fd-93bf0d3ed5dd.gif) ## netwatch Real time network diagnostics in your terminal.](https://terminaltrove.com/netwatch/)
+
+Browse [Newly](https://terminaltrove.com/new/) Added Tools
+
+[![Image 4: Read and track recent arXiv papers with a TUI.](https://cdn.terminaltrove.com/m/89099166-30b5-4d7e-9e69-1180db24f6fd.gif) ## artui Read and track recent arXiv papers with a TUI.](https://terminaltrove.com/artui/)[![Image 5: A CLI/TUI for UniFi network controller management.](https://cdn.terminaltrove.com/m/13bbfabd-f213-4bc9-827f-bffa58a789e0.gif) ## unifly A CLI/TUI for UniFi network controller management.](https://terminaltrove.com/unifly/)[![Image 6: Minimal terminal based spreadsheet and CSV viewer.](https://cdn.terminaltrove.com/m/ee500877-3b7a-422a-9129-9848a84c0a55.gif) ## sheets Minimal terminal based spreadsheet and CSV viewer.](https://terminaltrove.com/sheets/)[![Image 7: Real time network diagnostics in your terminal.](https://cdn.terminaltrove.com/m/750ed8c7-f73f-4f24-a4fd-93bf0d3ed5dd.gif) ## netwatch Real time network diagnostics in your terminal.](https://terminaltrove.com/netwatch/)[![Image 8: A TUI tool for managing multiple .env files in the terminal.](https://cdn.terminaltrove.com/m/f4ca6aaa-6f74-4a17-a461-e50197804c2f.gif) ## lazyenv A TUI tool for managing multiple .env files in the terminal.](https://terminaltrove.com/lazyenv/)[![Image 9: A blazing-fast Rust code inspector for the terminal.](https://cdn.terminaltrove.com/m/b8b6124a-0b71-4fac-8324-45c668d794b5.png) ## rustlens A blazing-fast Rust code inspector for the terminal.](https://terminaltrove.com/rustlens/)
+
+[![Image 10: Read and track recent arXiv papers with a TUI.](https://cdn.terminaltrove.com/m/89099166-30b5-4d7e-9e69-1180db24f6fd.gif) ## artui Read and track recent arXiv papers with a TUI.](https://terminaltrove.com/artui/)[![Image 11: A CLI/TUI for UniFi network controller management.](https://cdn.terminaltrove.com/m/13bbfabd-f213-4bc9-827f-bffa58a789e0.gif) ## unifly A CLI/TUI for UniFi network controller management.](https://terminaltrove.com/unifly/)[![Image 12: Minimal terminal based spreadsheet and CSV viewer.](https://cdn.terminaltrove.com/m/ee500877-3b7a-422a-9129-9848a84c0a55.gif) ## sheets Minimal terminal based spreadsheet and CSV viewer.](https://terminaltrove.com/sheets/)[![Image 13: Real time network diagnostics in your terminal.](https://cdn.terminaltrove.com/m/750ed8c7-f73f-4f24-a4fd-93bf0d3ed5dd.gif) ## netwatch Real time network diagnostics in your terminal.](https://terminaltrove.com/netwatch/)[![Image 14: A TUI tool for managing multiple .env files in the terminal.](https://cdn.terminaltrove.com/m/f4ca6aaa-6f74-4a17-a461-e50197804c2f.gif) ## lazyenv A TUI tool for managing multiple .env files in the terminal.](https://terminaltrove.com/lazyenv/)[![Image 15: A blazing-fast Rust code inspector for the terminal.](https://cdn.terminaltrove.com/m/b8b6124a-0b71-4fac-8324-45c668d794b5.png) ## rustlens A blazing-fast Rust code inspector for the terminal.](https://terminaltrove.com/rustlens/)
+
+Browse By Language
+
+[RUST](https://terminaltrove.com/language/rust/ "rust")[PYTHON](https://terminaltrove.com/language/python/ "python")[C](https://terminaltrove.com/language/c/ "c")[HASKELL](https://terminaltrove.com/language/haskell/ "haskell")[GOLANG](https://terminaltrove.com/language/go/ "go")[JS](https://terminaltrove.com/language/javascript/ "javascript")[C++](https://terminaltrove.com/language/cpp/ "cpp")[SHELL](https://terminaltrove.com/language/shell/ "shell")

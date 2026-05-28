@@ -1,0 +1,260 @@
+At this point, I am starting to feel like we don’t need new languages, but new ways to create specifications.
+I have a hypothesis that an LLM can act as a pseudocode to code translator, where the pseudocode can tolerate a mixture of code-like and natural language specification. The benefit being that it formalizes the human as the specifier (which must be done anyway) and the llm as the code writer. This also might enable lower resource “non-frontier” models to be more useful. Additionally, it allows tolerance to syntax mistakes or in the worst case, natural language if needed.
+In other words, I think llms don’t need new languages, we do.
+What we need is a programming language that defines the diff to be applied upon the existing codebase to the same degree of unambiguity as the codebase itself.
+That is, in the same way that event sourcing materializes a state from a series of change events, this language needs to materialize a codebase from a series of "modification instructions". Different models may materialize a different codebase using the same series of instructions (like compilers), or say different "environmental factors" (e.g. the database or cloud provider that's available). It's as if the codebase itself is no longer the important artifact, the sequence of prompts is. You would also use this sequence of prompts to generate a testing suite completely independent of the codebase.
+I am working on that https://github.com/gritzko/librdx
+Conflictless merge and overlay branches (ie freely attachable/detachable by a click). That was the pie-in-the-sky of the CRDT community for maybe 15 years. My current approach is RDX tree CRDT effectively mapping to the AST tree of the program. Like CRDT DOM for the AST, because line based diffs are too clumsy for that.
+Back in the day, JetBrains tried revision-controlling AST trees or psi-nodes in their parlance. That project was cancelled, as it became a research challenge. That was 10 years ago or so. At this point, things may work out well, time will tell.
+Just a clarifying question to understand if I understand librdx correctly, it seems you've implemented a language explicitly for being easy to be used as CRDTs for syncing purposes (with specific types/structures for communicating just changes too?), rather than taking an existing language and then layering that stuff on top?
+It depends on what you mean by a language. If JSON then yes. There are ways to implement CRDT by layering on top of JSON (see Automerge) but the result is really far from idiomatic readable JSON people expect to see.
+RDX is more like CRDT JSON DOM in fact, not just JSON+. If that makes sense.
+Ah I see. You mean they were trying to build a custom VCS that had special support for AST merging. MPS uses regular git with custom merge drivers to do AST-level merging instead of textual merging, but that's a bit different
+I think this could be very useful even for regular old programming. We could treat the diffs to the code as the main source of truth (instead of the textual snapshot each diff creates).
+Jonathan Edwards (Subtext lang) has a lot of great research on this.
+- LLMs can act as pseudocode to code translators (they are excellent at this)
+- LLMs still create bugs and make errors, and a reasonable hypothesis is at a rate in direct proportion to the "complexity" or "buggedness" of the underlying language.
+In other words, give an AI a footgun and it will happily use it unawares. That doesn't mean however it can't rapidly turn your pseudocode into code.
+None of this means that LLMs can magically correct your pseudocode at all times if your logic is vastly wrong for your goal, but I do believe they'll benefit immensely from new languages that reduce the kind of bugs they make.
+This is the moment we can create these languages. Because LLMs can optimize for things that humans can't, so it seems possible to design new languages to reduce bugs in ways that work for LLMs, but are less effective for people (due to syntax, ergonomics, verbosity, anything else).
+This is crucially important. Why? Because 99% of all code written in the next two decades will be written by AI. And we will also produce 100x more code than has ever been written before (because the cost of doing it, has dropped essentially to zero). This means that, short of some revolutions in language technology, the number of bugs and vulnerabilities we can expect will also 100x.
+That's why ideas like this are needed.
+I believe in this too and am working on something also targeting LLMs specifically, and have been working on it since Mid to Late November last year. A business model will make such a language sustainable.
+Say you have this new language, with only a tiny amount of examples of there. How do the SOTA labs train on you're language? With sufficient examples, it can generate code which gets compiled and then run and that gets fed into a feedback loop to improve upon, but how do you get there? How do you bootstrap that? Nevermind the dollar cost, how does it offer something above having an LLM generate code in python or JavaScript, then having it rewrite it in golang/rust/c++ as needed/possible for performance or whatever reason?
+It sounds like your plan is for it to write fewer bugs in NewLang, but, well, that seems a bit hard to achieve in the abstract. From bugs I've fixed in generated code, early LLM, it was just bad code. Multiple variables for the same thing, especially. Recently they've gotten better at that, but it still happens.
+For a concrete example, any app dealing with points in time. Which sometimes have a date attached but sometimes do not. And also, what are timezones. The complexity is there because it depends on what you're trying to do. An alarm clock is different than a calendar is different than a pomodoro timer. How are you going to reduce the bugged-ed-ness of that without making one of those use cases more complicated than need be, given access to various primitives.
+> Say you have this new language, with only a tiny amount of examples of there. How do the SOTA labs train on you're language?
+Languages don't exist in isolation, they exist on a continuum. Your brand new language isn't brand new, it's built off the semantics and syntax of many languages that have come before it. Most language designers operate under what is known as a "weirdness budget", which is about keeping your language to within some delta of other languages modulo a small number of new concepts. This is to maintain comprehensibility, otherwise you get projects like Hoon / Nock where true is false and up is down that no one can figure out.
+Under a small weirdness budget, an LLM should be able to understand your new language despite not being trained on it. if you just explain what's different about it. I've had great success with this so far even on early LLM models. One thing you can do is give it the EBNF grammar and it can just generate strings from that. But that method is prone to hallucinations.
+Your hypothetical misses praxis: in my experience LLM can pick up any new syntax with ease. From a few examples, it can generate more. With a compiler (even partial on limited syntax), it can correct. It soon becomes fluent simply from the context of your codebase. You don't need to "train" an LLM to recognize language syntax. It's effortless for it to pick it up.
+Or, maybe my lanng just had LLM-easy syntax - which would be good - but I think this is more just par for the course for LLMs, bud.
+Syntax != semantics. The LLM being able to adhere syntax is one thing, the LLM picking up various language-isms is another. In Python, you don't want to see
+for i in range(len(arr)):
+something(arr[i])
+because the pythonic way is simply:
+for i in arr:
+something(i)
+or even:
+[something(i) for i in arr]
+The first version is absolutely syntactically correct, but terrible python. How do you teach the LLM that?
+Bugs don't come from syntax errors. If you've got a syntax error, it doesn't compile/fails to run entirely. So we're not talking about the LLM learning the syntax, I'm asking the LLM learning the deeper semantics of lanng.
+I think you're right within limits but the issue is semantics and obscure features. If the language differs from existing languages in only trivial ways, then LLMs can pick it up quickly. But then the value of such a language is trivial. If you deviate in bigger ways, it's harder to properly use just based on pre-existing code.
+Here's a simple case study: Kotlin is semantically Java with a more concise syntax, but part of what makes it more concise is the Kotlin standard library adds a lot of utility methods to Java. Many utility methods are only needed rarely. LLMs can write competent Kotlin because they read the user guide and saw millions of examples in their training set, but if they were trying to learn exclusively from small examples in their context window, they wouldn't know about those obscure utilities and would never use them. Much of the benefit would be lost.
+Given this, I see a few ways forward:
+1. Just give up on designing new programming languages. Languages are user interfaces but the user is now an LLM with near infinite patience, so who cares if they aren't ideal. If the LLM has to brute force a utility method every single time instead of using a standard library... ok. Whatever. This would parallel what happened with CPU ISAs. There are very few of them today, they don't matter much and they're designed in ways that only machines can handle all the details, because everyone codes to higher level languages and compilers write all the assembly.
+2. Define new languages as a delta on top of some well known initial language, ensuring that the language definition always fits inside a prompt as a skill. In this world we don't bother with new syntaxes anymore unless that syntax change encodes significant new semantics, because it's not worth wasting tokens showing the LLM what to do. Everything is just an extension to Python, in this world. The line between new languages and new libraries becomes increasingly blurred as runtimes get more powerful and flexible.
+3. New languages have to come with their own fine tuned and hosted coding LLM. Maybe that's even a way to monetize new language creation.
+4. The big model firms offer a service where you can pay to get your data into the training set. Then you use the giant prompt+delta mechanism to get an LLM to generate a textbook of sample code, pay to get it into the training set, wait six months for another foundation model run and then your language becomes usable.
+Of these I think (2) is currently the most practical.
+This sounds academic, like a thought experiment. I have experience and can tell you this is not the case. I am using a significantly different language and the LLMs have 0 problem using it.
+There's likely challenges here, but it's not the ones you're seeing so far.
+OK, that's valuable to know, but how is your language different? You were discussing syntax previously. How well does the LLM handle your language's different standard library and how big is it?
+This is something that could be distilled from some industries like aviation, where specification of software (requirements, architecture documents, etc.) is even more important that the software itself.
+The problem is that natural language is in itself ambiguous, and people don't really grasp the importance of clear specification (how many times I have repeated to put units and tolerances to any limits they specify by requirements).
+Another problem is: natural language doesn't have "defaults": if you don't specify something, is open to interpretation. And people _will_ interpret something instead of saying "yep I don't know this".
+IMO, it's clarifying software development. I think ultimately it means that some people who are slightly on the softer side of development will become indistinguishable from other developers, and people on the more mechanical side of development will disappear.
+If what you do can be done by the systematic manipulation of symbols, we have a better system for that now. If the spec they hand to you has to be so specific that you don't have to think while implementing it, we have a machine that can do everything except think that can handle that.
+> If the spec they hand to you has to be so specific that you don't have to think while implementing it
+Does this exist in 2026? I feel like, at least in my bubble, expectations on individual developers has never been higher. I feel like the cut has already been made.
+You can use LLMs as specification compilers. They are quite good at finding ambiguities in specs and writing out lists of questions for the author to answer, or inferring sensible defaults in explicitly called out ways.
+Yeah, if you can somehow convince them you really, really want them to follow the specification and not just do whatever they want.
+And is doesn't matter how many times you tell them the implementation and, more importantly, the tests needs to 100% follow the spec they'll still write tests to match the buggy code or just ignore bugs completely until you call them out on it and/or watch them like a hawk.
+Thats again programming languages. Real issue with LLMs now is it doesn't matter if it can generate code quickly. Some one still has to read, verify and test it.
+Perhaps we need a need a terse programming language. Which can be read quickly and verified. You could call that specification.
+Yes, essentially a higher level programming language than what we currently have. A programming language that doesn't have strict syntax, and can be expressed with words or code. And like any other programming language, it includes specifications for the tests and expectations of the result.
+The programming language can look more like code in parts where the specification needs to be very detailed. I think people can get intuition about where the LLM is unlikely to be successful. It can have low detail for boilerplate or code that is simple to describe.
+You should be able to alter and recompile the specification, unlike the wandering prompt which makes changes faster than normal version control practices keep up with.
+Perhaps there's a world where reading the specification rather than the compiled code is sufficient in order to keep cognitive load at reasonable levels.
+At very least, you can read compiled code until you can establish your own validation set and create statistical expectations about your domain. Principally, these models will always be statistical in nature. So we probably need to start operating more inside that kind of framework if we really want to be professional about it.
+We already have exceptionally high level languages, like Inform7 [0]. The concept doesn't work all that well. Terseness is a value. Its why we end up with so many symbol-heavy languages. Yes, there are tradeoffs, but that is the whole of computer science.
+We didn't end up with Lean and Rust, for a lack of understanding in how to create strong specifications. Pascal-like languages fell out of favour, despite having higher readability.
+Simply put whatever you write should produce the same output regardless of how many times you execute it. The more verbose you make it, the more pointless it becomes.
+This specification argument seems to boil down to: what if we used Haskell to describe systems to LLMs?
+Many of our traditional functional languages, ML family in particular, let you write hyper concise expressions (pure math if you’re in to that sort of thing), craft DSLs of unlimited specifiable power (‘makeTpsReportWith “new cover page format”’), and also in natural language (function names like `emptied cart should have zero items`).
+I think if we did that and leveraged the type systems of those languages and the systematic improvements we see from ADTs and pattern matching in those languages, combined with a specification first approach like TDD, that we’d have a great starting point to have an LLM generate the rest of the system perfectly.
+… yes, that is just writing Haskell/OCaml/F# with extra steps.
+… yes, that level of specification is also the point with those languages where your exploratory type-diddling suddenly goes ‘presto’ and you magically have a fully functioning system.
+I guess I’m old-fashioned, but sometimes I wonder if compilers are good for what they’re good for.
+I think that we haven't even started to properly think about a higher-level spec language. The highest level objects would have to be the users and the value that they get out of running the software. Even specific features would have to be subservient to that, and would shift as the users requirements shift. Requirements written in a truly higher-level spec language would allow the software to change features without the spec itself changing.
+This is where LLMs slip up. I need a higher-level spec language where I don't have to specify to an LLM that I want the jpeg crop to be lossless if possible. It's doubly obvious that I wouldn't want it to be lossy, especially because making it lossy likely makes the resulting files larger. This is not obvious to an LLM, but it's absolutely obvious if our objects are users and user value.
+A truly higher-level spec language compiler would recognize when actual functionality disappeared when a feature was removed, and would weigh the value of that functionality within the value framework of the hypothetical user. It would be able to recognize the value of redundant functionality by putting a value on user accessibility - how many ways can the user reach that functionality? How does it advertise itself?
+We still haven't even thought about it properly. It's that "software engineering" thing that we were in a continual argument about whether it existed or not.
+I disagree I think we always need new languages. Every language over time becomes more and more unnecessarily complex.
+It's just part of the software lifecycle. People think their job is to "write code" and that means everything becomes more and more features, more abstractions, more complex, more "five different ways to do one thing".
+Many many examples, C++, Java esp circa 2000-2010 and on and on and on.
+There's no hope for older languages. We need simpler languages.
+> Every language over time becomes more and more unnecessarily complex.
+Of course someone eventually will, so I might as well: Well, except for lisp-likes. I think the main reason programming languages grow and grow, is because people want to use them in "new" (sometimes new-new, sometimes existing) ways, and how you add new language features to a programming language? You change the core of the language in some way.
+What if instead you made it really easy to change the core language from the language itself, when you need to, without impacting other parts of the codebase? Usually if you use a language from the lisp-"family" of languages, you'll be able to.
+So instead of the programming language everyone is using grows regardless if you need it or not, it can stay simple and relatively small for everyone, while for the people who need it, they can grow their own hairballs "locally" (or be solid engineers and avoid hairballs in the first place, requires tenure/similar though).
+Related to your comment. I was a "desktop" developer many years ago (about 20). Back then I mainly coded in Assembler, Visual Basic, and Delphi, and I also learned COBOL, C, and Java.
+Just this week, I decided to start learning Kotlin because I want to build a mobile app.
+Everything was going great until I reached lambda functions.
+Honestly, I can't wrap my head around either their purpose or their syntax. I find them incredibly confusing. Right now, they feel like something that was invented purely to confuse developers.
+I know this might just be one of those topics where you suddenly have an "aha" moment and everything clicks, but so far, that moment hasn't come.
+Did anyone else coming from older, more imperative languages struggle this much with lambdas? Any tips or mental models that helped you finally "get" them?
+You know how to add logic on the outside of a function, by putting that function into a larger one and calling the function in the middle.
+However, how do you inject logic INTO the middle of a function?
+Say you have a function which can iterate over any list and given a condition do a filter. How do you inject the condition logic into that filter function?
+In the C days you would use a function pointer for this. C++ introduced templating so you could do this regardless of type. Lambdas make the whole process more ergonomic, it's just declaring a one-shot function in place with some convenient syntax.
+They're just functions that you define inside another "outer" function's local scope, and depending on the language they will/can also work as closures - meaning they capture the values of variable in the outer function as well.
+I don't know the syntax of kotlin, but lambda functions generally are usually useful to pass as parameters to other, generic/higher-order functions. For example if you have a sort function `sort(listofitems, compareitems_fn)` you could write the `compareitems_fn` as a lambda directly in-line with the call to sort()
+we have some markup for architectures like - d2lang, sequencediagram.org's, bpmn.io xmls (which are OMG XMLs), so question is - can we master these, and not invent new stuf for a while?
+p.s. a combination of the above fares very well during my agentic coding adventures.
+This is the approach that Agint takes. We inference the structure of the code first top down as a graph, then add in types, then interpret the types as in out function signatures and then "inpaint" the functions for codegen.
+I'm actually building this, will release it early next month. I've added a URL to watch to my profile (should be up later this week). It will be Open Source.
+So in this case an LLM would just be a less-reliable compiler? What's the point? If you have to formally specify your program, we already have tools for that, no boiling-the-oceans required
+Developed by Jordan Hubbard of NVIDIA (and FreeBSD).
+My understanding/experience is that LLM performance in a language scales with how well the language is represented in the training data.
+From that assumption, we might expect LLMs to actually do better with an existing language for which more training code is available, even if that language is more complex and seems like it should be “harder” to understand.
+I don’t think that assumption holds. For example, only recently have agents started getting Rust code right on the first try, but that hasn’t mattered in the past because the rust compiler and linters give such good feedback that it immediately fixes whatever goof it made.
+This does fill up context a little faster, (1) not as much as debugging the problem would have in a dynamic language, and (2) better agentic frameworks are coming that “rewrite” context history for dynamic on the fly context compression.
+> only recently have agents started getting Rust code right on the first try
+This is such a silly thing to say. Either you set the bar so low that "hello world" qualifies or you expect LLMs to be able to reason about lifetimes, which they clearly cannot. But LLMs were never very good at full-program reasoning in any language.
+I don't see this language fixing this, but it's not trying to—it just seems to be removing cruft
+Whatever work is paying for on a given day. We've rotated through a few offerings. It's a work truck not a personal vehicle, for me.
+I manage a team of interns and I don't have the energy to babysit an agent too. For me, gpt and gemini yield the best talk-it-through approach. For example, dropping a research paper into the chat and describing details until the implementation is clarified.
+We also use Claude and Cursor, and that was an exceptionally disruptive experience. Huge, sweeping, wrong changes all over. Gyah! If I bitch about todo! macros, this is where they came from.
+For hobby projects, I sometimes use whatever free agent microsoft is shilling via VS Code (and me selling my data) that day. This is relatively productive, but reaches profoundly wrong conclusions.
+Writing for CLR in visual studio is the smoothest smart-complete experience today.
+No, it’s the exact opposite of the assumption. It doesn’t matter how represented the language is in the training data, so long as the surrounding infrastructure is good.
+A lot of this depends on your workflow. A language with great typing, type checking and good compiler errors will work better in a loop than one with a large surface overhead and syntax complexity, even if it's well represented. This is the instinct behind, e.g. https://github.com/toon-format/toon, a json alternative format. They test LLM accuracy with the format against JSON, (and are generally slightly ahead of JSON).
+Additionally just the ability to put an entire language into context for an LLM - a single document explaining everything - is also likely to close the gap.
+I was skimming some nano files and while I can't say I loved how it looked, it did look extremely clear. Likely a benefit.
+Thanks for sharing this! A question I've grappled with is "how do you make the DOM of a rendered webpage optimal for complex retrieval in both accuracy and tokens?" This could be a really useful transformation to throw in the mix!
+Blackpill is that, for this reason, the mainstream languages we have today will be the final (human-designed) languages to be relevant on a global scale.
+Eventually AIs will create their own languages. And humans will, of course, continue designing hobbyist languages for fun. But in terms of influence, there will not be another human language that takes the programming world by storm. There simply is not enough time left.
+My impression is that AI models need large amounts of quality training data. "Data contamination", i.e. AI output in the training data set has been a problem for years.
+I mostly agree, and I think a combination of good representation and tooling that lets it self-correct quickly will do better than new language in the short term.
+In the long term I expect it won't matter - already GPT3.5 was able to reason about the basic semantics of programs in languages "synthesised" zero-shot in context by just describing it as a combination of existing languages (e.g. "Ruby with INTERCAL's COME FROM") or by providing a grammar (e.g. simple EBNF plus some notes on new/different constructs) reasonably well and could explain what a program written in a franken-language it had not seen before was likely to do.
+I think long before there is enough training data for a new language to be on equal grounds in that respect, we should expect the models to be good enough at this that you could just provide a terse language spec.
+But at the same time, I'd expect the same improvement to future models to be good enough at working with existing languages that it's pointless to tailor languages to LLMs.
+It's not just how well the language is represented. Obscure-ish APIs can trip up LLMs. I've been using Antigravity for a Flutter project that uses ATProto. Gemini is very strong at Dart coding, which makes picking up my 17th managed language a breeze. It's also very good at Flutter UI elements. It was noticeably less good at ATProto and its Dart API.
+The characteristics of failures have been interesting: As I anticipated it might be, an over ambitious refactoring was a train wreck, easily reverted. But something as simple as regenerating Android launcher icons in a Flutter project was a total blind spot. I had to Google that like some kind of naked savage running through the jungle.
+I was reading an Ars article by someone who'd hacked up Apple II and Atari 2600 emulators to provide state introspection/reproducible input via MCP, sockets, file I/O - would that work?
+I wonder if there is a way to create a sort of 'transpilation' layer to a new language like this for existing languages, so that it would be able to use all of the available training from other languages. Something that's like AST to AST. Though I wonder if it would only work in the initial training or fine-tuning stage.
+Not my experience, honestly. With a good code base for it to explore and good tooling, and a really good prompt I've had excellent results with frankly quite obscure things, including homegrown languages.
+As others said, the key is feedback and prompting. In a model with long context, it'll figure it out.
+Yeah, I've had Claude work on my buggy, incomplete Ruby compiler written (mostly) in Ruby, which uses an s-expression like syntax with a custom "mini language" to implement low-level features that can't be done (or is impractical to do) in pure Ruby, and it only had minor problems with the s-expression language that was mostly fixed with a handful of lines in CLAUDE.md (and were, frankly, mostly my fault for making the language itself somewhat inconsistent) and e.g. when it write a bigint implementation, I had to "tell it off" for too readily resorting to the s-expression syntax since it seemed to "prefer it" over writing high-level code in Ruby.
+Even 3 years ago, GH Copilot, hardly the most intelligent of LLMs was suggesting/writing bytecode in my custom VM, writing full programs in bytecode for a custom VM just by looking at a couple examples.
+That's when I smelled that things were getting a little crazy.
+If you can generate code from the grammar then what exactly are you RLing? The point was to generate code in the first place so what does backpropagation get you here?
+The grammar of this language is no more than a few hundred tokens (thousands at worst) & current LLMs support context windows in the millions of tokens.
+Theorycrafting is very easy. Not a single person in this thread has shown any code to do what they're suggesting. You have access to the best models & yet you still haven't managed to prompt it to give you the code to prove your point so spare me any further theoretical responses. Either show the code to do exactly what you're saying is possible or admit you lack the relevant understanding to back up your claims.
+> You have access to the best models & yet you still haven't managed to prompt it to give you the code to prove your point so spare me any further theoretical responses. Either show the code to do exactly what you're saying is possible
+GPU poor here though...
+To quote someone (you...) on the internet:
+> More generally, don't ask random people on the internet to do work for you for free.
+Claims require evidence & if you are unwilling to present it then admit you do not have any evidence to support your claims. It's not complicated. Either RL works & you have evidence or you do not know & can not claim that it works w/o first doing the required due diligence which (shockingly) actually requires work instead of empty theory crafting & hand waving.
+Why would I do that? If you know something then quote the relevant passage & equation that says you can train code generators w/ RL on a novel language w/ little to no code to train on. More generally, don't ask random people on the internet to do work for you for free.
+Your other comment sounded like you were interested in learning about how AI labs are applying RL to improve programming capability. If so, the DeepSeek R1 paper is a good introduction to the topic (maybe a bit out of date at this point, but very approachable). RL training works fine for low resource languages as long as you have tooling to verify outputs and enough compute to throw at the problem.
+> Group Relative Policy Optimization (GRPO), a variant reinforcement learning (RL) algorithm of Proximal Policy Optimization (PPO) (Schulman et al., 2017).
+GRPO foregoes the critic model, instead estimating the baseline from group scores, significantly
+reducing training resources. By solely using a subset of English instruction tuning data, GRPO
+obtains a substantial improvement over the strong DeepSeekMath-Instruct, including both
+in-domain (GSM8K: 82.9% → 88.2%, MATH: 46.8% → 51.7%) and out-of-domain mathematical
+tasks (e.g., CMATH: 84.6% → 88.8%) during the reinforcement learning phase
+> Similarly, for code competition prompts, a compiler can be utilized to evaluate the model’s responses against a suite of predefined test cases, thereby generating objective feedback on
+correctness
+None of those are novel domains w/ their own novel syntax & semantic validators, not to mention the dearth of readily available sources of examples for sampling the baselines. So again, where does it say it works for a programming language with nothing but a grammar & a compiler?
+You're not going to get less confused by doubling down. None of your claims are valid & this is because you haven't actually tried to do what you're suggesting. Taking a grammar & compiler & RLing will get you nowhere.
+Optimistically I dumped the whole thing into Claude Opus 4.5 as a system prompt to see if it could generate a one-shot program from it:
+llm -m claude-opus-4.5 \
+-s https://raw.githubusercontent.com/jordanhubbard/nanolang/refs/heads/main/MEMORY.md \
+'Build me a mandelbrot fractal CLI tool in this language'
+> /tmp/fractal.nano
+So I fired up Claude Code inside a checkout of the nanolang and told it how to run the compiler and let it fix the problems... which DID work. Here's that transcript:
+Maybe I’m missing some context, but all that actually should be needed in the top-level else block is ‘gradient[idx]’. Pretty much anything else is going to be longer, harder to read, and less efficient.
+I was more commenting on the language design here; the idea of indexing into a UTF-8 string and returning an ASCII character. What does the index count? Bytes? There doesn't seem to be a way to get UTF-8 characters from strings?
+I mean for all intents and purposes this language is designed for use by LLM's, not humans, and the AI probably won't complain that a switch-case statement is missing. ;)
+I think you need to either feed it all of ./docs or give your agent access to those files so it can read them as reference. The MEMORY.md file you posted mentions ./docs/CANONICAL_STYLE.md and ./docs/LLM_CORE_SUBSET.md and they in turn mention indirectly other features and files inside the docs folder.
+The thing that really unlocked it was Claude being able to run a file listing against nanolang/examples and then start picking through the examples that were most relevant to figuring out the syntax: https://gisthost.github.io/?9696da6882cb6596be6a9d5196e8a7a5...
+True. You would know this better but are you also burning "attention" by giving it a new language? Rather than use its familiar Python pathways it needs to attend more to generate the unseen language. It needs to KV across from the language spec to the language to the goal. Rather than just speak the Python or JS it is uses to speaking.
+The required-test-per-function is sort of interesting. But it's not enforced that the test does anything useful, is it?
+So I wonder how exhausting would it be to write in a language that required, for all functions, that they are tested with 100% path coverage.
+Of course, this by itself wouldn't still be equivalent to proving the code, but it would probably point people to the corner cases of code quite rapidly. Additionally it would make it impossible to have code that cannot be tested with 100% path coverage due to static relationships within it, that are not (or cannot be) expressed in the type system, e.g. if (foo) { if (!foo) {..} }.
+And would such a language need to have some kind of dynamic dependency injection mechanism for mocking the tests?
+One novel part here is every function is required to have tests that run at compile time.
+I'm still skeptical of the value add having to teaching a custom language to an LLM instead of using something like lua or python and applying constraints like test requirements onto that.
+I'm not sure that it's novel but I'm skeptical about the noise to signal ratio for anything that is not an example.
+I think that a real world file of source code will be either completely polluted by tests (they are way longer than the actual code they test) or become
+and the test code will be written in another file, and every function in the test code will have its own shadow function asserting true, to please the compiler.
+> Really needs an agent-oriented “getting started” guide to put in the context, and evals vs. the same task done with Python, Rust etc.
+It has several such documents, including a ~1400 line MEMORY.md file referencing several other such files, a language specification, a collection of ~100 documents containing just about every thought Jordan has ever had about the entire language and the evolution of its implementation, and a collection of examples that includes an SDL2 based OpenGL program.
+Obviously, jkh clearly understands the need to bootstrap LLMs on his ~5 month old, self-hosted solo programming language.
+a.k.a. jkh. That's a blast from the past. Back in the early FreeBSD days, Jordan was fielding mailing list traffic and holding the project together as people peppered the lists with questions, trying to get their systems running with their sundry bits of hardware. I wondered when he slept.
+Apparently he did as well[1]:
+"The start of the 2.0 ports collection. No sup repository yet, but I'll make one when I wake up again.. :)"
+Submitted by: jkh
+Aug 21, 1994
+1. Nanolang is a total thought experiment. The key word its description is "experimental" - whether it's a Good experiment or a Bad experiment can be argued either way, especially by language purists!
+2. Yes, it's a total Decorator Crab of a language. An unholy creation by Dr Frankenstein, yes! Those criticisms are entirely merited. It wasn't designed, it accreted features and was a fever dream I couldn't seem to stop having. I should probably take my own temperature.
+3. I like prefix notation because my first calculator was an HP calculator (the HP 41C remains, to this day, my favorite calculator of ALL TIME). I won't apologize for that, but I DO get that it's not everybody's cup of tea! I do, however, use both vi and emacs now.
+Umm. I think that about covers it. All of this LLM stuff is still incredibly young to me and I'm just firing a shotgun into the dark and listening to hear if I hit anything. It's going to be that way for a while for all of us until we figure out what works and what does not!
+I think this kind of misses what's actually challenging with LLM code -- auditing it for correctness. LLMs are ~fine at spitting out valid syntax. Humans need to be able to read the output, though.
+I understand the effort and it seems like a nice little language but wouldn't it make more sense to target already existing C--, QBE, LLVMIR or similar? There must be "simpler C" languages already which sounds more useful given that LLMs must've been trained on them.
+It seems that something that does away with human friendly syntax and leans more towards a pure AST representation would be even better? Basically a Lisp but with very strict typing might do the trick. And most LLMs are probably trained on lots of Lisps already.
+It seems kind of silly that you can’t teach an LLM new tricks though, doesn’t it? This doesn’t sound like an intrinsic limitation and more an artifact of how we produce model weights today.
+I would put that under the umbrella of algo/math, i.e. the structure of the LLM is part of the algo, which is itself governed by math
+For example, DeepSeek has done some interesting things with attention, via changes to the structures / algos, but all this is still optimized by gradient descent, which is why models do not learn facts and such from a single pass. It takes many to refine the weights that go into the math formulas
+> I would put that under the umbrella of algo/math, i.e. the structure of the LLM is part of the algo, which is itself governed by math
+Yes you’re right. I misspoke.
+I’m curious if there are ways to get around the monolithic nature of today’s models. There have to be architectures where a generalized model can coordinate specialized models which are cheaper to train, for example. E.g calling into a tool which is actually another model. Pre-LLM this was called boosting or “ensemble of experts” (I’m sure I’m butchering some nuance there).
+A language targeting an LLM might be well served with a lot of keywords, similar to a CISC instruction set, where keywords do specific things well. Giving it building blocks and having them piece together is likely to pay off.
+Seems like a simplified Rust with partial prefix notation (which the rationale that is better for LLMs is based on vibes really) that compiles to C. Similar language posted here not too long ago: Zen-C => more features, no prefix notation / Rue => no prefix notation, compiles directly to native code (no C target). Surprisingly compared to other LLM "optimized" languages, it isn't so much concerned about token efficiency.
+I find Polish or Reverse Polish notation jarring after a lifetime of thinking in terms of operator precedence. Given that it's fairly rare to see, I wonder what about it would be more LLM-friendly. It does lend itself better to "tokenization" of a sort - if you want to construct operations from lots of smaller operations, for example if you're mutating genetic algorithms (a la Eureqa). But I've written code in the past to explicitly convert those kinds of operations back to infix for easier readability. I wonder if the LLMs in this case are expected to behave a bit like genetic algorithms as they construct things.
+>It does lend itself better to "tokenization" of a sort - if you want to construct operations from lots of smaller operations [...]
+That's an educated assumption to make. But therein lies the issue with every LLM "optimized" language, including those recent ones posted here oriented toward minimizing tokens. Assumptions, that are unvalidatable and unfalsifiable, about the kind of output LLMs synthesize/emit when that output is code (or any output to be real).
+Just scanning through this, looks interesting and is totally needed, but I think it is missing showing future use-cases and discussions of decoding. So, for instance, it is all well and good to define a simple language focused on testing and the like, but what about live LLM control and interaction via a programming language? Sort of a conversation in code? Data streams in and function calls stream out with syntax designed to minimize mistakes in calls and optimize the stream? What I mean by this is special block declarations like:
+```
+#this is where functions are defined and should compile and give syntax errors
+```
+(yeah, ugly but the idea is there)
+The point being that the behavior could change. In the streaming world it may, for instance, have guarantees of what executes and what doesn't in case of errors. Maybe transactional guarantees in the stream blocks compared to pure compile optimization in the other blocks? The point here isn't that this is the golden idea, but that we probably should think about the use cases more. High on my list of use cases to consider (I think)
+- language independence: LLMs are multilingual and this should be multilingual from the start.
+- support streaming vs definition of code.
+- Streaming should consider parallelism/async in the calls.
+- the language should consider cached token states to call back to. (define the 'now' for optimal result management, basically, the language can tap into LLM properties that matter)
+Hmm... That is the top of my head thoughts at least.
+I think the real gap in computer languages wrt LLMs is a replacement for python as a "notebook" language that the LLM uses to solve ad hoc problems during a chat.
+What you want is something that is safe, performant, uses minimal tokens and takes careful note of effects and capabilities. Tests aren't really even important for that use case.
+> I think the real gap in computer languages wrt LLMs is a replacement for python as a "notebook" language that the LLM uses to solve ad hoc problems during a chat.
+hey I found this project december 23 and you just commented on another thing I posted "amazing one shot that" I will give you an invite if you want (because it also does that) check bio will add contact dets now...
+it was posted to this site earlier about 20 days ago and front paged and hilariously about half the comments were shooting it down the top voted comment was even "this is the worst website ever" lol xD and they since invite only to manage abuse (its a very capable service and currently free)
+It's capable of what you just mentioned, and it made the other site that one-shot you said was amazing for the one shot (literally cut and paste the comment into the prompt, then 2nd was "Good, now do it better")
+Looks a bit like Rust. My peeve with Rust is that it makes error handling too much donkey work. In a large class of programs you just care that something failed and you want a good description of that thing:
+context("Loading configuration from {file}")
+Then you get a useful error message by unfolding all the errors at some point in the program that is makes sense to talk to a human, e.g. logs, rpc error etc.
+Failed: Loading configuration from .config because: couldn't open file .config because: file .config does not exist.
+It shouldn't be harder than a context command in functions. But somehow Rust conspires to require all this error type conversion and question marks. It it is all just a big uncomfortable donkey game, especially when you have nested closures forced to return errors of a specific type.
+Even with anyhow there is a lot of boilerplate it seems to me dealing with crates that don’t use it. I haven’t tried snafu but its name does not inspire confidence.
+Clanker (ai assistant) also love to unwrap and if you don’t catch them you have an abort waiting for you.
+I like your "context" proposal, because it adds information about developer intention to error diagnostics, whereas showing e.g. a call stack would just provide information about the "what?", not the "why?" to the end user facing an error at runtime.
+(You should try to get something like that into various language specs; I'd love you to success with it.)
+Really clean language where the design decisions have led to fewer traps (cond is a good choice).
+It’s peculiar to see s-expressions mixed together with imperative style. I’ve been experimenting along similar lines - mixing s-expressions with ML style in the same dialect (for a project).
+Having an agentic partner toiling away with the lexer/parser/implementation details is truly liberating. It frees the human to explore crazy ideas that would not have been feasible for a side/toy/hobby project earlier.
+I posted about this also on linkedIn. I actually tried to do a bunch of agentic coding in Clojure but found that the parser really got in my way - it continuously fooled the LLM on what line number the errors actually occurred on!
+This is why I made nanolang always report line numbers accurately and also have a built-in "trace mode" where, with an environment variable set, it would tell you exactly what line number was producing which C code and which behaviors were being exhibited (state changes). The LLM uses this aggressively for debugging!
+> it would tell you exactly what line number was producing which C code and which behaviors were being exhibited (state changes)
+Would you consider generating sourcemaps? Although they’re mainly used for minified JavaScript they sound like a perfect fit for this use case. Plus they’re so ubiquitous there’s already a ton of tooling that understands them.
+I like the creativity, but I'm not sure it's needed. I've been building a large-scale database system using Opus 4.5, and targeting Rust. It's not perfect, but the Rust compiler is so helpful that Opus has solved a lot of problems on its own. I have around 100,000 lines of code, and have completed some major refactoring.
+I am using a variation of spec-driven development.
+This absolutely was NOT needed, just to be clear, it was just fun to do and, perhaps more importantly, it taught me a lot in the process of making it.
+I also have a few geometric 3D printed objects on my desk that I made with openscad as "printing challenges" and then beat my head against my 3D printers for hours trying to actually print them. They did not need to be printed, they serve no purpose other than to be aesthetically pleasing and educational. :)
+Context: This project is by the FreeBSD (co-)founder and former Apple engineering director, Jordan Hubbard. He is now a senior director at Nvidia, according to his public LinkedIn[1].
+I feel this could be achieved better with Golang or Kotlin and a custom linter that enforces parentheses around each expression term to make precedence explicit, and enforce each function has at least one test. Although I guess neither of those languages has free interop with C, they are close. And Go doesn’t have unions :’(
+Interesting. The syntax looks like C and Scheme had an illegitimate child together. (Don't get me wrong, I do like the unambiguity of prefix notation.)
+as i already wrote in an other comment. Where are the millions lines of code needed to train LLM in this Nanolang? LLM are like parrots. if you dont give them data to extract the statistic probability of the next word, you will not get any usefull output. LLM do not think, they can't learn without training data
+That's an incorrect assumption. You can get quite far with some skill documents and some examples in combination with tools to compile and run your code. The LLM will train itself on the fly based on the feedback from these tools.
+Simple & Fast - Minimal syntax, native performance
+Design Philosophy:
+Minimal syntax (18 keywords vs 32 in C)
+One obvious way to do things
+Tests are part of the language, not an afterthought
+Transpile to C for maximum compatibility
+ehh. i dont think the overhead of inventing a new language makes up for the lack of data around it. in fact if you're close enough to rust/c then llms are MORE likely to make up stuff from their training data and screw up your minimal language.
+(pls argue against this, i want to be proven wrong)
+opus is currently the only one that can code rust, but if you give it symbol resolution there is quite literally nothing better. The type system in rust is incredibly powerful and llms are great (just opus for now) at utilizing it.
+It looks like a Frankenstein's abomination that has c-like function signatures and structs with Sexpr function bodies and this will anger some homomorphism nerds. I love it.
+Every new language pet project these days claims to be "designed for LLM's", lol. Don't read too much into it. The only language that's really designed for LLM is COBOL, because it was written to read just like English natural language and LLM's are trained by reading lots of English language books.

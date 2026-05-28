@@ -1,0 +1,19 @@
+X thread capture
+
+## Post
+
+## Conversation
+
+Gergely Orosz 
+
+@GergelyOrosz
+
+"I don't like pull requests (PRs) any more. A large chunk code change doesn't tell me much about the intent or why it was done. I now prefer prompt requests. Just share the prompt you ran / want to run. If I think it's good, I'll run it myself and merge it." -
+
+@steipete
+
+wow
+
+12:00 PM · Jan 12, 2026
+
+398.9K Views

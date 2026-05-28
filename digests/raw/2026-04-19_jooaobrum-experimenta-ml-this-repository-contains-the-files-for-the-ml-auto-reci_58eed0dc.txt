@@ -1,0 +1,271 @@
+# Experimenta - Auto ML Recipes Agent
+
+<p align="center">
+  <img src="imgs/experimenta.png" alt="Experimenta" width="600"/>
+</p>
+
+An agentic ML experimentation engine for tabular classification. Inspired by [karpathy/autoresearch](https://github.com/karpathy/autoresearch).
+
+Classic AutoML is dead. Now, you describe a problem, the agent explores it. You get a recipe, a pipeline, and a report.
+
+---
+
+## The core idea
+
+In practical tabular ML, most gains don't come from model tuning. They come from:
+
+- cleaning data correctly
+- choosing a realistic split
+- building features that reflect the process
+- aggregating the right groupings
+
+So the agent doesn't search over model architectures. It searches over the full **recipe**: data policy, split strategy, feature engineering, model configuration.
+
+The agent rewrites a single file — `experiment.py` — iteratively. A fixed evaluator judges every version the same way. The best feasible experiment wins.
+
+**Disclaimer: This is a proof of concept. The benchmark on competition is low, so use it to gain some time and not to replace a full-time data scientist.**
+
+---
+
+## How it works
+
+```
+you write mission.yaml  →  agent reads it  →  agent profiles data
+                                            →  agent runs EDA
+                                            →  agent writes baseline
+                                            →  hill-climbing loop
+                                            →  final recipe + pipeline + report
+```
+
+The runner is **Claude Code**. There is no Python orchestration. You open Claude Code in the project directory and say:
+
+> Read PROGRAM.md and mission.yaml, then run the experimentation loop.
+
+The agent does the rest.
+
+---
+
+## Setup
+
+```bash
+git clone <this-repo>
+cd ml-auto-recipes
+pip install -e .
+```
+
+Dependencies: `pandas`, `numpy`, `scikit-learn`, `lightgbm`, `xgboost`, `scipy`, `pyyaml`.
+
+---
+
+## Running an experiment
+
+### 1. Add your data
+
+Put your training CSV somewhere accessible, e.g. `data/myproject/train.csv`.
+
+### 2. Write `mission.yaml`
+
+```yaml
+project_name: churn_prediction
+task_type: binary_classification
+target_column: churned
+train_path: data/myproject/train.csv
+primary_metric: roc_auc
+trial_budget: 10
+allowed_models:
+  - lr
+  - lgbm
+  - xgb
+split_seed: 42
+model_seed: 0
+hard_constraints:
+  min_primary_metric: 0.75
+  max_latency_ms: 200
+```
+
+### 3. Write `domain_knowledge` — this is the most important part inside `mission.yaml`
+
+```yaml
+domain_knowledge:
+  unit_of_analysis: "One row = one customer subscription, observed monthly"
+  group_structure:
+    - "Customers belong to account_id groups. A customer's churn risk is often relative to others in the same account."
+    - "Use account-level aggregations (account_churn_rate, account_avg_tenure) as features."
+    - "Split must be account-aware: train and test must not share the same account_id."
+  temporal_dynamics:
+    - "Data has a snapshot_month column. Churn is more frequent in the first 3 months."
+    - "Use a time-based split (train on months < N, test on months >= N) to avoid leakage."
+    - "Feature 'months_since_last_login' decays in predictive power after 6 months."
+  known_leakage_risks:
+    - "Column 'cancellation_reason' is filled after churn. Drop it."
+    - "Column 'final_invoice_amount' is generated at cancellation. Drop it."
+  feature_priors:
+    - "Engagement drop (login frequency decline over last 30 days) is historically the strongest predictor."
+    - "Price sensitivity features (plan_price / company_size) have been useful in past analyses."
+  evaluation_nuances:
+    - "False negatives are more costly: missing a churner is worse than acting on a false alarm."
+    - "Performance on the 'enterprise' segment is tracked separately by the business."
+```
+
+### 4. Open Claude Code and run with ask permissions disabled
+
+```bash
+claude --dangerously-skip-permissions
+```
+
+Then prompt:
+
+> Read PROGRAM.md and mission.yaml. Run the full experimentation loop.
+
+---
+
+## What the agent does
+
+```
+iteration 0   profiler → profile.json
+              eda.py   → eda/results.json   (domain hypotheses validated)
+              baseline experiment.py        (numeric-only, LR)
+
+iteration 1   read error_analysis/0.json   (where did baseline fail?)
+              propose cleaning + encoding
+              run evaluator → keep/revert
+
+iteration 2   run eda.py to test group feature hypothesis
+              add lot_relative_feature
+              run evaluator → keep/revert
+
+...
+
+iteration N   hyperparameter refinement on best recipe so far
+              run evaluator → keep/revert
+
+final         report.md + final_experiment.py + final_pipeline.pkl
+```
+
+---
+
+## The two contracts
+
+### `experiment.py` — the mutable artifact
+
+The agent rewrites this file freely. It must define exactly two functions:
+
+```python
+def prepare_data(df: pd.DataFrame, target_col: str):
+    # Returns: X_train, X_test, y_train, y_test
+    ...
+
+def build_pipeline() -> Pipeline:
+    # Returns an unfitted sklearn Pipeline or compatible estimator
+    ...
+```
+
+Anything goes inside: custom imputation, group encodings, interaction terms, LightGBM, ensembles. The agent is responsible for avoiding leakage.
+
+### `evaluator.py` — the fixed judge
+
+Never modified. Always computes the same metrics for every experiment:
+- primary metric (from mission)
+- supporting: `roc_auc`, `f1`, `precision`, `recall`, `balanced_accuracy`, `ks_stat`, `brier_score`
+- segment metrics (for columns listed in `segment_columns`)
+- feasibility check against `hard_constraints`
+- latency on a 1000-row sample
+
+This is what makes experiments comparable.
+
+---
+
+## Why domain knowledge matters
+
+Generic ML heuristics — check skewness, encode categoricals, tune learning rate — are the easy part. Any AutoML tool does that.
+
+The hard part is context:
+
+- In **semiconductor manufacturing**: a die isn't bad because its measurement is extreme globally. It's bad because it's an outlier *within its lot*. A random split leaks lot-level information into the test set.
+- In **fraud detection**: the signal isn't the transaction amount. It's the transaction amount *relative to the merchant's usual range* at that time of day.
+- In **healthcare**: a lab result that looks normal globally may be abnormal for a specific patient's historical baseline.
+
+Without domain knowledge, the agent produces generic features. With it, the agent produces the features a senior domain expert would propose — and validates them in EDA before committing.
+
+Domain knowledge lives in `mission.yaml` under `domain_knowledge`. The agent reads it before EDA, before writing the baseline, and before every iteration. It shapes:
+
+| What | How domain knowledge guides it |
+|---|---|
+| EDA hypotheses | test group-relative stats, not just global |
+| Split strategy | group split, time split, or stratified |
+| Feature ideas | which aggregations, which ratios, which baselines |
+| Error analysis | break errors down by the named groups |
+| Leakage guard | drop columns flagged as post-outcome |
+
+---
+
+## Output structure
+
+```
+outputs/run_<id>/
+  mission_snapshot.yaml      # exact mission used
+  profile.json               # data profile
+  eda/
+    eda.py                   # last EDA script
+    results.json             # EDA findings
+  error_analysis/
+    <experiment_id>.json     # per-experiment diagnostics
+  experiments.json           # full ledger
+  experiments/
+    <experiment_id>/
+      experiment.py          # exact code evaluated
+  final_experiment.py        # winner code
+  final_pipeline.pkl         # fitted pipeline
+  report.md                  # full run summary
+```
+
+---
+
+## Final report
+
+The report covers:
+
+1. Mission summary
+2. Dataset profile
+3. Experiments run (count, feasible, failed, rejected)
+4. Baseline vs best (delta, iteration, what changed)
+5. What helped and why
+6. What failed and why
+7. Domain knowledge findings (what the data confirmed or contradicted)
+8. Final recommendation
+9. Suggested next steps
+
+---
+
+## Scope (v1)
+
+| Supported | Not supported |
+|---|---|
+| Tabular binary classification | Multi-class, regression |
+| LR, LightGBM, XGBoost | Deep learning |
+| Agent-driven recipe search | Unrestricted library imports |
+| Group, time, stratified splits | Cloud / distributed execution |
+| Reproducible tracking | Deployment automation |
+
+---
+
+## Key files
+
+| File | Role |
+|---|---|
+| `PROGRAM.md` | Permanent behavioral contract for the agent |
+| `mission.yaml` | Run-specific inputs: dataset, metric, budget, domain knowledge |
+| `experiment.py` | The mutable artifact the agent rewrites |
+| `ml_agent/evaluator.py` | Fixed judge — never modified during a run |
+| `RECIPES.md` | Problem-pattern playbook the agent can consult |
+
+---
+
+## Design principles
+
+1. **One mutable file.** `experiment.py` is the only thing the agent changes. Everything else is fixed.
+2. **Fixed judge.** The evaluator never changes during a run. Experiments are always comparable.
+3. **Domain knowledge first.** EDA and features must be grounded in domain context, not generic heuristics.
+4. **Data and features before model.** Search data/features before model/hyperparams.
+5. **Track everything.** Every experiment is logged: code hash, seed, evaluator version, metric, feasibility.
+6. **Final artifacts matter.** The goal is not a score. It is a recipe, a pipeline, and a report a team can act on.

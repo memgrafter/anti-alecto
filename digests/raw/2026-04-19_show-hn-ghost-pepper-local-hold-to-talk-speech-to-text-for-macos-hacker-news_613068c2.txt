@@ -1,0 +1,104 @@
+Hacker News thread capture
+
+Thread URL: https://news.ycombinator.com/item?id=47666024
+Item ID: 47666024
+Title: Show HN: Ghost Pepper – Local hold-to-talk speech-to-text for macOS
+Author: MattHart88
+Points: 467
+Linked URL: https://github.com/matthartman/ghost-pepper
+Top-level comments captured: 34
+Total comments captured: 180
+
+## Original submission text
+I built this because I wanted to see how far I could get with a voice-to-text app that used 100% local models so no data left my computer. I've been using a ton for coding and emails. Experimenting with using it as a voice interface for my other agents too. 100% open-source MIT license, would love feedback, PRs, and ideas on where to take it.
+
+## Top comment (highest-score top-level, verbatim)
+u/charlietran (0): Thank you for sharing, I appreciate the emphasis on local speed and privacy. As a current user of Hex (https://github.com/kitlangton/Hex (https://github.com/kitlangton/Hex)), which has similar goals, what are your thoughts on how they compare?
+
+## Prominent viewpoints (top-level comments)
+1. (0) u/charlietran: Thank you for sharing, I appreciate the emphasis on local speed and privacy. As a current user of Hex (https://github.com/kitlangton/Hex (https://github.com/kitlangton/Hex)), which has similar goals, what are your thoughts on how they compare?
+2. (0) u/ipsum2: Parakeet is significantly more accurate and faster than Whisper if it supports your language.
+3. (0) u/goodroot: Nice one! For Linux folks, I developed https://github.com/goodroot/hyprwhspr (https://github.com/goodroot/hyprwhspr).On Linux, there's access to the latest Cohere Transcribe model and it works very, very well. Requires a GPU though. Larger local models generally shouldn't require a subordinate model for clean up.Have you compared WhisperKit to faster-whisper or similar? You might be able to run turbov3 successfully and negate the need for cleanup.Incidentally, waiting for Apple to blow this all up with native STT any day now. :)
+4. (0) u/konaraddi: That’s awesome! Do you know how it compares to Handy? Handy is open source and local only too. It’s been around a while and what I’ve been using.https://github.com/cjpais/handy (https://github.com/cjpais/handy)
+5. (0) u/mathis: If you don't feel like downloading a large model, you can also use `yap dictate`. Yap leverages the built-in models exposed though Speech.framework on macOS 26 (Tahoe).Project repo: https://github.com/finnvoor/yap (https://github.com/finnvoor/yap)
+6. (0) u/hyperhello: Feature request or beg: let me play a speech video and transcribe it for me.
+7. (0) u/aristech: Great job.
+How about the supported languages?
+System languages gets recognised?
+8. (0) u/guzik: Sadly the app doesn't work. There is no popup asking for microphone permission.EDIT: I see there is an open issue for that on github
+
+## Thread discussion sample
+- (0) u/charlietran: Thank you for sharing, I appreciate the emphasis on local speed and privacy. As a current user of Hex (https://github.com/kitlangton/Hex (https://github.com/kitlangton/Hex)), which has similar goals, what are your thoughts on how they compare?
+- (0) u/ipsum2: Parakeet is significantly more accurate and faster than Whisper if it supports your language.
+  - (0) u/yeutterg: Are you running Parakeet with VoiceInk[0]?[0]: https://github.com/beingpax/VoiceInk (https://github.com/beingpax/VoiceInk)
+    - (0) u/zackify: i am, working great for a long time now
+    - (0) u/ipsum2: I'm using https://github.com/senstella/parakeet-mlx (https://github.com/senstella/parakeet-mlx) library.
+  - (0) u/treetalker: I have been using Parakeet with MacWhisper's hold-to-talk on a MacBook Neo and it's been awesome.
+  - (0) u/rahimnathwani: Right, and if you're on MacOS you can use it for free with Hex: https://github.com/kitlangton/Hex (https://github.com/kitlangton/Hex)
+    - (0) u/lloyd-christmas: Or write your own custom one with the library that backs it: https://github.com/FluidInference/FluidAudio (https://github.com/FluidInference/FluidAudio)I did that so that I could record my own inputs and finetune parakeet to make it accurate enough to skip post-processing.
+      - (0) u/rahimnathwani: There's a fork of FluidAudio that supports the recent Cohere model: https://github.com/altic-dev/FluidAudio/tree/B/cohere-coreml... (https://github.com/altic-dev/FluidAudio/tree/B/cohere-coreml-asr)It's used by this dictation app: https://github.com/altic-dev/FluidVoice/ (https://github.com/altic-dev/FluidVoice/)
+  - (0) u/obrajesse: And indeed, Ghost Pepper supports parakeet v3
+  - (0) u/totetsu: Parakeet supports japanese now, but I cant find a version ported to apple silicone yet.
+- (0) u/goodroot: Nice one! For Linux folks, I developed https://github.com/goodroot/hyprwhspr (https://github.com/goodroot/hyprwhspr).On Linux, there's access to the latest Cohere Transcribe model and it works very, very well. Requires a GPU though. Larger local models generally shouldn't require a subordinate model for clean up.Have you compared WhisperKit to faster-whisper or similar? You might be able to run turbov3 successfully and negate the need for cleanup.Incidentally, waiting for Apple to blow this all up with native STT any day now. :)
+  - (0) u/hephaes7us: Thanks for sharing! I was literally getting ready to build, essentially, this. Now it looks like I don't have to!Have you ever considered using a foot-pedal for PTT?Apple incidentally already has native STT, but for some reason they just don't use a decent model yet.
+    - (0) u/goodroot: They do, and they even have that nice microphone F5 key for it, and an ideal OS level API making the input experience >perfect<.Apparently they do have a better model, they just haven't exposed it in their own OS yet!https://developer.apple.com/documentation/speech/bringing-ad... (https://developer.apple.com/documentation/speech/bringing-advanced-speech-to-text-capabilities-to-your-app)Wonder what's the hold up...For footpedal:Yes, conceptually it’s just another evdev-trigger source, assuming the pedal exposes usable key/button events.Otherwise we’d bridge it into the existing external control interface. Either way, hooks are there. :)
+      - (0) u/jiehong: The only issue with Apple models is that they do not detect languages automatically, nor switch if you do between sentences.Parakeet does both just fine.
+    - (0) u/chrisweekly: sorry, PTT?
+      - (0) u/serf: push-to-talk.
+      - (0) u/chrisweekly: ty
+  - (0) u/LuxBennu: I've been running whisper large-v3 on an m2 max through a self-hosted endpoint and honestly the accuracy is good enough that i stopped bothering with cleanup models. The bigger annoyance for me was latency on longer chunks, like anything over 30 seconds starts feeling sluggish even with metal acceleration. Haven't tried whisperkit specifically but curious how it handles longer audio compared to the full model.
+    - (0) u/goodroot: Ah yeah, longform is interesting.Not sure how you're running it, via whichever "app thing", but...On resource limited machines: "Continuous recording" mode outputs when silence is detected via a configurable threshold.This outputs as you speak in more reasonable chunks; in aggregate "the same output" just chunked efficiently.Maybe you can try hackin' that up?
+      - (0) u/LuxBennu: Yeah that makes sense, chunking on silence would sidestep the latency issue pretty cleanly. I've been running it through a basic fastapi wrapper so it just takes whatever audio blob gets thrown at it, no chunking logic on the server side. Might be worth adding a vad pass before sending to whisper though, would cut down on processing dead air too.
+  - (0) u/VorpalWay: How does it compare to the more well established https://github.com/cjpais/handy (https://github.com/cjpais/handy)? Are there any stand out features (for either option)? What was the reason for writing your own rather than using or improving existing software?
+    - (0) u/goodroot: Not sure I know what you mean by IR...But in this case I built hyprwhspr for Linux (Arch at first).The goal was (is) the absolute best performance, in both accuracy & speed.Python, via CUDA, on a NVIDIA GPU, is where that exists.For example:The #1 model on the ASR (automatic speech recognition) hugging face board is Cohere Transcribe and it is not yet 2 weeks old.The ecosystem choices allowed me to hook it up in a night.Other hardware types also work great on Linux due to its adaptability.In short, the local stt peak is Linux/Wayland.
+      - (0) u/VorpalWay: IR was a typo, meant "it" (fixed it). I blame the phone keyboard plus insufficient proof reading on my part.If this needs nvidia CPU acceleration for good performance it is not useful to me, I have Intel graphics and handy works fine.
+      - (0) u/goodroot: It works well with anything. :)That said: If handy works, no need whatsoever to change.
+  - (0) u/pmarreck: looks like there's a nearly identically named one for HyprlandAlso, wish it was on nixpkgs, where at least it will be almost guaranteed to build forever =)
+  - (0) u/ericd: Nice, I've been using Hyprwhspr on Omarchy daily for a while now, it's been awesome, thanks very much.
+    - (0) u/goodroot: Thanks ericd! Glad to hear.
+- (0) u/konaraddi: That’s awesome! Do you know how it compares to Handy? Handy is open source and local only too. It’s been around a while and what I’ve been using.https://github.com/cjpais/handy (https://github.com/cjpais/handy)
+  - (0) u/youniverse: I love and have been using handy for a while too, what we need is this for mobile apps I don't think there's any free apps and native dictation is not always fully local and not as good.
+  - (0) u/swaptr: Handy is awesome! I used it for quite a while before Claude Code added voice support. Solid software, very good linux and mac integration. Shoutout to Parakeet models as well, extremely fast and solid models for their relatively modest memory requirements.
+  - (0) u/stavros: Handy is fantastic.
+  - (0) u/vunderba: I’d also be interested to know what the impetus was for developing ghost-pepper, which looks relatively recent, given that Handy exists and has been pretty well received.Extra bonus is that Handy lets add an automatic LLM post-processor. This is very handy for the Parakeet V3 model, which can sometimes have issues where it repeats words or makes recognition errors for example, duplicating the recognition of a single word a dozen dozen dozen dozen dozen dozen dozen dozen times.
+    - (0) u/rob: Yep. Using Handy with Parakeet v3 + a custom coding-tailored prompt to post-process on my 2019 Intel Mac and it's been working great.Once in a while it will only output a literal space instead of the actual translation, but if I go into the 'history' page the translation is there for me to copy and paste manually. Maybe some pasting bug.
+    - (0) u/alasano: I think it's the same reasoning for anything these days."You know what would be useful?" followed by asking your LLM of choice to implement it.Then again for a lot of scenarios it's your slop or someone else's slop.I think the only difference is that I keep my own slop tools private.
+  - (0) u/olup: I use handy all day long as a software engineer, and recommended it to all of my team members. I love it.
+  - (0) u/JohnPDickerson: Handy is an awesome project, highly recommended - many of our engineers and PMs use it! CJ, Handy's creator, recently joined us as a Builder in Residence at Mozilla.ai. So for those interested in deploying a more raw/lightweight approach to local speech-to-text (or other multimodal) models, feel free to check out llamafile - which includes whisperfile, a single-file whisper.cpp + cosmopolitan framework-based executable. We're hoping to build some bridges between the two projects as well. https://github.com/mozilla-ai/llamafile (https://github.com/mozilla-ai/llamafile)
+  - (0) u/kwakubiney: I love it. I use it all the time to communicate to my agents via opencode.
+  - (0) u/cootsnuck: Yup, Handy is the one that made me stop looking for local open source alternatives to Wispr Flow.I'll give a shoutout as well to Glimpse: https://github.com/LegendarySpy/Glimpse (https://github.com/LegendarySpy/Glimpse)
+- (0) u/mathis: If you don't feel like downloading a large model, you can also use `yap dictate`. Yap leverages the built-in models exposed though Speech.framework on macOS 26 (Tahoe).Project repo: https://github.com/finnvoor/yap (https://github.com/finnvoor/yap)
+- (0) u/hyperhello: Feature request or beg: let me play a speech video and transcribe it for me.
+  - (0) u/MattHart88: I like this idea and it should work -- whatever microphone you have on should be able to hear the speaker. LMK if not (e.g., are you wearing headphones? if so, the mic can't hear the speaker)
+- (0) u/aristech: Great job.
+How about the supported languages?
+System languages gets recognised?
+  - (0) u/MattHart88: Thanks! We currently have 2 multi-lingual options available: 
+- Whisper small (multilingual) (~466 MB, supports many languages)
+- Parakeet v3 (25 languages) (~1.4 GB, supports 25 languages via FluidAudio)
+- (0) u/guzik: Sadly the app doesn't work. There is no popup asking for microphone permission.EDIT: I see there is an open issue for that on github
+  - (0) u/ttul: And many people are mailing in Codex and Claude Code generated PRs - myself included. Fingers crossed, I suppose.
+    - (0) u/MattHart88: Thanks to everyone who submitted PRs! The fix is merged, new version is up.
+- (0) u/parhamn: I see a lot of whisper stuff out there. Are these the same old OpenAI whispers or have they been updated heavily?I've been using parakeet v3 which is fantastic (and tiny). Confused why we're still seeing whisper out there, there's been a lot of development.
+  - (0) u/zackify: same, even have kokoro for speech back to text for home assistant and parakeet on mac os through voice ink.Also vibe coded a way to use parakeet from the same parakeet piper server on my grapheneos phone https://zach.codes/p/vibe-coding-a-wispr-clone-in-20-minutes (https://zach.codes/p/vibe-coding-a-wispr-clone-in-20-minutes)
+  - (0) u/daemonologist: Whisper is still old reliable - I find that it's less prone to hallucinations than newer models, easier to run (on AMD GPU, via whisper.cpp), and only ~2x slower than parakeet. I even bothered to "port" Parakeet to Nemo-less pytorch to run it on my GPU, and still went back to Whisper after a couple of days.
+  - (0) u/goodroot: Whisper is very good in many languages.It's also in many flavours, from tiny to turbo, and so can fit many system profiles.That's what makes it unique and hard to replace.
+  - (0) u/71bw: I'm also wondering whether or not it would be beneficiary for my workload to switch over to Parakeet. Problem is, I'm using a lot of lingo - and in Polish, as well! - so it's not exactly the best case and whisper (v3), so far, works.
+- (0) u/gegtik: how does this compare to macos built in siri TTS, in quality and in privacy?
+  - (0) u/realityfactchex: Exactly my question. I double-tap the control button and macOS does native, local TTS dictation pretty well. (Similar to Keyboard > Enable Dictation setting on iOS.)The macOS built-in TTS (dictation) seems better than all the 3rd party, local apps I tried in the past that people raved about. I have tried several.Is this better somehow?If the 3rd party apps did streaming with typing in place and corrections within a reasonable window when they understand things better given more context, that would be cool. Theoretically, a custom model or UX could be "better" than what comes free built into macOS (more accurate or customizable).But when I contacted the developer of my favorite one they said 
+    - (0) u/realityfactchex: s/TTS/STT/
+- (0) u/Supercompressor: I've been looking for the opposite - wanting to dump text and it be read to me, coherently. Anyone have good recommendations?
+  - (0) u/realityfactchex: Sure, Chatterbox TTS Server is rather high quality: https://github.com/devnen/Chatterbox-TTS-Server (https://github.com/devnen/Chatterbox-TTS-Server)You could hook it up to some workflow over the local API depending on how you want to dump the text, but the web UI is good too.The Show HN by the author was at: https://news.ycombinator.com/item?id=44145564 (https://news.ycombinator.com/item?id=44145564)
+    - (0) u/Supercompressor: Appreciated - thank you.
+- (0) u/ericmcer: I see quite a few of these, the killer feature to me will be one that fine tunes the model based on your own voice.E.G. if your name is `Donold` (pronounced like Donald) there is not a transcription model in existence that will transcribe your name correctly. That means forget inputting your name or email ever, it will never output it correctly.Combine that with any subtleties of speech you have, or industry jargon you frequently use and you will have a much more useful tool.We have a ton of options for "predict the most common word that matches this audio data" but I haven't found any "predict MY most common word" setups.
+  - (0) u/MattHart88: I've found the "corrections" feature works well for most of the jargon and misspelling use cases. Can you give it a try and let me know edge cases?
+  - (0) u/sorenjan: Whisper supports a prompt, you can put your "Donold" there.https://developers.openai.com/cookbook/examples/whisper_prom... (https://developers.openai.com/cookbook/examples/whisper_prompting_guide)
+  - (0) u/bonkler59: My experience is that Aqua voice does a good job of this with custom dictionary and replacements.
+- (0) u/__mharrison__: Cool, I've been doing a lot of "coding" (and other typing tasks) recently by tapping a button on my Stream Deck. It starts recording me until I tap it again. At which point, it transcribes the recording and plops it into the paste buffer.The button next to it pastes when I press it. If I press it again, it hits the enter command.You can get a lot done with two buttons.
+  - (0) u/coldfoundry: This is exactly what I am building right now, Stream Deck with two buttons too (push to talk and enter)! It's a sweet little pet project, and has been a blast to build so far. Excited to finally add it to my workflow once its working well.
+- (0) u/purplehat_: Hi Matt, there's lots of speech-to-text programs out there with varying levels of quality. 100% local is admirable but it's always a tradeoff and users have to decide for themselves what's worth it.Would you consider making available a video showing someone using the app?
+  - (0) u/semiquaver: Slop
+- (0) u/douglaswlance: does it input the text as soon as it hears it? or does it wait until the end?
+- (0) u/romeroej: always mac. when windows? why can you just make things multios
+  - (0) u/naikrovek: Because like all other modern Macs, the GPU in my Mac uses the same API as the GPU in your Mac.Also, on a Mac with 32GB of RAM, 24GB of that (75%) is available to the GPU, and that makes the models run much faster. On my 64GB MacBook Pro, 48GB is available to the GPU. Have you priced an nvidia GPU with 48GB of RAM? It’s simply cheaper to do this on Macs.Macs are just better for getting started with this kind of thing.
+    - (0) u/patja: Fair enough for GPU-intensive stuff like running Qwen locally. But do you really need a GPU for decent local TTS? I run parakeet just on CPU.

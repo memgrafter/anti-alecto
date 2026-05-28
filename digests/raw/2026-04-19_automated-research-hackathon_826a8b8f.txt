@@ -1,0 +1,19 @@
+Hosted by Paradigm
+Automated Research Hackathon
+$9,000 in prizes across three pools
+$3k
+Online challenges
+$3k
+In-person challenges
+$3k
+Projects track
+Challenges
+Negotiation
+Natural LanguagePrompt an AI agent to negotiate resource splits against a baseline. 10 games, highest mean score wins.
+Prediction Market
+PythonWrite a Python market-making strategy for a limit order book. Capture edge from retail flow, avoid the arbitrageur. 50 simulations.
+Attention Kernel
+PythonBuild the fastest numerically faithful block-sparse attention backend for H100.
+Projects
+Projects Track
+Open-endedSubmit a GitHub link to your automated research project. Any project related to automated research is welcome, including harnesses, tools, benchmarks, challenges, or demonstrations. Only in-person participants are eligible for prizes or presentations.

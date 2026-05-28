@@ -1,0 +1,39 @@
+assets scripts
+npm install --save-dev webpack webpack-cli
+src/index.js
+import bar from "./bar.js";
+bar();
+src/bar.js
+export default function bar() {
+//
+}
+Start without a configuration file, or provide a custom webpack.config.js:
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+export default {
+entry: "./src/index.js",
+output: {
+path: path.resolve(__dirname, "dist"),
+filename: "bundle.js",
+},
+};
+Prefer a video walkthrough? Without config
+page.html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+...
+</head>
+<body>
+...
+<script src="dist/bundle.js"></script>
+</body>
+</html>
+Then run webpack
+on the command-line to create bundle.js
+.
+Get Started quickly in our Guides section, or dig into the Concepts section for more high-level information on the core notions behind webpack.
+Through contributions, donations, and sponsorship, you allow webpack to thrive. Your donations directly support office hours, continued enhancements, and most importantly, great documentation and learning material!

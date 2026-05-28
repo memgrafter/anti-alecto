@@ -1,0 +1,104 @@
+How can I remove/delete the Tahoe installer..
+How can I remove/delete the Tahoe installer.. Happy with Sequoia, I'm not updating to macOS26 and would like my 7 GB back.. The Installers just sat there..
+Thanks!
+MacBook Pro (M4)
+How can I remove/delete the Tahoe installer.. Happy with Sequoia, I'm not updating to macOS26 and would like my 7 GB back.. The Installers just sat there..
+Thanks!
+MacBook Pro (M4)
+40 replies
+Drag it to the trash, and then empty the trash.
+FWIW, you don't have the Tahoe installer downloaded. Your screenshot shows Tahoe is available and the download is 7.69 GB in size. You haven't "lost" the 7.69 GBs.
+In addition to Phil0124's note. First go into System Settings > General > Software Update. Click on the information (i) icon next to Automatic Updates. Change the settings so it looks like this:
+The top choice is normally on. If you don't turn it off, the OS will likely download the Tahoe upgrade again after you delete it.
+decaf_green wrote:
+How can I remove/delete the Tahoe installer.. Happy with Sequoia, I'm not updating to macOS26 and would like my 7 GB back.. The Installers just sat there..
+Thanks!
+?
+This sounds like the "stub installer"— I know of no way to track this down...if it is not in the Applications folder.
+The stub is a precursor to fetching the full installer.
+You can download the full installer ~16.6 GB Tahoe 26.0.1
+Once download delete the full installer. If it launches automatically you simply Quit it like any other app.
+The installer will be sitting passively in the Applications folder "Install macOS Tahoe.app"
+Delete that to regain all your GB.
+Keep in mind available storage/purgable storage will take a day or two for the system to release it to free storage.
+Roberta5760 wrote:
+I don't think so, this was a screen shot of me using the Terminal program to list files on my mac hard disk "roberta@2022-MacBook-Pro"
+hello?
+that command is a list of available installers on the sever . Full stop. I don't know how else to say it.
+If you download the Installer it would be sitting in your Applications folder "Install macOS Tahoe.app" ~ 16GB in size
+Whether you choose to launch it or not. Like any other app you simply delete it if that is the case.
+If you run the installer— it self deletes after the install is complete.
+Then you'll probably find the installer in this folder:
+/Library/Updates
+That's the root Library folder next to Applications, System and Users.
+It should be in the Applications folder in Finder. Usually.
+Here's one place a person may be able to gain a lot of space back.
+/Users/your-account/Library/Containers/com.apple.TextEdit/Data/tmp
+(the com.apple.TextEdit part appears only as TextEdit for the name in the Containers folder)
+Within the last folder, you'll find a subfolder named TemporaryItems. It seems to be a cache of any text file you have ever saved or modified. This folder of useless junk was nearly 5 GB! on my system. I deleted the TemporaryItems folder and launched TextEdit. Saved a nonsense text file and it recreated that subfolder.
+Sure seems safe to me to delete that folder or its contents anytime you want.
+Plarndude wrote:
+I've been reading and trying the stuff here and none of it is working to help me get rid of this Tahoe installer. Argh! My MacBook Air is too old, it won't boot the Tahoe installer.
+Not possible. Apple does not make installers available to Macs that don't support them. If it was offered through software update, your Mac supports it.
+It still lets me boot the MacOS Sequoia that is running fine. I just want to reclaim the space taken by the Tahoe installer .
+Where are you seeing this space taken up by the installer?
+If the installer is not in the Applications Folder as mentioned, then it has not been downloaded yet an as such is not taking up any space.
+System Setting >>> General >>> Software Updates >> Automatic Updates
+Click the I in the circle which should present as per below image
+Turn OFF >> Download new updates when available "
+Found the one that used to work:
+softwareupdate --ignore "macOS [version name]"
+I tried using softwareupdate --ignore "macOS Tahoe" under Sequoia, but Terminal just returns what you can use the softwareupdate command for. Which explains why it no longer works. Apple removed the --ignore switch entirely.
+softwareupdate: unrecognized option `--ignore'
+usage: softwareupdate <cmd> [<args> ...]
+** Manage Updates:
+-l | --list List all appropriate update labels (options: --no-scan, --product-types)
+-d | --download Download Only
+-i | --install Install
+<label> ... specific updates
+-a | --all All appropriate updates
+-R | --restart Automatically restart (or shut down) if required to complete installation.
+-r | --recommended Only recommended updates
+--os-only Only OS updates
+--safari-only Only Safari updates
+--stdinpass Password to authenticate as an owner. Apple Silicon only.
+--user Local username to authenticate as an owner. Apple Silicon only.
+--list-full-installers List the available macOS Installers
+--fetch-full-installer Install the latest recommended macOS Installer
+--full-installer-version The version of macOS to install. Ex: --full-installer-version 10.15
+--install-rosetta Install Rosetta 2
+--background Trigger a background scan and update operation
+** Other Tools:
+--dump-state Log the internal state of the SU daemon to /var/log/install.log
+--evaluate-products Evaluate a list of product keys specified by the --products option
+--history Show the install history. By default, only displays updates installed by softwareupdate.
+** Options:
+--no-scan Do not scan when listing or installing updates (use available updates previously scanned)
+--product-types <type> Limit a scan to a particular product type only - ignoring all others
+Ex: --product-types macOS || --product-types macOS,Safari
+--products A comma-separated (no spaces) list of product keys to operate on.
+--force Force an operation to complete. Use with --background to trigger a background scan regardless of "Automatically check" pref
+--agree-to-license Agree to the software license agreement without user interaction.
+--verbose Enable verbose output
+--help Print this help
+Doesn't this show that the Tahoe installer has already been downloaded onto my 8GB Macbook?
+No.
+That is a list of installer on the server.
+@phil0124 - thanks, I tried this but unfortunately I can't find the file anywhere - done a Mac wide search for "macOS", "26", "Tahoe", etc. and nothing comes up - it seems to be somewhere in the background?
+@kurtlang, thanks did this too but too late so the installer already downloaded. doh!
+Cheers!
+I think I know where it is.
+System Settings > General > Storage
+When the OS is done adding up drive space (only takes a few seconds for the wheels to stop spinning), click on the i button to the right of macOS near the bottom.
+I'm betting the 7 GB is being hogged by Apple Intelligence. Here's mine, despite having it turned off.
+I'd love to get that 4.55 GB back for what *I* want to use it for, but haven't been able to figure out to remove the AI data.
+Edit: That 4.55 GB is under Sequoia. When I installed Tahoe fresh on another volume, the very first thing I did - as fast as possible - was opening the System Settings to turn AI off. That stopped the data it was downloading at just under a hundred MB. And that's where it will stay as I will never turn AI back on.
+decaf_green wrote:
+How can I remove/delete the Tahoe installer.. Happy with Sequoia, I'm not updating to macOS26 and would like my 7 GB back.. The Installers just sat there..
+Thanks!
+Not only, as mentioned by my colleague @dialabrain, the Tahoe Installer has not been downloaded
+It also fulfills your wish to stay with Sequoia
+It shows Sequoia 15.7.1 is available to download and install
+How can I remove/delete the Tahoe installer..
+Welcome to Apple Support Community
+A forum where Apple customers help each other with their products. Get started with your Apple Account.

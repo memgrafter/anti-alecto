@@ -1,0 +1,154 @@
+Loading...
+Loading...
+Menu
+- HISTORY.md
+- README.md
+- aider/args.py
+- aider/coders/base_coder.py
+- aider/commands.py
+- aider/io.py
+- aider/main.py
+- aider/models.py
+- aider/repo.py
+- aider/repomap.py
+- aider/sendchat.py
+- aider/website/HISTORY.md
+- aider/website/_data/blame.yml
+- aider/website/assets/sample-analytics.jsonl
+- aider/website/docs/config/adv-model-settings.md
+- aider/website/docs/config/model-aliases.md
+- aider/website/docs/faq.md
+- aider/website/docs/languages.md
+- aider/website/docs/leaderboards/index.md
+- aider/website/docs/llms/other.md
+- aider/website/docs/more/infinite-output.md
+- aider/website/index.html
+- scripts/update-blame.sh
+- tests/basic/test_io.py
+- tests/basic/test_sendchat.py
+This document provides a high-level introduction to the Aider codebase architecture, explaining the primary components, their interactions, and the overall system design. Aider is an AI pair programming tool that integrates Large Language Models (LLMs) with version control and code editing workflows to assist developers in modifying existing codebases.
+For detailed information about specific subsystems:
+- Core architecture components: see Core Architecture
+- Edit strategies and code modification: see Edit Strategies and Code Modification
+- Repository understanding: see Repository Understanding and Context
+- User interaction modes: see User Interaction Modes
+- Model configuration: see Model Configuration and Capabilities
+Aider is a command-line AI coding assistant that enables developers to collaborate with LLMs to edit code within their existing repositories. Users can request changes through natural language, and Aider applies those changes using various edit formats optimized for different LLMs. The system automatically manages git commits, provides repository context to the LLM, and supports over 130 programming languages.
+Sources: README.md1-180 aider/coders/base_coder.py88-123
+Aider follows a layered architecture with the Coder
+class serving as the central orchestrator. The system separates concerns into distinct layers: user interfaces (CLI, GUI, file watcher), core orchestration, LLM integration, edit strategies, repository understanding, and version control.
+Sources: aider/main.py451-1073 aider/coders/base_coder.py88-543 aider/models.py115-147
+The main()
+function in main.py
+serves as the primary entry point, handling:
+- Configuration loading from
+.aider.conf.yml
+,.env
+, and command-line arguments - Git repository setup via
+setup_git()
+andGitRepo
+initialization - Model registration and selection through
+register_models()
+andModel()
+instantiation Coder
+instance creation viaCoder.create()
+factory method- Execution of the main chat loop via
+coder.run()
+Sources: aider/main.py451-1073 aider/args.py35-505
+The Coder
+base class orchestrates all major subsystems. Key responsibilities include:
+| Responsibility | Implementation | Key Methods |
+|---|---|---|
+| Message management | done_messages , cur_messages | move_back_cur_messages() |
+| File tracking | abs_fnames , abs_read_only_fnames | add_rel_fname() , get_abs_fnames_content() |
+| LLM interaction | main_model , send_message() | send_message() , send_with_retries() |
+| Edit application | Edit strategy subclasses | get_edits() , apply_edits() |
+| Repository context | repo_map , repo | get_repo_map() , get_repo_messages() |
+| Git integration | repo , aider_commit_hashes | Auto-commit on edits |
+The factory method Coder.create()
+instantiates the appropriate Coder
+subclass based on the edit_format
+parameter, implementing the Strategy pattern for different edit approaches.
+Sources: aider/coders/base_coder.py88-543 aider/coders/base_coder.py124-201
+The Model
+class encapsulates all LLM-related configuration and capabilities:
+The Model
+class loads configuration from model-settings.yml
+and model-metadata.json
+, applies generic settings for model families (e.g., GPT-4, Claude, o1), and provides methods like send_completion()
+for LLM API calls.
+Sources: aider/models.py317-888 aider/models.py115-139 aider/resources/model-settings.yml
+Aider implements multiple edit strategies as subclasses of Coder
+, each optimized for different LLMs:
+Each strategy implements abstract methods get_edits()
+to parse LLM output and apply_edits()
+to modify files. The Coder.create()
+factory selects the appropriate subclass based on model configuration.
+Sources: aider/coders/base_coder.py124-201 aider/coders/editblock_coder.py aider/coders/wholefile_coder.py
+The RepoMap
+class generates concise repository overviews for LLM context:
+| Component | Purpose | Key Implementation |
+|---|---|---|
+RepoMap | Tag generation and ranking | get_ranked_tags_map() |
+TreeContext (grep-ast) | AST parsing with tree-sitter | get_context() |
+| Tag cache | Performance optimization | .aider.tags.cache.v{CACHE_VERSION}/ |
+| Ranking algorithm | Context relevance | Personalized PageRank on tag graph |
+The system parses files using tree-sitter, extracts definitions (functions, classes, methods), and ranks them based on references from chat files and mentioned identifiers.
+Sources: aider/repomap.py42-875 aider/repomap.py103-167
+The GitRepo
+class manages all version control operations:
+Aider automatically commits changes after each successful edit, generating commit messages using a weak LLM model. The GitRepo
+class handles .gitignore
+and .aiderignore
+patterns to filter files.
+Sources: aider/repo.py52-788 aider/repo.py337-452
+The primary execution flow follows this sequence:
+- Initialization (
+main.py
+): Parse arguments → Load configuration → InitializeGitRepo
+→ Register models → CreateModel
+instances - Coder Creation (
+Coder.create()
+): Select edit format → Instantiate appropriateCoder
+subclass → InitializeRepoMap
+- Chat Loop (
+coder.run()
+):- Get user input via
+InputOutput.get_input()
+- Check for slash commands via
+Commands.run()
+- Prepare messages: system prompt + repo map + chat files + history
+- Send to LLM via
+Model.send_completion()
+- Parse response via
+get_edits()
+- Apply changes via
+apply_edits()
+- Auto-commit via
+GitRepo.commit()
+- Get user input via
+- Edit Application:
+- Fence selection via
+choose_fence()
+- Edit parsing (strategy-specific)
+- File modification
+- Optional linting via
+Linter.lint()
+- Git commit with generated message
+- Fence selection via
+Sources: aider/main.py876-1073 aider/coders/base_coder.py876-945
+Aider uses a multi-layered configuration approach with clear precedence:
+The get_parser()
+function establishes search paths, and configuration files are loaded in order with later sources overriding earlier ones. Environment variables can be set via .env
+files or --set-env
+flags.
+Sources: aider/main.py305-388 aider/main.py335-359 aider/args.py35-56
+| Pattern | Implementation | Purpose |
+|---|---|---|
+| Factory | Coder.create() | Select edit strategy based on model |
+| Strategy | Edit format subclasses | Different edit parsing/application methods |
+| Singleton | model_info_manager | Shared model metadata cache |
+| Template Method | Coder abstract methods | Define edit workflow skeleton |
+| Builder | InputOutput constructor | Complex terminal I/O configuration |
+Sources: aider/coders/base_coder.py124-201 aider/models.py149-314
+Refresh this wiki

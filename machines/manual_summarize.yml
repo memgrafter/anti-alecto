@@ -1,0 +1,169 @@
+spec: flatmachine
+spec_version: "2.0.0"
+
+data:
+  name: manual_summarize
+
+  context:
+    url: "{{ input.url }}"
+    title: "{{ input.title }}"
+    raw_content: "{{ input.raw_content }}"
+    word_count: "{{ input.word_count }}"
+    scrape_strategy: "{{ input.scrape_strategy }}"
+    scrape_diagnostics_json: "{{ input.scrape_diagnostics_json }}"
+
+    summary: ""
+    summary_attempt: 0
+    summary_valid: false
+    summary_validation_errors: []
+    judge_result: ""
+    judge_passed: false
+    judge_feedback: ""
+
+    frontmatter_yaml: ""
+    frontmatter_attempt: 0
+    frontmatter_valid: false
+    frontmatter_validation_errors: []
+
+  agents:
+    summarizer: ../agents/summarizer.yml
+    judge_summary: ../agents/judge.yml
+    frontmatter: ../agents/frontmatter.yml
+
+  hooks: "anti-alecto-scrape"
+
+  states:
+    start:
+      type: initial
+      transitions:
+        - to: summarize
+
+    summarize:
+      agent: summarizer
+      execution:
+        type: retry
+        backoffs: [2, 8, 16]
+        jitter: 0.1
+      input:
+        url: "{{ context.url }}"
+        title: "{{ context.title }}"
+        content: "{{ context.raw_content }}"
+        feedback: "{{ context.judge_feedback }}"
+      output_to_context:
+        summary: "{{ output.content }}"
+      on_error: error
+      transitions:
+        - to: validate_summary
+
+    validate_summary:
+      action: validate_summary
+      on_error: error
+      transitions:
+        - condition: "not context.summary_valid and context.summary_attempt < 3"
+          to: summarize_retry
+        - condition: "not context.summary_valid"
+          to: error_summary
+        - to: judge
+
+    summarize_retry:
+      agent: summarizer
+      execution:
+        type: retry
+        backoffs: [2, 8, 16]
+        jitter: 0.1
+      input:
+        url: "{{ context.url }}"
+        title: "{{ context.title }}"
+        content: "{{ context.raw_content }}"
+        feedback: "Missing: {{ context.summary_validation_errors | join(', ') }}"
+      output_to_context:
+        summary: "{{ output.content }}"
+      on_error: error
+      transitions:
+        - to: validate_summary
+
+    judge:
+      agent: judge_summary
+      execution:
+        type: retry
+        backoffs: [2, 8]
+        jitter: 0.1
+      input:
+        url: "{{ context.url }}"
+        title: "{{ context.title }}"
+        word_count: "{{ context.word_count }}"
+        summary: "{{ context.summary }}"
+        content: "{{ context.raw_content }}"
+      output_to_context:
+        judge_result: "{{ output.content }}"
+      on_error: error
+      transitions:
+        - to: check_judge
+
+    check_judge:
+      action: check_judge_result
+      on_error: error
+      transitions:
+        - condition: "context.judge_passed"
+          to: frontmatter
+        - condition: "not context.judge_passed and context.summary_attempt < 3"
+          to: summarize
+        - to: frontmatter
+
+    frontmatter:
+      agent: frontmatter
+      execution:
+        type: retry
+        backoffs: [2, 8, 16]
+        jitter: 0.1
+      input:
+        url: "{{ context.url }}"
+        title: "{{ context.title }}"
+        summary: "{{ context.summary }}"
+        content: "{{ context.raw_content }}"
+        validation_errors: "{{ context.frontmatter_validation_errors }}"
+      output_to_context:
+        frontmatter_yaml: "{{ output.content }}"
+      on_error: error
+      transitions:
+        - to: validate_frontmatter
+
+    validate_frontmatter:
+      action: validate_frontmatter
+      on_error: error
+      transitions:
+        - condition: "context.frontmatter_valid"
+          to: done
+        - condition: "not context.frontmatter_valid and context.frontmatter_attempt < 3"
+          to: frontmatter
+        - to: done
+
+    done:
+      type: final
+      output:
+        url: "{{ context.url }}"
+        title: "{{ context.title }}"
+        word_count: "{{ context.word_count }}"
+        scrape_strategy: "{{ context.scrape_strategy }}"
+        scrape_diagnostics_json: "{{ context.scrape_diagnostics_json }}"
+        raw_content: "{{ context.raw_content }}"
+        summary: "{{ context.summary }}"
+        frontmatter_yaml: "{{ context.frontmatter_yaml }}"
+        summary_attempts: "{{ context.summary_attempt }}"
+        judge_passed: "{{ context.judge_passed }}"
+
+    error:
+      type: final
+      output:
+        error: "{{ context.last_error }}"
+        url: "{{ context.url }}"
+
+    error_summary:
+      type: final
+      output:
+        error: "Summary failed validation after max retries"
+        validation_errors: "{{ context.summary_validation_errors }}"
+        url: "{{ context.url }}"
+
+metadata:
+  description: "Summarize manually provided content with the same QA loop as scrape"

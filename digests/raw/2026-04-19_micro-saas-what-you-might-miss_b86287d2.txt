@@ -1,0 +1,350 @@
+Severity Guide
+FATAL — can kill the business outright or create irreversible legal/financial exposure
+COSTLY — won't kill you but will burn months of time or thousands of dollars you didn't budget
+SUBTLE — slow-acting. Looks fine for months, compounds into a serious problem
+1. Buy vs. Build — The Path Nobody Talks About
+COSTLY The assumption that you must build from scratch
+Most micro-SaaS content assumes you're a developer who will build something. But the micro-SaaS ecosystem now has a mature acquisition market. Some of the best operators never write line one — they buy at 2–4× ARR, optimize operations, and hold for cash flow or resell at a higher multiple.
+When buying beats building
+- You're an operator, not a builder. Your edge is in marketing, sales, support, and optimization — not writing code.
+- You want cash flow now, not in 12 months. A purchased product with $3K MRR generates from day 1.
+- The niche is validated but the product is neglected. Burned-out founders sell good products cheap.
+- You can see clear operational improvements. Pricing is too low, churn is fixable, SEO is untouched — low-hanging fruit the current owner never picked.
+- You want to skip S1–S5 entirely. Buying a post-PMF product means you start in S6 or S7.
+Acquisition economics
+| Metric | Typical range |
+|---|---|
+| Purchase multiple (marketplace) | 2–4× ARR |
+| Purchase multiple (broker/PE) | 3–5× ARR |
+| Due diligence period | 2–6 weeks |
+| Transition/handoff | 4–12 weeks |
+| Time to ROI (if no improvements) | 24–48 months |
+| Time to ROI (with optimization) | 12–24 months |
+Where to buy
+- Acquire.com — largest SaaS marketplace, wide range
+- MicroAcquire / Flippa — smaller deals, more noise
+- FE International — broker, higher quality, higher multiples
+- Quiet Light — broker, content/SaaS focus
+- Direct outreach — contact founders of stagnant products you admire
+Due diligence checklist for acquisitions
+| Category | What to verify | Red flag |
+|---|---|---|
+| Revenue | Stripe/payment processor direct access for 12+ months | Seller only shares screenshots or summaries |
+| Churn | Cohort-level retention, not just aggregate | Aggregate churn looks fine but recent cohorts are terrible |
+| Traffic | Google Analytics/Search Console direct access | Traffic heavily dependent on one keyword or one referrer |
+| Concentration | Revenue by customer — top 10% shouldn't be >40% | One customer is 25%+ of revenue |
+| Code quality | Deployment pipeline works, tests exist, no hardcoded secrets | Only the founder can deploy. No tests. Spaghetti. |
+| IP | Clean ownership, no employer claims, OSS license compliance | Built during employment, uses GPL in proprietary product |
+| Reason for sale | Founder burnout or new project (healthy). Declining revenue (risky). | "Growth opportunity" = declining and they want out |
+| Support load | Volume, response time, complexity of typical tickets | Founder spending 20+ hrs/week on support |
+Build vs. buy vs. hybrid decision
+flowchart TD START["Want to run a micro-SaaS"] --> SKILL{"Primary skill?"} SKILL -->|"Builder
+(dev, design)"| DOMAIN{"Have deep
+domain knowledge?"} SKILL -->|"Operator
+(marketing, sales, ops)"| BUY["🛒 Buy a product
+Focus on growth + ops"] SKILL -->|"Both"| HYBRID{"How much
+capital available?"} DOMAIN -->|Yes| BUILD["🔨 Build from scratch
+Your domain knowledge is the moat"] DOMAIN -->|No| EXTEND["🔌 Build a platform add-on
+Marketplace does distribution"] HYBRID -->|"< $20K"| BUILD2["🔨 Build — capital too low to buy"] HYBRID -->|"$20K–$100K"| EITHER{"Found a neglected
+product with clear
+improvement path?"} HYBRID -->|"> $100K"| BUY2["🛒 Buy — skip to S6+"] EITHER -->|Yes| BUY3["🛒 Buy + improve"] EITHER -->|No| BUILD3["🔨 Build — but timebox to 8 weeks"] style BUY fill:#dbeafe,stroke:#2563eb,color:#1e40af style BUY2 fill:#dbeafe,stroke:#2563eb,color:#1e40af style BUY3 fill:#dbeafe,stroke:#2563eb,color:#1e40af style BUILD fill:#dcfce7,stroke:#16a34a,color:#166534 style BUILD2 fill:#dcfce7,stroke:#16a34a,color:#166534 style BUILD3 fill:#dcfce7,stroke:#16a34a,color:#166534 style EXTEND fill:#fef3c7,stroke:#d97706,color:#92400e
+2. Legal, Tax & Entity Structure
+FATAL Entity formation
+Do not operate a SaaS business as a sole proprietor / individual. You need liability separation.
+US founders
+| Entity | When | Cost |
+|---|---|---|
+| Single-member LLC | Default choice. $0–$500 to form depending on state. | $50–$500 |
+| Wyoming / Delaware LLC | If you want state privacy or favorable LLC law (not always worth it if you live elsewhere — you may need to foreign-qualify). | $100–$300 |
+| S-Corp election | When net income exceeds ~$50–60K/year. Saves self-employment tax. Talk to a CPA first. | CPA: $500–$2K setup |
+| C-Corp | Only if you plan to raise VC or sell to a large acquirer. Overkill for lifestyle micro-SaaS. | $500–$2K+ |
+Non-US founders selling to US customers
+- Stripe Atlas — forms a US LLC/C-Corp + bank account. $500. Simplest path.
+- Lemon Squeezy / Paddle — act as merchant of record. You don't need a US entity. They handle tax compliance.
+- Local entity — form in your home country and sell cross-border. Works but tax complexity increases.
+FATAL Sales tax / VAT
+SaaS is taxable in most jurisdictions. If you ignore this, you accumulate tax liability that doesn't go away.
+The complexity
+- US — SaaS is taxable in ~20+ states. You have "nexus" (obligation to collect) based on economic thresholds (typically $100K in sales or 200 transactions in a state).
+- EU — VAT applies to all B2C digital services. You must charge VAT based on the customer's location, not yours. Rates range 17–27%.
+- UK — 20% VAT on digital services to UK consumers if you exceed £85K threshold.
+- Canada, Australia, etc. — similar digital services tax regimes.
+Solutions (in order of simplicity)
+| Approach | Complexity | Cost |
+|---|---|---|
+| Merchant of Record (Paddle, Lemon Squeezy) | They handle everything. You are their vendor, not the customer's. | 5–10% of revenue |
+| Stripe Tax | Stripe calculates and collects. You still file and remit. | 0.5% per transaction |
+| DIY + tax automation (TaxJar, Avalara) | Full control but full responsibility. | $50–$500/mo + filing |
+COSTLY Legal documents you actually need
+| Document | Why | DIY option | Pro option |
+|---|---|---|---|
+| Terms of Service | Limits your liability, defines acceptable use, protects you in disputes | Termly, Iubenda, or adapt a template | Lawyer review: $500–$2K |
+| Privacy Policy | Legally required if you collect any personal data (you do). GDPR/CCPA mandate it. | Termly, Iubenda auto-generate | Lawyer review: $500–$1.5K |
+| Cookie consent | Required in EU/UK. Technically required if you use analytics, Stripe, etc. | Cookie banner (Termly, CookieYes free tier) | Same tools |
+| DPA (Data Processing Agreement) | Required by GDPR if you process EU personal data. B2B customers will ask for it. | Template from GDPR.eu | Lawyer: $500–$1K |
+| IP assignment | If anyone else (contractor, co-founder) writes code, you need written IP assignment. | Template from Clerky | Lawyer: $300–$800 |
+Hidden tax costs that sneak up on you
+Estimated annual compliance costs by ARR level. These are real and recurring. Budget for them.
+3. Founder Psychology — The Human Failure Modes
+The signals report models the business as a rational state machine. But the operator of that machine is a human with cognitive biases, emotional cycles, and finite willpower. These are the failure modes that no amount of analytics will fix.
+FATAL The Trough of Sorrow
+Every micro-SaaS founder hits this. It's the period after launch excitement fades but before PMF arrives. It typically looks like:
+- Launch high — signups, attention, dopamine
+- Reality hits — most signups don't convert. Support tickets are painful. Growth flatlines.
+- The trough — 2–8 months of grinding with ambiguous signals. Not failing clearly enough to quit. Not succeeding enough to feel confident.
+- Wiggles of false hope — occasional good days that don't sustain
+- PMF or death — you either find it or you run out of motivation/money
+Survival strategies
+- Set a pre-commitment — "I will work on this for 12 months before evaluating whether to quit." Decide this before the trough.
+- Track leading indicators, not revenue — activation rate, retention curve shape, and qualitative customer feedback improve before revenue does.
+- Talk to other founders — the trough feels unique but it's universal. MicroConf, Indie Hackers, founder Slack groups.
+- Protect one non-work identity — exercise, hobby, relationship that is NOT your business.
+SUBTLE Cognitive biases that distort decisions
+| Bias | How it manifests | Corrective |
+|---|---|---|
+| Sunk cost | "I've spent 6 months on this feature, I can't abandon it." | Ask: "If I were starting today with this information, would I build this?" If no, stop. |
+| Confirmation bias | Remembering the 3 happy customers. Forgetting the 30 who churned silently. | Force yourself to read all churn reasons before any positive testimonials each week. |
+| Survivorship bias | "That Indie Hacker went from $0 to $50K MRR, so can I." | For every success story, 50 similar attempts failed. You don't read their post-mortems. |
+| Optimism bias | Estimating 8 weeks to build. Takes 20. Every time. | Take your estimate, multiply by 2.5. That's closer to reality. |
+| Shiny object | "New idea is way better than this one." (Every 3 months.) | Keep an idea parking lot. Don't evaluate new ideas until your current product hits CP-07 (PMF) or a clear stall signal. |
+| Anchoring | Pricing at $9/mo because competitors do, ignoring that your value justifies $29. | Price based on customer interviews about value, not competitor anchoring. |
+| Planning fallacy | "I'll launch in 4 weeks." You won't. | Reference class forecasting: look at how long similar projects actually took, not how long they "should" take. |
+COSTLY Decision fatigue & the willpower budget
+A solo founder makes every decision: product, marketing, pricing, support, infrastructure, legal, hiring. This is not a scalability problem — it's a cognitive budget problem. Decision quality degrades as the day goes on.
+High-leverage decisions (spend your best hours here)
+- What to build next (and what NOT to build)
+- Pricing changes
+- Channel strategy
+- Whether to pivot, persevere, or exit
+Decisions to eliminate or automate
+- Deploy/don't deploy → automate CI/CD, always deploy
+- Which support ticket first → FIFO queue, canned responses
+- What to post on social → batch 2 weeks of content in one session
+- Tech stack choices → pick once, stop researching alternatives
+- Design decisions → use a component library, stop customizing
+SUBTLE Motivation cycles
+Motivation is not constant. It's periodic. The worst decisions happen in troughs. The best strategy is to make irreversible decisions only during peaks and execute pre-committed plans during troughs.
+graph LR A["🔥 High motivation
+Make strategic decisions
+Set commitments"] --> B["📉 Declining motivation
+Execute plans
+Don't make new commitments"] B --> C["🕳️ Trough
+Follow the checklist
+Don't quit. Don't pivot."] C --> D["📈 Recovery
+Review what worked
+Reconnect with customers"] D --> A style A fill:#dcfce7,stroke:#16a34a,color:#166534 style B fill:#fef3c7,stroke:#d97706,color:#92400e style C fill:#fee2e2,stroke:#e11d48,color:#991b1b style D fill:#dbeafe,stroke:#2563eb,color:#1e40af
+COSTLY When to bring on a co-founder (vs. stay solo)
+Stay solo when
+- You can cover both build + distribute (even if imperfectly)
+- The product scope fits one person
+- You prioritize freedom and speed over scale
+- You've tried working with others before and it didn't fit
+- Revenue is lifestyle-scale ($5K–$30K MRR target)
+Find a co-founder when
+- You have a critical skill gap that's blocking a checkpoint (e.g., can't build, can't sell)
+- The market requires faster execution than one person can deliver
+- You're in the trough and isolation is the primary risk
+- The product needs domain expertise you don't have
+- You want accountability and someone to argue with
+4. Financial Modeling — The Spreadsheet You're Not Building
+COSTLY The "quit your job" calculation nobody does carefully
+The most consequential financial decision in micro-SaaS is when to go full-time. Most founders either jump too early (panic) or too late (opportunity cost). Here's the actual math:
+$$\text{Crossover point} = \text{MRR} \geq \frac{\text{monthly expenses} + \text{buffer}}{1 - \text{tax rate} - \text{reinvestment rate}}$$
+Most founders forget:
+- Health insurance — if you're in the US, this is $400–$800/month for an individual, $1,200–$2,500 for a family
+- Self-employment tax — 15.3% on top of income tax (US). Your $10K MRR is not $10K take-home.
+- Reinvestment — you need to keep spending on the business. Budget 10–20% of MRR.
+- Savings buffer — 6 months of expenses after quitting, because revenue might dip during transition
+- Retirement contributions — you're losing employer match (if applicable)
+Runway & crossover scenario analysis
+Effective take-home (after tax, reinvestment, insurance) vs. salary replacement threshold. The gap between gross MRR and effective take-home is larger than most founders expect.
+The financial model you actually need
+A simple spreadsheet with these rows, projected monthly for 24 months:
+| Line item | How to estimate |
+|---|---|
+| Beginning MRR | Previous month's ending MRR |
+| + New MRR | (Signups × conversion rate × ARPU). Conservative: use your worst month as baseline. |
+| + Expansion MRR | NRR > 100%? Model the delta. Otherwise 0. |
+| − Churned MRR | Beginning MRR × monthly churn rate. Use trailing 3-month average. |
+| − Contraction MRR | Downgrades. Estimate from historical data or 0 if too early. |
+| = Ending MRR | |
+| − Infrastructure | Hosting + APIs + services. Model as % of MRR (starts high, decreases). |
+| − SaaS tools | Analytics, support, email, monitoring. Typically $50–$300/mo. |
+| − Marketing spend | Paid channels. $0 if organic-only. |
+| − Contractor/hire costs | VA, support hire, freelance dev. $0 until needed. |
+| − Payment processing | 2.9% + $0.30 per transaction (Stripe) or 5–10% (MoR) |
+| − Tax provision | Set aside 30% of net profit (US) or your local equivalent. Don't touch it. |
+| = Net cash flow | This is what you actually have. |
+5. Customer Development — How to Actually Do It
+COSTLY The validation gap
+The signals report says "collect demand proof" and "talk to strangers." But how do you actually run those conversations without leading the witness? Most founders have never conducted a customer interview. Here's the methodology.
+The Mom Test — operational rules
+(From Rob Fitzpatrick's book — the single most important book for micro-SaaS founders)
+Rules
+- Talk about their life, not your idea. Bad: "Would you use a tool that does X?" Good: "How do you currently handle X?"
+- Ask about specifics in the past, not generics about the future. Bad: "Would you pay for this?" Good: "When was the last time this problem cost you money? How much?"
+- Talk less, listen more. You should be speaking <30% of the conversation.
+- Seek facts and commitments, not compliments. "That's a great idea!" = worthless. "Can I pay you to build this?" = signal.
+- Follow up on emotional cues. When they say "ugh, that's so annoying" — dig in. That's where the pain is.
+Question templates
+- "Walk me through the last time you dealt with [problem]."
+- "What did you try? What happened?"
+- "How much time/money did that cost you?"
+- "What would a perfect solution look like?"
+- "Have you looked for a tool to solve this? What did you find?"
+- "Why didn't [existing solution] work for you?"
+- "If I could build something that solved this, what would it need to do?"
+- "Would you be willing to try an early version and give feedback?" (commitment test)
+Running a concierge MVP
+A concierge MVP delivers the value manually before you automate it. This is the highest-fidelity validation possible.
+How it works
+- Sell the outcome, not the tool. "I'll generate your weekly analytics report" — not "I'm building an analytics tool."
+- Deliver manually. Use spreadsheets, email, and your own time to deliver the result.
+- Charge real money. Even $50/month. If they won't pay for the manual version, they won't pay for the automated version.
+- Track every step you do manually. This becomes your product spec.
+- Find the automation trigger: when you hate doing step X by hand, that's the first thing to build.
+Concierge → product transition signals
+| Signal | Meaning |
+|---|---|
+| You're doing the same 5 steps for every client | Ready to automate the core loop |
+| Clients ask for more than you can deliver manually | Product needs to exist — manual doesn't scale |
+| 3+ clients renew the manual service | Value is confirmed. Build with confidence. |
+| You're turning down clients because you're at capacity | Build urgency is now validated by demand |
+Finding people to talk to
+| Method | How | Expected response rate |
+|---|---|---|
+| Reddit / niche forums | Find threads where people complain about the problem. DM the most articulate complainers. | 10–20% |
+| LinkedIn outreach | Short, specific message. "I'm researching how [role] handles [problem]. 15-min call?" | 5–15% |
+| Twitter/X DMs | Respond to someone publicly discussing the problem, then DM. | 10–30% |
+| Existing communities | Slack groups, Discord servers, Facebook groups for the target audience. Ask, don't pitch. | 15–25% |
+| Respondent.io / UserTesting | Pay $50–$100/interview for pre-screened participants. | 100% (paid) |
+| Cold email | Only for B2B. Short, personal, specific ask. "I'm not selling anything — just research." | 3–8% |
+Target: 10–15 conversations before writing any code. 5 is the minimum to spot patterns.
+6. Portfolio Strategy — Beyond Product #1
+SUBTLE The single-product trap
+Most micro-SaaS advice focuses on one product. But the most successful micro-SaaS operators run portfolios of 2–5 products. This isn't because they got bored — it's because portfolios solve real structural problems:
+- Revenue diversification — if one product's platform changes policies or a competitor emerges, you're not wiped out
+- Skill leverage — your second product is 3× faster to build because you've already solved auth, billing, support, deployment
+- Motivation management — rotating between products prevents burnout from any single product's maintenance grind
+- Exit optionality — sell the one that's mature, keep the one that's growing
+When to start product #2
+flowchart TD START["Thinking about product #2"] --> PMF{"Product #1 passed
+CP-07 (PMF)?"} PMF -->|No| STOP["🛑 STOP. Focus on #1.
+Starting #2 before PMF
+is the #1 portfolio mistake."] PMF -->|Yes| GROW{"Product #1 passed
+CP-08 (growth loop)?"} GROW -->|No| WAIT["Probably too early.
+Unless #1 is at natural ceiling."] GROW -->|Yes| TIME{"Do you have 10+
+hrs/week free?"} TIME -->|No| SYSTEMATIZE["Systematize #1 first.
+Hire, automate, delegate."] TIME -->|Yes| INFRA{"Can #2 share
+#1's infrastructure?"} INFRA -->|Yes| GO["✅ Start #2.
+Reuse auth, billing, deployment."] INFRA -->|No| GO2["✅ Start #2.
+But budget for separate ops overhead."] style STOP fill:#fee2e2,stroke:#e11d48,color:#991b1b style WAIT fill:#fef3c7,stroke:#d97706,color:#92400e style SYSTEMATIZE fill:#fef3c7,stroke:#d97706,color:#92400e style GO fill:#dcfce7,stroke:#16a34a,color:#166534 style GO2 fill:#dcfce7,stroke:#16a34a,color:#166534
+Portfolio architecture patterns
+| Pattern | Description | Example | Synergy |
+|---|---|---|---|
+| Same audience, different problems | Multiple tools for one niche | 3 different tools for e-commerce sellers | 🟢 High — cross-sell, shared marketing, one community |
+| Same platform, different niches | Multiple Shopify/WordPress apps | 5 Shopify apps in different categories | 🟡 Medium — shared tech, different marketing |
+| Complementary products | Products that work together | Form builder + email tool + analytics | 🟢 High — bundle pricing, data moat |
+| Unrelated diversification | Different audiences, different problems | Dev tool + real estate tool | 🔴 Low — only shared founder skills |
+Shared infrastructure payoff
+Build time decreases sharply for products 2–5 when you share auth, billing, deployment, and support infrastructure.
+7. AI-Native Micro-SaaS Archetypes
+COSTLY "AI wrapper" is not an archetype — it's a slur
+The previous report listed "AI Wrapper" as a pattern with high risk. That's too vague. The real question is: what are the specific AI-native business shapes that didn't exist before 2024? Some of these are highly defensible. Others are doomed. The difference is structural, not about whether you use AI.
+Archetype: Vertical RAG
+What: Retrieval-augmented generation over a domain-specific corpus that would take an individual months to assemble.
+- Moat: The curated dataset. Not the model. Not the UI.
+- Examples: Legal case research, medical literature Q&A, building code lookup, grant opportunity finder
+- Defensibility: 🟢 High if you own/curate the data. 🔴 Low if you're just RAG over public data.
+- COGS risk: Medium — cache common queries aggressively, use smaller models for classification/routing
+- Pricing: $49–$199/mo. Customers pay for the data access, not the AI.
+Archetype: AI Agent Tooling
+What: Infrastructure and tools that make AI agents work better for a specific domain.
+- Moat: Integration depth + reliability track record. Agents need tools they can depend on.
+- Examples: Eval frameworks for specific verticals, agent monitoring/observability, prompt management for teams, domain-specific function-calling APIs
+- Defensibility: 🟡 Medium — fast-moving space, but early mover advantage in trust
+- COGS risk: Low — you're selling the tooling, not the compute
+- Pricing: Usage-based. $0.001–$0.10/call + base tier.
+Archetype: Human-in-the-Loop Automation
+What: AI handles 80% of a workflow automatically; humans review/approve the 20% that needs judgment.
+- Moat: The workflow design + the feedback loop that improves the 80% over time.
+- Examples: AI-drafted email responses (human approves), auto-categorized bookkeeping (accountant reviews exceptions), content moderation (AI flags, human decides)
+- Defensibility: 🟢 High — the workflow integration and accumulated corrections create switching costs
+- COGS risk: Medium — but scales sub-linearly (better model = fewer human reviews = lower cost)
+- Pricing: $29–$149/mo per seat. Value prop is time savings, not AI per se.
+Archetype: Fine-Tuned Vertical Model
+What: A small model fine-tuned on domain-specific data that outperforms general models for a narrow task.
+- Moat: The training data + domain-specific evaluation methodology.
+- Examples: Code review for specific frameworks, medical image annotation, financial document extraction, real estate valuation
+- Defensibility: 🟢 High — training data is the moat, and it improves with usage
+- COGS risk: Low — small models are cheap to run. Often self-hostable.
+- Pricing: API: usage-based. SaaS: $49–$299/mo. Higher WTP because accuracy matters.
+Archetype: AI Content Pipeline
+What: End-to-end content creation workflow for a specific format/vertical.
+- Moat: 🔴 Low. This is the "AI wrapper" that deserves the name. ChatGPT does 90% of this.
+- Examples: Blog post generators, social media content tools, product description writers
+- Defensibility: 🔴 Low — the next foundation model update makes your prompt engineering obsolete
+- COGS risk: High — margins compress as users realize they can use ChatGPT directly
+- Pricing: $9–$29/mo. Race to the bottom.
+- Honest assessment: Don't build this unless you have a unique distribution advantage (e.g., embedded in a platform 100K people already use).
+Archetype: Structured Output Service
+What: LLMs that produce reliable structured data (JSON, database rows, form fills) from unstructured input.
+- Moat: Schema design + validation pipeline + error handling that makes it production-reliable.
+- Examples: Resume parsing, invoice extraction, contract clause identification, meeting notes → action items
+- Defensibility: 🟡 Medium — reliability is hard. 95% accuracy is easy; 99.5% is a moat.
+- COGS risk: Low-medium — can use cheaper models for structured extraction
+- Pricing: Per-document or per-extraction. $0.10–$2.00/unit + base tier.
+AI archetype defensibility vs. COGS risk
+FATAL The COGS trap
+Traditional SaaS has ~85% gross margin because serving an additional user costs almost nothing. AI-powered SaaS has variable COGS that scale with usage. If you don't manage this, you can grow your way into bankruptcy.
+COGS management strategies
+| Strategy | Impact | Effort |
+|---|---|---|
+| Aggressive caching — cache LLM responses for repeated/similar queries | 50–80% cost reduction for many use cases | Low |
+| Model routing — use cheap models for easy tasks, expensive models only when needed | 30–60% cost reduction | Medium |
+| Usage-based pricing — pass compute costs through to customers | Protects margins at any scale | Low |
+| Batch processing — aggregate requests and process in bulk during off-peak | 20–40% cost reduction | Medium |
+| Fine-tuned small models — replace expensive API calls with cheap local inference | 80–95% cost reduction per call | High (training data needed) |
+| Pre-computation — generate outputs ahead of time for predictable queries | Variable — depends on predictability | Medium |
+8. Hidden Time Costs — Where Your Hours Actually Go
+SUBTLE The invisible 40%
+Every micro-SaaS guide shows a nice weekly schedule: build, market, support. What they don't show is the ~40% of your time that goes to things that feel like work but produce no forward motion.
+Actual time allocation (honest version)
+The hidden time costs registry
+| Hidden cost | Hours/month | Why it's invisible | How to reduce it |
+|---|---|---|---|
+| Context switching | 8–15 | Doesn't show up as a task. It's the transition cost between tasks. | Theme days (Mon=build, Tue=market, etc.) or at least AM/PM splits |
+| Tool/stack research | 5–10 | Feels productive — "I'm evaluating options!" You're procrastinating. | Pick tools once. Set a 2-hour timebox for any tool decision. |
+| Dependency updates & breakage | 3–8 | Random. Unpredictable. Always at the worst time. | Lock versions. Update quarterly, not continuously. Use boring tech. |
+| Email/notifications triage | 5–10 | Feels like "being responsive." It's interrupt-driven attention destruction. | Check 2× daily. Turn off all real-time notifications except downtime alerts. |
+| Billing/payment issues | 2–5 | Card declines, refund requests, disputed charges, tax questions. | Dunning automation (Stripe's built-in). Clear refund policy in ToS. |
+| Scope creep conversations | 3–8 | "Can you just add…" conversations that don't lead to revenue. | Default "no." Feature request form instead of live conversations. |
+| Comparing yourself to others | 2–5 | Reading Indie Hackers revenue reports, Twitter success threads. | Block these during work hours. Seriously. Comparison kills momentum. |
+| Perfectionism on non-critical things | 5–15 | "Let me just tweak this landing page one more time." | 80/20 rule. Ship it. Measure. Improve only what data says matters. |
+Total hidden cost: 33–76 hours/month. That's 8–19 hours per week of a 40-hour week that produces nothing. Cutting this in half is worth more than any feature you'll build.
+9. Failure Taxonomy — How Micro-SaaS Businesses Actually Die
+Post-mortems are more useful than success stories. Here are the actual failure modes, ranked by frequency:
+Failure mode distribution
+| Failure mode | Frequency | Stage it kills you | What it looks like | How to detect early |
+|---|---|---|---|---|
+| Built something nobody wanted | ~35% | S3–S4 | Signups but no conversions. Interest but no payment. | CP-02 (demand proof) not passed. Skip it at your peril. |
+| Founder quit / burned out | ~25% | S5 (trough of sorrow) | Revenue growing slowly. Founder loses motivation. Product stagnates. Churn catches up. | Motivation cycle awareness. Pre-commitment. Founder support network. |
+| Couldn't find distribution | ~15% | S5–S6 | Good product but nobody knows it exists. Founder can't find a repeatable growth channel. | CP-08 (growth loop) stall. No organic signups after 6+ months. |
+| Ran out of money | ~10% | S3–S5 | Quit job too early. Savings ran out before PMF. | Financial model. Crossover calculation. 6-month buffer. |
+| Platform killed them | ~8% | Any | API deprecated, marketplace policy change, competing feature launched. | Platform dependency >50% of revenue. Diversify before this happens. |
+| Co-founder conflict | ~5% | Any | Disagreement on direction, effort, equity. Messy split. Product dies. | Vesting agreements from day 1. Written operating agreement. Regular alignment check-ins. |
+| Legal/tax surprise | ~2% | S6+ | Tax liability they didn't know existed. Lawsuit. Compliance violation. | Section 2 of this report. Entity formation from day 1. Tax provision from first dollar. |
+10. The Things Nobody Says Out Loud
+These are the uncomfortable truths that don't make it into playbooks because they're hard to productize and easy to ignore.
+About the market
+- Most niches are smaller than you think. "Project management for veterinarians" sounds specific — but there might be only 30K vet clinics in the US, 10% tech-forward, 5% willing to try a new tool. That's 150 potential customers. Is that enough?
+- Your competitors are not who you think. Your real competitor is usually a spreadsheet, a free tool, or "just not doing it." Not the other SaaS product.
+- B2B > B2C for solo founders, almost always. B2B customers have budgets, less price sensitivity, and solve real business problems. B2C customers expect things to be free, have high support expectations, and churn at 2× the rate.
+- "$0 to $10K MRR" content is survivorship-biased garbage. The person sharing their journey is sharing because they succeeded. The 50 people who tried the same thing and failed published nothing.
+About yourself
+- Your first idea is probably wrong. The first version of almost every successful micro-SaaS pivoted at least once. Don't fall in love with the idea. Fall in love with the problem.
+- You will underestimate support load. Every. Single. Time. Budget 2× what you think you'll need.
+- Shipping is not the hard part. Shipping the MVP is the easy part. The hard part is the 18 months of grinding afterward.
+- You'll want to quit around month 4. This is normal. It's not a signal. It's the trough. See Section 3.
+- Building in public has costs. It attracts copycats, creates performance pressure, and can be a distraction from actual work. It's a marketing channel, not a lifestyle philosophy. Use it deliberately.
+- "Passive income" is a lie at micro-SaaS scale. Until you've passed CP-10 (founder decoupled), there is nothing passive about it. Stop reading people who claim otherwise — they're selling courses, not running products.

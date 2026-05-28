@@ -1,0 +1,67 @@
+index anything.
+search it with ai.
+The index and search layer for AI agents. Point Nia at any source — code, docs, PDFs, datasets, the web — and give every agent one API to retrieve, traverse, and cite. Scalable, 5x cheaper, reliable.
+Benchmark
+Retrieval is the hardest part of agent reliability. We tested ourselves on the worst case — bleeding-edge APIs LLMs have never seen — and beat every alternative. Same engine works on any source.
+For AI agents to be truly autonomous, they need reliable access to ground truth.
+Read the full research →What People Say
+Built with Nia API
+See what developers are building with Nia's search and indexing API
+Cursor Forum Search
+Find answers from feature discussions, troubleshooting threads, and community knowledge from Cursor's forum.
+HuggingFace Datasets
+Visualize, index, and search any HuggingFace dataset — from anime quotes to scientific papers.
+Paul Graham Essays
+Ask questions about startups, writing, technology, and life — grounded in 120+ essays.
+Simon Willison's Weblog
+4,500+ blog posts on Datasette, SQLite, LLMs, and the modern web — indexed and searchable in seconds instead of reading them all.
+Developers have also built code review agents that fetch up-to-date documentation on demand, law research agents that index legal PDFs from Florida, California, and other states, and many more specialized applications.
+Pricing
+Start free and scale as you grow. Nia adapts to your needs, from solo developers to enterprise teams.
+Free
+Perfect for exploring Nia's capabilities
+Get Started Free- ✓3 lifetime indexes
+- ✓50 queries per month
+- ✓20 web searches per month
+- ✓5 contexts
+Builder
+PopularFor professional developers
+Get startedEverything in Free +
+- ✓50 indexing per month
+- ✓5 concurrent indexes
+- ✓1000 queries per month
+- ✓30 deep research per month
+- ✓200 web searches per month
+- ✓100 contexts
+- ✓30 Oracle per month
+- ✓30 Tracer per month (3 concurrent)
+Team
+For growing teams
+Get startedEverything in Builder +
+- ✓500 indexing per month
+- ✓50 concurrent indexes
+- ✓5,000 queries per month
+- ✓200 deep research per month
+- ✓1,000 web searches per month
+- ✓1,000 contexts
+- ✓200 Oracle per month
+- ✓200 Tracer per month (10 concurrent)
+Business
+For scaling organizations
+Get started- ✓Unlimited indexing
+- ✓Unlimited concurrent indexes
+- ✓Unlimited queries
+- ✓Unlimited deep research
+- ✓Unlimited web searches
+- ✓Unlimited contexts
+- ✓Unlimited Oracle
+- ✓Unlimited Tracer (50 concurrent)
+- ✓Dedicated support
+Enterprise
+For large organizations
+- ✓Everything unlimited
+- ✓Unlimited Tracer (100 concurrent)
+- ✓SOC 2 compliance
+- ✓SLA
+- ✓Dedicated onboarding/support
+- ✓Self-hosted deployment available

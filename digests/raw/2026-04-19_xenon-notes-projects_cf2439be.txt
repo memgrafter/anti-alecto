@@ -1,0 +1,53 @@
+Xenon Notes
+Impact Summary
+Building an AI-powered notetaking application for Apple platforms using Swift and RealityKit, exploring the intersection of spatial computing and intelligent note management.
+Role
+Creator & Maintainer
+Timeline
+2025–Present
+Scale
+- Apple ecosystem
+- AI-enhanced
+- Spatial computing
+Links
+Problem
+Traditional notetaking apps lack intelligent features that could help users:
+- Organize information automatically: Users spend time manually categorizing and tagging notes.
+- Surface relevant context: Finding related notes requires manual search and memory.
+- Leverage spatial interfaces: Existing apps don’t take advantage of new spatial computing capabilities.
+Approach
+Xenon Notes is an AI-powered notetaking app built natively for Apple platforms, designed to make note management more intelligent and intuitive.
+Key Features
+-
+AI-powered organization Leverages on-device machine learning to automatically categorize and tag notes based on content.
+-
+Native Apple experience Built with SwiftUI for a responsive, native interface that follows Apple’s Human Interface Guidelines.
+-
+RealityKit integration Explores spatial computing capabilities for immersive note visualization and interaction.
+-
+Privacy-first design AI processing happens on-device using Core ML, keeping user data private.
+Technical Highlights
+- 100% Swift: Native performance and tight platform integration.
+- SwiftUI architecture: Declarative UI with reactive data flow.
+- RealityKit content: Spatial computing features for visionOS compatibility.
+- Comprehensive testing: XCTest suite for reliability.
+Outcomes
+- Exploring the intersection of AI and spatial computing for productivity applications.
+- Learning and applying the latest Apple platform technologies including visionOS and RealityKit.
+- Building a foundation for AI-enhanced productivity tools on Apple platforms.
+Key Contributions
+- Designed and implemented a native Swift application with AI capabilities.
+- Integrated RealityKit for spatial computing features.
+- Built a privacy-first architecture using on-device ML processing.
+- Created a modern SwiftUI-based interface following Apple design guidelines.
+This write-up was co-authored with AI, based on the author's working sessions and notes.
+Explore the source
+fakoli/xenon-notes
+Star it, fork it, or open an issue — contributions and feedback welcome.
+Related Projects
+AWS Security Group Mapper: Visual Analysis Tool for Cloud Security
+A Python tool for visualizing AWS security group relationships and generating interactive graphs to help understand complex security architectures.
+Fighters Paradise: Modern Game Engine Reimplementation in Rust
+A modern Rust reimplementation of the MUGEN 2D fighting game engine with full backward compatibility for existing community content.
+Agent-Eval: CI Evaluation Harness for Multi-Agent Development
+Behavioral regression testing framework for detecting drift in AI agent instruction files across multi-agent development environments.

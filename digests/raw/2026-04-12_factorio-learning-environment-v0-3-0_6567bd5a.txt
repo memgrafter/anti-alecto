@@ -1,0 +1,257 @@
+Claude builds factories in lab-play
+# 1. Install FLE with uv
+uv add factorio-learning-environment
+# 2. Start a Factorio server cluster
+fle cluster start
+# 3. Run an evaluation (with API keys in .env)
+fle eval --config configs/gym_run_config.json
+The 0.3.0 release of the Factorio Learning Environment (FLE) marks a major step forward in our effort to test agents in long-term planning, reasoning and world modelling.
+Since the original FLE paper, where we demonstrated that frontier models struggle with adapting to changing environments, long-term goal setting, and dynamic recovery; and the 0.2.0 release, which introduced multi-agency, backtracking agents, and vision, we have worked hard over summer to bring v0.3.0, with numerous improvements.
+We bridged Claude Code into Factorio via FLE and are livestreaming it on Twitch to showcase the capabilities of frontier agents in long-horizon interactive environments.
+FLE no longer depends on the Factorio game client, enabling massively scalable experimentation. Our new headless game renderer provides realistic pixel observations to facilitate multimodal agent research.
+We standardized the FLE evaluation environment to conform to the OpenAI gym interface, simplifying integration into existing research codebases for multi-turn interactive agent research. Examples from the observation and action spaces are shown below.
+The FLE CLI makes running experiments as simple as 1-line shell commands. We also open source our evaluation code with features like Weights and Biases logging, sweep resuming, and analysis tools.
+Illustrative example of an agent building an automatic iron gear wheel factory. The agent iteratively debugs and refines its factory design through programmatic interaction with the game environment.
+The agent spawns into the lab-play world with an inventory of items and an objective to build an iron gear wheel factory.
+# Step 1: Find water and set up power generation
+water_pos = nearest(Resource.Water)
+print(f"Found water at {water_pos}")
+# Move to water and place offshore pump
+move_to(water_pos)
+offshore_pump = place_entity(Prototype.OffshorePump, position=water_pos)
+print(f"Placed offshore pump at {offshore_pump.position}")
+# Find buildable area for boiler (away from water)
+boiler_box = BuildingBox(width=Prototype.Boiler.WIDTH + 4, height=Prototype.Boiler.HEIGHT + 4)
+boiler_coords = nearest_buildable(Prototype.Boiler, boiler_box, offshore_pump.position)
+move_to(boiler_coords.center)
+boiler = place_entity(Prototype.Boiler, position=boiler_coords.center, direction=Direction.LEFT)
+print(f"Placed boiler at {boiler.position}")
+# Add coal to boiler
+boiler = insert_item(Prototype.Coal, boiler, quantity=20)
+# Find buildable area for steam engine
+engine_box = BuildingBox(width=Prototype.SteamEngine.WIDTH + 4, height=Prototype.SteamEngine.HEIGHT + 4)
+engine_coords = nearest_buildable(Prototype.SteamEngine, engine_box, boiler.position)
+move_to(engine_coords.center)
+steam_engine = place_entity(Prototype.SteamEngine, position=engine_coords.center, direction=Direction.LEFT)
+print(f"Placed steam engine at {steam_engine.position}")
+# Connect water flow
+water_pipes = connect_entities(offshore_pump, boiler, Prototype.Pipe)
+print(f"Connected offshore pump to boiler with pipes")
+steam_pipes = connect_entities(boiler, steam_engine, Prototype.Pipe)
+print(f"Connected boiler to steam engine with pipes")
+# Wait and verify power generation
+sleep(5)
+steam_engine = get_entity(Prototype.SteamEngine, steam_engine.position)
+assert steam_engine.energy > 0, "Steam engine not generating power"
+print(f"Power generation verified! Steam engine producing {steam_engine.energy} energy")
+The agent sets up electric mining drills on an iron ore patch and connects them to electric furnaces for automated iron plate production.
+# Find iron ore and setup mining
+iron_pos = nearest(Resource.IronOre)
+print(f"Found iron ore at {iron_pos}")
+steam_engine = get_entity(Prototype.SteamEngine, Position(x=2.5, y=8.5))
+# Create mining area - need 2 electric mining drills for enough iron throughput
+# Iron gear wheels need 2 iron plates each, and we need 16 per minute
+# So we need 32 iron plates per minute
+# Electric mining drill mines 30 ore per 60 seconds, so 2 drills = 60 ore/min
+drill_area_box = BuildingBox(
+width=2 * Prototype.ElectricMiningDrill.WIDTH + 2,
+height=Prototype.ElectricMiningDrill.HEIGHT + Prototype.ElectricFurnace.HEIGHT + 4
+)
+drill_coords = nearest_buildable(Prototype.ElectricMiningDrill, drill_area_box, iron_pos)
+print(f"Found buildable area for drills at {drill_coords.center}")
+move_to(drill_coords.left_top)
+# Place 2 electric mining drills
+drills = []
+for i in range(2):
+drill_pos = Position(x=drill_coords.left_top.x + Prototype.ElectricMiningDrill.WIDTH * i, y=drill_coords.left_top.y)
+drill = place_entity(Prototype.ElectricMiningDrill, position=drill_pos, direction=Direction.DOWN)
+drills.append(drill)
+# Place furnace below each drill
+furnace = place_entity_next_to(Prototype.ElectricFurnace, drill.position, direction=Direction.DOWN)
+# Connect to power
+connect_entities(steam_engine, drill, Prototype.MediumElectricPole)
+connect_entities(steam_engine, furnace, Prototype.MediumElectricPole)
+The agent places an assembler to create iron gear wheels in the vicinity of the mining setup and hooks it up to power while the mining operation collects iron plates in chests.
+# Need to place assembling machines away from the mining area
+# Iron gear wheels need 2 iron plates each, and we need 16 per minute
+# Assembling machine 2 crafts 90 iron gear wheels per 60 seconds, so 1 machine is enough
+# Find a position away from the mining setup (at least 20 tiles away)
+assembly_position = Position(x=15.5, y=90.0) # 20+ tiles south of furnaces
+# Define building area for assembler with space for inserters
+assembly_box = BuildingBox(
+width=Prototype.AssemblingMachine2.WIDTH + 2 * Prototype.Inserter.WIDTH + 4,
+height=Prototype.AssemblingMachine2.HEIGHT + 4
+)
+assembly_coords = nearest_buildable(Prototype.AssemblingMachine2, assembly_box, assembly_position)
+# Place assembling machine
+move_to(assembly_coords.center)
+assembler = place_entity(Prototype.AssemblingMachine2, position=assembly_coords.center, direction=Direction.DOWN)
+print(f"Placed assembling machine at {assembler.position}")
+# Set recipe to iron gear wheels
+assembler = set_entity_recipe(assembler, Prototype.IronGearWheel)
+print(f"Set recipe to iron gear wheels")
+# Connect assembler to power
+steam_engine = get_entity(Prototype.SteamEngine, Position(x=2.5, y=8.5))
+poles = connect_entities(steam_engine, assembler, Prototype.MediumElectricPole)
+print(f"Connected assembler to power network")
+# Place input inserter on the right side
+input_inserter = place_entity_next_to(Prototype.Inserter, assembler.position, direction=Direction.RIGHT, spacing=0)
+input_inserter = rotate_entity(input_inserter, Direction.LEFT)
+print(f"Placed input inserter at {input_inserter.position}")
+# Place output inserter on the left side
+output_inserter = place_entity_next_to(Prototype.Inserter, assembler.position, direction=Direction.LEFT, spacing=0)
+print(f"Placed output inserter at {output_inserter.position}")
+# Connect inserters to power
+poles = connect_entities(steam_engine, input_inserter, Prototype.MediumElectricPole)
+poles = connect_entities(steam_engine, output_inserter, Prototype.MediumElectricPole)
+print(f"Connected inserters to power")
+After trying to directly connect the mining output inserters to the assembler, the agent realizes that the chests are blocking the belts and removes them. This program below again produces an error because the agent did not also remove the chest being used as an input buffer at the assembler.
+# Let me remove the iron plate storage chests and connect belts directly from furnace inserters
+# First, pickup the chests that are blocking
+chest1 = get_entity(Prototype.WoodenChest, Position(x=15.5, y=76.5))
+chest2 = get_entity(Prototype.WoodenChest, Position(x=18.5, y=76.5))
+# Extract iron plates from chests before removing them
+move_to(chest1.position)
+extracted1 = extract_item(Prototype.IronPlate, chest1, quantity=351)
+print(f"Extracted {extracted1} iron plates from chest 1")
+move_to(chest2.position)
+extracted2 = extract_item(Prototype.IronPlate, chest2, quantity=351)
+print(f"Extracted {extracted2} iron plates from chest 2")
+# Pickup the chests
+pickup_entity(chest1)
+print(f"Removed chest at {chest1.position}")
+pickup_entity(chest2)
+print(f"Removed chest at {chest2.position}")
+# Now connect the furnace output inserters to the assembler input inserter with belts
+output_inserter1 = get_entity(Prototype.Inserter, Position(x=15.5, y=75.5))
+output_inserter2 = get_entity(Prototype.Inserter, Position(x=18.5, y=75.5))
+assembler_input_inserter = get_entity(Prototype.Inserter, Position(x=22.5, y=93.5))
+# Connect first inserter to assembler input
+belts1 = connect_entities(
+output_inserter1,
+assembler_input_inserter,
+Prototype.TransportBelt
+)
+print(f"Connected first furnace output to assembler input: {belts1}")
+# Connect second inserter to main belt
+belts2 = connect_entities(
+output_inserter2,
+belts1,
+Prototype.TransportBelt
+)
+print(f"Connected second furnace output to belt line: {belts2}")
+The agent removes the problematic input buffer chest and connects the transport belt-based logistics network from miner to assembler, resulting in an automated iron gear wheel system which achieves the target throughput.
+# The assembler input chest is also blocking. Let me remove it too and rethink the setup
+# I need to place belts first, then the input chest on the belt line
+# Remove the assembler input chest
+assembler_input_chest = get_entity(Prototype.WoodenChest, Position(x=23.5, y=93.5))
+move_to(assembler_input_chest.position)
+pickup_entity(assembler_input_chest)
+print(f"Removed input chest at {assembler_input_chest.position}")
+# Now connect the furnace output inserters to the assembler input inserter with belts
+output_inserter1 = get_entity(Prototype.Inserter, Position(x=15.5, y=75.5))
+output_inserter2 = get_entity(Prototype.Inserter, Position(x=18.5, y=75.5))
+assembler_input_inserter = get_entity(Prototype.Inserter, Position(x=22.5, y=93.5))
+print(f"Connecting from inserter 1 at {output_inserter1.position} to assembler input at {assembler_input_inserter.position}")
+# Connect first inserter to assembler input
+belts1 = connect_entities(
+output_inserter1,
+assembler_input_inserter,
+Prototype.TransportBelt
+)
+print(f"Connected first furnace output to assembler input: {belts1}")
+# Connect second inserter to main belt
+belts2 = connect_entities(
+output_inserter2,
+belts1,
+Prototype.TransportBelt
+)
+print(f"Connected second furnace output to belt line: {belts2}")
+# Refuel boiler
+boiler = get_entity(Prototype.Boiler, Position(x=-4.0, y=3.5))
+move_to(boiler.position)
+boiler = insert_item(Prototype.Coal, boiler, quantity=30)
+print(f"Refueled boiler")
+print("Belt connections complete - waiting for iron flow")
+At each step, agents receive a structured Observation
+object containing comprehensive information about the game state and with fields as described below:
+| Field | Description |
+|---|---|
+raw_text |
+Standard output and error messages from the last action program execution, annotated with source code line numbers |
+entities |
+List of all entities in the game world with their properties (position, type, orientation, inventory contents, warnings, etc.) |
+inventory |
+The agent's personal inventory with item types and quantities |
+research |
+Technology tree state with researched technologies, current research progress, and available technologies with prerequisites and costs |
+game_info |
+Game timing information (tick count, elapsed time, game speed) |
+flows |
+Production statistics tracking input/output rates, crafted items, harvested resources, and optional price lists for economic evaluation |
+messages |
+Inter-agent communication messages for multi-agent coordination scenarios |
+task_info |
+Task metadata including goal description, instructions, task identifier, and maximum trajectory length |
+task_verification |
+Task-specific verification results indicating success/failure and metadata about progress toward objectives |
+serialized_functions |
+Previously defined helper functions and abstractions stored in the agent's namespace for reuse across episodes |
+map_image |
+Base64-encoded PNG rendering of the factory layout for visual agents (optional) |
+This rich observation space enables agents to maintain spatial awareness, track production metrics, debug errors, and plan multi-step automation strategies. The combination of structured data and human-readable text provides both programmatic access and interpretability. Agent implementations can utilize and format these fields as needed. The agent harness used for evaluation concatenates these fields into a formatted markdown string.
+Lab-play is a highly constrained environment, where agents are given a fixed set of resources and a single target entity to maximize production throughput. This simple setting has only a tiny fraction of the complexity of open-play, where agents spawn in a procedurally generated map and must achieve a complex goal given no starting inventory and sparser resources. Agents write Python using the FLE API to interact with the game, and observe the standard outputs and error messages from their execution.
+We replicate the methodology from the original FLE paper for the lab-play setting to evaluate the strongest models as of September 2025.
+The standardized agent harness is minimal: it continuously appends environment interactions to a single conversational history, and when the token budget is nearing exhaustion, it invokes the agent to summarize the older history so it can continue reasoning while remaining aware of past interactions.
+We do not evaluate agents with backtracking and/or reflection logic as we did in FLE 0.2.0, and instead we encourage the community to experiment with more advanced agent designs.
+- Objective: to achieve production throughput targets of 16 per minute for solid items and 250 per minute for fluids.
+- Prompt: documentation of the FLE API, Factorio recipes, and a guide describing common patterns.
+- Inventory: a set of useful items for building functional factories.
+- Max Steps: 64 steps with early stopping upon completion.
+- Reasoning: default settings (
+{"enabled": true}
+) for models that support reasoning.
+Open source models have caught up to the SoTA performance observed in v0.2.0 (May 2025), with successes in electronic circuits, steel plate, sulfur and plastic automation. This is consistent with trends showing that the time for open source models to reach parity with closed source results is diminishing.
+The latest generation of frontier models continues to advance the state of the art in FLE with substantial improvement compared to FLE v0.2.0 For the first time, models are able to achieve successes in the harder half of tasks which can utilize over a dozen ingredient dependencies.
+FLE lab-play clearly differentiates between the capabilities of the frontier models. Notably, the rank and performance gaps between the most advanced models (Claude > GPT > Gemini > Grok) is most similar to GDPVal, a novel benchmark recently released to measure progress in automating economically valuable tasks. This is in contrast to many other static exam-like benchmarks including Humanity's Last Exam, AIME 25, GPQA and MMMU where weaker models in FLE achieve higher performance.
+While successful agents achieve their throughput goals, many rely on semi-manual strategies rather than building robust automation for more complex tasks. This manifests in agents shuttling resources manually and using storage chests as resource buffers, instead of constructing fully automated logistics chains. Although this does achieve progress toward the target, it creates a local optimum where agents shortcut the more difficult but necessary step of full automation. Throughput is challenging to measure consistently due to these buffering effects. Agents can store items in intermediate buffers (like chests or belts) which temporarily satisfy throughput checks without true sustained production. We mitigate this by enforcing a holdout period during eval, in which an agent must leave their factory alone for 60 seconds before we test whether quotas are met. Higher throughput targets would make it infeasible to pass with manual logistics, forcing agents to build proper automation.
+Although the FLE harness provides a Python namespace for defining helper functions and abstractions, agents rarely leverage this capability. Instead, they rely on primitive, out-of-the-box tools, which limits their ability to scale solutions to more complex tasks. We expect stronger coding models to define their own abstractions commonly in future. Currently, only Gemini 2.5 Pro takes this approach. Agents also struggle to maintain consistent mental models of the factory layout. Misplacement of entities often cascades into larger failures, since the agent is unable to recover efficiently or reorganize the environment once errors occur (see below).
+Above: Mean error rate across all trajectories for each model at each step number, revealing how error rates evolve throughout the 64-step trajectories.
+Grok 4 often falls into degenerate debug loops, whereas GPT-5 recovers gracefully.
+The pattern suggests that error accumulation and recovery remain challenging across models, with most exhibiting elevated error rates in the middle portions of trajectories when factory complexity increases.
+Common failure patterns can be grouped by type:
+- Syntactic Errors: Invalid Python code, syntax mistakes, or other execution errors that prevent actions from running at all. These errors are significant failures as the agents did not follow the high-level instructions which are expected of coding agents.
+- Semantic Errors: Misuse of FLE commands or tool arguments (e.g., incorrect parameters, misunderstanding documentation), leading to errors in the execution of the action program. These errors imply difficulty in correctly using the API specification given in the system prompt, and are most commonly expressed through exceptions such as TypeError, AttributeError, NameError, etc.
+- Pragmatic Errors: Incorrect reasoning about the current game state, such as attempting to insert items that are not present in the inventory. These errors are the most common category of failures as the game state is dynamic and challenging to model implicitly.
+- Planning and Control Errors: Even when primitives are known, agents fail to chain actions coherently, resulting in inefficient or incomplete trajectories. Note: This category cannot be reliably quantified through automated trajectory analysis, as it requires evaluating higher-level strategic coherence rather than individual error types.
+Above: Relative error frequencies across all evaluation tasks for proprietary frontier models.
+Mean Error Rates: Claude Opus 4.1: 22.99% | GPT-5: 25.05% | Gemini 2.5 Pro: 27.29% | Grok 4: 40.89%
+Mean Error Rates: Claude Opus 4.1: 22.99% | GPT-5: 25.05% | Gemini 2.5 Pro: 27.29% | Grok 4: 40.89%
+The distribution of errors reveals notable model-specific patterns. Claude Opus 4.1 stands out with zero syntactic errors and almost entirely pragmatic errors (97.7%), indicating strong code generation but difficulties maintaining accurate mental models of game state. All other models - Gemini 2.5 Pro, Grok 4, and GPT-5 - exhibit API misunderstandings at noticeable rates (12-17%), suggesting challenges with correctly using the FLE API documentation. Additionally, GPT-5 and Grok 4 show surprisingly high rates of syntactic errors (21% and 17% respectively), failing to generate valid Python code more frequently than we might expect from frontier models with SoTA coding benchmark performance.
+In human terms, frontier models are shockingly bad at playing Factorio. They find it difficult to represent and model dynamic environments, and rarely develop formal abstractions they can use as tools in future. Despite this, we observed a steady improvement in the capabilities of frontier models in lab-play during 2025.
+Starter
+Scaling
+Megabase
+10
+10 SPM Base Reddit Showcase
+Frontier models in lab-play
+launch a 🚀
+Production Scale Milestones (Science Production Per Minute)
+It is our expectation that Factorio will resist saturation for the foreseeable future, while providing visibility into general model capabilities such as long-horizon planning, domain adaptation, world modeling and spatial reasoning.
+FLE v0.3.0 establishes lab-play as our first formal benchmark, but this represents only the beginning of our planned research agenda.
+- Human baseline establishment: Systematically measuring human performance across task difficulties to better calibrate agent capabilities.
+- Addressing reward hacking: Agents currently exploit manual crafting for complex items rather than building proper automation, however we expect higher throughput targets will force true factory automation.
+- METR-style task scaling: Developing scaling charts that systematically map task difficulty to required capabilities.
+Factorio is an exceptional platform for evaluating agents, due to its emphasis on system engineering and unbounded sandbox nature. FLE presents numerous research opportunities for evaluating agents with valuable system-level problem-solving abilities (our perspective is detailed in this position paper) - including:
+- Scaling to Open-Play and Megabases. Lab-play tasks use constrained starting inventories and single production targets. Open-play requires surviving from nothing on procedurally generated maps with complex, multi-stage objectives. The difficulty spectrum extends orders of magnitude: from manual crafting to megabases with thousands of interconnected machines.
+- Real-time Performance Under Latency Constraints. Current evaluations allow agents unlimited thinking time between actions. We're developing benchmarks where Factorio runs continuously, forcing agents to balance solution quality against response latency. This tests whether agents can maintain robust performance in streaming environments rather than idealized turn-based settings.
+- Multi-Agent Coordination. Extending beyond single-agent scenarios to multi-player worlds where agents must cooperate, compete, and potentially establish emergent market dynamics. Research questions include: Can agents learn division of labor? Negotiate resource allocation? Develop comparative advantage in shared production systems?
+- Out-of-Distribution Environments via Mods. Factorio's extensive modding ecosystem enables testing generalization to entirely new tech trees and game mechanics. This probes whether agents can re-learn causal structures when fundamental rules shift, rather than overfitting to fixed dependencies that they may have learned during pretraining.
+- Native Computer-Use Interface. Moving beyond our agent-optimized Python API to evaluate agents using the same keyboard/mouse/vision interface that humans use. This tests whether computer-use agents can match API-driven performance when operating through realistic human interaction modalities
+- Adversarial Dynamics and Robustness. Introducing hostile aliens and non-deterministic environmental challenges from the base game into FLE. This evaluates adaptive control strategies and resilience when faced with disturbances outside training distributions
+The path from current performance to superhuman Factorio gameplay is long, but the skills developed along this path -- logistics optimization, system debugging, constraint satisfaction under uncertainty -- transfer directly to real-world world challenges.
+This isn't another benchmark to saturate. It's an environment whose challenges scales with progress, offering no ceiling as agent capabilities mature. FLE is open source in code and mission. We need:
+- Researchers exploring novel architectures for long-horizon planning and spatial reasoning
+- Engineers optimizing infrastructure for large-scale evaluation and training
+- Modders designing new challenge domains
+If you are interested in joining our team, you can find us on Discord. We look forward to seeing you!

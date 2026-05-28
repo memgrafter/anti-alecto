@@ -1,0 +1,247 @@
+From 1f9ef54f832e19eb08c53827b846c2562c0da9d4 Mon Sep 17 00:00:00 2001
+From: Honjo Masamune <siddhantmanekar71@gmail.com>
+Date: Mon, 6 Apr 2026 22:59:00 +0530
+Subject: [PATCH] fix: distill-replace creates new conversation entry in UI
+ initially
+
+The distill-replace feature was immediately navigating to the newly created
+conversation before the slug swap completed, causing a confusing UX where a
+blank/new conversation appeared in the sidebar.
+
+Now the UI:
+- Tracks active distill-replace operations (source ID -> new ID mapping)
+- Stays on the source conversation after initiating distill-replace
+- Waits for the SSE conversation list update showing the source was archived
+- Only then navigates to the new conversation (which now has the original slug)
+
+This ensures users see a smooth transition without intermediate confusing states.
+
+Also fixed backend tests to properly wait for async slug swap and archival
+operations to complete before asserting on their results.
+
+Co-authored-by: Qwen-Coder <qwen-coder@alibabacloud.com>
+---
+ server/distill_test.go | 76 +++++++++++++++++++++++++++++++++++-------
+ ui/src/App.tsx         | 59 ++++++++++++++++++++++++++++++--
+ 2 files changed, 121 insertions(+), 14 deletions(-)
+
+diff --git a/server/distill_test.go b/server/distill_test.go
+index b62e12e1..cfe09c70 100644
+--- a/server/distill_test.go
++++ b/server/distill_test.go
+@@ -765,15 +765,24 @@ func TestDistillReplaceConversation(t *testing.T) {
+ 		t.Fatal("timed out waiting for distilled user message")
+ 	}
+ 
+-	// Verify slug swap: new conversation should have the original slug
+-	newConv, err := h.db.GetConversationByID(context.Background(), newConvID)
+-	if err != nil {
+-		t.Fatalf("failed to get new conversation: %v", err)
++	// Wait for the slug swap to complete (happens asynchronously after distillation)
++	var newConv *generated.Conversation
++	for i := 0; i < 100; i++ {
++		newConv, err = h.db.GetConversationByID(context.Background(), newConvID)
++		if err != nil {
++			t.Fatalf("failed to get new conversation: %v", err)
++		}
++		if newConv.Slug != nil && *newConv.Slug == originalSlug {
++			break
++		}
++		time.Sleep(50 * time.Millisecond)
+ 	}
+ 	if newConv.Slug == nil || *newConv.Slug != originalSlug {
+ 		t.Fatalf("expected new conv slug %q, got %v", originalSlug, newConv.Slug)
+ 	}
+ 
++	// Verify slug swap: new conversation should have the original slug
++
+ 	// Verify source conversation was renamed
+ 	sourceConv, err := h.db.GetConversationByID(context.Background(), sourceConvID)
+ 	if err != nil {
+@@ -897,20 +906,36 @@ func TestDistillReplaceConversationNoSlug(t *testing.T) {
+ done:
+ 
+ 	// The new conversation should have gotten its own generated slug (not
+-	// transferred from source, since source had none).
+-	newConv, err := h.db.GetConversationByID(context.Background(), newConvID)
+-	if err != nil {
+-		t.Fatalf("failed to get new conversation: %v", err)
++	// transferred from source, since source had none). Wait for it to be generated.
++	var newConv *generated.Conversation
++	for i := 0; i < 100; i++ {
++		newConv, err = h.db.GetConversationByID(context.Background(), newConvID)
++		if err != nil {
++			t.Fatalf("failed to get new conversation: %v", err)
++		}
++		if newConv.Slug != nil {
++			break
++		}
++		time.Sleep(50 * time.Millisecond)
+ 	}
+ 	if newConv.Slug == nil {
+ 		t.Fatal("expected new conversation to have a generated slug")
+ 	}
+ 
+-	// Verify source is archived and parented
+-	sourceConvAfter, err := h.db.GetConversationByID(context.Background(), sourceConvID)
+-	if err != nil {
+-		t.Fatalf("failed to get source conversation: %v", err)
++	// Wait for source to be archived and parented (happens asynchronously)
++	var sourceConvAfter *generated.Conversation
++	for i := 0; i < 100; i++ {
++		sourceConvAfter, err = h.db.GetConversationByID(context.Background(), sourceConvID)
++		if err != nil {
++			t.Fatalf("failed to get source conversation: %v", err)
++		}
++		if sourceConvAfter.Archived && sourceConvAfter.ParentConversationID != nil {
++			break
++		}
++		time.Sleep(50 * time.Millisecond)
+ 	}
++
++	// Verify source is archived and parented
+ 	if !sourceConvAfter.Archived {
+ 		t.Fatal("expected source conversation to be archived")
+ 	}
+@@ -955,6 +980,15 @@ func TestDistillReplaceMultiPass(t *testing.T) {
+ 	// Wait for first distillation to complete
+ 	waitForDistillComplete(t, h.db, conv1ID)
+ 
++	// Wait for first slug swap to complete
++	for i := 0; i < 100; i++ {
++		conv1Check, _ := h.db.GetConversationByID(context.Background(), conv1ID)
++		if conv1Check.Slug != nil && *conv1Check.Slug == originalSlug {
++			break
++		}
++		time.Sleep(50 * time.Millisecond)
++	}
++
+ 	// Verify first pass: conv1 has the original slug, source renamed to -prev
+ 	conv1, _ := h.db.GetConversationByID(context.Background(), conv1ID)
+ 	if conv1.Slug == nil || *conv1.Slug != originalSlug {
+@@ -986,6 +1020,15 @@ func TestDistillReplaceMultiPass(t *testing.T) {
+ 	// Wait for second distillation to complete
+ 	waitForDistillComplete(t, h.db, conv2ID)
+ 
++	// Wait for second slug swap to complete
++	for i := 0; i < 100; i++ {
++		conv2Check, _ := h.db.GetConversationByID(context.Background(), conv2ID)
++		if conv2Check.Slug != nil && *conv2Check.Slug == originalSlug {
++			break
++		}
++		time.Sleep(50 * time.Millisecond)
++	}
++
+ 	// Verify second pass:
+ 	// - conv2 has the original slug
+ 	// - conv1 renamed to -prev-2 (since -prev is taken by the original source)
+@@ -1023,6 +1066,15 @@ func TestDistillReplaceMultiPass(t *testing.T) {
+ 
+ 	waitForDistillComplete(t, h.db, conv3ID)
+ 
++	// Wait for third slug swap to complete
++	for i := 0; i < 100; i++ {
++		conv3Check, _ := h.db.GetConversationByID(context.Background(), conv3ID)
++		if conv3Check.Slug != nil && *conv3Check.Slug == originalSlug {
++			break
++		}
++		time.Sleep(50 * time.Millisecond)
++	}
++
+ 	// Verify third pass:
+ 	// - conv3 has the original slug
+ 	// - conv2 renamed to -prev-3
+diff --git a/ui/src/App.tsx b/ui/src/App.tsx
+index 7bdbb1f7..8a67c9c9 100644
+--- a/ui/src/App.tsx
++++ b/ui/src/App.tsx
+@@ -139,6 +139,10 @@ function App() {
+     conversation_id: string;
+     working: boolean;
+   } | null>(null);
++  // Track active distill-replace operations: sourceConvID -> newConvID
++  const [distillReplaceOperations, setDistillReplaceOperations] = useState<Record<string, string>>(
++    {},
++  );
+   const initialSlugResolved = useRef(false);
+ 
+   // Resolve initial slug from URL - uses the captured initialSlugFromUrl
+@@ -342,7 +346,28 @@ function App() {
+       }
+ 
+       // If the conversation is archived, remove it from the active list
++      // If this was a distill-replace source, navigate to the new conversation
+       if (update.conversation.archived) {
++        // Check if this is a distill-replace source conversation
++        const newConvId = distillReplaceOperations[update.conversation.conversation_id];
++        if (newConvId) {
++          // Clean up the tracking entry
++          setDistillReplaceOperations((prev) => {
++            const { [update.conversation!.conversation_id]: _, ...rest } = prev;
++            return rest;
++          });
++          // Navigate to the new conversation after state updates complete
++          setTimeout(() => {
++            setConversations((convs) => {
++              const newConv = convs.find((c) => c.conversation_id === newConvId);
++              if (newConv) {
++                setCurrentConversationId(newConvId);
++                setViewedConversation(newConv);
++              }
++              return convs;
++            });
++          }, 0);
++        }
+         setConversations((prev) =>
+           prev.filter((c) => c.conversation_id !== update.conversation!.conversation_id),
+         );
+@@ -384,7 +409,7 @@ function App() {
+       setConversations((prev) => prev.filter((c) => c.conversation_id !== update.conversation_id));
+       conversationCache.delete(update.conversation_id);
+     }
+-  }, []);
++  }, [distillReplaceOperations, conversationCache]);
+ 
+   // Handle conversation state updates (working state changes)
+   const handleConversationStateUpdate = useCallback(
+@@ -661,9 +686,39 @@ function App() {
+     try {
+       const response = await api.distillReplaceConversation(sourceConversationId, model, cwd);
+       const newConversationId = response.conversation_id;
++
++      // Track this distill-replace operation so we can navigate when the source is archived
++      setDistillReplaceOperations((prev) => ({
++        ...prev,
++        [sourceConversationId]: newConversationId,
++      }));
++
++      // Refresh conversations list but don't navigate yet — we'll navigate
++      // when we receive the SSE update showing the source was archived.
+       const updatedConvs = await api.getConversations();
+       setConversations(updatedConvs);
+-      setCurrentConversationId(newConversationId);
++
++      // Fallback: if the SSE connection drops or the archive update never arrives,
++      // navigate anyway after a timeout so the user isn't stuck.
++      setTimeout(() => {
++        setDistillReplaceOperations((prev) => {
++          const targetConvId = prev[sourceConversationId];
++          if (targetConvId && targetConvId === newConversationId) {
++            // Still tracked — SSE update didn't fire. Navigate anyway.
++            setConversations((convs) => {
++              const newConv = convs.find((c) => c.conversation_id === newConversationId);
++              if (newConv) {
++                setCurrentConversationId(newConversationId);
++                setViewedConversation(newConv);
++              }
++              return convs;
++            });
++            const { [sourceConversationId]: _, ...rest } = prev;
++            return rest;
++          }
++          return prev; // Already handled by SSE update
++        });
++      }, 15000);
+     } catch (err) {
+       console.error("Failed to distill-replace conversation:", err);
+       setError("Failed to distill-replace conversation");

@@ -1,0 +1,39 @@
+Reddit thread capture
+
+Thread URL: https://reddit.com/r/github/comments/1ihe5km/any_way_to_security_scan_a_github_repo_for/
+Subreddit: r/github
+Title: Any way to security scan a github repo for malicious code?
+Author: u/salilsurendran
+Score: 7
+Comment count (reported): 14
+
+
+## Original post
+I was wondering if there is a way to scan a given GitHub repo for code that may be doing something malicious. For example, sending the API keys to a third party or sending some data to a different site URL. I can install the executable on my machine and there is an antivirus and malware detection software on my Windows 11 laptop that would detect anything that the executable does wrong. Is there a way to audit what websites or URLs a particular executable is accessing in Windows 11? I was wondering if there is a way to be more secure.
+
+## Top comment (highest-score top-level, verbatim)
+u/JakeSteam (8): In addition to the other comment, just a heads up that no tool can 100% guarantee there's no malware in a non-trivial repository. It can suggest (based on stars, commits, code, etc) that there isn't though.
+
+## Prominent viewpoints (top-level comments)
+1. (8) u/JakeSteam: In addition to the other comment, just a heads up that no tool can 100% guarantee there's no malware in a non-trivial repository. It can suggest (based on stars, commits, code, etc) that there isn't though.
+2. (4) u/Jmc_da_boss: No there's not really
+3. (4) u/inkfaust: There are all sorts of scanners out there. CodeQL, Snyk, and others. Here you can read more on the topic in the docs: https://docs.github.com/en/code-security/code-scanning You might also want to look at this owasp page: https://owasp.org/www-community/Source_Code_Analysis_Tools
+4. (4) u/edgmnt_net: Unlikely to matter. Pick what you use/run based on reputation and be conservative. Review the code if you have the capacity, but that's not easy either. Don't just run random stuff you find online.
+5. (2) u/import-base64: you can run SAST tools in GHA or manually
+6. (2) u/AnotherOneRegistered: No. They will scan the repo. What really happens is that the repo will download some malware payload when you npm run/install or run make. If you are moderately lucky you have win11 UAT enabled, so you find that it tries to install something it shouldn't (but that is only if it goes for admin permissions). If it goes for your keys, crypto, passwords in user space it won't need admin and you are fucked. Only EVER download repos that you trust (or are widely used). If somebody approaches you on linkedin, in a job interview etc. Well just don't. If you have the curious itch, like me, then you download the repo as a zip. Put it into an airgapped VM and then test and see what happens. Likely it won't work, and when you give it network you'll see the payload it tries to download and execute. It will always be obfuscated and often python based (though that is only my findings, I do not have dat
+7. (1) u/chigosgames: I actually struggled with this. Since I have some crypto experience in my Linkedin profile I am frequently targeted by 'recruiters' that want to hire me which all looks pretty believable and trusty. But when I check their demo repo it's can have a nice payload on the service level. I really noticed this trend and wrote an ebook about it to protect yourself from these people.
+8. (1) u/Purple-Reaction7: If your repo is public then you can use greptile, semgrep (for enterprise level), and free tools like repomind etc.
+
+## Thread discussion sample
+- (8) u/JakeSteam: In addition to the other comment, just a heads up that no tool can 100% guarantee there's no malware in a non-trivial repository. It can suggest (based on stars, commits, code, etc) that there isn't though.
+- (4) u/Jmc_da_boss: No there's not really
+- (4) u/inkfaust: There are all sorts of scanners out there. CodeQL, Snyk, and others. Here you can read more on the topic in the docs: https://docs.github.com/en/code-security/code-scanning You might also want to look at this owasp page: https://owasp.org/www-community/Source_Code_Analysis_Tools
+  - (8) u/Jmc_da_boss: These aren't really malicious code scanners tho, more quality scans
+  - (3) u/nineelevglen: oh hey look snyk ditched their previous pricing, before it was free then 500 bucks a month.
+- (4) u/edgmnt_net: Unlikely to matter. Pick what you use/run based on reputation and be conservative. Review the code if you have the capacity, but that's not easy either. Don't just run random stuff you find online.
+- (2) u/import-base64: you can run SAST tools in GHA or manually
+- (2) u/AnotherOneRegistered: No. They will scan the repo. What really happens is that the repo will download some malware payload when you npm run/install or run make. If you are moderately lucky you have win11 UAT enabled, so you find that it tries to install something it shouldn't (but that is only if it goes for admin permissions). If it goes for your keys, crypto, passwords in user space it won't need admin and you are fucked. Only EVER download repos that you trust (or are widely used). If somebody approaches you on linkedin, in a job interview etc. Well just don't. If you have the curious itch, like me, then you download the repo as a zip. Put it into an airgapped VM and then test and see what happens. Likely it w
+  - (2) u/salilsurendran: "No. They will scan the repo." <= Not sure what is meant by this statement? Who will scan the repo? For eg. I am using the executable from this github repo [https://github.com/braden-w/whispering](https://github.com/braden-w/whispering) for the past few months. Have had no issues with it . But was wondering if there are any tools that might flag any concerns?
+- (1) u/chigosgames: I actually struggled with this. Since I have some crypto experience in my Linkedin profile I am frequently targeted by 'recruiters' that want to hire me which all looks pretty believable and trusty. But when I check their demo repo it's can have a nice payload on the service level. I really noticed this trend and wrote an ebook about it to protect yourself from these people.
+  - (1) u/salilsurendran: Couldn't follow why would recruiters have a demo repo?
+- (1) u/Purple-Reaction7: If your repo is public then you can use greptile, semgrep (for enterprise level), and free tools like repomind etc.

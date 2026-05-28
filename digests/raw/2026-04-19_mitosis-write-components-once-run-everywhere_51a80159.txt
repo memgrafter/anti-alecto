@@ -1,0 +1,11 @@
+Write components once, run everywhere.
+mitosis.jsx
+import { useState } from "@builder.io/mitosis"; export default function MyComponent(props) { const [name, setName] = useState("Steve"); return ( <div> <input css={{ color: "red", }} value={name} onChange={(event) => setName(event.target.value)} /> Hello! I can run natively in React, Vue, Svelte, Qwik, and many more frameworks! </div> ); }
+component.vue
+<template> <div> <input class="input" :value="name" @change="name = $event.target.value" /> Hello! I can run natively in React, Vue, Svelte, Qwik, and many more frameworks! </div> </template> <script setup> import { ref } from "vue"; const name = ref("Steve"); </script> <style scoped> .input { color: red; } </style>
+angular.ts
+import { Component } from "@angular/core"; @Component({ selector: "my-component", template: ` <div> <input class="input" [attr.value]="name" (input)="name = $event.target.value" /> Hello! I can run natively in React, Vue, Svelte, Qwik, and many more frameworks! </div> `, styles: [ ` .input { color: red; } `, ], }) export default class MyComponent { name = "Steve"; }
+component.svelte
+<script> let name = "Steve"; </script> <div> <input class="input" bind:value={name} /> Hello! I can run natively in React, Vue, Svelte, Qwik, and many more frameworks! </div> <style> .input { color: red; } </style>
+qwik.tsx
+import { component$, useStore, useStylesScoped$ } from "@builder.io/qwik"; export const MyComponent = component$((props) => { useStylesScoped$(` .input-MyComponent { color: red; }` ); const state = useStore({ name: "Steve" }); return ( <div> <input class="input-MyComponent" value={state.name} onChange$={(event) => (state.name = event.target.value)} /> Hello! I can run natively in React, Vue, Svelte, Qwik, and many more frameworks! </div> ); });

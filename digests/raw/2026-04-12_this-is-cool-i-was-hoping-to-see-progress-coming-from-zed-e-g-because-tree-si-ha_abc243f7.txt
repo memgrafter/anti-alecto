@@ -1,0 +1,455 @@
+	Hacker Newsnew | past | comments | ask | show | jobs | submit	login
+
+
+
+	
+	
+random3 3 months ago | parent | context | favorite | on: Show HN: Ferrite – Markdown editor in Rust with na...
+
+
+This is cool. I was hoping to see progress coming from Zed (e.g. because Tree-sitter → https://github.com/tree-sitter-grammars/tree-sitter-markdown) but it's exciting to see this. I'm a heavy Obsidian user, and I love it, but I'd love to see real alternatives focused on foundations.
+
+It would be interesting to know more about the end-goal if any.
+
+Best of luck! I'll watch this.
+
+
+	
+
+
+	
+	
+OlaProis 3 months ago | next [–]
+
+
+Thanks! The end-goal is a fast, native Markdown editor that "just works" - no Electron, no web tech, instant startup. v0.3.0 will extract Mermaid as a standalone crate and build a custom text editor widget to unlock features egui's TextEdit blocks (proper multi-cursor, code folding). Long-term: potentially extract the editor as a headless Rust library since that's missing in the ecosystem. See ROADMAP.md for details
+
+
+
+	
+	
+koiueo 3 months ago | parent | next [–]
+
+
+Do people still use $language editors?
+
+My impression was that everyone uses their $EDITOR and integrates languages support via plugins. The only exception to this rule I know is Emacs (org mode). I really doubt a standalone md editor will get traction, no matter how good it is.
+
+
+
+	
+	
+OlaProis 3 months ago | root | parent | next [–]
+
+
+Valid skepticism! A few counterpoints:
+
+Market exists: Obsidian has 1M+ users, Typora is popular, iA Writer has a loyal following. These aren't VS Code users who wandered off — they're writers, PKM enthusiasts, and note-takers who find IDE-style editors overwhelming for prose.
+
+Different audience: Developers might prefer VS Code + Markdown Preview Enhanced. But Ferrite targets people who want a focused writing tool, not a general-purpose editor that happens to support Markdown. Think "writing app" vs "code editor with Markdown support."
+
+Native advantage: Most Markdown tools are Electron (Obsidian, Typora, Mark Text). Ferrite offers instant startup, lower RAM, and native performance — appeals to the "I want my tools to feel fast" crowd.
+
+You might be right that it won't achieve mass adoption. But there's a niche for "Obsidian but native and lighter" that I think is underserved.
+
+
+
+	
+	
+koiueo 3 months ago | root | parent | next [–]
+
+
+My impression was that Obsidian is more than an editor: personal wiki, todo tracker, database, etc..
+
+The currently offered feature list in Ferrite — code blocks, mermaid — suggests you are targeting developers or tech people here, hence, not really iA Writer... Typora — never heard of it, can't comment.
+
+Anyway, thanks for seeing this as skepticism, and not criticism. With my comment, I tried to subtly suggest that there should be more to it, than an editor.
+
+Regardless, good luck!
+
+
+
+	
+	
+OlaProis 3 months ago | root | parent | next [–]
+
+
+You're right, currently Ferrite leans developer/tech with Mermaid, JSON/YAML tree viewer, and CLI integration. The Obsidian-style features (wikilinks, backlinks, knowledge graph) are coming in v0.3.0.
+
+Target audience is probably "developers who take notes" rather than pure writers. The native performance angle is the differentiator, same niche as "I want Notion but faster" or "Obsidian but lighter."
+
+
+
+	
+	
+RealityVoid 3 months ago | root | parent | prev | next [–]
+
+
+Completely non-accusatory, just wondering. Did you write this post using an LLM? I sort of feel the typical "voice" if LLM writing here and wondering if I should calibrate myself a bit in this.
+
+
+
+	
+	
+OlaProis 3 months ago | root | parent | next [–]
+
+
+Good calibration! Yes, I disclosed this in another comment (and now in the README). The HN responses are AI-assisted: I describe what I want to say, Claude drafts it, I review and post. My English isn't great, so AI helps me communicate more clearly.
+
+
+
+	
+	
+LocalPCGuy 3 months ago | root | parent | prev | next [–]
+
+
+Sometimes it is nice to have a separate application for notes compared to the editor being used for code. It means they can be customized for their individual purposes. Sometimes there are minor inconveniences (I miss multi-select/change in Obsidian sometimes), but even when I used an editor for my MD notes, I found myself using SublimeText for that while I used VSCode or IntelliJ for coding. Just a 1 of 1 experience, but as mentioned elsewhere, there is a large adoption of note taking apps separate from code editors, and a few of them use markdown as the underlying file type which I require for anything I use for portability.
+
+
+
+	
+	
+kirubakaran 3 months ago | prev | next [–]
+
+
+Since you're an Obsidian user, can I please get your feedback on https://hyperclast.com/ which I'm building?
+
+(I'm not quite ready to do a Show HN yet, so please don't post it, but I'm ready for some early feedback if you'll indulge me)
+
+
+
+	
+	
+tomtom1337 3 months ago | parent | next [–]
+
+
+You need something "more" on the website before you ask people to create an account. "Team workspace that stays fast" isn’t clear enough for me, at least. What is a workspace? What does the interface look like? Is it in the browser? Is it an app?
+
+People will go "what is this?", "huh, I’m not gonna make a user for this, can’t tell what it is". Those are my 2 cents.
+
+
+
+	
+	
+kirubakaran 3 months ago | root | parent | next [–]
+
+
+Thanks, I'll fix that.
+
+
+
+	
+	
+lenova 3 months ago | root | parent | next [–]
+
+
++1 to that. As a user, I am tired of having to sign up for an account on a SaaS website or installing an app from Github, only to realize the UI isn't a good fit for me. This will usually result in me bouncing from the app website instead of trying it out.
+
+Suggestion: have a non-login demo available on your website, and high-res screenshots/animed gif of the app in action on your Github repo.
+
+
+
+	
+	
+kirubakaran 89 days ago | root | parent | next [–]
+
+
+Thanks to your feedback, I've added a non-login demo! https://hyperclast.com/demo/
+
+
+
+	
+	
+lenova 86 days ago | root | parent | next [–]
+
+
+Thanks for being receptive to the feedback :-) I actually checked out your demo now because it didn't require a login, and was impressed by what I saw. Nice work here!
+
+
+
+	
+	
+maxbond 3 months ago | parent | prev | next [–]
+
+
+Disclaimer: I'm not your target audience, I don't care about collaboration or performance.
+
+- There's a heavy emphasis on performance. Are you sure customers care about that more than real time collaboration and self hosting? (I don't think they care about CRDTs.)
+
+- If I am experiencing pain because eg my Notion wiki is too big and is having serious performance issues, what I want to hear immediately is how you are going to help me migrate from Notion to your solution. Notion has a feature to export an entire workspace; can you ingest that and get me spun up with your product?
+
+- If I hear something is open source I expect to be able to try it out immediately without logging in. It looks like you can do that but when you hit "Get Started" it puts you into a registration flow.
+
+- You might take a look at how Zed is marketing themselves, they have a similar pitch (performance + realtime collaboration). The first thing they try to show you is a video where they demo the product and show how fast it is. (I think they focus too much on performance though.)
+
+- The frontend is a web app right? If possible rather than a video, embed the interface in your landing page. If possible, let them share their document and try out collaborating on it with someone or with another browser tab. Give them an opportunity to be impressed.
+
+I respect anyone who posts their work. Best of luck.
+
+
+
+	
+	
+kirubakaran 3 months ago | root | parent | next [–]
+
+
+Thank you!
+
+> There's a heavy emphasis on performance. Are you sure customers care about that more than real time collaboration and self hosting?
+
+- Good point, I'll find out
+
+> Notion has a feature to export an entire workspace; can you ingest that and get me spun up with your product?
+
+Yes, I'm almost done with this feature
+
+> If I hear something is open source I expect to be able to try it out immediately without logging in. It looks like you can do that but when you hit "Get Started" it puts you into a registration flow.
+
+I link to that elsewhere in the page: https://hyperclast.com/dev/ I'll look into making this more prominent.
+
+> You might take a look at how Zed is marketing themselves
+
+Thanks, will do
+
+> embed the interface in your landing page
+
+Great idea, I'll do that!
+
+
+
+	
+	
+LocalPCGuy 3 months ago | root | parent | next [–]
+
+
+FWIW re: performance, I love Obsidian, but performance is it's one main downside for me. I could care less about the real-time collaboration (they are my notes, not for team consumption, I'll share a file somewhere else for that) or self-hosting (sync so my notes exist wherever I am is more important to me than hosting them anywhere, again, my notes are private on purpose; obviously that isn't the case for everyone).
+
+Anyways, just a counter-point to the commenter you were replying to.
+
+
+
+	
+	
+kirubakaran 89 days ago | root | parent | prev | next [–]
+
+
+Thank you so much, I've added a non-login demo to the main landing page: https://hyperclast.com/demo/
+
+
+
+	
+	
+maxbond 88 days ago | root | parent | next [–]
+
+
+That's dope. Congratulations on the fast turnaround
+
+
+
+	
+	
+hashhar 3 months ago | parent | prev | next [–]
+
+
+The only thing I'll say is that it's great to see the feedback in this thread applied. It became very obvious to me what the tool is for and an abstract idea of what I can do with it.
+
+However as others have said:
+
+- A demo video would do a lot for your product.
+
+- nit: Real-time markdown -> change to something that emphasizes collaboration/collaborative editing. For two reason - it's a much more familiar term in the space you are building and it's easier to understand (I think) for more people.
+
+- A sample workspace (either public or a "starter workspace" that's available by default in a new account) that is non-trivial would be great to showcase your product. Look at obsidian using obsidian itself for it's own documentation site.
+
+- Your about page is very well written - I wonder if you can pull up somethings from there onto the main page. https://hyperclast.com/about/
+
+I didn't sign up yet however so can't provide more feedback.
+
+
+
+	
+	
+kirubakaran 3 months ago | root | parent | next [–]
+
+
+Thank you so much, I'll improve those points. I agree that a sample workspace would be great. I'm going to work on that today.
+
+
+
+	
+	
+dboon 3 months ago | parent | prev | next [–]
+
+
+I use Obsidian a lot, but very few extra features or plugins. My first impression is that I don’t get what you’re making from the website. Any tool worth using in this space (which I vaguely understand to be using large collections of Markdown and/or realtime multiediting) is fast. Obsidian is fast. Zed is fast. It’s table stakes for the kind of person who would use this already.
+
+Is it just Zed + Obsidian? A good knowledge base that scales well and uses plain markdown, but has the fancy multi edit stuff?
+
+
+
+	
+	
+kirubakaran 3 months ago | root | parent | next [–]
+
+
+Thanks, I mentioned "fast" to differentiate it from Notion, which becomes super slow as you add more and more pages.
+
+Obsidian and Zed are desktop apps, whereas Hyperclast is web-based. Obsidian isn't multi-player, and not really meant for teams.
+
+
+
+	
+	
+LoganDark 3 months ago | root | parent | next [–]
+
+
+Obsidian is web-based, it just pretends not to be, but it's just Electron. Zed's the only truly native one
+
+
+
+	
+	
+yencabulator 3 months ago | parent | prev | next [–]
+
+
+This is not open source: "You may not provide the software to third parties as a managed service"
+
+https://github.com/hyperclast/workspace/blob/a7bfaa10821afb3...
+
+
+
+	
+	
+kirubakaran 3 months ago | root | parent | next [–]
+
+
+https://hyperclast.com/dev/oss/workspace/#opensource
+
+
+
+	
+	
+allarm 89 days ago | root | parent | next [–]
+
+
+You claim that it's open source (as opposed to alternatives) right here: https://hyperclast.com/
+
+Do you mind removing that? Thanks.
+
+
+
+	
+	
+allarm 87 days ago | root | parent | next [–]
+
+
+And of course you didn't ) Thanks for making this world worse.
+
+
+
+	
+	
+yencabulator 3 months ago | root | parent | prev | next [–]
+
+
+So stop calling it open source, then.
+
+
+
+	
+	
+thegagne 3 months ago | parent | prev | next [–]
+
+
+I am aware of the current issues with open source licensing, but for my needs I don’t trust the elastic style licensing, especially when it claims to be open source but I can’t fork it to protect myself from a future rug pull situation.
+
+I currently use Dendron in VS Code. Dendron is basically abandonware at this point because it couldn’t be monetized, but because it’s Apache licensed, I can fork it if I want, and continue to use it until something better comes along, or even modify it for my own needs.
+
+It’s very hard to be successful financially in this space. Notion did it at the right time, but they are targeting enterprises who are willing to give their data to them, not individuals who want to run their own setup.
+
+Maybe you can compete with Notion, but I’m not willing to put my stuff in a system that may not be around in a couple years, and I don’t have a license for.
+
+
+
+	
+	
+echelon 3 months ago | prev [–]
+
+
+What is Obsidian written in? Electron?
+
+
+
+	
+	
+gregman1 3 months ago | parent | next [–]
+
+
+It’s closed source but yeah - electron all the way.
+
+
+
+	
+	
+atlintots 3 months ago | parent | prev [–]
+
+
+Yes; it's also not open source.
+
+
+
+	
+	
+echelon 3 months ago | root | parent [–]
+
+
+I'm fine with that.
+
+Open source purity is problematic. The OSI was established by the hyperscalers, who are decidedly not open source either.
+
+Purely "OSI-approved open source" mandates having no non-commercial or non-compete clause, which means anyone can come in and bleed off profits and energy from the core contributors of open source projects. It prevents most forms of healthy companies from existing on top.
+
+We shouldn't be allergic to making money with the software we write - life is finite and it's more sustainable over the long term to maintain software as a job.
+
+The new "ethical source" / "fair source" licenses that have been popping up recently [1, 2] give customers 100% use of the code, but prevent competitors from coming in and stealing away the profits from running managed offerings, etc. (I wish Obsidian were this, but it's fully closed. Still, I do not admire them any less for this choice. We venerate plenty of closed creators - it's silly to hold software to a different standard.)
+
+AWS profits hundreds of millions a quarter off of open source developed by companies thinking they were doing the right thing. AWS turned these into a proprietary managed solutions and gave nothing back to the authors. The original wind up withering and dying. AWS isn't giving back, they're just hoovering up.
+
+Obsidian being closed means the core authors are hyper focused and can be compensated (even if it's not much). It's not like they can rug pull us - the files are text files, we can use old versions, and if they did piss us off I'm sure someone would write an open source version.
+
+[1] https://fair.io/
+
+[2] https://faircode.io/
+
+
+
+	
+	
+dvt 3 months ago | root | parent | next [–]
+
+
+Fully agree that pushing OSI is just posturing. After all, Amazon/Google/Facebook have made literal billions by commercializing open source software. I release stuff on MIT all the time (for things I'm okay with people poaching) but I'd argue the only "pure" OSS license is GPL, which comes with its own problems (and, as we all know, it infects everything it touches).
+
+The problem with FSL is that it hasn't been tested in the courts yet (afaik), so it's a bit of a gamble to think it'll just "work" if some asshole does try to clone your repo and sell your work. Maybe it's a decent gamble for a funded startup with in-house counsel, but if you're just one guy, imo keep stuff you want to sell closed-source, it's not that big of a deal. We've been doing just that since the 70s.
+
+
+
+	
+	
+djvdq 3 months ago | root | parent | prev [–]
+
+
+I fully agree with you.
+
+I love the idea of open source, but we shouldn't say that something is bad just because it's closed source.
+
+
+
+
+
+
+
+Guidelines | FAQ | Lists | API | Security | Legal | Apply to YC | Contact
+
+
+Search: 

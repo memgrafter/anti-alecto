@@ -1,0 +1,7 @@
+We built twins of Okta, Jira, Slack, Google Docs, Google Drive, and Google Sheets, replicating their APIs, edge cases, and observable behaviors.
+With the DTU, we can validate at volumes and rates far exceeding production limits. We can test failure modes that would be dangerous or impossible against live services. We can run thousands of scenarios per hour without hitting rate limits, triggering abuse detection, or accumulating API costs.
+Why DTU?
+Creating a high fidelity clone of a significant SaaS application was always possible, but never economically feasible. Generations of engineers may have wanted a full in-memory replica of their CRM to test against, but self-censored the proposal to build it. They didn't even bring it to their manager, because they knew the answer would be no.
+The DTU is our proof that what was unthinkable six months ago is now routine.
+How It Works
+The key insight is to replicate behavior at the boundary. We build test doubles from API contracts and observed edge cases, then validate them against the live dependency until we stop finding behavioral differences.

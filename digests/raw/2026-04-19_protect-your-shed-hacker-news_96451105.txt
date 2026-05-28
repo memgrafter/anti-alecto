@@ -1,0 +1,114 @@
+The advice to work on your own "shed" has really helped with my burnout during this AI age. I got into technology because I liked coding, building, and tinkering with systems. LLMs are great at coding and getting basic pipelines built, and I found myself with more pressures to be agent-first rather than hands on key-board at work. My side projects at home are where I've been able to find the joy for coding again.
+I recently wrote a small service to get a temperature LED panel on my computer case working. It required a proprietary program to pipe the sensor temps to the display, which only worked on Windows. Being on Linux (arch btw :P), there wouldn't be a way to get this to work. I had a lot of fun learning about how to reverse engineer the inputs/outputs the other software was doing and replicate it in Python.
+This post really resonated with me. Through the daily drudgery, I lost that spark that drove me to programming in the first place as a kid and became disgruntled with it for a while. It wasn't until I pushed myself to get back to hobby (or shed) programming that I rekindled my old passion and, as a result, find my day job much more bearable.
+I have an actual shed that I spend time in, doing maintenance work, building physical items (latest one is an auto-refilling bird watering station), and making beer. Given my day job is so desk-bound, and so tech oriented, I find using my hands in my off-time to be very fulfilling and what keeps me sane.
+I had to get out of tech for that reason: i need a physical good I can create and hold. Using my engineer skills to build physical things satiates my brain so much more. I don't think I can ever go back to coding as a job. I just don't care about other people's garbage code, lol.
+i got out of tech/coding so i could apply my skills to more real world stuff. it's been so much better. i don't make as much but i end each day with a feeling of satisfaction and accomplishment. i wouldn't trade it away. my social life has gotten so much better, as well, because i'm happier in general and i talk to so many more people as a result. i smile more, i think is the main thing.
+Surely step one is psychological. I feel like being able to accept a lower paycheck is critical to leaving tech if you’re at the over specialized part of your career
+Callous, but that’s your fault for building a life that requires tech money to maintain. I don’t get the point of comments like yours, just to make one feel bad for escaping the golden handcuffs.
+There are plenty of people that have children and live decent lives earning less than $200k/year + benefits.
+Same here. I've been trying to get more into the physical world, with a tech angle, rather than just pure software. As you said, using my hands is what keeps me sane, makes the world seem a little more real, if that makes sense?
+> The shed is where you take the blueprints you learned on the job and actually get to play with them.
+> You try something in the shed on a weekend because you’re curious. You learn the tradeoffs, the rough edges, the things the documentation doesn’t tell you. Then months later, when the team at work is evaluating that same tool or approach, you’re not starting from zero.
+These are two opposing concepts, but both True and complementary.
+Working for clients (or companies) and home-based side projects are two sides of the same coin and complement each other. What must drive you, in both cases, is curiosity and the passion to do something useful.
+My dream is to be able to turn a home-based project into something that generates income. My goal is to have the freedom to work on what I love and on a useful and profitable project of my own.
+I have a shed, and I agree with the broad thrust of the argument.
+During lockdown I worked in there professionally, which was a mistake. It turned what was a creative space into something that had the emotional stick of a bad workplace.
+Did them, the games, the websites, the failed startup thing.
+I just do other things now.
+Building finance stuff during the day, doing little computer outside work (a bit of 3D printing here and there).
+It’s fine. My career’s fine. The work doesn’t suffer from it.
+Do I have the spark? Idk, I feel I am too old for that spark shit. There is work to do, I do it. If it’s tedious, I’ll drag me feet a while, but eventually it’ll be done. It’s just work.
+I think both viewpoints are valid. It's perfectly fine to see your work as a craft which you hone in your personal time, and also see it as a means to an end where you clock in, get the job done, and clock out. It's also understandable that the amount of personal time we have to dedicate to it, and even interest, can vary over time.
+That said, I think your day job is more enjoyable when you see your work as a craft. It becomes less of a chore, you feel more engaged, and generally happier, which ultimately has a positive impact on your work and your colleagues. This has been my very fuzzy experience over the years, going through periods of both, but there are no definitive perspectives either way.
+About the work being more enjoyable when seeing it as a craft: I think it only is more enjoyable, if you can somehow bring part of your craftsmanship into it, and are not overly limited by other people or the sprint or management or any of the other many factors that ruin the fun, like time available, terrible inherited codebase that would take weeks or months to fix, and so on.
+Well, sure, there are aspects of the work that can suck the joy out of it, but that's part of it. :) Even in personal projects I can create a codebase that's difficult to work with, or depend on third party code and tools that I don't particularly enjoy. The tricky task is navigating in and around these hurdles, knowing how and when to address them, and ultimately, simply accepting them. If your expectation is constant enjoyment, you'll be disappointed not just at work, but at life in general.
+That said, I struggle with this as well, so I'm speaking more aspirationally than from a place of wisdom. :)
+> That’s taking the structural discipline from the skyscraper and applying it to a space where I had total freedom.
+Yeah, nah. When I take my learnings home with me, it fails every time.
+Usually, the scale of work necessary to maintain an enterprise-grade system rapidly outgrows the time I can reasonably allocate to it. In other cases, I lose interest because it's boring corporate crap.
+I don't known how all of you "homelab" people put up with it. I have enough Linux boxes at work that demand too much care and feeding.
+The author has a good point but it really isn't a two-way street. The hobby stuff can feed into your career, but letting it go the other way is usually either counterproductive, or bad for your mental health.
+Don't tinker in your shed because you think it'll advance your career. You'll be disappointed. Sorry for the spoiler.
+Tinker in your shed because it makes you happy, and brings joy and meaning to your life. You'll be more productive and, in my experience, you'll actually be more likely to learn something useful for work.
+The trick is to not overengineer your hobby if you're only doing it to prove a point.
+ie. Yes, you could run a full on corporate CA, issue SSL certificates for your domains, manually rig up wireguard and run your own internal corporate VPN... or you just accept that your grand total of 1 concurrent user on an intranet is probably just better served by setting up Tailscale and a wildcard LE certificate so that the browser shuts up. (Which is still not great, but the argument over HTTPS and intranets is not for right now.)
+Same with other deployment tools like Docker - yes, there's a ton of fancy ways to do persistent storage for serverless setups but get real: you're throwing the source folder in /opt/ and you have exactly one drive on that server. Save yourself the pain and just bind mount it to somewhere on your filesystem. Being able to back the folder up just with cp/rsync/rclone/scp is a lot easier than fiddling with docker's ambiguous mess of overlay2 subfolders.
+Every overengineered decision of today is tomorrow's "goddammit I need to ssh into the server again for an unexpected edgecase".
+I have a professional 'homelab' and a personal 'homelab'. You're 100% right, they can be a time sink. The important bit is to make sure the time is setup not 'maintenance' time.
+The trick is twofold: if it isn't 'declare and deploy' don't run it. If it isn't in your backup/restore pipeline don't run it.
+Pfsense and Home assistant are huge pains in the ass. Everything else is easy breezy.
+Proxmox/pbs/truenas/talos/linstor/DRBD are all amazing.
+I'm thinking about ditching pfsense for tailscale/cloudflare tunnels, but it's not worth the time atm. I don't have a viable alternative for HA.
+I would guess I/O. Your normal containers need network access and that's it. HA, depending on your setup, might want Bluetooth, a USB zigbee dongle, z-wave, etc etc
+No, the I/O passthroughs are fine. Proxmox and HA are fairly great at keeping them stable. I have passthrough for WiFi/BT/USB zigbee/USB thread Of course it pins you to a singular proxmox host, not benefitting from proxmox HA, but that's the way the cookie crumbles with h/w.
+pfsense and home-assistant both claim to be declarative configs, which is technically true. However the config files are not well or effectively documented, and where there is documentation it typically relates to the GUI which diverges significantly in arrangement. Their configs are declarative in that they declare the way their internal processes are configured, not in the way that they should interact and appear to other services (networking people will find that statement very confusing).
+Both are effectively "Operating Systems" within operating systems, starting/stopping/configuring/managing other programs, home assistant is doing this to the nth degree. When you start them it is very hard to determine when they have actually started - particularly the bits you care about. Getting errors and logs out of them is painful. Updating configs and restarting has multiple routes, the longest of which is very long.
+Both are reasonable ways to get to grips with the problem areas they solve for; they are not optimal however.
+I'm actually grateful (today) for the lightning strike that nuked my old pile of servers at home. It freed me from the whole thing in one step. I was completely disabused of any notion that I had control over anything at that point.
+You might think you are protected with UPSes and what not, but nothing will stop the electromagnetic effects if it hits within a few feet. Every piece of copper is going to get lit up. No solution is 100% guaranteed here, but EC2 and snapshots is a hell of a lot more likely to survive a single event like that.
+I’m retired (not really by choice), and spend huge amounts of time, coding. I’ve written over 20 shipped apps (many have been deprecated and retired, though); mostly since retiring.
+I’ve had to drastically reduce the scope of my work, but not the Quality. Working alone, means smaller goals.
+LLMs are a game-changer, here. They are helping me to re-expand my scope. I’m not where I was, while getting paid, but I’m getting a lot done.
+OP sounds like the ideal employee who works 8 hours, then spends 4 more hours/weekends learning and working at home.
+For people who like doing other things, work already takes up most of their time and energy 5/7 days, and there doesn't seem to be much time for much else.
+>
+OP sounds like the ideal employee who works 8 hours, then spends 4 more hours/weekends learning and working at home.
+Be careful of calling this an ideal employee.
+I, for example, tend to have a little bit of such a schedule, but what I work on at home is so much more exciting, making the job much more frustrating in comparison. Also, one is typically not allowed (or it is not possible) to apply all the really good ideas that one tested/implemented for the home projects at work.
+Thus, the kind of employees who apply such a pattern are often very, very passionate about programming - but this kind of passion often makes them
+- more frustrated at work (i.e. they might be cynical),
+- less subservient (they often know better - from their "night work" - that a requirement makes no sense, and may be vocal about it),
+- very opinionated about their "technological taste", not necessarily fitting the technological taste that the employer would love to see in the work (they have seen a lot more programming techniques).
+Wow, this sounds familiar. The quality of work that can be done at home is often not realistic at work... and vice versa. I've learned to separate work and play pretty well and have enjoyed both worlds.
+The next step is keeping the homelab at arm's length from stuff you actually depend on. My pfsense router Just Works with tons of cool stuff on it but if I get the itch to push it a bit further... walk away and make a VM in the shed!
+One can deprioritise health but what does it bring long time? I know it sounds cliche, so I will add that sometimes sacrificing health a little bit is worth pondering.
+I did this for ~10 years, and absolutely no regrets, it was a lot of fun and the side projects gave me energy.
+Nowadays it's hard though, learning a new language, with a gf and a full-time demanding job, I don't have a lot of time to be tinkering. I do feel a bit sad about this but just assumed it's just life, and cannot imagine with kids how impossible this'd be.
+I did look at doing some basic housekeeping with LLMs (updating deps, standardize testing across projects, etc) and realized I have literally 200+ side projects, most of them websites/JS libraries/React libraries. I was a bit baffled, of course 80% of it is trash, but I was kind of amazed at how many things I've actually done.
+There’s this special feeling when you can sit down later in the evening to tinker for a couple of hours, or read a challenging/inspiring book in peace.
+But when I don’t have time and frankly energy, then I still try to do _some_ minutes of this kind of thing daily.
+I feel like there‘s a big difference between 0min and 15min for anything (also includes exercise, meditation etc.), and while it’s great to have more time, there are diminishing returns beyond 30/45min.
+When I push myself to do these things, it loses all meaning. I do fun programming because it's fun, when I tried pushing myself like this virtually always I ended up more tired (for a miryad of reasons). And if I need to push myself, I'd rather just learn more Japanese, or do some exercise, or something else. But when I have like 1-2 weeks holiday, I will for sure sneak a few full coding days in there, and that is liberating.
+I agree with this. But there‘s a big difference between building a habit of doing some intellectual or creative activity regularly and pushing yourself to do a specific thing.
+Before having built a more regular habit I was often in a sort of excitement-burnout loop. That doesn’t work well for me.
+Yep, beyond 30 minutes or so I'll just switch rooms and watch a hockey or baseball game. I'm at the "done that" phase now. Not much excites me in the computer space.
+Is there a place where people can document and share the things they are tinkering with in the shed?
+I had this idea where people's inventions/devices could be sent around in a "pay-it-forward circle" for learning and inspiration. People already do that with crystals.
+Also, can being aware that x number of people are working on the same thing yield to development in the state-of-the-art if they start working together?
+I suppose there's always that tension between DIY'ers bouncing ideas off each other vs prototypes built in fitted-out research labs to think about.
+Is this idea anything more that just the addition of another sub-reddit or using existing teamwork software?
+If you had something to share, how would you choose it amongst the 10's or 100's of things you have already built? Maybe you'd need commercialization help? Are there liabilities and risks in sharing DIY devices?
+I've been thinking about https://openhardware.directory/ and https://ohwr.org/ - maybe if you list your projects, agents can do the work of bringing people together and finding new ways to develop them. It's about value-adding on top of decentralized and disjointed projects. An easy way to construct plans or follow them? How to minimize duplicated work across the world?
+Maybe a "Universal Commerce Protocol" (http://ucp.dev) but for scientists?
+Hackaday.com comes to mind. That's a blog with those tinkering things. Hackaday.io is a big base where people store their schematics and worklog, present their inventions and tinkering as they happen.
+It's also owned by Siemens via Supplyframe. That means its content is controlled to a certain degree. Sort of like the way Vice is controlled by its owners. In that way it could function as controlled opposition. Be careful what you submit too.
+I wonder if it'd be possible to create a Hackaday-type site with HN content. hackernewsbooks.com >> hackernewshacks.com
+Good links. "Guests visiting the site are around 250, instead of the 48976 (mostly bots) we had two days ago. Let's see how it goes over the course of today."
+How funny would it be if one of the AI firms started offering free web hosting, just to get good UGC back? They could even block bots from competitors, right?
+Everytime I go back and look at some of my older projects, I am in awe of how much I had done in the short while when I was working on it. Side Projects are kind of the only real way I think one can learn software engineering. Great read
+My personal projects are the only think keeping me sane on this Brave New World of AI coding and the fact that we, AI skeptics, are all stuck in a prisoner dillema we're so acutely aware of, we find no other way than being the fearless pioneers of all that shit.
+I still have lots of reservations against AI generated code, even wrote a couple articles about them that I never published, but decided that fighting against the flow and the mania is useless.
+But, I don't want my kids to have student debt, so, I will just smile and nod along during the day, being even an enthusiastic leader of AI initiatives, taking care not to be the cassandra that asks where are the evaluation harness, the safeguards, as this is frequently frowned upon by the people who gets enamorated with a demo and wants to promete it to production yesterday. The people who believe that if you just spit a bunch of csvs for an LLM it will work like a contraint solver.
+My personal projects bring me the crafstman satisfaction I increasingly can't find on my day job.
+I don't have a skyscraper job, or even a low-rise, but I appreciate this article nonetheless as someone who has been self-learning how to turn a rickety shed project into perhaps a sturdy low-mid rise.
+I've gone down endless lengthy detours that often lead to dead ends, but I've learned an immense amount from the OS to CSS. It's finally coming together in a simpler way than I had previously envisioned. Hopefully this year it'll be ready.
+The big problem starts when your job contract limits what you can do with your intellectual property. Then you can have. your shed, but you can't show it to anyone, you can't invite friends, you can't use to plan your future business etc.
+I love this point, but also it seems to me that "not understanding the difference between a skyscraper and a shed" is perhaps the biggest barrier to thinking and talking about software development in general.
+Like, "is vibecoding good or bad?"
+Depends! Probably fine for a shed and terrible for a skyscraper. Or maybe there are some things within the skyscraper that might be vibecodable? I don't know.
+Maybe because buildings are easy to describe the surface concepts to people without deep understanding of civil engineering or architecture or whatever, compared to other engineering disciplined like mech or chem or electrical.
+Everyone knows what a building foundation is and why it's important, but if someone starts talking to you about negative roots being necessary for a stable linear time-invariant system, most people's eyes are going to glaze over.
+Dammit! I was hoping for advice on improving and maintaining my backyard shed. My shed is not a means, it is an end. And it, too, brings me peace and joy and sometimes despair or a great laugh. Sometimes I even apply principles from work (but orthogonally) to development of my shed.
+This post make me feel that working on your own projects is not a waste of time. It helps you more than you realize. Either by bringing you joy or experience, just keep working on your "shed" if you enjoy that.
+Really good read. I think you really opened eyes here for myself and others. Different fields, different paths but all so impactful. Exactly the kind of perspective that helps you reset and get back on track.
+Building a shed gives you a comprehensive understanding of the whole setup, which helps with building up a better mental model and intuition for the construction of a skyscraper. Otherwise it's easy to get lost with following standard procedures in building a skyscraper without understanding why certain things are done a certain way.
+I might have to reexamine my attitudes: the entire article felt AI-written to me, which instantly reduced my appetite for reading it.
+Which is unfair of course.
+A) I don’t even know whether it was actually was written by AI and
+B) even if it was, it still encapsulates a human’s potentially worthwhile thoughts and experiences.
+But.. undeniably genAI will lead to a much greater volume of text being written so we’ll all have to be even more selective in what we read and what not?
+Staccato, which is Italian for "detached, separated".
+When I see simple Italian words used as technical terms in music or art, I think "oh, this must be what English speakers feel when they work in tech - a lot of common words becoming specific concepts in that particular field".
+So what? Detecting whether content was produced by AI is impossible. Please stop shilling tools promising the impossible. The mentioned 99.98% accuracy is complete bullshit.

@@ -1,0 +1,7 @@
+Software engineer. Open source maintainer.
+The front-end to your dev env. Manage dev tools, env vars, and tasks.
+Encrypted/remote secret manager.
+Fast git hooks and project lints.
+A specification for CLIs with completions and docs.
+Daemons with DX.
+Framework for building CLIs in Node.js.

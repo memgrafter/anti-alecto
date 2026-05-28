@@ -1,0 +1,21 @@
+ANEX Blacktide
+Type
+Preset
+Use Case
+All
+Agent
+Gemini
+Claude
+GLM
+DeepSeek
+File
+json
+8 more properties
+READ ME
+The Preset 
+Style Profile
+List of Authors/Directors/Characters. Add the <STYLE_PROFILE> in the Enhanced Definition | System Boot Sequence and place the module between <PHYSICS_INIT> and <ATMOSPHERIC_INIT>
+Joe Abercrombie / Grimdark
+H.P. Lovecraft / Cosmic Horror
+Hemingway / Hardboiled
+Arthur Morgan—RDR2 / John Constantine—DC

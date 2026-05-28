@@ -1,0 +1,47 @@
+X thread capture
+
+# geoff on X: "heres some rough thoughts after watching @badlogicgames great keynote yesterday everyone is generating as much as possible right now. it’ll pass. i’ve been there. too many folks rn focusing on WHAT to generate instead of HOW to generate (and by that i don’t mean by doing" / X
+
+Don’t miss what’s happening
+
+People on X are the first to know.
+
+Log in
+
+Sign up
+
+# [](http://x.com/)
+
+## Post
+
+See new posts
+
+# Conversation
+
+[](http://x.com/GeoffreyHuntley)
+
+geoff
+
+@GeoffreyHuntley
+
+heres some rough thoughts after watching 
+
+@badlogicgames
+
+ great keynote yesterday everyone is generating as much as possible right now. it’ll pass. i’ve been there. too many folks rn focusing on WHAT to generate instead of HOW to generate (and by that i don’t mean by doing harness/prompt engineering tea ceremonies) slow down and rethink things. how as in what primitives you use matters lots now. it’s a long bet on my end but i deeply suspect the LISP for AI has yet to be invented and when it does it changes things.
+
+6:14 AM · Apr 11, 2026
+
+·
+
+14.5K Views
+
+31
+
+19
+
+186
+
+85
+
+Read 31 replies

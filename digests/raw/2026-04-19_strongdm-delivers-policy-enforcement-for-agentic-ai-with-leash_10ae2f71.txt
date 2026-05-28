@@ -1,0 +1,60 @@
+StrongDM Delivers Policy Enforcement for Agentic AI with Leash
+Written by
+Justin McCarthyLast updated on:
+October 29, 2025Reading time:
+Contents
+Built for Security. Loved by Devs.
+- Free Trial — No Credit Card Needed
+- Full Access to All Features
+- Trusted by the Fortune 100, early startups, and everyone in between
+Every enterprise today runs code it didn’t write, executing actions it can’t always predict, across networks it no longer fully controls.
+And now, those actions are being taken not by humans, but by agents, as AI agents quickly become the fastest-growing class of identity.
+StrongDM has long focused on real-time access controls for human operators: engineers, SREs, and developers. Our focus has been on the people in roles that need secure, governed access to critical infrastructure. But what happens when those “people” are machines or AI agents?
+That’s the question that led us to create Leash, an open-source project we’ve released to help developers explore how to extend StrongDM-style access guarantees to autonomous workloads and agentic systems. You can use Leash to understand agent identity, runtime security, and fine-grained control over non-human access. Leash is a starting point for building the next generation of secure agentic systems.
+We announced Leash last week at StrongDM Live! In New York City. The event was part of our multi-city, global roadshow where we’re giving customers, partners, and AI and security thought leaders an exclusive look at our new agentic runtime security and approach to identity access control for all identities, human and agentic.
+As we explained to our guests in Midtown Manhattan, we know that security teams need a way to eliminate blind spots in agent behavior, prevent runaway agents from causing damage, and enable rapid, development-speed iteration with hot-reloadable policies. In customer conversations about AI adoption, we’re repeatedly heard this message: “We don’t need another PAM tool. We need visibility and control over what our workloads and agents are actually doing.”
+Leash can be used to intercept activity from agents and evaluate them against Cedar-defined policies, which is the same language that powers the StrongDM Policy Engine.
+By operating inside the kernel network stack, Leash functions as a control point that can:
+- Inspect outbound traffic and identify the target service or domain.
+- Enforce policy before the connection is established.
+- Apply context-aware rules defined in Cedar (e.g., source process, identity, environment tags, or destination attributes).
+In effect, Leash turns the host into an enforcement node that speaks the same policy language as StrongDM’s authorization layer, unifying human and machine access control under a single model.
+How Leash Works
+If you think of an AI agent as a digital employee that never sleeps, never stops working, and constantly connects to tools and systems, then Leash is the system that makes sure that employee stays within the rules.
+Leash sits quietly on the same machines or environments where your AI agents live. It doesn’t interfere or slow them down. Instead, it watches and understands what they do in real time. When an agent tries to take an action like reading a file, making a network call, or connecting to a service, Leash checks whether that action is allowed based on simple, human-readable policies.
+Those policies work like guardrails. They tell the agent, “You can access this,” or “You can’t do that.” And if a policy changes, Leash can update instantly, without anyone needing to rewrite code or redeploy systems. And it does it by governing behavior, not credentials. It doesn’t matter whether the agent has a password or token; what matters is what it’s trying to do.
+And every single action is recorded. That means you can always answer the question: What did my agents do? When? And why?
+Leash gives teams visibility, confidence, and accountability in a world where AI acts on its own. It ensures your autonomous systems behave as intended: safely, transparently, and in alignment with your organization’s rules.
+MCP and the Agent Control Plane
+An MCP server operates as a proxy between an AI agent and external APIs and controls what information the agent can access. Leash directly parses and handles the Model Context Protocol, providing control over which MCP providers and tools are permitted.
+Additionally, Leash intercepts MCP calls at the OS level, preventing MCP authorization bypass or misconfiguration. This approach means Leash can:
+- Contain “runaway” or malicious AI agents before data exfiltration occurs.
+- Enforce per-agent, per-destination policies, regardless of application-level logic.
+- Provide auditable, system-level logs for every blocked or allowed connection.
+Architectural Parallels to StrongDM
+Leash is a natural extension of the StrongDM architecture and addresses elements of modern stacks with these capabilities.
+| Layer | Capability |
+| Policy Definition | Context-aware, Cedar-based access logic |
+| Authorization & routing | Dynamic resource authorization |
+| Credential Security | Secretless session Management |
+| Endpoint Verification | Device trust & posture enforcement |
+| Kernel-level filtering | Agentic AI & service traffic control |
+Together, these form a multi-layered enforcement model:
+- Human access → Gateway enforcement
+- Service access → Relay enforcement
+- Agentic AI access → Leash enforcement
+All of these capabilities share the same policy substrate (Cedar), audit pipeline, and real-time authorization semantics.
+Like the StrongDM Gateway and Relay, it’s designed for low latency, HA deployments, and end-to-end TLS. It leverages the same telemetry and log infrastructure described in StrongDM’s documentation— meaning every enforcement decision is auditable and exportable to SIEMs or observability stacks.
+Because it operates in-kernel, Leash adds negligible performance overhead (<1ms per decision) and scales across multi-tenant container environments.
+Evolving Access Control to Agentic Control
+For more than a decade, StrongDM has helped organizations answer one essential question: who can access what? That premise defined the world of access control and has enabled some of the worlds most valuable brands to map humans, credentials, and permissions to the resources they needed.
+But increasingly, the actor isn’t a person at all. They still need their access governed, and Leash is how we make that leap. It’s the first runtime control system built for this new era of agentic computing. Instead of just checking who has access, Leash continuously observes what these agents actually do, right where the action happens, inside the operating system.
+It uses clear, human-readable rules to define what’s safe and what’s not, and it enforces those rules automatically in real time. Whether it’s an engineer pushing code, a CI job deploying a service, or an AI agent calling an API, Leash applies the same consistent logic.
+This is Agentic Control, and it’s the natural evolution of access control. And most importantly, it ensures that even as our systems think for themselves, they still act within our intent.
+Next Steps
+StrongDM unifies access management across databases, servers, clusters, and more—for IT, security, and DevOps teams.
+- Learn how StrongDM works
+- Book a personalized demo
+- Start your free StrongDM trial
+About the Author
+Justin McCarthy, Co-founder / CTO, originally developed empathy for Operations as a founding and pager-carrying member of many operations and data teams. As an Executive, he has led Engineering and Product in high-throughput and high-stakes e-Commerce, financial, and AI products. Justin is the original author of StrongDM's core protocol-aware proxy technology. To contact Justin, visit him on Twitter.

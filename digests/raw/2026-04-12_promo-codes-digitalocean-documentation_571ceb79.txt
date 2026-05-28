@@ -1,0 +1,18 @@
+Promo Codes
+Validated on 2 Apr 2022 • Last edited on 2 Apr 2026
+You can redeem a promo code to apply credits to your team.
+Your team must have a valid payment method in order to redeem a promo code and create Droplets or other resources.
+Redeem a Promo Code
+To redeem a promo code, go to your team’s Billing page. In the Overview tab, find the Promo code section.
+Enter the case-sensitive code in the promo code field and click Apply Code. Once you successfully redeem a promo code, the credits are automatically applied to your team and the Promo code section of the Billing page no longer appears.
+You can view your team’s credits in the control panel and on your team’s invoices.
+Promo Code Limits
+The following limits apply to promo codes:
+-
+Each team can redeem one promo code. If you redeemed a promo code in the past, you cannot redeem another. Your promo code history is visible in the Billing history section.
+-
+Promo code credits are non-transferable. You cannot transfer promo code credits to other teams.
+-
+Promo code credits expire after 1 year. Unlike PayPal pre-payments, which do not expire, credits from promo codes expire one year after you redeem them. Certain credits have a shorter expiration of 60 days. Contact support if you have questions about a specific promotional credit.
+-
+Promo codes do not apply to SaaS Add-Ons.

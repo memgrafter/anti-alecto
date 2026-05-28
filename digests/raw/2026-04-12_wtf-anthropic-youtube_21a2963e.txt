@@ -1,0 +1,494 @@
+That little company known as Anthropic,
+of course, Claude Code, their famous
+tool behind it has caused quite the
+ruckus, okay? We're talking about people
+are very very upset, okay? I I I swear I
+could still hear Twitter people just
+screaming right now, and it's been days.
+And if you have no idea what I'm talking
+about, honestly, you're living a blessed
+life, okay? I want you just to look out
+on that farm, and I just want you to
+smile because you
+you have it peaceful. You have a nice
+time. But, the rest of us have to live
+with what happens out here in the real
+world, okay, punk? You don't know what I
+have to see. But, since you're watching
+this video, you will now discover
+everything, okay? We're going to go over
+everything. There's a lot of people
+yapping about what's going on with
+Anthropic. I'm going to give you,
+hopefully, what is the full story, but
+more, I'm going to also just I'm going
+to make a couple, you know, I might
+project a little bit. I might make some
+guesses myself at the end, okay? For
+those that are in the know, you've
+probably seen the image. For those that
+aren't, you have not seen this image.
+But, effectively, it says, "This
+credential is only authorized for the
+use with Claude Code and cannot be used
+for other API requests." This is the big
+image that kind of kicked off this whole
+Anthropic hate that's going on right
+now. So, what exactly is happening here?
+Well, if you don't know, Anthropic does
+have plans. You can get a pro plan, a
+pro 5X plan, and a pro 20X plan. And if
+you're on that plan, you, at least up
+until now, could use that token and say
+cursor, you could use it inside of
+OpenCode, and be able to use your plan
+and use your set amount or limited
+tokens to be able to do a bunch of code
+changes. Well, that all changed this
+week. They said, "Hey, guess what?
+Absolutely not. Nobody else is doing
+that. You can only use the plan in
+Claude Code." Now, this came as a big
+surprise for everybody, okay? People
+were not happy. The GitHub's are just,
+as you can see, just filled with just
+people trying to find workarounds with
+it. Tons of comments, ridiculous amounts
+of comments going on in there. People
+saying they're canceling. Just a lot of
+stuff. A lot of people not happy. So, in
+other words, if you pay for a
+subscription plan, you cannot use
+third-party tools. You must use Claude
+Code. If you pay by the API pricing,
+which is literally like something like
+10 X more expensive, then you can use
+things that are non Claude Code. You can
+use OpenCode. You can use Cursor. You
+can use whatever. But, there's a lot
+more to it. I think this Reddit post
+right here is, honestly, really
+illuminating. They're effectively saying
+that everybody's kind of lying about the
+situation, okay? People aren't giving
+the full truth, or at least they're
+giving maybe a partial truth is probably
+better. Yeah, I mean, they are saying,
+"Hey, yeah, there's misinformation going
+on." Well, it's it's more like partial
+information. It turns out part of Claude
+Code's big plans is they they actually
+explicitly state in their TOS, "This is
+only use in our products." And so, has
+this always been known? Yes, apparently,
+this have always been known.
+Effectively, what a bunch of these tools
+do is that they use your OAuth token,
+and they forge requests with specific
+headers and body. It's very fragile.
+Like, if if you've ever done this
+before,
+have you ever had to treat like a black
+box service, and you have to kind of
+guess how it needs to behave, and then
+you get it up and running, and then they
+make a change, and it just just just
+destroys your service until you come
+back up with the new change that they
+made? It's always very fragile, super
+frustrating, but this is how all the
+tools work. And this TOS thing, it's
+been around since all the way back when
+Claude Code released in early 2025. They
+have always strongly discouraged using
+their APIs this way. They put real
+effort into preventing it. So, in other
+words, this problem that everybody's
+very angry about was actually just
+really a ticking time bomb underneath
+because Anthropic didn't enforce it.
+They allowed it to continue to fester
+for a long time, and a bunch of people
+switching over. Don't worry. We're about
+to like literally
+We're about to get the tinfoil out.
+We're just We're not that good. I I I
+want to make sure you guys really
+understand what's happening before I go
+off and yap, project. Lastly,
+apparently, the person running Claude
+Code has came out and said this on
+Twitter, which said this, "Yesterday, we
+tightened our safeguards against
+spoofing with the Claude Code harness
+after accounts were banned for
+triggering abuse filters from
+third-party harnesses using Claude
+subscriptions. Third-party harnesses
+using Claude subscriptions create
+problems for users and are prohibited by
+our terms of service. They generate
+unusual traffic patterns without any of
+the usual telemetry that Claude Code
+harnesses provide, making it really hard
+for us to help debug when they have
+questions about rate limit usage or
+account bans, and they don't have any
+other avenue for the support." In other
+words, it's just that these these
+abusive third-party platforms are just
+impossible to debug, and any problem is
+perceived to be an Anthropic problem,
+not the tool's problem. And so, that's
+what they're really saying. They're
+They're really just saying, "Hey, for
+your best interest and for our ability
+to debug, the only possible way forward
+is for us to make sure that we're
+always,
+you know, enforcing our TOS, no matter
+what." All right, so that's kind of like
+the what has happened. All right,
+everybody, we are now on the same page.
+Now, the real question is why did this
+happen, and why now? Like,
+OpenCode has been using Anthropic for a
+long time. Cursor has. A lot of these
+tools, apparently like Cloud something
+or another that's some other service, is
+also using it. Like, this has been
+around for months upon months upon
+months. So, why enforce it now?
+Especially at the height of Claude Code
+glazing. The first thing people kind of
+talk about, which, honestly, I think is
+is is the weakest and probably the most
+incorrect of them all, is the cost,
+right? So, remember, there's three
+potential plans. There is going to be a
+pro plan, and then you have the 5X plan,
+and then you have the 20X plan. This
+one's approximately $20 a month. This
+one's a hundred, I believe. And this one
+is 200. And so, often, what you see
+people kind of citing is that, "Okay,
+people don't really make usage of the
+pro plan, except for maybe just a little
+bit actually cost more. And then, the of
+the 5X, maybe half the people cost more
+than the actual thing. And then, for the
+20X, the large majority of them end up
+costing a lot more." And to what extent
+do they cost? I don't know. So, the
+general calculus everyone runs on the
+math that's like, "Oh, this is why
+they're doing it." goes something along
+the lines of this, right? The integral
+of P over whatever its bounds is, I'm
+not going to write its bounds.
+Plus, of course, the integral of the 5X
+plan, plus the integral of the, what's
+it called, of the 20X plan is going to
+be like minus the integral Let's just
+call whatever this line is, I'm just
+going to call it
+g of x cuz I have no idea what the hell
+it is. Let's just call g of x. This
+thing has to be greater than zero. And
+that's why they're doing it, right? The
+area underneath this curve is bigger
+than the area underneath these little
+price point step ladder curves, right?
+Like, that's what everybody's saying.
+Everyone's saying, "Okay, this is the
+real cost. That's that." Honestly, I
+don't think this is the problem. I mean,
+yes, I think money is the problem, but I
+don't think this particular thing is the
+motivating factor or why we're seeing it
+now. So, to kind of put us in the right
+direction, I believe that Dax actually
+has a really good, like, at least
+directionally correct tweet, which is,
+"Okay, it's their business at the right
+to enforce their terms however they
+like." Which is true. Like, they already
+said from the beginning they don't want
+anyone but Claude Code using their
+subscriptions. So, it technically is
+their right to be able to do this.
+They're not obligated to give anybody
+access to their services in any other
+way than they have set forth in their
+terms of service. And if you've paid for
+it, and you are now upset about it, you
+don't have to continue to pay. Just stop
+paying. So, Dax's projection is that
+models aren't sticky enough.
+Yes, Opus is good, but so is Jippity 52.
+There's things that Jippity 52 can do
+better, and there's things that Opus
+does better. So, it's not like the
+models are actually that sticky. What
+they really want is that they want their
+entire tooling, their entire stack to be
+what you use. When you use Claude, you
+use Claude Code. This way, they own
+everything. They show that they have
+more value, effectively. And I think
+this is a big thing, especially when it
+comes to OpenCode, because you may not
+realize this, but OpenCode has been
+growing wildly. They're about to hit 1
+million monthly active users on their
+open-source project. Which means before
+it was just a toy project, but now
+that's just shooting up so wild. And the
+reason, by the way, it's shooting up so
+wild. If you have not used Claude Code,
+like, I'm not trying to be mean, Claude,
+but I feel like I kind of have to be
+mean because
+can we all just agree Anthropic is the
+number one fear-mongering, "Hey,
+software engineering is going to end"
+company of them all. And Claude Code,
+the product, is just significantly far
+behind OpenCode. They've been having
+screen flickering. Just like, it is like
+a dance club in your twee editor that
+is, honestly, just like
+I'm going to get epilepsy from even
+looking at it. They've had this for
+months now. They tweeted about how they
+fixed 85%
+of it, which is an absurd fix. That's
+not a fix. You don't know what the
+hell's going on if you can only fix 85%
+of it. And second, how did you even come
+up with that number? And third, 1 day
+later, they had to roll back that change
+because other bugs were cropping up.
+What it shows to me is that the company
+in which is telling you that software
+engineering is over can't even run their
+own like their own software. They're not
+making the changes that are needed to be
+competitive, and they're losing out to a
+bald man and a vegan from the Ozarks.
+It's just diabolical, these two. Yeah,
+by the way, you never you Everybody
+knows. You don't start a land war in
+Asia, and you never go head-to-head when
+open source is on the line with a vegan,
+okay? Everybody knows that. And by the
+way, even with Claude Code, besides for
+the flickering, when you type in ultra
+think, it's like this rainbow. I had I
+had it more than once shift off and have
+like the ANSI escape sequences just
+being printed in plain old regular text.
+I mean, just just egregious bug after
+egregious bug. I couldn't expand code
+code with control O while in a menu to
+accept code changes. So, it's like,
+"Okay, accept these code changes, yes or
+no?" Well, if you want to see the code,
+expand it. Well, you can't leave the
+menu. And you're just like, "Oh my gosh,
+please, why are you doing this, Claude?
+Stop it. Stop it, Claude. Just let me
+I'm going to The tool is not good. Okay,
+I
+first off an impressive software project
+and they've done good so far, but it is
+not that usable comparatively to open
+code. Open code is a beauty. Okay, it's
+absolute beauty gives you all the
+information you know right up front. You
+it's actually well designed. It's by
+developers who like to code for
+developers who like to code and it's
+obvious. So to me when I see this graph
+and people talking about this
+I don't think so. I don't think that's
+it at all. All right people, we're going
+to need to do something. I'm going to
+need the tin foil hat up here for a
+second. Okay.
+All right, so this is what I think the
+real problem is that Anthropic is
+actually having. Okay, I don't think
+it's just simply that previous graph.
+What I think it is it is partially that
+previous graph right here, but I think
+there's a lot of lies in that previous
+graph. Okay, I think the amount that
+they're subsidizing the pro the 5x and
+the 20x is much more than this graph
+leads you to believe. I think the cost
+that they actually have to run
+everything is significantly higher.
+First off, you got to remember they have
+to do these huge amount of training runs
+that involve buying and being able to
+utilize a whole bunch of hardware and
+energy which is just going to be a
+gigantic number. Then you have the whole
+lifetime problem of the model. How I
+mean, who here's out there still using
+35 when you got 374 and 45 on the table
+right now. You also have Jippity 5
+Jippity 51 Jippity 52. You have all
+these other options that are better than
+35. Yet 35 costed a huge amount of
+money. And so the lifetime like
+operation of these models especially
+right now in such great change is rather
+low, but the cost actually run it is
+rather high. Plus you have employees
+which are extremely expensive. It's
+stock grants that some of these higher
+paid jobs are just getting paid
+outrageous amounts of money. Plus you
+also have to have all the infrastructure
+and all that crap being set up to be
+able to run all the stuff that involves
+all the continual running of energy,
+replacing GPUs and all that. And then on
+top of it, you got things like Nvidia
+just dropping brand new AI GPUs called
+Rubin that apparently is going to
+deliver 10x in reduction in inference
+token cost and 4x reduction in number of
+GPUs to train MOE models. That means
+more models. Okay, when you want more
+models, you got to get the new chip and
+so this is like this constant rat race
+of trying to stay ahead of all the
+competitors like chat Jippity, Google,
+XAI. I mean
+Let's just I mean I know XAI really is
+only good at putting people in bikinis
+when they don't want to be put in
+bikinis, but one day you never know.
+Okay, you just never know. So there's a
+real substidation like subsidization
+problem going on here. These tokens
+aren't just sub you know subsidized by
+like just the pro users versus the 20x
+users. They're not subsidized by like
+80%. I would not be surprised to find
+out that these things are like 98% being
+subsidized right now. Meaning the true
+cost of the max plan currently is 50x
+more than they're actually saying
+because they're still trying to
+recuperate all the other things
+beforehand. And then to remain
+competitive in the future, there is a
+continual non-stop march into every
+single latest piece of hardware and
+everything that they must put in there.
+RAM RAM has already been purchased for
+all of 2026. So what they have is what
+they get and it's astronomically
+expensive with Samsung being like,
+"Yeah, we're going to just we're going
+to just 4x your price. You're going to
+pay for it?" And they're like, "Yes,
+absolutely. Please yes, sir. How when
+would you like me to bend over and how
+often?" Right like they're just
+absolutely at the whims of everybody.
+And so if they can make a stack that's
+so competitive and then force people
+into this highly subsidized plan that
+can only be used on their stack, their
+stack becomes the sticking point, right?
+Because you can't use the cheap
+effective access on unlimited tokens.
+And then on top of that, you don't have
+access to other models when you don't
+want to use them. Right? That's what
+that's why open code so dangerous. It
+isn't because you can use your max
+subscription. It's because when I go,
+"Huh, let me try Jippity 2. Oh wow,
+Jippity 52 did really good right there.
+Maybe I don't want Opus." All of a
+sudden, yikes. Anyway, so there you go.
+That's my thoughts on the whole thing. I
+know maybe I'm a little bit more of a
+fringe conspiracy theorist when it comes
+to this stuff, but I think that I I I
+personally see trouble in the water.
+Okay, I think that that's why they're
+doing it because why would you torpedo
+the single highest amount of developer
+gratitude and non-stop Twitter glazing.
+It's so over. We're never coming back
+software engineering. Opus is right. I
+mean I what you've seen videos on saying
+Dario was correct that 90% of code is
+going to be written in 3 to 6 months. I
+mean it's just it's fever pitched. We're
+talking about absolute fever pitched
+zealotry going out there on Twitter. And
+then they just take they literally just
+take old yeller OUT AND THEN
+BAM. It is just insane. So there you go.
+That's it. That's all I have to say.
+Hey, I'm going to try something a little
+unusual. You want to press like? You
+want to make a comment? Tell me where
+you think I'm wrong. Tell me where you
+think I'm right. I never usually invite
+these kind of things cuz honestly I
+think it's kind of I think it's kind of
+weird to do that. Yeah, I know I did
+push for subscribers for a little bit to
+get over a million. By the way, thank
+you for the million. I appreciate that.
+Anyways,
+thanks for watching. The name
+is I don't trust Dario. I don't know if
+you know this, but you may not know
+this, but Dario, guess what he said. He
+thinks that open source models are in
+danger. He's always pushing for
+regulation. He does not like open
+source. He DMCA'd a bunch of people when
+it came to them accidentally leaking
+their code and people de-obfuscating it.
+He does not like open source and
+Anthropic doesn't like open source and
+they want to own everything and they
+think that AI's too dangerous for
+anybody but them to run it and they
+ultimately just want control over you
+and your life. to leave you helpless and
+incapable. That is why 90% of all
+software is going to be written 100% of
+all software is going to be written
+because they don't want anyone to
+actually be learning and independent.
+They want everybody to suckle from the
+teat of Dario and that is that and that
+is what I actually believe. I think that
+Dario is one of the most dangerous man
+on all of the AI landscape and that I
+don't think he has your best interest at
+heart. A gem.
+I know it's not easy to find developers
+to work with. Trust me, I hired TJ. So
+how do you find quality people to work
+with without spending all of your time
+on LinkedIn? Well, with G2i you can go
+from interview to first PR in as little
+as 7 days. G2i has helped people get
+placed at Meta and 1Password and they
+run React Miami. So they're super
+embedded in the JavaScript community. So
+if you want to find top talented
+software developers, check out g2i.co.

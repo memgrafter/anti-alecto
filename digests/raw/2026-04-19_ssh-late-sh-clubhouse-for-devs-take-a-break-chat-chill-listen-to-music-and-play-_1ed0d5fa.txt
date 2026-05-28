@@ -1,0 +1,83 @@
+Reddit thread capture
+
+Thread URL: https://reddit.com/r/rust/comments/1sm4qsm/ssh_latesh_clubhouse_for_devs_take_a_break_chat/
+Subreddit: r/rust
+Title: ssh late.sh - Clubhouse for Devs. Take a break, chat, chill, listen to music and play some games! :) My first serious, source-available, rust project!
+Author: u/Bl4ckBe4rIt
+Score: 598
+Comment count (reported): 81
+
+## Original post
+I would like to share with you a project that I've been cooking for some time, a cosy place for devs to hang out :) [https://github.com/mpiorowski/late-sh](https://github.com/mpiorowski/late-sh) Stack: Rust workspace with 4 crates, russh for the SSH server, ratatui for the TUI, axum for the HTTP/WS side, Postgres, testcontainers for integration tests. License is FSL-1.1-MIT (source-available now, flips to MIT after 2 years), wanted to be upfront about that since it's not classic OSS. ssh late.sh That's all, no passwords. no OAuth, no accounts, your ssh key is your identity. Connect, chat, listen to some vibes and play some GAMES! Right now supporting: 2048, tetris, sudoku, nonograms, minesweeper, solitaire. Leaderboards, badges, streaks, everything with sweet ASCII ;) Multiplayer games coming after! Poker, chess, so much cool stuff :) Imagine sitting at the blackjack table for a few minutes between your coding sessions, lofi music in the background, chat with people all around the globe, and just throw some chips.... A few things I learned building this in Rust: \- russh render loop backpressure is real, [handle.data](http://handle.data) needs a short timeout (50ms) or a slow client will block your whole render task. Took me a while to figure out why some sessions felt laggy for everyone. \- since the ssh don't allow streaming music, I had to come up with a solution. Paired-client WS state sync (browser/CLI controlling audio from the TUI), a token-keyed registry with mpsc channels into the app, and the TUI sends control events back over the same WS. Keeping the two sides from drifting was harder than I expected. \- ratatui + a 15fps render loop is shockingly comfortable to work with once you stop fighting it. AND I WANTED A VISUALIZER :D How to listen to music? Trickier than you would have expected ;p, As I've mentioned, ssh doesn't allow streaming music, so here are your options: * CLI: recommended, a small companion CLI that connects to the music stream and the app in one go, with a working audio visualizer. Just run:curl -fsSL [https://cli.late.sh/install.sh | bash](https://cli.late.sh/install.sh | bash) * WEB: secondary option, a link to open in your browser that will play the music. (did I mention you can control the music from within the app) What's more? * voting system for the next coding music session, everyone decide what will be played in the next 1h (lofi, ambient, classic, jazz) * fully working chat, create new rooms, dm people. A lot of QOL, multi-line input, up/down navigation, replies, mentions, all the goodies * news sections! share a link, youtube, twitter, whatever you want app will process it and share with everyone * BONSAI tree! A cozy ASCII plant on your dashboard that grows while you're connected. If you lose your daily streak, it withers! Water it and watch it grow! Cut to change shape :) * an actual audio visualizer right in the terminal that syncs up with the beats! A landing page: [https://late.sh](https://late.sh/) Code (source-available, FSL-1.1-MIT): [https://github.com/mpiorowski/late-sh](https://github.com/mpiorowski/late-sh) Looking for contributors! Jump, chill and take a break. Have a good day everyone :)
+
+## Prominent viewpoints (top-level comments)
+1. (221) u/iamasuitama: This is not how you create a valuable startup. You're not supposed to encourage, let alone enable, real people to connect with eachother!!
+2. (55) u/nafatsari: Very nice! My only issue was connecting since my ISP was resolving an IPV6 address. Forcing ipv4 solved the issue, but maybe other people are having the same problem
+3. (33) u/Tiny_Cow_3971: Looks cool! Out of interest and transparency: is this vibe coded, AI assisted or "hand made"?
+4. (19) u/deanominecraft: $ ssh late.sh Permission denied (publickey) thought that this was just because i’m on a jailbroken iphone rn (not exactly a normal device to use for this) but it works for ssh-ing into other things (eg. terminal.shop)
+5. (16) u/sleeksubaru: I love this idea !! Hope we get more people in there.
+6. (14) u/daoist_chuckle: this is amazing! this was something that I had thought about as well. we lost the original intention of the internet and its nice to see others feel the same. Now all we need to do is have it so you need to backup your conversations via a usb and then it can be totally anon
+7. (9) u/ToiletSenpai: This is cool as fuck. I’ll be in once I finish poop
+8. (7) u/haakon: A bit off-topic, but interesting licensing clause: > Grant of Future License > We hereby irrevocably grant you an additional license to use the Software under the MIT license that is effective on the second anniversary of the date we make the Software available. On or after that date, you may use the Software under the MIT license So I guess each commit becomes free and open source with a two-year delay after push.
+
+## Thread discussion sample
+- (221) u/iamasuitama: This is not how you create a valuable startup. You're not supposed to encourage, let alone enable, real people to connect with eachother!!
+  - (69) u/Bl4ckBe4rIt: :D yeah, I am an anarchist :D
+    - (25) u/scotty2012: dope, i’m in.
+- (55) u/nafatsari: Very nice! My only issue was connecting since my ISP was resolving an IPV6 address. Forcing ipv4 solved the issue, but maybe other people are having the same problem
+  - (21) u/Bl4ckBe4rIt: I am fixing the ipv6 now :)
+    - (6) u/PredictiveFrame: Aren't we *all*? (Please kill me)
+  - (13) u/SleeplessSloth79: Yep, same issue. Had to use `ssh -4 late.sh` to get it to work.
+- (33) u/Tiny_Cow_3971: Looks cool! Out of interest and transparency: is this vibe coded, AI assisted or "hand made"?
+  - (49) u/Bl4ckBe4rIt: AI assisted :) and thx for separating it vs "vibe coded or hand made"
+    - (6) u/Tiny_Cow_3971: Thanks! ☺️
+- (19) u/deanominecraft: $ ssh late.sh Permission denied (publickey) thought that this was just because i’m on a jailbroken iphone rn (not exactly a normal device to use for this) but it works for ssh-ing into other things (eg. terminal.shop)
+  - (14) u/kabocha_: generate a public key first; https://late.sh/ suggests `ssh-keygen -t ed25519` (but i assume it accepts other types), then connect with that key.
+    - (8) u/deanominecraft: ty that’s working now (this is where i realise phone screen is too small to actually use it)
+      - (5) u/Unique-Drawer-7845: I just submitted a PR to support narrower screens. At least on the main screen. Try again tomorrow maybe. :)
+- (14) u/daoist_chuckle: this is amazing! this was something that I had thought about as well. we lost the original intention of the internet and its nice to see others feel the same. Now all we need to do is have it so you need to backup your conversations via a usb and then it can be totally anon
+  - (5) u/tchernobog84: Brings me back to my BBS days... Anyone else old enough?
+    - (1) u/Unique-Drawer-7845: I certainly am. And I'm one of the late.sh source contributors. Yes I'm feeling nostalgic about it too.
+- (16) u/sleeksubaru: I love this idea !! Hope we get more people in there.
+  - (3) u/_analysis230_: Count me fuckin in
+    - (2) u/Unique-Drawer-7845: see you there (:
+- (9) u/ToiletSenpai: This is cool as fuck. I’ll be in once I finish poop
+  - (6) u/Bl4ckBe4rIt: You can chst while pooping. There is a browser chat link.
+- (7) u/haakon: A bit off-topic, but interesting licensing clause: > Grant of Future License > We hereby irrevocably grant you an additional license to use the Software under the MIT license that is effective on the second anniversary of the date we make the Software available. On or after that date, you may use the Software under the MIT license So I guess each commit becomes free and open source with a two-year delay after push.
+  - (8) u/Bl4ckBe4rIt: Yes, exactly. I dont rly care about using my code, its more about protecting inital network. I cannot allow splits, without people the app will die. Hope you understand.
+- (5) u/Deathmore80: That bonsai tree be looking like something else
+- (4) u/__groni__: tried \`ssh late.sh\` then realized I need CLI version to enable audio and now my name has suffix \`-2\` :( Any way to fix it?
+  - (3) u/Bl4ckBe4rIt: Cli creates a new ssh key, which means new account. Easiest fix is log back using ssh late.sh, change nick to "free" it, and then switch back using cli and use it :)
+    - (3) u/__groni__: Thanks a lot! Nice app)
+- (4) u/NotFloppyDisck: Im a simple guy, I see solitaire and I like
+- (5) u/yepyepPollos: That is sincerely a great work. You built a nice app
+  - (2) u/Bl4ckBe4rIt: Thank you!
+- (3) u/AdditionalSpecial992: This looks super cool. Absolutely love it!
+  - (2) u/Bl4ckBe4rIt: Thank you! Hop in, take a break and chill!
+- (3) u/BeardGoesStuStuStu: Awesome idea
+- (3) u/josephottinger: Hah, I kinda love this - but my first thought was "did he just hand-roll mIRC?" Joining, though, to see what it's like.
+  - (2) u/Bl4ckBe4rIt: Its more than IRC :)
+    - (2) u/josephottinger: Yep, I'm there. That was just my first thought. It's pretty well done, from the looks of it, and what an idea to code...
+- (2) u/Idli_codes: Looks awesome! No idea why, but I can't seem to join it. I did install the cli tool, after prompting me to generate an ssh key it just gets stuck infinitely. Normally running \`ssh late.sh\` doesn't give any output either.
+  - (3) u/SleeplessSloth79: Try running `ssh -4 late.sh` instead. The server seems to have IPv6 issues.
+- (2) u/birb52: yoo this is such a cool idea! starred. i hope it gets more traction lmao
+- (2) u/-Redstoneboi-: nice hangout place, very chill
+- (2) u/dearboy9x9: Cool club!
+- (2) u/Z1xus: not able to connect to that unfortuantely ;'( OpenSSH_for_Windows_9.5p2, LibreSSL 3.8.2 debug1: Connecting to late.sh port 22. debug1: Connection established. debug1: identity file C:\\Users\\z1xus/.ssh/id_rsa type 0 debug1: Local version string SSH-2.0-OpenSSH_for_Windows_9.5 debug1: Remote protocol version 2.0, remote software version OpenSSH_10.0p2 Debian-7+deb13u2 debug1: Authenticating to late.sh:22 as 'z1xus' debug1: kex: algorithm: curve25519-sha256 debug1: kex: host key algorithm: ssh-ed25519 debug1: Server host key: ssh-ed25519 debug1: Host 'late.sh' is known and matches the ED25519 host key. debug1: Will attempt key: C:\\Users\\z1xus/.ssh/id_rsa RSA SHA256:gou3McmldrpW7NumyPwR7l23t
+  - (2) u/Bl4ckBe4rIt: Can you try running ssh -4 late.sh ?
+- (2) u/SamElPo__ers: That's cool, but it's AI so probably will be removed
+  - (1) u/Bl4ckBe4rIt: Whats ai?
+    - (1) u/SamElPo__ers: The code
+      - (2) u/Bl4ckBe4rIt: There are no rules here saying that ai cannot assist me with coding.
+      - (-5) u/SamElPo__ers: From the sidebar: \> Submissions appearing to contain AI-generated content may be removed at moderator discretion. The way it's enforced, every project that is submitted gets deleted if it uses AI generated code.
+      - (13) u/Bl4ckBe4rIt: Its to prevent AI slop, vibe coded mess. Based on your description, i cannot even use copilot for auto completion.
+      - (2) u/SamElPo__ers: It's pretty clear you wrote the entire thing with AI. [https://github.com/mpiorowski/late-sh/blob/a19017250d205599cfb4535630842a970d5c3a61/PLAN.md](https://github.com/mpiorowski/late-sh/blob/a19017250d205599cfb4535630842a970d5c3a61/PLAN.md)
+      - (2) u/Bl4ckBe4rIt: Yes, I am not even hiding it :) like I've said, AI assisted, same as copilot do :D just a different scale :) Yet still not a vibe coded, I know every piece here, every arch decision, every flow, every structure. I know where to look for everything. Thats the difference this sub is looking for ;) Or at least I hope :)
+- (2) u/cpp_hleucka: Awesome work!
+- (2) u/0xAERG: Looks awesome. Can’t wait to try
+- (2) u/lavaeater: Cool stuff bro!
+- (2) u/Existing-Special9159: Super cozy!!!! keep going at it :3
+- (2) u/dschramm_at: Great idea, great implementation. I can't shake the feeling that the music controls will become a security issue later though.
+  - (1) u/Bl4ckBe4rIt: how so? Its rly a two-way ws, nothing more. But happy for any suggestions.
+    - (1) u/dschramm_at: Aren't you executing some code on the user machine to control the browser especially? I don't see how you could make sure that nothing can hijack that. I'm not saying it's easy to exlploit. Only that, if the app get's traction and enough people use it. It just feels like a shahulud waiting to happen. Since the target audience is very high value to any such hacking group that would try to run a supply chain attack or similar. I'm seeing that from a very high point of view, so take it with a grain of salt. Maybe it really isn't an issue.
+      - (2) u/Bl4ckBe4rIt: Nothing crazy, just a ws events controlling the music. But I took your comment seriously, and hardening a few paths now.

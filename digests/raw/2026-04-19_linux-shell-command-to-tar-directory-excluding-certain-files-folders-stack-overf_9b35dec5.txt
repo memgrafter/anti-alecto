@@ -1,0 +1,13 @@
+Is there a simple shell command/script that supports excluding certain files/folders from being archived?
+I have a directory that need to be archived with a sub directory that has a number of very large files I do not need to backup.
+Not quite solutions:
+The tar --exclude=PATTERN
+command matches the given pattern and excludes those files, but I need specific files & folders to be ignored (full file path), otherwise valid files might be excluded.
+I could also use the find command to create a list of files and exclude the ones I don't want to archive and pass the list to tar, but that only works with for a small amount of files. I have tens of thousands.
+I'm beginning to think the only solution is to create a file with a list of files/folders to be excluded, then use rsync with --exclude-from=file
+to copy all the files to a tmp directory, and then use tar to archive that directory.
+Can anybody think of a better/more efficient solution?
+EDIT: Charles Ma's solution works well. The big gotcha is that the --exclude='./folder'
+MUST be at the beginning of the tar command. Full command (cd first, so backup is relative to that directory):
+cd /folder_to_backup
+tar --exclude='./folder' --exclude='./upload/folder2' -zcvf /backup/filename.tgz .

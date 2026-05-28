@@ -1,0 +1,25 @@
+X thread capture
+
+Don’t miss what’s happening
+
+People on X are the first to know.
+
+## Post
+
+## Conversation
+
+This skill is no joke. You just point it at your project and trigger it and come back in an hour and it has usually made some massive performance improvement in an isomorphic way. Then just rinse and repeat over and over again. It basically applies every leetcode and IOI trick.
+
+[](https://x.com/doodlestein/status/2037599830583779536/photo/1)
+
+Quote
+
+Jeffrey Emanuel
+
+@doodlestein
+
+Mar 27
+
+Replying to @JohnThilen and@garybasin
+
+Which ones did you try? The extreme optimization one is super powerful. Try applying it repeatedly using GPT 5.4 xhigh and Opus 4.6. I’ve applied it many dozens of times in some projects and seen performance improve 10x while everything is provably isomorphic. All benchmarked.

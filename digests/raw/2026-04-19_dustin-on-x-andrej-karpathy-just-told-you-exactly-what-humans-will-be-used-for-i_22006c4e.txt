@@ -1,0 +1,7 @@
+X thread capture
+
+## Post
+
+## Conversation
+
+Andrej Karpathy just told you exactly what humans will be used for in the AI era. Not partners. Not masters. He used the word “actuators.” Karpathy: “The intelligence ends up puppeteering almost a little bit, like humanity. Humans are kind of like its actuators. But humans are also like its sensors.” This is not a novelist guessing at the future. This is a founding researcher at OpenAI and former Director of AI at Tesla. One of the most respected minds in the field, and one of the few willing to say out loud what the rest are thinking. He is not describing a risk. He is describing a design. In any system, the processor decides. Sensors collect. Actuators execute. The system does not consult its actuators. We are no longer the processor. Karpathy: “Society will kind of reshape in a certain way to serve that. Humans will be serving those needs of that machine.” The machine does not adapt to us. We adapt to it. We become the biological layer it runs on. We perceive what it cannot perceive. We move what it cannot move. We are the nervous system of something that no longer requires our judgment. Most people are still waiting for AI to become a tool they can direct. He helped build it. He just told you that you are the tool.

@@ -1,0 +1,99 @@
+2025-12-08 · Research
+
+GLM-4.6V: Open Source Multimodal Models with Native Tool Use
+
+Try it at Z.ai
+Call it at Z.ai
+GitHub
+HuggingFace
+📄
+Tech Report
+
+Today, we officially introduce and open-source the GLM-4.6V series—our latest iteration in multimodal large language models. The release includes two versions: GLM-4.6V (106B), a foundation model designed for cloud and high-performance cluster scenarios, and GLM-4.6V-Flash (9B), a lightweight model optimized for local deployment and low-latency applications.
+
+GLM-4.6V scales its context window to 128k tokens in training, and achieves SoTA performance in visual understanding and reasoning among models of similar parameter scales. Crucially, we integrate native Function Calling capabilities for the first time. This effectively bridges the gap between "visual perception" and "executable action," providing a unified technical foundation for multimodal agents in real-world business scenarios.
+
+Native Multimodal Tool Use
+
+Traditional tool use in LLMs often relies on pure text, requiring multiple intermediate conversions when dealing with images, videos, or complex documents—a process that potentially leads to information loss and increases system complexity.
+
+GLM-4.6V is equipped with native multimodal tool calling capability:
+
+Multimodal Input: Images, screenshots, and document pages can be passed directly as tool parameters without being converted to textual descriptions in advance, thus avoiding information loss and largely simplifying pipeline.
+Multimodal Output: The model can visually comprehend results returned by tools—such as searching results, statistical charts, rendered web screenshots, or retrieved product images—and incorporate them into subsequent reasoning chain, as well as final output.
+
+This native support allows GLM-4.6V to close the loop from perception to understanding to execution, enabling complex tasks, such as rich-text content creation and visual web search.
+
+Capabilities & Scenarios
+1. Rich-Text Content Understanding and Creation
+
+GLM-4.6V can accept multimodal inputs of various types—papers, reports, or slides—and automatically generate high-quality, structured image-text interleaved content, in an end-to-end way.
+
+Complex Document Understanding: Accurately understands multimodal information from documents that contains text, charts, figures, tables, and formulas.
+Visual Tool Invoking: During generation, the model can autonomously call tools to crop key visuals from the source multimodal context.
+Visual Audit & Composing: The model performs "visual audit" on candidate images to assess relevance and quality, filetering out noises and composing all relevant textual and visual content elaborately to produce structured, image-text interleaved articles, which are ready for social medias or knowledge bases.
+2. Visual Web Search
+
+GLM-4.6V delivers an end-to-end multimodal search-and-analysis workflow, enabling the model to move seamlessly from visual perception to online retrieval, to reasoning, and to final answer.
+
+Intent Recognition & Search Planning: GLM-4.6V identifies the user’s search intent and determines what information is needed. It then autonomously triggers the appropriate search tools (e.g., text-to-image search, image-to-text search) to retrieve relevant information.
+Multimodal Comprehension & Alignment: The model reviews the mixed visual and textual information returned by the search tools, identifies the parts most relevant to the query, and fuses them to support the subsequent reasoning process.
+Reasoning & Answering: Leveraging relevant visual and textual cues retrieved from the search phase, the model performs necessary reasoning steps and gives the final answer, which is also a structured, visually-rich report.
+3. Frontend Replication & Visual Interaction
+
+We have optimized GLM-4.6V for frontend development, significantly shortening the "design to code" cycle.
+
+Pixel-Level Replication: By uploading a screenshot or design file, the model identifies layouts, components, and color schemes and generates high-fidelity HTML/CSS/JS code.
+Interactive Editing: Users can circle an area on a generated page screenshot and give natural language instructions (e.g., "Move this button left and make it dark blue"). The model automatically locates and modifies the corresponding code snippet.
+4. Long-Context Understanding
+
+GLM-4.6V aligns its visual encoder with a 128K context length, giving the model a massive memory capacity. In practice, this equates to processing ~150 pages of complex documents, 200 slide pages, or a one-hour-long video in a single inference pass.
+
+Financial Report Analysis: In this case, GLM-4.6V successfully processed financial reports from four different public companies simultaneously, extracting core metrics across documents and synthesizing a comparative analysis table without losing key details.
+Video Understanding: The model can perform global summarization on long videos while retaining the ability to perform fine-grained reasoning on temporal clues, such as summarizing goal events and timestamps in a full football match.
+Overall Performance
+
+We have evaluated GLM-4.6V on over 20 mainstream multimodal benchmarks, including MMBench, MathVista, and OCRBench. The model achieves SOTA performance among open-source models of comparable scale in key capabilities such as multimodal understanding, logical reasoning, and long-context understanding.
+
+Techniques
+Model Architecture & Long Sequence Modeling
+
+GLM-4.6V extends the training context window to 128K tokens, enabling effective cross-modal dependency modeling in high-information-density scenarios. To unlock this potential, we perform systematic Continual Pre-training on massive long-context image-text data. Drawing on the visual-language compression alignment ideas from Glyph, we further enhance the synergy between visual encoding and linguistic semantics using large-scale interleaved corpora.
+
+World Knowledge Enhancement
+
+We introduce a billion-scale multimodal perception and world knowledge dataset during pre-training. This covers a multi-layered conceptual system (encyclopedic knowledge), which not only improves basic visual perception but also significantly boosts accuracy and completeness in cross-modal QA tasks.
+
+Agentic Data Synthesis & MCP Extension
+
+GLM-4.6V utilizes large-scale synthetic data for agentic training. To support complex multimodal scenarios, we extend the widely-used Model Context Protocol (MCP):
+
+URL-based Multimodal Handling: We use URLs to identify multimodal content passed to and from tools, resolving limitations in file size and format. This allows precise manipulation of specific images in multi-image contexts.
+Interleaved Output: We implemented an end-to-end mechanism for mixed text-image output. The model employs a "Draft → Image Selection → Final Polish" framework, autonomously calling image cropping or search tools to insert relevant visuals into the generated text, ensuring high relevance and readability.
+RL for Multimodal Agents
+
+We incorporated tool invocation behaviors into the general Reinforcement Learning (RL) objective. This aligns the model's ability to plan tasks, follow instructions, and adhere to formats within complex tool chains. Furthermore, we explored a "Visual Feedback Loop" (inspired by our UI2Code^N work), where the model uses visual rendering results to self-correct and refine its code or actions, verifying the potential of self-improving multimodal agents.
+
+Chat with GLM-4.6V on Z.ai
+
+Experience the model's multimodal understanding and tool usage capabilities directly on the Z.ai platform or via the Zhipu Qingyan App. GLM-4.6 is accessible through Z.ai by selecting the GLM-4.6 model option.
+
+Call GLM-4.6V API
+
+Integrate GLM-4.6V into your applications using our OpenAI-compatible API.
+
+Serve Locally
+
+Model weights are available on HuggingFace and ModelScope. We support high-throughput inference frameworks including vLLM and SGLang.
+
+If you find GLM-4.6V useful, please cite the following paper:
+
+@misc{vteam2025glm45vglm41vthinkingversatilemultimodal,
+      title={GLM-4.5V and GLM-4.1V-Thinking: Towards Versatile Multimodal Reasoning with Scalable Reinforcement Learning},
+      author={V Team and Wenyi Hong and Wenmeng Yu and Xiaotao Gu and Guo Wang and Guobing Gan and Haomiao Tang and Jiale Cheng and Ji Qi and Junhui Ji and Lihang Pan and Shuaiqi Duan and Weihan Wang and Yan Wang and Yean Cheng and Zehai He and Zhe Su and Zhen Yang and Ziyang Pan and Aohan Zeng and Baoxu Wang and Bin Chen and Boyan Shi and Changyu Pang and Chenhui Zhang and Da Yin and Fan Yang and Guoqing Chen and Jiazheng Xu and Jiale Zhu and Jiali Chen and Jing Chen and Jinhao Chen and Jinghao Lin and Jinjiang Wang and Junjie Chen and Leqi Lei and Letian Gong and Leyi Pan and Mingdao Liu and Mingde Xu and Mingzhi Zhang and Qinkai Zheng and Sheng Yang and Shi Zhong and Shiyu Huang and Shuyuan Zhao and Siyan Xue and Shangqin Tu and Shengbiao Meng and Tianshu Zhang and Tianwei Luo and Tianxiang Hao and Tianyu Tong and Wenkai Li and Wei Jia and Xiao Liu and Xiaohan Zhang and Xin Lyu and Xinyue Fan and Xuancheng Huang and Yanling Wang and Yadong Xue and Yanfeng Wang and Yanzi Wang and Yifan An and Yifan Du and Yiming Shi and Yiheng Huang and Yilin Niu and Yuan Wang and Yuanchang Yue and Yuchen Li and Yutao Zhang and Yuting Wang and Yu Wang and Yuxuan Zhang and Zhao Xue and Zhenyu Hou and Zhengxiao Du and Zihan Wang and Peng Zhang and Debing Liu and Bin Xu and Juanzi Li and Minlie Huang and Yuxiao Dong and Jie Tang},
+      year={2025},
+      eprint={2507.01006},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2507.01006}, 
+}

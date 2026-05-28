@@ -1,0 +1,8 @@
+Released Jan 27, 2026131,000 context$0/M input tokens$0/M output tokens
+OpenRouter supports reasoning-enabled models that can show their step-by-step thinking process. Use the reasoning
+parameter in your request to enable reasoning, and access the reasoning_details
+array in the response to see the model's internal reasoning before the final answer. When continuing a conversation, preserve the complete reasoning_details
+when passing messages back to the model so it can continue reasoning from where it left off. Learn more about reasoning tokens.
+In the examples below, the OpenRouter-specific headers are optional. Setting them allows your app to appear on the OpenRouter leaderboards.
+For information about using third-party SDKs and frameworks with OpenRouter, please see our frameworks documentation.
+See the Request docs for all possible fields, and Parameters for explanations of specific sampling parameters.

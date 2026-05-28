@@ -1,0 +1,241 @@
+I appeared on camera for an interview,
+not so long ago, and I was really
+surprised by how many of you fellow
+scholars said that you would like to see
+more. So, first of all, thank you so
+much for all the kind words. Second,
+I thought, let's try this and hope that
+you will enjoy it. Dear fellow scholars,
+this is Two Minute Papers with Dr.
+Karoly Zsolnai-Feher. Look, it only took
+1,000 episodes. Now, I have an amazing
+paper for you because scientists at
+DeepMind did something pretty insane.
+Our question today is, can an AI invent
+something that is fundamentally new and
+pushes humanity forward?
+Well, they said that their new AI agent
+can actually do research and even write
+research papers.
+Most of the core content, anyway.
+Is that insane? Well,
+it's not.
+A lot of other people have tried it, and
+the only insane thing about it was how
+many poor papers they wrote.
+But, it turns out there is levels to
+this game.
+You see, I visited the research group
+that is behind this work last year. I
+flew to Mountain View into this crazy
+lab, and the grumpy guard didn't even
+want to let me in first.
+Crazy town. So, I was very surprised
+that they are guarding these secrets and
+they take them very seriously.
+What is even more surprising is that now
+they give some of those secrets away to
+all of us for free. Now, that is insane.
+More on that in a moment. So, I talked
+to the scientists. This was the research
+group of Work Lab. They are brilliant.
+They wrote an AI that was able to do a
+gold medal worthy performance on the
+Mathematical Olympiad. This is serious
+business. Then, they released this
+technique. Anyone who is made out of
+money bags and pays for Gemini Advanced
+can use it. It is called Deep Think. And
+now, this AI is even better than that.
+They call it Alethia. Now, that, once
+again, is insane.
+Okay, what does it do? Well, it promises
+that it does research. It solves novel
+problems.
+This is something that could push
+humanity forward. Now, that is so much
+harder than the Mathematical Olympiad.
+Why is that? Well, in this contest, you
+have a not that huge piece of core
+knowledge you are supposed to have, and
+every problem can be guaranteed to be
+solved by a small set of tools. So,
+every problem is nice, shiny, and
+polished.
+Really tough,
+but polished. You know what is not
+polished at all? Real-life problems.
+With these open problems, we don't even
+know if they are solvable at all. Maybe
+they are impossible. Or maybe possible,
+but not with our current tools. That's
+the point. No one knows. When this
+technique is given a problem, the
+generator starts working on it, creates
+a candidate solution, and now, here is
+the most important part of the paper,
+the verifier. This takes a look and
+says, "Okay, bro.
+This is junk. Start again." This is
+essentially a filter.
+You know, that's actually really good
+life advice. Sometimes, it's good to
+have a filter so you don't shoot these
+hot takes out there into the ether.
+Now, every now and then, the solution
+looks pretty good and could maybe pass
+with a few modifications. Then, it gets
+polished for another round of reviews,
+and so it goes. Hmm.
+Sounds simple. Maybe even trivial,
+right? So, what is so scientific about
+this? Why doesn't every system do that?
+Well, that's easier said than done. In
+fact, it is almost impossible to pull
+that off.
+Why? One, when the AI is doing something
+fundamentally new, unfortunately,
+hallucinations still happen.
+Yep.
+It just makes stuff up. Fake papers,
+fictitious authors, you name it. All
+kinds of junk comes out. Two, when you
+want to compute 1 + 1 or other simple
+things, you have tons of training data
+about it out there. You can verify that
+easily.
+But, if you want to do frontier
+research,
+hmm, there is no training data on what
+we don't even know yet. Of course, there
+isn't. You are trying to invent things
+no one understands yet. These two
+factors make it extremely difficult to
+get an AI to do something fundamentally
+new and useful.
+So,
+how did they pull it off? Well, with
+three key steps. First, Alethia does not
+use this formal, rigid math language to
+check its own proofs. It uses natural
+English language. That is notoriously
+hard because when the AI checks its own
+writing, it just blindly agrees with it.
+Well,
+we humans do that, too. Now, here, the
+researchers found a way to separate the
+thinking part from the answer part.
+>> [snorts]
+>> So, the messy train of thought is hidden
+from the verifier, thus it cannot trick
+itself into just blindly agreeing with
+itself.
+Brilliant. Our brains would need
+something like that, too. Then, two,
+they let the computer think longer.
+Hmm.
+That's not new. However, they added some
+optimizations to this, so much so that
+the model they have now is just as smart
+as the one from 6 months ago. But, hold
+on to your papers, fellow scholars,
+because, yes, same smarts, but it uses
+100 times less compute.
+What?
+Crazy. They trained a much stronger base
+model, which made it more efficient at
+reasoning. So, this one, even without
+internet access, beats the Mathematical
+Olympiad gold AI easily. About 65% was
+improved to 95%.
+Wow.
+It went from a bit better than a coin
+flip to destroying the tasks made for
+some of the best human minds. Now,
+three, they give the AI the ability to
+search for stuff. We are talking about
+Google, after all. Once again, that is
+easy.
+However, getting the AI to read and
+combine [clears throat] techniques from
+dozens and dozens of cutting-edge
+research papers without losing its mind,
+now, that is hard. You saw it earlier,
+this really happens. They heavily
+trained this AI to be able to use these
+tools and research works that are out
+there, and that was what finally stopped
+it from making up junk.
+Okay. So,
+how good is it?
+First, I saw that it solved a few of
+these Erdős problems. It autonomously
+found the answer to four open math
+puzzles left behind by a legendary
+Hungarian mathematician. Is that insane?
+Well, I asked a mathematician friend. He
+told me, "Yeah, that's pretty good."
+But, there are so many of these problems
+out there, and not a ton of people work
+on them. In other words, they are fairly
+easy. They were just ignored by experts
+for years. So, not nearly as good as I
+thought. But, then, it stepped up its
+game and wrote the core contents of a
+research paper on something new.
+by a human scientist. They had one paper
+on calculating constants in arithmetic
+geometry. And then, it helped human
+scientists write four other papers, like
+finding new limits for interacting
+particles. So, how good are these
+research works? Well, they are submitted
+for peer review,
+>> [clears throat]
+>> and that's going to take a while. So, in
+the meantime, they had a bunch of math
+experts look at it, many of them
+independent scientists. They checked it
+for correctness and novelty. And
+it checks out, man. I think, for the
+first time ever, an AI created core
+parts of a research work that is new, it
+has impact, it is useful. That is
+Wow. What a time to be alive. So, I told
+you, there is levels to this game. So,
+where are we now? Level zero is
+negligible novelty work.
+It can do that. Level one is somewhat
+novel work. It can do that, too. But,
+now, it can help a person create
+publishable level research. That is
+incredible. What about levels three and
+four?
+Those are ground-breaking works. These
+are out of reach. But, I ask you, fellow
+scholars, given the pace of progress,
+for how long?
+For 6 more months? And I think that is
+something that needs to be talked about
+more. Research helping people live a
+better life. I love it. And thank you so
+much to all of you, fellow scholars, for
+watching us over the years. We can only
+exist because of you, fellow scholars.
+So, I really hope that you enjoyed this.
+This allows me to talk about papers
+where there is not a lot of visual
+content, and I really wanted to share
+this with you. Let me know in the
+comments if we should do more. Thank
+you. Here, you see me running the full
+Deep Seek AI model through Lambda GPU
+Cloud. 671
+billion parameters running super fast
+and super reliably. This is insane. I
+love it, and I use it on a regular
+basis. Lambda provides you with powerful
+Nvidia GPUs to run your own chatbots and
+experiments. Seriously, try it out now
+at lambda.ai/papers
+or click the link in the description.

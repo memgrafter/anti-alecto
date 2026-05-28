@@ -1,0 +1,22 @@
+GLM-4.7 is a next-generation general-purpose model optimized for coding, reasoning, and agentic workflows, delivering strong gains in multilingual software engineering, tool use, and complex problem solving. It introduces advanced thinking controls: interleaved, preserved, and turn-level thinking; to improve stability on long-horizon, multi-turn tasks. You can explore these thinking modes on our API using the `reasoning_history` field. Learn more here - https://docs.fireworks.ai/guides/reasoning
+Fine-tuningDocs | GLM-4.7 can be customized with your data to improve responses. Fireworks uses LoRA to efficiently train and deploy your personalized model |
+ServerlessDocs | Immediately run model on pre-configured GPUs and pay-per-token |
+On-demand DeploymentDocs | On-demand deployments give you dedicated GPUs for GLM-4.7 using Fireworks' reliable, high-performance system with no rate limits. |
+Run queries immediately, pay only for usage
+$0.60 / $0.30 / $2.20
+Per 1M Tokens (input/cached input/output)
+State
+Created on
+Kind
+Provider
+Hugging Face
+Calibrated
+Mixture-of-Experts
+Parameters
+Fine-tuning
+Serverless
+Context Length
+Function Calling
+Embeddings
+Rerankers
+Support image input

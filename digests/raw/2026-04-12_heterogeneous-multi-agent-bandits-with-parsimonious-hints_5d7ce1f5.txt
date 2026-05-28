@@ -1,0 +1,408 @@
+Heterogeneous Multi-Agent Bandits with Parsimonious Hints
+Abstract
+We explore hinted heterogeneous multi-agent multi-armed bandits (HMA2B), where agents can query low-cost observations, called hints, in addition to pulling arms. In the HMA2B framework, each of the agents maintains an individual heterogeneous reward distribution over a fixed set of arms and can observe the reward of the arm they pull only if no other agent pulls that arm through rounds of decision making.
+We aim to find a matching with maximum utility by querying the minimum possible hints from the arms without pulling them, thus achieving time-independent regret. We study HMA2B under both centralized and decentralized setups. In the proposed centralized algorithms HCLA and GP-HCLA, a central decision maker determines which arms each agent should pull or query hints from, achieving regret with queried hints. In contrast, in the decentralized setup, we introduce HD-ETC and EBHD-ETC, where agents independently decide their actions through collision-based communications, achieving regret with queried hints. Both HD-ETC and EBHD-ETC use uniform hinting for arms but differ in stopping criteria: HD-ETC stops hinting at a fixed time step based on the assumed minimum gap , while EBHD-ETC employs an elimination-based approach without knowing the minimum gap. This allows for adaptive hinting and efficient matching in decentralized settings. We also prove the necessary asymptotic lower bounds for the number of required hints and communication phases, thereby demonstrating the asymptotic optimality of our results. Lastly, we perform numerical simulations to empirically verify the performance of our proposed algorithms.
+1 Introduction
+Online decision making under uncertainty is a crucial challenge in machine learning, with significant implications for real-world applications such as online resource allocation and labor market employment. In these scenarios, resources like items, radio channels, or job positions must be matched to agents to optimize objectives like throughput, utility, or revenue. Since agents often have different abilities or utilities, the decision maker must make careful matchings. However, accurately determining these abilities or utilities is often impossible, forcing the decision maker to rely on potentially imprecise estimates from exploration and adjustments over time. Imprecise estimations can lead to costly mistakes, such as financial or human resource losses. To mitigate this, low-cost hints related to each possible matching can offer valuable insights into potential utility without requiring costly exploration. We study such problems and propose online decision-making algorithms that leverage the power of low-cost hints to significantly reduce exploration loss while minimizing the number of queried hints.
+We use Hinted Heterogeneous Multi-Armed Bandits (HMA2B), an extension of the Multi-Armed Bandits framework (bubeck2012regret; lai1985asymptotically), to solve problems where multiple agents, each with different preferences, must make decisions. The main challenge is to achieve time-independent regret while using as few hints as possible. This requires identifying sub-optimal matchings that might be overlooked due to the inherent uncertainty in online decision-making. An algorithm must separate exploration and exploitation, making effective use of low-cost hints. The uniform hint inquiry approach, which is similar to the explore-then-commit strategy, attempts to do this, but proving its time-independent regret is not straightforward. To improve this, we propose a centralized algorithm, GP-HCLA, which performs better in terms of time-independent regret and hint complexity while utilizing the uniform hint inquiry approach for decentralized setups.
+For decentralized settings, we explore a method where agents combine uniform hinting with collision-based communication, which we show is necessary to achieve time-independent regret. The centralized method in GP-HCLA doesn’t work well in decentralized setups because it relies on a time-dependent metric kl-UCB, which individual agents can’t use effectively without knowing the statistics of other agents during exploration phases. Our decentralized algorithms, HD-ETC and EBHD-ETC, face an additional challenge beyond the complex analysis required to prove time-independent regret: the inaccurate statistics that agents gather through communication, caused by sharing decimal statistics using an integral communication protocol.
+1.1 Our Contributions
+We analyze the HMA2B problem in both centralized and decentralized setups. In the centralized setup, an omniscient decision maker determines which matching to pull and which to query for a hint, similar to decision-making in hiring processes where the employer has access to the applicants’ information to decide which of them to interview and which to hire. We introduce two algorithms: HCLA and GP-HCLA. Both algorithms compare the empirical mean of the selected matching with the maximum kl-UCB divergence of other matchings, querying for a hint if the divergence exceeds a certain threshold. As shown in Table 1, both GP-HCLA and G-HCLA, which are extensions of HCLA, achieve time-independent regret using an asymptotically optimal number of hints. We also prove that the upper bound we established for the hint complexity of GP-HCLA is tight.
+In the decentralized setup, commonly used in radio channel allocation to stations, we propose two algorithms, HD-ETC and EBHD-ETC, which divide the time horizon into exploration and communication phases. In both algorithms, agents continue querying for hints until they reach a specific time step. The key difference between them is that in HD-ETC, agents are assumed to know the minimum gap and the time horizon , allowing them to stop hinting at a pre-fixed time step . In contrast, EBHD-ETC uses an edge elimination approach to determine when to stop hinting, making the stopping point a random variable rather than the fixed time step , which results in slightly more hint queries and regret. We present guaranteed bounds for these algorithms, accounting for the added uncertainty caused by communication.
+1.2 Related Works
+Heterogeneous MMAB (HMMAB)
+HMMAB is one of the standard models in multi-player multi-armed bandits with collision literature, to name a few rosenski2016multi; boursier2019sic; mehrabian2020practical; bistritz2018distributed; shi2021heterogeneous. Among them, bistritz2018distributed was the first to study the HMMAB, where they proposed a decentralized algorithm with regrets. Later on, the regret bound of this model was improved to by mehrabian2020practical and further to by shi2021heterogeneous that is the state-of-the-art result. We are the first to introduce the hint mechanism to HMMAB.
+Bandits with Hints
+Learning algorithm with hints (or predictions) belongs to the emerging learning-augmented literature, e.g., (lykouris2021competitive; purohit2018improving; mitzenmacher2022algorithms) etc. The hint mechanism was first studied in the basic stochastic multi-armed bandits model by yun2018multi, and later, lindstaahl2020predictive considers a more realistic hint mechanism (with failure noise) for the same model. Besides this line of work, (bhaskara2023bandit) studied the impact of hints in adversarial bandits recently. We are the first to study the hint mechanism in the multi-agent scenario.
+1.3 Hinted Heterogeneous Multi-Agent Multi-Armed Bandits
+Basic model
+A Hinted Heterogeneous Multi-agent Multi-Armed Bandit (HMA2B) model consists of a set of arms and a set of agents , such that . Agents have heterogeneous rewards for arms. That is, for each agent , each arm is associated with a Bernoulli reward random variable with mean . The heterogeneous reward means are represented by a matrix , where each of its rows is denoted by .
+Reward feedback
+Suppose that denotes the total number of decision rounds. At each time step , every agent chooses an arm to pull. So, the arms requested by the agents forms a bipartite graph characterized by nodes (agents) on one side and nodes (arms) on the other comprising edges, ensuring that each node on the agent side is connected to exactly one arm. Let us define as the set of all such graphs. Denote as the bipartite graph representing the arm pulling graph of the agents at time step . We consider the collision setting (boursier2019sic; shi2021heterogeneous): that is, if there exist other agents pulling the arm at time step , then agent gets a reward of zero; otherwise, agent gets a reward sampled from the reward distribution of arm , or formally, .
+Given a matching and a reward mean matrix , we define the expected utility of this matching as follows,
+where the denotes the matched arm of agent under matching . We denote the matching with the highest utility as the optimal matching as We assume that is unique, i.e., there does not exist any in such that .
+Hint mechanism
+At each time slot , besides the pulled arm , agent can query another arm and observe the arm’s reward realization without regret cost. The hint graph then is denoted by and is the arm agent queried a hint for in it. These hint observations do not impact the accumulative reward and regret, and the agent can decide whether to query for a hint, denoted by the indicator function . We denote as the total number of times of agents querying hints in the rounds, and we want to design a learning policy minimizes the .
+Regret.
+We want to find a policy that maximizes the cumulative reward of all agents in the decision rounds. To evaluate the performance of , we define the regret of a policy as the difference between the total reward of all agents under the optimal matching in all decision rounds and the total reward of all agents following the policy , as follows,
+| (1) |
+where the expectation is taken over the randomness of the policy .
+Finally, we define the important parameter, minimum gap, which is crucial and appears in the regret bounds of all the following policies we will analyze. According to the definition of regret, all the policies in this work consider each as a “super arm”; thus, the minimum gap here should represent the minimum difference between the utility of any matching and . Finally, we define the minimum gap as , which will appear in the results in the following sections as a crucial parameter.
+Main Goal and Motivating Example
+Our goal is to design learning policies that leverage the power of hints to reduce the logarithmically large regret bounds established in previous works (shi2021heterogeneous; mehrabian2020practical; wang2020optimal; boursier2019sic) to a preferably time-independent regret, while minimizing the number of hints queried.
+We assume that hints are samples from the same distributions as the rewards obtained from pulling arms. Our algorithms use these hints strategically by querying them only when exploring a sub-optimal matching is necessary during committing to the optimal matching. This approach helps avoid the high costs of direct exploration and improves performance by separating the exploration of sub-optimal matchings from the exploitation of the optimal one. This method also allows for the consideration of more complex hint models.
+In practical scenarios, where hints are significantly cheaper than direct actions, our approach proves valuable. For example, in labor markets, a well-designed and low-cost interview process can provide insights into candidate suitability without the high costs associated with hiring mistakes. Similarly, in communication networks, using test signals to estimate bandwidth needs can prevent allocating large channels to low-demand stations, thus avoiding disruptions in critical systems like flight control. These applications highlight how our hint-based approach can enhance decision-making and efficiency in various real-world contexts.
+2 Algorithms for Centralized Hinted Heterogeneous Multi-Armed Bandits
+In the Centralized Hinted Heterogeneous Multi-Armed Bandit () setup, we consider an omniscient decision maker who selects both the matching and the hint graph at each round. The agents then follow the decision maker’s instructions to pull arms and query hints. We propose two learning policies for this setup: the Hinted Centralized Learning Algorithm (HCLA) and the Generalized Projection-based Hinted Centralized Learning Algorithm (GP-HCLA).
+Under both policies, the decision maker treats each matching as a super arm, using a consistent method for hint inquiries. However, the handling of observations differs between the two: in HCLA, observations are treated at the matching level, while in GP-HCLA, they are treated at the edge level. This distinction allows us to reduce the potentially exponential regret relative to the size of to a polynomial regret upper bound in the number of edges, .
+We first introduce the statistics maintained by the agents in both HCLA and GP-HCLA, particularly the statistic, which aids the central decision maker in determining when to request a hint. Next, we present the HCLA algorithm, which serves as a baseline for designing our main algorithm, GP-HCLA. We then detail the GP-HCLA algorithm as an extension of HCLA. Finally, we provide a proof sketch for Theorems 1 and 2, which establish upper bounds for the regret and hint complexity. We analyze GP-HCLA using the edge-level approach, while postponing the matching-level analysis for HCLA to the Appendix.
+2.1 Preliminaries
+Beyond generic statistic matrices such as and , the decision maker employs the kl-UCB indices (cappe2013kullback) under the setup to determine whether to query a hint. As previously mentioned, the decision maker decides to request a hint based on the kl-UCB indices, which are defined as follows:
+| (2) | ||||
+| (3) |
+for any matching and edge , respectively where . Here, and represent the number of times the matching and the edge have been pulled or hinted, respectively. Before starting the algorithm design section, we define a fixed set of pairwise edge-disjoint matchings that covers all edges . For arbitrarily and uniquely labeled agents and arms with the ranges and , the is the matching where the agent labeled matches with the arm , as shown in Figure 1 for and . We can now observe that by pulling or hinting for all matchings in at least once, the agents can gather observations for each at least once. This set will serve as a hint pool. The term “hint pool” refers to a set from which all hint graphs will be chosen. The concept of having pairwise edge-disjoint matchings covering all edges as a hint pool allows us to reduce the number of queried hints from the exponentially large set to the considerably smaller set , which contains members.
+2.2 Warm-up: The HCLA Algorithm
+As previously pointed, the HCLA algorithm treats each as an individual super arm and maintains separate statistics including empirical mean , KL-UCB index , and counters for each. At each time step , the central decision maker selects a matching with the maximum empirical mean and another matching with the maximum KL-UCB (Lines 2–3). Then, if the maximum KL-UCB is greater than the maximum empirical mean , the central decision maker chooses from the matching or a uniformly random chosen matching each with probability . It then asks for a hint from and updates the empirical mean according to the hint observation (Lines 4–9). Finally, the central decision maker selects the matching to pull and updates the empirical mean according to the reward observation of and updates KL-UCB for all (Lines 10–12). The detailed pseudocode of the HCLA algorithm is provided in Algorithm 1.
+Input: set of agents
+Parameter:
+Next, we present the upper bounds for the time-independent regret and the number of queried hints for the HCLA algorithm in Theorem 1.
+Theorem 1.
+For and , the HCLA algorithm has
+-
+1.
+time-independent regret.
+-
+2.
+Although the regret of HCLA is time-independent, the exponential constants in the regret and hint upper bounds are rather unsatisfying. In what follows, we propose a new algorithm named GP-HCLA, which offers a more refined analysis while following the same hint inquiry and arm-pulling approach with a different usage of observations.
+2.3 The GP-HCLA Algorithm
+We present GP-HCLA in Algorithm 2. This algorithm follows similar steps to HCLA in terms of identifying the empirically best matching to pull and determining whether to ask for a hint. However, it employs a distinctly different approach for selecting and updating the statistics after each observation, whether pulling an arm or requesting a hint. In this algorithm, the central decision maker maintains stats and for each edge , enabling it to run Hungarian algorithm (kuhn1955hungarian) to find a matching that maximizes the additive utility of any weighted bipartite graph (Line 3). This algorithm also identifies the hint graph by applying the same condition as HCLA, but with a redefined , allowing the decision maker to run Hungarian algorithm for hint inquiry as well (Line 4). Consequently, the algorithm determines and , with the output of Hungarian run over bipartite graph where the weight of the edges are and respectively. Formally, and , where are the matrices of the corresponding statistics.
+Next, we present the hint query mechanism of GP-HCLA. The algorithm first checks if the utility of the matching based on is greater than that of the matching based on , i.e., (Line 5). If this condition holds, unlike HCLA, which might query a hint the matching satisfying the hint inquiry condition, this algorithm projects to a matching in the predefined set of pairwise edge-disjoint matchings . By projection, we mean mapping to a matching in , i.e., . For the projection step, the algorithm selects the matching from that contains the edge with the fewest number of observations as well as another potential matching by selecting a matching from uniformly at random (Lines 7–7). The algorithm then sets to either or each with probability equal to . Each agent then ask for hints from their corresponding arms .
+In Theorem 2, we prove the bound of the regret and the asymptotically optimal bound for the number of hints.
+Theorem 2.
+For and , GP-HCLA Algorithm 2 has
+-
+1.
+time-independent regret.
+-
+2.
+hint complexity .
+Theorem 2 demonstrates the crucial effect of the edge-level decision-making approach utilized by GP-HCLA on regret, reducing the exponential time-independent bound to a polynomial. Furthermore, it implies that the same hint inquiry approach augmented with projection, can significantly reduce the number of required hints such that the final bound for the number of hints is asymptotically optimal (matching the lower bound in Theorem 6).
+2.4 Analysis of HCLA and GP-HCLA
+While HCLA and GP-HCLA share the same arm-pulling and hinting procedures, their methods for selecting the hint graph and updating statistics differ. To avoid redundancy, we focus on GP-HCLA by providing the proof of Theorem 2, which shows tighter bounds, and move the proof of Theorem 1 to Appendix E.1. Additionally, we introduce an edge-level analysis for GP-HCLA that, unlike HCLA, considers how observations from a matching affect estimations of other matchings sharing an edge or subset of edges.
+Our proofs use an event-based analysis inspired by (wang2020optimal), which was originally developed for homogeneous multi-armed bandits. We adapt this approach to the heterogeneous setup, addressing the unique challenges it presents. Section C covers the general approach to event-based regret. Specifically, the event-based analysis relies on bounding the size of each set defined in Definition 3.
+Definition 1.
+We define the following sets of time steps at which specific events occur as:
+Intuitively, contains the time steps at which a sub-optimal matching is pulled, incurring regret. We also need to bound the size of the set , which includes the time steps where the chosen matching is not well-estimated, potentially leading to the selection of a sub-optimal . The sets and help us bound the exploration needed to identify through hints when a sub-optimal matching is selected. Finally, bounds the number of required hints when is detected, to explore potential matchings that might not have been chosen as due to potentially inaccurate estimations.
+Proof of Theorem 2.
+Using Lemma 1 we can write:
+where inequality (a) holds by aggregation over the results of Lemmas 4, 5, and 6. Therefore, the total regret of GP-HCLA is included to be in .
+By directly applying the result of Lemma 7, we can write
+which implies that that wraps the proof up. ∎
+We also analyze another variation of the HCLA algorithm, named G-HCLA, which represents a more natural extension of HCLA that does not project to a matching in . The G-HCLA algorithm inquires for a matching , which is either or , each with probability . In Theorem 7 in the appendix, we prove that G-HCLA queries for hints, which can be times larger than that of GP-HCLA, highlighting the important role that projection plays.
+3 Algorithms for Decentralized Hinted Heterogeneous Multi-Armed Bandits
+We focus on designing learning algorithms for Decentralized Hinted Heterogeneous Multi-Armed Bandits (s). Unlike the centralized setup, there is no central decision maker to help agents learn and avoid collisions. However, agents are allowed to communicate with each other, sharing their statistics such as s. By Theorem 3, we demonstrate that it is impossible for any decentralized learning algorithm to achieve sub-linear regret without agents sharing their statistics in HMA2Bs. Consequently, communication is a crucial element in designing algorithms for s. After all agents communicate and send their statistics to the others, they determine a matching by running Hungarian on the gathered statistics, which they commit to until the next communication phase. The communication protocol involves agents intentionally colliding with the specific agent they wish to communicate with while all agents engage with their corresponding arms in the matching they have established since the last communication.
+Theorem 3.
+No decentralized learning algorithm can provide sub-linear instance-independent regret for HMA2Bs without agents knowing the statistics of the others.
+Proof.
+The proof demonstrates that not knowing the magnitudes of other agents’ statistics causes more conflicts in the future because it is impossible for agents to distinguish between different possible reward models using their private information.
+Consider two instances, and , with and , where the sets of agents and arms are and , respectively. We assume that the instances are:
+Any fixed policies and chosen by the agents that achieve sub-linear regret on instance will fail on instance . The reason is that in instance , the optimal solution for agent is to pull arm . This means that every time a conflict occurs on arm , policy chooses to keep requesting to pull arm while policy leads agent to stop requesting and try to pull instead.
+However, if the underlying instance is , agent ’s policy, , still requests arm when a conflict on occurs. The reason is that without knowing the magnitude of agent ’s utility, instances and are indistinguishable from ’s perspective. Therefore, agent continues pulling arm in instance and ’s policy switches to request arm for the same reason. Meanwhile, the optimal matching under instance is for to pull and for to pull , which leads policies and to a linear regret. ∎
+To incorporate communication, we outline the framework for our proposed learning algorithms, Hinted Decentralized Explore-then-Commit (HD-ETC) and Elimination-Based Hinted Decentralized Explore-then-Commit (EBHD-ETC). These algorithms divide the time horizon into exploration and communication phases, querying for hints in an orderly round-robin manner from if needed, replicating the explore-then-commit approach. The main difference between these algorithms lies in the stopping condition for hint inquiries: in HD-ETC, agents are assumed to be aware of , while EBHD-ETC uses elimination to relax this assumption, allowing the agents to proceed without knowing the minimum gap. We then explain how agents specify exploration and communication epochs and explore during these phases using the potentially inaccurate statistics gathered from the previous communication phase.
+3.1 Decentralized Learning Framework
+We present the common framework used by all algorithms for , discussed in the following sections. All algorithms generally divide the decision-making rounds into exploration and communication phases, with each exploration epoch followed by a communication epoch and vice versa. Consequently, all learning algorithms maintain a counter as an index for each exploration epoch, and with a slight abuse of notation, represents the set of time steps in which agent has pulled or hinted at arm up to the beginning of exploration epoch . Additionally, agents can query hints during both communication and exploration epochs.
+Another important variable is the epoch length . The length of each epoch can vary over time. For example, in (shi2021heterogeneous), the length of each epoch increases exponentially as time goes on, number of epochs in total. However, in this work, we assume that for all exploration epochs, leading to a total of exploration epochs.
+The reason we do not adopt the exponentially extending epoch length approach used in some works, such as (shi2021heterogeneous) and (mehrabian2020practical), is that event-based analysis, which is fundamental to our proofs, cannot achieve better than regret under such exploration models.
+Our decentralized learning framework with communication for HMA2B consists of several phases:
+- Initialization phase:
+-
+assigns unique ranks among the agents.
+- Exploration phase:
+-
+The agents use the gathered statistics to identify the empirically best matching up to the beginning of epoch , using the Hungarian algorithm. They then commit to their corresponding arm for rounds until the end of the epoch. At the end of epoch , agents signal the start of the communication phase by creating collisions on the arms being pulled by other agents.
+- Communication phase:
+-
+Agents first quantize their potentially decimal statistics and use collisions to transmit the information bits. A collision indicates a ’1’, while the absence of a collision indicates a ’0’. This peer-to-peer communication occurs after sending a signal to initiate communication phase. Agents use their uniquely assigned ranks to identify the sender and receiver.
+Hint inquiry is a key part of the algorithms we, however, agents can query a hint at every time step regardless of whether it is the exploration or communication phase.
+Rank Assignment.
+The rank assignment algorithm is adopted from wang2020optimal and consists of two procedures: Orthogonalization and Rank Assignment. The orthogonalization procedure assigns each player a unique external rank . It involves a series of blocks, each of length . During the first time step of each block, players attempt to select arms without causing collisions. The results of these attempts (whether successful or not) are shared through communication. In the rank assignment sub-phase, a modified Round-Robin hopping scheme helps players convert their external ranks to unique internal ranks and estimate the total number of players . In (wang2020optimal) the authors proved that the expected duration of the rank assignment procedure is bounded by . A detailed description and analysis of the rank assignment algorithm can be found in (wang2020optimal).
+Communication Protocol.
+In decentralized multi-agent multi-armed bandit problems where direct communication is prohibited, agents can use collisions as signals to transmit bits, as proposed by (boursier2019sic). In this setup, players communicate sequentially: one player samples an arm while the other either pulls the same arm (creating a collision, represented by bit 1) or does not pull it (no collision, represented by bit 0) to convey a single bit of information. Although this method allows for information sharing, it is costly due to collisions, which can reduce the rewards obtained by the agents. The main challenge is to minimize information loss resulting from the integralization of non-integer statistics and to keep the communication phase between agents as short as possible. Sharing arm statistics , which are typically precise decimals, is challenging given the digital communication protocol. Therefore, agents should transmit the quantized format of their statistics, , denoted as , which other agents will use to make decisions over time. Additionally, we define as
+where
+We also introduce as the statistic of the edge that is shared among the agents while communicating before starting exploration epoch . To minimize information loss while optimizing the duration of communication for each statistic , we focus on the Differential communication protocol introduced by shi2021heterogeneous. In this protocol, agents transmit using bits. Receivers then update their stored statistics with . shi2021heterogeneous proved that
+| (4) | ||||
+| (5) |
+which are crucial for the analysis. They also demonstrated that transmitting requires bits, providing an upper bound on the regret incurred by each peer-to-peer communication before each epoch. The duration of each communication phase is in because each statistic should be shared with agents.
+Hint Inquiry Mechanism
+Even though both HD-ETC and EBHD-ETC follow the same exploitation approach as HCLA 1, they query for hints from matchings in during each epoch in a round-robin manner, i.e., . This approach implicitly incorporates an Explore-Then-Commit (ETC) style of exploration. In contrast, HCLA queries for a hint only when needed. The main reason for using the ETC hinting approach is to avoid the continuous communication required by the hint inquiry method introduced in HCLA. In HCLA, hints are queried based on , which requires agents being aware of the statistics of others at each time step. This constant need for communication would result in linear regret, as agents would be communicating all the time. On the other hand, round-robin hinting for consecutive rounds allows agents to gather information about the matchings without continuous communication. This method ensures that within rounds, agents have covered all possible matchings , including a matching HCLA would query a hint for. Thus, round-robin hinting effectively balances exploration and communication, reducing the overall communication complexity while achieving time-independent regret.
+Regret Decomposition
+All phases described in the learning framework are executed in the HMA2B setup through making collisions. These collisions result in agents pulling suboptimal arms, which consequently incurs regret. Therefore, we decompose the regret into
+| (6) |
+to analyze each component separately. These terms respectively denote the regret caused by ‘rank assignment’, ‘exploration’, and ‘communication’ under policy .
+3.2 Warm-Up: The HD-ETC algorithm
+As noted above, the HDAC algorithm follows the learning framework described in Section 3.1 up to the time step , which will be set later, with each exploration epoch having a fixed length equal to , i.e., . Under the hint inquiry mechanism of the HD-ETC algorithm, each agent queries a hint from their corresponding arm in , i.e., , up to time step . Agents then signal to start the new and final communication phase to gather . Next, agents run to determine the matching to commit to for the remainder of the time, i.e., . By Theorem 4, we proved that setting a proper requires the agents to know .
+Theorem 4.
+For , the HD-ETC algorithm has
+-
+1.
+time-independent .
+-
+2.
+.
+-
+3.
+Although HD-ETC achieves time-independent exploration regret with logarithmic upper bounds for both communication regret and the number of queried hints, it assumes that agents are aware of , which is generally considered an unrealistic assumption. Therefore, we propose a new elimination-based algorithm, EBHD-ETC (Algorithm 4), which attains the same bound without requiring agents to know the minimum gap.
+3.3 The EBHD-ETC algorithm
+In EBHD-ETC, agents use a different approach to stop hinting which relaxes the assumption of having the minimum gap as a known parameter. Specifically, each agent maintains a set of active edges named , which contains all the edges that still have the odds to be included by in in the forthcoming epoch . This set contains all the edges at the beginning, i.e. . We avoid using agentwise subscripts for because it is the same among all the agents. Agents decide the edges to be eliminated from based on an error variable defined as with .
+In the EBHD-ETC algorithm, agents use this error variables to define a decisive condition to stop hinting, rather than using as in HD-ETC. Specifically, agents follow the same learning framework as HD-ETC but use a completely different criterion for entering the exploitation phase. Additionally, under EBHD-ETC, agents determine at the beginning of each epoch . The agents then utilize to check for the existence of a matching such that
+where each is constructed as
+for all , with denoting the matrix after the removal of row and column . If there is no such , agents stop communicating and hinting and commit to for the remainder of the time. Otherwise, agents eliminate the edges whose corresponding does not satisfy
+to update and continue pulling and querying hints for until the end of the epoch.
+Theorem 5.
+For , the EBHD-ETC algorithm has
+-
+1.
+time-independent .
+-
+2.
+communication regret .
+-
+3.
+hint complexity
+3.4 Analysis of HD-ETC and EBHD-ETC
+According to (wang2020optimal), the regret caused by the rank assignment phase, which follows the same routine in both algorithms, has a time-independent upper bound. They showed that
+Furthermore, shi2021heterogeneous demonstrated that the Differential protocol requires bits for each peer-to-peer communication to transmit at each epoch. This protocol induces regret at each communication phase, where is the total number of statistics shared among agents at each communication phase. However, unlike the rank assignment phase, which is common among all algorithms, different policies may have different exploration epoch lengths, leading to varying numbers of communication phases. Therefore, we aim to analyze while maintaining a time-independent upper bound for with the minimum possible hints.
+Proof of Theorem 4.
+First, we argue that because agents request hints during the first rounds.
+We then bound . In HD-ETC, agents communicate every rounds up to time step and only once after that. Therefore, we can conclude that .
+The HD-ETC algorithm has decision-making rounds up to the time step , followed by one additional round for the period from to . Thus, we can break down the exploration regret of HD-ETC as follows:
+We then apply the results of Lemma 8 to bound as:
+To further bound , we write:
+where the inequality holds by Lemma 12, which bounds the probability of .
+Therefore, we can write:
+| (7) |
+which results in a time-independent exploration regret.
+∎
+Proof of Theorem 5.
+Assuming as the index of the last exploration epoch during which agents, under both policies, query for hints for consecutive rounds and then immediately start the communication phase, we can argue that and .
+While the hinting approach remains the same as in HD-ETC, in EBHD-ETC, we assume that the agents are unaware of , thus preventing them from querying for hints as in HD-ETC. Instead, under EBHD-ETC, agents maintain a set of active edges , which includes the edges that could potentially be part of . Agents decide to stop hinting at the beginning of epoch when . Consequently, becomes a random variable, as opposed to the fixed in HD-ETC. Regarding exploration regret, we can directly apply the bound established in Lemma 8. Therefore, we focus on bounding and , noting that the latter is times larger than the former due to the nature of the algorithm.
+We, then, break down the exploration regret of HD-ETC as follows:
+where follows the same bound we proved in Lemma 8.
+So we focus on bounding . Accordingly, we define the event as
+In Lemma 13, we prove that . Next, we focus on bounding the probability of to find an upper bound for . In Lemma 14, we prove that the edges in the set of active edges when forms a perfect matching and given , the graph formed by the edges in is exactly . Thus, we can imply that .
+4 Optimality of the Results
+4.1 A Lower Bound on the Necessary Number of Hints
+Another important concern in designing efficient learning policies for HMA2B, is the number of queried hints . In Theorem 6, we prove that all uniformly fast convergent learning policies, defined in Definition 2, require hints to achieve time-independent regret. Accordingly, we call a policy , asymptotically hint optimal if .
+Definition 2.
+A policy is called uniformly fast convergent if for all and all sub-optimal matchings ,
+holds.
+Theorem 6.
+Any uniformly fast convergent policy with time-independent regret should query for hints.
+Proof.
+Recall that in classic multi-armed bandits (garivier2019explore; lai1985asymptotically), for any uniformly fast convergent policy , we have
+If the number of hints is , then there must be at least non-hint observations on some suboptimal arms. Consequently, for any uniformly fast convergent policy, the regret is also , which is time-dependent.
+∎
+4.2 A Lower Bound on the Necessary Number of Communications
+5 Experiments
+APPENDIX
+Appendix A Communication Protocols
+Appendix B Algorithm G-HCLA
+Here we analyse hint complexity of algorithm G-HCLA that is a variation of HCLA. In this algorithm the super arm satisfying would be served as with probability . In this section, we prove that G-HCLA asks for at most hints.
+Theorem 7.
+For and , G-HCLA Algorithm 5 has
+-
+1.
+time-independent regret.
+-
+2.
+hint complexity .
+Proof of Theorem 7.
+The main difference between GP-HCLA and G-HCLA is the hint inquiry approach while the same event is triggered. Thus, the regret analysis for both algorithms is the same, while the number of hints is times larger for G-HCLA.
+Now, to bound the hint complexity, we use the same set of moments previously defined in the proof of Theorem 2 and define new sets of moments as:
+Therefore, we finish the proof by writing:
+while inequalities (a) and (d) hold because of the linearity of expectation. Inequality (b) is derived from the nature of the algorithm, which only chooses one to be hinted at each round. Another important observation is that when a super arm is hinted at, there might be more than one edge satisfying , which directly implies (c).
+∎
+Appendix C Event-Based Regret Analysis
+defining the following set of events
+Intuitively, contains the time steps at which a sub-optimal matching is pulled, incurring regret. We also need to bound the size of the set , which includes the time steps where the chosen matching is not well-estimated, potentially leading to the selection of a sub-optimal . The sets and help us bound the exploration needed to identify through hints when a sub-optimal matching is selected. Finally, bounds the number of required hints when is detected, to explore potential matchings that might not have been chosen as due to potentially inaccurate estimations.
+We can then observe that for policy ,
+thus we focus on bounding , which represents the expected number of time steps during which the central decision maker chooses a sub-optimal matching under each policy.
+Next, we can prove that Lemma 1, originally proven in (wang2020optimal) for homogeneous multi-agent multi-armed bandits, holds for the HMA2Bs. This is achieved by replacing each arm with a matching in their proof, without loss of generality.
+Lemma 1 ((wang2020optimal)).
+The following chain of inequalities holds for the HMA2Bs:
+| (8) |
+In the analysis of both algorithms HCLA and GP-HCLA, we can focus on bounding each term on the RHS of inequality 8 separately to analyze the regret. The final step in the proofs is to bound the expected size of , which governs the asymptotic hint complexity , where .
+Appendix D Concentration bounds
+Lemma 2 ((combes2015learning), Lemma 6).
+For any , we have
+Lemma 3 ((wang2020optimal), Lemma 9).
+Let , and . Let be a random set of rounds such that for all . Assume that there exists , a sequence of independent binary random variables such that for any is -measurable and . In addition, assume that for any , agent pulls the arm if . Then,
+Appendix E Analysis of HCLA,GP-HCLA, and G-HCLA
+While HCLA and GP-HCLA share the same arm-pulling and hinting procedures, their methods for selecting the hint graph and updating statistics differ. To avoid redundancy, we focus on GP-HCLA by providing the proof of Theorem 2, which shows tighter bounds, and move the proof of Theorem 1 to Appendix E.1. Additionally, we introduce an edge-level analysis for GP-HCLA that, unlike HCLA, considers how observations from a matching affect estimations of other matchings sharing an edge or subset of edges.
+Our proofs use an event-based analysis inspired by (wang2020optimal), which was originally developed for homogeneous multi-armed bandits. We adapt this approach to the heterogeneous setup, addressing the unique challenges it presents. Section C covers the general approach to event-based regret. Specifically, the event-based analysis relies on bounding the size of each set defined in Definition 3.
+Definition 3.
+We define the following sets of time steps at which specific events occur as:
+Proof of Theorem 2.
+Using Lemma 1 we can write:
+where inequality (a) holds by aggregation over the results of Lemmas 4, 5, and 6. Therefore, the total regret of GP-HCLA is included to be in .
+By directly applying the result of Lemma 7, we can write
+which implies that that wraps the proof up. ∎
+E.1 Proof of Theorem 1
+See 1
+Proof.
+We follow the same proof sketch as described in Section 3.4. Thus, we bound the size of the sets of moments defined in Definition 3 as follows:
+By Lemma 3, we can prove that . Bounding is also a straightforward application of Lemma 2 by replacing with to have . We can also prove that at every time step , , thus decision maker hints at that time using HCLA. It the hints the with probability at least , which implies . Therefore, we can write
+where inequality (a) is directly adopted from wang2020optimal in which the authors showed that .
+We next prove an upper bound on the by bounding the number of time steps the condition in Line 4 of the algorithm 1 occurs. For a fixed matching , we define as
+Now, we can write
+where the inequality (a) is achieved like what we did in the Proof of Lemma 7, knowing that under HCLA, the probability of asking a hint for is at least in such moments.
+Finally, we can conclude that and ∎
+E.2 Proof Detail of Lemmas for and
+Event-Based Analysis Lemmas
+Here, we prove the lemmas necessary to analyze the regret and hint complexity of GP-HCLA using the event-based analysis described above.
+Lemma 4.
+For the GP-HCLA algorithm, the expected size of set is bounded by
+Proof.
+To bound , we start by defining a new set of moments as follows:
+We now show that
+First, we can write:
+In the above steps, inequality (a) holds due to the triangle inequality, which implies that . Inequality (b) is derived by applying the union bound.
+Therefore, by Lemma 3, we can conclude:
+∎
+Lemma 5.
+For the GP-HCLA algorithm, the expected size of set is bounded by
+Proof.
+To bound , we apply the union bound on all edges contained in . Accordingly, we can write:
+where the second inequality follows from the results of Lemma 2.
+∎
+Lemma 6.
+For the GP-HCLA algorithm, the expected size of set is bounded by
+Proof.
+We first show that at each moment in where , the hint inquiry condition is satisfied for the optimal matching, i.e.,
+which means that a hint is queried by GP-HCLA at all those time steps.
+Next, we define a new set of moments as follows:
+We can then write:
+Inequality (a) is derived using the same method as in the proof of Lemma 4 for bounding . To achieve inequality (b), we utilize the fact that an edge is independently hinted with a probability of at least at each time step in . Consequently, the number of time steps in where holds for is bounded by Lemma 3. We then apply the union bound to all the edges in to derive inequality (b).
+∎
+Now that we bounded , we bound the hints that GP-HCLA queries for after detecting the .
+Lemma 7.
+Let be the set of time steps in at which GP-HCLA’s hint inquiry condition is triggered by a matching :
+Then, for and , the expected size of this set satisfies the following bound:
+Proof.
+We start the proof defining new sets of moments as:
+where .
+Similar to the argument wang2020optimal made, we can prove that
+Accordingly we bound each and separately and then apply union bound over it. However, applying the union bound on the set of all matchings to bound would result in an exponential constant, i.e., , for the number of hints GP-HCLA queries a hint for. To mitigate this, GP-HCLA utilizes the idea of projecting into a matching in to specify and hint for , thereby reducing the possible set of hints from the exponentially-sized to that has matchings in it. We can observe that every time a matching is hinted at by GP-HCLA, the counter for all involved edges increases by one, i.e., . Additionally, under this projection-based hint inquiry approach, the number of rounds each arbitrary edge is hinted at is equal to that of the other edges in . Therefore, we can write:
+In step (a), there is no need to take the union bound over all the edges in because if a matching is hinted, all the involved edges will be observed by the corresponding agents. Taking the union bound over all the edgewise different members of effectively covers all the edges. Moreover, whenever the event in equality (a) occurs, the probability of hinting a matching that includes the edge with is at least . Thus, by Lemma 3, inequality (b) holds.
+Now we bound as:
+Equality (a) holds because the number of times each matching is hinted at is always less than or equal to the number of times covers each edge , including the edge with the minimum number of hint occurrences. Inequality (b) holds because the probability of increasing the counter for any edge, specifically the edge with the fewest hint occurrences, is at least . This implies that the expected number of trials to increase this counter is at most 2. By applying the union bound over all members of , we obtain an upper bound on the total number of required hints. Finally we can imply that
+∎
+Appendix F Decentralized Event-Based Analysis
+Lemma 8.
+For both HD-ETC and EBHD-ETC algorithms, is bounded by
+Proof.
+Here, we use the same event-based analysis as in Section C to bound the newly defined sets of time steps like defined in Definition 3 as
+These sets are similar to those in Definition 3, but they are defined on s instead of s.
+We can then observe that for policy ,
+thus we focus on finding an upper bound for , which represents the number of time steps during which the central decision maker chooses a sub-optimal matching under each policy. Now, we can apply the lemma 1 to achieve
+to bound each separately.
+Lemma 9.
+For both HD-ETC and EBHD-ETC algorithms, the expected size of set is bounded by
+Proof.
+Then we bound by new sets of moments defined as
+Now we can write
+while the second inequality holds by triangle inequality. We then bound each and separately. We now write
+| (9) |
+where the last inequality holds by Lemma 3.
+By setting , we can conclude the for it always holds that . Now, based on the fact that the algorithm asks for a hint at each time step before and every epoch hints for all edges, we can write
+Now we can conclude that
+∎
+Lemma 10.
+For both HD-ETC and EBHD-ETC algorithms, the expected size of set is bounded by
+Proof.
+Thus, we conclude that
+where is defined in Definition 3, and the last inequality is derived from Lemma 5. However, we may use a looser bound of . This is because each may occur at the beginning of an epoch where decision-making takes place. If the event at coincides with the start of an epoch , it could result in rounds of regret, as agents commit to for the entire epoch.
+∎
+Lemma 11.
+For both HD-ETC and EBHD-ETC algorithms, the expected size of set is bounded by
+Proof.
+We bound very similar to what we did for the set . However there is no need to account for the communication error here cause we addressed it while bounding for all the edges. Thus, by Lemma 3, we can conclude
+∎
+Appendix G Detail of Lemmas to Proof of Theorem 4
+Lemma 12.
+For , the probability that in the HD-ETC algorithm is at least .
+Proof.
+Starting with defining and we can write:
+| (10) |
+where (a) holds by applying Hoeffding’s inequality, assuming all edges have been hinted at least times by time step .
+Now, setting , we can rewrite inequality (10) as:
+where (a) holds because inequality (5) implies that after at least observations for an edge , holds with probability one, making .
+∎
+Appendix H Detail of Lemmas to Proof of Theorem 4
+Lemma 13.
+For any , the event occurs with probability at least . Formally,
+Proof.
+For a fixed , and any fixed edge , we can observe that because EBHD-ETC hints for that edge during each epoch exactly one time. Now for we can write
+| (11) |
+where (a) follows from the communication error bound , which implies , and (b) is derived using Hoeffding’s inequality assuming .
+Since EBHD-ETC hints for all edges until the end of epoch , inequality (11) holds for all . Therefore, by summing the error bound over all edges included in any matching and then taking the union bound over all the edges, we can write:
+Finally, we take union bound on all and write:
+where (a) holds by setting . ∎
+Lemma 14.
+For any , if , then the edges in form a matching and the matching is with probability at least .
+Proof.
+The algorithm EBHD-ETC stops hinting and communicating at the beginning of epoch if . Suppose the edges do not form a matching. Consequently, there must exist an agent such that where , which is impossible. This is because, according to how EBHD-ETC updates at each epoch, any edge is included in a matching such that , where is connected to , implying that should be in .
+We now show that if agents stop hinting and communicating when , the matching formed by the edges in is with a probability of at least . To support this claim, we bound the probability of an edge being eliminated by EBHD-ETC at any epoch . Assume that is eliminated from , i.e., . We first define the following events and for an edge as:
+We can then write:
+where (a) holds because is a matching containing while is one of such matchings with the highest utility, i.e., . Inequality (b) follows from the observation that, given , the following inequalities hold:
+which implies:
+making . We demonstrated that any edge is eliminated from the set of active edges with a probability of at most . By applying the union bound to all edges of the matching , we can show that the final edges appearing in form with a probability of at least .
+∎
+Lemma 15.
+Assuming a unique optimal matching , the EBHD-ETC algorithm stops querying for hints at epoch with probability at least .
+Proof.
+We first define the event as
+which represents whether EBHD-ETC stops hinting and enters the exploitation phase at the beginning of some epoch .
+Now we can write
+| (12) |
+From Lemma 13, we know that . Thus, we prove that, given , there exists an epoch such that , that makes .
+Accordingly, given , we bound the index of the last epoch where an edge such that can be in . As a consequence of Lemma 14, we know that all the edges will remain in till time step when . We also know that . Thus, if we can write that
+Thus, all the edges can not remain in for given .
+Therefore, re-write inequality (12) as
+∎
+Appendix I Structure of the Optimal Matching
+We argue that any optimal matching on a weighted bipartite graph implies a hierarchical structure on agents, referred to as the Multi-Level Agent Structure (MLAS), based on the position of their optimal match in their sorted weight list. This hierarchical structure is central to designing efficient decentralized learning algorithms using the described hint inquiry mechanisms and the associated regret analysis.
+Definition 4.
+In a given perfect matching over and and a sorted list for each agent , we say follows MLAS if all the following existence conditions hold simultaneously:
+where denotes the index of in .
+Intuitively, Definition 4 indicates that if MLAS holds for , then there is an agent who is matched with his most preferred arm under s, another agent who is matched with his most or second most preferred arm, and so forth. Lemma 16 demonstrates that an optimal matching adheres to MLAS when considering the s, which are the sorted versions of the underlying vectors . It is important to note that sorting the underlying s does not alter ; thus, applying Hungarian to s will also produce as the optimal matching.
+Lemma 16.
+Lets denote the sorted lists of the underlying edge weights by . Then, the optimal matching over s follows MLAS structure.
+Proof of Lemma 16.
+We first prove that there exists an agent who satisfies the topmost existence condition by having , meaning that is the most preferred arm by agent . We then remove from the sorted lists s and use induction to show the existence of another agent who satisfies the second condition. We repeat this process to prove the conditions for the remaining agents.
+To start, we prove that given an optimal matching , there exists an agent such that . We achieve this by constructing a directed preference graph where the nodes represent matched pairs . An edge is directed from node to if .
+We argue that must be an acyclic graph; otherwise, it would contradict the optimality of . Suppose contains a cycle of length , as depicted in Figure 2. We label the nodes as .
+We can then construct a new matching by reassigning each agent to the arm indicated by the node it points to, i.e., , thus creating a new matching with a higher total weight. We then show that if no agent is matched with their most preferred arm, there must be a cycle in , which contradicts the optimality of as established.
+If no agent is matched with their most preferred arm, consider an arbitrary agent . We observe that the node has at least one outgoing edge. Suppose the node is the any of them is pointing to. We also know that must have at least one outgoing edge that does not point back to ; otherwise, would contain a 2-cycle, contradicting the optimality of . Therefore, must point to another node, . To avoid forming a cycle, this chain of nodes would need to grow infinitely, which contradicts the assumption that is finite. Thus, there must be at least one agent, denoted , who is matched with their most preferred arm under .
+To complete the proof, we then remove from and from . We apply the same argument to show that there exists an agent who is matched with their most preferred arm after removing , which could have been preferred to by . This implies that ’s match under is either their most or second most preferred arm. We continue this argument for the remaining agents by induction, thereby completing the proof.
+∎
+Appendix J Auxiliary Lemmas
+Lemma 17.
+For a given as mean of Bernoulli distribution and , the following inequality holds
+Proof.
+We first replace both sides of the inequality with the definition of and write it as:
+| (13) |
+Now we can observe that makes both sides of inequality (14) equal. Assuming that , we prove that is a decreasing function in . Then we finish the proof by showing that the derivative of with respect to is always negative.
+After renaming and , we can write:
+To wrap up the proof, we need to show that this derivative is always negative, which implies is decreasing in . For this argument to be correct, the following inequalities should hold:
+| (15) |
+By the inequality , inequality (15) is always correct. Thus, we proved that is decreasing in , which completes our proof.
+∎
+Lemma 18.
+For a given ,, and such that and , We define as
+the following inequalities hold
+-
+1.
+-
+2.
+Proof.
+For the first part, according to the definition, is decreasing in . This is because increasing requires to be closer to , as increases with . Therefore, since , we conclude that .
+For the second part we basically use the fact that . Assuming , then we know that
+| (16) |
+We then we can prove that . Accordingly we put in definition of and write
+while (a) is implied by the fact that increases as grows and (b) is implied by equation 16. ∎
+Lemma 19.
+11todo: 1check this lemmaFor a given and as a perfect matching between set of agents and arms , We define and relatively as
+Then
+Proof.
+First we define
+and
+Then we can observe that cause all the edges could also be observed by each of the edges. Thus, using the result of Lemma 18 we can write the LHS as
+| (17) |
+Now we write the RHS as
+| (18) |
+Lemma 20.
+Lets assume that for a fixed , then
+Proof.
+We start the proof by arguing that . Then we can write
+∎

@@ -1,0 +1,36 @@
+- COMMENT
+Does AI already have human-level intelligence? The evidence is clear
+In 1950, in a paper entitled ‘Computing Machinery and Intelligence’1, Alan Turing proposed his ‘imitation game’. Now known as the Turing test, it addressed a question that seemed purely hypothetical: could machines display the kind of flexible, general cognitive competence that is characteristic of human thought, such that they could pass themselves off as humans to unaware humans?
+Access options
+Access Nature and 54 other Nature Portfolio journals
+Get Nature+, our best-value online-access subscription
+$32.99 / 30 days
+cancel any time
+Subscribe to this journal
+Receive 51 print issues and online access
+$199.00 per year
+only $3.90 per issue
+Rent or buy this article
+Prices vary by article type
+from$1.95
+to$39.95
+Prices may be subject to local taxes which are calculated during checkout
+Nature 650, 36-40 (2026)
+doi: https://doi.org/10.1038/d41586-026-00285-6
+References
+Turing, A. M. Mind LIX, 433–460 (1950).
+Jones, C. R. & Bergen, B. K. Preprint at arXiv https://doi.org/10.48550/arXiv.2503.23674 (2025).
+Chakrabarty, T., Ginsburg, J. C. & Dhillon, P. Preprint at arXiv https://doi.org/10.48550/arXiv.2510.13939 (2025).
+Bubeck, S. et al. Preprint at arXiv https://doi.org/10.48550/arXiv.2511.16072 (2025).
+Rizvi, S. A. et al. Preprint at bioRxiv https://doi.org/10.1101/2025.04.14.648850 (2025).
+Morris, M. R. et al. Proc. 41st Int. Conf. Mach. Learn. 235, 36308–36321 (PMLR, 2024).
+Hendrycks, D. et al. Preprint at arXiv https://doi.org/10.48550/arXiv.2510.18212 (2025).
+Block, N. Phil. Rev. 90, 5–43 (1981).
+Bender, E. M., Gebru, T., McMillan-Major, A. & Shmitchell, S. in Proc. 2021 ACM Conf. Fairness Account. Transparency 610–623 (Association for Computing Machinery, 2021).
+Bubeck, S. et al. Preprint at arXiv https://doi.org/10.48550/arXiv.2303.12712 (2023).
+Dai, Y., Gao, Z., Sattar, Y., Dean, S. & Sun, J. Preprint at arXiv https://doi.org/10.48550/arXiv.2506.07298 (2025).
+Ma, Y. et al. Preprint at arXiv https://doi.org/10.48550/arXiv.2309.16298 (2023).
+NVIDIA. Preprint at arXiv https://doi.org/10.48550/arXiv.2501.03575 (2025).
+Supplementary Information
+Competing Interests
+L.B. is an employee of Goodfire AI, an AI interpretability company. Goodfire had no role in the conceptualization, writing or decision to publish this work

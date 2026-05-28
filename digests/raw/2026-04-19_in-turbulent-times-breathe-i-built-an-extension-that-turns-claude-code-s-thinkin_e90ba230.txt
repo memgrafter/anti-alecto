@@ -1,0 +1,41 @@
+Reddit thread capture
+
+Thread URL: https://reddit.com/r/ClaudeAI/comments/1riy6qp/in_turbulent_times_breathe_i_built_an_extension/
+Subreddit: r/ClaudeAI
+Title: In turbulent times, breathe. I built an extension that turns Claude Code's thinking time into mindfulness
+Author: u/cheetguy
+Score: 236
+Comment count (reported): 18
+
+## Original post
+In times like these it's easy to lose focus. I noticed every time Claude was thinking, I'd reach for my phone and doomscroll. 10-60+ seconds of idle time, wasted on stress, and then you need to context-switch back. According to research, structured breathing at \~5.5 breaths/min improves your HRV, reduces stress, and sharpens focus. Claude gives you that time for free. So I built an extension that turns that dead time into guided breathing exercises. It auto-launches when Claude starts working and disappears when Claude finishes. It's open source and meant to be forked, or even better, contributed to. Tweak it, extend it, make it yours. GitHub: [https://github.com/halluton/Mindful-Claude](https://github.com/halluton/Mindful-Claude) Hope it helps someone stay present!
+
+## Prominent viewpoints (top-level comments)
+1. (13) u/Jarrett-The-Kid: This is really cool, great work OP! 🤘
+2. (12) u/ticktockbent: Tried this just as Claude crashed and I nearly passed out Kidding, this looks really nice though!
+3. (6) u/vladlearns: this is amazing
+4. (3) u/Fluxx1001: Love it!
+5. (2) u/Zennity: Great idea. I love it
+6. (2) u/fli_sai: Haha maybe this is what humans were always destined to do - build, breath, stabilize HRV, build, breath, repeat!
+7. (2) u/thatcoolredditor: Dude sweet
+8. (1) u/attabui: What’s your font of choice there?
+
+## Thread discussion sample
+- (13) u/Jarrett-The-Kid: This is really cool, great work OP! 🤘
+- (12) u/ticktockbent: Tried this just as Claude crashed and I nearly passed out Kidding, this looks really nice though!
+- (6) u/vladlearns: this is amazing
+- (3) u/Fluxx1001: Love it!
+- (2) u/Zennity: Great idea. I love it
+- (2) u/fli_sai: Haha maybe this is what humans were always destined to do - build, breath, stabilize HRV, build, breath, repeat!
+- (2) u/thatcoolredditor: Dude sweet
+- (1) u/attabui: What’s your font of choice there?
+  - (3) u/cheetguy: It's called IoskeleyMono: An open-source alternative to Berkeley Mono [https://github.com/ahatem/IoskeleyMono](https://github.com/ahatem/IoskeleyMono)
+    - (1) u/attabui: Thanks!
+- (1) u/Exciting_Aspect_6145: This is so cool. Next is the offline dinosaur game lmao
+- (1) u/ihazkape: This is cool. There's another project that I saw recently that tells you to do your squats while Claude is busy lollygagging.
+- (1) u/jonnysunshine1: Actually cool!
+- (1) u/spjallmenni: .... while Claude gags on a lolly
+- (1) u/etherealsounds: Love this!
+- (1) u/Cheap-Try-8796: Meanwhile.... CC is "Lollyggaging..."
+- (1) u/Oz_uha1: Is this the first step of AI controlling humans?
+- (1) u/LewdKantian: I hate it. Great job!

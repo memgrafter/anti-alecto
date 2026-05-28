@@ -1,0 +1,754 @@
+Title: Reasoning Loop: Prompt Engineering Techniques for Smarter AI Interactions
+
+URL Source: http://kartaca.com/en/reasoning-loop-prompt-engineering-techniques-for-smarter-ai-interactions/
+
+Published Time: 2025-08-15T11:00:02+00:00
+
+Markdown Content:
+# Reasoning Loop: Prompt Engineering Techniques for Smarter AI Interactions - Kartaca
+
+[](https://kartaca.com/en)
+
+Products 
+
+PRODUCTS[Lixus](https://kartaca.com/en/products/lixus-en/)[Punic](https://kartaca.com/en/products/punic-en/)[Fenike](https://kartaca.com/en/products/fenike-en/)
+
+[Dispatch](https://kartaca.com/en/products/dispatch-en/)[Efficity](https://kartaca.com/en/products/efficity-en/)[Splash](https://kartaca.com/en/products/splash-en/)[Ekho](https://kartaca.com/en/products/ekho-en/)
+
+[Ko-pilot](https://kartaca.com/en/products/ko-pilot-en/)[Seafront](https://kartaca.com/en/products/seafront-en/)[Knit](https://kartaca.com/en/products/knit-en/)[**View All Products >>**](https://kartaca.com/en/products/)
+
+Solutions 
+
+SOLUTIONS[Next Generation Marketing](https://kartaca.com/en/solutions/next-generation-marketing/)
+
+[Next Generation Commerce](https://kartaca.com/en/solutions/next-generation-commerce/)
+
+[Consultancy](https://kartaca.com/en/solutions/consultancy/)[**View All Solutions >>**](https://kartaca.com/en/solutions/)
+
+[Customers](https://kartaca.com/en/clients/)
+
+Industries 
+
+INDUSTRIES[Retail](https://kartaca.com/en/sectors/retail/)[Consumer Goods](https://kartaca.com/en/sectors/consumer-goods/)[Technology, Media, Telecom](https://kartaca.com/en/sectors/technology-media-telecom/)[Leisure & Hospitality](https://kartaca.com/en/sectors/leisure-hospitality/)[Manufacturing](https://kartaca.com/en/sectors/manufacturing/)[Gaming](https://kartaca.com/en/sectors/gaming/)[Financial Services](https://kartaca.com/en/sectors/financial-services/)[Education & Learning](https://kartaca.com/en/sectors/education/)[Healthcare](https://kartaca.com/en/sectors/healthcare/)[Supply Chain & Logistics](https://kartaca.com/en/sectors/supply-chain-logistics/)[Public Sector](https://kartaca.com/en/sectors/public-sector/)
+
+Partners 
+
+PARTNERS[Google Cloud](https://kartaca.com/en/partners/google-cloud-platform/)[Why Work with a Partner?](https://kartaca.com/en/why-work-with-a-google-cloud-partner/)[Google Workspace](https://kartaca.com/en/transform-your-workplace-with-google-workspace/)[Why Work with a Partner?](https://kartaca.com/en/why-work-with-a-google-workspace-partner/)[Google Workspace for Education](https://kartaca.com/en/google-for-education/)[Looker](https://kartaca.com/en/drive-better-outcomes-through-data-driven-experiences-with-looker/)[Mandiant](https://kartaca.com/en/transform-security-operations-and-incident-response-with-mandiant/)
+
+Us 
+
+ABOUT US[About Us](https://kartaca.com/en/about-us/)[Values](https://kartaca.com/en/values/)[Group Companies](https://kartaca.com/en/group-companies/)[Press](https://kartaca.com/en/press/)
+
+CAREER[The Way We Work](https://kartaca.com/en/the-way-we-work/)[Technologies](https://kartaca.com/en/technologies/)[Working at Kartaca](https://kartaca.com/en/working-at-kartaca/)[“Rise Through The Ranks” Program](https://kartaca.com/en/rise-through-the-ranks-program/)
+
+[Contact](https://kartaca.com/en/contact-us/)[TR](https://kartaca.com/akil-yurutme-dongusu-daha-akilli-yapay-zeka-etkilesimleri-icin-istem-muhendisligi-teknikleri/?noredirect=true)![Image 1](https://kartaca.com/wp-content/themes/kartaca-1.0.37-ug2/assets/images/mobile_top_menu_footer.png)
+
+[](https://kartaca.com/en)[](https://kartaca.com/en)
+
+Products 
+
+PRODUCTS
+
+[![Image 2](https://kartaca.com/wp-content/uploads/2018/11/lixus.png) Lixus Next Generation Loyalty](https://kartaca.com/en/products/lixus-en/)
+
+[![Image 3](https://kartaca.com/wp-content/uploads/2018/11/punic.png) Punic Omnichannel Marketing](https://kartaca.com/en/products/punic-en/)
+
+[![Image 4](https://kartaca.com/wp-content/uploads/2018/11/fenike.png) Fenike Private and Hybrid Cloud](https://kartaca.com/en/products/fenike-en/)
+
+[![Image 5](https://kartaca.com/wp-content/uploads/2018/11/dispatch.png) Dispatch Next Generation Messaging](https://kartaca.com/en/products/dispatch-en/)
+
+[![Image 6](https://kartaca.com/wp-content/uploads/2018/11/efficity.png) Efficity Enterprise Efficiency Management](https://kartaca.com/en/products/efficity-en/)
+
+[![Image 7](https://kartaca.com/wp-content/uploads/2018/11/splash.png) Splash Digital Content Distribution](https://kartaca.com/en/products/splash-en/)
+
+[![Image 8](https://kartaca.com/wp-content/uploads/2023/09/ekho-purple-2.png) Ekho AI-supported Digital Assistant](https://kartaca.com/en/products/ekho-en/)
+
+[![Image 9](https://kartaca.com/wp-content/uploads/2018/11/ko-pilot.png) Ko-pilot Payment System](https://kartaca.com/en/products/ko-pilot-en/)
+
+[![Image 10](https://kartaca.com/wp-content/uploads/2018/11/seafront.png) Seafront Multichannel Commerce](https://kartaca.com/en/products/seafront-en/)
+
+[![Image 11](https://kartaca.com/wp-content/uploads/2018/11/knit.png) Knit Social CRM](https://kartaca.com/en/products/knit-en/)
+
+[**View All Products >>**](https://kartaca.com/en/products/)
+
+![Image 12](https://kartaca.com/wp-content/themes/kartaca-1.0.37-ug2/assets/images/mega_menu_image.png)
+
+Solutions 
+
+SOLUTIONS
+
+[Next Generation Marketing](https://kartaca.com/en/solutions/next-generation-marketing/)
+Next Generation Loyalty Systems
+
+Omnichannel Marketing
+
+Private and Hybrid Cloud
+
+Next Generation Messaging
+
+Targeting and Segmentation
+
+Enterprise Efficiency Tracking
+
+Digital Content Distribution
+
+AI-supported Digital Services
+
+[Next Generation Commerce](https://kartaca.com/en/solutions/next-generation-commerce/)
+Payment Solutions
+
+Multichannel Commerce Solutions
+
+[Consultancy](https://kartaca.com/en/solutions/consultancy/)
+DevOps
+
+System Architecture
+
+Open Source Systems
+
+Big Data
+
+Cloud Systems
+
+[**View All Solutions >>**](https://kartaca.com/en/solutions/)
+
+![Image 13](https://kartaca.com/wp-content/themes/kartaca-1.0.37-ug2/assets/images/mega_menu_image.png)
+
+[Customers](https://kartaca.com/en/clients/)
+
+Industries 
+
+INDUSTRIES
+
+[Retail](https://kartaca.com/en/sectors/retail/)
+
+[Consumer Goods](https://kartaca.com/en/sectors/consumer-goods/)
+
+[Technology, Media, Telecom](https://kartaca.com/en/sectors/technology-media-telecom/)
+
+[Leisure & Hospitality](https://kartaca.com/en/sectors/leisure-hospitality/)
+
+[Manufacturing](https://kartaca.com/en/sectors/manufacturing/)
+
+[Gaming](https://kartaca.com/en/sectors/gaming/)
+
+[Financial Services](https://kartaca.com/en/sectors/financial-services/)
+
+[Education & Learning](https://kartaca.com/en/sectors/education/)
+
+[Healthcare](https://kartaca.com/en/sectors/healthcare/)
+
+[Supply Chain & Logistics](https://kartaca.com/en/sectors/supply-chain-logistics/)
+
+[Public Sector](https://kartaca.com/en/sectors/public-sector/)
+
+![Image 14](https://kartaca.com/wp-content/themes/kartaca-1.0.37-ug2/assets/images/mega_menu_image.png)
+
+Partners 
+
+PARTNERS
+
+[Google Cloud](https://kartaca.com/en/partners/google-cloud-platform/)
+
+[Why Work with a Partner?](https://kartaca.com/en/why-work-with-a-google-cloud-partner/)
+
+[Google Workspace](https://kartaca.com/en/transform-your-workplace-with-google-workspace/)
+
+[Why Work with a Partner?](https://kartaca.com/en/why-work-with-a-google-workspace-partner/)
+
+[Google Workspace for Education](https://kartaca.com/en/google-for-education/)
+
+[Looker](https://kartaca.com/en/drive-better-outcomes-through-data-driven-experiences-with-looker/)
+
+[Mandiant](https://kartaca.com/en/transform-security-operations-and-incident-response-with-mandiant/)
+
+![Image 15](https://kartaca.com/wp-content/themes/kartaca-1.0.37-ug2/assets/images/mega_menu_image.png)
+
+Us 
+
+ABOUT US
+
+[About Us](https://kartaca.com/en/about-us/)
+
+[Values](https://kartaca.com/en/values/)
+
+[Group Companies](https://kartaca.com/en/group-companies/)
+
+[Press](https://kartaca.com/en/press/)
+
+CAREER
+
+[The Way We Work](https://kartaca.com/en/the-way-we-work/)
+
+[Technologies](https://kartaca.com/en/technologies/)
+
+[Working at Kartaca](https://kartaca.com/en/working-at-kartaca/)
+
+[“Rise Through The Ranks” Program](https://kartaca.com/en/rise-through-the-ranks-program/)
+
+![Image 16](https://kartaca.com/wp-content/themes/kartaca-1.0.37-ug2/assets/images/mega_menu_image.png)
+
+[Contact](https://kartaca.com/en/contact-us/)[TR](https://kartaca.com/akil-yurutme-dongusu-daha-akilli-yapay-zeka-etkilesimleri-icin-istem-muhendisligi-teknikleri/?noredirect=true)
+
+# Reasoning Loop: Prompt Engineering Techniques for Smarter AI Interactions
+
+![Image 17](https://i0.wp.com/kartaca.com/wp-content/uploads/2025/08/Reasoning-Loop-Prompt-Engineering-Techniques-for-Smarter-AI-Interactions.png?w=1180&ssl=1)
+**Prompting** is the method of interacting with and guiding foundation models by providing them with instructions or inputs to generate desired outputs. **Prompt engineering**, on the other hand, is the art and science of creating effective prompts that maximize the value of generative AI models and tailor their responses to specific needs.
+
+In the context of Generative AI, prompting is not just about writing better instructions; it is about designing interactions that help the model understand context, follow intent, and deliver accurate or useful results. Whether you are asking Gemini to summarize a legal document, generate product descriptions, analyze sentiment, or classify unstructured data, the output quality depends heavily on how you frame your input.
+
+As tasks become more complex, simple instructions may not be enough. That is where the **reasoning loop** comes in. The reasoning loop introduces an iterative process, where the model **observes, interprets, reasons, and acts**, bringing a more structured and goal-oriented behavior into the interaction.
+
+In this blog, we explore the reasoning loop and its most powerful prompt engineering techniques: **ReAct (Reason and Act), Chain-of-Thought (CoT), and Metaprompting**. These methods do not just get the AI to respond; they get it to **think, reason, and solve**.
+
+## What Is a Reasoning Loop?
+
+A **reasoning loop** is an iterative process employed by a generative AI agent to achieve a goal. During this loop, the model:
+
+1.   **Observes** its environment or the result of an action.
+2.   **Interprets** the situation.
+3.   **Reasons** internally based on context and goals.
+4.   **Acts** accordingly, possibly triggering a new observation.
+
+This cycle can repeat until a desired outcome is reached. This structure is especially useful in tasks that require planning, problem-solving, or interacting with tools, APIs, or even external environments. And the key to activating this reasoning loop? **Prompt engineering techniques**.
+
+## Technique 1: Zero-shot, One-shot, Few-shot Prompting
+
+Before we dive deep into loops and agentic flows, it is essential to learn the foundational strategies that shape how your prompt sets expectations for the model. These include **zero-shot, one-shot, few-shot prompting, and role prompting** techniques that shape the initial behavior of the model and are often used as the entry point for more complex reasoning loops.
+
+### Zero-shot, One-shot, and Few-shot Prompting
+
+| Technique | Description |
+| --- | --- |
+| Zero-shot | No examples are provided. The model relies entirely on its general knowledge. |
+| One-shot | One example is provided to show the desired output format or logic. |
+| Few-shot | Multiple examples, usually 2–5, are included to set a pattern. |
+
+These strategies help the model understand not just **what** to do, but **how** to do it, especially when task instructions are ambiguous or domain-specific.
+
+### Use Case: Sentiment Analysis in Customer Support
+
+Let’s say you want your AI to classify customer reviews as Positive, Negative, or Neutral.
+
+💡 **Example: Zero-shot**
+
+Classify the sentiment of this review: “This app crashes every time I try to upload a photo.”
+
+💡 **Example: One-shot**
+
+**Example:** “The app is so easy to use!” – **Sentiment:** Positive
+
+Now classify the sentiment of this review: “This app crashes every time I try to upload a photo.”
+
+💡 **Example: Few-shot**
+
+**Example 1:** “The UI is intuitive.” → **Sentiment:** Positive
+
+**Example 2:** “Support didn’t help at all.” → **Sentiment:** Negative
+
+**Example 3:** “It works fine, but could be better.” → **Sentiment:** Neutral
+
+Now classify the sentiment of this review: “This app crashes every time I try to upload a photo.”
+
+💡 To check our previous blog about prompting techniques, click **[here](https://kartaca.com/en/vertex-ai-chat-unlocking-the-power-of-generative-ai-with-gemini/)**.
+
+### Role Prompting and Prompt Chaining
+
+In more advanced scenarios, you might also **assign a role** to the model and **chain multiple prompts together** across steps. **Role prompting** helps simulate behavior or tone. **Prompt chaining** lets you break a complex task into manageable steps across multiple prompts or stages.
+
+### Use Case: Resume Review Assistant
+
+Let’s say you are building an LLM tool to help job seekers improve their resumes.
+
+💡 **Example: Role Prompt**
+
+You are a professional recruiter with 10+ years of experience.
+
+Review this resume and suggest 3 improvements to better align with a product manager role.
+
+**Prompt Chain:**
+
+1.   **Step 1** – Summarize candidate’s strengths.
+2.   **Step 2** – Identify gaps compared to a typical PM role.
+3.   **Step 3** – Suggest edits with improved bullet points.
+
+This modularity gives you precision, flexibility, and better control over the model’s behavior, especially in multi-turn workflows.
+
+## Technique 2: ReAct (Reason + Act)
+
+**ReAct** is a prompt engineering technique that allows the model to alternate between **reasoning** and **acting**. Instead of immediately outputting a final answer, the model is guided through internal reflection followed by a specific action.
+
+### How It Works
+
+*   The prompt instructs the model to produce a thought (reasoning) and then an action.
+*   It can include an observation based on the result of the action.
+*   This cycle can repeat, enabling the model to build knowledge dynamically.
+
+### Why It Matters
+
+*   It is ideal for dynamic, real-world tasks where the model must interact with tools, APIs, or user inputs.
+*   Enables LLM agents to solve tasks step-by-step and execute commands.
+
+### Use Case 1: AI Customer Support Agent
+
+Let’s say you are building an AI support agent that helps users troubleshoot network issues.
+
+**User:** Why is my Wi-Fi slow?
+
+**Thought:** I should check if there’s a known outage in their area.
+
+**Action:** [Query Outage Database]
+
+**Observation:** No outage found.
+
+**Thought:** Next, I should check how many devices are connected.
+
+**Action:** [Query Router Device Count]
+
+**Observation:** 12 devices.
+
+**Final Answer:** Your Wi-Fi may be slow due to high device usage. Try disconnecting unused devices.
+
+### Use Case 2: Weather-Aware Personal Assistant
+
+Let’s say you are building an assistant that helps users plan their day based on real-time weather conditions.
+
+**Question:** What’s the current weather in Paris and what should I wear?
+
+**Thought:** To answer, I need to look up the current weather.
+
+**Action:** [Call Weather API] **Observation:** It’s 12°C and raining.
+
+**Thought:** I should recommend an outfit.
+
+**Final Answer:** Wear a waterproof jacket, jeans, and boots.
+
+This flow mimics how a human might solve the problem, by thinking out loud, searching for info, and then responding.
+
+## Technique 3: Chain-of-Thought (CoT)
+
+**Chain-of-Thought (CoT)** encourages the model to explicitly **show its work**. Instead of jumping directly to the answer, the prompt guides the LLM through a sequence of intermediate reasoning steps.
+
+### How It Works
+
+*   The prompt contains **examples** that demonstrate step-by-step thinking.
+*   The model learns to break down complex problems into smaller chunks.
+
+### Why It Matters
+
+*   Especially effective in logical reasoning, math, and problem-solving.
+*   Reduces hallucination by grounding each step in logic.
+
+### Use Case 1: Educational Tutor AI
+
+Let’s say you are designing a virtual tutor to help students solve math problems.
+
+**Question:** Jane has 3 packs of pencils. Each pack has 4 pencils. She gives 2 pencils to a friend. How many does she have left?
+
+**Answer:** First, calculate how many pencils Jane starts with. 3 packs × 4 pencils = 12 pencils. Then subtract the 2 she gave away. 12 – 2 = 10.
+
+**Final Answer:** 10 pencils.
+
+### Use Case 2: Medical Symptom Checker
+
+Let’s say you are building an AI assistant to help users understand possible causes of their symptoms before visiting a doctor.
+
+**Question:** I have a sore throat, runny nose, and a slight fever. What could be the cause?
+
+**Answer:**
+
+First, consider the combination of symptoms: sore throat, runny nose, and fever.
+
+These are common symptoms of viral infections.
+
+Next, check for additional signs like body aches or fatigue.
+
+Since the user didn’t mention those, it’s likely a mild viral illness like the common cold or a mild flu.
+
+**Final Answer:** You may have a mild viral infection, such as the common cold. Please monitor symptoms and consult a healthcare provider if they worsen.
+
+It is simple, but this structure massively improves model performance on more complex tasks.
+
+## Technique 4: Metaprompting
+
+**Metaprompting** involves prompting the AI to generate, modify, or interpret other prompts. It operates at a **meta-level**, where the model helps you create better inputs, effectively becoming your **AI prompt engineer**.
+
+### How It Works
+
+*   You ask the model to design a prompt for a specific use case.
+*   It generates tailored instructions that can then be passed to itself or another model.
+
+### Why It Matters
+
+*   It scales personalization, adaptability, and creativity.
+*   Useful for agents that need to optimize prompts on the fly.
+
+### Use Case 1: Internal LLM Assistant for Marketing Teams
+
+Let’s say you are building a marketing assistant where each team (social media, email, content) needs personalized LLM prompts.
+
+**Prompt:** Create a prompt to help a content marketer summarize competitor blog posts.
+
+**Response:** “Summarize this blog post in 3 key points, highlighting the main argument, target audience.”
+
+### Use Case 2:Prompt Generator for Marketing Teams
+
+Let’s say you are building an internal tool for a marketing team that regularly analyzes customer feedback.
+
+**Prompt:** Create a prompt that helps a marketing analyst summarize a product review.
+
+**Response:** “Summarize this product review by extracting pros, cons, and sentiment in 2-3 sentences.”
+
+This is prompting on a meta level, and it is especially useful in agentic workflows or AI-assisted development.
+
+## Why It All Matters: Reasoning Is the Next Level of AI
+
+Prompting alone is no longer sufficient for advanced use cases. Whether you are building AI copilots, search agents, or creative assistants, you need the model to **reason**.
+
+That is why the reasoning loop, powered by techniques like **ReAct, CoT, and Metaprompting**, is not just a technique. It is a new mindset for AI development.
+
+And the best part? You do not need to build your own model from scratch. You can apply these techniques today with Google’s Gemini, PaLM, or even open-source models like Gemma, all through clever prompting.
+
+⭐⭐⭐
+
+As foundation models become more powerful, prompt engineering is evolving from a set of tricks to a full design discipline. The reasoning loop framework offers a structured approach to building intelligent, iterative, and capable AI systems.
+
+Whether you are solving math problems, generating personalized content, or building agents that interact with the web, understanding and applying these prompt engineering techniques is key.
+
+[**Contact us today**](https://kartaca.com/en/contact-us/sales/), let’s move beyond simple prompting and start designing reasoning flows.
+
+**Author:** Umniyah Abbood
+
+**Date Published:** Aug 15, 2025
+
+![Image 18](https://i0.wp.com/kartaca.com/wp-content/uploads/2024/12/author-umniyahabood.png?w=1180&ssl=1)
+
+### Share this:
+
+*   [Share on LinkedIn (Opens in new window)LinkedIn](https://kartaca.com/en/reasoning-loop-prompt-engineering-techniques-for-smarter-ai-interactions/?share=linkedin)
+*   [Share on Facebook (Opens in new window)Facebook](https://kartaca.com/en/reasoning-loop-prompt-engineering-techniques-for-smarter-ai-interactions/?share=facebook)
+*   [Share on X (Opens in new window)X](https://kartaca.com/en/reasoning-loop-prompt-engineering-techniques-for-smarter-ai-interactions/?share=twitter)
+*   [Share on WhatsApp (Opens in new window)WhatsApp](https://kartaca.com/en/reasoning-loop-prompt-engineering-techniques-for-smarter-ai-interactions/?share=jetpack-whatsapp)
+
+### Similar Posts
+
+[![Image 19](https://i0.wp.com/kartaca.com/wp-content/uploads/2026/04/Blog-Thumbnail-Multimodal-SEO-1.png?fit=800%2C800&ssl=1) Multimodal SEO: Optimizing for 'Search Live' and Camera-Based Queries Apr 14, 2026 | AI and ML](https://kartaca.com/en/multimodal-seo-optimizing-for-search-live-and-camera-based-queries/)[![Image 20](https://i0.wp.com/kartaca.com/wp-content/uploads/2026/02/Blog-Thumbnail-Zero-Click-Search-Reality-1.png?fit=800%2C800&ssl=1) The New ROI: Measuring Success in a Zero-Click Search Reality Apr 13, 2026 | AI and ML](https://kartaca.com/en/the-new-roi-measuring-success-in-a-zero-click-search-reality/)[![Image 21](https://i0.wp.com/kartaca.com/wp-content/uploads/2026/04/Blog-Thumbnail-Gemini-Nano-and-Gemma-1.png?fit=800%2C800&ssl=1) Gemini Nano and Gemma: Google's Powerful AI That Runs on Your Device Apr 10, 2026 | AI and ML](https://kartaca.com/en/gemini-nano-and-gemma-googles-powerful-ai-that-runs-on-your-device/)[![Image 22](https://i0.wp.com/kartaca.com/wp-content/uploads/2026/03/Blog-Thumbnail-Searching-Is-No-Longer-Enough-1.png?fit=800%2C800&ssl=1) Searching Is No Longer Enough. Understanding Is: Google AI Mode and AI Overviews Apr 7, 2026 | AI and ML](https://kartaca.com/en/searching-is-no-longer-enough-understanding-is/)[![Image 23](https://i0.wp.com/kartaca.com/wp-content/uploads/2026/04/Blog-Thumbnail-Transforming-Energy-Grids-3.png?fit=800%2C800&ssl=1) Transforming Energy Grids: Real-Time Monitoring and Predictive Maintenance with AI Apr 6, 2026 | AI and ML](https://kartaca.com/en/transforming-energy-grids-real-time-monitoring-and-predictive-maintenance-with-ai/)
+
+### Popular Posts
+
+[![Image 24](https://i0.wp.com/kartaca.com/wp-content/uploads/2020/05/undraw_ideas_s70l-1.png?fit=628%2C628&ssl=1) Inspiring Quotes for Software Developers Jun 12, 2020 | Programming](https://kartaca.com/en/inspiring-quotes-for-software-developers/)[![Image 25](https://i0.wp.com/kartaca.com/wp-content/uploads/2025/04/Blog-Thumbnail-Google-Colab-1.png?fit=800%2C800&ssl=1) Google Colab: A Deep Dive into Its Features and Applications Apr 3, 2025 | AI and ML](https://kartaca.com/en/google-colab-a-deep-dive-into-its-features-and-applications/)[![Image 26](https://i0.wp.com/kartaca.com/wp-content/uploads/2025/03/Blog-Thumbnail-TPU-1.png?fit=800%2C800&ssl=1) How Google Cloud TPUs Solved the AI Bottleneck and Transformed IT Mar 10, 2025 | AI and ML](https://kartaca.com/en/how-google-cloud-tpus-solved-the-ai-bottleneck-and-transformed-it/)[![Image 27](https://i0.wp.com/kartaca.com/wp-content/uploads/2024/12/Appsheet.png?fit=1080%2C1080&ssl=1) AppSheet: The Overlooked Hero of No-Code App Creation—Supercharged with Gemini AI Aug 5, 2025 | AI and ML](https://kartaca.com/en/appsheet-the-overlooked-hero-of-no-code-app-creation-supercharged-with-gemini-ai/)[![Image 28](https://i0.wp.com/kartaca.com/wp-content/uploads/2025/10/Blog-Thumbnail-Stitch-1.png?fit=800%2C800&ssl=1) Stitch: The AI Tool Turning Ideas into UI in Minutes Nov 6, 2025 | AI and ML](https://kartaca.com/en/stitch-the-ai-tool-turning-ideas-into-ui-in-minutes/)
+
+[Show More Popular Posts >>](http://kartaca.com/en/reasoning-loop-prompt-engineering-techniques-for-smarter-ai-interactions/)[Hide Popular Posts >>](http://kartaca.com/en/reasoning-loop-prompt-engineering-techniques-for-smarter-ai-interactions/)
+
+### Topics
+
+[All](https://kartaca.com/en/blog-en/)[Agile Methodology](https://kartaca.com/en/category/agile-methodology/)[AI and ML (159)](https://kartaca.com/en/category/ai-and-ml/)[Android](https://kartaca.com/en/category/android-en/)[Anthos](https://kartaca.com/en/category/anthos/)[Application Modernization](https://kartaca.com/en/category/application-modernization/)[B2B Marketing (5)](https://kartaca.com/en/category/b2b-marketing/)[Bamboo](https://kartaca.com/en/category/bamboo/)[C++](https://kartaca.com/en/category/c-en/)[Chef](https://kartaca.com/en/category/chef/)[ClickHouse](https://kartaca.com/en/category/clickhouse/)[Cloud (161)](https://kartaca.com/en/category/cloud-en/)[Cloud Migration (18)](https://kartaca.com/en/category/cloud-migration-en/)[Cloud Native Development (5)](https://kartaca.com/en/category/cloud-native-development/)[Construction](https://kartaca.com/en/category/construction/)[Consumer Goods (2)](https://kartaca.com/en/category/consumer-goods/)[Data Analytics (39)](https://kartaca.com/en/category/data-analytics/)[Data Science (2)](https://kartaca.com/en/category/data-science/)[Data Storage](https://kartaca.com/en/category/data-storage/)[Data Visualization (7)](https://kartaca.com/en/category/data-visualization/)[Database (4)](https://kartaca.com/en/category/database-en/)[Developer Experience (8)](https://kartaca.com/en/category/developer-experience/)[DevOps (13)](https://kartaca.com/en/category/devops-en/)[Digital Marketing (14)](https://kartaca.com/en/category/digital-marketing/)[Digital Native Businesses (2)](https://kartaca.com/en/category/digital-native-businesses/)[Disaster Recovery (2)](https://kartaca.com/en/category/disaster-recovery/)[Django (2)](https://kartaca.com/en/category/django-en/)[E-Commerce (8)](https://kartaca.com/en/category/e-commerce-en/)[Education (8)](https://kartaca.com/en/category/education/)[Energy Sector (2)](https://kartaca.com/en/category/energy/)[Enterprise (4)](https://kartaca.com/en/category/enterprise/)[Financial Services (4)](https://kartaca.com/en/category/financial-services/)[FinOps (3)](https://kartaca.com/en/category/finops/)[Firebase (10)](https://kartaca.com/en/category/firebase-en/)[Flutter](https://kartaca.com/en/category/flutter/)[Gaming (16)](https://kartaca.com/en/category/gaming/)[Git](https://kartaca.com/en/category/git/)[Golang (2)](https://kartaca.com/en/category/golang-en/)[Google Cloud (115)](https://kartaca.com/en/category/google-cloud/)[Google Labs (14)](https://kartaca.com/en/category/google-labs-en/)[Google Maps (2)](https://kartaca.com/en/category/google-maps-en/)[Google Workspace (30)](https://kartaca.com/en/category/google-workspace/)[Healthcare & Life Sciences (3)](https://kartaca.com/en/category/healthcare-lifesciences/)[Helm](https://kartaca.com/en/category/helm-en/)[History of Development (3)](https://kartaca.com/en/category/history-of-development/)[HR Practices (10)](https://kartaca.com/en/category/hr-practices/)[Hybrid and Multi Cloud (8)](https://kartaca.com/en/category/hybrid-cloud/)[Industry Cloud (43)](https://kartaca.com/en/category/industry-cloud-en/)[Insurance](https://kartaca.com/en/category/insurance/)[IT](https://kartaca.com/en/category/it/)[JavaScript](https://kartaca.com/en/category/javascript/)[Kids & Tech (2)](https://kartaca.com/en/category/kids-tech/)[Kubernetes (5)](https://kartaca.com/en/category/kubernetes/)[Leisure and Hospitality (6)](https://kartaca.com/en/category/leisure-and-hospitality/)[Linux (6)](https://kartaca.com/en/category/linux-en/)[Looker (7)](https://kartaca.com/en/category/looker-en/)[Loyalty Marketing (5)](https://kartaca.com/en/category/loyalty-marketing/)[Manufacturing (5)](https://kartaca.com/en/category/manufacturing/)[MariaDB](https://kartaca.com/en/category/mariadb/)[Mobile App Development (2)](https://kartaca.com/en/category/mobile-app-development-en/)[MySQL](https://kartaca.com/en/category/mysql/)[Open Source (28)](https://kartaca.com/en/category/open-source-en/)[OpenStack (4)](https://kartaca.com/en/category/openstack/)[Payment Systems (2)](https://kartaca.com/en/category/payment-systems/)[PostgreSQL](https://kartaca.com/en/category/postgresql/)[Programming (8)](https://kartaca.com/en/category/programming/)[Project Methodologies](https://kartaca.com/en/category/project-methodologies/)[Public Sector (2)](https://kartaca.com/en/category/public-sector/)[Python (7)](https://kartaca.com/en/category/python/)[Real Estate](https://kartaca.com/en/category/real-estate/)[Recruitment (7)](https://kartaca.com/en/category/recruitment/)[Regulatory Compliance](https://kartaca.com/en/category/regulatory-compliance/)[Resilience](https://kartaca.com/en/category/resilience/)[Retail (14)](https://kartaca.com/en/category/retail/)[Rise Through The Ranks](https://kartaca.com/en/category/rise-through-the-ranks/)[Security (13)](https://kartaca.com/en/category/security/)[Selenium (2)](https://kartaca.com/en/category/selenium/)[SMBs (5)](https://kartaca.com/en/category/smbs/)[Supply Chain and Logistics (4)](https://kartaca.com/en/category/supply-chain-and-logistics/)[Sustainability (6)](https://kartaca.com/en/category/sustainability/)[System Architecture (7)](https://kartaca.com/en/category/system-architecture/)[Tech Stack (26)](https://kartaca.com/en/category/tech-stack-en/)[Technology, Media, Telecom (3)](https://kartaca.com/en/category/tmt-en/)[Terraform](https://kartaca.com/en/category/terraform/)[Testing (4)](https://kartaca.com/en/category/testing-en/)[Transportation (2)](https://kartaca.com/en/category/transportation/)[UI & UX](https://kartaca.com/en/category/ui-ux/)[Version Control](https://kartaca.com/en/category/version-control/)[Women in STEM (3)](https://kartaca.com/en/category/women-in-stem-en/)
+
+[Show More Topics >>](http://kartaca.com/en/reasoning-loop-prompt-engineering-techniques-for-smarter-ai-interactions/)[Hide Topics >>](http://kartaca.com/en/reasoning-loop-prompt-engineering-techniques-for-smarter-ai-interactions/)
+
+# Our Customers
+
+![Image 29](https://kartaca.com/wp-content/uploads/2026/02/133.png)
+
+![Image 30](https://kartaca.com/wp-content/uploads/2025/12/123.png)
+
+![Image 31](https://kartaca.com/wp-content/uploads/2025/01/1-1.png)
+
+![Image 32](https://kartaca.com/wp-content/uploads/2025/01/2-1.png)
+
+![Image 33](https://kartaca.com/wp-content/uploads/2025/01/3-1.png)
+
+![Image 34](https://kartaca.com/wp-content/uploads/2025/01/4-1.png)
+
+![Image 35](https://kartaca.com/wp-content/uploads/2025/01/5-1.png)
+
+![Image 36](https://kartaca.com/wp-content/uploads/2025/01/6-1.png)
+
+![Image 37](https://kartaca.com/wp-content/uploads/2026/03/137.png)
+
+![Image 38](https://kartaca.com/wp-content/uploads/2026/04/139-1.png)
+
+![Image 39](https://kartaca.com/wp-content/uploads/2025/01/7-1.png)
+
+![Image 40](https://kartaca.com/wp-content/uploads/2025/01/8-1.png)
+
+![Image 41](https://kartaca.com/wp-content/uploads/2025/02/95.png)
+
+![Image 42](https://kartaca.com/wp-content/uploads/2025/12/119-1.png)
+
+![Image 43](https://kartaca.com/wp-content/uploads/2025/01/9-1.png)
+
+![Image 44](https://kartaca.com/wp-content/uploads/2025/05/109-1.png)
+
+![Image 45](https://kartaca.com/wp-content/uploads/2026/04/141.png)
+
+![Image 46](https://kartaca.com/wp-content/uploads/2025/01/10-1.png)
+
+![Image 47](https://kartaca.com/wp-content/uploads/2026/01/128.png)
+
+![Image 48](https://kartaca.com/wp-content/uploads/2025/01/11-1.png)
+
+![Image 49](https://kartaca.com/wp-content/uploads/2025/01/12-1.png)
+
+![Image 50](https://kartaca.com/wp-content/uploads/2025/12/121-2.png)
+
+![Image 51](https://kartaca.com/wp-content/uploads/2025/04/107.png)
+
+![Image 52](https://kartaca.com/wp-content/uploads/2025/01/13-1.png)
+
+![Image 53](https://kartaca.com/wp-content/uploads/2025/01/14-1.png)
+
+![Image 54](https://kartaca.com/wp-content/uploads/2025/01/89-1.png)
+
+![Image 55](https://kartaca.com/wp-content/uploads/2026/03/135.png)
+
+![Image 56](https://kartaca.com/wp-content/uploads/2025/01/15-1.png)
+
+![Image 57](https://kartaca.com/wp-content/uploads/2025/01/16-1.png)
+
+![Image 58](https://kartaca.com/wp-content/uploads/2025/01/17-1.png)
+
+![Image 59](https://kartaca.com/wp-content/uploads/2025/01/18-1.png)
+
+![Image 60](https://kartaca.com/wp-content/uploads/2025/01/19-1.png)
+
+![Image 61](https://kartaca.com/wp-content/uploads/2025/01/20-1.png)
+
+![Image 62](https://kartaca.com/wp-content/uploads/2025/01/21-1.png)
+
+![Image 63](https://kartaca.com/wp-content/uploads/2025/01/22-1.png)
+
+![Image 64](https://kartaca.com/wp-content/uploads/2026/01/130.png)
+
+![Image 65](https://kartaca.com/wp-content/uploads/2026/01/131.png)
+
+![Image 66](https://kartaca.com/wp-content/uploads/2025/01/23-1.png)
+
+![Image 67](https://kartaca.com/wp-content/uploads/2026/01/127.png)
+
+![Image 68](https://kartaca.com/wp-content/uploads/2025/01/24-1.png)
+
+![Image 69](https://kartaca.com/wp-content/uploads/2025/01/25-1.png)
+
+![Image 70](https://kartaca.com/wp-content/uploads/2025/01/27-1.png)
+
+![Image 71](https://kartaca.com/wp-content/uploads/2025/12/118.png)
+
+![Image 72](https://kartaca.com/wp-content/uploads/2025/01/28-1.png)
+
+![Image 73](https://kartaca.com/wp-content/uploads/2025/01/29-1.png)
+
+![Image 74](https://kartaca.com/wp-content/uploads/2025/01/30-1.png)
+
+![Image 75](https://kartaca.com/wp-content/uploads/2025/01/31-1.png)
+
+![Image 76](https://kartaca.com/wp-content/uploads/2025/04/106-1.png)
+
+![Image 77](https://kartaca.com/wp-content/uploads/2025/08/112.png)
+
+![Image 78](https://kartaca.com/wp-content/uploads/2025/01/32-1.png)
+
+![Image 79](https://kartaca.com/wp-content/uploads/2025/08/111.png)
+
+![Image 80](https://kartaca.com/wp-content/uploads/2025/01/33-1.png)
+
+![Image 81](https://kartaca.com/wp-content/uploads/2025/01/34-1.png)
+
+![Image 82](https://kartaca.com/wp-content/uploads/2025/01/35-1.png)
+
+![Image 83](https://kartaca.com/wp-content/uploads/2025/01/36-1.png)
+
+![Image 84](https://kartaca.com/wp-content/uploads/2025/01/37-1.png)
+
+![Image 85](https://kartaca.com/wp-content/uploads/2025/02/96.png)
+
+![Image 86](https://kartaca.com/wp-content/uploads/2025/01/38-1.png)
+
+![Image 87](https://kartaca.com/wp-content/uploads/2025/01/39-1.png)
+
+![Image 88](https://kartaca.com/wp-content/uploads/2025/01/40-1.png)
+
+![Image 89](https://kartaca.com/wp-content/uploads/2025/01/41-1.png)
+
+![Image 90](https://kartaca.com/wp-content/uploads/2025/01/42-1.png)
+
+![Image 91](https://kartaca.com/wp-content/uploads/2025/01/43-1.png)
+
+![Image 92](https://kartaca.com/wp-content/uploads/2025/01/44-1.png)
+
+![Image 93](https://kartaca.com/wp-content/uploads/2025/01/45-2.png)
+
+![Image 94](https://kartaca.com/wp-content/uploads/2025/01/46-2.png)
+
+![Image 95](https://kartaca.com/wp-content/uploads/2025/01/47-1.png)
+
+![Image 96](https://kartaca.com/wp-content/uploads/2026/01/126.png)
+
+![Image 97](https://kartaca.com/wp-content/uploads/2025/03/100-1.png)
+
+![Image 98](https://kartaca.com/wp-content/uploads/2025/01/48-1.png)
+
+![Image 99](https://kartaca.com/wp-content/uploads/2025/01/49-1.png)
+
+![Image 100](https://kartaca.com/wp-content/uploads/2025/01/50-1.png)
+
+![Image 101](https://kartaca.com/wp-content/uploads/2025/04/108.png)
+
+![Image 102](https://kartaca.com/wp-content/uploads/2025/01/51-1.png)
+
+![Image 103](https://kartaca.com/wp-content/uploads/2025/01/52-1.png)
+
+![Image 104](https://kartaca.com/wp-content/uploads/2025/01/53-1.png)
+
+![Image 105](https://kartaca.com/wp-content/uploads/2025/01/54-1.png)
+
+![Image 106](https://kartaca.com/wp-content/uploads/2025/01/55-1.png)
+
+![Image 107](https://kartaca.com/wp-content/uploads/2025/01/56-1.png)
+
+![Image 108](https://kartaca.com/wp-content/uploads/2025/01/57-1.png)
+
+![Image 109](https://kartaca.com/wp-content/uploads/2025/01/58-1.png)
+
+![Image 110](https://kartaca.com/wp-content/uploads/2025/01/59-1.png)
+
+![Image 111](https://kartaca.com/wp-content/uploads/2025/01/60-1.png)
+
+![Image 112](https://kartaca.com/wp-content/uploads/2025/02/94-1.png)
+
+![Image 113](https://kartaca.com/wp-content/uploads/2025/01/90-1.png)
+
+![Image 114](https://kartaca.com/wp-content/uploads/2025/01/61-1.png)
+
+![Image 115](https://kartaca.com/wp-content/uploads/2025/01/62-1.png)
+
+![Image 116](https://kartaca.com/wp-content/uploads/2025/12/116.png)
+
+![Image 117](https://kartaca.com/wp-content/uploads/2025/01/63-1.png)
+
+![Image 118](https://kartaca.com/wp-content/uploads/2025/03/104.png)
+
+![Image 119](https://kartaca.com/wp-content/uploads/2025/03/102.png)
+
+![Image 120](https://kartaca.com/wp-content/uploads/2025/01/64-1.png)
+
+![Image 121](https://kartaca.com/wp-content/uploads/2025/01/65-1.png)
+
+![Image 122](https://kartaca.com/wp-content/uploads/2025/01/66-1.png)
+
+![Image 123](https://kartaca.com/wp-content/uploads/2025/01/67-1.png)
+
+![Image 124](https://kartaca.com/wp-content/uploads/2025/03/103.png)
+
+![Image 125](https://kartaca.com/wp-content/uploads/2025/10/115.png)
+
+![Image 126](https://kartaca.com/wp-content/uploads/2026/03/136.png)
+
+![Image 127](https://kartaca.com/wp-content/uploads/2025/02/97.png)
+
+![Image 128](https://kartaca.com/wp-content/uploads/2025/03/99.png)
+
+![Image 129](https://kartaca.com/wp-content/uploads/2025/01/68-1.png)
+
+![Image 130](https://kartaca.com/wp-content/uploads/2025/03/101.png)
+
+![Image 131](https://kartaca.com/wp-content/uploads/2025/01/70-1.png)
+
+![Image 132](https://kartaca.com/wp-content/uploads/2025/01/71-1.png)
+
+![Image 133](https://kartaca.com/wp-content/uploads/2026/04/140.png)
+
+![Image 134](https://kartaca.com/wp-content/uploads/2026/01/124-1.png)
+
+![Image 135](https://kartaca.com/wp-content/uploads/2025/01/72-1.png)
+
+![Image 136](https://kartaca.com/wp-content/uploads/2025/01/73-2.png)
+
+![Image 137](https://kartaca.com/wp-content/uploads/2025/03/105.png)
+
+![Image 138](https://kartaca.com/wp-content/uploads/2026/01/125.png)
+
+![Image 139](https://kartaca.com/wp-content/uploads/2025/12/117.png)
+
+![Image 140](https://kartaca.com/wp-content/uploads/2025/10/114.png)
+
+![Image 141](https://kartaca.com/wp-content/uploads/2025/01/74-1.png)
+
+![Image 142](https://kartaca.com/wp-content/uploads/2025/12/120.png)
+
+![Image 143](https://kartaca.com/wp-content/uploads/2025/01/75-1.png)
+
+![Image 144](https://kartaca.com/wp-content/uploads/2025/01/76-1.png)
+
+![Image 145](https://kartaca.com/wp-content/uploads/2025/05/110.png)
+
+![Image 146](https://kartaca.com/wp-content/uploads/2025/01/77-1.png)
+
+![Image 147](https://kartaca.com/wp-content/uploads/2025/01/91.png)
+
+![Image 148](https://kartaca.com/wp-content/uploads/2025/01/78-1.png)
+
+![Image 149](https://kartaca.com/wp-content/uploads/2025/02/92.png)
+
+![Image 150](https://kartaca.com/wp-content/uploads/2025/01/79-1.png)
+
+![Image 151](https://kartaca.com/wp-content/uploads/2026/03/138.png)
+
+![Image 152](https://kartaca.com/wp-content/uploads/2025/01/80-1.png)
+
+![Image 153](https://kartaca.com/wp-content/uploads/2025/09/113.png)
+
+![Image 154](https://kartaca.com/wp-content/uploads/2026/02/132-1.png)
+
+![Image 155](https://kartaca.com/wp-content/uploads/2025/01/81-1.png)
+
+![Image 156](https://kartaca.com/wp-content/uploads/2025/01/82-1.png)
+
+![Image 157](https://kartaca.com/wp-content/uploads/2025/01/83-1.png)
+
+![Image 158](https://kartaca.com/wp-content/uploads/2026/03/134-1.png)
+
+![Image 159](https://kartaca.com/wp-content/uploads/2025/01/84-1.png)
+
+![Image 160](https://kartaca.com/wp-content/uploads/2025/01/85-1.png)
+
+![Image 161](https://kartaca.com/wp-content/uploads/2025/12/122-1.png)
+
+![Image 162](https://kartaca.com/wp-content/uploads/2026/01/129.png)
+
+![Image 163](https://kartaca.com/wp-content/uploads/2025/01/88.png)
+
+![Image 164](https://kartaca.com/wp-content/uploads/2025/02/93-1.png)
+
+![Image 165](https://kartaca.com/wp-content/uploads/2025/01/86-1.png)
+
+![Image 166](https://kartaca.com/wp-content/uploads/2025/02/98.png)
+
+![Image 167](https://kartaca.com/wp-content/uploads/2025/01/87-1.png)
+
+[![Image 168](https://kartaca.com/wp-content/themes/kartaca-1.0.37-ug2/assets/images/kartaca_logo_white.png)](https://kartaca.com/en/)[![Image 169](https://kartaca.com/wp-content/themes/kartaca-1.0.37-ug2/assets/images/kartaca_logo_white.png)](https://kartaca.com/en/)
+
+[Career](https://kartaca.com/en/working-at-kartaca/current-job-openings/)[Brand Identity](https://kartaca.com/en/brand-identity/)[Blog](https://kartaca.com/en/blog-en/)[Whitepapers](https://kartaca.com/en/whitepapers/)[Contact](https://kartaca.com/en/contact-us/)
+
+Sign up to our newsletter to follow news and announcements from Kartaca!
+
+Email 
+
+Send
+*In the future, if you no longer wish to receive emails from us, you can always unsubscribe with one click.
+
+[Sign up to Kartaca Newsletter](http://kartaca.com/en/reasoning-loop-prompt-engineering-techniques-for-smarter-ai-interactions/#ex1)
+
+2009 - 2026 © All rights reserved. Kartaca Bilişim A.Ş.
+
+[![Image 170](https://kartaca.com/wp-content/uploads/2019/12/linkedin.png)](http://www.linkedin.com/companies/kartaca)[![Image 171](https://kartaca.com/wp-content/uploads/2023/09/icons8-twitter-50.png)](https://x.com/KartacaOfficial)[![Image 172](https://kartaca.com/wp-content/uploads/2019/12/instagram.png)](https://www.instagram.com/kartaca.official/)[![Image 173](https://kartaca.com/wp-content/uploads/2019/12/medium.png)](https://medium.com/kartaca)[![Image 174](https://kartaca.com/wp-content/uploads/2019/12/vimeo-2.png)](https://www.vimeo.com/kartaca)[![Image 175](https://kartaca.com/wp-content/uploads/2020/01/stackshare2.png)](https://stackshare.io/kartaca/kartaca)
+
+## Discover more from Kartaca
+
+Subscribe now to keep reading and get access to the full archive.
+
+Type your email…
+
+Subscribe
+
+[Continue reading](http://kartaca.com/en/reasoning-loop-prompt-engineering-techniques-for-smarter-ai-interactions/#)

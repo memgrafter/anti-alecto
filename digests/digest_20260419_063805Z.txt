@@ -1,0 +1,40 @@
+
+  palantirtech status thread
+  x.com  2026-04-19
+  → Palantir’s account distills The Technological Republic into 22 punchy claims arguing that Silicon Valley should help rebuild Western hard power—especially through software, national service, military tech, and a more unapologetic American civic culture.
+
+  Agent Skills - Claude Code Docs
+  code.claude.com  2026-04-19
+  → Claude Code “skills” are reusable, file-based prompts plus optional assets/scripts that extend Claude’s behavior, with controls for discovery, invocation, permissions, subagents, arguments, and sharing.
+
+  Thinking Mode - Overview - Z.AI DEVELOPER DOCUMENT
+  docs.z.ai  2026-04-19
+  → Z.AI’s Thinking Mode docs explain how to control GLM reasoning behavior across models and sessions, including default thinking, interleaved tool reasoning, preserved reasoning across turns, and per-turn enable/disable controls.
+
+  From Vibe-Coding to Systems Engineering: How I Scaled My AI Dev Workflow | by Peter Oh | Dec, 2025 | Medium
+  medium.com  2026-04-19
+  → Peter Oh argues that once an AI-assisted project grows beyond a few scripts, “vibe-coding” breaks down and must be replaced by a more disciplined system with explicit roles, traceable history, and human-controlled workflows.
+
+  Terminal Trove - The $HOME of all things in the terminal.
+  terminaltrove.com  2026-04-19
+  → Terminal Trove is a curated directory for terminal-based tools and TUIs, with browsing by category, language, new additions, and a featured “tool of the week.”
+
+  TUI Terminal Tools - Terminal Trove
+  terminaltrove.com  2026-04-19
+  → Terminal Trove’s “TUI Terminal Tools” page is a large curated directory of terminal-based text user interface apps, covering everything from file managers and database clients to AI assistants, monitoring tools, and chat clients.
+
+  What is a Columnar Database and Why is it Strong for Writes? | by Tomoharu Tsutsumi | Medium
+  tomoharutsutsumi.medium.com  2026-04-19
+  → Tomoharu Tsutsumi’s Medium post argues that columnar databases can be write-efficient because they batch, compress, parallelize, and append data by column, but it’s a broad introductory explainer with simplistic technical claims and little engine-specific evidence.
+
+  Specification - Agent Skills
+  agentskills.io  2026-04-19
+  → Agent Skills’ specification defines how to package a skill as a directory with a required `SKILL.md` frontmatter file, optional `scripts/`, `references/`, and `assets/` folders, and rules for naming, metadata, progressive disclosure, and validation.
+
+  Overview - Agent Skills
+  agentskills.io  2026-04-19
+  → “Overview - Agent Skills” explains an open standard originally developed by Anthropic for packaging agents’ instructions, scripts, and resources into reusable skill folders that add task-specific context and capabilities on demand.
+
+  is the 20 rpm limit on openrouter per-model
+  perplexity.ai  2026-04-19
+  → This Perplexity thread page is mostly an access-gated shell with no actual answer content visible; it only shows the thread title about OpenRouter’s 20 RPM limit, the Perplexity UI, and a privacy/cookie/sign-in prompt.

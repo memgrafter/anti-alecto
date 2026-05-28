@@ -1,0 +1,257 @@
+The Header Everyone's Noticed
+Now that Claude Code's source is being widely circulated, people are spotting something odd. Every request to the Anthropic API includes a system block that isn't really a prompt:
+{
+"type": "text",
+"text": "x-anthropic-billing-header: cc_version=2.1.37.fbe; cc_entrypoint=cli; cch=a112b;"
+}
+It's injected as the first element of the system
+array — before the identity line, before the system prompt. It looks like metadata smuggled in through the prompt channel. Three fields:
+cc_version
+— the Claude Code version with a 3-character hex suffixcc_entrypoint
+— alwayscli
+cch
+— a 5-character hex value that changes with every request
+That cch
+value is a request integrity hash. Get it wrong, and the API rejects your request with "Fast mode is currently available in research preview in Claude Code. It is not yet available via API." Get it right, and features like fast mode unlock.
+We reverse-engineered the entire mechanism from the compiled Bun binary — the minified JavaScript, the native runtime, and the constants baked into the executable. Here's what we found.
+A note on disclosure: This research was done in February 2026 when fast mode launched as a research preview. We emailed Anthropic (usersafety@anthropic.com) to disclose our findings before publishing. We received no response. Claude Code's source has since been widely circulated, and the mechanism is now visible in the code. We're publishing because the information is effectively public.
+Starting From a Black Box
+Before the source leaked, Claude Code shipped as a Bun binary — JavaScript bundled into a single compiled executable. No node_modules
+to browse, no source maps. The signing logic was in there somewhere, minified and opaque.
+We used three approaches:
+- MITM interception — mitmproxy to capture live requests and see what the signed output looked like
+- Binary extraction — Bun embeds its JavaScript source; you can extract it, though you get a ~2MB minified blob with single-letter variable names
+- Runtime debugging — LLDB attached to the running process, setting watchpoints on memory to catch the hash being written
+Searching the extracted source for cch
+led to the billing header construction. But it dead-ended at a placeholder:
+function u7R(T) {
+let R = `${VERSION}.${T}`;
+let A = process.env.CLAUDE_CODE_ENTRYPOINT ?? "unknown";
+return `x-anthropic-billing-header: cc_version=${R}; cc_entrypoint=${A}; cch=00000;`;
+}
+cch=00000
+. Always. The JavaScript code never computes the real hash — it writes a placeholder and something else fills it in. We traced the entire JS call stack from header construction through the Stainless SDK's JSON.stringify
+through to fetch()
+. The placeholder was unchanged at every step.
+The Hash Lives in the Runtime
+The replacement happens in Bun's native fetch
+implementation — compiled Zig code, not JavaScript. Claude Code ships with a custom Bun build (1.3.9-canary.51+d5628db23
+), an unreleased private fork. The commit doesn't exist on the public oven-sh/bun repository.
+Remember: Anthropic acquired Oven, the company behind Bun. They have the ability to embed native-level request validation directly in the runtime.
+The custom nativeFetch
+does three checks before activating:
+- URL path contains
+/v1/messages
+anthropic-version
+header is present- Request body contains the
+cch=00000
+placeholder
+When all three are true, it computes a hash of the entire request body (with the placeholder still in place), then overwrites the 00000
+bytes in the string buffer with the 5-character hex result before sending.
+A JavaScript Spec Violation
+Here's the wild part: Bun's nativeFetch
+mutates the JS string in place. After fetch()
+returns, the original body variable has different bytes than what you passed in. JavaScript strings are supposed to be immutable — this is a spec violation.
+It gets worse. JSC (JavaScriptCore, the engine Bun uses) shares string backing stores across references. If you do const alias = body
+, both variables point to the same memory. After fetch()
+, both are silently mutated. The same applies to Map/Set keys, interned strings, and rope substrings. Any code that coincidentally has cch=00000
+in a runtime string and fetches to a /v1/messages
+URL — even on a different server — will get silently rewritten.
+Finding the Algorithm
+This is the part that's worth pausing on. The hash doesn't live in JavaScript. There's no function you can grep for, no call you can trace, no stack frame where cch=00000
+becomes cch=a112b
+. The entire computation happens inside compiled native code — Zig, compiled to ARM64, with no symbols. This isn't an accident. It's a deliberate design choice: by performing the hash in the runtime itself, there's no JavaScript-level traceback that leads you to the algorithm. You can instrument every JS function, log every call, trace every variable — and you'll never see the hash happen. The placeholder goes into fetch()
+as 00000
+and comes out the other side replaced. From JavaScript's perspective, it's magic.
+So we stopped looking at code and started looking at memory.
+Watching the bytes change
+We attached LLDB to the running Bun process and set a memory watchpoint on the exact bytes of the cch=00000
+region in the request body's string buffer. The idea was simple: we can't find the code that writes the hash, but we can watch the memory location where it must be written and catch the instruction in the act.
+We triggered a request. The watchpoint fired. The backtrace pointed to ___lldb_unnamed_symbol18111
+at virtual address 0x1015d05bc
+— a function with no name, no debug info, nothing. Just raw machine code.
+Disassembling it revealed the five prime constants of xxHash64 — 0x9E3779B185EBCA87
+, 0xC2B2AE3D27D4EB4F
+, and the rest — and the standard avalanche finalization sequence. It was textbook xxHash64, inlined directly into the binary with no external library calls.
+The seed was sitting at 0x103e900e0
+in the binary's data section — a 64-bit constant, one of four stored together. We extracted it and tested it against all 142 input/output oracle pairs we'd collected. Every single one matched.
+The oracle approach
+Before finding the algorithm, we used the Bun binary itself as a black box. We wrote a test harness that sent crafted request bodies through Bun's fetch
+to a local server, then read back the cch
+value the server received. This gave us 142 known input/output pairs.
+We tried every common hash against them: SHA-256, SHA-1, MD5, CRC32, wyhash (Bun's built-in Bun.hash
+), HMAC variants with the known salt. Nothing matched. That's what drove us to the memory watchpoint approach — when you can't find the function, watch the data it touches.
+The Algorithm
+The signing has two parts: a version suffix and a body hash.
+Part 1: The Version Suffix
+The cc_version
+field includes a 3-character hex suffix derived from the conversation content:
+cc_version=2.1.37.fbe
+^^^ this part
+This part lives in the JavaScript source (function O0A
+in the minified blob):
+- Take the first user message in the conversation
+- Extract characters at indices 4, 7, and 20 (padding with
+'0'
+if the message is shorter) - Concatenate:
+salt + picked_chars + version
+- SHA-256 hash the result
+- Take the first 3 hex characters of the digest
+chars = "".join(msg[i] if i < len(msg) else "0" for i in (4, 7, 20))
+suffix = sha256(f"{salt}{chars}{version}".encode()).hexdigest()[:3]
+The salt is a 12-character hex constant embedded in the JavaScript source.
+Part 2: The Body Hash (cch
+)
+This part lives in the native Bun runtime:
+- Build the complete request body with
+cch=00000
+as a placeholder - Serialize to JSON
+- Compute
+xxHash64(body_bytes, seed) & 0xFFFFF
+- Format as zero-padded 5-character lowercase hex
+- Replace
+cch=00000
+with the computed value
+body = json.dumps(request, separators=(",", ":"))
+cch = format(xxhash.xxh64(body.encode(), seed=SEED).intdigest() & 0xFFFFF, "05x")
+body = body.replace("cch=00000", f"cch={cch}")
+The seed is a 64-bit constant baked into the compiled binary.
+What the Hash Covers
+We ran systematic validation experiments using captured "golden" payloads:
+| Modification | Result |
+|---|---|
+| Verbatim replay (no changes) | ✅ 200 |
+| Edit system prompt (non-billing blocks) | ✅ 200 |
+| Swap session UUID in metadata | ❌ 400 |
+| Remove one tool from tools array | ❌ 400 |
+| Edit one tool description by one word | ❌ 400 |
+| Add one MCP tool | ❌ 400 |
+| Empty tools array | ❌ 400 |
+The hash covers the entire serialized body — messages, tools, metadata, model, thinking config, everything. The only thing you can safely modify post-hash is the system prompt's non-billing blocks, because those aren't included in the hash computation (they're injected into the system
+array before the billing header is built, and the hash placeholder is computed over the final serialized form).
+What We Ruled Out
+Before finding the hash, we tested every plausible access control mechanism:
+- ❌ TLS fingerprinting — Python with OpenSSL (HTTP/1.1) replays golden payloads successfully
+- ❌ Binary attestation — no embedded certificates, no
+Bun.embeddedFiles
+check on the server - ❌ Pre-flight registration — a single replayed request works with no prior handshake
+- ❌ Connection correlation — plain
+fetch()
+from a fresh script works - ❌ Replay detection — the same body can be sent multiple times
+- ❌ Special UUID format — standard
+crypto.randomUUID()
+, nothing custom
+The cch
+hash is the only server-side gate.
+The Gotcha: JSON Key Ordering
+Here's something that bit us during implementation. The hash is computed over the serialized JSON body, which means key ordering matters. The placeholder cch=00000
+appears in the billing header inside the system
+field. But if your JSON serializer outputs messages
+before system
+(alphabetical ordering is the default in many implementations), and the conversation contains tool results that reference code with the literal string cch=00000
+in it — like, say, this very blog post — then the string replacement hits the wrong occurrence.
+The fix: ensure system
+is serialized before messages
+in the JSON output. Also: zero-pad the hash to exactly 5 characters (format!("{:05x}", ...)
+) — a 4-character hash like 651f
+won't match the 5-character placeholder.
+The Full Request Structure
+A working fast mode request requires:
+Headers:
+authorization: Bearer {oauth_token}
+anthropic-beta: claude-code-20250219,oauth-2025-04-20,...,research-preview-2026-02-01
+anthropic-version: 2023-06-01
+user-agent: claude-cli/2.1.37 (external, cli)
+x-app: cli
+Body:
+{
+"system": [
+{"type": "text", "text": "x-anthropic-billing-header: cc_version=2.1.37.fbe; cc_entrypoint=cli; cch=a112b;"},
+{"type": "text", "text": "You are Claude Code, Anthropic's official CLI for Claude."},
+{"type": "text", "text": "Your actual system prompt...", "cache_control": {"type": "ephemeral"}}
+],
+"model": "claude-opus-4-6",
+"thinking": {"type": "adaptive"},
+"research_preview_2026_02": "active",
+"context_management": {"edits": [{"type": "clear_thinking_20251015", "keep": "all"}]},
+"metadata": {"user_id": "user_{id}_account_{uuid}_session_{uuid}"},
+"messages": [...]
+}
+The billing header block and identity block have no cache_control
+. Only the main system prompt does. The metadata.user_id
+combines a persistent user identity hash, an account UUID from OAuth, and a per-session UUID v4.
+What It's For
+The name gives it away: "billing header." This isn't DRM — it's an attribution and metering mechanism. The cch
+hash lets Anthropic's servers verify that a request was assembled by software that understands the current signing protocol. It gates features like fast mode to clients that implement the full handshake.
+The choice of xxHash64 (a non-cryptographic hash) reinforces this. It's fast, not secure. The security model is obscurity, not cryptography:
+- The algorithm was hidden inside a custom Bun runtime (compiled Zig, no symbols)
+- The seed and salt constants aren't documented
+- The scheme can change with each Claude Code version
+Once you know the algorithm and constants, reimplementation is about 30 lines of code. The constants change with releases, but extracting them is mechanical — the JavaScript is extractable from the Bun binary (minified but readable), and only the seed requires binary analysis.
+Anthropic could make this harder — code signing, binary attestation, encrypted blobs. They haven't. That tells you something about the intent: this is billing plumbing, not an access control boundary.
+Why This Matters
+With Claude Code's source now widely circulated, third-party tools that interact with the Anthropic API through OAuth are going to encounter this signing requirement. Understanding what cch
+is — and isn't — helps the ecosystem build compatible tooling without cargo-culting opaque header values.
+The mechanism is simple, the implementation is clean, and now it's documented.
+Proof of Concept
+Here's the complete working PoC — a standalone Python script that authenticates via OAuth, computes both the version suffix and the cch
+hash, and sends a fast mode request. No Bun binary required.
+#!/usr/bin/env python3
+"""PoC: Claude Code fast mode with native cch hash — no Bun binary required.
+Usage: uv run --with xxhash python3 poc_fast_mode.py
+"""
+import hashlib, json, os, subprocess, uuid, urllib.request, xxhash
+CCH_SEED = 0x6E52736AC806831E
+VERSION = "2.1.37"
+SALT = "59cf53e54c78"
+API_URL = "https://api.anthropic.com/v1/messages?beta=true"
+PROMPT = "Say 'hello' and nothing else."
+# OAuth token from macOS keychain (same store Claude Code uses)
+creds = json.loads(subprocess.check_output([
+"security", "find-generic-password",
+"-a", os.environ["USER"], "-s", "Claude Code-credentials", "-w"
+], text=True).strip())
+TOKEN = creds["claudeAiOauth"]["accessToken"]
+# cc_version suffix: sha256(salt + 3 chars from user message + version)[:3]
+chars = "".join(PROMPT[i] if i < len(PROMPT) else "0" for i in (4, 7, 20))
+suffix = hashlib.sha256(f"{SALT}{chars}{VERSION}".encode()).hexdigest()[:3]
+# Build body with cch=00000 placeholder
+body = json.dumps({
+"model": "claude-opus-4-6",
+"max_tokens": 32000,
+"stream": False,
+"thinking": {"type": "adaptive"},
+"research_preview_2026_02": "active",
+"metadata": {"user_id": f"user_poc_session_{uuid.uuid4()}"},
+"system": [{
+"type": "text",
+"text": f"x-anthropic-billing-header: cc_version={VERSION}.{suffix};"
+f" cc_entrypoint=cli; cch=00000;"
+}],
+"messages": [{"role": "user", "content": PROMPT}],
+}, separators=(",", ":"))
+# Compute cch: xxHash64(body_with_placeholder, seed) & 0xFFFFF
+cch = format(xxhash.xxh64(body.encode(), seed=CCH_SEED).intdigest() & 0xFFFFF, "05x")
+body = body.replace("cch=00000", f"cch={cch}")
+print(f"cch={cch} cc_version={VERSION}.{suffix}")
+# Send request
+req = urllib.request.Request(API_URL, data=body.encode(), method="POST", headers={
+"Content-Type": "application/json",
+"Authorization": f"Bearer {TOKEN}",
+"User-Agent": "claude-cli/2.1.37 (external, cli)",
+"anthropic-version": "2023-06-01",
+"anthropic-beta": "claude-code-20250219,oauth-2025-04-20,"
+"adaptive-thinking-2026-01-28,"
+"research-preview-2026-02-01",
+"x-app": "cli",
+})
+try:
+resp = urllib.request.urlopen(req)
+data = json.loads(resp.read())
+print(f"HTTP {resp.status} — model={data['model']}, tokens={data['usage']}")
+for block in data.get("content", []):
+if block["type"] == "text":
+print(f"\n{block['text']}")
+except urllib.error.HTTPError as e:
+print(f"HTTP {e.code}: {e.read().decode()[:500]}")
+30 lines of actual logic. The hardest part was finding the algorithm; reimplementing it is trivial.

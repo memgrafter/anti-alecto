@@ -1,0 +1,55 @@
+X thread capture
+
+# Tal Hoffman on X: "This is really impressive! With the proper harnesses, and some guidance, we were actually able to find that same FreeBSD zero-day using Sonnet 4.6. https://t.co/HdeBfPEaL3" / X
+
+Don’t miss what’s happening
+
+People on X are the first to know.
+
+Log in
+
+Sign up
+
+# [](http://x.com/)
+
+## Post
+
+See new posts
+
+# Conversation
+
+[](http://x.com/talhof8)
+
+Tal Hoffman 
+
+@talhof8
+
+This is really impressive! With the proper harnesses, and some guidance, we were actually able to find that same FreeBSD zero-day using Sonnet 4.6.
+
+Quote
+
+Anthropic
+
+@AnthropicAI
+
+·
+
+Apr 7
+
+Introducing Project Glasswing: an urgent initiative to help secure the world’s most critical software. It’s powered by our newest frontier model, Claude Mythos Preview, which can find software vulnerabilities better than all but the most skilled humans. https://anthropic.com/glasswing
+
+7:18 PM · Apr 7, 2026
+
+·
+
+231K Views
+
+30
+
+34
+
+814
+
+341
+
+Read 30 replies

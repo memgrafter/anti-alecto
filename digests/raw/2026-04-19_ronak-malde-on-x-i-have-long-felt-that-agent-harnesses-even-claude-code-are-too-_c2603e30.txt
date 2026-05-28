@@ -1,0 +1,45 @@
+X thread capture
+
+# Ronak Malde on X: "I have long felt that agent harnesses - even claude code - are too restrictive, because they are still designed by humans. New paper for Tinsghua and Shenzhen says, what if AI itself runs the harness, rather than defining it in code? Given a natural language SOP of how an agent https://t.co/roI1Dp4NPJ" / X
+
+Don’t miss what’s happening
+
+People on X are the first to know.
+
+Log in
+
+Sign up
+
+# [](http://x.com/)
+
+## Post
+
+See new posts
+
+# Conversation
+
+[](http://x.com/rronak_)
+
+Ronak Malde
+
+@rronak_
+
+I have long felt that agent harnesses - even claude code - are too restrictive, because they are still designed by humans. New paper for Tinsghua and Shenzhen says, what if AI itself runs the harness, rather than defining it in code? Given a natural language SOP of how an agent should orchestrate subagents, memory, compaction, etc., we can just have an LLM execute that logic! (And AI could design that SOP dynamically and depending on the task too) It's a bit mind-warping to think about, but genius once it clicks. Makes you wonder how else we should be designing AI systems as we can start consuming more and more tokens
+
+[](http://x.com/rronak_/status/2038401494177694074/photo/1)
+
+11:42 PM · Mar 29, 2026
+
+·
+
+160.6K Views
+
+72
+
+118
+
+986
+
+1.2K
+
+Read 72 replies

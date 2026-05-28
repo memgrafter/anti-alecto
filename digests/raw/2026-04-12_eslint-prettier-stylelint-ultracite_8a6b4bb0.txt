@@ -1,0 +1,25 @@
+Read the ESLint migration guide
+Migration instructions for moving an existing ESLint-based project onto Ultracite's presets.
+Ultracite preserves the mature ESLint, Prettier, and Stylelint workflow while packaging the defaults, plugin choices, and editor expectations that usually get copied from repo to repo by hand.
+This route is for teams that want stronger defaults and less maintenance while staying inside the most established linting ecosystem.
+ESLint keeps winning when your team needs plugin breadth, mature framework integrations, or rule coverage that has grown with the wider JavaScript and TypeScript ecosystem.
+For larger organizations or unusual stacks, that compatibility can matter more than shaving every last second off the lint run.
+Ultracite improves the ESLint path by packaging the repetitive defaults: plugin selection, formatter alignment, Stylelint wiring, and editor behavior.
+You still get the flexibility of the classic stack, but you spend less time rebuilding the same conventions in every repo.
+Some teams should absolutely stay on ESLint. If your workflow depends on specialized plugins, highly customized framework rules, or deep type-aware coverage, the migration risk of switching away is rarely worth it.
+Ultracite is useful here because it reduces maintenance overhead without forcing that trade.
+Ultracite keeps the three-tool model intact. You still get dedicated config for ESLint, Prettier, and Stylelint, but the presets absorb the repetitive setup work that usually sprawls across projects.
+import { defineConfig } from "eslint/config";import core from "ultracite/eslint/core";import react from "ultracite/eslint/react";import next from "ultracite/eslint/next";export default defineConfig([ { extends: [ core, react, next ], },]);
+ESLint remains the safest choice when your team depends on plugin coverage, type-aware rules, or framework-specific linting behavior that has grown up around the wider JavaScript ecosystem.
+Used by millions of developers worldwide. The largest ecosystem of plugins and configurations available.
+React, TypeScript, JSX A11y, Import, Promise, Node, Next.js, Unicorn, SonarJS, and more preconfigured.
+ESLint handles code quality, Prettier ensures consistent formatting, and Stylelint keeps your CSS clean.
+First-class support for React, Next.js, Vue, Svelte, and more with framework-specific rules.
+Deep TypeScript integration with type-aware rules that catch bugs static analysis alone can't find.
+Hundreds of rules covering accessibility, security, performance, and best practices out of the box.
+These are the usual questions from teams that want less config churn but do not want to abandon the mature ESLint ecosystem.
+Use the migration guide when you are updating an existing stack and the provider docs when you need a deeper reference on plugins, formatter defaults, and editor setup.
+Migration instructions for moving an existing ESLint-based project onto Ultracite's presets.
+Provider reference docs for the included plugins, formatter defaults, and VS Code extension setup.
+And used by thousands of open source projects.
+Here's what some of the most innovative and forward-thinking developers in the React ecosystem have to say about Ultracite.

@@ -1,0 +1,19 @@
+Reddit thread capture
+
+Thread URL: https://reddit.com/r/PygmalionAI/comments/13ckrrr/how_do_i_export_and_import_a_chat_from_sillytavern/
+Subreddit: r/PygmalionAI
+Title: how do i export and import a chat from sillytavern?
+Author: u/nagitokomaeda2
+Score: 3
+Comment count (reported): 2
+
+## Original post
+I just now installed the new version of sillytavern because they updated it but it didn't have my characters that i created, it's no problem exporting and importing them to the new version but i also want to export and import our chat. How do i do that?
+
+## Prominent viewpoints (top-level comments)
+1. (1) u/Professional_Ad_9436: If you're doing it from a phone just click the tool "manage chat files" and after that your resent messege (usually the bot's one) will appear, i cant send an image but there is a small option similar to a sheet with a arrow, indicating "out" and just click it and i'll export your chats, to import chats with bots.. i really dont know how to do that, i just learned how to export characters chats like 5 mn ago after seeing your post, sorry bud
+2. (1) u/throwaway_is_the_way: Sillytavern folder -> public folder -> chats folder. Copy and paste the old chats folder into the updated sillytavern folder. For future reference, the 'characters' folder in public also has all your old characters.
+
+## Thread discussion sample
+- (1) u/Professional_Ad_9436: If you're doing it from a phone just click the tool "manage chat files" and after that your resent messege (usually the bot's one) will appear, i cant send an image but there is a small option similar to a sheet with a arrow, indicating "out" and just click it and i'll export your chats, to import chats with bots.. i really dont know how to do that, i just learned how to export characters chats like 5 mn ago after seeing your post, sorry bud
+- (1) u/throwaway_is_the_way: Sillytavern folder -> public folder -> chats folder. Copy and paste the old chats folder into the updated sillytavern folder. For future reference, the 'characters' folder in public also has all your old characters.

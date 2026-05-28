@@ -1,0 +1,116 @@
+Title: Sleep hacking with Claude Pro
+
+URL Source: http://brianhorakh.medium.com/sleep-hacking-with-claude-f3badde6d81d
+
+Published Time: 2025-08-15T01:56:58Z
+
+Markdown Content:
+# Sleep hacking with Claude Pro. TLDR - The problem: Claude 5 Hour Usage… | by Brian Horakh | Medium
+
+[Sitemap](http://brianhorakh.medium.com/sitemap/sitemap.xml)
+
+[Open in app](https://play.google.com/store/apps/details?id=com.medium.reader&referrer=utm_source%3DmobileNavBar&source=post_page---top_nav_layout_nav-----------------------------------------)
+
+Sign up
+
+[Sign in](https://medium.com/m/signin?operation=login&redirect=https%3A%2F%2Fbrianhorakh.medium.com%2Fsleep-hacking-with-claude-f3badde6d81d&source=post_page---top_nav_layout_nav-----------------------global_nav------------------)
+
+[](https://medium.com/?source=post_page---top_nav_layout_nav-----------------------------------------)
+
+Get app
+
+[Write](https://medium.com/m/signin?operation=register&redirect=https%3A%2F%2Fmedium.com%2Fnew-story&source=---top_nav_layout_nav-----------------------new_post_topnav------------------)
+
+[Search](https://medium.com/search?source=post_page---top_nav_layout_nav-----------------------------------------)
+
+Sign up
+
+[Sign in](https://medium.com/m/signin?operation=login&redirect=https%3A%2F%2Fbrianhorakh.medium.com%2Fsleep-hacking-with-claude-f3badde6d81d&source=post_page---top_nav_layout_nav-----------------------global_nav------------------)
+
+![Image 1](https://miro.medium.com/v2/resize:fill:64:64/1*dmbNkD5D-u45r44go_cf0g.png)
+
+Member-only story
+
+# Sleep hacking with Claude Pro
+
+[![Image 2: Brian Horakh](https://miro.medium.com/v2/resize:fill:64:64/0*0Oy3cbm7SDdayWf-.)](http://brianhorakh.medium.com/?source=post_page---byline--f3badde6d81d---------------------------------------)
+
+[Brian Horakh](http://brianhorakh.medium.com/?source=post_page---byline--f3badde6d81d---------------------------------------)
+
+2 min read
+
+·
+
+Aug 15, 2025
+
+[](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fvote%2Fp%2Ff3badde6d81d&operation=register&redirect=https%3A%2F%2Fbrianhorakh.medium.com%2Fsleep-hacking-with-claude-f3badde6d81d&user=Brian+Horakh&userId=4bf540cebcc8&source=---header_actions--f3badde6d81d---------------------clap_footer------------------)
+
+--
+
+[](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2Ff3badde6d81d&operation=register&redirect=https%3A%2F%2Fbrianhorakh.medium.com%2Fsleep-hacking-with-claude-f3badde6d81d&source=---header_actions--f3badde6d81d---------------------bookmark_footer------------------)
+
+[Listen](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2Fplans%3Fdimension%3Dpost_audio_button%26postId%3Df3badde6d81d&operation=register&redirect=https%3A%2F%2Fbrianhorakh.medium.com%2Fsleep-hacking-with-claude-f3badde6d81d&source=---header_actions--f3badde6d81d---------------------post_audio_button------------------)
+
+Share
+
+Press enter or click to view image in full size
+
+![Image 3](http://brianhorakh.medium.com/sleep-hacking-with-claude-f3badde6d81d)
+
+TLDR -
+
+The problem: Claude 5 Hour Usage 
+
+The Solution: start earlier (using cron, to start my claude session earlier)
+
+Anthropic Claude as a subscriber currently has a bizarre 5 hour quota window. So if you work an 8 hour day that basically means you get a morning & afternoon session, usually that’s 1–3 hours of intense usage per 5 hour period.
+
+If you’re an insomniac codeaholic like me, you actually get 4x sessions, but I routinely find myself staying up till midnight or 1am to get in “just one more session!! 😅” .. and after a few months of this I’m a exhausted.
+
+I fear what would happen to my health if upgrade to PRO and get 5–20x usage. I absolutely enjoy the “breaks” from lockout — I use them to to perform next-step planning in projects (research, ideating & writing prompts) & my other life admin — ex: chores, walk the dog, exercise, shopping, meal prep, etc. my gameification is to see how many features/issues I can close in each session before lockout. I also use other LLM tools (🦘 RooCode, OpenCode, Codex, Gemini-CLI) during my Claude Code lock out time, this reduces my reliance on any one single vendor. I also use [claude-code-router](https://github.com/musistudio/claude-code-router) ; so I don’t *need* to stop, I just need to stop relying on Sonnet4 or I flip over to burning my $10 GH Copilot Sonnet4 quota or pay per use on openrouter…
+
+[](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fvote%2Fp%2Ff3badde6d81d&operation=register&redirect=https%3A%2F%2Fbrianhorakh.medium.com%2Fsleep-hacking-with-claude-f3badde6d81d&user=Brian+Horakh&userId=4bf540cebcc8&source=---footer_actions--f3badde6d81d---------------------clap_footer------------------)
+
+--
+
+[](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fvote%2Fp%2Ff3badde6d81d&operation=register&redirect=https%3A%2F%2Fbrianhorakh.medium.com%2Fsleep-hacking-with-claude-f3badde6d81d&user=Brian+Horakh&userId=4bf540cebcc8&source=---footer_actions--f3badde6d81d---------------------clap_footer------------------)
+
+--
+
+[](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2Ff3badde6d81d&operation=register&redirect=https%3A%2F%2Fbrianhorakh.medium.com%2Fsleep-hacking-with-claude-f3badde6d81d&source=---footer_actions--f3badde6d81d---------------------bookmark_footer------------------)
+
+[![Image 4: Brian Horakh](https://miro.medium.com/v2/resize:fill:96:96/0*0Oy3cbm7SDdayWf-.)](http://brianhorakh.medium.com/?source=post_page---post_author_info--f3badde6d81d---------------------------------------)
+
+[![Image 5: Brian Horakh](https://miro.medium.com/v2/resize:fill:128:128/0*0Oy3cbm7SDdayWf-.)](http://brianhorakh.medium.com/?source=post_page---post_author_info--f3badde6d81d---------------------------------------)
+
+## [Written by Brian Horakh](http://brianhorakh.medium.com/?source=post_page---post_author_info--f3badde6d81d---------------------------------------)
+
+[58 followers](http://brianhorakh.medium.com/followers?source=post_page---post_author_info--f3badde6d81d---------------------------------------)
+
+·[86 following](http://brianhorakh.medium.com/following?source=post_page---post_author_info--f3badde6d81d---------------------------------------)
+
+👨‍💻 CTO | 🐶 Creator of interactive tech for dogs | 🧠 AI, Rust & Embedded Systems | 🚀 Building open-source ecosystems for play, learning & behavior | 🇦🇺🇺
+
+## No responses yet
+
+[](https://policy.medium.com/medium-rules-30e5502c4eb4?source=post_page---post_responses--f3badde6d81d---------------------------------------)
+
+[Help](https://help.medium.com/hc/en-us?source=post_page-----f3badde6d81d---------------------------------------)
+
+[Status](https://status.medium.com/?source=post_page-----f3badde6d81d---------------------------------------)
+
+[About](https://medium.com/about?autoplay=1&source=post_page-----f3badde6d81d---------------------------------------)
+
+[Careers](https://medium.com/jobs-at-medium/work-at-medium-959d1a85284e?source=post_page-----f3badde6d81d---------------------------------------)
+
+[Press](mailto:pressinquiries@medium.com)
+
+[Blog](https://blog.medium.com/?source=post_page-----f3badde6d81d---------------------------------------)
+
+[Privacy](https://policy.medium.com/medium-privacy-policy-f03bf92035c9?source=post_page-----f3badde6d81d---------------------------------------)
+
+[Rules](https://policy.medium.com/medium-rules-30e5502c4eb4?source=post_page-----f3badde6d81d---------------------------------------)
+
+[Terms](https://policy.medium.com/medium-terms-of-service-9db0094a1e0f?source=post_page-----f3badde6d81d---------------------------------------)
+
+[Text to speech](https://speechify.com/medium?source=post_page-----f3badde6d81d---------------------------------------)

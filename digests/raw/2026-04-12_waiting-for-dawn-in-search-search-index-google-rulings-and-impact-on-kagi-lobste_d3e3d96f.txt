@@ -1,0 +1,22 @@
+-
+-
+-
+Kagi is one of -- if not the -- best subscriptions I have of any kind. I remember when I first signed up for their early trial and the results felt to me like Google's had back in 2000 (and far better than Google's today)
+-
+So I have a question about Kagi: where do they get their search results?
+I have been experimenting with Kagi because I like their business model. Paid search aligns the incentives of the user and the search engine. I would probably never have gone down this road if it weren't for Google's results getting markedly worse in recent years, but they have been, and the intrusiveness of Google's ads are also increasing.
+I have run small personal experiments and found Kagi's search results to be as good as Google's (slightly above those of Bing or DuckDuckGo).
+But it is impossible to build a new index these days -- partly just because the job is so large, but more so because sites are increasingly hostile to scrapers because of abusive, misbehaving scrapers from LLM builders.
+This article suggests (without saying) that Kagi is mostly Google results (mixed with a few others) scraped from Google's site. Is that true?
+-
+They have a page on that in their help docs: https://help.kagi.com/kagi/search-details/search-sources.html
+-
+The article doesn't suggest that at all, the article explicitly lists the search providers they are paying for, and that doesn't include Google.
+-
+The article doesn't imply that it's a comprehensive list, and in fact doesn't include the SERP providers they talk about in the following paragraph, which they explain are only necessary for Bing and Google results:
+Because direct licensing isn’t available to us on compatible terms, we - like many others - use third-party API providers for SERP-style results
+-
+-
+-
+Would they still use brave's index if given the opportunity to use Google's? What would brave offer over some other index?
+-

@@ -1,0 +1,279 @@
+how to build a coding agent: free workshop
+Hey everyone, I'm here today to teach you how to build a coding agent. By this stage of the conference, you may be tired of hearing the word "agent".
+You hear the word frequently. However, it appears that everyone is using this term loosely without a clear understanding of what it means or how these coding agents operate internally. It's time to pull back the hood and show that there is no moat.
+Learning how to build a coding agent is one of the best things you can do for your personal development in 2025, as it teaches you the fundamentals. Once you understand these fundamentals, you'll move from being a consumer of AI to a producer of AI who can automate things with AI.
+Let me open with the following facts:
+With LLM tokens, that's all it is.
+300 lines of code running in a loop with LLM tokens. You just keep throwing tokens at the loop, and then you've got yourself an agent.
+Today, we're going to build one. We're going to do it live, and I'll explain the fundamentals of how it all works. As we are now in 2025, it has become the norm to work concurrently with AI assistance. So, what better way to demonstrate the point of this talk than to have an agent build me an agent whilst I deliver this talk?
+Cool. We're now building an agent. This is one of the things that's changing in our industry, because work can be done concurrently and whilst you are away from your computer.
+The days of spending a week or a couple of days on a research spike are now over because you can turn an idea into execution just by speaking to your computer.
+The next time you're on a Zoom call, consider that you could've had an agent building the work that you're planning to do during that Zoom call. If that's not the norm for you, and it is for your coworkers, then you're naturally not going to get ahead.
+The tech industry is almost like a conveyor belt - we always need to be learning new things.
+If I were to ask you what a primary key is, you should know what a primary key is. That's been the norm for a long time.
+In 2024, it is essential to understand what a primary key is.
+In 2025, you should be familiar with what a primary key is and how to create an agent, as knowing what this loop is and how to build an agent is now fundamental knowledge that employers are looking for in candidates before they'll let you in the door.
+As this knowledge will transform you from being a consumer of AI to being a producer of AI that can orchestrate your job function. Employers are now seeking individuals who can automate tasks within their organisation.
+If you're joining me later this afternoon for the conference closing (see below), I'll delve a bit deeper into the above.
+Right now, you'll be somewhere on the journey above.
+On the top left, we've got 'prove it to me, it's not real,' 'prove it to me, show me outcomes', 'prove it to me that it's not hype', and a bunch of 'it's not good enough' folks who get stuck up there on that left side of the cliff, completely ignoring that there are people on the other side of the cliff, completely automating their job function.
+In my opinion, any disruption or job loss related to AI is not a result of AI itself, but rather a consequence of a lack of personal development and self-investment. If your coworkers are hopping between multiple agents, chewing on ideas, and running in the background during meetings, and you're not in on that action, then naturally you're just going to fall behind.
+The tech industry's conveyor belt continues to move forward. If you're a DevOps engineer in 2025 and you don't have any experience with AWS or GCP, then you're going to find it pretty tough in the employment market.
+What's surprising to software and data engineers is just how fast this is elapsing. It has been eight months since the release of the first coding agent, and most people are still unaware of how straightforward it is to build one, how powerful this loop is, and its disruptive implications for our profession.
+So, my name's Geoffrey Huntley. I was the tech lead for developer productivity at Canva, but as of a couple of months ago, I'm one of the engineers at Sourcegraph building Amp. It's a small core team of about six people. We build AI with AI.
+Cursor, Windsurf, Claude Code, GitHub Copilot, and Amp are just a small number of lines of code running in a loop of LLM tokens. I can't stress that enough. The model does all the heavy lifting here, folks. It's the model that does it all.
+You are probably five vendors deep in product evaluation, right now, trying to compare all these agents to one another. But really, you're just chasing your tail.
+It's so easy to build your own...
+There are just a few key concepts you need to be aware of.
+Not all LLMs are agentic.
+The same way that you have different types of cars, like you've got a 40 series if you want to go off-road, and then you've also got people movers, which exist for transporting people.
+The same principle applies to LLMs, and I've been able to map their behaviours into a quadrant.
+A model is either high safety, low safety, an oracle, or agentic. It's never both or all.
+If I were to ask you to do some security research, which model would you use?
+That'd be Grok. That's a low safety model.
+If you want something that's "ethics-aligned", it's Anthropic or OpenAI. So that's high safety. Similarly, you have oracles. Oracles are on the polar opposite of agentic. Oracles are suitable for summarisation tasks or require a high level of thinking.
+Meanwhile, you have providers like Anthropic, and their Claude Sonnet is a digital squirrel (see below).
+Sonnet is a robotic squirrel that just wants to do tool calls. It doesn't spend too much time thinking; it biases towards action, which is what makes it agentic. Sonnet focuses on incrementally obtaining success instead of pondering for minutes per turn before taking action.
+It seems like every day, a new model is introduced to the market, and they're all competing with one another. But truth be told, they have their specialisations and have carved out their niches.
+The problem is that, unless you're working with these models at an intimate level, you may not have this level of awareness of the specialisations of the models, which results in consumers just comparing the models on two basic primitives:
+- The size of the context window
+- The cost
+It's kind of like looking at a car, whether it has two doors or three doors, whilst ignoring the fact that some vehicles are designed for off-roading, while others are designed for passenger transport.
+To build an agent, the first step is to choose a highly agentic model. That is currently Claude Sonnet, or Kimi K2.
+Now, you might be wondering, "What if you want a higher level of reasoning and checking of work that the incremental squirrel does?". Ah, that's simple. You can wire other LLMs in as tools into an existing agentic LLM. This is what we do at Amp.
+We call it the Oracle. The Oracle is just GPT wired in as a tool that Claude Sonnet can function call for guidance, to check work progress, and to conduct research/planning.
+The next important thing to learn is that you should only use the context window for one activity. When you're using Cursor or any one of these tools, it's essential to clear the context window after each activity (see below).
+If you start an AI-assisted session to build a backend API controller, then reuse that session to research facts about meerkats. Then it should be no surprise when you tell it to redesign the website in the active session; the website might end up with facts about your API or meerkats, or both.
+Context windows are very, very small. It's best to think of them as a Commodore 64, and as such, you should be treating it as a computer with a limited amount of memory. The more you allocate, the worse your outcome and performance will be.
+The advertised context window for Sonnet is 200k. However, you don't get to use all of that because the model needs to allocate memory for the system-level prompt. Then the harness (Cursor, Windsurf, Claude Code, Amp) also needs to allocate some additional memory, which means you end up with approximately 176k tokens usable.
+You probably heard a lot about the Model Context Protocols (MCPs). They are the current hot thing, and the easiest way to think about them is as a function with a description allocated to the context window that tells it how to invoke that function.
+A common failure scenario I observe is people installing an excessive number of MCP servers or failing to consider the number of tools exposed by a single MCP tool or the aggregate context window allocation of all tools.
+There is a cardinal rule that is not as well understood as it should be. The more you allocate to a context window, the worse the performance of the context window will be, and your outcomes will deteriorate.
+Avoid excessively allocating to the context window with your agent or through MCP tool consumption. It's very easy to fall into a trap of allocating an additional 76K of tokens just for MCP tools, which means you only have 100K usable.
+Less is more, folks. Less is more.
+I recommend dropping by and reading the blog post below if you want to understand when to use MCP and when not to.
+Let's head back and check on our agent that's being built in the background. If you look at it closely enough, you can see the loop and how it's invoking other tools.
+Essentially, how this all works is outlined in the loop below.
+For every piece of input from the user or result of a tool call that gets allocated to the response, and that response is sent off for inferencing:
+Let's open up our workshop materials (below) and run the basic chat application via:
+go run chat.go
+You: You are a weather expert. When I ask you about the weather in a given location, I want you to reply withget_weather(<location_name>)
+. I will then tell you what the weather in that location is. Understood?
+Claude: I understand your instructions. When you ask me about the weather in a specific location, I will respond withget_weather(<location_name>)
+. Then you will provide me with the weather information for that location, and I can discuss it with you from there. I'm ready whenever you'd like to ask about the weather somewhere.
+So, let's ask what the weather is today here in Melbourne, Australia?
+You: What's the weather like today in Melbourne, Australia?
+Claude:get_weather(Melbourne, Australia)
+boom! There we go!
+We've registered our first tool into the model, and any time that we tickle the latent space with a query about the weather, it's going to function call our new tool.
+It's a stub tool currently, but you can see it; we have a method, and the LLM is passing the parameters into the method from our query.
+When we talk about agentic, we're referring to something that's tool-calling, something that has been trained on its reward function to call a tool. There are models where they've been explicitly trained; all they want to do is chase nuts, much like a squirrel (see below). It's not nuts, it's tools.
+In the simplest way to explain what MCP is or a tool, it's just a function with a billboard on top that nudges the LLM's latent space to invoke that function. It is that simple. You register the tool, you describe how to invoke it, and then it just works.
+Let's start the short journey towards making this a real coding agent. We have a mock function and a mock tool, but get_weather(Melbourne, Australia)
+currently does nothing, so let's fix that.
+What we need to do is create a tool and then adjust our inferencing loop to check whether it wants to execute the tool (see line 5 above). If it does, execute the tool (see line 6 above) and then allocate the outcome of that tool back (see line 7 above) to the loop for more inferencing.
+Here's what our updated sequence diagram looks like when tools have been registered.
+As we're not making a weather application today, let's switch gears to build the first primitive of a coding agent.
+The first primitive behind any coding agent is a read tool. All coding agents have a read tool that reads a file into the context window, either the whole file or, in the case of a larger file, in chunks.
+var ReadFileDefinition = ToolDefinition{
+Name: "read_file",
+Description: "Read the contents of a given relative file path. Use this when you want to see what's inside a file. Do not use this with directory names.",
+InputSchema: ReadFileInputSchema,
+Function: ReadFile,
+}
+Let's open up our workshop materials once again (above) and create a file:
+cat << EOF
+I have a mane but I'm not a lion,
+I have four legs but I'm not a table,
+I can gallop but I'm not running,
+People say I'm disagreeable because I always say "neigh."
+What am I?
+EOF > riddle.txt
+Then let's run the read file tool:
+go run read.go
+You: Claude, mate. What's the answer to this riddle inriddle.txt
+?
+Claude: I'll help you solve the riddle. Let me first read the contents of theriddle.txt
+file to see what the riddle is.
+tool:read_file({"path":"riddle.txt"})
+Reading file:riddle.txt
+Successfully read fileriddle.txt
+(175 bytes)
+result: I have a mane but I'm not a lion,
+I have four legs but I'm not a table,
+I can gallop but I'm not running,
+People say I'm disagreeable because I always say "neigh."
+What am I?
+Claude: After reading the riddle, I can solve it for you:
+The answer to the riddle is: a horse.
+Let's analyze the clues:
+"I have a mane but I'm not a lion" - Horses have manes, which is hair growing from the top of the neck.
+"I have four legs but I'm not a table" - Horses walk on four legs.
+"I can gallop but I'm not running" - Galloping is a specific gait of horses.
+"People say I'm disagreeable because I always say 'neigh'" - "Neigh" is the sound a horse makes, and it sounds like "nay" (which means "no" or disagreement).
+All of these clues point to a horse as the answer to the riddle.
+The second primitive behind any coding agent is a list tool. All coding agents have a list files tool, which lists all the files and directories in a given path.
+var ListFilesDefinition = ToolDefinition{
+Name: "list_files",
+Description: "List files and directories at a given path. If no path is provided, lists files in the current directory.",
+InputSchema: ListFilesInputSchema,
+Function: ListFiles,
+}
+Let's open up our workshop materials once again (above) and run the basic chat application via:
+go run list_files.go
+You: Claude, mate. Is there aREADME.md
+in this folder? Also what is the contents ofriddle.txt
+?
+Claude: I'll help you check for a README.md file and show you the contents ofriddle.txt
+.
+First, let me list the files in the current directory to see ifREADME.md
+exists:
+tool:list_files({})
+Listing files in directory: .
+Successfully listed 88 items in .
+result:[".devenv.flake.nix",".direnv/",".envrc",".gitignore","AGENT.md","Makefile","README.md","bash_tool.go","chat.go","code_search_tool.go","devenv.lock","devenv.nix","devenv.yaml","edit_tool.go","go.mod","go.sum","list_files.go","prompts/","prompts/00-weather.md","prompts/01-read_file.md","prompts/02-list_files.md","prompts/03-bash_tool.md","prompts/04-edit_tool.md","read.go","renovate.json","riddle.txt"]
+Claude: Yes, there is aREADME.md
+file in this folder.
+Now, let me show you the contents ofriddle.txt
+:
+tool:read_file({"path":"riddle.txt"})
+result: I have a mane but I'm not a lion,
+I have four legs but I'm not a table,
+I can gallop but I'm not running,
+People say I'm disagreeable because I always say "neigh."
+What am I?
+Claude: The contents ofriddle.txt is
+a riddle:
+I have a mane but I'm not a lion,
+I have four legs but I'm not a table,
+I can gallop but I'm not running,
+People say I'm disagreeable because I always say "neigh."
+What am I?
+The answer to this riddle appears to be a horse.
+Boom! We now have a read file tool and a list files tool, and you can see that their functions are called and chained together from our original prompt.
+The third primitive behind any coding harness is a bash tool, which does precisely what its name implies. It enables the LLM to execute commands on your computer.
+var BashDefinition = ToolDefinition{
+Name: "bash",
+Description: "Execute a bash command and return its output. Use this to run shell commands.",
+InputSchema: BashInputSchema,
+Function: Bash,
+}
+Let's open up our workshop materials once again (above) and run the bash tool:
+go run bash_tool.go
+You: Hey Claude, provide a summary of all the processes running on this computer.
+Claude: I'll provide a summary of all the processes running on this computer. Let me use theps
+command to gather this information.
+tool:bash({"command":"ps aux"})
+precisely
+Executing bash command: ps aux
+Bash command succeeded: ps aux (output: 87344 bytes)
+result: <snipped>
+Claude: Based on the output of theps aux
+command, here's a summary of the processes running on this computer:
+System Summary:
+This is a multi-CPU system with 96 cores/threads (visible from the many CPU-related kernel threads)
+Running Linux with systemd as the init system
+The system has been up since August 20th (seen in START column)
+The fourth primitive behind any coding harness is the edit tool. The edit tool also does precisely as the name implies. It takes the results back from inference and applies edits to the file.
+Let's open up our workshop materials once again (above) and run edit tool:
+go run edit_file.go
+You: Claude, mate. Createfizzbuzz.js
+with nodejs that does fizzbuzz up to 20 and execute it to ensure it works
+Claude: I'll create a Node.js implementation of FizzBuzz that counts up to 20 and then run it to make sure it works correctly.
+First, let me create thefizzbuzz.js
+, file:
+tool:edit_file({"path":"fizzbuzz.js","old_str":"","new_str":"// FizzBuzz implementation in Node.js\n// Prints numbers from 1 to 20\n// If number is divisible by 3, print "Fizz"\n// If number is divisible by 5, print "Buzz"\n// If number is divisible by both 3 and 5, print "FizzBuzz"\n\nfor (let i = 1; i <= 20; i++) {\n if (i % 3 === 0 && i % 5 === 0) {\n console.log("FizzBuzz");\n } else if (i % 3 === 0) {\n console.log("Fizz");\n } else if (i % 5 === 0) {\n console.log("Buzz");\n } else {\n console.log(i);\n }\n}"})
+Editing file:fizzbuzz.js
+(replacing 0 chars with 485 chars)
+File does not exist, creating new file:fizzbuzz.js
+Creating new file:fizzbuzz.js
+(485 bytes)
+Successfully created filefizzbuzz.js
+result: Successfully created filefizzbuzz.js
+Claude: Now let me verify the file was created:
+tool:read_file({"path":"fizzbuzz.js"})
+Reading file:fizzbuzz.js
+Successfully read filefizzbuzz.js
+(485 bytes)
+Claude: Now I'll execute the script to make sure it works correctly:
+tool:bash({"command":"node fizzbuzz.js"})
+Executing bash command:node fizzbuzz.js
+Bash command executed successfully, output length: 77 chars
+result:
+1
+2
+Fizz
+4
+Buzz
+Fizz
+7
+8
+Fizz
+Buzz
+11
+Fizz
+13
+14
+FizzBuzz
+16
+17
+Fizz
+19
+Buzz
+Claude: Great! Thefizzbuzz.js
+file has been created and executed successfully. The output shows:
+Numbers not divisible by 3 or 5 are printed as is (1, 2, 4, 7, 8, 11, 13, 14, 16, 17, 19)
+Numbers divisible by 3 (but not 5) print "Fizz" (3, 6, 9, 12, 18)
+Numbers divisible by 5 (but not 3) print "Buzz" (5, 10, 20)
+Number 15 prints "FizzBuzz" as it's divisible by both 3 and 5
+And voila, we now have a coding agent. Is it this point that we could throw some other prompts in and say, "Hey, let's do FizzBuzz to 100, and it will just work."
+The fifth and final primitive behind any coding harness is a search tool. What if I were to tell you that there is no magic for indexing source code or any intelligence?
+var CodeSearchDefinition = ToolDefinition{
+Name: "code_search",
+Description: `Search for code patterns using ripgrep (rg).
+Use this to find code patterns, function definitions, variable usage, or any text in the codebase.
+You can search by pattern, file type, or directory.`,
+InputSchema: CodeSearchInputSchema,
+Function: CodeSearch,
+}
+Nearly every coding tool currently available uses the open source ripgrep
+binary under the hood. See the two blog posts below if you want more proof:
+Let's open up our workshop materials once again and run the code search tool:
+go run code_search_tool.go
+You: Claude, mate. Search the source code for a riddle
+Claude: I'd be happy to search the source code for a riddle. Let me use the code search tool to look for mentions of riddles in the codebase.
+tool:code_search({"pattern":"riddle"})
+Searching for pattern:riddle
+Found 6 matches for pattern:riddle
+result:./README.md:332:- riddle.txt: A simple riddle for content analysis
+Claude: I've found references to a riddle file called "riddle.txt
+" in the codebase. Let me check if this file exists by listing the files in the current directory.
+tool:list_files({})
+Listing files in directory: .
+Successfully listed 25 files in .
+result:["./go.mod","./renovate.json","./devenv.yaml","./AGENT.md","./.devenv.flake.nix","./.envrc","./bash_tool.go","./fizzbuzz.js","./code_search_tool.go","./list_files.go","./Makefile","./devenv.nix","./devenv.lock","./prompts/01-read_file.md","./prompts/02-list_files.md","./prompts/00-weather.md","./prompts/03-bash_tool.md","./prompts/04-edit_tool.md","./chat.go","./go.sum","./riddle.txt","./edit_tool.go","./README.md","./.gitignore","./read.go"]
+Claude: Great! I can see that "riddle.txt
+" exists in the current directory. Let me read its contents to see what the riddle is.
+tool:read_file({"path":"riddle.txt"})
+Reading file:riddle.txt
+Successfully read fileriddle.txt
+(175 bytes)
+result: I have a mane but I'm not a lion,
+I have four legs but I'm not a table,
+I can gallop but I'm not running,
+People say I'm disagreeable because I always say "neigh."
+What am I?
+Claude: I found the riddle in the fileriddle.txt
+!
+Everything from this point forward is just a matter of tuning your prompts. Due to time constraints, we didn't delve into the notion of the harness prompt. The harness prompt is where your tool registrations go. It contains information such as the operating system you're running, so it knows whether to use PowerShell (Windows) or bash (Linux or macOS).
+It also contains instructions on how the agent should operate. I say should is because LLMs are non-deterministic. You can include the guidance, and it's just guidance. However, through prompt evaluation, tuning, and spending time playing with the models to understand how they behave, you can develop effective prompts.
+Drop by the blog post below if you want to see an example of a fully fledged coding agent:
+There are plenty of open-source coding agents already, such as SST Open Code
+Or this 100-line agent, which scored really high on the SWE Bench.
+And if you want some inspiration, there are many repositories on GitHub with leaked developer tooling harness and tool prompts.
+In recap. What you just built was a coding agent. Perhaps you don't want to create a coding agent. What if you're in the data engineering profession? What would that look like? Think about all of the activities that you do day-to-day, where having the capability to automate using these primitives could be handy or valuable to your employer.
+Your current workers are going to take your job, not AI.
+If you're concerned about AI, the answer is straightforward: just invest in yourself. It really is that simple. This year is a particularly challenging time to be asleep at the wheel when it comes to personal development.
+I hope to see you later this afternoon for the conference for the locknote (see above).
+Go forward and build.
+ps. socials

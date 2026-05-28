@@ -1,0 +1,21 @@
+From d64e9655cc0b15a43e4fb34a9b69894352be976b Mon Sep 17 00:00:00 2001
+From: AJ <yspdev@gmail.com>
+Date: Sat, 28 Mar 2026 21:35:19 -0700
+Subject: [PATCH] fix(js): add npm install before build in local runner
+
+---
+ sdk/examples/coding_machine_cli/js/run.sh | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/sdk/examples/coding_machine_cli/js/run.sh b/sdk/examples/coding_machine_cli/js/run.sh
+index f068a56d..b7553b1d 100755
+--- a/sdk/examples/coding_machine_cli/js/run.sh
++++ b/sdk/examples/coding_machine_cli/js/run.sh
+@@ -58,6 +58,7 @@ echo "📦 Installing dependencies..."
+ if [ "$LOCAL_INSTALL" = true ]; then
+     echo "  - Using local flatmachines SDK..."
+     cd "$JS_SDK_PATH"
++    npm install
+     npm run build
+     cd "$SCRIPT_DIR"
+     npm pkg set dependencies.@memgrafter/flatmachines="file:../../../js/packages/flatmachines"

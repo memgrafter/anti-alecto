@@ -1,0 +1,1095 @@
+Well, so what I did was um let's see.
+I
+basically wrote a little thing um that
+downloads all my
+all my blue sky posts. Um, of Blue Sky,
+I'm mostly don't talk about tech too
+much because the audience there isn't
+technical in general. Um, but most of my
+content has some tech relationship. So,
+I figured all my posts from the year
+2025 on Blue Sky will probably contain a
+good amount of the projects that I
+worked on this year. And that includes
+technical projects as well as more
+activism like projects.
+>> [snorts]
+>> So, the little thing I wrote basically
+pulls down all my blue sky posts, all my
+images from Blue Sky as well. Not the
+videos though. I could do that, but too
+lazy.
+And then uh once I have all of these
+posts, [clears throat]
+which means top level posts plus any
+replies I did to a post, which means
+Fred, um I have a little filter program
+that goes through the big big file and
+turns it into smaller files. um where
+you can see
+um the uh for each month I get all my
+top level posts plus any replies I made
+to that post plus any images on each
+post which get [snorts] downloaded to
+the media folder and then
+[clears throat]
+um I have that converted to a txt file
+um in a very shitty format [snorts] uh
+but retaining all the local image
+references and links uh URL files and
+anything that was found in the post.
+And then uh the program basically spawns
+a bunch of coding agents, pi in this
+case, and asks each to read one of these
+monthly um dumps of my threads on blue
+sky, and extract um
+extract uh structured thing.
+um
+from each um that tells me which
+projects have been mentioned. And then I
+do a few more passes of that and kind of
+merge all of this together. It's not
+perfect. It was a quick one of 15
+minutes job, most of which was spent
+downloading the images.
+Um so what I end up with is a final
+markdown file that basically
+talks about all of the the projects. I
+had my little audio player
+um and all the Fred data from that. And
+um I forgot about that an Android
+spellchecking
+thing. A little Android app I wrote. Um
+yeah,
+that looks about right. [snorts] And
+what else? That's a lot of data. FAI
+post cara. Yeah, that was fun.
+And what else? Ah, the KMA photo archive
+scraper. I forgot about that one.
+So
+yeah,
+and that is how it goes. Anyways, so
+this is then the basis uh for actually
+writing the blog post together with um
+all the GitHub repositories I've created
+this year. Uh, bunch of these are not
+relevant. Oh, yeah. [laughter]
+Walker. Interesting.
+Yeah. And now I have to figure out how I
+structure my thing. So, the way this
+works is I have a little blog system.
+Um, which is just static files.
+What version of LIPGX is that? What do
+you mean? [laughter]
+I actually don't know what the latest
+LipGX version is.
+Um,
+oh, 1.14. Interesting.
+That was released October 20.
+So, anyways, I have my own little
+blogging system. It's a static site
+generator I wrote um that is basically
+EGS. So, I write markdown files with uh
+let's see. Whoopsie.
+10 years old. I write markdown files
+with embedded JavaScript and that
+[snorts] JavaScript can do stuff and
+then uh my blog static site generator
+just walks through all the MD files in
+the sources folder
+>> [snorts]
+>> um and generates static HTML from that
+and CSS and JavaScript. So that's very
+nice. Um and it's also a hot reload
+thing. So if anything changes here,
+let's see, there's the footer,
+hello world, then it gets immediately
+shown up there, which is nice. Um, so
+previously up until around,
+well, up until around June 2025, I would
+write all of these by hand.
+But then I wrote myself a little
+dictation app where I can just do
+let's see
+where I can just speak into the computer
+by pressing a little button then it
+shows recording down here and whatever
+text input is focused
+gets the transcription of that which is
+very nice. And then I have here my
+little coding agent. Think of it as Jet
+GPT but with access to my computer so it
+can modify files and create new files
+and search the internet and do stuff for
+me. Uh and in this case I just wanted to
+take my dictation and transform it into
+paragraphs in the blog post.
+Um, so basically in the file you saw um
+a few seconds ago and I just dictate
+here and it will show up here
+automatically. Um, which is very nice
+for me to review and I tell it to only
+fix my gram and spelling and keep my
+tone and not modify the content at all.
+Um, and if I ask it to tighten it up, it
+should just first show me what it would
+do and then I can confirm or deny the
+change that it's about to do. So
+anyways, the first thing we want to do
+is we want it to give I want I want to
+have an outline. I want to basically
+sort my projects
+um into categories. So I guess there
+will be an [sighs] aentic engineering
+category with big fat quotes around it
+because it's mostly just throwing [ __ ]
+at the wall.
+Big fat hug. Yeah, I hope so.
+>> [laughter]
+>> Thanks.
+She's going to be all right. I hope
+it's not cool.
+So, let me put my mind off of that and
+continue babbling about this [ __ ]
+here. So anyways, I'm going to give it
+the outputs of that other program that
+took all my blue sky threats [snorts]
+and made it into
+basically a summary of everything I did.
+At least everything I did that I
+reported on Blue Sky, which is 83
+different projects. [laughter]
+Okay. Uh the power of not watching any
+shows at night and just doing stuff.
+And then let me get back here.
+And that's pointed there. Um, so I'm not
+going to dictate that because that's a
+file path. So
+okay, read
+project file. Nope. MD in full. And
+let's see if it can actually take that
+file. It's I think 220 kilobytes might
+be a little bit much.
+Oh yeah.
+>> [laughter]
+>> Okay.
+Um,
+the full [ __ ] file. So
+anyways, what's it going to do is take
+my blue sky summary of all the projects
+that are generated with another pro
+program and then uh know about all my
+projects so to speak and have the links
+to images and stuff which it can then
+copy over into my blog and add into my
+thingy. [snorts]
+So now it's trying to read the whole
+thing.
+It's a lot.
+It's very slow.
+Okay.
+Journey cards for Ukraine price consumer
+median use analysis browse AI tools
+other crowd photo.
+Yeah, that's pretty pretty good. And
+then I tell it to go to my GitHub uh
+repositories.
+Okay,
+all my GitHub repositories I created in
+2025 and also make a list of those
+um for the
+Is it relaxing? Okay, I try not to
+scream too much into the microphone
+then. Um,
+okay. Now I need to get back into my
+flow. Let's see.
+Okay.
+Now, please use the GitHub CLI to
+enumerate all the GitHub projects I
+created in 2025. Maybe you can also
+figure out the projects I contributed to
+because there's this there's one called
+wipe tunnel which is stored in another
+organization's GitHub thingy um which we
+need to cover. Was there anything else?
+I don't think so. Yeah. So, get a list
+of that as well. Um the uh summary you
+did for the 83 project looks pretty
+decent
+I think.
+Yeah, I think we can slap those as
+headers into the blog post and then we
+take it from there.
+Possibly the geni workshop and guessing
+chefly data pipeline tutorial thingies
+can go into a general AI section.
+Um the news media monitor.
+Yeah, that looks good. Okay. So,
+enumerate all the GitHub uh projects
+that I created or contributed to this
+year as well. Uh and we need to take
+those into account. Ask me which ones I
+want to take into account.
+[snorts]
+All right. And now it should hop off and
+scrape all the data from here.
+It's a lot of G repositories in a year.
+Um,
+I got a pretty good idea of what I've
+been up to.
+Car honors. Yeah, that was fun.
+CC history.
+Okay. Uh, let's see. [sighs]
+Change here. CC history CC anti debug
+CC cost tuner.
+[snorts]
+Okay, for the many more utilities, um,
+have a section that's just those
+utilities and
+just link to them with the smallest
+possible description, concise using my
+tone.
+So, I I don't want to do this manually.
+This is the perfect job for an LM just
+to have a section where I
+Let's see. No, spine lip jacks aren't
+major sections.
+I would actually prefer not to talk
+about spinal lip gx um for now. Just add
+the utilities list. And then we need to
+go back to what we got out of the blue
+sky folder
+and get the blue sky threat urls for
+that and some images I guess. Well,
+let's take it one at a time. Uh let's
+start with the utility section which
+goes at the bottom of the the blog post.
+um where you just have a list of the
+GitHub repositories for the small public
+tools that I wrote with a minimal
+description and then I can um cut that
+down.
+This must be a comprehensive list.
+I have to rewatch this is spinal zap on
+Netflix at some point. It's been a year
+or two.
+It's a good Christmas movie. Not in a
+sense that it's a movie about Christmas,
+but it's a one of those movies you watch
+during Christmas.
+Did I say suppositories? Oh, no.
+[laughter]
+Yeah.
+>> [sighs and gasps]
+>> Okay, here we go. Cloud code hacking
+small tools and utilities [laughter]
+mass-produced mass garbage. That could
+actually be a sentence for me. This I
+built this year was half pack will
+probably break if you look at them
+wrong. Yeah, this is so I can compare
+system prompts.
+No.
+So there should be a section called
+messing with claude. Um,
+and I've written about some of these
+tools in other blog posts. Please find
+them and uh list them as well.
+The pi coding ecosystem doesn't need
+anything like that either. I think it's
+been so many so many things this year. I
+don't know how to structure this.
+the lemmy stuff. Oh Jesus.
+Yeah. Okay. So
+the basic idea is that this year I
+invested a lot in AI tooling and it
+started basically in April by seeing
+Peter Peter Steinberger
+going crazy on social media um slapping
+his uh coding agents with a whip to do
+crazy stuff which eventually really
+culminated in him, Armen Ron, and me
+meeting up in Vienna and doing a 24-hour
+hackathon at Oh, thank Philip.
+Um, doing a 24-hour hackathon in Peter's
+Flat in Vienna, which resulted in VIP
+tunnel, the worst [ __ ] project ever.
+Uh, yeah, I don't know.
+Yeah, let's start with just gathering
+all the data and then I I have to sift
+through that and structure it. This is
+terrible. I should have kept a
+repository of things.
+Anyways, so we know all the GitHub
+projects. We know everything I talked
+about in blue sky including the
+non-technical things.
+For the blue sky stuff, we still need
+the links to this blue sky threats.
+investigate the BSKY folder and see if
+you can extract that data from the
+output folder somehow.
+Oh, it's so much worse worse than a
+detention center for K-pop stars. It's
+it's a detention center for uh AI.
+[laughter]
+Actually, I'm not [ __ ] you. It's
+like ensure that an eye like this one
+which has access to my computer can't do
+shitty stuff. So if it if it does shitty
+stuff, it goes into silly jail.
+I hope it can correlate these things.
+Yeah. So, at the moment, this thing is
+writing a new program um to to to take
+the data that I downloaded from Blue Sky
+earlier and make more sense of it. So,
+all of the funny projects in here
+actually have links to the Blue Sky
+threats from which we can get more data
+later if needed.
+Okay.
+[snorts]
+>> [sighs]
+>> Yeah.
+All right. So, can you save out all of
+the context that you have now into a
+markdown file uh inside the
+post folder and inside the blog post
+folder? I will have to restart you later
+and
+need you to be up to speed immediately.
+So detail all the things you you're free
+to reference files that contain the
+actual information but you need to
+describe how to extract the information
+from these
+you're free to reference files instead
+of dumping content. Um but you need to
+also explain how you can extract the
+content from those referenced files if
+needed.
+The reason I'm doing this is because
+those little AIs don't have a long-term
+memory, so to speak, and if I put too
+much stuff into them at once, they
+explode. So, I have them write out files
+that they can later read um
+to remember things.
+Where did it put it? Oh, it hasn't put
+it anywhere yet.
+Oh, wow. Did I just get a signature?
+Wow, it's VS Codes terminal, which is
+terrible. Interesting.
+This doesn't happen in Ghosty.
+Signature flicker. So let's see what it
+does. Blue kind of projects.
+[clears throat]
+[snorts]
+Does this actually work? I don't think
+it does. Nope.
+Yeah, this is probably better.
+Contributions.
+Nope.
+There is.
+[snorts]
+>> [laughter]
+>> Yeah,
+let's resume.
+Yeah, this one's going to be the big
+one, I guess. Investigations. Yeah,
+education, I assume. So small tools and
+utilities.
+Yep.
+Okay.
+[clears throat]
+All right.
+So, I guess this [clears throat] goes
+Oh, no.
+How does computer work? I feel old.
+Let's put you up here.
+All right. [clears throat]
+So, the worst part about writing a
+thing, starting it. God damn it.
+[snorts]
+Okay, let's start with the intro
+section. Here we go.
+Um, it's been one and a half years since
+I did a year in review. Um, [snorts]
+link to the year in review blog post.
+the first one that actually covers two
+years in review. [snorts]
+As 2025 comes to a close, I figured I
+want to get an overview of what I did
+this year with my life outside of family
+and business.
+No, [laughter]
+the the intro is the important part
+that that's the thing that makes me
+think about the structure.
+>> [clears throat]
+>> Um, as usual, it was a mix of technical
+stuff,
+he activism,
+and general bullshittery.
+I figured I'd just write it all all out
+in a hopefully concise way for me to
+have a memory of what happened and for
+you
+to possibly find
+interesting bits and pieces that are
+useful to you to you as well.
+Um if you have a look at the header
+image you will see a bit of a gap for
+March and February. Reason being I have
+become old.
+I suppose that's the most interesting
+observation uh about this year for me my
+body is falling apart [laughter] slowly.
+Uh so I spent some time in the hospital
+and then needed quite a bit of time to
+recover which meant I didn't have the
+energy outside of family
+uh stuff to to do anything really which
+explains the gap in my GitHub
+contributions.
+[snorts]
+Anyways, with all of that out of the
+way, here we go. Let's start with the
+one project I'm most proud of.
+All righty. And the super smart AI will
+now take my transcription and just clean
+it up nicely with my guidelines. That
+means do not change anything.
+Just fix spelling and grammar and make
+it a little bit more idiomatic. Uh but
+you will find that this is still very
+Austriish.
+So let's review.
+If you look at
+Okay, next section. header is boxy and
+always offline audio player for our
+threeyear-old or fouryear-old now
+[clears throat]
+maybe just call the section boxy
+actually
+um
+back in summer of 2024 I decided to
+learn uh electronics um so I can build
+gadgets for my little boy this
+culminated in an always offline audio
+player for our then three-year-old I've
+written about it extensively. Um,
+extensively
+is a link to the Boxy blog post.
+I basically learned how to design
+printed circuit boards. Um,
+I'm using u my own little tool called
+Yakadi, which is not open source, but
+it's just u basically a whisper based
+thing that I [clears throat] threw
+together.
+>> Time to walk
+>> sometime in April, I think. Um, it's
+supposed to work on Windows as well, but
+I don't work on Windows. So, yeah. Um,
+if you want the commercial solution,
+Whisper Flow is the one thing that most
+people use. I hate it. [laughter] So I
+wrote my own uh which does just the
+things I need.
+Uh so anyways, so where was I? I
+basically learned how to design print
+circuits forge, how to solder um SMT U
+components,
+how to send everything off to China to
+get it printed, uh how to buy um all the
+gear I need and which gear. No, wait,
+that sucks. Um,
+actually, let's scrape that. Let's
+scrape all of that. That sucks.
+Extend to
+it.
+It It was quite a journey, a learning
+journey. um going from the basic
+plinking LED to um self-designed
+uh printed circuit boards.
+Uh buying all the gear like a crazy
+person and getting comfortable soldering
+uh SMT components.
+I'm happy to report that our little one
+is still using it daily um and is now
+having a treasure treasure chest of
+about 72 cartridges each with audio
+plays on them of his favorite shows or
+favorite audio books and music
+wizardry. [sighs]
+No, not wizardry. Um
+uh there's in the Boxy blog post there
+is a
+video embedded. Um can you embed it at
+this place in the in the blog post here
+as well please? [snorts]
+This will likely
+this will likely stay my proudest
+achievement forever. Um, as it brought
+joy to myself and the boy and keeps
+bringing joy to us.
+It is my wish that if he ever gets
+interested in the stuff dad's doing that
+this project can be an inspiration
+for where he might be for where he might
+want to head himself. My god, this is
+[ __ ] stupid.
+Chip, chop, chip, chop, chip, chop. Now
+you see how the sausage is made.
+It's [laughter] pretty terrible.
+Let's see. Let's just go with that and
+then I'll fix it up.
+So as you can see my this my dictation
+is basically a mix of instructions and
+actual raw text that just just spit in
+here. This is very nice. It already did
+all the things properly.
+It's beautiful.
+Yeah, this is makes writing so much more
+enjoyable while not giving the LLM any
+kind of leeway to write anything for me.
+So this is great. It basically just
+cleans my [ __ ] up uh without modifying
+my words, which is very nice. And I
+think this is how AI tools should be
+used, honestly.
+Hey, thanks. Yeah, hope she's getting
+better soon.
+That was quite a turn. Should go from
+basic plot.
+Um yeah
+uh fix that up please. It's just it was
+quite a journey going from basic
+blinking LED blah blah blah.
+have to report buying all the gear like
+crazy.
+Okay, this section. No, it's not a
+sensitive topic. I love my mom
+[laughter] and I'm forever sad that she
+has to be in the hospital. That sucks.
+sucks hard because I can't even visit
+her because she has influenza. So, she's
+isolated. That sucks. We Everybody's
+looking forward to Christmas. So, now we
+can't have a Christmas, but we already
+agreed that we'll just have a postponed
+Christmas.
+Yeah. Blah blah blah is my code word for
+whatever comes next. And it did exactly
+what I told it. So it replaced it was
+quite a journey period a learning
+journey blah blah with what I told it to
+replace it with was quite a journey
+going from basic to self-design printed
+circuit board buying all the gear like a
+crazy person and getting comfortable.
+Okay after and getting comfortable
+soldering SMT components.
+um add a new sentence in the same
+paragraph, something like and obviously
+I had to port Doom
+to an embedded system as well and then
+embed the video from the other blog post
+um that shows off the the Doom um port.
+It's basically like having an assistant
+that does all the stupid things like
+finding the media, linking it up. Uh
+it's very comfortable to work with.
+Let's see if this actually works. Yay.
+Doom.
+[laughter]
+This too is very very cool.
+I even got the audio to work at some
+point. [snorts] It's not in the video
+though.
+Okay, I have to rever.
+Okay, last paragraph in that section.
+It is my hope that our boy will also
+find
+areas of interest
+where you can h that's not what I want
+to say.
+Ah Jesus.
+How do I get this back foregroundep?
+I don't actually get why anyone is
+listening to this. This is supposed to
+be super boring to watch. [laughter]
+Interesting social experiment.
+Everybody who joined is now
+is now not allowed to leave. You know
+that, right? I can track who's leaving.
+[laughter]
+I will I put you on my list of naughty
+people that just leave. So I have to
+suffer through this for the next three
+hours or so.
+Um okay. They do total.
+Okay, last paragraph. Every time
+something breaks, and surprisingly
+enough, it doesn't break at all really,
+uh, the boy gets to help me unscrew the
+screws on on the little device, look
+into its internals, and dig around in in
+them.
+It is my hope that this kind of
+[clears throat]
+early exposure to tech on that level
+will eventually
+spark at least some interest in also
+exploring that area. I don't necessarily
+want him to work in tech, but I think
+given how the world's turning, it makes
+sense to have an understanding of what
+the world's now actually built upon.
+This is very wordy. Please make it more
+concise.
+Yeah, for these kinds of sections where
+I just am too lazy to revert myself, I
+get a proposal by the LLM and I can just
+work through that again. Every time I
+break
+Yeah. See, and it just hallucinates
+[ __ ]
+This is [ __ ] terrible. I'll go back
+to my original
+uh replace and surprisingly it doesn't
+break at all really with
+parenthesis which to be fair has
+happened only three times so far.
+The boy gets to help me unscrew the
+device. Look into its internals.
+Um replace look into its internals
+with um
+No, actually that's fine. D around in
+them. Yeah.
+I hope this early exposure to tech will
+eventually spark some interest in
+exploring.
+Replace I hope this early exposure to
+tech will eventually spark blah blah
+with I hope this early exposure will
+eventually spark some interest in
+exploring
+tech.
+No.
+I hope this early exposure to tech will
+isn't that the screen capture is cutting
+away things.
+You mean the YouTube stream is cutting
+away things?
+um
+the YouTube stream.
+Oh yeah, looks like it does. Um
+let's see. I think the problem is that I
+have lowered the resolution of the
+display.
+I wonder.
+Yeah, this is worse now. Interesting.
+Well, thanks for pointing that out. God
+[laughter] damn it. [snorts] Uh oh,
+yeah, I see.
+Yeah, this should be better now.
+How is it doing now?
+Okay. Need to write the rewrite that
+paragraph. Every time something breaks
+and surprises. Okay. Let's scrape the
+entire paragraph. Let's rewrite it.
+Anytime the little gadget breaks, we get
+to the boy and I get to
+unscrew the lid, look inside its
+internals. and dig around in them. I
+hope this early exposure to tech will
+spark the same little spark. That sounds
+stupid. Um, in him that my game boy did
+in me given how the world's developing.
+I think it makes sense for him.
+No. [ __ ] I'm so bad at this.
+Okay, let's work on this paragraph. Um,
+first section should be anytime
+something breaks, which happens
+surprisingly little, the boy and I get
+to unscrew the device together, uh, look
+inside its internals and dig around in
+them.
+This part should be good.
+Uh, how does it know? Uh, it doesn't
+know what I selected in the browser. I
+just copy and pasted it back into chat.
+So,
+[clears throat]
+okay, second half of the paragraph. Um,
+it is my hope that this early exposure
+to tech will
+spark him the interest
+to learn how these things work.
+just like my Game Boy sparked that
+interest in me.
+I think given how the world's
+developing,
+he might not necessarily have to go into
+tech. Um, but he should have a good
+understanding of
+the things the world is built upon. Now,
+this is very, very
+theatrical. [ __ ] it.
+Yeah, scrape that last sentence. This
+[ __ ] sucks. That's fine as is.
+Okay, next section should be cards for
+Ukraine. Uh, do you have a good overview
+of what happened? I don't remember. I
+think we crossed the 300K line.
+Then
+I will manually like a caveman
+hope that this search actually works
+and see if I can find
+Oh yeah, there we go. It was two months
+ago.
+Oh yeah, this is like uh totally another
+workflow for everyone. For me, this is
+nice because my my stuff usually
+contains a lot of media and the little
+machine helps me
+helps me fetch all that usually and
+process it.
+So let's see this is in desktop.
+Um this is the screenshot we want to
+have in that section. Uh it's basically
+well just read it and you will
+understand.
+So just um name the section cards for
+Ukraine and then add the image and then
+I'll add my blur later.
+>> [snorts]
+>> Where the [ __ ] did it add that?
+Oh, it didn't yet. Okay.
+All right. I'm happy to report that this
+year we crossed the 300,000 euros uh
+line with cards for Ukraine.
+Have a good night. Bye.
+Now I need to delete these lines.
+[clears throat]
+Lots of small donations and one big
+donation by an anonymous donor um have
+helped us reach this goal.
+actually.
+Oh, I forgot to update that when I sent
+out the last patch. God damn it.
+Um, can you use the Google Drive skill
+uh to find the inan
+uh sheet [clears throat] and look into
+the data? How many batches we sent out
+this year and what size?
+Meanwhile,
+Just clear.
+Yeah, it's an old one.
+Element also. Well, in this case, it's
+definitely not a find because
+Uh if uh the fine gets audited, it
+should better be not a [ __ ]
+uh a So yeah, it's not. [laughter]
+[gasps]
+[snorts]
+There we go.
+Hello.
+This is a very boring stream. So,
+welcome.
+[clears throat]
+Cool.
+Only two batches.
+This doesn't sound right.
+[snorts]
+That was only two batches. That's right.
+Well,
+that's what it is.
+Um, next paragraph.
+We were able to send out two batches.
+One
+generally counts.
+See?
+Oh, there we go. What the [ __ ] I didn't
+update the stats
+in May
+and then in parenthesis 190 cards
+and one in October parenthesis 308 cards
+which were sent to as many Ukrainian
+families is in Austria.
+Tanya is still writing her substack
+and is often asking for donations in her
+posts.
+I keep
+Oh, no. [laughter]
+Oscar. I'm sorry. Uh, I shouldn't have
+kept the Yeah, sorry. I misread.
+I I I know that a lot of business
+people, especially APUs, have an ink
+machine, and it's mostly an affinum in
+the sense of they will aindum.
+So they will they will make up uh
+expenses. So yeah that's interesting.
+Anyways, of post u me on I still try to
+entertain the internet with stupid
+projects and at the end of each social
+media post I beg for donations for the
+association
+still kind of works but obviously after
+three years of war [snorts] and the
+recession
+people's purses are not as open as they
+used to be.
+All right, I think that's
+good for this section.
+Let's move on and call the next session
+messing with AI.
+Let's see.
+Wow. I'm not going to find this picture.
+God damn it.
+Actually,
+I need to find an image that was either
+posted by me or Amen Rona on Twitter uh
+sometime in May, I think.
+Uh,
+it probably also mentions Peter
+Steinberger Stipy.
+Can you use the Twitter search to find
+out for me?
+Yeah, this my stupid little browser
+agent.
+It see no type. [laughter] God damn it.
+Oh, and it doesn't know the date. This
+is hilarious.
+But at least it helped me write this
+stupid query
+results from
+there. Go media.
+God, was this in me?
+Jesus.
+No.
+Maybe it was in April.
+Let's see.
+[laughter]
+Oh, Peter,
+you beautiful bastard. Maybe it was in
+June. Could be June actually.
+Sexy Peter. Oh, there we go. There's us.
+Dorks.
+Dorks. [laughter]
+Um, in the desk folder, there's a
+dorks.jpeg. Uh, add that at the front of
+the section.
+This is going to take all night. There
+we go. Can you add a caption to that
+image called dorks? I forgot what the
+format was. Something like thick caption
+or whatever. Look into the other posts.
+Maybe you can find the syntax.
+Oh, there we go. That's how it works.
+Goody. Good.
+I've been playing with large language
+models since
+the beginning of 20123,
+shortly after CH GPT was released.
+over the past
+three years.
+Oh my god, didn't get that. Over the
+past three years, um, lots has happened.
+So those little models became more
+capable
+and more helpful, especially with
+coding.
+In early 2025, the whole thing kind of
+took off. Instead of copy and pasting
+code into CHPT or cloud uh web, um
+people would start using
+coding agents
+mostly in the terminal. [sighs]
+and mostly in yellow mode,
+meaning they have full control over the
+computer they're running on. So, they
+can help with all kinds of coding tasks.
+Uh, insert references to the LLM
+projects mentioned in two years in
+review.
+Oh, [ __ ] this. Over the last three
+years, a lot has happened. We basically
+switched from
+asking Chapd or Claude
+on their respective website for some
+functions
+to having semiautonomous
+agents run on our machines in YOLO mode.
+[snorts]
+Since the second quarter of this year, I
+fully embraced this kind of workflow um
+and documented it here on the blog.
+Um insert all the related uh blog posts
+with references.
+[clears throat]
+Um, sometime in June, Peter invited
+Armen and myself, link to their Twitter
+accounts,
+to his beautiful flat in Vienna where we
+set out to build a thing
+within 24 hours.
+We didn't have any idea what to build
+initially. So we just took to a
+whiteboard and started throwing ideas at
+it.
+And the one thing that stuck was
+we would all like to be able to control
+cloud code, the coding agent we all used
+back then um through our mobile phones
+on the go.
+There wasn't a competing product or No,
+wait.
+There wasn't really anything like that
+on the market either as a product or
+open source.
+So, we thought, how hard can it be if
+the three of us just sit together for 24
+hours with cloud code in in our bags, so
+to speak?
+The whole thing was an experiment in ad
+hoc wipe engineering. [laughter]
+[gasps] Um,
+the three of us. Uh, no wait.
+We quickly um segmented the project into
+modules. Each of us was assigned a bunch
+of modules. If I remember correctly,
+Peter was assigned front end, which was
+especially funny. Or was it me? I don't
+remember.
+I don't remember what Peter was
+assigned. And pink waving. Bye.
+>> [snorts]
+>> We worked like a skunk works team um
+assigning different parts of the project
+to each of us
+with various degrees of success.
+Um, while Armen initially worked on the
+terminal streaming,
+I worked on the front end, the thing I'm
+least capable of,
+and Peter worked on
+Peter Things, I think, uh, a dedicated
+Mac OS app to orchestrate all of this.
+At the end of the night, we had um
+pretty working. No,
+at the end of the night, we had a
+prototype working much better than we
+expected.
+And while Armen and uh Peter mostly gave
+into the wipes, I couldn't help but had
+to refactor the
+back end I wrote. So, oh, actually it
+was much more funnier than [laughter]
+details are blurry, but I think Armen
+was assigned the back end. Uh,
+Peter was assigned um dedicated Mac OS
+app and I was assigned front end, the
+thing I'm least capable of.
+While Peter and Armen worked on their
+respective parts, I threw together a
+back end so my front had something to
+work with, especially the terminal
+streaming.
+Um,
+Armenian was writing the back end in
+Rust naturally
+only to find that the NodeJS version
+actually worked better. [laughter]
+Um, we ended up with a Frankenstein that
+worked
+but was basically unmaintainable.
+Despite that, it was a extremely fun
+experiment and
+we had we the three of us had a great
+time hanging out in real life as we
+usually just shoot the [ __ ] on the
+internet.
+After we uh dissolved, Peter uh tried to
+keep Wipe Tunnel running, turn it into
+an open source project, but at that
+point, the project was probably too
+complex for anyone to jump on board.
+Peter has since uh
+created
+Claude this I think. Let's see.
+Oh. Oh, this.
+God damn it.
+>> [snorts]
+[sighs]
+>> which is just a much better version than
+VIP, much better version of Vipal that
+directly integrates with WhatsApp and
+other chat apps. Um,
+it too is a spaceship and I haven't
+dared looking into the repository yet,
+but it seems to work a lot better than
+Wipe Tunnel, at least for him.
+>> [snorts]
+>> Okay, let's see.
+[laughter] Yeah.
+Uh
+yeah, I don't know what to say. Peter
+does indeed have a lot of tools and
+domains. [laughter]
+>> [snorts]
+>> Oh yeah, this is actually nice.
+Um, can you link to the VIP tunnel uh
+repository?
+actually uh in the paragraph ending in
+infinite number of clouds working for us
+add and so wipe tunnel was born and link
+to wipe tunnel there instead of the
+paragraph below
+The first two paragraphs should actually
+come after the messing with AI heading
+and then add a subheading called wipe
+tunnel.
+>> [laughter]
+>> Yeah, I mean in my case at least I'm not
+a native speaker so it makes sense that
+it doesn't
+understand or transcribe correctly.
+>> [snorts]
+>> Okay. after the second um
+paragraph in messing with AI.
+Let's add another one.
+Yeah, French accent is probably even
+worse than an Austrian accent.
+[laughter] I'm sorry to say.
+Okay, third paragraph.
+Before I dive into the specifics, I
+think my summary
+of a year of working with coding agents
+is um Colin,
+nobody knows yet how to do this
+properly. We are all just throwing [ __ ]
+at the wall, declaring victory um while
+secretly crying over all the tech depth
+that that we introduce into our code
+bases by letting agents run um AMO.
+If somebody claims they have found the
+solution, don't trust them. They have
+not. Um,
+but there seem to be a few principles
+crystallizing that
+lead to more predictable outcomes out by
+still unreliable outcomes. No, that's
+you know what I mean. Can you fix that
+last sentence up? Give me a give me a
+suggestion.
+There seems to be a few tomorrow.
+[sighs]
+The first one is good.
+Yeah, I think I'm gonna going to stop
+for tonight. I'm just too tired.
+Well, thanks to anyone still watching or
+listening. Going to bed. Have a nice
+one. Bye.

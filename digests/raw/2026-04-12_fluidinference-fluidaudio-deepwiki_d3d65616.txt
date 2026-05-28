@@ -1,0 +1,115 @@
+Loading...
+Loading...
+Menu
+- CITATION.cff
+- CLAUDE.md
+- Documentation/ASR/CustomPronunciation.md
+- Documentation/CLI.md
+- Documentation/README.md
+- Documentation/TTS/Kokoro.md
+- Documentation/TTS/SSML.md
+- FluidAudio.podspec
+- Package.swift
+- README.md
+- Sources/FluidAudio/ASR/Parakeet/SlidingWindow/CustomVocabulary/WordSpotting/BpeTokenizer.swift
+- Sources/FluidAudio/ASR/Parakeet/SlidingWindow/CustomVocabulary/WordSpotting/CtcTokenizer.swift
+- Sources/FluidAudio/Shared/MLModel+Prediction.swift
+- Sources/MachTaskSelfWrapper/include/module.modulemap
+This document provides a high-level introduction to FluidAudio, a Swift SDK for fully local, low-latency audio AI on Apple platforms. It covers the SDK's core capabilities, architectural design, and design philosophy.
+For installation instructions and initial setup, see Getting Started For detailed API documentation of individual modules, see Core Library For performance characteristics and benchmarking, see Performance and Benchmarks
+FluidAudio is a Swift SDK that enables fully local audio AI processing on macOS and iOS devices. The SDK provides four primary AI capabilities:
+- Automatic Speech Recognition (ASR): Transcription via Parakeet TDT, Qwen3, and Nemotron models supporting over 30 languages. README.md38-39 CLAUDE.md124-132 CLAUDE.md149-152
+- Speaker Diarization: Speaker separation and identification using Pyannote segmentation, WeSpeaker embeddings, VBx clustering, and end-to-end Sortformer. README.md41-42 CLAUDE.md133 CLAUDE.md143
+- Voice Activity Detection (VAD): Speech/silence classification using Silero VAD models. README.md43 CLAUDE.md135 CLAUDE.md145
+- Text-to-Speech (TTS): Voice synthesis via PocketTTS (streaming, voice cloning) and Kokoro (high-quality, SSML and IPA support). README.md40 Documentation/TTS/Kokoro.md1-5 CLAUDE.md134
+All inference operations are optimized for Apple's Neural Engine (ANE) via CoreML, minimizing CPU usage and power consumption while avoiding GPU/MPS entirely. README.md12-14 README.md44 Documentation/TTS/Kokoro.md98-100
+Sources: README.md1-46 CLAUDE.md7-8 FluidAudio.podspec1-10
+The ASR subsystem transcribes audio using a variety of state-of-the-art architectures. CLAUDE.md130-132
+| Model Family | Key Models | Architecture | Languages |
+|---|---|---|---|
+| Parakeet | tdt-0.6b-v3 , eou-120m | Token Duration Transducer (TDT) | 25 European (v3) README.md38 |
+| Qwen3 | Qwen3-ASR-0.6B | Encoder-Decoder (Transformer) | 30+ CLAUDE.md98 CLAUDE.md151-152 |
+| Nemotron | Nemotron-Streaming-0.6B | FastConformer RNNT | English CLAUDE.md152 |
+Processing modes:
+- Batch: High-throughput transcription via
+AsrManager
+with automatic decoder state reset. CLAUDE.md149 - Streaming: Low-latency real-time transcription via
+StreamingAsrManager
+,SlidingWindowAsrManager
+, orQwen3StreamingManager
+. CLAUDE.md150-152 - Post-Processing: Inverse Text Normalization (ITN) via
+TextNormalizer
+to convert spoken-form to written-form. README.md39 - Custom Vocabulary: Support for BPE-based tokenization via
+CtcTokenizer
+andBpeTokenizer
+for keyword boosting. Sources/FluidAudio/ASR/Parakeet/SlidingWindow/CustomVocabulary/WordSpotting/CtcTokenizer.swift7-9 Sources/FluidAudio/ASR/Parakeet/SlidingWindow/CustomVocabulary/WordSpotting/BpeTokenizer.swift9-12
+Sources: README.md38-39 CLAUDE.md130-132 CLAUDE.md149-152 Documentation/README.md8-20 Sources/FluidAudio/ASR/Parakeet/SlidingWindow/CustomVocabulary/WordSpotting/CtcTokenizer.swift7-60
+The diarization subsystem identifies "who spoke when" through modular and end-to-end pipelines. CLAUDE.md143
+Diarization Pipeline Architecture
+Sources: README.md41-42 CLAUDE.md133 CLAUDE.md143 FluidAudio.podspec40-49 Documentation/README.md22-29
+VAD segments audio into speech/silence regions using Silero VAD models. README.md43 The VadManager
+supports:
+- Batch mode: Analyzes entire files to produce a list of speech timestamps. Documentation/CLI.md91-92
+- Streaming mode: Real-time detection with 128ms chunks and hysteresis logic. Documentation/CLI.md94-95 CLAUDE.md145
+Sources: README.md43 CLAUDE.md135 CLAUDE.md145 Documentation/CLI.md91-98
+FluidAudio provides two TTS engines catering to different quality and latency requirements. README.md40
+| Feature | Kokoro (KokoroTtsManager ) | PocketTTS (PocketTtsManager ) |
+|---|---|---|
+| Synthesis | Parallel (All frames at once) | Autoregressive (Streaming) |
+| Vocoder | Vocos | Mimi |
+| Latency | Wait for full generation | ~80ms to first audio |
+| Control | SSML, Custom Lexicon, IPA | Voice Cloning (1-30s) |
+| Languages | 9 (EN, ES, FR, HI, IT, JA, PT, ZH) | English |
+Control Mechanisms:
+- SSML Support: Tags like
+<phoneme>
+,<sub>
+, and<say-as>
+for fine-grained synthesis control. Documentation/TTS/SSML.md5-58 - Custom Lexicon:
+TtsCustomLexicon
+allows word-to-phoneme overrides with case-sensitive and normalized matching. Documentation/ASR/CustomPronunciation.md19-62
+Sources: Documentation/TTS/Kokoro.md79-96 README.md40 CLAUDE.md134 Documentation/TTS/SSML.md1-238 Documentation/ASR/CustomPronunciation.md1-185
+The SDK is organized into modular targets, with FluidAudio
+as the primary library product. FluidAudio.podspec58-70
+System Entity Map
+Sources: CLAUDE.md124-137 FluidAudio.podspec1-73 CLAUDE.md141-152 Package.swift1-63
+FluidAudio manages models automatically via a registry system, downloading them from HuggingFace on first use. CLAUDE.md151-152
+Model Lifecycle
+Sources: CLAUDE.md136 CLAUDE.md151-152 README.md12-14 Documentation/TTS/Kokoro.md16-17
+All inference runs entirely on-device with no network dependencies post-download. README.md12-14 This ensures privacy, low latency, and reliability for background processing and ambient computing. README.md14
+FluidAudio targets the ANE for heavy inference tasks. README.md12-14 The v2 models (e.g., Kokoro) are converted with FLOAT16
+precision to move BERT transformer layers and generator convolutions to the ANE, resulting in significant speedups (e.g., 1.67x for Kokoro). Documentation/TTS/Kokoro.md98-107
+The SDK strictly adheres to Swift 6 concurrency models. CLAUDE.md5
+- No
+@unchecked Sendable
+: Proper synchronization is mandatory using actors or proper locking. CLAUDE.md11-15 - Actor-based: Core managers (e.g.,
+AsrManager
+) use actor-based concurrency to prevent data races. CLAUDE.md149-150 - Sendable Classes: Utility classes like
+CtcTokenizer
+andBpeTokenizer
+are markedSendable
+. Sources/FluidAudio/ASR/Parakeet/SlidingWindow/CustomVocabulary/WordSpotting/CtcTokenizer.swift7 Sources/FluidAudio/ASR/Parakeet/SlidingWindow/CustomVocabulary/WordSpotting/BpeTokenizer.swift9
+Sources: CLAUDE.md11-15 CLAUDE.md149-150 README.md12-14 Sources/FluidAudio/ASR/Parakeet/SlidingWindow/CustomVocabulary/WordSpotting/CtcTokenizer.swift7
+| Platform | Minimum Version | Architecture |
+|---|---|---|
+| macOS | 14.0+ FluidAudio.podspec17 | Apple Silicon (arm64) FluidAudio.podspec25 |
+| iOS | 17.0+ FluidAudio.podspec16 | arm64 FluidAudio.podspec29 |
+| Swift | 6.0+ README.md5 | - |
+Sources: FluidAudio.podspec16-38 README.md5-6 Package.swift6-9
+Refresh this wiki
+This wiki was recently refreshed. Please wait 5 days to refresh again.
+- Overview
+- What is FluidAudio?
+- Core Capabilities
+- Automatic Speech Recognition
+- Speaker Diarization
+- Voice Activity Detection
+- Text-to-Speech
+- System Architecture
+- Component Organization
+- Model Management and Caching
+- Design Philosophy
+- Local-First Processing
+- Apple Neural Engine Optimization
+- Thread Safety and Concurrency
+- Platform Support

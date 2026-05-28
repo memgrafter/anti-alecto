@@ -1,0 +1,11 @@
+Reddit thread capture
+
+Thread URL: https://reddit.com/r/ClaudeAI/comments/1s18i54/i_turned_claude_code_into_a_full_rag_learning/
+Subreddit: r/ClaudeAI
+Title: I turned Claude Code into a full RAG learning academy — 20 agents, 17 slash commands, 9-module curriculum
+Author: u/bokuwataka
+Score: 2
+Comment count (reported): 1
+
+## Original post
+Repo: [https://github.com/TakaGoto/rag-learning-academy](https://github.com/TakaGoto/rag-learning-academy) I've been trying to find good tutorials or courses on RAG. Unfortunately none of them met my expectations. Most of them have the same issues: * The UI felt unintuitive and confusing * The content was outdated * They lean on services like AWS Bedrock which hide a lot of the details I actually wanted to learn about RAG * I had tons of questions as I went through the material and couldn't get answers without waiting or digging through forums * They assume you're a true beginner, which just wastes time when you have 13 years of software experience So I decided to build my own interactive learning experience — inside Claude Code. What it actually does well 1. Assesses your knowledge first. Run /start and it determines whether you should be on the beginner, intermediate, or advanced track. No sitting through "what is a vector?" when you already know. 2. You can ask questions along the way. Digress if you want to. Claude keeps you on track and logs your progress. There are 20 specialist agents — if you go deep on something like chunking strategy or reranking, the right expert jumps in. 3. Uses open-source tools by default, no API keys required. Local embeddings (all-MiniLM-L6-v2), ChromaDB, and Claude Code as the LLM — you're already running it. Want to use OpenAI embeddings or Pinecone instead? Swap them in. Multi-language support is in progress (Python only right now). 4. The content stays current. Monthly CI checks the codebase for deprecated patterns, stale model references, and outdated libraries. You can also run /audit-content for an on-demand freshness check. Quick start git clone [https://github.com/TakaGoto/rag-learning-academy.git](https://github.com/TakaGoto/rag-learning-academy.git) cd rag-learning-academy claude /start its open sourced, its free. tell me what you think

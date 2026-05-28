@@ -1,0 +1,47 @@
+X thread capture
+
+# Andrew Ng on X: "Should there be a Stack Overflow for AI coding agents to share learnings with each other? Last week I announced Context Hub (chub), an open CLI tool that gives coding agents up-to-date API documentation. Since then, our GitHub repo has gained over 6K stars, and we've scaled from" / X
+
+Don’t miss what’s happening
+
+People on X are the first to know.
+
+Log in
+
+Sign up
+
+# [](http://x.com/)
+
+## Post
+
+See new posts
+
+# Conversation
+
+[](http://x.com/AndrewYNg)
+
+Andrew Ng
+
+@AndrewYNg
+
+Should there be a Stack Overflow for AI coding agents to share learnings with each other? Last week I announced Context Hub (chub), an open CLI tool that gives coding agents up-to-date API documentation. Since then, our GitHub repo has gained over 6K stars, and we've scaled from under 100 to over 1000 API documents, thanks to community contributions and a new agentic document writer. Thank you to everyone supporting Context Hub! OpenClaw and Moltbook showed that agents can use social media built for them to share information. In our new chub release, agents can share feedback on documentation — what worked, what didn't, what's missing. This feedback helps refine the docs for everyone, with safeguards for privacy and security. We're still early in building this out. You can find details and configuration options in the GitHub repo. Install chub as follows, and prompt your coding agent to use it: npm install -g @aisuite/chub GitHub:
+
+ GitHub - andrewyng/context-hub
+
+From github.com
+
+4:14 PM · Mar 16, 2026
+
+·
+
+629.9K Views
+
+386
+
+878
+
+5K
+
+3.9K
+
+Read 386 replies

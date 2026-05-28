@@ -1,0 +1,58 @@
+Reddit thread capture
+
+Thread URL: https://reddit.com/r/ChatbotRefugees/comments/1pmj2ic/chatticaai_just_launched_on_the_google_play_store/
+Subreddit: r/ChatbotRefugees
+Title: ChatticaAI Just launched on the Google Play Store! take a look and give it a try! (iOS early Jan)
+Author: u/AM_Interactive
+Score: 9
+Comment count (reported): 35
+
+## Original post
+Hey! I'm the dev for [ChatticaAI](https://chattica.ai/) and I finally got it on the Play Store after a couple months of closed beta. We are up to 150 downloads as of this post! I built this because I was tired of apps that store your conversations on their servers and charge tokens, coins, funbucks, or some crazy monthly price. Most of them are chat-only too, and the image gen options out there are pretty lacking. So here's what Chattica does: - Bring your own API keys (OpenRouter, OpenAI, Anthropic, nanoGPT, LM Studio) - Everything stored locally on your phone. Nothing touches my servers because I don't have any - Connect your own Stable Diffusion for image gen, or use an image API - Automatic image replies and background generation - LORA fetching from your local SD install - AI character/scenario creator that builds off your preferences - Import your existing characters (PNG/JSON) - Lorebooks, session summaries, tracking, story mode, texting mode I get better image results from Chattica than I ever got out of SillyTavern honestly. If you're into that stuff definitely check it out. iOS is built and working, just going through the Appstore submission and approval process. 18+ rated, no accounts needed, free to use. https://play.google.com/store/apps/details?id=com.aminteractivesoftware.chatticaai JUST WENT LIVE ON IOS! https://apps.apple.com/us/app/chatticaai/id6756588405
+
+## Prominent viewpoints (top-level comments)
+1. (3) u/KaelithVeyra: This is exactly what I was looking for, thank you! I just downloaded and will try it out a bit for the next days and then definitly get the sub, really good work!
+2. (2) u/Rich_Can_6507: Waiting for IOS
+3. (2) u/ReplacementTommy: I have used it for two days and I am blown away. It is fantastic.
+4. (2) u/call-lee-free: I'm gyessing a pretty decent mobile is gonna be needed to run this locally?
+5. (1) u/GnomieNomi: I’m using iOS but definitely gonna try once it’s available.
+6. (1) u/[deleted]: I'm a complete amateur at setting up these kinds of things myself, but something like this on mobile sounds perfect for me so I'm gonna give it a shot!
+7. (1) u/[deleted]: [deleted]
+8. (1) u/TeiniX: I wish I knew how to use all that stuff. I kinda understand how API keys work but when it's Lora etc I'm lost.
+
+## Thread discussion sample
+- (3) u/KaelithVeyra: This is exactly what I was looking for, thank you! I just downloaded and will try it out a bit for the next days and then definitly get the sub, really good work!
+- (2) u/Rich_Can_6507: Waiting for IOS
+  - (2) u/EvieBelievie: Me too
+  - (1) u/AM_Interactive: Just went live on iOS! https://apps.apple.com/us/app/chatticaai/id6756588405
+- (2) u/ReplacementTommy: I have used it for two days and I am blown away. It is fantastic.
+  - (1) u/AM_Interactive: That’s so great to hear! Please leave a review on the Google play store, it would be very helpful!
+- (2) u/call-lee-free: I'm gyessing a pretty decent mobile is gonna be needed to run this locally?
+  - (2) u/AM_Interactive: Nope! I tested on a Samsung Galaxy A16 ($175 new) phone. It’s actually pretty light on phone, I keep your last ~50 messages on screen (like a long website in with images) other than that is just a lot of text being sent (your model context window) and that’s all it really takes!
+- (1) u/GnomieNomi: I’m using iOS but definitely gonna try once it’s available.
+  - (1) u/AM_Interactive: Just went live on iOS! https://apps.apple.com/us/app/chatticaai/id6756588405
+- (1) u/[deleted]: I'm a complete amateur at setting up these kinds of things myself, but something like this on mobile sounds perfect for me so I'm gonna give it a shot!
+  - (1) u/AM_Interactive: thanks so much! please let me know if it was easy for you, I'm really trying to make the app approachable for folks like you!
+    - (2) u/[deleted]: Honestly it was way easier than I thought it would be! I already had an API key set up with OpenRouter so I wasn't going in completely blind, but the interface is really clear, and the fact that everything is clearly labelled with descriptions (like I'd have had no idea what prompt caching meant otherwise) made it easy to use, so thank you!
+      - (1) u/AM_Interactive: fantastic! if you come across anything or want to suggest anything please join the discord! https://discord.gg/6QUp4fw2cj
+- (1) u/[deleted]: [deleted]
+  - (3) u/AM_Interactive: I am very sorry about Brazil, beyond your country asking for my own personal information (my SSN and ID, not my business) the taxes they would take would mean I would only see 27% of revenue of my app, I would also have to be able to provide your government YOUR information if they requested it. And that is not something I am willing or even able to do.
+- (1) u/TeiniX: I wish I knew how to use all that stuff. I kinda understand how API keys work but when it's Lora etc I'm lost.
+  - (1) u/AM_Interactive: LORAs are specific to local image generation, kinda a “if you know you know”. If you just want it to work, I’d suggest something like the $8mo nanoGPT subscription, that gives you 2000 message and image replies per day. Pick a chat api model like Deepseek or GLM 4.6 and then juggernaut XL for images and you will get solid results.
+    - (1) u/TeiniX: I don't need images to be honest. I'm more of a roleplay with uncensored nsfw chat involved kinda guy. Any idea which one of them is good for that? So I need an API key and LLM separately?
+      - (2) u/AM_Interactive: So you would sign up with a third party like openrouter, nanoGPT, z.ai or whoever, you either get free usage or low monthly cost usage (either pay per token or flat rate) and get the API key from them. The API key is your “authorization key” that allows you to select from the different LLMs each provider offers. Each LLM kinda has its own “flavor” or tone, some dive right into NSFW, others are more “natural” sounding, that ends up being about preference. You put that API key into the program (Chattica in this scenario) and then it sends the messages to that provider. Chattica is just the UI to make the conversation easier. I plan to make some YouTube tutorial videos on all this early next ye
+      - (2) u/TeiniX: Thanks! I'll join the discord
+      - (1) u/AM_Interactive: I’d give the direct link but bots like to scrape them so I’ve avoided putting it here on Reddit.
+- (1) u/Emotional-Cabinet-56: Sucks that to try image gen you gotta pay, even for local image gen
+  - (1) u/AM_Interactive: Going to try and get a two week free trial setup later today! I wanted to get it live on both platforms before I set that up as there is some backend appstore stuff that needs to be done for it to work.
+  - (1) u/AM_Interactive: I just added a two week free trial to premium monthly. it may take a few to populate across the app stores but please give it a go!
+- (1) u/GrumpyM: I have tried the app, and for some reason all of my chat replies are getting truncated after the first 50 or so characters. I know the API (openrouter) is working as I can suggessfully generate character cards, and I can see the thinking work properly. It’s only once the actual response starts that it stops after 27 tokens or so. The attached screenshot (iPad) is typical. There’s the initial starter prompt, then my entry, and then the truncated AI response. I’ve been through the settings many times - maximum tokens is huge, context is large, and I can’t seem to figure out what the problem is. If I enable reasoning, I get many tokens of reasoning (no truncation in the reasoning) in the respon
+  - (1) u/AM_Interactive: What model and what provider are you using? Turn on bug report logging and try to send a me message,. If you get cutoff go back into help (whew you turn of bug report logging) and send me the messege, you can delete any any context I just want to see the send receive headers. Send that as a bug report and I can figure out what’s Going on. Worst case join the discord and we will get it figured out. I’ve had 1 other person (out of ~650 ish so far) have a weird issues like this. I do want to make sure the app works for everyone, edge cases are the ones I need more info on to help others.
+    - (1) u/GrumpyM: I’ve submitted a bug report and joined the discord. Thank you for your help! I’ll see you there. Appreciate the prompt response.
+- (1) u/Familiar_Pay_3933: Is it possible to use Sophia's Lorebary on Chattica as well? I use it on Janitor too, but was wondering if i could use it on Chattica as well.
+  - (1) u/AM_Interactive: Unfortunately not. It is setup to be a “man in the middle” between the user and the API and that is not something I want to allow. But Chattica allows you to edit all of your prompts (which is what that ultimately does) so you can add the prompts from it (if they choose to provide them) directly into Chattica. But the “privacy first” policy of Chattica is something I don’t want to bend on to allow someone else to be between the user and thier chosen API provider, that would allow users data to be exposed if they were ever to be hacked.
+    - (1) u/Familiar_Pay_3933: I understand, thank you for responding :)
+- (1) u/Adunaiii: This garbage literally doesn't work, bugged shit stuck in the forced tutorial, two buttons that don't work (continue the tutorial vs stay here - are you trolling?)... Put one star on playstore.
+  - (1) u/AM_Interactive: The “forced tutorial” is there to ensure you put in an API key, as the app will not work without it. If you need assistance checkout the discord.
+- (1) u/RyanSheep3621: does this app still work? i've downloaded it and i have an api key but theres no models to select and idk how to get one. the app doesn't seem to work at all.
+  - (1) u/AM_Interactive: What provider are you using for you API key?

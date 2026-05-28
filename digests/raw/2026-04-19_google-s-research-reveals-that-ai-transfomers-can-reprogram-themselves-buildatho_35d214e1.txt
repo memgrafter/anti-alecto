@@ -1,0 +1,25 @@
+Reddit thread capture
+
+Thread URL: https://reddit.com/r/Buildathon/comments/1oau8w3/googles_research_reveals_that_ai_transfomers_can/
+Subreddit: r/Buildathon
+Title: Google's research reveals that AI transfomers can reprogram themselves
+Author: u/Silent_Employment966
+Score: 49
+Comment count (reported): 7
+Linked URL: https://i.redd.it/2peb73sfj3wf1.png
+
+## Original post
+[Source](https://arxiv.org/pdf/2507.16003)
+
+## Prominent viewpoints (top-level comments)
+1. (10) u/apnorton: > Reprogram themselves No. The claim is that, through patterns provided in the context window, unseen patterns can be recognized/followed at inference time. That's significantly different than "reprogramming," and is also different than online learning.
+2. (2) u/InsectActive95: Gonna read this
+
+## Thread discussion sample
+- (10) u/apnorton: > Reprogram themselves No. The claim is that, through patterns provided in the context window, unseen patterns can be recognized/followed at inference time. That's significantly different than "reprogramming," and is also different than online learning.
+  - (3) u/PaperVegetable6093: Wow. I found a literate redditor in the wild!
+    - (2) u/simion_baws: True lol
+  - (1) u/Softmax420: Could you explain how this is a breakthrough? It was my understanding that this was known for years. As far as I can tell this isn’t actual ‘learning’ but only a temporary improvement in output due to data within the context window. Eg. I made a data analyst chatbot with 4o mini, LLMs are pretty bad at complex sql, so I had a retrieval setup to grab an example for anything it struggled with, I.e. rolling 3 month spend or anything that needed a window function. Is this not what the paper is referring to? Is that not the entire purpose of RAG? I must be misunderstanding.
+    - (1) u/apnorton: My understanding is that this paper is trying to identify the mechanism by which providing context to an LLM actually makes it better. e.g. it's generally well-documented that "more context = more better," but this paper is specifically tracking what parts of the transformers react to the additional context.
+      - (1) u/SpyMouseInTheHouse: Correct. This is the same as newton saying “damn, there’s a thing called gravity!” When everyone already knew there is but hadn’t put it to writing, which leads to further writing which leads to proof, which leads to discovery and so on. You get the picture.
+- (2) u/InsectActive95: Gonna read this

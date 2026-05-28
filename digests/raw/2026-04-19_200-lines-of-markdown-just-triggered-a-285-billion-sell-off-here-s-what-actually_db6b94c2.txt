@@ -1,0 +1,192 @@
+Title: 200 lines of markdown just triggered a $285 billion sell-off — here's what actually broke + what it means for your workflow
+
+URL Source: http://natesnewsletter.substack.com/p/200-lines-of-markdown-just-triggered?r=1z4sm5
+
+Published Time: 2026-02-10T14:03:07+00:00
+
+Markdown Content:
+# 200 lines of markdown just triggered a $285 billion sell-off — here's what actually broke + what it means for your workflow
+
+[![Image 1: Nate’s Substack](https://substackcdn.com/image/fetch/$s_!s4a7!,w_40,h_40,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb3b96b13-6f01-4e56-b410-18e03e7bc8af_500x500.png)](http://natesnewsletter.substack.com/)
+
+# [![Image 2: Nate’s Substack](https://substackcdn.com/image/fetch/$s_!dWpr!,e_trim:10:white/e_trim:10:transparent/h_72,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0b99d424-3fea-4fab-8f3d-2204a5ab1ad1_2934x567.png)](http://natesnewsletter.substack.com/)
+
+Subscribe Sign in
+
+![Image 3](https://substack-video.s3.amazonaws.com/video_upload/post/187439605/7e455b83-f155-4a9c-b412-b3ac2becf212/transcoded-00001.png?refresh=undefined)
+
+Playback speed
+
+×
+
+Share post
+
+Share post at current time
+
+Share from 0:00
+
+0:00
+
+/
+
+![Image 4](https://substackcdn.com/image/fetch/$s_!TAjW!,w_340,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fca8b4663-3eb8-42e2-a41a-1efd45e5ab98_1400x1400.png)
+
+Playback speed
+
+×
+
+Share post
+
+0:00
+
+/
+
+Preview
+
+Audio playback is not supported on your browser. Please upgrade.
+
+172
+
+8
+
+12
+
+## 200 lines of markdown just triggered a $285 billion sell-off — here's what actually broke + what it means for your workflow
+
+200 lines of markdown just repriced enterprise software. Here's what actually died, what didn't, and what you should do about it.
+
+[![Image 5: Nate's avatar](https://substackcdn.com/image/fetch/$s_!AgBy!,w_36,h_36,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa37385e3-0387-487a-9f2c-e13aa963da4c_1080x1080.png)](https://substack.com/@natesnewsletter)
+
+[Nate](https://substack.com/@natesnewsletter)
+
+Feb 10, 2026
+
+∙ Paid
+
+172
+
+8
+
+12
+
+Share
+
+A markdown file — not a product, not a platform — a markdown file catalyzed a ~$285 billion single-session collapse across software, financial services, and alternative asset managers.
+
+On January 30th, Anthropic released a set of plugins for Claude Cowork, its desktop AI tool. One of them handled legal contract review. It could triage NDAs, flag non-standard clauses against a negotiation playbook, and generate compliance summaries — the kind of work that, until last week, required a paralegal, a Westlaw subscription, and billable hours.
+
+The plugin was open-source. Anyone could read it. And when people did, they found roughly 200 lines of structured markdown prompts — first-year law school content dressed up with some clever workflow logic. It shipped with a disclaimer: “All outputs should be reviewed by licensed attorneys.”
+
+By the close on Monday, Thomson Reuters had posted its biggest single-day stock decline on record — down nearly 18%. RELX, the parent company of LexisNexis, fell roughly 14%. Wolters Kluwer dropped about 13%. LegalZoom cratered nearly 20%. FactSet lost more than 10%. Morningstar fell 9%. The Goldman Sachs U.S. software basket posted its worst session since the April tariff selloff. The selling spread to alternative asset managers and private equity firms across the board.
+
+The catalyst wasn’t just the plugin. Software companies were already posting disappointing earnings — missing revenue estimates at rates not seen since the post-COVID correction — and the broader “AI disruption” repricing had been building for months. But the Anthropic release crystallized the fear into a single, legible image: a text file doing work that billion-dollar companies charge per-seat fees to access. The logic was brutally simple: if AI compresses the cost of legal and financial analysis, then every firm charging premium fees for that analysis has a margin problem. Not next year. **Now.**
+
+Jeffrey Favuzza on the Jefferies equity trading desk gave it a name. “We call it the SaaSpocalypse,” he told Bloomberg. “Trading is very much ‘get me out’ style selling.”
+
+Here’s what almost nobody is saying clearly enough: the markdown file didn’t cause this. It revealed it. The per-seat SaaS licensing model — the financial bedrock that the entire enterprise software economy has been built on for twenty years — was already cracking. The market just hadn’t priced it in yet.
+
+**Here’s what’s inside:**
+
+*   **The crash wasn’t about Claude.** What actually broke, why the “Anthropic killed SaaS” narrative misses the structural story, and what the sell-off tells you about where enterprise software is headed.
+
+*   **The counterargument Jensen Huang is making — and the part he’s getting wrong.** Why defending the product doesn’t save the pricing model, and what print media should have taught us.
+
+*   **The KPMG signal.** A quieter story that matters more than any stock chart — how the Big Four are already using AI as fee negotiation leverage, and why the cascade is just starting.
+
+*   **What actually died (and what didn’t).** The data edge and the accountability edge are real. The per-seat model sitting on top of them is not. What that means for incumbents, buyers, and builders.
+
+*   **The articulation problem.** Why “build your own” isn’t as simple as the hype suggests, what the real bottleneck is, and how much time the incumbents actually have.
+
+*   **Why this is fractal.** The same bolt-on vs. rebuild dynamic that’s threatening SaaS companies applies to every knowledge worker reading this — and the window is narrowing.
+
+Let me show you what the SaaSpocalypse actually revealed — and what it means for how you work.
+
+Subscribers get all posts like these!
+
+Subscribe
+
+## Listen to this episode with a 7-day free trial
+
+Subscribe to Nate’s Substack to listen to this post and get 7 days of free access to the full post archives.
+
+[Start trial](https://natesnewsletter.substack.com/subscribe?simple=true&next=https%3A%2F%2Fnatesnewsletter.substack.com%2Fp%2F200-lines-of-markdown-just-triggered%3Fr%3D1z4sm5&utm_source=paywall-free-trial&utm_medium=web&utm_content=187439605&coupon=cf6389d7)
+
+[Already a paid subscriber? **Sign in**](https://substack.com/sign-in?redirect=%2Fp%2F200-lines-of-markdown-just-triggered%3Fr%3D1z4sm5&for_pub=natesnewsletter&change_user=false)
+
+[![Image 6: Nate’s Substack](https://substackcdn.com/image/fetch/$s_!TAjW!,w_96,h_96,c_fill,f_auto,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fca8b4663-3eb8-42e2-a41a-1efd45e5ab98_1400x1400.png)](https://natesnewsletter.substack.com/)
+
+Nate's Notebook
+
+Welcome to my podcast! In these audio reviews of my newsletters, I am to break down complex AI topics in a way that's approachable and relatable. I want you to walk away with the confidence to leverage AI more effectively at home and at work!
+
+Welcome to my podcast! In these audio reviews of my newsletters, I am to break down complex AI topics in a way that's approachable and relatable. I want you to walk away with the confidence to leverage AI more effectively at home and at work!
+
+Subscribe
+
+Listen on
+
+Substack App
+
+RSS Feed
+
+Appears in episode
+
+[![Image 7: Nate's avatar](https://substackcdn.com/image/fetch/$s_!AgBy!,w_32,h_32,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa37385e3-0387-487a-9f2c-e13aa963da4c_1080x1080.png)](https://substack.com/@natesnewsletter?utm_source=author-byline-face-podcast)
+
+[Nate](https://substack.com/@natesnewsletter)
+
+Recent Episodes
+
+![Image 8](https://substackcdn.com/image/fetch/$s_!WYJj!,w_150,h_150,c_fill,f_auto,q_auto:good,fl_progressive:steep,g_center/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa5a5f928-8d3e-431f-859d-da224289a2b6_1024x1024.png)
+
+[The $300 Overnight Loop That's About To Eat Your Competitive Advantage](https://natesnewsletter.substack.com/p/the-teams-that-can-define-better)
+
+14 hrs ago•[Nate](https://substack.com/@natesnewsletter)
+
+![Image 9](https://substackcdn.com/image/fetch/$s_!GkbB!,w_150,h_150,c_fill,f_auto,q_auto:good,fl_progressive:steep,g_center/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcb230e35-1371-4b7c-9c0b-63510942d47e_1024x1024.png)
+
+[The Six-Month AI Context You Lose Every Time You Switch Tools, Jobs, Or Employers](https://natesnewsletter.substack.com/p/the-ai-capital-youve-been-building)
+
+Apr 17•[Nate](https://substack.com/@natesnewsletter)
+
+![Image 10](https://substackcdn.com/image/fetch/$s_!d0Pu!,w_150,h_150,c_fill,f_auto,q_auto:good,fl_progressive:steep,g_center/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe77d5d67-55a2-4493-8af2-2c0bfcf6c096_1024x1024.png)
+
+[You're Spending Six Figures on AI Models. The Bottleneck Is a 4-Minute CI Pipeline — and Nobody's Fixing the Right Thing.](https://natesnewsletter.substack.com/p/your-ai-is-50x-faster-your-tools)
+
+Apr 16•[Nate](https://substack.com/@natesnewsletter)
+
+![Image 11](https://substackcdn.com/image/fetch/$s_!TiVt!,w_150,h_150,c_fill,f_auto,q_auto:good,fl_progressive:steep,g_center/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F75827047-0510-43f2-9436-8713b78f0bf2_1024x1024.png)
+
+[Your agent needs a SOUL.md you can't write from scratch. I built a 45-minute prompt that writes it for you.](https://natesnewsletter.substack.com/p/your-agent-needs-a-soulmd-you-cant)
+
+Apr 15•[Nate](https://substack.com/@natesnewsletter)
+
+![Image 12](https://substackcdn.com/image/fetch/$s_!4irJ!,w_150,h_150,c_fill,f_auto,q_auto:good,fl_progressive:steep,g_center/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Facf97850-f10c-487a-9b6d-ee865d8d023f_1024x1024.png)
+
+[Sora died. Atlassian cut 1,600 engineers. Anthropic got blacklisted. The thread that connects them runs through your org.](https://natesnewsletter.substack.com/p/sora-died-atlassian-cut-1600-engineers)
+
+Apr 14•[Nate](https://substack.com/@natesnewsletter)
+
+![Image 13](https://substackcdn.com/image/fetch/$s_!SzLu!,w_150,h_150,c_fill,f_auto,q_auto:good,fl_progressive:steep,g_center/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F83cc3875-01b0-4f74-b2b7-02dcad8dae3c_1024x1024.png)
+
+[Your codebase is full of code nobody understood — not when it shipped, not now, not ever. Here's the fix.](https://natesnewsletter.substack.com/p/your-codebase-is-full-of-code-nobody)
+
+Apr 13•[Nate](https://substack.com/@natesnewsletter)
+
+![Image 14](https://substackcdn.com/image/fetch/$s_!-42m!,w_150,h_150,c_fill,f_auto,q_auto:good,fl_progressive:steep,g_center/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6eb331c2-105d-4141-9341-00e692548078_1024x1024.png)
+
+[Executive Briefing: Valve Got Lord of the Flies. Zappos Got Paralysis. Your Reorg Is Next.](https://natesnewsletter.substack.com/p/executive-briefing-44-of-companies)
+
+Apr 12•[Nate](https://substack.com/@natesnewsletter)
+
+![Image 15](https://substackcdn.com/image/fetch/$s_!fa_H!,w_150,h_150,c_fill,f_auto,q_auto:good,fl_progressive:steep,g_center/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F70413045-a100-47b7-98bf-d70b74f1985b_1024x1024.png)
+
+[GPUs Just Got 6x More Valuable. No New Hardware Required.](https://natesnewsletter.substack.com/p/your-gpus-just-got-6x-more-valuable)
+
+Apr 11•[Nate](https://substack.com/@natesnewsletter)
+
+© 2026 Nate · [Privacy](https://substack.com/privacy) ∙ [Terms](https://substack.com/tos) ∙ [Collection notice](https://substack.com/ccpa#personal-data-collected)
+
+[Start your Substack](https://substack.com/signup?utm_source=substack&utm_medium=web&utm_content=footer)[Get the app](https://substack.com/app/app-store-redirect?utm_campaign=app-marketing&utm_content=web-footer-button)
+
+[Substack](https://substack.com/) is the home for great culture

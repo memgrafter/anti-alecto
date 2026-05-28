@@ -1,0 +1,69 @@
+$ npm install -g @mariozechner/pi-coding-agent
+About
+Pi is a minimal terminal coding harness. Adapt pi to your workflows, not the other way around. Extend it with TypeScript extensions, skills, prompt templates, and themes. Bundle them as pi packages and share via npm or git.
+Pi ships with powerful defaults but skips features like sub-agents and plan mode. Ask pi to build what you want, or install a package that does it your way.
+Four modes: interactive, print/JSON, RPC, and SDK. See OpenClaw for a real-world integration.
+Providers & Models
+Anthropic, OpenAI, Google, Azure, Bedrock, Mistral, Groq, Cerebras, xAI, Hugging Face, Kimi For Coding, MiniMax, OpenRouter, Ollama, and more. Authenticate via API keys or OAuth.
+Switch models mid-session with /model
+or Ctrl+L
+. Cycle through your favorites with Ctrl+P
+.
+Add custom providers and models via models.json or extensions.
+Sessions
+Sessions are stored as trees. Use /tree
+to navigate to any previous point and continue from there. All branches live in a single file. Filter by message type, label entries as bookmarks.
+Export to HTML with /export
+, or upload to a GitHub gist with /share
+and get a shareable URL that renders it.
+Context
+Pi's minimal system prompt and extensibility let you do actual context engineering. Control what goes into the context window and how it's managed.
+AGENTS.md: Project instructions loaded at startup from ~/.pi/agent/
+, parent directories, and the current directory.
+SYSTEM.md: Replace or append to the default system prompt per-project.
+Compaction: Auto-summarizes older messages when approaching the context limit. Fully customizable via extensions: implement topic-based compaction, code-aware summaries, or use different summarization models.
+Skills: Capability packages with instructions and tools, loaded on-demand. Progressive disclosure without busting the prompt cache. See skills.
+Prompt templates: Reusable prompts as Markdown files. Type /name
+to expand. See prompt templates.
+Dynamic context: Extensions can inject messages before each turn, filter the message history, implement RAG, or build long-term memory.
+Queuing
+Submit messages while the agent works. Enter
+sends a steering message (delivered after current tool, interrupts remaining tools). Alt+Enter
+sends a follow-up (waits until the agent finishes).
+Extensions
+Features that other agents bake in, you can build yourself. Extensions are TypeScript modules with access to tools, commands, keyboard shortcuts, events, and the full TUI.
+Sub-agents, plan mode, permission gates, path protection, SSH execution, sandboxing, MCP integration, custom editors, status bars, overlays. Yes, Doom runs.
+Don't want to build it? Ask pi to build it for you. Or install a package that does it your way. See the 50+ examples.
+Packages
+Bundle extensions, skills, prompts, and themes as packages. Install from npm or git:
+$ pi install npm:@foo/pi-tools
+$ pi install git:github.com/badlogic/pi-doom
+Pin versions with @1.2.3
+or @tag
+. Update all with pi update
+, list with pi list
+, configure with pi config
+.
+Test without installing using pi -e git:github.com/user/repo
+.
+Find packages on npm or Discord. Share yours with the pi-package
+keyword.
+Integration
+Interactive: The full TUI experience.
+Print/JSON: pi -p "query"
+for scripts, --mode json
+for event streams.
+RPC: JSON protocol over stdin/stdout for non-Node integrations. See docs/rpc.md.
+SDK: Embed pi in your apps. See OpenClaw for a real-world example.
+Philosophy
+Pi is aggressively extensible so it doesn't have to dictate your workflow. Features that other tools bake in can be built with extensions, skills, or installed from third-party pi packages. This keeps the core minimal while letting you shape pi to fit how you work.
+No MCP. Build CLI tools with READMEs (see Skills), or build an extension that adds MCP support. Why?
+No sub-agents. There's many ways to do this. Spawn pi instances via tmux, or build your own with extensions, or install a package that does it your way.
+No permission popups. Run in a container, or build your own confirmation flow with extensions inline with your environment and security requirements.
+No plan mode. Write plans to files, or build it with extensions, or install a package.
+No built-in to-dos. Use a TODO.md file, or build your own with extensions.
+No background bash. Use tmux. Full observability, direct interaction.
+Read the blog post for the full rationale.
+Community
+Issues: GitHub for bugs and features.
+Discord: Community server for discussion and sharing.

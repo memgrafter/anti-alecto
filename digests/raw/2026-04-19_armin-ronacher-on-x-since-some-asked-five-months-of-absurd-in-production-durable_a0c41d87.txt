@@ -1,0 +1,29 @@
+X thread capture
+
+Don’t miss what’s happening
+
+People on X are the first to know.
+
+Log in
+
+Sign up
+
+## [](https://x.com/)
+
+## Post
+
+## Conversation
+
+Armin Ronacher ⇌
+
+@mitsuhiko
+
+Since some asked: five months of Absurd in production. Durable execution on plain Postgres with tiny SDKs. The design held up fine, partitioning is still hard and some closing thoughts on the future of Open Source.
+
+ Absurd In Production
+
+From lucumr.pocoo.org
+
+10:44 AM · Apr 4, 2026
+
+60.1K Views

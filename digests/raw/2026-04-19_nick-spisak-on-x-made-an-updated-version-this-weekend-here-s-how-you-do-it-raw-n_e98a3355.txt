@@ -1,0 +1,73 @@
+X thread capture
+
+# Nick Spisak on X: "Made an updated version this weekend Here's how you do it (raw notes) &gt; Grab @karpathy's latest gist (in the first comment) &gt; Download @steipete summarize CLI &gt; Download yt-dlp &gt; Download obsidian &gt; Download @tobi qmd --&gt; Setup a node or Golang CLI called "brain" --&gt; Have it https://t.co/D8zuTC2IQP" / X
+
+Don’t miss what’s happening
+
+People on X are the first to know.
+
+Log in
+
+Sign up
+
+# [](http://x.com/)
+
+## Post
+
+See new posts
+
+# Conversation
+
+[](http://x.com/NickSpisak_)
+
+Nick Spisak
+
+@NickSpisak_
+
+Made an updated version this weekend Here's how you do it (raw notes) > Grab 
+
+@karpathy
+
+'s latest gist (in the first comment) > Download 
+
+@steipete
+
+ summarize CLI > Download yt-dlp > Download obsidian > Download 
+
+@tobi
+
+ qmd --> Setup a node or Golang CLI called "brain" --> Have it index all your youtube data, AI agent data (jsonl files) --> Get your X data by requesting an archive in your settings --> Setup vaults for each domain/topic area --> Ask questions with your agent and qmd
+
+0:14
+
+Quote
+
+Nick Spisak
+
+@NickSpisak_
+
+·
+
+Apr 4
+
+ Article
+
+How to Build Your Second Brain
+
+@karpathy dropped a post describing how he uses AI to build personal knowledge bases. The idea is simple: instead of keeping notes scattered across apps, you dump everything into one folder. Then you...
+
+4:37 AM · Apr 6, 2026
+
+·
+
+586.7K Views
+
+72
+
+342
+
+3.5K
+
+9.3K
+
+Read 72 replies

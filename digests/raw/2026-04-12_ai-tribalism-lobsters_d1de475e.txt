@@ -1,0 +1,546 @@
+-
+-
+-
+I'm getting a bit tired of pro-AI posts that seem to only be aimed at refuting the "extreme anti-AI" takes on mastodon or bluesky. I'm glad one can use a tool as a tool and be more effective as a solo developer or in a small team, but these posts end up feeling (to me at least) dismissive of what are valid concerns, for example in this article:
+And honestly, even if all that doesn’t work, then you could probably just add more agents with different models to fact-check the other models. Inefficient? Certainly. Harming the planet? Maybe. But if it’s cheaper than a developer’s salary, and if it’s “good enough,” then the last half-century of software development suggests it’s bound to happen, regardless of which pearls you clutch.
+Why should "bound to happen" be any less of a reason to try to have responsible way to deal with LLMs? How do we define good enough in software development better so that we're just not pushing slop on to others at a crazy rate. The reasoning of LLMs are good because they make a developer productive, won't convince most people with a negative look on LLMs entirely, because just being producive isn't everything to a person, and what happens is that reasoning like the quoted parapgraph comes off as dismissive.
+I like to compare it with social media in a way, it's great that people can communicate faster and easier than ever, but it doesn't mean that people now suddenly communicate better and it also introduced its own set of problems.
+And since politics long ago devolved into tribalism, that means it’s become tribalism.
+Entirely unsure how to interpret this.
+-
+I'm already encountering people who out source all their thinking to LLMs.
+-
+Absolutely. It's deeply weird.
+I get irrational about this, but you don't get to call yourself a dev without sweating some of the details. The pain is inextricably linked to the pleasure. Decoupling them breaks the feedback loop that teaches you. And the teaching is what accelerates you.
+-
+-
+I'm being a bit glib perhaps, but in my corner of the discourse this is how it seems to me. And you're right that maybe I've straw-manned the other side a bit – I think there are reasonable concerns around energy usage, copyright, worker leverage, etc., but the overriding sense I get is that a lot of people are just using those things as a rhetorical bludgeon to justify something they already believed in the first place. That's what I'm trying to argue against.
+-
+So, hold on –
+I think there are reasonable concerns around energy usage, copyright, worker leverage, etc. but the overriding sense I get is that a lot of people are just using those things as a rhetorical bludgeon to justify something they already believed in the first place
+It doesn't seem like you're considering those "reasonable concerns" if you're so quick to dismiss people holding them as simply confirming their own biases. Are you saying that people don't take those concerns seriously?
+the overriding sense I get
+What gives you that sense?
+-
+What gives you that sense?
+I have a similar sense, so I'll try answering this question.
+Prior to the current AI boom I can't remember ever seeing a software engineer express concern about the energy or water usage of data centers. The closest I can think of is the occasional conversation about how optimizing the Linux kernel could save vast amounts of energy since the fix affects millions of machines at once, but data center energy usage wasn't part of any of the discourse I encountered.
+(That changed with Bitcoin, with good reason. I remain horrified by the energy usage of proof-of-work cryptocurrencies, because they're designed as a competition: the person who wastes the most energy gets the reward.)
+Copyright? Nobody cared at all that Google and Yahoo! and Bing were scraping the entire internet to create their commercial services. Programmers delighted in scraping projects. We all railed against academic papers locked behind paywalls. Piracy for personal use was rampant too.
+Workers rights? Unions had almost no presence in software engineering circles, which I assumed was because engineers were paid so well they didn't feel pressure to organize. And we were the opposite of protectionist around keeping trade secrets and avoiding pursuits that made us more productive and hence, theoretically, less valuable. Most of the open source movement existed to help other programmers work faster by avoiding having to constantly reinvent the wheel.
+I'm not saying that people with ethical objections to generative AI aren't being sincere in those objections, but they do also feel tinged with a hint of motivated reasoning.
+AI is threatening - it hits right at the heart of our value as knowledge workers and software engineers. The arguments against it resonate more brightly as a result.
+-
+I can't remember ever seeing a software engineer express concern about the energy or water usage of data centers.
+Then you weren't paying attention, because people have been beating the drum about this for decades. I'm one of them. Dell called it a "top concern" for their customers in 2010.
+Nobody cared at all that Google and Yahoo! and Bing were scraping the entire internet to create their commercial services.
+I seem to recall that in the late 2010s, Google's non-LLM-based summaries were pretty frustrating for a lot of website owners; here's just one example of someone taking a data-driven whack at "zero-click searches". You may recall that some authors sued Google for pirating their books in 2005; it was pretty big news.
+Unions had almost no presence in software engineering circles, which I assumed was because engineers were paid so well they didn't feel pressure to organize.
+Again, you weren't paying attention. IBM workers have been trying, and sometimes succeeding, at organizing parts of their workplace since the 70s. Several people were laid off from npm, Inc. in 2015 for trying to organize a union; it was a big news story at the time. The CWA has been organizing places like Glitch since at least 2020. Yes, the tech industry is very anti-union; that's not a good argument against the idea that people care about labor power. Again, I'm someone who's been beating this drum as long as I've been in tech.
+I'm not saying that people with ethical objections to generative AI aren't being sincere in those objections
+Then what are you saying? What, exactly, are you saying? Because it sounds to me like you're saying that nobody should be upset that all of these problems - problems some have been fighting for a long time, and that some have just now woken up to - are worse than they've ever been, and lots of people with lots of money want to make them even worse.
+-
+If X is new, and I say 'nobody was an X before 2024', it is a guarantee in hacker spaces that the one person on the planet who was an X in 2017 will show up to call me incorrect. To someone with no context, I might look pretty silly with their comment under mine, but their comment doesn't actually mean X isn't new. Here is the Google Trends page for 'data center water', and the near irrelevance before 2025 is pretty hard to argue with.
+-
+The efficiency of data centers both with regarding to energy and cooling is certainly something I had heard of before 2017. If you'd spend any time observing cryptocurrency advocates and critics, you'd see comparisons of how the obvious inefficiency of proof-of-work crypto was offset by the massive energy use of traditional finance and its use of datacenters. Just because a term isn't in general use doesn't mean people with stakes in the industry aren't thinking about it.
+(As an aside, the link to Google Trends doesn't work for me. "New version coming soon"[1])
+To me, the most notable thing is the whiplash from Apple, Microsoft and others committing to "zero emissions"[2] in their energy use, to firing up coal plants and older nuclear reactors now.
+[1] probably with more GenAI
+[2] however greenwashing such a term is
+-
+Be more careful with your words, then? "Nobody" has a specific meaning, and I still disagree that "many people did not care about this issue in the past" implies "caring about this issue now is unreasonable or disingenous." Not to mention that the trend of one specific phrase does not really contradict the fact that I was hearing serious conversations about data center efficiency in activist circles since I was a kid. Hell, there's a joke about it in Silicon Valley season 1! It was absolutely in the cultural zeitgeist.
+-
+Yes, I remember those things myself as well. All these topics: unionisation, energy waste, pushing pointless and inefficient products by brutefoecing them with ads $.
+Even in casual conversations, people would complain how what most of us is doing is pointless and wasteful, and nobody wants to optimise things, just "ship it" is important.
+I mean, yes, it is, but efficiency and wastefulnrss and many similar things are also important, at least in the circles where I've spent time.
+-
+[Comment removed by author]
+-
+-
+-
+I'm saying that I suspect SOME of the people who are suddenly expressing keen interest in copyright and environmental impact and workers rights issues would not be thinking about these things at all if they didn't feel that their livelihood was threatened by this new technology.
+Do you think I'm wrong about that?
+-
+I think its a significant weakening of the claim your post implied. You used a lot of language pointing towards absolutes - nobody, ever, etc - and you say you have the same sense as OP, which is to say, "the overriding sense [...] that a lot of people are just using those things as a rhetorical bludgeon to justify something they already believed in the first place".
+I could just as much say that I think some of the people who are very excited about this new technology are ghouls who don't care about the survival of other humans as long as they turn a profit; some of them, like Peter Thiel, have said so. But I think if I said "I get the overriding sense that a lot of AI boosters are misanthropic ghouls who put profits ahead of lives" you'd be annoyed with me.
+-
+That's all fair. I tried to pick my words carefully but certainly could have done a better job of it.
+-
+-
+-
+-
+I'm not saying that people with ethical objections to generative AI aren't being sincere in those objections, but they do also feel tinged with a hint of motivated reasoning.
+I don't know how to say this without sounding nihilistic or dismissive, but every type of reasoning about LLMs is tinged with a hint of motivated reasoning. Unless one is chronically online on left-leaning social platforms, I don't understand why one would write more articles about "don't listen to the haters, claude code is finally good".
+Not trying to say what they should and shouldn't write on their own blog, maybe my feeds are skewed as well.
+Copyright? Nobody cared at all that Google and Yahoo! and Bing were scraping the entire internet to create their commercial services. Programmers delighted in scraping projects. We all railed against academic papers locked behind paywalls. Piracy for personal use was rampant too.
+Yes a lot of people fail the purity test, but this reasoning only gets you so far. The repeated abuse of power by big corps on a never before seen scale, the social impacts of the (over)usage of technology, the pricing/owning of tech were problems before LLMs, and they are and will be.
+The amount of Gemini popups I see at work on a monthly basis exceed the anti-LLMs sentimental tinted arguments I see being online, are we really only solving problems here?
+-
+a lot of people fail the purity test
+wrt copyright specifically, I don't think anyone would ever be a pro-copyright purist on here and in our circles in general.
+What everyone is pissed off by is specifically the fact that copyright only works as a bludgeon in the hands of the megacorps, whichever end of it they are on. Academic publishers have killed Aaron Swartz for scraping papers, and now the LLM companies are getting away with scraping everything, so if the situation is literally "it's fine if you're a huge corporation" then uhhhh…
+-
+I don't think it's controversial to expect copyright to be applied evenly. In this case I think there's a lot of honest disagreement about the degree to which model training falls under fair use. I started out very prickly about this, knowing that my open source contributions (modest as they are) were being used without respecting the licence. I later mellowed considerably when I tried it out and realised that under typical usage the LLMs aren't a photocopier. It's much more like a human colleague: in theory they could reproduce some copyrighted code from their previous gigs but there are very few situations where that's actually useful - it's the general knowledge that matters. These LLM tools are looking at existing code and novel requirements and synthesising something that doesn't have any direct inspiration - they're doing what programmers of that programming language do when given that kind of problem.
+So is that contravention of copyright or not? I will leave it up to lawyers to decide officially but among regular folk there's plenty of scope for reasonable people to come to different conclusions, not all of which implicate the big AI companies.
+-
+I will say that for years it has become very popular to argue for weaking of copyrights. It would have been consistent to continue to ask for this, but instead now more and more people that were once in my camp (copyrights are too strong) are moving the other way because of AI.
+-
+I am in favor of weakening copyright for everyone, but not just for big companies, which is where we're at right now. Does that make sense?
+-
+But that fight is not fought. I would love to see that fight but instead I see people that previously were on that changed sides because they don't like AI.
+-
+What do you mean? That's a stated purpose of copyleft licenses, since their inception: to use copyright against the big companies and weaken their support for it.
+-
+That is a different group of people all entirely. Those are not the people who argued for weakening of copyrights. You are talking about the people that are trying to weaponize copyright for years to enforce the GPL. Very different crowd :)
+-
+Wait, what? We're talking about people who write software, right? Who is extremely into enforcing the GPL but doesn't care about software??
+-
+Who is extremely into enforcing the GPL but doesn't care about software??
+Not sure I understand that comment? I'm not talking about people who care about the GPL but people that are into Open Source and don't care at all about the GPL. That for instance includes me. I'm very much info Open Source and I'm heavily anti GPL. That was a pretty common move for many years. Build software so that others can use it, few strings attached.
+-
+Ah, understood. Thanks for clarifying. I wonder how GPL usage correlates with LLM boosterism; I would guess there's an anti-correlation there, for ideological reasons if nothing else.
+-
+-
+-
+-
+-
+The people's whose views have changed might just have thought about the issue a bit more. To be honest, many people who advocated for a total abolition of copyright struck me as naive dreamers who just imagined that they'd get access to high-quality content for free.
+-
+-
+-
+I think that's because most people don't think the consequences through far enough. Those of the "abolish all copyrights" are looking at using corporate material for their own use, they might not realize it cuts both ways, that companies can then use their material for their own use.
+Personally, I'm in favor of lessening copyright length to say, 14 years (original length in the US), but I'm also aware had copyright length had been 14 years, that most of the conversation around LLM training wouldn't even be a thing since anything prior to 2013 would be in the public domain. That's why I'm not as upset over the copyright violations as some people, but that still leaves the ever increasing energy and water usage, as well as sucking up most of the money in the economy, and the ever looming threat of joblessness for many people.
+-
+-
+I am on the same page about copyright and GenAI - in that I do think the lawyers for Google, OpenAI etc have looked at it and figured it's fine under the cataloging and transformative clauses of most copyright systems.
+Open source authors, especially if releasing software under permissive licenses, have even less "outrage capital" to spend than authors who assert traditional copyright. And I think it's telling that as far as I know, the FSF have not said anything about the use of GPL code in GenAI.
+For me, the biggest objection I have with regard to GenAI is that we are handing over control over human expression to a bunch of unaccountable US companies. It's easy to envision a future where the entire chain of information, from source to consumer[1], is under the control of a handful of companies. OpenMiniTru, if you will.
+[1] you see an AI generated summary of a story, attempt to visit the source URL, and your in-browser GenAI agent automatically rewrites it to match the summary.
+-
+-
+Yes! Responsibility seems to go away when talking about companies scraping for traning data(tho there was this one case I believe Anthropic had to pay up, which is a first step at least.) Not to mention that these things are currently happening on a never before seen scale: People been scraping feels dismissive to the social side of it all.
+To me personally, the purity test argument feels like somebody punching down: "look at this person with weak principles; anyway let's see what claude code has done for me" is not a convincing scene for me to use LLMs.
+-
+Anthropic only had to pay up because they were caught downloading pirated ebooks and distributing them on the company network. They claim they didn't use those pirated books to train any of their current models, but downloading and distributing pirated materials is still illegal so they got dinged for $1.5 billion dollars.
+They did NOT get in trouble for their more recent strategy, which is buying millions of physical second hand books (second hand means authors don't get paid), chopping them up and scanning them for training data. That's been classified as transformational fair use.
+I wrote more about that here: https://simonwillison.net/2025/Jun/24/anthropic-training/
+-
+Well that's disheartening. I wouldn't call that innovation or revolutionary(or any other overhyped description) at all, but looking at history it also seems in line with what people be doing.
+I hope more ethical models get the spotlight, even if they are considerably worse than the popular ones.
+The judge who signed this summary judgement is an interesting character: William Haskell Alsup (yes, his middle name really is Haskell)
+Ha!
+-
+-
+-
+-
+-
+I 100% agree with you that there is a sense of "why now and not earlier" to this particular moment. If I'm reading you correctly, then I think that you've answered that question yourself already:
+AI is threatening - it hits right at the heart of our value as knowledge workers and software engineers.
+I personally view it as a moment of class consciousness. Perhaps this is rose-tinted on my part, but I cannot recall another time that software engineering felt so uniquely threatened as a profession. Maybe this threat is what was required to catalyze such a shift in our zeitgeist around workers' rights, exploitation of copyright by big technology firms, and ethical consumption of resources.
+So, to that effect, I both understand the motivated reasoning and welcome it as an opportunity. Wedge issues can be powerful motivators for political action (regulatory, in this case, not party-politics).
+-
+This is a whataboutism statement that friendlysock would have been proud of.
+-
+Prior to the current AI boom I can't remember ever seeing a software engineer express concern about the energy or water usage of data centers.
+It seems relevant that previously, CEOs weren’t saying how they need all possible energy and weren’t talking about reviving already-closed power plants.
+Posts about how little or much energy a given LLMs task takes relative to an old-school Google search seem like a distraction when the big picture is CEOs talking about energy needs and reviving old power plants.
+-
+Re: workers rights:
+The leverage of knowledge workers has been eroding the past few years. Some of it is circumstantial (ZIRP), some of it is the policy of the current powers and principalities (e.g. Powell's remark a few years ago that "workers are making too much money"). AI represents additional leverage for employers, particularly against newer devs. It has exacerbated these previously latent class issues that existed before but were easier to ignore.
+I think many devs have started to have the scales fall from their eyes on this. The initial reaction is almost always anger, and AI is the messenger to be shot.
+-
+I find much of this quite misleading. GPL is based on copyright as a tool and a large % (perhaps the majority) of programmers have been vocal about it. The point was obviously not copyright itself, but the intent, which was to protect the rights of the individuals - users to get freedom to do with their machines what they want, and software developers to not get ripped off by the big bad corporates profiting by stealing their work. The intent is the same behind the arguments against LLM companies.
+Same for worker's rights. Programmers have had decent worker rights. Many programmers have fought tooth and nail to keep work from home alive even before the covid lockdowns. We are almost known for being difficult to manage because of our higher expectations from employers compared to workers in other fields. Works councils of tech companies in Europe tend to have a majority participation from developers. I'm not from the US but as far as I understand, unions are also not widespread in many other fields in the US - that does not mean workers in those fields are against worker's rights.
+The hacker culture has in general favored shifting power from the strong to the weak. The scale was not "well paid programmers (strong) to other workers (weak)", it was "the billionaire class (strong) to pretty much everyone else (weak)".
+And if your point is that there is a group of people in the anti-AI crowd who are supporting the cause for selfish reasons without considering the nuance, might you first move the finger towards the entire pro-AI crowd?
+-
+And if your point is that there is a group of people in the anti-AI crowd who are supporting the cause for selfish reasons without considering the nuance, might you first move the finger towards the entire pro-AI crowd?
+Sure, absolutely! The vocally "pro AI" crowd is crammed with people who support their cause for selfish reasons without any consideration of the nuance at all.
+-
+-
+You put it better than I could. There are valid concerns here, but what I read online mostly sounds like bad faith. I would put Cory Doctorow in the camp of those thinking critically about these problems and coming up with nuanced answers that don't just sound like sound bites.
+-
+Yeah, Cory's recent pieces about reverse centaurs have been excellent.
+-
+-
+-
+-
+You are being very glib and, whether you like it or not, you are participating in politics by choosing to dismiss valid criticisms of AI. How we collectively use natural resources, how we share the fruits of our labor, who keeps their job and who gets replaced by machines, whose work is protected from imitation, these are all political topics. By acting like AI is inevitable––rather than being the result of mass adoption rammed down our throat by companies who have mortgaged their futures betting on it succeeding––you're promoting a kind of AI Realism, that AI is the only conceivable path forward for technologists and that it's impossible to imagine any alternative. You can ignore politics, but politics won't ignore you!
+-
+I'm firmly on team "AI is inevitable", at least with respect to LLMs.
+Over the past five years we've learned that if you dump a few trillion tokens of text into a training pipeline and expend significant energy and compute crunching those tokens you can get a model out at the end that does the things that ChatGPT et-al can do.
+Dozens of different organizations across many different countries have now succeeded in doing this. Many of them have released detailed descriptions of how they did it, and many have published the resulting model weights as well under liberal open licenses.
+The cost of training a useful model has dropped to less than $100,000. The really good ones still cost a lot more, but some of the Chinese ones that come close to competing with GPT-5 were apparently trained for single-digit millions.
+I don't see any way this technology isn't inevitable at this point. We're not going to forget how to do this. The number of people with both the resources and skills to build one of these is enormous, and they're spread out across the world.
+It's also useful enough that governments are incentivized to figure out how to make it work, as opposed to figuring out how to legislate it out of existence.
+As far as I see it, the options for it not being "inevitable" are:
+- Society rejects it. It becomes deeply uncool to use LLMs. The technology holds on among die-hard advocates but fails to establish itself across anyone else - it goes the way of NFTs.
+- Governments do legislate it out of existence. The most likely lever there relates to training data - though if it became illegal to train models on unlicensed data my hunch is that someone would scrape together the billions of dollars needed to license enough data to spin a legal model up again.
+- The AI bubble pops in such a dramatic fashion that there's just no money at all for anything of this nature for the next few years.
+I find myself comparing this to nuclear weapons: that technology is 80 years old now and the process of building them is pretty widely known... but the materials are difficult enough to obtain and the process takes long enough that the global community can keep tight tabs on who is able to build them. So that's a case where global regulation manages to keep a damaging technology mostly under control.
+I don't think restricting the components needed to build an LLM is anyway near as as feasible as the components for an atom bomb!
+-
+Society rejects it. It becomes deeply uncool to use LLMs.
+It might not be too late to make this happen. It's still possible as long as enough of us try. I figure this is the goal of the fiery anti-AI rhetoric. As of this morning, I'm trying yet again to quit using LLMs myself, so I can join that team without hypocrisy. At least I never got hooked on LLM-assisted coding specifically (see my other comment). Still, I fall short. Some people claim to feel physical revulsion at the thought of using an LLM; I haven't gotten there yet.
+-
+Yeah, that's the one that feels most likely to me.
+I worry about the ethics of that as well though. LLMs have a lot of value to offer people. Is it ethical to actively work to make them "uncool" if doing so has the following negative effects?
+- People who live in countries where their first language is not the language of that country are discouraged from using LLM tools to help them navigate their new homes.
+- Students (who don't habitually cheat with LLMs) are discouraged from taking advantage of a 24/7 teaching assistant who can help them understand concepts that they are having trouble with.
+- People who want to automate things in their lives with computers but don't have the time to invest in learning to program are left doing tedious things that could be automated by hand.
+- People with accessibility needs - RSI that makes typing painful, restricted vision are two that come to mind - are encouraged to avoid technology that can directly help mitigate some of those challenges.
+-
+People with accessibility needs
+Yeah, that one hits close to home.
+A blind programmer friend wrote:
+I remain conflicted about the harms generative AI/LLMs cause, because for me they're very much an assistive technology. Could I technically have trawled through all the event logs, widget information, and code to make these changes? Sure. Would I have? Not if I wanted a life outside of fixing accessibility issues. Could someone else have done this. Sure, but where's the overlap between the folks with the time to fix these issues and the lived experience of using a screen reader and finding all the edge cases, like labels speaking twice or text presenting as blank if you happen to be on the last character? Should I stop using it this way because thousands of others use it to generate unsupervised slop? Should I take a bus instead of a plane to travel back home today?
+Legitimately not sarcasm, it's just hard to put all of this in perspective sometimes. If I had a spare 30K or so in the couch cushions, I'd buy my own GPU machine and call it an assistive tech expense.
+I don't know what to do with that. But people keep bringing up the same well-known ethical issues on every thread like this one, and they've made an effort to convince us that they're sincere about these arguments. I can only take that as evidence that, at least in these people's minds, the negatives outweigh the positives. I don't feel comfortable directly telling my friend that he shouldn't use an LLM; that's for him to decide. But I've concluded that the benefit to the particular group that I care about doesn't necessarily outweigh the negatives, just because it's the group that I care about (and am more or less part of; I'm legally blind myself).
+-
+In my experience, the internet is one of the worst places to have these kinds of discussions. I personally don't think its remotely useful to guilt trip people into thinking about ethics concerns in tech and into banning LLMs.
+But I have yet to find adequate answers to critisicm of LLMs from pro-AI people and thus I somewhat understand why people are being so vocal with anger. Lobster is actually one of the few places where people actually discuss LLMs somewhat rationally from other places I see online.
+For example Simon brings up:
+Students (who don't habitually cheat with LLMs) are discouraged from taking advantage of a 24/7 teaching assistant who can help them understand concepts that they are having trouble with.
+How do I place this in the social context of an area(education) that is already underfunded or understaffed that suddenly have to deal with their students using LLMs at a scale never seen before? Does education get more money to help people navigate the roads of accelerated learning or are we just moving fast and see how we can fix it along the way?
+The lobster/bluesky/mastodon etc section of the internet is a small fraction of what is out there, and I think people are rightfully skeptic of the culture around LLMs(tech and abuse of minorities aren't a new thing!).
+But with the repeated lack of accountability for these big tech corporations in recent history, I'm not giving people the benefit of the doubt when they are hyping up these kinds of things.
+-
+The impact of LLMs on education right now really is terrifying.
+We have hundreds of years of education practices predicated on the idea that you can evaluate a student's progress through written exercises. LLMs have wrecked the effectiveness of that, and we still haven't figured out what feasible replacements look like.
+I also firmly believe that writing is thinking, and learning to write is essential for learning to think. I don't think you can learn to write without the struggle and tedium of doing a whole lot of it, and LLMs offer an irresistible escape from that tedium.
+I'm a dedicated autodidact who loves learning new things, and LLMs feel like a gift from the heavens to me - I use them to help me learn all the time.
+But my days of tedium are long behind me! If I was 14 years old right now would I have the discipline to use LLMs to learn in a positive way?
+Not to mention plenty of people don't default to learning for the sake of learning, and the education system needs to cater for everyone.
+-
+I found the impact of social media already terrifying and now they get LLMs added in as well?
+As somebody who learned Python at the age of 13, like 18 years ago, I am truly happy to see more learning resources than ever about getting into programming things! Generally speaking, the lower the entry the better; but what about the overwhelming feeling of scale when dealing with these new types of tech. Or what about the fact that people who just finished their study are now having a hard time finding a job because Claude Code can do the junior duties?
+Outside of my bubble, I find very little responses to my concerns. And then I read these productivity focused claims and I'm left with a feeling of loneliness.
+So even though you and I might see LLM usage differently, we probably share similar concerns. Personally I've been disappointed by coverage of LLMs in the broader context of society.
+-
+Something that gives me hope around the junior programmer thing is that both Shopify and Cloudflare increased their intern intake to around 1,000 interns over the last year, because they found that interns armed with LLMs could get onboarded and start contributing way faster than before.
+-
+-
+-
+-
+Something I think about a lot is how the applications of technology have a huge impact on how people accept the way that technology is built.
+If someone scraped the web for images and their alt text and used that to train a model what worked primarily as a way of describing images to people with vision difficulties I doubt they would face much pushback at all for training on unlicensed scraped data.
+The exact same data used to train image generation models like Stable Diffusion attracts a very different response, because the usage of the technology directly harms the people who's images were used to train it by competing with them for paid work.
+This reinforces my feeling that advocating for and teaching positive uses of a technology while discouraging negative uses is a constructive way to react to discomfort at how that technology was constructed.
+-
+-
+-
+I am reading this answer not as necessarily being against what
+zarb
+was saying? "The figure out how to make it work" is the politics of AI that needs to be emphasized more, rather than talking about straight productivity gains.LLMs are having a huge influence over a lot of software developers, but I think the intersection of politics and LLMs covers a lot of other (social!) things as well that needs to have more proper discussion.
+-
+Fair, yes, I guess this is a political post. Maybe what I'm getting at, though, is that I don't find the anti-AI arguments very persuasive, and persuasion is the heart of (democratic, good faith) politics. And since a majority of developers also don't seem convinced, I think what the anti-AI crowd would need to do is figure out how to persuade people like me that it's not all just tribal posturing, and that there really are enough valid concerns that justify me laying down my tools or using a different set of tools.
+-
+I find this a difficult stance to even argue with. It sounds like you're dismissive of anything that's "political". But a lot of the concerns are political to begin with! Impact on society, concentration of wealth and power, environmental impact etc. The only apolitical concern so far that I've seen is "these models produce shitty code that often doesn't even compile", and it seems like that particular concern no longer rings true, at least for you.
+-
+-
+-
+Being glib doesn't bother me. Being unconcerned with some aspects of a technology doesn't bother me. What bothers me about this post is that you've claimed many things are bountiful but demonstrated none of them.
+“What about security?” I’ve had agents find security vulnerabilities. “What about performance?” I’ve had agents write benchmarks, run them, and iterate on solutions.
+I've had an LLM write benchmarks to test two synchronization approaches. It told me to write a completely parallel solution where instead of calling my code it printed the produced values to stdout. I've had an LLM point out security vulnerabilites on multiple occasions. In none of the cases was the supposed vulnerability exploitable in context. If these capabilities are robust and reliable today, I'd like to see it. If you want other people to see it, maybe consider doing an hour long recording of you working in this way.
+And honestly, even if all that doesn’t work, then you could probably just add more agents with different models to fact-check the other models.
+Or you could do that and make a blog post about your success with that model. Show the prior state with the initial insufficient LLM output, then describe your decision about how to use these models in conjunction, and then show their more useful output.
+-
+Demonstrating that LLMs are genuinely useful for programming is a very tough gig. I've been trying for years now. Dedicated cynics can be incredibly creative in finding ways to dismiss any example of an LLM doing something useful.
+-
+Assuming and pre-emptively dismissing your envisioned detractors is a very strong signal of tribalism. I won't fault you for it here because you didn't claim this discussion could be disassociated from tribalism. However I was responding to the article author and submitter, who was making that claim.
+Also, I didn't say I wanted to see an LLM do something useful. I can make them do something useful.
+-
+This is fair - my comment here wasn't appropriate for this particular conversation thread. I'm sorry for implying that you were one of those dedicated cynics who aren't worth showing things to.
+-
+-
+-
+-
+but the overriding sense I get is that a lot of people are just using those things as a rhetorical bludgeon to justify something they already believed in the first place. That's what I'm trying to argue against.
+I get what you're saying and it definitely happens (I sometimes reach those type of thoughts as welll), but at the end your post you even address it a lot more empathically than the parts I read as dismissive:
+That’s the hardest truth to acknowledge, and maybe it’s why so many of us are scared or lashing out. [..] It’s gonna be a bumpy ride for everyone, so just try have some empathy for your fellow passengers in the other tribe.
+I do feel like being empathic is more difficult in practice, with the constant noise of the internet and all
+-
+-
+-
+I wish so much I saw all these amazing life changing productivity benefits people are talking about. I used agents, I used Claudius Optimus Prime or whatever it was called, I made planning modes, I had markdown files... it was excruciating. I had to babysit the thing. It would get stuck in loops. It would start editing stuff I did not tell it to edit. I had to constantly talk to it.
+I'm still curious but every time I try it my charitable impression is that the fans are placebo'd and just like the 1on1 time with a friendly chatbot, or they are just happy to spend all their time in markdown files and chat sessions instead of spending their time in programming language. My uncharitable impression is... well moderators don't like when I give that.
+-
+I wish there was a case study or detailed documentation of a project where agents are writing 90% of the code. I have seen a lot of "tips and tricks" articles but it's hard to draw a full picture from putting them together.
+-
+I just conducted a video interview with the most high profile recent example of this - the Cursor FastRender browser project from last week where one engineer and thousands (literally thousands) of parallel coding agents crunched out ~ 1.5m lines of Rust code to implement enough of a web browser to very slowly and flakily render some web pages.
+That's a very extreme case though, and it's definitely not production-ready code!
+I have some of my own much smaller projects from the past ~6 weeks that were 90% written by coding agents and are more realistic and useful examples if you're just getting started:
+- datasette-transactions is a Datasette plugin that adds a JSON API for running multiple SQL queries in a single transaction. Here's the transcript I used to build that.
+- claude-code-transcripts is a CLI tool for turning Claude Code Transcripts into published ones like this.
+- denobox is a Python library for running JavaScript and WASM in a Deno sandbox, run as a subprocess. Here's the initial transcript that started that project.
+- justjshtml is my first majority coding agent project, a port of a Python HTML parsing library to JavaScript. I wrote about that one here.
+datasette-transactions and denobox were both mostly written on my phone, switching to a laptop at the end to confirm that they really worked as opposed to just passing the automated tests.
+-
+Re: justjshtml, did you see the Portland post from a while ago? What's your take on it?
+Also, you posted this tidbit on your site:
+In advocating for LLMs as useful and important technology despite how they're trained I'm beginning to feel a little bit like John Cena in Pluribus.
+I'm still making my way through Pluribus; can you summarize your stance while omitting any references?
+-
+Re: justjshtml, did you see the Portland post from a while ago? What's your take on it?
+I wish this post had gotten more traction than it did, it felt just strange that it was met with silence from the pro-AI crowd.
+-
+The Portland post didn't surprise me, it described how I understood this stuff to work already. Each of the implementations was written by coding agents where the only goal was to pass the test suite - the fact that different implementations achieved that in (sometimes wildly) different ways from each other was the point of the exercise.
+The JustHTML thing was never about creating perfect ports in my mind, it was about illustrating the idea that a comprehensive conformance test suite opens up a weird new way of building libraries that should, hopefully, be compatible with each other.
+Drew Breunig's A software library with no code is a great illustration of that.
+For the John Cena in Pluribus thing... sadly it's impossible to clearly explain without a spoiler that hits at one of the best reveals of the series. The best I can do is to say that I find myself saying "I know that the way these models are trained violates the moral copyright (if not the legal copyright) of millions of people, but the end result is so useful I tolerate my discomfort at how the sausage is made."
+-
+I know that the way these models are trained violates the moral copyright (if not the legal copyright) of millions of people, but the end result is so useful I tolerate my discomfort at how the sausage is made.
+I know this is well established as a core tenet of consumerism but seeing it writ fresh is still just so disheartening on a really fundamental level.
+-
+The best I can do is to say that I find myself saying "I know that the way these models are trained violates the moral copyright (if not the legal copyright) of millions of people, but the end result is so useful I tolerate my discomfort at how the sausage is made."
+Thank you for being honest about your shallow ethics. I hope it helps others assign the moral weight to your arguments that they deserve.
+-
+Show me a human being alive who doesn't have some aspect of tolerating the discomfort of knowing how the sausage is made.
+I trust you're a vegan who never travels in a car or by plane?
+-
+being unable to live in perfect harmony with one's ethical principles does not justify completely discarding them
+-
+I feel good about my ethical principles regarding LLMs:
+- Help people understand what they can and cannot do and how to use them productively
+- Speak out against negative uses and help amplify arguments against them (see slop)
+- Encourage and promote the local model movement, where people get to run models on hardware they control
+- Write extensively about AI ethics and the extraordinary security risks introduced by careless use of LLMs (see prompt injection and the lethal trifecta)
+I feel a lot worse about my ethical decision not to be a vegan than I do about my decision to use and write about LLMs.
+-
+how does feeling good about your ethical principles re llms fit with "the end result is so useful I tolerate my discomfort at how the sausage is made"?
+also, don't sota "local models" require like a terabyte of vram? not 100% sure but i remember seeing it mentioned here earlier this week
+-
+Both things can be true at the same time: I can feel comfortable with my ethical principles regarding LLMs and still feel discomfort at the fact that their training data includes material that the authors specifically do not like being used as training data.
+(The Pluribus John Cena thing really does capture this so well for me!)
+The really good local models do indeed need ~1TB of RAM. That's a ~$20,000 investment right now, and who knows when that will get cheaper?
+Usable local models fit in 32GB/64GB, but those are less exciting to me now than they were 6 months ago because it turns out you need a larger model to get good results out of coding agents like Claude code.
+-
+-
+-
+Hmm. I'd have thought somebody who has literal hundreds of blog posts' worth of thoughts on ethics would think better of pulling a Mister Gotcha.
+-
+I think it's justified here. The argument was that admitting to "the end result is so useful I tolerate my discomfort at how the sausage is made" means I have "shallow ethics". That's very much deserving of a Mister Gotcha response!
+-
+The way I think about it, and the thing that makes me keep feeling that I should quit using LLMs, is that eating meat, driving a car, flying, etc. are all very normal, but right now, we have a choice to apply the brakes, or at least not floor the accelerator, on normalizing the next problematic thing.
+-
+Eh, Mister Gotcha's defining characteristic is that he has shallow ethics, so I think you just proved their point.
+And I've seen you've had it explained to you quite thoroughly on lobste.rs before how veganism is not a good analogy for LLM abstinence, so bringing it in when the subject was copyright here looks a lot like you treat "having ethics" as some kind of all-or-nothing monolith, which is indeed shallow.
+I say "looks like" deliberately because also your current sausage-based stance looks a lot like you're simply rationalising the default starting position on the ethics of consumption under capitalism, but I can only assume that after as much talking on the matter as you've done, there is some lost nuance.
+-
+-
+-
+not taking a side here, just placing a note on how this thread reveals how LLMs make us question the value in society of both virtue and skill in a deep and concerning way.
+-
+-
+That's merely the definition of fair use: Yes, the copyright was infringed, but there was a good reason for it. Also, previously, on Lobsters, I noted that training LLMs is fair use in the USA.
+-
+-
+-
+-
+Have you looked at the guts of FastRender? I have looked at the guts of FastRender. I have been writing Rust daily since before it hit 1.0, and professionally for about 5 years, so I know my way around the language! FastRender is perhaps the best argument against LLMs being tools that herald a new age of quality and productivity I've ever seen. The entire thing is vapid, redundant, nonsense. I suspect 99% of the code paths go untouched, and those that do are straining under their own weight.
+-
+Thanks. I like the approach of rendering transcripts in a comprehensible format. Reading those of small or medium projects that I can wrap my head around should be good enough.
+-
+This was "pulled in Servo". The big claim from Cursor was a blatant marketing lie.
+-
+Common misconception.
+It used two components from Servo - the CSS parsing library and the HTML5 parser (cssparser and html5ever). It also used a vendored copy of Taffy (plus some modifications to that), a library implementing the CSS flexbox and grid layout algorithms which is not part of the Servo project but which Servo depends on.
+If it was just a wrapper around Servo it would be both faster and do a better job of rendering pages than this.
+-
+-
+-
+this is my take essentially. i have seen good programmers use the tool well and improve their output. and then there are the boosters who have no idea what they are on about. i take pride in not using x/twitter, but the "code-simplifier plugin" (an official anthropic project) was shared with me recently. a lot of my day-to-day revolved around static-analysis, transpilers and de-obfuscation so i took interest in this:
+- firstly, the plugin is a markdown file, it contains zero code, or verification that the output of the simplification is correct
+- secondly, the markdown file does not even contain meaningful rules, for example, it has hardcoded rules for React.
+in fact, several "plugins" in that repository contain hardcoded rules for React (needs login to github to view).
+this "code-simplifier" was touted as the "secret to how anthropic employees deal with unreadable PR slop", when in reality it is a markdown file with no verification that the simplified code works. i suppose it does not really matter if the input to the code-simplifier is also vibecoded.
+-
+-
+This reads like a lot of other posts about the use of LLMs to me, frankly: an attempt to personally justify one's use of a tool because the increase in output is favorable to them.
+The root of "tribalism" re:LLMs is the frustration of failing to acknowledge the baseline criticism. There is ample documentation that hyperscalar-backed LLMs are a destructive technology: environmentally, psychologically, politically, to say nothing of the harvesting of the baseline training data without direct consent from artists, musicians, programmers, etc.
+The output may be impressive, but it does not—in my opinion, cannot—matter without first tackling all of the above problems.
+-
+This point of view just doesn't matter though. It would be nice if it did, but it doesn't. Economic value is the driver in capitalism, and if people who do the kind of activity that is middle management and product development can suddenly do their job co-authoring prompts with 1 developer instead of having to have an expensive team of 10 (and that is exactly the kind of value that LLM's provide already), that's where the economic value will flow to. If you don't want to live in capitalism, that's a different issue...
+Edit: To put my point another way, what's happening with LLM's is exposing to people who work in tech how capitalism and technology interrelate and they don't like it - they don't like how it really is and they don't like that they're an integral part of that machine and are responsible for what's happening, not subject to it. The way capitalism works isn't new, it's always been like this; capital will exploit technology and the environment for its own ends, which is just to create and take more of the capital. If you want to prioritise wellbeing of humans and the planet, looking at the way technology and capitalism interrelate is where you want to look - targeting whatever the current technology is, is an old, boring, repeating story.
+-
+First, I acknowledge your viewpoint, and I understand your train of thought. However, this is the fundamental disconnect:
+It would be nice if it did, but it doesn't.
+This statement reads to me as defeatist: why fight for what we believe in when the scales are tipped against us? What point is there in fighting back against what we (as people, not necessarily as software developers) perceive as a net-negative solely because a handful of powerful people have decided that it is a net-positive?
+To clarify, I don't judge you or anyone harshly for feeling this way. It is natural to follow with the social order, because ostracization is so primal a fear to us as a species that built its ecological empire on our ability to build power through group effort. However, it's because of that trait that this sentiment is so dangerous. It is self-deprecating to one's own sense of agency and ability to affect the world around them.
+You have power in your voice. You may need to join hands with other people to make it heard, but it is power nonetheless.
+-
+I feel like you missed GP's point. I believe the point is that none of these arguments matter in the capitalist framework and trying to suppress the technology with these arguments has been shown to not work countless times in history.
+So I believe the conclusion is that you need to challenge the economic model itself. Though I'd say that's also been tried countless times and it's consistently been going in the wrong direction for the last century or so.
+-
+The actual lack of utility or reliability of the technology beyond demos seems to be suppressing its use enough, lol.
+-
+So I believe the conclusion is that you need to challenge the economic model itself.
+To be clear, yes, I agree with this conclusion. The specifics in question re:LLMs irrelevant, because the root cause is the same throughout history: supremacist belief, whether it be by race, capital, faith, or birthright. It's a hard problem. How do you topple a millenia of power structures?
+I don't know the answer, but it shouldn't stop us from trying.
+-
+-
+Yeah that was slightly hyperbolic, thanks for helping me clarify what I meant. I meant to say I think if you care deeply about something it is worth understanding the systemic causality of it - what are the levers you have in the system you're working in to change the thing you care about. And my point is that if we continue to use ( i would say 'waste', 'abuse') our agency to collectively choose to live in western style capitalist democracy then categorically the system is not configured to care about those things, They simply don't matter systemically and it doesn't matter whether you agree or don't agree with that when you interact with capitalism. Capitalism is the operating system of how resources and power are allocated and it doesn't have any significant recognition for any of those things except indirectly when they start to affect inputs it does care about (e.g. if mental health affects the amount of work a workforce can do then mentalhealth should be addressed only because it affects the work output). The boring metaphor is a game of Monopoly - if you're playing a game of Monopoly the rules are clearly set out and if you want equality, human rights, etc. those are concepts that just don't matter in Monopoly and you'll need to change the rules or play a different game. I think it follows that if you care about those things deeply it's absurd to have an expectation that the current configuration of the world can be changed to respect them; it simply can't. But that means you should apply any agency you have with even more vigour to systemic understanding and building a better system.
+I personally do care about those things and I do use my agency to try to make those things better but I do that through thinking about system change and ways we might use and capture the incredible resource that does exist in the world to use it to build the new 'game' - one that does respect things we care about while at the same time dealing with some of the resource allocation challenges that capitalism has found a particular very efficient solution for.
+-
+-
+-
+It matters to me that I can do my job faster. It also matters to my manager and CEO. If you say that it doesn't matter to you, well, everyone's entitled to their own opinion, but it probably matters so much to my manager that he wouldn't hire you, and then that will start mattering to you.
+Each point in this baseline criticism can be, and was, cited about a dozen technologies, and totally failed to stop them from spreading and becoming indispensable. Most of them were in hindsight crankish complaints. The ones that weren't, and were valid, in hindsight obviously weren't worth forestalling the next evolution of the information age over.
+I'm not saying, to be absolutely clear, that every complaint about new technology is wrong, and that every engineering fad is the truth. I'm not saying that moralizing about the technology isn't getting at something incredibly true and important. I'm just saying that it does not actually cause anything to happen differently, and if 'the seemingly impressive output cannot matter' is meant to be taken as an objective statement, then objectively it is false. The percentage of the knowledge economy's financial and social weight that it matters to is larger than the percentage that it doesn't.
+-
+-
+I honestly hate this whole trend of what I'll call "AI paternalism". There have been several posts like this on the site that amount to dismissing any and all criticism of LLMs in software engineering - even criticism of specific business practices by specific companies - as "motivated reasoning", or "burying their heads in the sand", saying that the people who disagree with you are "scared, confused, or uncertain" and outright state that we're "not [...] talking honestly about it."
+And it's incredibly disrespectful.
+It's as if you can't imagine that anyone who disagrees with you actually has specific, articulable principles, which specific products, practices, and developments violate. Can you imagine that? Are you capable of believing that smart, rational people disagree with you? If so, why do you write things like this?
+-
+I don't understand this article. It says:
+these arguments are getting pretty tiresome. Every day there’s a new thinkpiece on Hacker News about how either LLMs are the greatest thing ever or they’re going to destroy the world. I don’t write blog posts unless I think I have something new to contribute though, so here goes.
+Then it proceeds to be just like all the other articles that say AI is amazing and changes everything.
+-
+Huh, after reading this I tried the “ask about accessibility” trick on a site I built recently. Twenty minutes later, a bunch of problems I had been totally ignorant of were both explained to me and fixed. Marvellous stuff.
+-
+I've noticed among the pro-AI group that even they have lines they think AI-driven development won't cross. Here, when I say "the prompt will become the source code" they say that's a line too far, but as I see it, if things continue as they are, and as Gas Town has shown me, that yes, the prompt will become the source code (for the record, I don't like it, but I see where the puck is headed; I don't want to head in that direction).
+-
+We only know Gas Town supposedly even works in any meaningful manner from posts that sound like they're written on Silicon Valley grade microdosed psychedelics.
+It's a fantastically saleable sizzle, I can quite believe VCs are calling Yegge. But is there a sausage there?
+-
+IMO, Yegge's brain is the sausage.
+-
+-
+It's not because of anything that has to do with LLMs directly. The prompt won't become the source, because generating the source adds lots of assumptions. Each time you regenerate the source, the assumptions may be different and result in very slightly different behaviors. If you don't want that, you need to be more and more specific until you reach the level of describing the source code itself so it stops being a prompt. However much the LLMs improve, you'll never get rid of this property, so there's no point in making prompts the authoritative source.
+-
+If you don't want that
+That word "if" is doing a lot of heavy lifting. Also, Steve Yegge doesn't seem to be bothered with slightly different behaviors ...
+-
+He's still committing created code. Not even preserving the prompts as far as I can tell.
+Am I missing something he said? Even in https://steve-yegge.medium.com/six-new-tips-for-better-coding-with-agents-d4e9c86e42a9 he doesn't go as far.
+-
+Is he specifically committing the code, or are his "agents" committing the code? That is a distinction I think can be made, as Steve has said he doesn't care about the code per se.
+Edited to add: Oh, that link is from before he announced Gas Town, and we all know that in the LLM space, everything is outdated every 20 minutes.
+-
+-
+-
+-
+I am one of those who thinks the bulk of it will still be regular code, but to some extent what you’re describing has already happened — what are
+CLAUDE.md
+and skills if not natural language source for future code changes? The kind of thing you might have tried to encode in an elaborate set of types or lint rules. -
+Prompts have already become the "source code" in the software 2.0 sense. That is to say the inputs we're providing the machine get stored and used to build an improved version of the machine. Whether that's stored in a VCS or a DB is an implementation detail.
+"the prompt will become the source code" is certainly ambiguous, but I think its describing llm mediated non deterministic behavior. Two interpretations as specific implementations:
+- you have a procedure with a fixed prompt thats given to an llm on each invocation.
+- you have a fixed prompt as objective function (increase revenue/retention/paperclips/etc) and an agent controlled procedure definition in a feedback control system.
+-
+-
+I just don't know what people are doing where being able to churn out code quickly is a major benefit. Other than when I was first learning to code that has never been the bottleneck. Every so often I try using Claude Code at work when I'm stuck on something and the success rate is exactly 0%.
+For me, LLMs are still very firmly in the "interesting toy, but limited real world applications" stage, which makes the huge push to use them very frustrating.
+-
+If AI writes 90% of your code does that mean you are 10x more productive?
+If you are 10x more productive can you do what you would have done in 2 weeks in 1 day? Or have 10 full time jobs at the same time?
+-
+We are finding that product development wasn't limited by code. Coding the wrong thing faster helps, at maximum, fail faster. But succeeding faster still depends on coding the right things - and selling it.
+-
+If AI writes 90% of your code does that mean you are 10x more productive?
+This question is posed in a way that makes it sounds like the AI writes 90% of the code you would've written yourself and it leaves the remaining 10% to you like it's an exam or something. I mean even if that were the case, you wouldn't be 10x more productive because you were never limited by typing out the code, you'd still need to understand the problem to finish off the remaining 10%.
+When I need to deliver tricky features in an existing codebase that has around 6-digit lines of code, the main activity I'm performing is to (1) (semi)formalize what needs to be done, i.e. find some invariants that need to hold, (2) survey the codebase to establish all the interacting concerns, and then (3) find a solution that satisfies (1) without violating the invariants I discovered in (2).
+IME, LLMs can be useful in all three of these stages in different ways, so I like having access to LLMs in various ways, but I don't understand how vibe coding (I.e. running AI in a loop and going to bed) could possibly fit into this picture, because how can you really solve 90% of a problem?
+I mean literally, this whole "find a solution that satisfies all these new and existing invariants" is very much like finding a solution to a set of multivariate equations, so similar, in fact, that it's not even an analogy. So then, how exactly do you find 90% of a solution to a set of 10 equations with 10 variables in it? Does that mean finding a set of variable assignments that satisfy 9 of the equations and violates the 10th? If that's what's meant, this 90% solution doesn't get you any closer to the actual solution. And that's exactly my experience with vibe coding in large codebases. It spits out thousands of lines of code that look like a solution until you waste enough time to evaluate it against the invariants, and realize it's an untenable approach due to how fundamentally it violates some of them.
+When you eventually delete all that code, and wasted time reviewing a dead end approach, it could be argued that you've refined your understanding of the problem and your wetware is now somewhat closer to finding an actual solution, but I can guarantee you that it didn't get you 90% of the way.
+-
+No. I feel like maybe I’m 50% more productive for most coding tasks, even if AI writes 90% of it. If you’re still engineering things properly, there’s not that much time to be saved there.
+-
+Correct, 50% may even be generous. I might be conservative and say 20%. But I am also not at the point where I'm running (many) multiple agents in parallel – I'm limited by dumb problems like how many isolated dev environments I can run at once, which feels like a solvable problem.
+-
+So if the improvement is between 20% and 50%, with the upper end possibly being generous, then why make such a big change to the way you work? If your employer mandated it, then my condolences.
+-
+My employer didn't mandate it, although most of my coworkers are already working that way, so I'm definitely swimming in the culture. I guess the main reason is just that it's "easier" – I know I could type the code out myself, but it feels so much more gratifying to have the work done for me. That said, I have no illusions that I've become a "10x developer"; it's a modest improvement if any.
+-
+-
+-
+-
+-
+"that it’s devolved into politics. And since politics long ago devolved into tribalism, that means it’s become tribalism."
+SOURCE!?!?
+-
+I'm ambivalent.
+I've resigned myself to not being able to hold the extreme anti-genAI position on ethical grounds without hypocrisy. I just can't seem to let go of using LLMs (mostly Claude) in the specific ways that I do. And even so, I can't decide if that means I'm too weak or addicted, or that I don't truly believe the extreme position is justified.
+But, I haven't seriously gotten into LLM-based coding agents, or even GitHub Copilot-style autocomplete. I've done a couple of toy exercises with a couple of different coding agents, but haven't yet used one on a real project. I've asked Claude for help with a handful of coding problems, and used the code generated in the chat interface, and that has been the extent of my use of LLMs for coding so far.
+Instructing a computer in ambiguous natural language to generate code in a programming language just feels wrong. The programming language itself is supposed to be how we communicate with the computer, unambiguously, in a way that is maintainable over time and also communicates with other developers. And if we find ourselves writing boilerplate, we're supposed to reduce or eliminate that boilerplate through functions, macros, code generators, etc. I keep coming back to what @mpweiher wrote when GitHub first released Copilot: Don't Generate Glue...Exterminate!!.
+I'm also reluctant to unleash a coding agent on any existing codebase that I'm currently responsible for, because I'm reluctant to have the LLM shit out verbose, boilerplatey code in a codebase that, to this point, has been laboriously written by hand. I'm more inclined to go full contrarian and look for ways to code-golf minimal implementations of new features, rather than resigning myself to using an LLM to crap out boilerplate code. But, yes, I have features to ship. Maybe I should just get with the program and learn to live with the boilerplate.
+-
+“Ai will crap out boilerplate code” is a huge misunderstanding of how these tools work and how malleable they are and how much control you have
+If you don’t like the coding agents style or is somehow doesn’t fit in the style of your larger code base then you should spend an hour writing a good prompt for that. I can guarantee you that with the right guidance via a prompt the generated code will be indistinguishable from what people submit in the project.
+-
+[Comment removed by author]
+-
+-
+Some of the comments here are along pro-AI / anti-AI lines, but I agree with OP that that's not a helpful division. I want to explain why I'm not "burying my head in the sand" from my perspective.
+There was an article from last year (that I can't find now, but I found my reflections from May 2025) by someone recommending that AI-skeptics try out their setup. Their setup was based around Aider. I tried out Aider with a self-hosted model (Codestral). The results were disappointing. It generated some working code, but was not actually speeding anything up for me.
+I work on a large codebase where most of my job is translating product requirements into technical requirements, knowing what change to make where, and understanding how disparate parts of the system interact. So there just wasn't that much room for the model to help with that. It was able to successfully write some tests.
+So I feel like I've tried AI recently.
+But my experience is consistent with the author's post. I was using a model and AI technology from before the "threshold" in 2025 where they got good. I'm not "burying my head in the sand" by not trying every new model and AI software as soon as it comes out. A lot of my developer tools don't change until I get a new computer. (I still use Sublime Text on my personal laptop but not my work laptop.)
+And there's a higher barrier to entry to Claude Code than Zed. Because Zed is free and open source, and Claude Code costs is proprietary software that costs $17/month with no free trial. Don't you think it's a little unfair to characterize me as burying my head in the sand or using motivated reasoning because I haven't put in my credit card information to try out software that, you admit, wasn't good a year ago.
+And I'm pretty minimalist. I used Sublime Text without a language server for a long time, and I've had friends look at me like I'm crazy because they claimed they would be unable to write code without an LSP. I'll admit that I don't like the ethical implications of AI and that I genuinely enjoy writing code and I would be sad if AI wrote the code for me, but I'm capable of admitting if the AI is more productive than me, and I haven't seen it.
+-
+Every time a new model is launched a new "threshold" is crossed, don't worry.
+This time is different, they say.
+-
+As someone who’s used Emacs since 1984, I hear what you’re saying, but believe me, this situation is different. It’s like instead of C++11 vs. C++23 we have C++April vs. C++July. I wouldn’t use perjorative language to express it, but the fact is, if your opinion is based on a model from more than a few months ago, it’s no longer a reliable opinion.
+-
+I'm going to try out Claude Code with Claude I recognize that I'm not using the most-advanced AI system which is Claude Code with Open AI GTP-5.
+-
+-
+Totally agree about the tribalism take. Part of being in a tribe is wanting to keep ownership of the things your tribe owns now. If you think you and your tribe have ownership of how software development works, what it means to have a programming job, what you deserve as a programmer, where the line is in terms of your moral obligation to write good code, who says what good and bad work is in some context, how much the world should reward you for writing that good code; then anything that threatens any of those things will be threatening to you personally. The world is changing incredibly quickly and if you value and want to hold on stability of any or all of these things you'll be afraid, and if you're afraid without some amount of self reflection you're just indiscriminately angry and will direct your anger at the other tribe.
+-
+The models don’t have to get better, the costs don’t have to come down (heck, they could even double and it’d still be worth it)
+Interesting. For those who rely on AI on day to day basis for either hobby stuff or work, what'd be the upper bound of the cost for you to go back go writing code yourself, or at least reduce your usage below 30% or so? 3x, 10x?
+(I don't work at OpenAI, trust me.)
+-
+I speculate in professional developer contexts it could double and many would still pay. But there’s a practical limit - at some point some orgs will prefer to buy their own inference hardware and make do with less capable models.
+Edit: or to put it another way, with the availability of open weights models a “back to pure human coding” future looks unlikely to me. It’s just that cost will modulate how much of that is SaaS frontier models vs cheaper local inference targeting more mundane tasks. Again, speaking about corporate contexts.
+-
+Fair point. How many months (of linear improvement) do you think open models are behind the top-tier Claude/ChatGPT/etc. models, generally? Or are they catching up?
+-
+From my limited testing, maybe 12 months? I played with Devstral 2 in Mistral Vibe the other day and it felt like Sonnet 3.5 - it could do stuff for sure but easily got lost/confused in longer tasks.
+-
+-
+-
+I still write a majority of my code "by hand", even for hobby projects, so I'm not who you're asking, but since you haven't gotten another answer - I think for me I would significantly decrease usage at somewhere between 5x and 10x current API prices, which I gather are about 5-10x more expensive than the subscription plan? I'm currently paying API prices because my usage is very spiky month-over-month, and also because I dislike subscriptions on principle, so every time I finish a session I see exactly how much it cost. Most of the times it ends up being a few bucks and I've never yet felt anything other than "yeah that was very cheap".
+(From this you can correctly infer that price is not the main blocker to me using it more.)
+-
+-
+Long enough ago, building data centres was a pro environment move: it consolidated stuff which was spread across diverse mom-and-pop colo businesses and was vastly more efficient. The focus then wasn’t so much on critically examining the workloads themselves. That changed after bitcoin. So now you look at the growth of data centres and it’s no longer displacing less efficient alternatives: it’s doing different “work”. The environmental concerns were always there, the focus was just different, and the “threat” a completely different order of magnitude.
+-
+This is a very good take. And it's mostly followed my path of easing up a bit, day by day, on LLMs and how they are and will change the software development landscape. It's still a question I'm pondering: are we headed toward automotive-style automation where jobs are indeed lost because of it, or are we headed toward this being yet another tool in our tool belt and that's all it will be?
+I'm trying to learn and experiment in ways that will hopefully keep me marketable in the future, just in case that future in software development is as bleak as some portend.
+-
+are we headed toward automotive-style automation where jobs are indeed lost because of it, or are we headed toward this being yet another tool in our tool belt and that's all it will be?
+Have you considered that your voice might help make that decision? With how "tribal" the issue is, having a well-reasoned discussion might be a real help to that CTO that is being sold a suite of automotive tools without realizing that they came with no safeties. That's information they need to make an informed decision and not be left in the lurch later.
+I've found it useful to discuss with people issues like who is picking up the risk once this is used. For example, more insurance companies are including a no-AI clause. Given a hypothetical company called ACME, Inc, prior to AI if bad code slipped in a specific engineer could be determined to have created it. That easily gets worked into an improvement plan or the employee could be let go. Once the employees are gone and it is just AI, but the AI provider has a TOS that says they're not liable, who do you as the business hold accountable? The first lawsuits out of this swing towards less humans and more AI will be fascinating to watch.
+I've also found it useful to highlight when AI (which in 2026 means an LLM) is a local maximum. For example, I've heard people talk about issues they have at their job that are inherently deterministic (such as a rolling average of KPIs over a given time frame) that they then want to solve with an LLM. I try to kindly point out that introducing an LLM only introduces error into what they already can express as a clean function. So while they could solve their issue with that LLM, they could solve it better by simply writing the actual function that will behave consistently. Use the right tool for the job to get the best results for your company. (and, fair play, maybe you could count it as an LLM win by having an agent write the deterministic function if your job mandated an LLM be involved).
+Finally, there is an important resiliency point. I love to highlight to people that hospitals have a pen-and-paper protocol that they practice in case of cyber incidents that shut down the network. That is prudent planning. Many business have not thought through a similar situation of onboarding AI, firing the workers, and then losing access to their AI provider of choice. Hospitals get slow when they go to pen-and-paper, but the loss of an AI provider will be an actual stop of work. Business resiliency is certainly something your CTO thinks about, but might not be considering when he hears the pitch from (insert AI company) sales person.
+Those topics aren't an all-or-nothing, you're in my tribe or you're out, but are very important factors for an informed strategic business decision. And while I absolutely hear the arguments against AI such as climate impact, if you're not speaking the language of the business your voice is simply NOT going to be a factor in that decision, one way or the other. Don't just ponder the question, be involved in the discussion.
+-
+I don't recall picking a tribe. I just said basically said what he said feels familiar as if his path and my path on how we've been dealing with this are similar. I didn't realize my minimal thoughts would be upsetting to you.
+-
+Sorry, they weren't upsetting at all. Re-reading my comment I can see how it came across as aggressive, my apologies there.
+I didn't think you were in a tribe and what I'm advocating for is less tribalism, more conversation. You have a voice! The things you learn as you experiment may allow you to give value to those who are making these sorts of decisions. Please share them. :)
+Edit: The examples I gave above are from real conversations I had this week, none of which do I believe fit into either tribe but need to be considered by the boardroom as they figure out any business' strategic direction.
+-
+My apologies. Thanks for your thoughtful reply!
+-
+Hey, no worries. Text doesn't carry tone, I should have re-read it before hitting post. Have a great day.
+-
+-
+-
+I didn't realize my minimal thoughts would be upsetting to you.
+I want to let you know this intellectually-belittling trick only backfires and makes you look irrationally upset and peevish, not your correspondent.
+-
+I intended no trick, it genuinely sounded to me like they were upset at my viewpoint. Thanks for your thoughts.
+-
+-
+-
+-
+-
+Sadly for many programmers, programming is limited to hacking at lines of code organized into procedures and modules until it works. For them, the world is just algorithms and data structures, tools and frameworks. These programmers face a bleak future where an LLM can perform this at least as well.
+-
+Thanks, this is a great take.
+-

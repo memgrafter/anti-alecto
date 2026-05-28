@@ -1,0 +1,159 @@
+---
+name: plan-mode
+description: Planning workflow for complex tasks. Use when user asks to plan, prepare a plan, think through a problem, or needs a multi-step approach before implementation.
+---
+
+# Plan Mode
+
+Read-only exploration and planning. Do NOT implement - just plan.
+
+## Instructions
+
+1. **Explore first** - Search, then read; understand codebase and dependencies
+2. **Run YAGNI check** - Verify request isn't already satisfied
+3. **Write context first** - Provide a brief preface for handoff
+4. **Output plan** - Create numbered list under `Plan:` header
+5. **Add implementation notes** - Provide key files, risks, and acceptance criteria
+
+## Exploration Rules (IMPORTANT)
+
+- **Start with targeted `rg`, not full file reads.** Start with targeted `rg` searches across both project source and dependency artifacts for the specific terms in the user's request. Only `read` full files after `rg` narrows down what's relevant.
+- **Trace the dependency chain.** When the question involves library or framework behavior, `rg` the dependency's installed files (source, docs, metadata — whatever ships with the package) for the specific types, functions, or defaults involved. Do not assume library defaults — verify them with tool output.
+- **Trace the full call path.** When analyzing whether behavior X occurs, trace the full call path: identify what gets thrown or returned at each step, and check whether downstream handlers treat that result differently than the original input. A raw value not triggering behavior X is irrelevant if it gets converted into a form that does.
+
+## YAGNI Check (Required)
+
+If evidence indicates the request is already satisfied by existing behavior or defaults, do NOT create a plan yet. Start a short conversation instead.
+
+Use this format and include Unresolved Questions:
+
+```
+YAGNI Check:
+- Evidence: <what suggests this is already handled>
+- Risk: <what could still be missing or incorrect>
+```
+
+Rules:
+- **Every claim in the `Evidence` field MUST cite a specific tool call result (file path + line number, or command output).** If you cannot cite one, you have not explored enough — run `rg` or `read` first.
+- When YAGNI Check triggers, skip Context, Plan, and Implementation Notes.
+- Always add Unresolved Questions to confirm whether a gap exists.
+- Once the user confirms a gap, proceed with the normal plan format.
+
+## Context & Assumptions (Required)
+
+Provide this section before the plan:
+
+```
+Context & Assumptions:
+Summary: 2-3 sentences on the problem and goal.
+Constraints:
+- Bullet list of key constraints.
+Assumptions:
+- Bullet list of explicit assumptions.
+```
+
+Keep it concise but sufficient for an implementing agent to understand intent and boundaries.
+
+## Plan Format
+
+```
+Plan:
+1. Step description (include reason/output)
+2. Another step (include reason/output)
+...
+```
+
+## Step Detail Rules (IMPORTANT)
+
+- Max 25 words per step
+- Imperative fragments only
+- Each step must include **one** reason or expected output in a brief clause
+- Drop fluff; keep meaning dense and implementation-ready
+
+**Bad:** "Read config files"
+**Good:** "Read config files (confirm env overrides precedence)."
+
+## Implementation Notes (Required)
+
+Add after the plan:
+
+```
+Implementation Notes:
+Files:
+- @path/to/file.ext
+Risks/Unknowns:
+- Bullet list of risks or unknowns (1-3 items)
+Acceptance Criteria:
+- Bullet list of measurable outcomes
+```
+
+Keep this compact, but include enough for handoff.
+
+## Unresolved Questions
+
+If ANY ambiguity or unknowns exist, add after the Implementation Notes:
+
+```
+Unresolved Questions:
+1. Question needing answer
+2. Another unknown
+```
+
+- MUST NOT proceed until all questions answered by user
+- Remove section once all questions resolved during conversation
+- Omit section entirely if no ambiguity
+
+## File Output
+
+- Default: display plan in chat only
+- If user specifies filename: write plan to that file
+
+## Create TODOs (Optional)
+
+Only create TODOs when user explicitly requests (e.g., "create todos for this plan").
+
+### Rules
+
+- One TODO per plan step (independently trackable)
+- Use `todo create` tool with: title, body, tags, status
+
+### TODO Body Format
+
+Include these sections for session handoff context:
+
+```
+## Goal
+What this step accomplishes
+
+## Files
+- @path/to/relevant/file.ts
+- @another/file.md
+
+## Dependencies
+- TODO-<id> must complete first
+
+## Gotchas
+- Issues discovered during exploration
+```
+
+### Example
+
+```
+todo create:
+  title: "Add validation to user input"
+  status: "open"
+  tags: ["backend", "validation"]
+  body: |
+    ## Goal
+    Add input sanitization to prevent XSS attacks.
+
+    ## Files
+    - @src/handlers/user.ts
+    - @src/utils/sanitize.ts
+
+    ## Dependencies
+    - TODO-a1b2c3d4 (sanitize util must exist)
+
+    ## Gotchas
+    - Existing tests assume raw input; update mocks
+```

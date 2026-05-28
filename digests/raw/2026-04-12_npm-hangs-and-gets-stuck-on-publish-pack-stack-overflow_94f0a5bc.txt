@@ -1,0 +1,10 @@
+npm publish and npm pack were both stuck for me. On the prepack step it would run indefinitely maxing out the CPU.
+5 Answers
+I got the same issue. The reason was that I had larges files of data (decades of Go) making packaging so slow that it looked to be stucked.
+1 Comment
+For me it was the registry that had issues. Make sure that everything is green at https://status.npmjs.org/!
+3 Comments
+--verbose
+, it just gets down to total files: XYZ
+then the next line stops and only responds to CTRL-C.npm publish
+worked fine.I encountered an issue while trying to publish with Npm, as the process seemed to be hung up and unresponsive. After several hours of troubleshooting, I discovered that the problem was being caused by the watch mode being enabled in the webpack.config.json file with the configuration of 'watch: true'. Once I removed this configuration, the publishing process completed successfully without any further issues.

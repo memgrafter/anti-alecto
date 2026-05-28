@@ -1,0 +1,81 @@
+Reddit thread capture
+
+Thread URL: https://reddit.com/r/linuxmemes/comments/tszfjf/does_anyone_even_use_dash/
+Subreddit: r/linuxmemes
+Title: does anyone even use dash?
+Author: u/Nitrocellulose_404
+Score: 829
+Comment count (reported): 124
+Linked URL: https://i.redd.it/qp6flq20ypq81.jpg
+
+## Prominent viewpoints (top-level comments)
+1. (161) u/h4636oh: i use zsh as my default shell but i have set the symlink for /bin/sh to dash
+2. (103) u/raedr7n: A shit ton of people use dash, because it's just a fast sh implementation and the default sh on debian.
+3. (65) u/Dragonflame7155: Zsh > bash change my mind
+4. (41) u/[deleted]: And csh is under the ocean floor
+5. (24) u/KasaneTeto_: The time loss in not being able to utilize bash features would be greater than the milliseconds saved by dash running faster.
+6. (17) u/noob-nine: doesn't debian use dash as default shell?
+7. (10) u/DoorsXP: I use dash as my default shell as I'm a startx user. I just set konsole to manually start zsh
+8. (6) u/WeirdAsQuantumWorld: Mr. Luke Smith does.
+
+## Thread discussion sample
+- (161) u/h4636oh: i use zsh as my default shell but i have set the symlink for /bin/sh to dash
+  - (99) u/[deleted]: Yup, people need to understand that's a difference between a good interactive shell, and a good `/bin/sh` shell to run scripts. Dash is a great `/bin/sh` shell because it's focussed purely on speed and POSIX compatibility. An interactive shell on the other hand is focused on a good user experience, e.g code completion. Fish and zsh are good for that.
+    - (8) u/Antroz22: And why exactly we can't have both?
+      - (135) u/IAmTheMageKing: Because adding features adds a speed penalty? Because POSIX compatibility isn’t necessarily comparable with a good user experience? Two different jobs, too different programs.
+      - (53) u/[deleted]: Please mark this as the accepted answer.
+      - (2) u/Antroz22: What kind of speed penalty? We're talking about she'll scripts running on modern CPUs which even mainstream models reach clock speeds of 4-5GHz.
+      - (2) u/IAmTheMageKing: For instance; bash needs to read thru several small config files on startup, each of which is a system call (which eats up significant time in our modern world of Spectre). Dash doesn’t. Just because CPUs have high clock speeds doesn’t mean you can pretend everything is fast: there’s a lot more to speed (memory access patterns, cache behaviors, kernel interactions, etc). Just Google some Bash vs Dash benchmarks: dash consistently wins, often by a factor of 2.
+    - (7) u/Nietechz: Wait, I just can change with what shell my scripts run?
+      - (8) u/TheOmegaCarrot: If the shebang at the top is for `/bin/sh` then yes. That is always(?) a symlink to some actual shell. To avoid having a *very bad time*, that shell should be POSIX compliant.
+  - (16) u/[deleted]: This is the way
+    - (19) u/raedr7n: Yeah, that's literally how dash was designed to be used, lol.
+  - (6) u/ezykielue: Exactly this
+- (103) u/raedr7n: A shit ton of people use dash, because it's just a fast sh implementation and the default sh on debian.
+  - (38) u/MagellanCl: What? I have been a Debian user for years and I'm pretty sure I'm using bash. Or am I?
+    - (72) u/raedr7n: Your `/bin/sh`, i.e your default sh, is a symlink to dash. Your default/login shell is bash.
+      - (16) u/MagellanCl: Makes sense
+    - (8) u/[deleted]: It's been arch the whole time
+      - (12) u/MagellanCl: 🔫 Always has been
+- (65) u/Dragonflame7155: Zsh > bash change my mind
+  - (51) u/Nitrocellulose_404: I agree, but I use fish btw
+    - (20) u/SamSalvador440: Me too, it is good even without any extensions
+      - (1) u/The_Dark_Byte: Using fish is all fun and games until it isn't (I still use and and love it tho). :)
+      - (2) u/SamSalvador440: When is that? I never had any issue.
+      - (2) u/The_Dark_Byte: Some projects use shell scripts for installation and sometimes they don't include a fish version. It's not that big a deal of course, I was just being overly dramatic. :)
+    - (8) u/throwaway46295027458: Fish is lovely, leads to a little confusion at times tho
+      - (6) u/[deleted]: [removed]
+      - (6) u/throwaway46295027458: Oh yea, so pleasant
+- (41) u/[deleted]: And csh is under the ocean floor
+  - (40) u/GregTheHun: korn, tcsh, eshell, rc, sash, scsh, and the original sh are at the center of the earth. pwsh is in hell, the shell for heaven hasn't been written yet, since none of us can agree on one shell
+    - (8) u/[deleted]: [deleted]
+      - (4) u/GregTheHun: True, maybe we need to call the one shell for all paradigm nirvana.
+    - (3) u/avnothdmi: I feel like sh is still around, although archaic.
+    - (3) u/[deleted]: pretty sure pwsh (new and open-source PowerShell) is still better than powershell (Old and closed-source powershell, very slow with limited features when compared to pwsh), which is still better than cmd.
+    - (1) u/[deleted]: Where's Thompson's shell? Or is that what you mean by "the original sh"? In that case, where's the Bourne shell?
+      - (2) u/chainbreaker1981: Did Thompson's ever even get ported to x86? The fact that Bourne was written and standardized in the '70s seems to point to it being a non-factor outside the PDP-11.
+      - (1) u/[deleted]: idk if it was ever ported to x86, although I'd love to try it if so xD
+      - (2) u/chainbreaker1981: [Seems like it has been.](https://etsh.nl/)
+      - (2) u/[deleted]: Oh epic! Thanks :o
+      - (2) u/chainbreaker1981: I use ksh for my retro shell fix but hope v6sh is fun for you!
+      - (2) u/[deleted]: Thanks! :D
+  - (3) u/bugamn: [As it should be](https://www-uxsup.csx.cam.ac.uk/misc/csh.html)
+  - (2) u/avnothdmi: It's still around and kicking in macOS.
+    - (2) u/[deleted]: It isn’t Zsh ?
+      - (4) u/avnothdmi: No, zsh is still the default shell. I mean that csh and sh are still available (not symlinked) in the system /bin folder.
+      - (0) u/rebelsofliberty: It’s zsh since Catalina
+- (24) u/KasaneTeto_: The time loss in not being able to utilize bash features would be greater than the milliseconds saved by dash running faster.
+  - (10) u/IAmTheMageKing: Generally, no. Bash doesn’t have many features that “accelerate” scripts: and dash’s improved performance is far greater than a few milliseconds. EDIT: I assume you are talking about using dash for what it’s designed for: non-interactive system scripts. As an interactive shell, Bash’s greater efficiency is far superior.
+    - (5) u/KasaneTeto_: I am talking about an interactive shell as in the post, yes. Dash definitely has its uses in embedded applications where all you need is a POSIX shell or for scripts with substantive CPU time. Anyone that uses dash as their shell, however, is just LARPing.
+      - (4) u/TEMPACC200000: It's default on alpine. It's much more sane compared to the insane retardation of bash's features, especially quoting.
+      - (1) u/climbTheStairs: How is quoting in bash different from quoting in any other POSIX shell?
+      - (-2) u/KasaneTeto_: Alpine is for embedded applications and for anti-GNU LARPers.
+      - (5) u/linglingfortyhours: You forgot about containers, VM, cloud, and desktop
+      - (4) u/climbTheStairs: "Anyone who uses software I don't like must be LARPing!"
+      - (2) u/[deleted]: Dash is much easier to statically compile than any of your shells.
+- (17) u/noob-nine: doesn't debian use dash as default shell?
+  - (17) u/MFAFuckedMe: I have debian 11 installed and default is ~~bash~~ dash
+    - (20) u/LongerHV: Default user shell is bash, but I am pretty sure /bin/sh points to dash.
+      - (10) u/MFAFuckedMe: well i'll be damned, you're right.
+- (10) u/DoorsXP: I use dash as my default shell as I'm a startx user. I just set konsole to manually start zsh
+- (6) u/WeirdAsQuantumWorld: Mr. Luke Smith does.

@@ -1,0 +1,764 @@
+figure that record this. Um maybe it's
+helpful for people um that should start
+out with cloud code.
+So what I'm doing is I'm prototyping a
+workflow um for more or less a task
+management thing. I have my trusty to-do
+MD in my docs folder which is state
+um
+which is split up into completed items
+and open items and the open open items I
+just jot down as I think of them or have
+Claude uh write an item down here
+quickly while we work on something else
+during a session. Um, what I'd like to
+have is a slash command where I can say
+just to-do. And that slash command
+should pick the topmost or the slash
+command should um give me a summary of
+all the to-do items that are in this
+file. Um, and ask me to pick one, then
+um ask me if I want to refine it, which
+means figuring out the what and the how.
+Um, and then replace the to-do item in
+here with the improved version. Um,
+improved version means there's enough
+information in there that I can let
+Claude try to implement this as
+autonomously as possible. Um,
+but for that to work, I need to iterate
+on the to-do item itself and as a human
+try to judge if this is enough
+information to claw to do what it's
+supposed to do.
+And I'd like that to be a repeatable
+process. So every time I want to start
+working on a new to-do item, um I I want
+to have the same workflow.
+And one way to prototype this is just
+write a slash command and with the help
+of cloud improve this um because cloud
+can judge whether the workflow you're
+describing here, which is kind of like a
+program modifying state,
+um whether this workflow description is
+actually easy for it to follow and
+execute. So, I've written some crap so
+far, but I'm not happy with it. So, I'm
+now using Clot to help me fix this. The
+first thing I need to do is if this file
+doesn't actually exist, it should be
+created with a template.
+Um, please add a step zero where we
+check if the file exists. Um, and create
+it based on a template. Um, just look at
+what it's looking now at the moment.
+Yeah, I'm very loosey goosey with my
+prompts.
+Voice transcription kind of lends itself
+to that style of prompting.
+All right.
+Oh, it already exists in the file. It
+shouldn't.
+Let's see. Ah, okay. All right. Okay.
+Try again.
+Um, I I previously had a better version
+than it did, but I thought I'd start
+from this state so it's easier to see
+how this works.
+Yeah, that sounds good. Okay.
+All right. Um, we need to improve step
+one. uh it currently doesn't even say
+that we should present the to-dos that
+we read from the to-do file to the user
+and ask which one to pick. So the way I
+imagine this is we should give uh short
+summaries possibly oneline summaries um
+when we present all the open issues or
+open to-dos to the user
+and then stop and ask the user which of
+these um they want to work on
+and um the presentation should probably
+be numbered so the user can say pick I
+pick number one.
+So, previously I already um wrote some
+stuff here that says use the bash tool
+with RG so it doesn't go off and use
+something that's slow or not working. Um
+and we want to optimize it so it only
+reads the open issues and doesn't read
+the file up here.
+So it says read the content flies from
+me. Present all open to-dos to the user
+as a numbered list with oneline
+summaries. Stop and ask which to do
+would you like to work on? Enter number.
+Okay. Like a text adventure and wait for
+the user selection. Okay, cool. So next
+comes the refinement stage. Actually um
+this is [ __ ] Um what I want to do
+is um the user after selecting the to-do
+item
+um I want
+um okay after the user has selected the
+to-do item um we want to show him them
+the full item verbatim as it is in the
+to-do MD and ask them if they want to
+refine it and if they want to refine it
+we should figure out the what and the
+how. The what means we need to ask
+questions uh for as long as needed to
+improve the description of the to-do
+item. That is what we actually want to
+achieve functionality or behaviorally.
+And the how um is basically
+you firing off one or more task agents
+through the task tool
+which investigate the codebase and
+figure out where in the codebase we need
+to make changes, updates, deletions,
+whatever. Um the result of that should
+be um a concise list of files and
+changes that need to be made to those
+files. um so that you in the future can
+then read the to-do item uh and and do
+exactly what's necessary to implement
+this feature mostly autonomously.
+Okay, so hopefully this loosey goosey
+prompt uh is enough to improve this
+Okay, let's see what it did.
+Stop and ask, would you like to refine
+the to-do item? Okay, so it updated one
+and said, wait for user selection. Show
+the selected to-do payment. Stop and ask
+and if no, skip to three. Otherwise,
+refine the to-do only if user said yes.
+Clarify the what functional behavior
+require. Ask questions to understand
+what needs to be achieved. Continue
+until the description is clear and
+complete. Focus on behavior and not
+implementation. Right? So this
+needs another confirmation step by the
+user. Um step 2. A needs a confirmation
+step by the user. So once you think you
+have gathered all the requirements, ask
+the user
+giving them a summary of what you think
+the what should be in a form um that we
+will then later write to the to-do MD
+and ask them if this is what they intend
+to to do.
+And we should do the same for two B. Um,
+so
+once you think you've gathered enough
+information, present that in the form
+that we will write it later to the to-do
+MD
+and ask the user if this makes sense to
+them or if this is what they agree to
+needs to be done.
+Okay, let's see.
+Once complete, present the clarified
+what in the format for docs and D. Stop
+and ask, is this description accurate?
+Now continue clarifying.
+Present the how findings in the format
+formal. Stop and ask, does this
+implementation
+plan look correct? If no, gather more
+information or just sounds okay.
+Find refine to do show the clarific.
+So I think in 2C we need to make sure
+that after the user confirms you're
+instructed to actually replace the old
+to-do item with the new to-do item.
+I mean it says before updating docs todo
+MD that implies that it should do that
+but having an explicit step here that
+does it um is usually better.
+Use edit tool to replace the old to-do
+with the refined version. Maintain the
+same checkbox format. Only proceed to
+step three of the successful update.
+Yeah, sounds good.
+Okay. Um, and I think implemented to-do
+item for existing test your changes.
+Mark the items as completed with a note
+about what files have changed.
+Well, I guess we can improve that as
+well. Okay, let's work on step three.
+Um, I have a bunch of docs in docs
+slash.
+I'm not sure if we want to put those in
+the context of the coding agent.
+Let's see. So, actually, the how section
+of the to-do should give the machine,
+the LLM enough information to not go off
+too much on a tangent and reinvestigate
+the entire thing. Okay, assuming that
+the to-do item has all the file names
+and paths in it
+uh and line numbers that we need to
+investigate once we implement the to-do
+item. I don't think we need the LLM to
+read the docs, but what it does need to
+know is how to type check lint format.
+Um, so
+it should do that after each change to
+ensure
+things aren't [ __ ] up.
+And it needs to know how to build and
+how to test. Test is currently
+undefined. So we can at the later point
+see how we will work that into the slash
+command.
+Um mark the item as completed with a
+Yeah, I think after to-do is
+implemented, we will commit and push it.
+Um, so I think we just need to um update
+the to-do um to link to the commit and
+we also need to move the to-do item to
+the um completed item section at the top
+of the file.
+Um all operations on files like updating
+the to-do MD must be efficient. So
+explicitly tell the LLM how to do that.
+Again,
+very loosey goosey. We'll see what comes
+out of it.
+And while it does this, let me just see.
+Sessions and controller should be sorted
+by
+check. Let's implement this first.
+Actually, we can keep this. We want to
+implement this later. Uh so we will see
+if the item selection works as intended.
+Okay. Use file ps and line numbers from
+refine to to make changes. N that's
+terrible.
+Yeah. Use file paths and line numbers
+from the refined to-do to make changes
+is kind of terrible because that implies
+that the LLM is limited to just doing
+this. Um,
+it's more like a guide to the source ba
+uh to the codebase that the LLM can use
+to implement the to-do. It should be
+free to explore other files as well
+obviously and for some to-dos we might
+not even have the files that need
+modifying but need to create new ones.
+So, please uh revert that in a way that
+makes sure that the LLM understands that
+the how section in the to-do is more
+like guidance and not necessarily a
+strict guardrail.
+So let's see after the eat file change
+run or equivalent. Yeah. Is it called
+check? I think it's called check.
+Yeah, that looks okay.
+Um the mpm run check thing is cool. Um
+if we modify swift, we need to invoke
+the um the built demon um task.
+So, mpm run check for typescript [ __ ]
+and mpm run built column demon for swift
+stuff.
+Once is complete, commit all changes
+descriptives message push to rem get the
+commit hash from the output.
+Use a tool to add com to do.
+Yeah, so the update docs/todo.md
+efficiently stuff is terrible. Um, it
+should be remove the to-do from the open
+section.
+[Music]
+Not sure how to do this efficiently.
+Figure out a way um with your tools. I
+think a string replace for the exact
+verbatim to-do string um with an empty
+string
+should probably do.
+Um,
+okay. And then we need to add the to-do
+checked as done in the completed section
+at the top. So, we just need to
+insert that starting at line two
+and add in the commit hash
+in the description, I guess. And it
+would be really nice if you could figure
+out the GitHub URL and put that there so
+we go to the website directly to so it's
+easier to view.
+Oh Jesus, put that in the transcribed
+that
+in the wrong window. That's not good. So
+here we go. Let's see what else it does.
+Use edit tool. Paste it at the end of
+the completed section. No, that's not
+what I want to do. do not retry. Yeah.
+Okay, that's fine. So, let's see if it
+can actually update that.
+And while it does that, I can quickly
+show you what we want to achieve. So, I
+have this little thing here and that
+lists all the current currently running
+cloud sessions. This is a heavy work pro
+uh work in progress. Um this session is
+currently working. So, it's marked as
+green. it does a thing and if it doesn't
+do a thing it's marked as um orange
+which means it's waiting for input and
+it also displays that here and it should
+show a notification but I turned it off
+currently. Um,
+and also, oh, actually no notifications
+are shown because we're screen
+recording. That's why. And
+I want these to And if the processes
+exited like so
+this should turn red, I hope. Oh, I
+haven't implemented that yet. Oh, no, it
+just removes it. Yeah, I haven't
+implemented that.
+Uh, clear all.
+Yeah, it's fine. Anyways, my point is we
+have green for working, uh, yellow for
+waiting for prompt and red for exited
+and I want those to be sorted.
+So, we're going to implement these later
+with the new to-do system. So, let's
+continue.
+So, what did it do here?
+I would assume I need to reload this.
+Yeah, don't save. That's one of the not
+so nice things about this. When Claude
+writes into a file I've opened, I've
+typed in here, but even if I went back
+to the old version before it wrote, um,
+things get weird. So, use the house
+action from the to-do as guidance, not
+strict rules. Feel free to explore the
+other files and create new ones as
+needed. After modifying the files, run
+appropriate checks.
+Fix manager on commit all changes. Push
+get commit hash for all repo commit hash
+path but update docs dd use edit tool
+with replace all true to remove the
+to-do from the open section.
+Yep. Use edit tool to insert completed
+to-do at line two.
+Okay. At the end of the first step we
+only say description. I I want the full
+to-do to be uh placed in the
+um completed section so I can keep track
+of what I did.
+[Music]
+See anything else? Oh yeah, and in the
+um in at the top of the third step, we
+need to make sure that the LLM
+understands that it should follow what
+it sees in the files it's modifying in
+terms of coding style and patterns.
+I think that's actually in the system
+prompt of clot code anyways, but doesn't
+hurt.
+It's not like we don't have to
+um manually review what it did before
+committing, which is another thing we
+need to add to step three. At least
+that's how I work because I want to
+understand the code.
+All right. I think I modified this
+again. So I have to Yeah.
+There we go.
+Straight through all the coding style
+patterns in the files you're modifying.
+Use the now section. This is good.
+Full to do content including what and
+how. Yeah, this looks good.
+Okay, this is a good initial thing. Now
+we're just lacking the confirmation step
+here.
+Um, please before committing add a
+confirmation step asking the user to
+review all the files.
+Use the VS-cloud extension. Instruct the
+LLM to use the VS-cloud uh extension to
+show
+um for each file that was modified the
+diff um between the working tree and
+head inside of VS Code.
+Um, VS Cloud is an extension I wrote so
+that Claude can open files and dips in
+VS Code. Um, yeah, I think that should
+be good.
+So, this looks like a pretty complete
+workflow, I would say.
+And now we can test it real quick.
+Does it do?
+Perfect. Shows it the exact thing that
+it needs.
+Oh. Um, tell uh the agent that it can
+actually open multiple divs in a single
+um BSCloud open call.
+So that way we don't waste turns. So we
+don't have one turn per file to open it,
+but a single turn hopefully um where the
+LLM
+does this passes an array of things to
+open
+because daddy doesn't want to wait.
+Okay, I think we're good. So, all right.
+Um, add this command to git. Um, also
+add the to-do MD to git and commit and
+push those two files. And let's see if
+we have other modifications. I don't
+think so.
+No, looks good.
+All right. And now we can try to
+implement one of those to-dos.
+I have a development MD which was also
+generated by cloud with some very minor
+changes from my end because it couldn't
+be arcs to read through this. Um this
+could be something that gets injected in
+the first step. Oopsie here. um just so
+it knows its way around the codebase.
+But I'm not sure if we should add that.
+Let's try it without and see how well it
+does.
+Once the to-do refinement is complete, I
+would think that this can replace
+development MD pretty well. Also, in
+terms of checking while we work on
+things, this looks okay.
+Yeah. Okay. All right. So let's start a
+new session.
+I just use the slash command
+and the slash command is not here.
+What is going on?
+Well, let's ask clot.
+I put a slash command includ
+um why isn't the join up in cloud code
+language is so terrible that whisper the
+model I use for voice transcription
+thinks I say cloud all the time instead
+instead of cloud
+[Music]
+cloud code looks for custom commands.
+You need to move. Yeah, don't do that.
+Thank you. Now you put it in my home
+directory.
+Revert that please. We can also have
+project local commands, can't we?
+Okay,
+restarting your cloud session. Make sure
+the file has an empty extension.
+Checking that the command name doesn't
+conflict with built-in commands.
+Oh, yeah, that might be.
+No, it should actually appear as slash.
+Let's see.
+Mario to-do and then let's restart this
+Mario to-do. Uhhuh. Interesting. They
+changed this. Previously it would be um
+project and then the command. I see.
+Interesting.
+But there is no to-do/comand.
+So I'm just going to try this again with
+to-do.
+I should read the release notes of
+Claude
+to-do.
+Yeah, perfect. So, let's see.
+According to my math, it should first
+check if this exists
+with ls. It does.
+Now, it craps for Let's see. It's at
+line three. Is this correct? Yes.
+Read the concept of to-do. Does it read
+it from line three onwards?
+Read offset three. That's good. Here the
+open to-d do session control one by
+status track and display session
+monitoring duration.
+Change clear all to clear exited
+sort session and control window status.
+Yeah, let's do this first because for
+this we need to also keep track of
+exited processes
+and that is largely in the swift code
+space. You selected to do one. So it now
+shows me
+the verbatim thing.
+Uh yeah sure
+we ask it to refine it.
+Looking at the to-do, I noticed there's
+a typo says. Yeah. Well, okay. When you
+say control window, are you referring to
+a specific icon? But this says control
+window. Um,
+yeah, it's fine if it reads code now.
+read read me.md
+and source Mac demon I think it is
+yeah demon swift to get a better idea
+that's actually an interesting point so
+when I start a new session it has no
+idea what the project is about so we
+should probably add this in Here.
+Oh my god. I need to write like an ape
+with the keyboard.
+Oh, it uses a task. Oh, that's funny.
+Oh.
+21,000 tokens spent on just reading two
+files. Okay.
+Consent application method to do as a
+type and seems to mention the states
+that don't exactly match current based
+on the code working and idle. There is
+no explicit exited state with red color
+in the current implementation. That's
+correct. Dead sessions are automatically
+removed every 5 seconds.
+A new exited state. Yes, I'd like to add
+a new exited state. So, we don't remove
+them every 5 seconds, but we mark them
+as exited in memory.
+Instead of automatically removing them,
+this would mean session pro would turn
+red and make visible. User could
+manually clear this access. Exactly. The
+um clear all or whatever it's called now
+should be called clear exited and just
+remove the exited from the session,
+which means removing them from the
+inmemory store.
+Um sorting order should be. Yeah, that's
+fine. Should exit a session show when
+they exited time stamp have any limit on
+how many we keep. We have no limits. Um
+we don't need to track the time stamp
+just yet. That's another to-do. We'll do
+that later after some time. No, no, no
+clearing. Um should be manual.
+Now I have clear understanding. Let me
+present to clarify what for this to do.
+Let's see. Add a new exit state for the
+session whose process have ended
+sessions on the process exist access and
+memory instead of removing them. Do not
+clear exit sessions manually cleared. So
+sessions in the control window. Best
+status. Yeah. Update the clear all
+button to clear exited all remove exited
+sessions from the in-memory store. Leave
+working and idle sessions untouched.
+Yes, perfect. So, it's now entered
+this thing here
+and should move on to investigating the
+how.
+All right. And it's firing off a task
+agent that does the thing. This is the
+prompt. Let's see if we can get the full
+thing. No, we can't. Oh my god. There's
+an error in cloud code.
+Oh my god. I can't go back. Oh, this is
+so bad.
+Ah, Jesus. [ __ ] Now we need to repeat
+this.
+We do. It seems. Oh, Jesus. Let's see if
+continue helps.
+Okay, good. Okay, so it looks like
+controlr R is working, but control E
+will
+just uh go into an unreoverable arrow
+mode. Oh, god damn it. I hate that they
+don't show you what the tasks are doing.
+So let's not press Ctrl E. Uh so this is
+the prompt. It tells the agent analyze
+the code base to understand how to
+implement session sorting by status.
+Focus on distract and manage render
+control in the UI is rendered where
+session cleanup removal happens. Look at
+the specific
+type of change needed.
+Return the file to files where change
+are needed for each location. Yeah, that
+sounds good. Let's see.
+Well, this is taking a long time. Let me
+check.
+Ah, perfect. 28,000 tokens. So reading
+the readme and the demon swift takes
+21,000 tokens and doing a full codebase
+analysis takes 28,000 tokens. That makes
+sense. The how files to modify demon
+swift add exit sensation status enum.
+Let's see demon swift sessions info enum
+exited. Yeah, that sounds good. Update
+remove that session.
+Uh, I should tell it.
+Yeah, I hate this. Um, it should should
+output the full file name colon and then
+the line number. But n, [ __ ] it. We'll
+keep it like that. It's easy enough to
+see. So, update remove that session
+method instead of removing that
+sessions. Mark them as exited.
+Implement session sorting.
+Yeah, that sounds good. Sub status line
+69. Let's see.
+Search sessions by time stamp. Ah,
+interesting. Yeah, that makes sense.
+Clear all line 355.
+Okay. Yeah, change that.
+Clearly all remove add visual
+distinction for exited sessions after
+line 42
+422.
+Well, I suppose addacity modifier to
+make access fade. Yeah, that sounds
+great. Does this implementation? Yes, it
+looks amazing, my man.
+Okay, so following our slashcomand
+workflow, it should now
+uh use the edit tool to replace the old
+to-do with the refined version.
+Let's see.
+Oh my god. Oh yeah. Should I update Doc
+Studio with this refined version?
+Yes.
+Perfect. Love it.
+Okay. I suppose I have previously
+modified this again.
+Great. Exactly what I want.
+Now let's proceed to implementation.
+That sounds good.
+Oopsie.
+Yeah, let's change that. So
+implementation.
+What does it do? It reads not all of
+Demon Swift, which is not ideal.
+And also
+the problem is that
+this needs to actually does it need
+checkboxes? No, I think it's fine. I
+think if we have to resume then as it
+goes through all of these again and sees
+that we already made the changes it will
+just say ah this is already done.
+So this checkbox as a state tracker
+should be enough I guess.
+Ah interesting. So it doesn't take the
+information into account that we
+actually wrote out
+sorts and then by time stamp that makes
+sense.
+Yep. Yep. Yep. Looks good.
+Meanwhile, I could read hacken news or
+whatever, but I just want to see what it
+does. It's probably more interesting to
+you as well.
+Yep. The opacity change and that should
+be it. Now run check and fix any issues.
+Ah, the clear all button.
+Yeah, I think this needs that needs
+checkboxes.
+Let's see. Um,
+let's open a quick new session to edit
+our slash command through clot with clot
+commands to-do.md.
+Let's see.
+Excludes exited sessions.
+Okay. I mean, it's fine that it has its
+own to-do list, right? But we definitely
+want to have checkboxes for the how.
+Oh god. Whoa. What the [ __ ]
+What is this?
+Oh my god. I also hate that cloud auto
+updates. That's so freaking bad.
+The menu item find clear all methods.
+Nah, that's not what we want to resume.
+Okay, this is what I see in a custom
+command to do atoms.
+All right. Um,
+the how that we generate should have a
+checkbox for each of the how items so to
+speak and during the implementation the
+LLM should check those checkboxes and
+update the to-do MD file accordingly.
+This way we can keep track of the LLM um
+oh of the LLM implementing um how items
+so to speak. Please update the
+clot/command/todo.mmd
+file accordingly.
+All right. And this little piggy
+please review the changes. Uh
+okay cool. So it opened up the git diff
+for demon swift. Why am I a little v
+code uh v cloth thing? So we added a new
+um session status exited.
+We sort by status first and by time
+stamp.
+What are we doing here? The removed
+session. We check if it's dead. If it is
+dead
+and the status is not exited yet, then
+we mark the session as exited in the log
+or rather we log out that we marked it
+as exited. Mark it as exited. It sounds
+good. We don't remove it. What's down
+here?
+We renamed the button from clear all to
+clear exited. Remove all and then pass
+in.
+See? Okay. Yeah, that just f filters the
+sessions and removes everything that's
+exited.
+Um the status icon has now three states
+opacity change so that that or exited
+sessions get faded out.
+Clear exited.
+Oh yeah, that's just a setup of the
+callback.
+There we go. Yeah, perfect. It looks
+amazing. Yes, love it.
+We don't test. We test in prod.
+Okay. Let's see what we did here
+present
+the format to do each implementation
+step should
+complete
+updated. Perfect. Perfect. Commit
+change.
+And with that, we should have an all new
+show control center.
+There are two of these in here. Now, I'm
+not sure if this is already the latest
+version of the control center. So,
+change is committed successfully. Let's
+see if we kill this.
+Nope, it's not the latest yet. This is
+the old one that removes the exited
+sessions. Um, let's try
+to kill this. And then we should get the
+latest version. Was it built?
+See? Yep. It built the new demon. So now
+this should be the new demon. And then
+we just open a new cloud session.
+This is the existing one. That's still
+working. So it says no message. This
+needs to be updated. Next goes into the
+to-do.
+And then we say say hi. And now we
+should get a thing here. Yes, it said hi
+and it's yellow now. And now we kill it.
+And it should turn red and go to the
+bottom of the list. Red doesn't go to
+the bottom of the list. God damn it. All
+right, that's a bug fix for later. But
+it seems the system works.
+Oh, now it's at the bottom. Interesting.
+Well, we figured it out. Five.

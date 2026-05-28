@@ -1,0 +1,56 @@
+Analysis of the Apple M5 SoC: Apple silicon extends its lead over AMD, Intel and Qualcomm
+The Apple M4 processor generation debuted in the iPad Pro models last year, but it took a few months before we were able to test the processors in the MacBooks.
+This time, however, Apple is launching the 2025 variants of the new iPad Pro models and the base model of the MacBook Pro 14 with the new M5 SoC at the same time.
+We were able to review both the iPad Pro 11 as well as the MacBook Pro 14, but now we want to take a closer look at the performance and efficiency of the latest Apple silicon compared to previous generations alongside the competition from AMD, Intel, and Qualcomm.
+Specifications: Apple M5 SoC once again comes with 9 or 10 CPU cores
+The Apple M5 is the successor to last year's M4 and is once again manufactured using a TSMC 3 nm process like the M4 and M3 generations. In the third generation, in addition to further optimizations, we see an increase in clock speeds overall.
+The four performance cores now reach up to 4.608 GHz (M4: 4.4 GHz), and the six efficiency cores now reach 3.048 GHz (M4: 2.9 GHz). Not much is known about the changes to the M5 GPU, however, and we cannot read out any data apart from the power consumption.
+There are currently two variants of the M5, one with 10 CPU cores (4x Performance, 6x Efficiency) and one with 9 CPU cores (3x Performance, 6x Efficiency). This weaker variant is currently used in the base models of the new iPad Pro 2025.
+There is likely to be another variant with a weaker GPU for the base model of the upcoming MacBook Air. Apart from the clock speed, the memory bandwidth has also been increased, which we have been able to test.
+Test system
+We have with us the new base model of the MacBook Pro 14 — which is equipped with the 10-core version of the M5 — as a test system.
+Under pure processor load, the processor can briefly consume 30.5 W before stabilizing at 27.5 W. The graphics card draws a maximum of 18-19 W.
+The upcoming MacBook Air models will probably be passively cooled again, which is why the performance depends more on the thermal conditions.
+Test procedure
+In order to make a meaningful comparison between the different CPUs and GPUs, we look at the power consumption in addition to pure performance in synthetic benchmarks and then use this to determine the efficiency.
+The consumption measurements are always carried out on an external display so that we can eliminate the different internal displays as influencing factors.
+Nevertheless, we measure the overall consumption of the system here and do not just rely on the displayed values for the CPU and GPU.
+Single-core performance and efficiency
+With the M4 generation, Apple has already secured the single-core crown, and the new M5 raises the bar once again.
+The M5 SoC with its 10 cores is 10-12% faster than the M4 models in Cinebench 2024 single-core tests and therefore a whopping 26-38% faster than the fastest non-Apple processor in our database, the Intel Core Ultra 9 285K desktop processor.
+The M5 in the passively cooled iPad Pro 11 is also significantly faster than the competition as seen in the Geekbench 6.5 single-core test.
+The higher clock speeds of the M5 also come at the expense of higher power consumption (7 W - 7.7 W vs. ~5.2 W for the M4), which can be seen in the efficiency charts.
+Despite the higher performance, the efficiency has become slightly worse by 4% compared to the 10-core M4.
+That being said, the overall efficiency should be at a similar level if you take into account the fact that the M5 MacBook Pro is equipped with double the RAM (32 GB vs. 16 GB), which can also increase the power consumption.
+Nevertheless, this result is still clearly enough to leave the competition far behind.
+* ... smaller is better
+Multi-core performance and efficiency
+Multi-core performance is nearly 20% better than the M4 processor on average, and thus the M5 can give the fastest H-class mobile processors from AMD and Intel — such as the Core Ultra 7 255H or the Ryzen AI 9 HX 370 — a run for their money.
+The Intel chips are usually configured in the 45 W to 115 W range while it can be 30 W to 80 W in the case of AMD. What's important to note is that these CPUs require more than 70 W to achieve these results.
+The new M5 SoC also overtakes the old Apple M3 Pro (both variants). The Snapdragon processors are also clearly at a disadvantage here.
+As with the single-core load, we see increased power consumption in multi-core tests as well. While the M4 in the MacBook Pro 14 consumed a stable 24 W, the M5 now briefly consumes 30.5 W, which then quickly levels off at 27.5 W.
+The highly significant performance advantage of the M5 also benefits the overall efficiency, which makes the new chip take the lead in Cinebench 2024 multi-core efficiency charts.
+The M5 is followed by the 10-core M4 and then the Snapdragon X Elite 78-100 from Qualcomm. In general, the ARM chips perform significantly better in this performance class than their x86 counterparts from AMD and Intel.
+* ... smaller is better
+GPU performance and efficiency
+The new M5 GPU has roughly the same power consumption as the old M4 GPU (18 W to 19 W), but the performance in synthetic benchmarks is 25-30% better.
+The new GPU is also well ahead of the current iGPUs from AMD, Intel, and Qualcomm.
+The situation is slightly different when playing Cyberpunk 2077. The title has now been released as a native version for macOS, which is why we can now better assess the performance (we use the pure performance without Metal FX upscaling).
+The new M5 chip features one of the fastest current iGPUs (with the exception of Strix Halo), but it is no faster than the best versions of the Intel Arc Graphics 140V or the AMD Radeon 890M.
+Comparisons with old MacBooks should be treated with caution, as we were only able to test the emulated version of the game in them, which of course costs performance.
+Additionally, there seem to be differences depending on the title, because in Baldur's Gate 3 (also available natively for macOS), for example, the performance is significantly higher than the aforementioned Intel and AMD iGPUs.
+GFXBench: 3840x2160 4K Aztec Ruins High Tier Offscreen | 2560x1440 Aztec Ruins High Tier Offscreen | 1920x1080 Car Chase Offscreen
+Cyberpunk 2077: 1920x1080 Ultra Preset (FSR off)
+Baldur's Gate 3: 1920x1080 Ultra Preset AA:T
+GFXBench: 3840x2160 4K Aztec Ruins High Tier Offscreen | 2560x1440 Aztec Ruins High Tier Offscreen | 1920x1080 Car Chase Offscreen
+Cyberpunk 2077: 1920x1080 Ultra Preset (FSR off)
+Baldur's Gate 3: 1920x1080 Ultra Preset AA:T
+We also use Cyberpunk 2077 for the efficiency analysis and here, too, the new M5 SoC is only just ahead of the best versions of the Arc Graphics 140V. Overall, the result is good, but Apple does not have a major advantage in this discipline. With Panther Lake at the latest, the tide should turn in favor of Intel, at least in Cyberpunk 2077.
+* ... smaller is better
+Conclusion: Apple further optimizes 3 nm chips and extends its lead
+Apple is once again able to increase performance with the new M5 SoC. In what is now the third generation of the TSMC 3 nm production process, the clock speeds of the CPU cores have been increased once again.
+This results in the fastest single-core processor you can currently buy. The fact that the M5 in the passively cooled iPad Pro offers more single-core performance than the fastest desktop processor from Intel (Core Ultra 9 285K) is impressive and at the same time quite a blow to the competition.
+However, Apple trades this performance advantage with increased power consumption. Although the single-core efficiency remains roughly the same as the M4 generation (and still significantly better than the rest of the competition), the increased consumption also leads to slightly shorter battery runtimes.
+In everyday use, there are often short load phases where the M5 simply consumes a little more power, which we observed while testing the new iPad Pro 11 as well as the MacBook Pro 14. It would probably made better sense from a consumer standpoint to not increase the single-core consumption.
+In the multi-core and graphics tests, both performance and efficiency increased noticeably. We are curious to see what the M5 Pro and M5 Max SoCs will achieve and whether Intel can compete with Panther Lake.
+Qualcomm has already shown off the second generation of Snapdragon X Elite processors, but we will have to wait until next year to evaluate their numbers.

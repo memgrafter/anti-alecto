@@ -1,0 +1,35 @@
+Reddit thread capture
+
+Thread URL: https://reddit.com/r/ClaudeAI/comments/1o944pi/i_created_a_collection_of_claude_skills/
+Subreddit: r/ClaudeAI
+Title: I created a collection of Claude Skills
+Author: u/BehiSec
+Score: 29
+Comment count (reported): 15
+
+## Original post
+Hey everyone. I have compiled a curated list of all known Claude Skills (both official ones from Anthropic and community-built projects found across GitHub). Each skill has a clear description and a link to its repository, so you can plug them directly into your Claude setup or use them as templates to create your own. Check it out: [https://github.com/BehiSecc/awesome-claude-skills](https://github.com/BehiSecc/awesome-claude-skills)
+
+## Prominent viewpoints (top-level comments)
+1. (5) u/hanoian: 404 for most links in your list.
+2. (2) u/BackgroundResult: Interesting, here's a deep dive on Agent Skills: [https://www.ai-supremacy.com/p/claude-code-skills-just-changed-everything-agents-anthropic](https://www.ai-supremacy.com/p/claude-code-skills-just-changed-everything-agents-anthropic)
+3. (1) u/ClaudeAI-mod-bot: **If this post is showcasing a project you built with Claude, please change the post flair to Built with Claude so that it can be easily found by others.**
+4. (1) u/owen800q: It sound likes skill is just sub agent?
+5. (1) u/Sufficient-Fig-5695: Nice work, how are you sourcing the skills? Would be cool to auto-update this, like OG Yahoo
+6. (1) u/omeraplak: thanks for sharing. Here is Another list of on Claude skills collection: [https://github.com/VoltAgent/awesome-claude-skills](https://github.com/VoltAgent/awesome-claude-skills)
+7. (1) u/vik_s1231: I'm curious , how did you find all these skills? I have been trying to search for skills on Github, but may be I was doing something incorrct
+
+## Thread discussion sample
+- (1) u/ClaudeAI-mod-bot: **If this post is showcasing a project you built with Claude, please change the post flair to Built with Claude so that it can be easily found by others.**
+- (5) u/hanoian: 404 for most links in your list.
+  - (2) u/thomash: Wow yeah. I don't know why people vibecode these things and don't even do basic checks to see if it's all hallucinated or not.
+    - (2) u/BehiSec: I'm really sorry for that. I've fixed the issue now.
+  - (2) u/BehiSec: Hey, I went through everything and was honestly surprised by how many links were broken; it looks like several projects have changed their directory structures. I also realized I had made a mistake regarding the official skills. I've now fixed all the broken links and added a few new skills. I sincerely apologize for that.
+- (2) u/BackgroundResult: Interesting, here's a deep dive on Agent Skills: [https://www.ai-supremacy.com/p/claude-code-skills-just-changed-everything-agents-anthropic](https://www.ai-supremacy.com/p/claude-code-skills-just-changed-everything-agents-anthropic)
+- (1) u/owen800q: It sound likes skill is just sub agent?
+- (1) u/Sufficient-Fig-5695: Nice work, how are you sourcing the skills? Would be cool to auto-update this, like OG Yahoo
+  - (1) u/BehiSec: I find the skills by searching on social media platforms :) Yeah, it sure could be automated.
+    - (1) u/walm00: Did you try them out as well?
+- (1) u/omeraplak: thanks for sharing. Here is Another list of on Claude skills collection: [https://github.com/VoltAgent/awesome-claude-skills](https://github.com/VoltAgent/awesome-claude-skills)
+  - (1) u/vik_s1231: how did you find about this? what is the best way to discover skills?
+- (1) u/vik_s1231: I'm curious , how did you find all these skills? I have been trying to search for skills on Github, but may be I was doing something incorrct

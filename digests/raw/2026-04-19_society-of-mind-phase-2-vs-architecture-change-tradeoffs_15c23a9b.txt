@@ -1,0 +1,112 @@
+Phase 1 Summary
+The Core Problem: Agent ≠ LLM Call
+Three of seven Minsky patterns (K-lines, pronomes, guard learning) were postponed because we framed the problem as a granularity gap — "we need more atomic agents than our heavyweight LLM calls."
+But this framing was wrong. We already have atomic agents. We've been building them throughout Phase 1 without naming them:
+- Hook actions — the censor in Example 1 (regex pattern matching, zero LLM calls)
+- Rule-based evaluators — the B-brain's loop/stall/cost detectors in Example 4
+- Individual tool calls — each tool invocation in a
+tool_loop
+is individually checkpointed viaon_tool_calls
+/on_tool_result
+- Heuristic observers — B-brain checkpoint polling, state history tracking
+The real gap isn't "we need more atomic agents" — it's that we haven't connected our existing non-LLM agents to the Minsky observation/capture/signaling infrastructure. Tool-call sequences are already individually checkpointed. Hook actions already fire on every state transition. We just haven't wired them into K-line capture or pronome signaling.
+tool_loop
+state is individually checkpointed (event type tool_call
+). The checkpoint includes tool_loop_state
+with the full chain, turn count, tool call count, and cost. on_tool_calls
+and on_tool_result
+hooks fire on every invocation. Multiple existing implementations (coding_machine_cli, etc.) already use this. K-line capture from tool sequences requires zero new infrastructure — just a hooks class that reads existing checkpoint data.
+mindmap root((The Real Taxonomy)) LLM Agents expensive Writers, generators Reasoning evaluators Suppressor LLM calls Non-LLM Agents already exist Hook actions: censors, parsers, counters Tool calls: read, write, bash, edit Rule evaluators: B-brain heuristics Observers: checkpoint readers What We Actually Need Formalize the taxonomy Wire non-LLM agents into K-line capture Recognize tool sequences as activation patterns Uniframe slots typed by agent taxonomy
+The Three Paths
+Path A: Phase 2 As-Designed
+Build KLineStore, guard learning, uniframe generator on top of context-dict snapshots. Accept that K-lines are thin.
+Low risk Low reward
+Path B: Recognize What Exists
+Formalize the agent taxonomy. Wire existing non-LLM agents (tools, hooks, rules) into K-line capture and uniframe slots. No new infrastructure needed.
+Low risk High reward
+Path C: New Core Primitives
+Agent pools, typed signal classes, dynamic specialist selection. High effort, high reward, but only justified by product need.
+High risk High reward
+Path A: Phase 2 Extensions — Item by Item
+| Item | What It Builds | Minsky Fidelity | Effort | Verdict |
+|---|---|---|---|---|
+| KLineStore protocol | Formal capture() , retrieve() , reinforce() , decay() API. Embedding retrieval. K-line trees. Cross-machine K-lines. |
+Weak | Medium | Formalizing a protocol around context-dict snapshots doesn't fix the granularity problem. You get a clean API for something that isn't really K-lines. Useful as infrastructure if you later get atomic agents, but premature to build now. |
+| Guard learning formalized | Dedicated K-line protocol for censor/suppressor agents with decay/reinforcement. | Weak | Medium | Depends on KLineStore. Same granularity problem — guard "memories" are just rows in SQLite, not learned activation patterns. Blocked until K-lines are meaningful. |
+| Uniframe generator | Offline tool that diffs machine YAMLs and extracts common templates. | Good | Low | Best Phase 2 candidate. Machine YAMLs are frames. Diffing them to find common structure is genuine uniframe construction (dissection + enforcement + tolerance). Doesn't need atomic agents. Could be a useful dev tool regardless of Minsky. |
+What Already Exists vs What's Actually New
+| Capability | Status | What It Enables | Effort to Wire Into Minsky Patterns |
+|---|---|---|---|
+| Tool-call checkpointing | EXISTS | Every tool call individually checkpointed. tool_loop_state has full chain, turn count, cost. K-lines from tool sequences = read existing data. |
+Just a hooks class |
+| Tool observation hooks | EXISTS | on_tool_calls / on_tool_result fire on every invocation. Multiple implementations already use these (coding_machine_cli, etc.). |
+Already wired |
+| Hook actions as agents | EXISTS | Censors, parsers, counters, B-brain heuristics — all running as non-LLM agents. Just not formalized in the taxonomy. | Naming only |
+| Typed signal classes | NEW | Polyneme vs isonome vs microneme as first-class signal types. Enables pronomes and ambient context. | Small core spec change |
+| Agent pool + dynamic selection | NEW | Launch N of M specialists. K-lines capture which agents were selected. The one truly missing primitive. | Core spec + runtime |
+| Parallel agencies | NEW | Machines sharing state structure for pronome signals. Currently all machines are heterogeneous. | Convention + tooling |
+on_tool_calls
+, on_tool_result
+, per-tool-call checkpoints, tool_loop_state
+. Multiple production implementations use it. Connecting it to K-line patterns is a hooks class, not a platform change.
+What Unlocks What
+flowchart TD AT["Formalize agent taxonomy
+Naming only — no code"] TC["Wire tool checkpoints to K-lines
+Hooks class — infra exists"] UF["Uniframe generator
+Offline tool — typed slots"] TS["Typed signal classes
+Small core spec change"] AP["Agent pool + dynamic selection
+Large core spec change"] PA["Parallel agencies
+Convention + tooling"] KL["K-line capture/replay
+(Ex 3 — unblocked)"] PR["Pronome tracking
+(Ex 5)"] GL["Guard learning
+(Ex 7 — unblocked)"] KS["KLineStore protocol
+(Phase 2)"] GF["Guard learning formal
+(Phase 2)"] AT --> TC AT --> UF TC --> KL KL --> GL KL --> KS KS --> GF UF --> KL TS --> PR PA --> PR AP -.-> KL
+on_tool_calls
+, on_tool_result
+, per-call checkpoints, tool_loop_state
+). Multiple implementations already use it. Connecting it to K-lines is writing a hooks class that reads existing data. The real work is formalizing the agent taxonomy so that K-lines, uniframes, and guard learning know what types of agents they're capturing and what substitutions are valid.
+Effort vs Unlock Comparison
+Recommendation
+Immediate: Formalize agent taxonomy + wire to K-lines
+This is naming and a hooks class, not new infrastructure:
+- Agent taxonomy — document that FlatMachines has five agent types (LLM, hook action, tool call, rule-based evaluator, observer). These are already built. Name them.
+- K-line hooks from tool sequences — a
+KLineHooks
+class that reads existingtool_loop_state
+from checkpoints and writes to a K-line table. Records which tools were called, in what order, for what task. This is reading existing data, not building new capture infrastructure. - Revisit Example 3 — K-lines become meaningful when they capture tool activation patterns + hook action firings, not just context dict snapshots.
+Effort: Low (hooks class + naming) Unlocks: Examples 3, 7 + Phase 2 KLineStore + guard learning
+Short-term: Uniframe generator with typed slots
+The uniframe generator becomes genuinely interesting when combined with the agent taxonomy:
+- Extract coordination skeletons from similar machine configs
+- Classify each state's agent type (LLM / hook / tool / rule)
+- Identify which slots accept multiple agent types (tolerance boundaries)
+- Surface the question: "is this slot fundamentally LLM-reasoning, or could a cheaper agent type fill it?"
+Effort: Low (offline script) Unlocks: cost optimization + frame theory
+Medium-term: Typed signal classes (Phase 3, item #11)
+Add signal_class
+to the Signal dataclass. This is the first actual core spec change needed:
+- Polyneme vs isonome distinction as first-class runtime behavior
+- Microneme ambient context (cumulative signals)
+- Foundation for pronome tracking (once parallel agencies exist)
+Effort: Medium (core spec) Unlocks: pronome tracking prerequisites
+Long-term: Agent pools + parallel agencies
+These remain the high-effort items. They require core spec work (dynamic agent selection, launch N of M) and convention work (template families that share state structure).
+Defer until there's a concrete product need — not just Minsky fidelity — that requires selecting from a pool of 20+ specialists.
+Effort: High (core spec) Unlocks: full Minsky pattern library
+Decision Matrix
+| Action | Effort | Core Changes? | Minsky Patterns Unlocked | Non-Minsky Value | Priority |
+|---|---|---|---|---|---|
+| Formalize agent taxonomy | None (naming) | No | All — reframes every pattern | Architecture clarity, cost awareness | 1 — Do now |
+| K-lines from tool sequences | Low (hooks class) | No — infra exists | K-lines, guard learning | Run history, tool usage analytics | 2 — Do now |
+| Uniframe generator (typed slots) | Low | No | Uniframes, frame theory | Config dedup, cost optimization | 3 — Do now |
+| Typed signal classes | Medium | Yes (small) | Isonome, microneme foundation | Better signal routing | 4 — Next sprint |
+| KLineStore protocol | Medium | No | Formalized K-lines | Reusable memory protocol | 5 — After taxonomy + K-lines |
+| Guard learning formal | Medium | No | Guard memory | Safety pattern evolution | 6 — After KLineStore |
+| Agent pool / dynamic selection | High | Yes (large) | Full K-lines, agency formation | Dynamic orchestration | 7 — When product-driven |
+| Parallel agencies + pronomes | High | Yes (large) | Pronomes, isonomes | Coordinated multi-agent | 8 — When product-driven |
+Suggested Sequence
+gantt title Minsky Pattern Implementation Roadmap dateFormat YYYY-MM-DD axisFormat %b %d section Done Ex 1 Censor/Suppressor + Guard Relaxation :done, ex1, 2026-03-22, 4d Ex 2 Polyneme Broadcast :done, ex2, 2026-03-22, 1d Ex 4 B-brain Reliability Network :done, ex4, 2026-03-24, 2d section Short-term (no core changes, infra exists) Formalize agent taxonomy :at, 2026-03-26, 1d K-lines from tool sequences (Ex 3 revised) :tc, after at, 2d Uniframe generator (typed slots) :uf, after tc, 2d Guard learning (Ex 7 revised) :gl, after uf, 2d section Medium-term (small core change) Typed signal classes :ts, after gl, 5d Pronome foundation :pf, after ts, 3d section Long-term (product-driven) Agent pool + dynamic selection :ap, 2026-05-01, 14d Parallel agencies :pa, after ap, 14d
+on_tool_calls
+/on_tool_result
+hooks). What's missing is naming the taxonomy and wiring existing agents into the Minsky patterns. This unblocks K-lines, guard learning, and uniframes with no new infrastructure. Phase 2 as-designed is mostly premature formalization. Agent pools and parallel agencies remain deferred until product-driven.

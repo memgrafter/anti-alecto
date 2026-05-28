@@ -1,0 +1,17 @@
+X thread capture
+
+## Post
+
+## Conversation
+
+max
+
+@oorusr
+
+@steipete
+
+I know you've been vocal about using pi BUT HOLY SHIT This thing is a beast. I chained in my cerebras key so that claude can use it to do ultra fast search and tool calling with glm-4.7 and WTFFF Everything felt sluggish with the other harnesses but this is truly magical
+
+1:49 PM · Jan 7, 2026
+
+11.5K Views

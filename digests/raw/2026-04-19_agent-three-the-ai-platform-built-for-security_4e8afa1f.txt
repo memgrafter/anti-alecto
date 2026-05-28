@@ -1,0 +1,17 @@
+Agent Three
+enterprise trusts.
+The AI agent platform built for teams who take security seriously. Bounded execution. Verifiable outputs. Full audit trail. The runtime your security team says yes to.
+✓ You're on the list. We'll be in touch.
+No spam. No pitch decks. Just early access when we're ready.
+01
+Bounded Execution
+Token budgets, loop detection, automatic circuit breakers. Agents that know when to stop.
+02
+Deterministic Replay
+Event-sourced DAG. Every agent decision is replayable, auditable, and explainable after the fact.
+03
+Verifiable Output
+Schema validation, postconditions, and signed skill packages. Know what your agents actually did.
+04
+Secure Isolation
+Sandboxed runtimes, egress allowlists, least-privilege tool access. Built for the skeptics.

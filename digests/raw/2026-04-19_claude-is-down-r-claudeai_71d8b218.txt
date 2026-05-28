@@ -1,0 +1,83 @@
+Reddit thread capture
+
+Thread URL: https://reddit.com/r/ClaudeAI/comments/1rir4n5/claude_is_down/
+Subreddit: r/ClaudeAI
+Title: Claude is down
+Author: u/DependentNew4290
+Score: 2048
+Comment count (reported): 585
+
+## Original post
+Claude went down today and I didn’t think much of it at first. I refreshed the page, waited a bit, tried again. Nothing. Then I checked the API. Still nothing. That’s when it hit me how much of my daily workflow quietly depends on one model working perfectly. I use it for coding, drafting ideas, refining posts, thinking through problems, even quick research. When it stopped responding, it felt like someone pulled the power cable on half my brain. Outages happen, that’s normal, but the uncomfortable part wasn’t the downtime itself. It was realizing how exposed I am to a single provider. If one model going offline can freeze your productivity, then you’re not just using a tool, you’re building on infrastructure you don’t control. Today was a small reminder that AI is leverage, but it’s still external leverage. Now I’m seriously thinking about redundancy, backups, and whether I’ve optimized too hard around convenience instead of resilience. Curious how others are handling this. Do you keep alternative models ready, or are you all-in on one ecosystem?
+
+## Prominent viewpoints (top-level comments)
+1. (748) u/HighlightFrosty3580: I guess everyone loving Claude at the moment has caused this... That or the Pentagon
+2. (355) u/east0fwest: Claude devs furiously typing “Claude why are you down?” Into Claude and getting the same error we’re all getting.
+3. (259) u/TinyCuteGorilla: well i guess im not working today.
+4. (62) u/livejamie: The secretary of war sends his regards
+5. (58) u/[deleted]: [deleted]
+6. (36) u/Wooden_Cry_9946: *This post was taken down using [Redact](https://redact.dev/home). The reason may have been privacy, operational security, preventing automated data collection, or another personal consideration.* dependent soup alleged silky cough detail person enjoy sable smile
+7. (34) u/NewColonel: Over the weekend I created an executive function skill that manages my to do list for me. Guess that means today’s a day off.
+8. (30) u/cascadingpewpew: I mean this in the most neutral way possible. This post sounds like it was generated and then slightly edited.
+
+## Thread discussion sample
+- (1) u/ClaudeAI-mod-bot: **TL;DR generated automatically after 400 comments.** Looks like we all had the same 'oh crap' moment today. The thread's verdict is in: **we loved Claude to death.** The top theory is that a massive influx of new users (hi, former ChatGPT folks!) caused the outage. A close second is the running conspiracy that the Pentagon is retaliating over the 'Department of War' thing, with some users pointing to an AWS data center fire in the UAE. This was a major wake-up call for everyone about being too reliant on a single provider, with tons of users declaring the day a write-off. If you don't want to get caught with your pants down next time, the community's advice is to **build redundancy into you
+- (748) u/HighlightFrosty3580: I guess everyone loving Claude at the moment has caused this... That or the Pentagon
+  - (96) u/YaOldPalWilbur: That was my thoughts. Either too much traffic or blocked to reach some agreement.
+  - (72) u/erinfirecracker: I stopped using ChatGPT yesterday and downloaded Claude. Maybe new users like me are the reason...or the Pentagon too I guess. Can't rule that out given this administration.
+    - (48) u/Grouchy-Transition-7: You literally just repeated the above comment..
+      - (39) u/Ittenvoid: You're so right to point that out
+      - (31) u/BlueProcess: And that's totally valid
+      - (20) u/Warm_Leadership5849: You are not broken.
+      - (17) u/M8gazine: And that's *rare*.
+      - (3) u/BlueLaserCommander: That's the sharpest thing you've said yet.
+      - (11) u/Ok-Version-8996: My bad! You’re right to point that out.
+      - (6) u/BlueProcess: That is objectively incorrect
+      - (3) u/swerve120: this is undeniably wrong
+      - (10) u/Poopeche: You are detail oriented..and thats RARE
+      - (5) u/Hairy_Bumhole: Yeah exactly it’s like he just said the same as the other comment in slightly different words
+      - (2) u/erinfirecracker: You're right.
+      - (2) u/NoVermicelli5968: Only a smart person would have spotted that. Your view is on point and totally validated.
+    - (1) u/Diligent_Argument328: How does a bunch of old guys that think the internet is "a series of tubes" know how to do that lol
+  - (20) u/virtual_adam: They lose a ton of money on paying users, the more people move the faster their burn rate, they need another very large round or IPO ASAP
+    - (1) u/freedompower: And they don't make money on free users, so what is the business model exactly?
+      - (4) u/ruffen: Get a plenty of users and try to get economy of scale on cost side and raise prices on income side.
+      - (3) u/freedompower: I have a max plan and it's still feels like a bargain, I expect them to raise prices for sure(but I hope they won't!), the hardware costs are going through the roof because of too much demand. Not sure how energy prices will be impacted by the war in Iran, I really hope they don't use fossil fuel too much.
+  - (10) u/[deleted]: [deleted]
+  - (6) u/aviboy2006: Every product builders starting building product using Claude.
+  - (7) u/LankyGuitar6528: Still down at 6am Mountain Standard time.
+  - (3) u/OkLettuce338: You mean that or Iran
+  - (4) u/LordLederhosen: In the Dwarkesh interview Dario mentioned not overspending on inference. This was kind of an ironic worst case scenario.
+  - (4) u/chaos_battery: I wish I could buy anthropic stock. I just love their products so much and I would love to own a piece of them. I would also like to own some stripe and Chick-fil-A stock but all these juicy companies remain private 😭
+    - (2) u/olijake: Chick-fil-A has some good tasting food, but questionable morals.
+  - (2) u/utzutzutzpro: To be frank, these outtakes happened every day since around 2 weeks for me. I already worked around that I know at around 11-1300 (CET) there will be some retreival issues. Today, it was a little more broad of an outtake.
+  - (1) u/PlaywrightOfGefilte: The death of the Claude
+  - (1) u/PotentialFuture5162: AWS getting bombed does not help Claude Servers lol
+  - (1) u/Ret_Vet7861: What are the politicians stock picks? If they don't own any of the stocks they'll make sure you don't get ahead.
+  - (1) u/DangerSaurus: It's been going down a ton lately
+  - (1) u/vonwao: Anthropic now: we don't need any more broke liberal users joining
+- (355) u/east0fwest: Claude devs furiously typing “Claude why are you down?” Into Claude and getting the same error we’re all getting.
+  - (46) u/RemoteToHome-io: Claude Opus 4.6: Yeah, it's a big one today. Here's the rundown: Active Claude Outage — March 2, 2026 Anthropic began investigating elevated errors on claude.ai, the console, and Claude Code at 11:49 UTC. (Claude) Here's the timeline from the status page: 11:49 UTC — Investigation started 12:21 UTC — Anthropic identified that the Claude API is working as intended, and the issues are related to claude.ai and login/logout paths (Claude) 13:22 UTC — Issue identified, fix being implemented 13:37 UTC — Some API methods were also discovered to not be working (Claude) 14:05 UTC — Still working on a fix
+    - (3) u/Few-Day8339: something not to overlook...if Claude Code uses some AWS services architecture & some of those cloud services are hosted in UAE & nearby data centers… have been droned... 🛑
+  - (5) u/Nanakji: Compressing this conversatio....... Couldn't compress this conver....
+  - (1) u/SuperSpod: Fortunately not everyone classes a dev as someone who can prompt an AI and there are still real developers out there 😅
+- (259) u/TinyCuteGorilla: well i guess im not working today.
+  - (70) u/NotMyUsualLogin: My billable hours are taking a nosedive ;)
+    - (46) u/Maleficent-Pea-3494: I mean, I’m still billing, just less productive than usual 😎
+      - (17) u/Faktafabriken: Hours are still hours! Revenue per project goes up!
+    - (2) u/sharyphil: Girl, same!
+  - (26) u/[deleted]: It’s a leave day nerds, enjoy
+  - (13) u/abemon: Same. I can't send my email without it :(
+    - (4) u/GetMeThePresident: Guys quick what’s a where statement
+    - (2) u/Fun818long: You can't write an email?
+  - (4) u/DependentNew4290: We all are
+    - (6) u/ImmediateDot853: \*aren't
+      - (4) u/[deleted]: [deleted]
+      - (5) u/ImmediateDot853: A free "sick" day.
+      - (2) u/DependentNew4290: Ok 👍🏻
+  - (4) u/[deleted]: not like github is down or something, glad you can laugh in your employer's face that you won't work because Claude is down, like... you can't work without it? wow :D
+    - (1) u/PaddingCompression: I mean, if you're going to choose a vacation day, the day when Claude is down is going to affect your performance rating the least.
+  - (3) u/[deleted]: [deleted]
+  - (1) u/vonerrant: Trying to use just GPT and it's ....frustrating
+  - (1) u/Terrible_Tutor: Work here pays for a copilot pro $20 account as well as MAX… for situations like this it’s been great lol. I prefer Opus to Codex 5.3, but 5.3 is perfectly fine for most scenarios.
+- (62) u/livejamie: The secretary of war sends his regards

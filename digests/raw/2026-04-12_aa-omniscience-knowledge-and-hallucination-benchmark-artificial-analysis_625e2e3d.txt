@@ -1,0 +1,52 @@
+AA-Omniscience: Knowledge and Hallucination Benchmark
+Publication
+View on arXivAA-Omniscience: Evaluating Cross-Domain Knowledge Reliability in Large Language Models
+AA-Omniscience
+AA-Omniscience Accuracy
+AA-Omniscience Hallucination Rate
+AA-Omniscience Index: Results
+AA-Omniscience Index
+AA-Omniscience Index vs. Artificial Analysis Intelligence Index
+AA-Omniscience Accuracy
+AA-Omniscience Accuracy
+AA-Omniscience Hallucination Rate
+AA-Omniscience Hallucination Rate
+Detailed Domain Results
+AA-Omniscience Index Across Domains (Normalized)
+Software Engineering Deep Dive
+Software Engineering AA-Omniscience Index Across Languages (Normalized)
+AA-Omniscience Index Question Breakdown
+Business
+Humanities & Social Sciences
+Science, Engineering & Mathematics
+Health
+Law
+Software Engineering (SWE)
+Model Size (Open Weights Models Only)
+AA-Omniscience Index vs. Total Parameters
+AA-Omniscience Accuracy vs. Total Parameters
+AA-Omniscience Hallucination Rate vs. Total Parameters
+AA-Omniscience Index: Token Usage
+AA-Omniscience Index: Cost Breakdown
+AA-Omniscience Index: Score vs. Release Date
+Example Problems
+Explore Evaluations
+A composite benchmark aggregating ten challenging evaluations to provide a holistic measure of AI capabilities across mathematics, science, coding, and reasoning.
+GDPval-AA is Artificial Analysis' evaluation framework for OpenAI's GDPval dataset. It tests AI models on real-world tasks across 44 occupations and 9 major industries. Models are given shell access and web browsing capabilities in an agentic loop via Stirrup to solve tasks, with ELO ratings derived from blind pairwise comparisons.
+Artificial Analysis' implementation of the APEX-Agents benchmark, testing AI agents on long-horizon, cross-application tasks in professional-services environments with realistic application tooling.
+A dual-control conversational AI benchmark simulating technical support scenarios where both agent and user must coordinate actions to resolve telecom service issues.
+An agentic benchmark evaluating AI capabilities in terminal environments through software engineering, system administration, and data processing tasks.
+A scientist-curated coding benchmark featuring 288 test set subproblems from 80 laboratory problems across 16 scientific disciplines.
+A challenging benchmark measuring language models' ability to extract, reason about, and synthesize information from long-form documents ranging from 10k to 100k tokens (measured using the cl100k_base tokenizer).
+A benchmark measuring factual recall and hallucination across various economically relevant domains.
+A benchmark evaluating precise instruction-following generalization on 58 diverse, verifiable out-of-domain constraints that test models' ability to follow specific output requirements.
+A frontier-level benchmark with 2,500 expert-vetted questions across mathematics, sciences, and humanities, designed to be the final closed-ended academic evaluation.
+The most challenging 198 questions from GPQA, where PhD experts achieve 65% accuracy but skilled non-experts only reach 34% despite web access.
+A benchmark designed to test LLMs on research-level physics reasoning tasks, featuring 71 composite research challenges.
+A composite measure providing an industry standard to communicate model openness for users and developers.
+An enhanced version of MMLU with 12,000 graduate-level questions across 14 subject areas, featuring ten answer options and deeper reasoning requirements.
+A lightweight, multilingual version of MMLU, designed to evaluate knowledge and reasoning skills across a diverse range of languages and cultural contexts.
+A contamination-free coding benchmark that continuously harvests fresh competitive programming problems from LeetCode, AtCoder, and CodeForces, evaluating code generation, self-repair, and execution.
+A 500-problem subset from the MATH dataset, featuring competition-level mathematics across six domains including algebra, geometry, and number theory.
+All 30 problems from the 2025 American Invitational Mathematics Examination, testing olympiad-level mathematical reasoning with integer answers from 000-999.
+An enhanced MMMU benchmark that eliminates shortcuts and guessing strategies to more rigorously test multimodal models across 30 academic disciplines.

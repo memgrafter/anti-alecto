@@ -1,0 +1,1947 @@
+Lots of people have been uh catnipped by
+cloud code. None of us can sleep
+anymore. Peter and Armen are on three
+and four hours of sleep a day. Same for
+me. Cloud code's been uh an interesting
+experience in that it's the first coding
+agent that feels like it actually allows
+us to do things we couldn't do before.
+And it's not so much about the tool
+being a better programmer. It's
+definitely not. It shits out real bad
+code, but it lets us iterate on ideas we
+have at a speed that wasn't possible
+before. Um, this means that we can play
+around with ideas with a super fast
+turnaround time. And if you find
+something that sticks, we can actually
+make it pretty by using our human
+brains. Um, and relying less on cloud
+code. At least that's how I approach
+things. Um, Armen gave a talk recently.
+He is a little bit less of a dictator in
+that sense. I think he has a pretty long
+leash around Clos Claude Coat's neck.
+I'm more of a control freak and I
+really don't like it going off on its
+own for too long because I find that I
+usually end up with uh a big mess of
+overengineered tech depth. Anyways, the
+point of this talk is to give you a
+practical insight of how I use clo cloud
+code.
+Um,
+it's not an engineering discipline yet.
+I think we're all struggling to find the
+patterns that will make things
+reproducible. That's one big problem
+with a gentic coding. Um, you're talking
+to an indeterministic machine or model.
+Um, and results may vary. Uh, depending
+on how you prompt it, a single word in
+your prompt can actually change the
+outcome entirely. Um, despite all of
+that, I'm going to try to show you uh
+practical applications of cloud code uh
+outside of coding um for new projects
+and for uh using it with established
+code bases.
+So I'll be exclusively mostly talking
+about cloud code. So assume basic
+familiarity uh on your end. If not, head
+over to the website, read the docs, get
+yourself familiar, play around with it,
+let it generate a little game or
+whatever you're comfortable with
+inspecting and playing around with. And
+once you're back, uh, use this liars.
+Now people will scream at you. This
+basically passes a flag to cloud that
+tells it to skip all permission
+dialogues. Um, we want to use cloud in a
+way that it doesn't ask for permission
+all the time or doesn't ask you to input
+more information or whatever. So,
+skipping those permission dialogues is a
+way to happiness because cloud is very,
+let's say, asky. It will pop up those
+permission dialogues all the freaking
+time. If you do not do this, you will
+end up in a s situation like this. Let
+me just first clear any previous
+permission I gave.
+Slash commands also very important, but
+read the talks. In any case, I just
+recorded a video um in this directory,
+the intro video,
+and this is a moth. So, I want that to
+be converted to ffmpeg. I don't remember
+anything about ffmpeg anymore. So, I'm
+just going to ask Claude to do it for
+me. Hey, could you please convert the
+file in desktop-talk
+uh into uh an MP4 using ffmpeg? Set a
+big timeout because this could take a
+while.
+So, what's cloud what cloud's now doing
+is it basically comes up with a bash
+command to do exactly that. Um, and that
+will usually ask for permission like
+this. And for some of these commands, it
+allows you to pick the second option,
+which is yes and don't ask again, which
+will set up a permission rule that
+allows ffmpe in that directory to be
+executed in the future. In some cases,
+it doesn't give you this permission, but
+will ask you all the time, yes or no.
+And the reason for that is that in the
+background, Claude is actually passing
+the bash command it's about to execute
+to Haiku 3.5 with a very simple prompt
+that essentially boils down to is this
+dangerous? Does this require user
+permission asking all the time? And if I
+Haiku 3.5 says, yep, this super [ __ ]
+dangerous. You need to ask the user
+about this every [ __ ] time, then you
+don't get option two. And the way I
+figured that out, I show you in the next
+part, but let's just say it's very
+funny. Um, so anyways, this is annoying
+and this will break the loop. By loop, I
+mean you give claw the task with a
+hopefully pretty good specification and
+it will do the needful for as long as it
+takes until it uh finishes the task.
+Um, and if you have these permission
+dialogues, then we as the humans need to
+jump in all the time, and it's very
+[ __ ] annoying.
+So anyways, if we do the same thing with
+cloud danger, it's not going to happen.
+Um, it will still uh tell you that
+you're now trying to access things
+outside of the working directory because
+by default clot will try to cd into the
+directory and then use um local relative
+bash commands. it usually figures out
+how to do it from your current working
+directory
+and it's still annoying because it
+wastes turns um to this back and forth
+between
+your local client and the LLM in the
+cloud but generally it will will
+eventually arrive at a solution
+and that is cloud danger. Um I haven't
+had anything bad happen to my machine in
+two months. There's nothing on this
+machine that could be leaked or that
+could be destroyed. Everything's backed
+up in the cloud. So even if cloud [ __ ]
+up, I would not care. I would just wipe
+the machine. It probably wouldn't
+install a rootkit. So I assume it's
+pretty safe to just swipe the machine if
+something bad happens.
+And if you're super extra mega concerned
+that cloud will do something to your
+machine, just run it in a Docker
+container or any Docker or any container
+of your liking really. um in two months
+nothing bad happened. So take that with
+a grain of salt. Uh what it does [ __ ] up
+a lot is git commands especially if the
+project becomes uh bigger and if the git
+history becomes a little bit more
+complex or your staged files and working
+directory are a little weird or outside
+the norm. But yeah, other than that
+nothing bad happened so far. Famous last
+words.
+Another thing you'll read in the docs is
+about cloud MD files. And cloud MD files
+are basically just a way to inject
+additional information into the system
+prompt that cla comes with by default.
+There are multiple locations you can put
+these files. Um, for example, I have a
+very simple one in my user directory.
+um which just tells it to don't add
+comments and never add yourself as a
+committer and never add this silly line
+to your commit messages. This will get
+appended to the system prompt which is
+passed to each request to the LLM along
+with the history you have the chat
+history and it generally doesn't work.
+Uh like cloth has a really strong
+tendency to use grap instead of rip grap
+and it's [ __ ] annoying because on Mac
+OS grap is just kind of broken. Um so
+yeah this is nice if it works but often
+it doesn't work and you cannot rely on
+it working.
+In addition to your kind of global cloud
+MD, um you can also have cloud MDs in
+any folder of your working directory.
+And if you spawn cloud in this directory
+like we did here, um it will read the
+one in user directory and this one.
+And as you can see here in this one, uh
+it's kind of basically a description of
+the project. This is my blog. My blog
+works using my static templating block
+engine thing um which has a watch mode
+and um basically takes whatever is in
+source and outputs HTML. The sources are
+free form. You can do whatever you want.
+There's a little JavaScript based uh
+templating engine here where you can
+execute any kind of code to generate
+outputs. It's basically like PHP just
+with Node. Um yeah and what I did in
+this cloud MD is I describe uh to claude
+what this directory is about where to
+find things how to execute things. Um
+pretty simple stuff. The takeaway here
+is that cloud is not just for code.
+Cloud is a general purpose bash calling
+bash command calling machine and it's
+really good at it. Uh especially if you
+give it concrete instructions. So in
+this case um let's see we can just
+demonstrate how well this works.
+Um let's say I want to write a blog post
+which is basically uh about what I'm
+recording now. So a gentic coding or
+whatever you want to call it throwing
+[ __ ] at a wall and hoping it sticks for
+example. So I can just tell Claude, "Hey
+Claude, um I'd like to write a new blog
+post uh dated with today um June 29th,
+20 25. Um, and its title should be how I
+clot code. Um, and the slug should be
+just clot dash code. Uh, please set that
+up for me and then start the server.
+So, it will now read this instructions
+which tell it how to create a new blog
+post and how to set up the server and
+will dutifully follow all of that. So it
+already [ __ ] up by not using the
+correct directory because we said June
+but it made it January which is very not
+good.
+And then it writes the basic meta JSON
+which is just a description of the blog
+post that the uh generator uses to build
+this table of contents. Basically
+it started the server which runs in
+watch mode. So, anytime I change this
+here,
+um, and save hello, this will auto
+update, which is very nice if you're
+working on more visual stuff in the blog
+post. And we're more or less happy. Um,
+I said June, not January.
+And that should be enough for Claude to
+understand that it should change this to
+the proper date. The question is if it
+reopens this. It probably doesn't,
+but it's not a big deal.
+Oh yeah, now it keeps rereading this and
+u also modifying the meta JSON which
+also has the publication date in it and
+it actually reloaded the correct URL. So
+takeaway here is cloud is not just for
+code. Cloud is for anything that you can
+bash. Um, it's also really good at
+writing ad hoc scripts. Um, you just saw
+me previously trying to convert that one
+single file um into that one single moth
+file into an MP4 through ffmpeg. Instead
+of asking cloud to do this all the time
+for a specific file, I can just say,
+"Hey Cloud, uh, could you please write a
+bash script and store it in desktop uh,
+slashtalk?"
+Um, it should, uh, run through all the
+moth files in that directory and convert
+them to mp4 using ffmpeg.
+And for me, this is where cloud shines
+actually. I use this all the time to
+write these kinds of ad hoc scripts and
+tools either using bash or node um
+because it makes my life so much easier.
+Sometimes if something reusable comes
+out of that, I just put that in a
+location in my path and keep using it
+for the rest of my life. Um I think I
+previously had one of these convert
+mouth to MP4s um that I might have just
+I don't know um deleted it.
+So now um let's see if this actually
+works. Obviously it will because it's
+pretty trivial demand for a machine like
+claude. And it even set the permissions
+and it seems to work just fine. Yeah.
+And this doesn't extend to just these
+kinds of simple tasks. It can also do
+data analysis for you. basically run
+through this directory recursively and
+uh do the thing uh read the Excel sheets
+and extract this and that data or um
+summarize the contents of all of these
+PDF files and write that out to a JSON
+file with metadata and the summary and
+so on and so forth. And those are all
+just ad hoc. This is nothing I would
+actually inspect and modify myself. um I
+just use them one or two times for a
+specific task at hand and then throw
+them away and take the results and work
+with that and it's really great at that.
+And it takes a while to get into the
+state of mind to actually realize that
+Claude is so good at that. Um I often
+find myself writing something by hand or
+just keep asking Claude to do this one
+thing repeatedly instead of kind of
+making it more general and putting it in
+a script. Um really watch out for any
+kind of automations you can cloud uh can
+of cloud generate for you. It's super
+[ __ ] practical and it will save you
+so much time. And once you have tools
+like that, some little scripts that you
+actually want to reuse and that aren't
+just one-offs, put them in your CloudMD
+for that specific uh project. In most of
+my projects, I have a script folder and
+all of these little ad hoc tools go in
+there. And I also put let Claude put
+descriptions of of these tools in my
+CloudMD.
+Actually, I'm not using CloudMD all that
+much anymore. There's a reason for that,
+but we'll come to that later. Anyways,
+take away. Cloud's really good at not
+only calling tools, but also writing
+tools for you. And you should use that.
+They don't have to be programming
+specific. Anything that you can bash
+should be should be abstracted like
+that, I think.
+Cloud is not only good at calling tools
+and writing tools for you that are ad
+hoc in form of bash or node scripts.
+It's also pretty good at figuring out
+the structure of a project. Um, it has
+to because otherwise it couldn't help
+you. Um, the problem with that is that
+every time you start a new cloud session
+like this and then ask it to do a thing
+like this, please create a new blog post
+uh dated 2025-06-29.
+Uh, it's should be called how I do stuff
+and uh please generate a good slug for
+that.
+Then what it needs to do is it needs to
+go off and basically investigate your
+entire project. That's not nice. You
+don't want to waste time on this. Also,
+every time cloud does this, it might
+come to a different conclusion. Every
+single word in your initial prompt will
+uh trigger a different path in the LLM
+weights. So, what it does is not
+necessarily reproducible.
+Uh so instead of doing it the cowboy
+way, it makes sense to write down what
+the project is about and how it's
+structured and what the common tasks are
+and how to um achieve them or perform
+them.
+Uh in this case it ended up writing um
+the meta JSON which looks okay. It ended
+up writing an MD file which misses the
+very important
+uh PHP like scripting stuff that adds
+the footer and the header and includes
+the meta JSON and so on.
+Um but it did create oh it actually also
+yeah it created the correct folder name.
+So all of that is fine, but it's wonky.
+It's not quite right. And having to go
+in there and fixing it up every time
+sucks. Also, it wastes context because
+all of this is no part of your context,
+which means you have all of this nice
+garbage in here. Press Ctrl R E. Well,
+in this case, it's not that much, but it
+piles up in more complex projects. So
+instead, what we had and want to
+generate a new is a nice little cloud MD
+file. um that describes what it's about
+and the tasks and how to uh how to do
+them. Also any kind of rules like coding
+rules, CSS styling rules, whatever you
+have. We could write this by hand. Um or
+we could have cloud generate a first
+draft. And the way we can do this is
+like this.
+So please note I have let me delete
+this.
+I have deleted the readme MD and the uh
+cloud MD I had previously. This is the
+old cloud MD. we can compare against
+later on. Um, so it doesn't cheat,
+right? And then I just go super ad hoc.
+Please analyze this project. Um, read
+the publish.sh file in full and then
+read a bunch of files in the source
+folder. I then want you to write a cloud
+MD file uh that details what the project
+is about, its structure, and common
+tasks you think uh will be performed.
+Please keep the cloud MD nice and
+minimal yet exhaustive.
+So this will trigger essentially the
+same workflow or steps that Claude uh
+took when it wrote our blog post ad hoc
+earlier in the last session except this
+time it won't actually execute any of
+that stuff. it will just take note of
+things and write it down in a new cloud
+MD file which is nice because the next
+time we start the session cloud will
+automatically load that cloudmd file and
+immediately know what we're about um to
+do or how we are going to achieve what
+we're about to do and you want that not
+only for a very simple project like this
+block you want that for your big ass
+super modular whatever projects as well
+and the way you go about that is pretty
+similar to this except you won't put
+that all in a cloud MD file because it's
+going to be huge. You want to split it
+up. The way I usually do it is I have a
+docs folder in my repository.
+I have an spec.md file which gives a
+general overview um of the architecture
+and any subm modules. And then for each
+submodule, I have a specific MD file
+that the spec file links to. If I then
+want to work on a specific subm module,
+I'll tell Claude to either just read
+that submodule MD file or multiple
+depending if I I need to cross reference
+other modules as well. And that makes
+for much less turns because cloud will
+not waste time crapping and failing
+through your codebase anymore.
+And it also serves as fantastic
+documentation.
+What you then need to do is keep that
+documentation up to date. And good news,
+Cloud can help you with that. Uh so
+anytime you modify a module um in your
+project, just have Cloud analyze the
+final git uh diff and then update the
+respective MD file for that module to to
+to be in sync with the actual sources.
+This might sound cumbersome and you
+still have to go through the changed MD
+file by hand and make sure that it
+actually does uh cover the changes
+properly instead of hallucinating [ __ ]
+But it will save you a lot of turns, a
+lot of time, and a lot of grief down the
+road because it also serves as
+documentation for you, the human, which
+is a point we'll talk about later.
+So, did it generate a cloud MD file? It
+did. And now we can compare it to our
+old way of doing this.
+So in the beginning, this is pretty much
+the same thing. Project structure with
+bunch of files. Eh, I would probably
+delete it. Common tasks, add a new blog
+post. Um, so create the directory that
+makes sense. Add the meta JSON that is
+also okay. And then write content index
+MD. This one is tough. It failed to
+identify that that index MD needs front
+matter uh using the templating engine.
+this stuff here. Um,
+we're going to fix that. And then add
+media files to media subdirectory to
+build the site. Yeah, that's correct. To
+deploy, that also is correct. Preview
+locally open. This is not correct. So,
+it also didn't actually execute blur
+with d-help to figure out that there's a
+development mode.
+So, instead of going in there and
+writing this by hand, I can just tell
+it.
+Um, so the way to uh preview locally or
+development mode should be to invoke
+blark uh with the d-watch and d-surf
+arguments. Uh, and you should use no hub
+for that so it doesn't block you.
+And also when you write the initial
+index.md it needs to have uh ejs front
+matter. Please look into the other index
+mds how that works.
+Once you've figured out all of these
+things, please update the cloud MD.
+And this is essentially how I can also
+trigger a a rebuild or an update of say
+a module MD file in docs folder that I
+talked about earlier.
+Um, so as you can see, it now executes
+plark-help.
+It looks into the front matter of other
+existing blog posts and it should update
+this nicely. Again, the MD files that
+Claude generates for you, treat them as
+first drafts, do not take them as is.
+They will have errors like we just saw
+or um missing things and you need to
+make sure that they are golden because
+those are the ground truth for every
+session you start with cloud. If you're
+lazy and do not do this, uh then you
+will end up in a world of hurt.
+It also benefits you because one of the
+things I see a lot of people doing when
+they use cloud code or any other agentic
+uh vibe coding tool, they just let it
+[ __ ] out an immense amount of code,
+never review that and just go by their
+manual testing. That's not the way to do
+it. At least that's not the way I do it
+because I like software that works and I
+like software that I can maintain even
+if my internet that's down uh or my
+massive subscription actually got rate
+limited. So it's important to understand
+things and this is a very nice way to
+keep track of things even if you don't
+fully croc every single line of your
+webcoded stuff. Um this at least gives
+you a chance to also work on this and
+debug things on your own
+and it updated things nicely.
+There we go.
+Do this. It's really important. You need
+to understand your code. So now we have
+our new CloudMD. And I guess we could
+just test it. I'm starting up a new
+session.
+And then I say basically the same thing
+we had before. Let's see. Actually,
+let's use uh resume, which is a very
+wonky way to go through all your
+previous sessions. I'm still not sure
+what the sorting of this is. It's very
+not good. Um, but yeah, it's supposed to
+let you resume old sessions with cloud
+code. If one of these sessions gets
+compacted, the summary is all [ __ ] up.
+Um, again, the sorting is all kinds of
+[ __ ] up. Um, yeah, purpose of this is
+I want to actually just replay this
+session.
+As you can see, this one uh where where
+it didn't have any information about the
+project.
+And now try it with
+a new and improved cloud MD file. So
+please create it should be called on
+please good luck for that. Actually
+let's add more in also want you to uh
+start the dev server and open the new
+blog post in the browser.
+And now compared to the old way of
+unstructured exploration and then kind
+of sort of doing the thing, the hope is
+that
+claude based on the claude MD is now
+able to do this in one go. It might in
+this case not be faster because the task
+is pretty simple, but it's more
+structured
+and repeatable and it will pretty much
+do the same thing every time you ask it
+to do this. So it writes the new meta
+JSON which is fine. Publish true is
+probably not what we want. So this is
+another opportunity to make cloud.md
+better
+and then it creates the index.mmd file
+which takes a lot of tokens apparently.
+I still don't know what the little
+hammers mean. Um let's see. Yeah, now
+this time it added the front matter and
+I don't know what this is. It just
+hallucinated an entire blog post.
+I guess that's where all the threat boys
+get their content from. And finally, it
+starts the development server with no
+hub. It sleeps for whatever reason. I
+guess it doesn't trust my my my code.
+Uh and opens the blog post in the
+browser hopefully correctly.
+There we go.
+Yeah, I wish they had something like
+time management. Then I could sleep.
+Anyways, takeaway um use cloud to write
+documentation for your next cloud sess
+session and yourself. Never take the
+first draft of that stuff as gospel.
+Manually go in there, make it nice, make
+it pretty, make it adhere to the actual
+structure of your project and then keep
+updating it every time you change
+something. Sounds tedious, totally
+[ __ ] worth it.
+Quick step back here. Um, how did we get
+here? Why are we all so sleepless?
+Let's look at the evolution of of LLM
+based coding assistance. Um, in the
+beginning there was GPT, um, which
+wasn't really good for coding, but it
+gave us a glimpse into the future. Then
+came GPT 3.5 and Codeex and GitHub
+Copilot. And the way we used that back
+then as old gray beards was we set up a
+little project like this here. um opens
+a window, allocates a pixel buffer,
+clears the pixel buffer to a nice blue
+color, then enters a main loop where we
+update the window with the buffer
+contents and wait for the app to exit.
+That's it, right? Uses mini FB. Super
+awesome library. Love it. The person who
+built it a demo demo scener. He's a
+lovely person. Love everything about it.
+Clear and simple implementation also
+super clean. Anyways, we have this
+little project and now I want to draw a
+line. uh I know my computer graphics so
+I want to present them line algorithm
+but I don't want to code it myself with
+GPT 3.5 I would do this paste all the
+things in here and say please add a line
+drawing function using presamp's
+algorithm then modify the main loop to
+render two lines
+and this was good and this was well um
+we could basically minus the system
+prompt specify what we have in our
+context and be pretty happy with the
+results.
+And then we would wait for that and wait
+for that and wait for that. And then we
+would just press the little copy button.
+Go back over here to our editor. Paste.
+See that it still kind of compiles. And
+we can try to run it.
+Oh my god. What's What's it doing? There
+we go. One more time, baby. Yeah. So,
+this looks good. Kind of sort of. But it
+doesn't scale. But it has the big
+benefit of me being able to mostly minus
+the system prompt um control the
+context. So I know exactly what
+information the model got to generate
+its answer. And that's nice. I like
+that.
+Then um Microsoft and OpenAI and GitHub
+teamed up and built something called
+GitHub Copilot. And I remember Nat
+Freiedman being mad at me uh because I
+wouldn't understand why this was the
+future of coding because honestly I
+still to this day think this is not the
+future of coding. So the way GitHub
+copilot worked was it was a completion
+model basically. Um you write a comment
+and you say tap tap tap. Oh Jesus it
+untapped it. No I want to keep this
+please. So good. Oh Jesus cursor present
+line drawing algorithm. Right. So you
+write out that comment and then you just
+tap and tap and tap and eventually it
+will start [ __ ] up your code
+and at some point recover hopefully
+and then it deletes a bunch of stuff. Oh
+my god. And tab. And now I don't have
+buffer clearing anymore. And this is all
+very terrible. Uh, but it again
+compiles. But I now have a black
+background, I guess. Oh, no, I don't.
+Did it? Oh, it's still in here. Oh, it
+did does it every every iteration. Okay.
+Anyways, yeah, as you can see, this is
+terrible. Like, also this doesn't scale
+also. And the biggest problem again, it
+doesn't scale like copy and paste also
+doesn't scale. But the problem with this
+is apart from the shitty UX, um, I don't
+control my context anymore.
+um I don't know what's being sent to the
+model when it generates me these partial
+completions and that's bad because I
+like to be in control of that. Having
+worked on production LLM based systems I
+want full control over my context
+because I as an educated person know
+that context management is everything
+and copilot didn't give me that. All
+right, shitty UX, right? And copy and
+paste not ideal. some uh kids in Silicon
+Valley then figured out that they can
+actually fork VS code uh instead of
+writing an extension
+uh and built things like Kursza or
+Windsurf or whatever other Casilian uh
+IDE VS code forks we now have.
+And the way this worked was a little
+better. It was basically an improvement.
+Oh my god. It was an improvement on the
+copy and paste workflow that you had
+with GPT3.5.
+So you'd open your workspace in your VS
+code fork. Um you would open a file and
+you would want to modify that file. You
+pull up the chat window here and the
+wonderful IDE fork will add this file as
+context to you automatically. And then
+you go ahead and just prompt it like
+before. Please add a line rendering
+function using Brassenham's algorithm.
+Then modify the main loop to render two
+lines.
+And in the old days, we had this mode,
+which was basically just a nicer way of
+the copy and paste workflow we had here,
+plus the automatic additions of the open
+file, plus, and this is where the
+problem start, some background [ __ ]
+where it would actually not submit the
+entire file, um, but cut it up, then
+also pull in uh, additional bits and
+pieces from around the codebase without
+you having any kind of control of the
+context that's being submitted for this
+request or for this turn. And that
+sucks. I hate it. Again, just like with
+Copilot, I need to be in control of the
+context because that also allows me to
+create more complex workflows that
+actually work and are repeatable.
+Cursor, the old mode, didn't give me
+that. Don't know if the aentic mode is
+any better. I doubt it. The reason being
+that cursor is in the business of
+basically making a margin between you
+paying them and them paying someone else
+for tokens.
+So their goal must be to reduce the
+amount of tokens that they send and
+receive from the LLM provider which
+means they need to [ __ ] with your
+context. You have no control of it and I
+like that. So cursor is not ideal but
+it's an improved workflow compared to
+copy and paste. This UI is also really
+nice. I get to see the changes the LLM
+suggest suggests and I can just accept
+them blindly run without debugging and
+this is very awesome and for the past
+year I use this but always with the
+thought in the back of my mind I don't
+control my context and I know don't know
+what the [ __ ] cursor is doing but it's
+probably not good and it's probably the
+reason why this fails on much more
+complex tasks than this simple demo
+here. So, and then Entropic decided to
+um publish an internal tool
+and that internal tool came with a bunch
+of stuff
+that is really nice.
+The first thing it comes with is for
+plebs like us, a subscription. And that
+subscription is a max subscription which
+costs you about $100 a month or $200 a
+month for an insanely high amount of um
+tokens that you can exchange before you
+get rate limited. Now, some people
+manage to do that with the max account
+at $200 like uh Peter Steinburg. I don't
+because I keep my my my LLMs on a tight
+leash. Uh and I usually don't run more
+than two or three of them in parallel.
+For me personally, the max plan is
+unlimited usage, which is great. And
+unlimited usage means uh entropic
+doesn't in the background need to save
+tokens.
+So there's no context
+size reduction tricks like cursor and
+other nonLM providers have to rely on to
+make a margin. And this is the first
+part to this equation. Um unlimited
+access to excellent coding models
+without any context [ __ ] And the
+second big thing is that they clot code
+comes with built-in tools which we'll
+look at in more detail in the next
+section
+which actually allow the thing to loop
+which means give it a task and some
+success criteria
+and it will do its damnest and not stop
+until it has reached the success state.
+And while cursor probably in agent mode
+can do this for you, it usually breaks.
+It just doesn't continue looping until
+success state is reached. It just stops
+and there's no indication it stopped.
+No, I can't step away from this and uh
+and and come back knowing that it
+probably finished the task with cloud
+code. That's possible. And the bonus
+point is that I mostly get to control my
+um my context. Now, this might not be
+obvious in the UI because if you do
+this, please add a line rendering
+function using Presnam's algorithm that
+modify the main loop to render two
+lines.
+Um, the UI doesn't show you all the
+things um that are in the context like
+it won't show the 38 lines that are
+being read unless you press Ctrl R,
+which is nice because now I see what's
+happening. Um, and I also see the
+details for the other tool calls, but
+obviously there's more in the context
+than this. There's the system prompts,
+the tool definitions, um, additional
+information they hide in the UI, but
+this is hackable and we'll look at that
+in the next section. So, we can better
+control and understand how context is
+being built up and managed by cloud
+code. And all of these things together,
+um, basically unlimited tokens, at least
+for me, uh, at a low low price,
+uh, and tools that actually work and,
+uh, context management I can do myself
+for reliable workflows is what makes C
+cloud code so damn [ __ ] good.
+So I was babbling on and on about
+context and context management a lot and
+uh we already saw that cloud code in its
+tuy doesn't really show us all of the
+context um but it's hackable so I wrote
+a little tool um it's called
+clot trace um you can install it
+globally like I have or just run it via
+mpx
+And the thinging this tool does is it
+starts cloud cloud uh it injects itself.
+It hooks the fetch uh note function and
+then just logs all the requests that
+code cloud makes through the fetch
+function which is very funny. Um so I
+can uh do an include all requests here.
+So I get to see all the things in the
+log. Um
+and let's go start it.
+Okay, the first thing that happens is uh
+it creates a clo-racing
+uh folder and then um it locks the row
+raw requests and responses in there and
+from this raw response requests I
+reconstruct a nicer HTML version of this
+um which we'll see in a bit. So let me
+close this down
+and actually we haven't submitted
+anything yet, right? So let's just close
+this and ta there's actually something
+going on here. So it turns out that in
+order to get a quota uh
+clot code will fire off uh a message to
+haiku saying quota limiting the max
+tokens to one and it doesn't matter what
+the reply here is. Um what matters is
+this here and I hope I didn't leak any
+any keys. I think cloud trace is smart
+enough to not
+actually show the
+key. Yeah, it actually doesn't. Okay,
+good. Uh so anyways, um this is how they
+check for quota. They actually ask uh a
+silly question to Haiku and trigger full
+LM interference
+to get basically this instead of having
+a dedicated endpoint. Now that's funny,
+right? Okay, good. So, let's do this
+again.
+And dangerously
+skip permissions.
+I hope I got that right. And then ask
+claw to I don't know implement circle
+rendering using present circle rendering
+algorithm. Please implement another
+function draw circle u that implements
+circle rendering using breastnamp circle
+rendering algorithm and then modify the
+main loop to uh draw two circles.
+Okay, we're going to let it work for a
+little while here um
+because the next thing we're going to
+look at is what actually happens to a
+context when this is executed. Right?
+So, I told you CtrlR actually gives you
+a pretty good idea what's in your
+context, but it's not the full truth and
+it's rather interesting to see what's
+actually happening. Hey, I said skip.
+All right, I hope it's done soonish so
+we can quit the session and open up the
+new log.
+There we go. So, we're done doing this.
+I'm not sure if it runs. That's the
+thing. So, that's good. It really likes
+red and white for some reason. Um, and
+then let's quit the session, which will
+open up the latest lock. So, again, we
+get the querto call, which is nice. Uh,
+and then we get this here. Do you
+remember
+when you
+Oh, it's actually
+something like this. Run with uh
+dangerously
+skip permissions.
+Cloud trace is a little janky,
+right? So,
+um when you do anything like read the
+main C file, you get these little cute
+words here, right? So, ever wondered how
+they generate those? Well, wonder no
+more.
+They are sending uh
+your user request to Haiku with this
+prompt. Analyze this magic and come up
+with a single positive, cheerful, and
+delightful ver.
+And this happens for every token you
+actually input. Um,
+so that's cute. Oh, actually it used to
+happen for every token you input. I
+think they might have seen cloud trace
+and fixed it. So it's actually only
+doing it once now.
+or my my log output is wrong. I don't
+know. I I I remember it doing it for
+every token that you input in the edit
+text field. All right. So, once that's
+out of of its way, uh it will actually
+call into opus with our um request
+and it doesn't just send our request. If
+you have the nice IDE integration, which
+you cannot install actually, let me
+demonstrate. So, I go IDE none. Now,
+we're not connected anymore. I go to
+extensions and say, "Please go away."
+And then I restart. Oopsie. And then I
+restart Claude.
+Tada. The extension is back. And there's
+no way to get rid of it. Um, and you
+will see why I hate it. So, I usually do
+this at the start of my sessions.
+Anyways, um, where was my log? There is
+my log. So, it's not just your raw
+prompt that gets sent uh as the first
+message in a conversation. There's also
+a system reminder, and that would
+contain your cloud MD file.
+[Music]
+And there's another one at the bottom
+that reminds cloud that there's a to-do
+list that it can use via the tools. And
+it shouldn't mention this to the users.
+And this is what the IDE extension, the
+VS code extension, the cloud code VS
+code extension spits into your context.
+And why it's useless is actually inside
+the message because it itself says this
+may or may not be related to the current
+task. And at least in my workflows, it's
+usually not related to my tasks because
+while Claude is doing its thing, I open
+up files from other projects or other
+subm modules uh and and either refactor
+by hand or do something that's unrelated
+to the task that Claude is currently
+working on. This is really annoying.
+This poisons my context and confuses
+Claude. Yeah, but so it so so it is.
+What's even more interesting is that you
+get access to the full system prompt. Um
+you can run clot trace yourself to read
+it in detail. There's nothing really
+surprising in there. Um it's I suppose
+well written. I mean you would assume
+that entropic people of all the people
+would know how to do this. The more
+important part is the tools section. And
+here you get to see what all the tools
+tools internally actually do
+which is very nice. Task is super
+important. We're going to look at that
+briefly later on. This basically spawns
+another cloud code instance more or less
+without all the context that's in your
+current session. And your main clot with
+which you talk will generate a prompt,
+put it into that sub agent and have it
+work on it.
+And in your context, only the result
+from the task agent will actually pop
+up.
+Bash we all know and love because it's a
+versatile club. It never uses crap. It
+never uses but it uses the command line
+crap and that's crap. Uh ls it sometimes
+uses exit plan mode. I don't care. Read
+often used. Problem with that is uh
+we'll see down below. Uh it doesn't just
+give back the lines. It also has a 200
+line limit. It also has a I think 65k
+token limit or or 30k token limit. So
+you can't read big files. You have to
+read them in chunks.
+Edit uh fails. I have a theory why that
+is. Um we'll see later.
+Multi-edit barely used
+right. Yeah, nothing to say about that.
+I don't do Jupyter notebooks. Web fetch
+is funny because this actually doesn't
+fetch the raw uh URL. Um presumably
+because they don't want prompt
+injection. So if you ask uh cloud code
+to fetch a random URL and that the
+content of that URL or behind that URL
+has a prompt injection, there's a good
+chance that that prompt injection might
+trigger cloud code to extract
+confidential or or sensitive information
+from your local machine and send it to
+someplace else. You would see this in
+the UI, but if you step away from cloud
+code and don't look at those logs,
+congratulations, you just got [ __ ] So
+what they do instead is they have an LLM
+uh that actually fetches um the content,
+summarizes it and the summary is given
+back. So if you think web fetch will
+actually fetch the raw data from that
+URL, you're wrong. It does not. And we
+can demonstrate that
+to do read and write. Yeah, that's
+obvious. Same thing as with web fetch.
+Web search also doesn't give you raw
+search results or injects raw search
+results into cloud codes context. gives
+it gives it a a summary, which is
+usually decent, but I barely if ever use
+this. It's I I'd rather have control
+over what gets injected into my into my
+prompt uh into my context. So, those are
+things I'm working on at the moment. Big
+surprise. This is too many tools. I know
+this is going to get better. Promise. So
+we had a look at the first user message
+at the tools which you should read at
+the system prompt which user should read
+and then we can look at the assistant
+messages and the tool calls. So the
+first thing it did it was reading main C
+issuing that request and the result of
+read is u what you'd expect the lines
+that claude requested in this case the
+full file. The interesting part here is
+that it prefixes all the content lines
+with this. And I just saw that my UTF8
+rendering apparently is broken. In any
+case, I think this is the reason why
+cloud gets confused when it actually
+then writes to that file or updates that
+file because this additional white space
+from the read tool seems to slip into
+the edit tools inputs that cloud
+generates and then the edit tool itself
+needs a perfect match, but it doesn't
+get a perfect match anymore because
+cloud has additional white space in the
+old string and new string. We're going
+to see that later maybe. And there's
+also the raw tool call if you want that.
+So here's the edit call, right? Uh and
+the way the edit call uh is done is like
+this.
+It just gives the old string and gives
+the new string and it needs to match
+exactly which includes the uh white
+space. And sometimes a little space or a
+little tab will sneak in here. And I'm
+pretty sure it's because the read tool
+prefixes every line in the content with
+whites space.
+So yeah, um nothing really surprising
+here in the remainder. Um use cloth
+trace to better understand what's being
+uh pushed into your context.
+So back to context management,
+there's also one more thing that hits
+you frequently and it's the end of the
+world or rather the end of your session
+which is compacting the conversation.
+Let's uh look at what that actually does
+to your context.
+illustrate my problem with compact
+conversation, which is also your
+problem. Um, I pulled up a little toy
+project that's a little bigger than our
+CMake project. It's called WIP Tunnel.
+It's basically a T-Max um replacement
+for the WIP coding age. Uh what it
+allows you to do is uh create a terminal
+session on a host
+and then use cloud in it and then when
+you're on the go um
+you get a nice mobile interface to
+interact with your clots on mobile and
+check in on the work. Um you can find it
+on Wet Tunnel AI. It's open source. So
+good luck. Anyways, back to this. Uh
+this is the source code. My domain is
+the web folder. I previously generated a
+spec MD which is supposed to minimize
+the amount of turns code the cloud needs
+to find things in the code. Um the way I
+generated this is in cloud MD and I
+rerun this every time I change something
+in this module.
+So when I start working on something in
+this module, I first instruct claude to
+read the specd file.
+And once it has written read all of
+this, it should be
+it should be able to navigate the
+codebase a little more efficiently.
+And then we can start on our task. And
+the task is that we want to replace the
+format that's being used to
+store and stream the standard out output
+of each process on disk. We want to
+optimize that to be less sucky.
+Currently, we use the cinema format
+which is a way to play back NC sequences
+generated by a terminal in some client.
+As you can see, this is JSON L. I want
+this to be binary because it hurts my
+heart.
+So, hey, um I would like to replace the
+cinema format we are currently using
+with a binary format. um please
+investigate where the format is written
+and then write me free proposals um for
+a binary format
+and cloud code will probably use a task
+uh tool call to do the investigation
+or it just reads the a cinema writer
+file which is the
+oopsie where is it which is the place oh
+yeah it just reads reads the cinema
+writer which is the place where we write
+out that format to disk
+And then it also reads the front end
+which is the cast converter which uh
+gets that content from that file
+and displays it in the terminal uh xterm
+instance.
+It then analyzes the current format
+usage and data patterns and veers off
+into searching stuff again.
+But hopefully it doesn't take too long
+to do that.
+And while it's doing that, I'm going to
+plug in my power supply.
+But as you can see, it doesn't search
+too often and it directly goes into
+those files. What it doesn't do well is
+read the entire [ __ ] file. It just
+reads them bit by bit, which is not
+great. And now it tried to access a
+stream-out file which no longer exists
+which leads me to believe that specd is
+outdated.
+Yep, we still say stream out is the file
+that's being written but it's now called
+standard out.
+Right. So it's done understanding the
+current format
+and now it probably comes up with some
+terrible binary format proposals.
+But let's assume we've iterated on that
+for an hour or so and the dreaded 10%
+until compaction pops up down there.
+What you going to do? Well,
+if you miss that point and you run into
+a compaction, you're in a world of hurt.
+And we can simulate that with uh
+directly invoking the compact command.
+Come on, spit it out. What's your
+proposal?
+I need background music for this video.
+Okay, so here's the proposal. Uh, it
+wants to turn this, which is a header,
+plus individual uh um outputs and inputs
+and resize events into this
+magic header because why not? A version
+compression.
+Ah, yeah, that's probably not a good
+idea for this chunk size. Well, I can
+already tell proposal one is garbage.
+Oh, that was proposal two. But let's
+assume we iterated on that. We took that
+as the first draft and we iterated on
+that just within this conversation. We
+didn't store anything to disk. We didn't
+modify any code. We just iterated on
+that. And then bam, compaction happens.
+So, how much of this is actually
+retained uh in the compacted
+conversation? And I can tell you it will
+not retain any of these specifics at
+least not to a level where you would be
+confident uh continuing your work
+and that hurts. Uh but there's a way to
+kind of work around that. It's not
+perfect and it's project project
+specific. Um but it generally helps me
+avoid this [ __ ]
+So let's see. Compacting conversation
+can also take a long time which is very
+annoying.
+And in this case, cloud code will at
+least show us the summary that it
+actually generated, which is helpful. So
+we don't need to use claw trace to peak
+behind the curtains.
+Sadly though, the default UI
+will not directly spit that out. It
+would be helpful. Um so controlr and
+then we see the actual compaction
+blah blah blah blah blah. It basically
+summarized was it what it did attempted
+to read the file. This is all irrelevant
+basically. And then the summary, primary
+request, key technical concepts.
+Okay. Files and code sections.
+Okay. Okay. Okay. Where are the
+proposals? Problem solving. All user
+message. Current work. I don't see the
+proposals in here anywhere.
+Um Oh, yeah. Here they are.
+Well, this isn't anything like
+uh like this, right? So, if this was
+actually handcrafted by you throughout
+this conversation and you eventually
+reach the final proposal that you're
+happy with and that you now want to go
+implement, well, you're [ __ ] because
+it's basically gone. Now, in this case,
+it's not hard to fix. You just look at
+the last assistant message and copy and
+paste that. But sometimes that
+information is spread throughout the
+entire conversation. So copy and pasting
+and finding all those bits that you need
+to retain is really [ __ ] hard. So we
+can summarize that compact conversation
+will kill your vibes. You will not be
+able to recover from this uh if you
+don't do it in a controlled way. Now one
+way to control it is to invoke
+compaction manually and then you can
+optionally give instructions for
+summarization and this is basically a
+good idea until it's not. And the it's
+not part is first it's hard to come up
+with the perfect instructions for the
+summarization one shot uh and you only
+get one shot. If you call compact and
+you provide super good summarization uh
+prompt yourself instead of using the
+default cloud code one and that still
+[ __ ] up, you're [ __ ] again.
+The other method is to just press escape
+twice and go back as far as you can in
+your session history
+uh and try to recover before compaction.
+So
+this is the compaction prompt that cla
+is sending
+and we can just kill that and then we
+can do the following. We can say okay
+I want to continue this session. Um
+please uh write a task-summd
+file and summarize all the important
+information throughout this conversation
+regarding the binary uh protocol
+proposals that you came up with. Please
+also write out all the files that are
+relevant to this task. Uh the goal is to
+quit this session, create a new session,
+and read in that task summary file so we
+can continue our work.
+And this might look like just using
+/compact plus custom instructions. But
+you will see there's some sense to this
+madness and thinking that you're better
+than the anthropic team in prompting.
+Okay, so now it has written our task
+summary. And the point of this is that
+we can compare this before we quit the
+session with the actual information
+either what you can see in the last user
+message or what you can re recall from
+your own um uh uh uh conversation
+history so to speak. Uh and we can
+immediately see that this is not
+exactly what we want. Um because it
+didn't summarize the free proposals. It
+should have just copy and pasted the
+free proposals into this file basically.
+But the thing is if we do this early
+enough, if there's still room in the
+context, we can iterate on this. And
+this is a much better strategy than
+using compact with custom instructions.
+So let's yell at Claude. um you didn't
+retain the binary protocol or binary
+binary format uh proposals. Please
+update task summary and keep the
+proposals verbatim.
+Again, loosey goosey.
+We never talked about an implementation
+plan. So, at this point, it basically
+just made [ __ ] up. Maybe it knows it's
+about to be ended.
+I still haven't figured out what the
+little hammers mean. It's not something
+that's being shown here or anywhere else
+really.
+So yeah, this is closer to what we had
+before, but it's still not really what
+it proposed, right? So first proposal
+it talks about a sequence number
+events sequence number.
+Nope. That also doesn't look like that.
+But again just with writing the spec MD
+or other state to disk. Never trust the
+LLM to do what it's supposed to do.
+Always check and recheck and fix it up
+until it's good and then you can
+continue. So for compact conversation
+the plan is or the way I approach it is
+if this says 20% until compaction I
+start writing the tasks on remd file
+like a madman and I make sure it's
+perfect until the context is full or the
+file is in a good state so I can
+continue the work and once I'm done with
+this I just quit the session open a new
+session and tell it to read the spec MD
+again
+and the task summary
+And hopefully with a good enough task
+summary MD, you're back in a state where
+you can continue the work that you did
+before.
+All right. So, for the final section of
+this longass video, I'd like to show you
+how I work with Claude um in an existing
+code base.
+My money-making endeavor is Spine, a 2D
+skeleton animation editor and runtimes
+for various game engines. You basically
+create um characters. So, anything you
+want to animate in the editor while
+bones and meshes and all that good
+stuff, animate those stuff uh those
+things and then export them to a runtime
+format. And then we have a bunch of
+runtimes for specific languages. Um on
+top of which we built integrations with
+engines like Unity, Unreal, GoodDo,
+Hakes, uh plain Android native apps, iOS
+apps and so on and so forth. We
+regularly release new versions and in
+between versions the runtime code
+responsible for loading and rendering um
+exported skeletons um changes.
+And we have a reference implementation
+which is also used by the editor um
+called spine lib gdx which is a java
+based implementation of the runtime.
+And the changes you see here between
+version 2.2 uh 4.2 and 4.3 beta need to
+be ported to all the other language
+ports um that is uh C++ C dart uh swift
+and so on and so forth. And as you can
+see, this single change set between
+those two versions is quite big. While
+individual files might be might not have
+that many changes or just cosmetic
+changes like in this case with the
+switch, other files might be entirely
+new and big and nasty and contain a lot
+of math like uh this one for example.
+And porting that over is tedious, very
+tedious and very errorprone. So I spent
+a couple of nights figuring out a good
+workflow, a reproducible workflow with
+uh Claude that is as token and turn
+efficient as I can make it. And it
+turned out that essentially I'm using
+claude as a new instruction set
+architecture. It just doesn't have fixed
+up codes. Uh your prompts are your
+machine code or language in which you
+write your program that cloud then
+executes. And I'd like to show you how I
+do this. Um I've created a bunch of
+tools to enable this. Um the first one
+is called LSP CLI.
+And what it does is um let me
+demonstrate.
+Uh let's say I take um the spine lip gx
+folder
+the reference implementation
+and I want to generate uh kind of like a
+a database of all the symbols defined in
+in in the source code of spine JDX. So I
+can do this with LSP CLI. It will
+install a Java LSP locally if it's not
+there yet, completely isolated from your
+LSPs in your VS Code and give it a
+directory and the target language which
+is Java in this case and it will go
+through all the Java files in the
+directory and output the symbols to a
+nice little JSON file
+which looks like this. A little header
+what language we are using and the
+directory where the source files in.
+and then an array of nested symbols. So,
+for example, this animation class here,
+I think it doesn't have nested symbols.
+Oh, it does. Timeline. Oh, it actually
+does a lot. There's a lot of nested, uh,
+classes. So the output from the LSP CLI
+is basically the types um their
+location, what kind of type they are,
+their range within the file, um which is
+super nice because Cloud can use this to
+directly read just the lines it needs
+for a specific type,
+a preview of the first line of that
+type, uh extract the Java docs for the
+class, and then it also has the children
+with the members like the fields and the
+methods And also the inner types should
+be in here. Let's see. Yeah, for
+example, mix direction is an enum
+defined inside of animation and so on.
+So you might wonder why do this? Well,
+the reason is for claude to get a symbol
+like a class or an enum, it needs to go
+through your codebase. So why not help
+Claude and first create a map of your
+entire codebase? And as you saw, this is
+pretty big um codebase. um and took
+almost no time to generate this. And now
+Claude has all the information it needs
+to pinpoint where a type is, what it's
+composed of, if it has inner types, what
+the signatures of things are. And this
+is brilliant because Claude can use a
+command line tool called jq um which
+allows it to query um this like a
+database. So we save Claude from going
+through the codebase manually so to
+speak with ls and glo and crap and rip
+crap and so on and so forth. So that's
+the first part optimize the way that
+claude can find stuff in the codebase.
+Um this is generated for both the
+reference runtime so spine lip gx and
+whatever runtime I want to port to say
+spine C++.
+The second tool I built is a little um
+extension
+called VS Clot. It's on the marketplace.
+You can use it. Um this basically
+installs an MCP server with uh Claude.
+I'm not a big fan of MCP servers. Most
+of them are useless, but this is the
+only way to make this sane. And then
+Claude can call into the MCP server to
+open up files and divs, which is amazing
+because my workflow is usually,
+pick one of the Java files, um, open it
+up in the editor, open up the diff in
+fork, and then open up the target files
+that is the CPP file. For example, if I
+port to C++ and then start manually
+going through line for going through
+each line and and porting that over
+painstakingly to C++. Um, now I want
+port claw to do most of the porting for
+me. Um, but I also need to review the
+port because it needs to be perfect. So
+instead of having this multiple window
+setup that I used to have, I now let
+claw just open up all the files inside
+VS Code. So I can um more or less watch
+it work and correct any errors it makes
+when it ports a thing. Okay. So those
+are tools I created to make this
+workflow possible. And the workflow is
+expressed in port.
+Before that workflow is executed by
+claude, I generate a porting plan which
+basically generates the spine CPP spine
+lip gdxing and then creates a file that
+lets me keep track of the porting
+status. So that has a metadata field
+that says from which branch or commit to
+which commit do we want to evaluate the
+change set in the reference
+implementation in spanip gdx.
+Uh it says where the runtimes are. It
+says what the target runtime is in this
+case spine CPP
+and that is all the information cloud
+needs to know um where it can uh find
+all the files needed for porting it can
+query this with jq so the context isn't
+poisoned and then I generate an array of
+porting items if you want that is for
+each Java source file I have a list of
+types that are defined in it I list them
+just briefly not the full details
+because cloud can look that up in the
+big fat LSP JSON files later on. But I
+give it enough enough details to start
+working which is the porting state. Are
+we done with this? If yes, we can skip
+this and move on to the next one. Uh the
+candidate files meaning the files in the
+target runtime we port to that clot
+should work with modify if they exist.
+If they don't exist, this is empty. Uh
+and
+a single Java file can contain multiple
+types. So this is the reason why this is
+an array.
+Okay. So this is all the ground truth
+data that cloud gets for me as a as a
+one-time setup step when I start porting
+changes from the reference runtime to
+the target runtime. I basically just run
+generate porting plan which takes the
+runtime directory the two commits and
+the language we want to port to and it
+spits this out. And once I have this I
+can start clot danger.
+Oh, we're in the wrong directory. Let me
+open a new
+a new terminal. So, cloud danger.
+And now I can just tell it readport.md
+and execute it.
+And port is our program. Port. MD uh
+gives claude all the information it
+needs to know what the porting plan
+looks like. So, it can query it with jq.
+It tells it about VScloud and the LSPJ
+JSON files
+and it tells it how to compile a single
+C++ file for testing.
+So after all of that information I
+specify the workflow and this is
+basically a program and cloud is the
+computing um how do you call it
+substrate that runs this code. Um it has
+a step uh setup where it's instructed to
+read the metadata from the porting plan
+which it does here
+just that field so it doesn't get
+poisoned. Um and if you look at command
+R command E we see that it does exactly
+that. Um so it gets the port MD in here
+which it needs then it executes JQ to
+fetch the metadata. So only this is in
+the context not the entire porting plan.
+Then it reads something else. That's the
+next step. Once it has the metadata, it
+tries to read a target runtime
+conventions file. That conventions file
+and codes
+all the coding patterns and styles we
+use in the target runtime. And this is
+not handwritten. It could be, but this
+is also generated by Claude and it's
+part of the workflow. If this file
+doesn't exist, then just generate it
+using task agents in parallel and figure
+all this out and then write it to the
+target runtime conventions MD file,
+which is very nice. So now Claude not
+only knows where to find symbols, but it
+also knows how we work in this target
+runtime in terms of memory management,
+um, RTI, access modifiers, custom
+collections and so on and so forth. So
+everything I as a programmer working
+with this target runtime know is now
+pretty much encoded in here. And the
+final part that it generates is um the
+porting notes. I've already ported some
+stuff. So this now has content while we
+port individual types uh from the
+porting plan. We take notes of
+observations like in C++ we don't have
+the two string methods. Methods with
+matrix 3 aren't imported from Java to
+C++. And as I keep porting, this fills
+up with new observations. And every time
+Claude ports a new thing
+or every time I start a new session with
+Claude using this workflow, it will read
+the metadata so it knows where
+everything is. It will read the
+conventions so it knows how to work
+within the target runtime when porting
+and it will also read the porting notes
+which will tell it about special cases,
+edge cases um that we need to be mindful
+of when porting. So, and if you look at
+the context here, we are still in
+control R land.
+Um, it reads the conventions. It reads
+the porting nodes
+and then
+it opens up all the files that we're
+about to port. In this case, the next
+type to port was Oopsie, sorry. The next
+type to port was
+this one event
+it opens up all those files for me that
+are involved importing. So this is the
+Java file the current state. This is the
+existing event.h H and event CPP which
+might or might not have been imported
+yet in full and then I also get the diff
+of the Java file to see what changed and
+I see only the documentation changed and
+this changed from private to uh package
+private. So this is great and as in an
+old text adventure
+cloud following the port MD.
+So
+it read all the metadata. It read the
+conventions. It read the porting notes.
+And then in a loop. It finds the next
+pending type from the porting plan JSON
+via jq. It also checks if there's
+candidate files in there. The generate
+porting plan can automatically fill that
+up using the data from the LSP JSONs.
+And once it has collected the next type
+information, it opens up the Java file
+and the Java kit. And if the candidate
+files exist, it also opens up those
+candidate files. So those are those four
+files up here.
+And then it stops and asks me if I want
+to port this type. And I say hell yes.
+And it will start filling up its context
+with the additional info it needs. It
+needs to read the full Java file. It
+doesn't really have to. It could use the
+location range uh from the porting plan
+or from the spine gx json to just read
+the lines that make up the type and if
+the target file exists it also reads
+that and for large files it needs to
+read that in chunks because we need the
+entire file in context and it's not
+acceptable to only have parts of that in
+file in the context. We also try to read
+the parent types if they exist which is
+also in here in the porting plan. Um,
+let's see. Hierarchy, subtypes, super
+types. I forgot what it's called.
+Anyways, it would be in here somewhere.
+Um,
+or actually it would be in the in the
+CPP thing. Parent types
+hierarchy. Nope. Subtypes. I forgot. It
+would be encoded in the LSPJSON files
+what the type hierarchy is for a
+specific type. And we need that to port
+it. So it pulls in all that data. And if
+you look what it's doing here now.
+So it reads all the files and then it
+reads the parent files.
+Um it read in the Java file. It read in
+theh file and CPP file of the candidate
+from the candidate array. And then it
+also reads event data because it saw
+that uh being a type mentioned in the
+Java file. It didn't have to reach into
+any of the JSON files because it could
+construct automatically the paths. So it
+also reads in the corresponding C++ file
+of the dependent type and then it starts
+porting. And this is basically just
+following the conventions. And if the
+target file doesn't exist, create that
+and open that up as well with VSclot
+with the extension. In this case, we
+already had those files. Then import
+incrementally blah blah blah yada yada.
+Ensure 100% functional parity and update
+the Java doc, JS doc, doxygen, whatever
+based on the Java docs. And in this case
+uh it found that the C++ version of
+event uh had renamed
+methods. So originally in C++ we had get
+int value and now we have get int
+because in the Java version where is it?
+We also have get int and set int and so
+on and not get int value. So, it changed
+that up.
+Um, and it also changed it in the
+implementation file in the C++ file
+where the actual implementation is.
+It opened up the
+uh it compiled it just to make sure that
+it didn't [ __ ] up. And then it opened up
+the diff of the changed file. And this
+is so much better than doing all of this
+by hand. and it's reproducible and it's
+token efficient because only the things
+it actually needs for porting are in its
+context and it can focus on that really
+well. Um I can now say mark this is done
+and now in our porting plan you will see
+this pending switch over to done. It
+uses jq for that.
+There we go. And now it queries the next
+pending type and away we go. So again
+the big takeaway
+your prompts or in this case my workflow
+description is your programming
+language. Your JSON and MD files are
+your state
+and your program
+basically manipulates the state on disk
+and queries it um to do the work just
+like a regular program except super slow
+compared to a proper uh CPU. But it
+gives you the flexibility to express
+workflows like this uh in natural
+language. Um, and it's very helpful. As
+you can see, um, I ported this without
+any manual intervention apart from, um,
+review. If it [ __ ] up the port or if
+the file was more complex, I would
+intervene and and, um, help it port over
+parts more efficiently or in a in a way
+that's more in alignment with the
+conventions. I might also just go in
+here and code things up myself if I feel
+like I can do this faster than Claude
+would do or better than Claude would do.
+And this is the way you have to think
+about this. If you use Claude uh code as
+a coding buddy on an established uh
+database uh on an established code base,
+you need to give it all the information
+but just enough information to complete
+the task. And the test description
+should probably be a workflow with
+steps. Um, and it should have
+checkpoints with you um to to um review
+its work and not continue unless you
+confirmed that the work so far is okay
+and it can continue. I think this is the
+only sane way to do something like
+porting. If you try to singleshot this,
+good luck. There's no chance you will
+get anything out of uh anything of value
+out of that. Um, but with this workflow,
+I can work through those 68 files in
+about a day and port this over this
+change set of 5,000 changed lines and
+modified lines. I can port this over in
+a day instead of two weeks what it used
+to take me. So yeah, the big takeaway
+from this section,
+cloud code is a programming language.
+Your prompt is your program and your
+files on disk are your state that you
+can query and update.
+And you need to make sure that you're
+token efficient so Claude doesn't get
+confused by um superfluous [ __ ] like
+this IDE injected crap and can focus on
+the task at hand and have enough tokens
+left in the context window to do its
+work efficiently without getting
+confused or without starting to
+hallucinate. plus have the human in the
+loop which is yourself and add yourself
+to your to your program so to speak as a
+control mechanism. And with this kind of
+workflow you actually will arrive at a
+code quality that probably mirrors that
+of what you would have gotten if you did
+it by hand just faster.
+So, let me close out. Um, that's about
+all I can share with you. If you're
+interested in things like setting up a
+new project, um, I would suggest you
+just look at all the information that's
+out out there about that. Working on
+green field projects is pretty easy. You
+start by specking out a plan and then
+implement the first draft of that and
+then continue updating everything. We
+already kind of talked about this. The
+other thing I would like to tell you is
+that I found MCP servers to be very
+useless at least at the current stage.
+Most of them will just poison your um
+poison your context with um superfluous
+tokens and information that confuse the
+confuse the uh LLM.
+You want to control this. You want to
+know exactly what's in your context and
+you want all the information to be just
+minimal enough for claw to be able to
+com to complete its task. Most MCPs
+don't care. They just [ __ ] out a [ __ ]
+ton of content into your context and
+it's not working so well. Um, the only
+MCP server apart from my VS Cloud
+integration that allows it to open up
+files in VS Code. The only other one is
+Playrite or Puppeteer depending on what
+I'm working on um to do front-end
+development which allows cloud to
+observe browser content basically and
+manipulate them. So it can iterate on
+front-end code and styles and stuff like
+that. Um any MCP that pulls in
+information from a database about a
+framework or um yeah I don't know does a
+talk stuff code indexing blah blah blah
+that never works for me. this very
+simple lsb based JSON based
+database generation so to speak that
+claude can autonomously query with jq
+any way it sees it it it sees fit is
+much more efficient both in the creation
+step because this takes seconds and I
+can do it over and over again and never
+touch it if I'm happy with it and in the
+query step because claude can just pick
+out exactly that information that it
+needs. This is so much better than
+anything else I've tried. Um, and I can
+only recommend you use something like
+this yourself. Uh, what else is there to
+say? Yeah. Um,
+you need to understand your code whether
+it's generated by LLM or cloud. If you
+don't do this, you're going to be in a
+world of hurt.
+and um giving it a loop either like this
+one I defined here where I am the one
+that verifies the outcome and tells it
+it succeeded or whether you give it um
+tests that it can use to judge whether
+it succeeded.
+You need something like that in order
+for cloud to not bug you every few
+seconds about new input.
+That said, Claude generates terrible
+tests. um it often just mocks things
+which is usually not what you want. And
+even if it doesn't mock things, if it
+runs into test failures and resolves
+them, it will usually um basically
+remove asserts or uh soften them up so
+much that they don't assert anything. So
+your tests become useless. I would
+suggest to treat tests generated by
+Claude as first drafts just like
+anything else. and you need to manually
+review them to check whether they
+actually test what you want them to
+test. It will still save you a [ __ ] ton
+of time uh generating those first
+drafts, but I strongly suggest to not
+skip the reviewing part and the making
+it actually useful part. Otherwise, you
+have a 100,000 tests, some of which fail
+randomly and you have no idea why, and
+your CI is just going to kill your
+wipes. So, yeah, that's about it. I
+guess uh the parting uh words will be
+follow not me necessarily but follow
+these people. I'm working with them
+together on VIP tunnel. Uh Peter is an
+old friend of mine um and he does crazy
+stuff with LLMs
+and then Armen
+uh of Flask and Sentry fame uh he's also
+doing a lot of interesting things. He
+recently posted his own talk on aentic
+coding which I highly recommend you
+watch. Um those two aren't fret boys
+which means they don't just post
+lowquality slop with regards to a
+chantic coding but actually share
+insightful information that you could
+possibly work into your own workflows.
+Um yeah that's about it. Thanks for
+watching. I know this has been long but
+I hope this was valuable.

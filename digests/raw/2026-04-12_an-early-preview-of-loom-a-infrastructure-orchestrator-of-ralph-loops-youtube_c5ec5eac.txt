@@ -1,0 +1,1432 @@
+All right, testing. Give me two minutes.
+I'm just going to make sure this audio
+comes through on the stream. Brand new
+microphone. Thank you very much. Um, I
+funded this from all the Salana
+donations. Thank you so much.
+Hello everyone. All right, so audio is
+working. That's great. Um,
+I'm going to show you something today
+that's kind of really personal. um going
+to start opening up about something and
+an idea that I've had now for the last
+three years.
+Um it may not be a surprise to people,
+but I really do not like GitHub.
+Um and if you see me posting a lot um
+and doing all my public talks, I've been
+talking about that essentially
+like what is the value of GitHub? What
+is the what is why do we have things
+designed as they are? Um because
+everything has been designed for humans.
+You'll see me talking about this a lot.
+Everything that we have today has been
+built under the false assumption for
+humans.
+Now that we have this brand new
+computer, we can do things. We can
+reimagine the last 40 years of computing
+computing and design it around
+autonomous agents first.
+Design around autonomous agents first,
+humans second. But to do that, we are
+going to need to redesign the whole damn
+stack.
+And this is Loom. Loom has had a few
+names. If people know me personally,
+this is ferret. Remember the old days
+when I was back at camp and I was
+talking about ferret.
+Lumis ferret.
+See, I have a deep belief that
+essentially um when a company called
+velocity
+went under, they made something called
+fabricator.
+For those who don't know this, this is
+the engineering system used by Facebook
+or Meta.
+It's also used by Uber as well and it
+was open sourced and it was so ahead of
+its time. I mean, it was so ahead of its
+time. And what happened was we
+essentially
+um GitHub came along
+came cool and then GitLab cloned it. And
+what what we've kind of got now in the
+land of like software development tools
+and the development tooling stack is
+just a whole bunch of really just Kinder
+Surprise type things.
+And I feel like the all the innovation
+is gone. Like I haven't really seen any
+real developer tooling company really
+pushing the boundaries yet. And that's
+what I set out to do with Loom.
+See, there's an idea that I have. If we
+falsify the last 40 years of design that
+where things are designed for humans,
+that includes things like the IDE, we
+can reimagine what the IDE looks like in
+the future.
+like what does an IDA look like in the
+future like what's to what's at the top
+of my head is essentially
+you think about uh VS Code I don't want
+to be using VS Code like I like I only
+like I only use VS Code now as like kind
+of like a file explorer I might use it
+here to walk through some of the parts
+of the codebase but maybe I use GitHub
+just for now
+but what I kind of want to do is kind of
+reimagine what the idea of the future
+is. What is what is infrastructure where
+you can program loops? What is
+infrastructure where you can program
+loops? What does it mean to when you can
+invalidate 40 years of design?
+Now,
+let's start getting into concrete
+particulates.
+Um Ralph Wigum has popped off which is
+lovely. Um people think that it's just a
+bash loop. Well, I'd like to put it to
+you that um cursor is just a loop. Like
+it it just automatically copy and pastes
+input and output.
+Um and for inferencing
+rapigum is like the simplest dumbest
+technique that allows you when you
+follow the right principles to allocate
+an array with the one task, one
+objective and get that goal done.
+Whilst you can use it in forward mode as
+in you can generate some PRDs, look at
+YouTube how I generate those PRDs and
+teach you how to do uh the Ralph Wigum
+technique. You can also run it in
+reverse to essentially clone businesses.
+But it actually has a third property.
+You can Ralph Wiggum a system. We're
+going to do this today.
+See, I've been running I've been
+building Loom in a forward mode, exactly
+like that's on YouTube. Building up from
+specs and demonstrating what a model
+first company is. There are
+companies out there who have been
+building like this for an entire damn
+year.
+So, let's get into it. But first, let's
+start with some general theory.
+For people who don't know, I used to
+work with Steve Yaggi. Steve Yaggi is
+doing amazing stuff. We're mates and
+we're exchanging notes because like
+there's only a few people in the world
+who really get this right now and it's
+so sad. We've got this brand new
+computer and round about in November
+December last year probably about
+December actually two years ago like wow
+this is 2024 he put forward this diagram
+and in this diagram he basically said
+we're working at the long wrong level of
+abstraction
+and for some reason that really clicked
+in my head
+if you look at the bottom right now
+you'll see AI coding agents
+and AI coding agents and right now
+that's like the human is directly
+managing the AI coding agent but you're
+sitting there using cursor oneonone
+oneonone
+and I guess uh people discovering now
+with the Ralph technique that it is
+possible to actually have a manager and
+a manager is an orchestrator.
+The idea is instead of the software
+engineer being
+working with the agent or cursor
+directly oneonone, instead what they
+should be doing is programming loops.
+These could be product development
+loops. These could be bug rectification
+loops. It could be almost anything you
+desire. But the idea is you're just
+programming loops on loops on loops on
+loops with one goal, one criteria.
+So, it's really cool. So, here we go.
+For really the first time I'm showing
+Loom, ignore the visuals. The visuals
+don't matter to me at this stage.
+Visuals do not matter for me at this
+stage. I've got an entire um branding
+and design system in mind. There's a
+reason it's called the loom.
+You see, the loom is you can tie it back
+to the industrial revolution.
+the textile revolution
+where you had weavers who used to weave
+things by hand and then the loom came
+along
+and when the loom came along there was
+an uprising and we got lites
+but as you might guess I'm not talking
+about weavers I'm talking about software
+developers so I'm thinking like what is
+what is like the textile revolution in
+software development so we got two
+really good researchers right now um
+exploring these domains. They've got
+Yagi and myself and ever since Wiggins
+come out like other people creating
+their own orchestra. This is brilliant.
+We need to actually rethink about what
+the best software engineering practices
+are like. Why do we do code reviews? If
+the idea of not doing code reviews makes
+you want a Ralph, well, it's really
+simple. listen to that feeling and
+engineer away the the feeling of
+roughing like put your engineer hat on.
+It's not just like set it in a loop and
+forget and get software. Well, you can
+do that. I do do that, but I've done it.
+I've got a year of experience of that.
+So, I know the failure domains. So, I
+engineer away those failure domains. If
+you don't do the engineering, you're
+just going to get slot, folks.
+So, Loom as it is now is uh we've got
+full oorthth
+Google GitHub for now magic login it's
+got skim folks so that means automatic
+user identity provisioning for things
+like octa so we can automatically for
+enterprise and provision and unprovision
+accounts this is normally a core
+enterprise feature
+and that was done. Like everything I'm
+showing you here was essentially done
+with over three nights through New
+Year's Eve, just before New Year's Eve.
+You'll see a video on my um timeline
+where I like happy New Year's Eve
+because those three nights are basically
+creating Loom.
+And Loom, like Gas Town,
+has been built like four or five times
+before the community's actually even
+seen it. So, I'm kind of hesitant to
+really show it what it is now because
+it's also raw. It's also raw. But I'm
+opening up. I'm opening up.
+So, Loom has this idea of uh being the
+loom for automating tapestry or software
+development.
+And it has the idea of a thread. A
+thread is basically the an audit trail.
+what has been done by an agent
+and anything that an agent is does is
+kept on an audit history and that means
+that you can read in another agent's
+audit history and then Ralph Wigum that
+that audit history and loaded in as
+context.
+It also has repositories. So by default
+right now it is using git. Um but it
+also has full support for JJ has full
+support of JJ. So JJ is like the nextG
+source control
+uh source control management tool but
+they never implemented sync mode. You
+see JJ is developed by uh a collective
+of really brilliant engineers. One of
+them works at Google, one of them works
+at Meta. They both have differing
+opinions on how how it's meant to be
+done and they don't want to lock down
+like the the synchronization protocol.
+That's fine. Full respect to them. So I
+uh forked JJ.
+There is no limits to what I will fork
+to be able to achieve this goal and
+outcome.
+And it's called spool. fitting in with
+the the tapestry theme. So, spool is uh
+essentially a source control built uh is
+a source control that basically uses JJ
+under the hood for now, but I will
+diverge. So, I'm not no way trying to be
+backwards compatible with anything. I've
+got a single goal and that is autonomous
+evolutionary software and figuring out
+what's needed to be there.
+So I can create a repo and I go yay repo
+my yay repo and then yeah you know this
+is GitHub like this is the current
+bleeding edge of like what like source
+control is. It's just this page and
+maybe like a pull request thing and what
+else have you. It's so basic. It's so so
+basic. It just feels old and dated. You
+mean like I want to like when I first
+got into software development I used to
+print out the source code. I used to
+print out the source code and I'd sit
+there with a highlighter
+and when I sit there with a highlighter
+I would like plan my day and I go this
+needs to change this needs to change.
+This needs to change. What happens if
+that's the idea of the future? Like for
+anyone saying that Ralph creates
+problems, well, yeah, but any problems
+it creates can be solved with a targeted
+Ralph approach. So maybe instead of like
+maybe source control is the way that we
+actually trigger off a Ralph loop like
+oh I don't like how it's doing that
+repository pattern here and the SQL is
+spread all over the place. Sweet. find
+kick off an agent in the background that
+identifies those types of patterns. It
+will come up with a plan and then you
+run Ralph in the forwards mode to
+actually automatically rectify this type
+of stuff. So some of the ideas I'm
+thinking about like what we can do on a
+design level
+and then from there of course each one
+of these would have threads with a full
+order trail of what it's been doing
+which gets me into weavers
+in loom. Weavers are the agents. The
+agents are called weavers. And there's a
+there's a there's a reason why and all
+the rest, but essentially
+what I've done is I've essentially
+reimplemented E2B.
+So that's a company that specializes in
+remote infrastructure for running on
+agents. I did this just before New
+Year's Eve.
+And what it allows me to do is I can
+start an agent and provision it on
+remote infrastructure.
+And then I can assign a route loop.
+I read through the spiffy specification.
+If you know that, you know that. And
+I've fully implemented it. Right now,
+it's just using Kubernetes.
+Um I am a firm believer in keeping
+infrastructure stacks very simple and
+scaling very vertical.
+So I'm not even prescribing like it's
+like Kubernetes or a container. like for
+now it's just the easiest way to me to
+get this up and going and prove the
+theory like if I need to rewrite
+something I will
+because it's simple to do now it's
+simple to customize software so I can
+create a weaver
+and by default you got your different uh
+images you can kick off or your remote
+infrastructure
+so let's go to say let's sayu
+what this is going to do it's going to
+create a cube Kubernetes pod on some
+remote infrastructure. Now the thing
+that really blows my mind is
+this was all like everything you see
+apart from the visual is just really
+just barcoded up from specs using the
+same techniques I showed on YouTube
+and it's able to create the
+infrastructure.
+It has full web socket uh backwards and
+forwards connecting to the TDY
+It does a workload attestation and
+identity via SPFY. So essentially, I've
+also got a primitive here that could be
+reused for CI, but I'm not even using CI
+these days. I just push to main. It's it
+it's pretty crazy.
+So, because this is a uh live demo,
+some things are going to be broken
+because I'm building this with like the
+route technique and there's going to be
+holes and gaps and I'm just going to be
+doing this live. So, if this doesn't
+work, I'm going to show you how I
+investigate it and how I would fix it
+with a raft loop. Now, let's go on to
+the next things. Of course, you got user
+profile, etc., etc., But we got full
+I've added like 20 different languages
+for internationalization because it's
+now easy to do which is cool. We've got
+a full admin panel
+and the admin panel of course has the
+admin panel of course has all the
+different tools and help. I made a
+really conscious decision to move as
+much logic as possible to the server
+because the server is designed to be
+hosted on your own infrastructure.
+That way if like there's something wrong
+with an API key or anything else like
+that, you don't have to like update some
+sort of client config, you just redeploy
+the server and all the clients
+automatically change to a new API
+endpoint URL for inferencing or
+different API key. The same thing can be
+said for things like search tools.
+So a search tool is essentially a tool
+that's registered into a coding agent.
+And when it does that, what happens is
+it will do like a web search or Google
+search. So I I have both support for
+Google and of course for ser. So
+depending on which one you want, you
+want different data sources from
+different vendors, you can do that.
+Now you probably see the logs chugging
+away on the right hand side.
+What you might not know is these logs
+uh I got a full audit system.
+Everything that happens in in Loom has
+full auditing.
+To give you a level to give you an idea
+to the level of auditing,
+each weaver is actually an ebpf program.
+Anything that happens in that weaver
+is is sent back to the Bloom server. And
+whilst I haven't implemented yet,
+forwarding over to scams, I actually
+have implemented new functionality. I
+think I don't know. We'll run a RA loop
+to just see where it's at up to. I I I
+definitely wrote the specs for it.
+And um I think it's implemented. I just
+never really tested it. Just never
+really tested it.
+From there you got your typical
+background jobs like um system
+administrators can actually uh trigger
+maintenance jobs like like git garbage
+collection and what else have you. Um
+weaver cleanup is of course just
+cleaning up old Kubernetes pods for
+whatever reason if need be. And the just
+usual usual things
+from there we've got something
+interesting. If you know, you know. If
+you know, you know. And then from there,
+uh, of course, we've got our user
+platform management.
+So, the reason I will I'll actually get
+in here because user management isn't
+really that interesting, but it is
+really interesting actually. So, I've
+implemented accessbased
+uh, sorry, I've implemented Aback,
+attribute-based access control, not
+ARBback, Aback. So I can do very fine
+grain filtering on a permission level
+whether something someone has access to
+a resource or not like a source control
+host or maybe they got access to like
+the admin panel what it's very fine
+grained security model and it supports
+impersonation.
+So you can impersonate another user and
+it will notify that user that they've
+been impersonated and there's a full
+auto trail everything that's happened.
+So this is really handy in I guess
+enterprise support
+where someone says hey it's broken it's
+not working for me and you like instead
+of like getting on a zoom or what else
+have you just like can I disimpersonate
+your session and then you can
+impersonate out that user and you can
+see all the weavers that they're running
+you can log into those weavers you can
+help troubleshoot what's happening with
+them but maybe that's more of like a
+like a second level support type thing
+if it's a bigger organation. I guess you
+normally would have a frontline support
+team. So anything that a weaver does
+produces a thread. A thread is the audit
+trail. What what happened like all the
+turns that's happened etc. It's the
+context. You might heard me talking all
+the time about like and you got this
+beautiful context window. Would it be
+great if you could just save that save
+that context window and reuse it?
+Threads. Threads. So if you have a
+problem with a thread or a weave or
+something's going wrong, you actually
+just share it with support and then
+anyone with the supportbased access uh
+permission will be able to basically see
+what is going on. So it just makes it
+really easy for enterprise to actually
+support what's going on and see what's
+going on. Really cool. Now the visual
+doesn't look like anything. It looks
+like crap. I actually need a designer.
+Um, I'm focusing more on the technical
+implementations and getting like the
+whole thing right working and
+understanding
+new techniques of raph loops.
+You want to have a peek, it's on GitHub.
+Full disclaimer, it's a research
+project. It's built with Ralph. Things
+will change really, really fast. You
+should not use this unless your name is
+Jeffrey Humpley. Do not use it. Not even
+if you change your name, Dex. Not if you
+change your name. However, you can have
+a look through some of the things I'm
+doing and I can now use this because the
+code is available to teach. Like for
+example,
+like I've been doing Nix OS now for
+14, 15 years. I don't know how long. Go
+find my original video where I'm like
+Nixos is amazing. I think I was a
+consultant um inn net consultant back in
+the time. And in the infra directory,
+you'll see some really, really cool
+patterns. And why not? We're live on
+stream. Let's have a look at my
+passwords. Let's have a look at my
+secrets. So, I use a a primitive called
+SOPS. SOPs is really damn cool. Um,
+security is meant to be part what you
+have and what you know. So, I'm kind of
+invalidating security principle here by
+like providing it to you. But if you
+manage to like break the encryption of
+socks, I have bigger problems. And plus,
+they're just vanilla API keys. Later,
+I'll move all this stuff out. Plus, I've
+already implemented like HSM modules.
+Right now, it's a soft HSM, but it's got
+cloud backing anyway. So, you know, and
+this is for nows is everything. But this
+is a really cool pattern, folks.
+So, I can come into my loom.yaml. You'll
+see all the API. You'll see all the
+environment variables needed to run
+Loom,
+but they're all encrypted. They're
+encrypted with the host SSH key, which
+you do not have, which means this is
+useless to you unless you steal my host
+SSH key. If you do steal my host SS SSH
+key, congrats. There's nothing on the
+box, but I guess uh congrats. I'll buy
+you a beer and I'll just rotate the
+keys. I really don't care because all
+these uh access controls are set
+correctly with the right spending cap.
+So any breach of this wouldn't actually
+matter because they're all locked down
+to IP addresses. You name it. I've gone
+the whole hog here. Now the way uh
+secrets and works is really simple.
+The infrastructure of um before I get
+there, the infrastructure of Loom right
+now is under a unified theory.
+that
+you can buy a bare metal machine now for
+about
+$1,500 US a month with $192 cores and
+terabytes of memory.
+That's damn amazing. Do you know how
+many what you can do with that thing?
+Like I've been on the front page of Y
+Combinator more times than I can count
+on a Raspberry Pi and it didn't crash
+because you applied the right systems
+engineering thinking to it.
+192 cores. You spend a little bit more,
+you you you get you get a dual 192 core
+machine with terabytes of memory. So, we
+can scale up pretty high now because
+there's a falsehood in software
+engineering or at least infrastructure
+that
+um I suppose back in the webcale days,
+back in the webcale days, what happened
+was
+hardware wasn't advancing fast enough.
+So the only option was really instead of
+vertical scaling was horizontal scaling
+and that came at the right inflection
+point. We got all the cloud vendors
+selling their options and what else have
+you and saying that you need to do
+horizontal scaling. But if you ever use
+those platforms, you know their their
+disc IOPS is utter [ __ ] right?
+Utter [ __ ] And it's so expensive. The
+same server on AWS or GCP be costing you
+easy 10 stacks a month. You can go get
+it from HTNA or OBH for $1,500 a month
+and it just goes up and it's amazing.
+We can get into BCP type topics later
+and how you handle all that. I thought a
+lot about it and there's primitives
+built in for this. I built my own file
+systems.
+It sounds out there, but I needed to.
+Cool. I'm going to go take you a walk
+through Nyxos quickly. If you've never
+seen Nixxos, Nixxos is the power tool of
+infrastructure.
+You should use Nixos for any of your
+next AI projects
+because it is it has these primitives
+and these primitives can be used to
+declaratively define a server and that
+same definition can build a Docker
+image. It can build a QMU machine. It
+can build an LXC container. It can do it
+all. Plus, it's the only safe option to
+actually run agents
+with pseudo.
+Loom to bootstrap Loom up.
+The agents deploy on the server using
+pseudo
+and it's only possible because of Nix
+OS. So, let's have a look into Nix OS
+really quickly.
+So, right here I've got all my different
+modules and let's say you want to
+configure foul to ban. It's like in
+Nixos you go like servicesfailtoban
+enable equals true really simple they
+got this beautiful DSL beautiful DSL
+language is a little bit something but
+like the consistency on how to configure
+things is like peak absolutely peak here
+we we connect back in our secrets
+here's the SSH key that's used to unlock
+it
+in Loom itself as it is now is just a
+singular
+server very big beefy server
+and I import my modules. Cool. And they
+configure all the different things of
+that server. I configure my IP address.
+I don't care if you see my IP address.
+You don't get hacked because you have
+the IP address. You don't. You get
+hacked because your other things and
+even then, so what? You get the source
+code. It's on GitHub. Congrats. There's
+nothing else on it. Cool. We got our uh
+init RD configuration grub. But this is
+the interesting thing. This is how I
+configure my secrets. and I configure
+the ownership of these secrets for each
+individual service, change the file
+permission etc. So when loom is deployed
+on my infrastructure
+um it applies this Nixos config
+and uh it will decrypt the host SSH key
+and deploy the secrets that I need to
+actually run Loom itself. Now everything
+I'm talking about here is not
+prescribed. It's not prescribed at all.
+Loom also runs as a docker container.
+This Nyx expression generates out of
+Docker container, but doing continual
+Docker container rebuilds is just such a
+slow development loop. I'm focusing and
+optimizing on speed. And the best speed
+is you push master and then it auto
+deploys in 10 seconds. Zero code review.
+I know what you might be thinking. This
+sounds mad. It kind of is to be honest.
+It kind of is. But what happens is I get
+to feel the failure domains. Instead of
+trying to avoid failure domains at all
+costs and slowing down the development
+loop or the raph loops, I'm feeling
+these failure domains. And when I see
+them, I get to categorize them of how
+those types of failures happen. And then
+I engineer them away. If the idea of
+running Ralph on your codebase makes you
+want Ralph, listen to it and then
+engineer those concerns away.
+So when I'm doing my development,
+when I'm doing my development, I push
+master from the agent
+and what happens is there's a Nixos
+auto update script
+and essentially it tracks
+I think it's like every 10 seconds it
+does a git pull. This is the early days
+why I'm still on on GitHub. There'll be
+a point where it it's bootstrapping
+itself when I'm not going to be on
+GitHub anymore. If you want to look at
+the Loom source code, you're going to
+have to look at that on Loom itself.
+Cool. Auto update. It doesn't switch.
+Does all the things that Nyx does. Let's
+have a look at this.
+Let's have a look at this.
+Actually, before we do, let's see if
+this weaver actually created. Yay, the
+weaver created. Um, I wasn't so sure
+because I was doing some really deep
+internals at eBPF uh a couple days ago.
+It's been a couple days since I've
+looked at this
+log. So, the log stream's not working.
+That's okay. Software is now clay now.
+Software is now clay.
+Get it to a position and get it kind of
+working. And then when you find
+problems, run another RA loop over it.
+and then engineer back pressure to stop
+those failures from happening again and
+making sure that new route flip doesn't
+actually break existing functionality.
+So here we are. We're logged onto a
+Kubernetes pod. This Kubernetes pod is
+uh is of course running on Kubernetes
+cluster. There's a web socket between
+the Loom server and that Kubernetes
+cluster to directly to the pod.
+All this stuff was vibe coded folks from
+specs using the raffle loop. It was just
+me driving it by hand and when I got a
+high degree of confidence in it all that
+it was getting the things right, I just
+let it rip and just like went started
+DJing over over New Year's Eve. How
+crazy is that? You got a full web
+socket. Now
+weavers is a double overloaded term. A
+weaver is both remote infrastructure or
+a pod like it's running an agent
+whatever but it's also a command line
+like the the CLI for running uh Loom the
+CLI for running an agent is also called
+Weaver
+and that Weaver can run on Mac OS um
+Linux Windows all CPU architectures. If
+you have a look in there, you're going
+to find some really cool infrastructure
+patterns where I cross-co compile using
+the zig tool chain
+for all these CPU architectures from one
+big beefy box after every deploy.
+And what happens is if you come across
+to bin for expediency right now, I
+haven't actually I'm not actually
+compiling the Windows binaries and
+deploying them. But what happens is when
+a
+weaver is deployed
+through spiffy in their test station, if
+you're familiar with cloud and nit type
+topics, you can pass like customization
+variables to your kernel or uh to a
+container.
+So this is where it gets fun.
+When a weaver is provisioned,
+you need you need that weaver to connect
+back to the loom service. You customize
+that during the provisioning via the
+API.
+However,
+how does that weaver or that Kubernetes
+pod speak with a loom server? We should
+assume zero network connectivity.
+Well, the answer is there.
+Loom
+contains tail scale. It's all wire guard
+driven.
+It uses the tow scale public derp maps.
+Now for my friends at tow scale, I love
+you. I did not clone you in the Z80
+Um I just kind of know Wguard. So we now
+have a full implementation of WG Guard
+where the Bloom server is essentially
+the broker. Um it uses the tile scale
+dirt map. So when you provision a pod,
+what does it what does it do? What what
+you do? You pass across some sort of a
+boot initialization identifier spiffy
+via spiffy.
+And what that happens is when the weaver
+starts up, it's able to broker a network
+connectivity via wire guard. But that's
+not even the fun part because we got
+this remote infrastructure. Um, and I'm
+talking about like I want to reimag
+what an idea is to the future. Well,
+even if I I get there as I get there,
+I still need the idees of today. So, the
+question is, how do you repair
+a Weaver or an agent that's gone astray?
+You need network connectivity to it.
+This is why the Weaver is also a command
+line binary where you can run it like
+just locally if you wanted to and then
+uploads the thread. So you don't
+actually need to provision remote
+infrastructure via the weaver command,
+but it also serves as a wild card
+client.
+So we have this three-way network
+connectivity from my computer to some
+random data center somewhere with no
+direct network link routing via tail
+scale/wire guard
+broker connectivity to the main server
+and all these three things are able to
+communicate with each other and there's
+full isolation between all these
+different weavers and what have you.
+It's cool. It's really really cool
+folks. And now that I got network
+connectivity, I can do things like port
+forwarding a uh running web server
+that's running in a weaver and I can go
+check it out, right? I can run a raph
+loop in a weaver and it says it's done
+and then the port forward is there on my
+local machine and I can have a look at
+it. Or maybe I port forward that one
+from one weaver to another weaver and
+then that weaver has a raph loop that's
+just done system verification on that.
+And then I pass the thread outcome back
+to the original weaver. And all of a
+sudden we've got these metar loops. We
+got these metar loops. So yeah, you can
+SSH from your local computer. You can
+SSH into remote infrastructure. Any one
+of the weavers and rescue them. You can
+use the VS Code plugin or just the
+normal what have you. It's just SSH, but
+it's all broken. This is an
+infrastructure play, folks.
+Um, I'm imagining what everything is and
+can be.
+Cool. So, I've got my remote infra. It
+still blows my mind that this is damn
+possible. Seriously. Um, a lot of this
+was built in three days. It's not the
+first time I built it and I didn't have
+the specs when I built it. There was no
+cheating. I just wanted to compare since
+the last time I did it with like Sonnet
+35 and then Sonet 4. I wanted to try it
+with Opus.
+Wow.
+Okay. So, let's kick this off. Let's
+have a look through the source code.
+Let's bring this in.
+Okay, we're now on the Loom server.
+Move this up so you can see. Yep, there
+we go.
+And then
+you go like this. City crates.
+This is what's been implemented in three
+days.
+I mean, like if you look at that and
+maybe if I just make it a little bit
+smaller so you can actually properly see
+how unhinged this is.
+Like it is cooked.
+So what we got right now
+is all this functionality. Some of it's
+hooked in, some of it's not because I
+developed it in separate loops. They're
+not integrated. So the biggest question
+really is can I run a raph loop to
+identify things that are not locked in
+and connected or maybe functionality is
+connected
+and uh all I need to do is think deeply
+about what the right brow flip is to be
+able to put this entire system under
+test and come up with a plan. I've got a
+plan. You know where this goes.
+Cool.
+So we're on this machine. Machine's
+cool. Big beefy thing.
+got new CPUs on the way. So this will go
+even faster
+and let's do for now we're using claude
+where we can get the cheapest
+inferencing. That's what matters right
+now because there's no difference
+between any of the coding tools. Cool.
+Now I'm going to demonstrate the first
+thing of like a the first loop one of
+the loops I normally do is the server
+deployed.
+As you start engineering these types of
+concerns, you start thinking in higher
+and higher level abstractions. These are
+programmable computers. These are
+programmable computers. So, right now it
+knows about the Nyx OS auto update
+script. Notice how it didn't do any hill
+climbing.
+Did not do any hill climbing or like
+failed tool calls. It's straight in
+there and it's going, "Yep, I'm going to
+look at the version that's deployed in
+the server. I'm going to look at the
+server status. It's going to look at the
+remote host. And yeah, the server's
+healthy. Loom is healthy. Okay, now I
+can go
+study the Loom server logs for errors
+and it automatically knows about that I
+use journal control.
+It's using pseudo folks only possible
+due to the magic of Nixos.
+Now, as this is out of bootstrap, it
+won't be using pseudo folks. This is
+just the early stage. If you know
+compilers, you're you're essentially
+bootstrapping and tombstoning from one
+thing to the other. This is the fastest
+way I can do my software development
+practices right now. Speed matters. It's
+the wheel of the turn. It's the speed of
+the wheel and how it turns that matters.
+So that means how fast the generation
+works. Well, there's not much you can
+really do about that unless you do
+concurrency of lots of weavers like
+OpenAI codeex.
+Um, you got a lot of control over the
+back pressure. This is your tests. This
+is all the all these different things.
+If you have a look at my pre-commit
+file, you'll see a lot of tricks in
+there where I start engineering back
+pressure. I'm doing that in that
+approach is because Loom isn't at a
+sufficient level where it's bootstrapped
+where I could do some coordination
+between two or three weavers and then
+Ralph etc.
+Cool. Let's let it have a look at the
+logs.
+It's probably going to find nothing.
+Let's have a look.
+You know what? This going to take
+forever.
+Oh, wait a sec.
+Oh.
+Oh,
+this is interesting.
+So, if I wanted to fix this, the first
+thing I would do would be like study
+specs uh index.mmd.
+Index MD is like this highly optimized
+lookup table.
+um that works on the theory of
+essentially if you can tune
+if you can tune the search tools
+uh and the read tools essentially you
+start thinking about cash misses and
+cash hits every time a tool call fails
+that's a chance for tuning if it fails
+that's a cash miss if it succeeds that's
+a cash hit
+now cool I've now pinned the context
+that I want to do yo
+What was the problem that we had?
+What was the problem we had? We had
+And I'm going to throw this one out to
+everyone who thinks prompts matter.
+So, we've pinned our context window.
+I've given it a goal. Um,
+is describing the application. Now,
+we're going to do our first loop and
+we're going to do an investigation on
+what is wrong here, why it's working,
+why it's not working.
+But I guess while that's going, cuz it's
+going to take a while, let's do the mega
+loop. Let's do the mega loop and then
+probably we just throw in some tunes
+and we'll have a look at it tomorrow.
+Okay, let's start cla code.
+Actually, let's let's do a feature demo
+before I do the me thing. Study the
+pins. Uh, put the pin in spec readme.md.
+this will customize and essentially
+program uh the LM and know exactly
+what's going on the requirements are and
+like some shortcuts alias just like
+deploy server all the rest what's
+allocated at the context window yo can
+you use the loom cli to create a remote
+weaver
+so now I'm I'm actually doing a form of
+a RA loop
+um by hand
+and
+it's not just for building folks. It's
+not just reverse engineering. Everything
+is about engineering this loops. So
+let's say I suspect something's wrong
+with some functionality.
+Um for example, provision remote uh
+weaver. I could do just a prompt like
+this and then drive it in a loop. And
+here we go. It's compiled it. It's going
+to create the remote weaver.
+It's detected there's already a weaver
+running. It's creating that weaver,
+which means it's remote provisioning to
+remote infrastructure. Very much similar
+to OpenAI codeex.
+And that's just going to be cooking
+away. So, while that's going in the
+background,
+hey, that's good. It's done. The weaver
+is done.
+Crazy. Absolutely crazy. So, the next uh
+loop is I guess let's take it up a
+notch. Actually, do it.
+Let's do it.
+Let's uh allocate the array for the
+beginning.
+Cool. Now specialize my context window
+to know all about my application. This
+is this is model first companies
+corporate doesn't have this backing.
+They they can't just say deploy my
+server. No, because they they haven't
+filled with intentionality to be able to
+run these loops.
+Cool. The weave is created remotely. TTL
+4 hours. I can connect to it etc.
+uh destroy the this weaver.
+Remember this context window had a
+singular goal. Singular goal was to
+create a weaver and it's now created it.
+And because that's pinned in the context
+of like what it needs to do, it knows
+about um the identifier. So I can just
+say delete the weaver. I don't actually
+need to specify any type of identifier
+because it would just work.
+Just work because I've got a singular
+thing in a singular focused array or
+context window. Cool. Weaver is now
+deleted.
+Cool.
+Cascade failures.
+Okay. Each side car setting batches with
+thousands events. This is my ebpf audit
+trail. Right. Okay. the buffer is
+growing.
+Uh let's do the low IQ just saying uh
+let's explore option two and three and
+three. Let's discuss.
+Cool.
+Okay. I have now
+let's do the loop.
+Okay. I want you to come up with a plan
+that tests all the loom server API
+endpoints
+that we will use for a clawed code
+session. separately to this. It's
+important to
+site
+line numbers of specifications
+and the source code that is under test.
+I'm just making this up on the fly. I
+want this strong linkage to increase the
+cash hits rather than misses. Multimize
+and search tool.
+search
+all the code as needed using up to CL
+code. I can only ever do about 10 sub
+aents. My personal uh best is 200 sub
+agents um in other products. So it's one
+reason we get on CL code because it's
+just not expressive enough.
+Then
+write the test plan MD
+as bullet points. Let's let it rip.
+So what this is doing is instead of me
+going around clicking on all the UI to
+verify functionality, what we're doing
+is we're generating a plan to run this
+infrastructure under test with a Ralph
+loop. So Ralph can be used in forward
+mode to build. It can be used for
+testing. It can be used to drive loops
+for system administration.
+There's no really limits to this. It's
+why it's just easy to dismiss like a
+loop. Just remember the tool calling
+revolution is just a loop.
+Sometimes the most simple primitives are
+some of the most powerful ones.
+Cool. Let's have a discussion.
+Okay, let's have a look. Let's look at
+the implementation. Currently current
+architecture EPS event processor
+accumulates on the vector
+bus to 100.
+You know what?
+Whatever. I can always undo it. I can
+always run a RA loop to evolve this
+later. I can run loops to target and
+analyze security aspects of this thing.
+And then myself there with virtual
+oversight, I'll have a look at it. But
+for now, we're live. So I'm not going to
+put too much effort in this thing
+because I know I can just
+run another loop. So this will take a
+little bit longer.
+Whilst this is cooking along, I guess I
+should uh show some pretty things.
+Cool. So, there's a VS Code, there's an
+IDE
+VS code extension.
+Um, I'm still two minds whether I even
+bother doing some more loops and getting
+this over with the VS code extension
+because
+of this reason.
+The Weaver supports ACP, the protocol
+support provided by Zed that essentially
+allows any editor uh to connect with any
+agent. It's in there. It's not
+integrated. So maybe I do the extension.
+Maybe I don't I'm not sure what VS Code
+is like for
+I'm not sure what VS Code is like for
+ACP. I need to investigate.
+Oh, something I forgot about. So, the
+idea of Loom is more than just GitHub.
+And I mentioned that it's about anything
+I need to do. Well, I don't want to
+always push main and master.
+Maybe
+I want to have some sort of back
+pressure and some sort of pre-check CI.
+Or maybe the alternative is I still push
+main and master always.
+But what I do is I roll them out
+in feature flags
+or feature experiments. So you know that
+old engineering principle that could be
+automated now. So I'm thinking like it's
+like a once a RA loop is done to
+actually finish software development.
+Well, that would kick off another RA
+loop that would uh carefully implement
+feature flags over that whether it's on
+or off. And then once once that's done
+and it's deployed because I showed the
+deployment loop, the end result end
+result of that is I could
+um create another weaver or another loop
+that had a look at the telemetry or the
+metrics from the server for that
+particular feature and it could decide
+if it needed to turn it off because it
+still takes time to do these loops.
+Inferencing is not instant yet. So the
+idea is automatic introduction of
+feature flags, automatic removal of
+feature flags, you name it. I I really
+don't want to be involved in the
+deployment of this thing. Now I
+mentioned analytics. On my last stream,
+I reimplemented an implementation of
+analytics similar to post hog. Now, the
+reason behind that is because I want to
+move into essentially agents being able
+to modify product features
+um and be able to do AB experiments or
+what else have you on product features.
+It's not just like
+if then else feature flags. No, it's
+like full on product analytics.
+Full on product analytics.
+Um, we have a
+a very basic.
+I got a very basic TUI, but it's kind of
+broken right now.
+At the end, I really don't care if it's
+broken because I just like run a loop in
+the background to fix it. It's really
+weird. As the models get better, the
+more powerful these techniques get. So,
+we really need to be thinking about
+orchestrators and like how do we do
+coordination between all these types of
+loops because the loop primitive is not
+going away, folks. Not going away.
+Cool.
+We're done. Let's do the raph loop.
+Let's do the big s raft loop.
+I have never done this before. I've
+conceptualized that it was possible to
+run an entire system under test.
+So maybe we're looking at something a
+little bit different to play right here.
+Um rather than creating these like fixed
+tests as such. Um maybe we we got a new
+branch here of like different ways that
+we can run these tests and we connect in
+all our different MCPS and models have
+you if need be all the different tools
+for running Chromium and headless and
+what have you.
+Now, I'm guessing this prompt is going
+to be
+underspecified
+because I think it's going to the
+model's going to lean for authoring the
+tests or checking that the tests are
+there.
+Let's let let it play out. So, I'm
+probably going to kill out of this rough
+loop and instead what I'm going to do is
+uh make it very clear it needs to drive
+the public API.
+via the via the Weaver command line
+tool. Let's see how it goes. I'll be
+back. Let's see how it goes.
+So as expected it is leaning towards
+inspecting the existing tests. Is that
+leaning towards writing code?
+Let's kill this out. I could do this and
+it could be exercised under the
+integration testing code and that would
+be great but that's not the behavior I
+want for this stream.
+Let's
+see this one little tweak. We program
+the computer. Let's see what we can do,
+folks.
+Watch out. Just one simple tweak to the
+loop. That's uh because it's so generic,
+you can just get
+crazy outcomes. So hopefully this will
+now
+pin the specifications. It's done that
+at the top. It's now one of the key
+principles of the loop is to pick one.
+So it only has one goal for to do.
+And I've clarified by prompt
+that
+it should
+run the a full integration test. And
+it's doing it
+using the Loom Weaver CLI, which is the
+the coding agent that can also run
+remotely. So for each one of these
+functionalities, it's going to create
+remote weavers and all the rest. Oh, I
+know what I forgot.
+Cool.
+I know what I forgot, folks. This is why
+you should run around by hand. Should
+watch it.
+Study the Loom server.
+Journal D for errors when you have
+issues to be able to troubleshoot.
+You may add
+temporary logging as needed be for usage
+with journal D logs for troubleshooting
+if needed. Cool.
+you just just play just play with the
+computer. You program the computer.
+So here I'm giving a permission that are
+giving it a hint. If at any stage it
+does a curl request and I get a 400 or
+500 or something wrong that doesn't
+match my specifications,
+it should study the the server audit
+log. And it has permission to
+it has permission to automatically
+deploy
+has permission to automatically deploy.
+Can I do this recklessly? Actually
+do this recklessly for the sake of the
+stream.
+So now I'm giving it permission to test
+all these things via curl and the visual
+CLI.
+It should update the test plan when it's
+it's done when the testing is done. it
+all passes. But if it it enters into a
+failure scenario,
+then uh it has permission to add
+temporary logging as need be.
+Oh, actually I can tweak this a little
+bit more. I can tweak this a little
+more. I got an idea.
+Before and after. Let's give it a give
+it a yours
+and mine. Let's give it a yours and
+mine.
+That was able to see the what the the
+logs were before for the errors and then
+afterwards. So, it'll run this step
+twice. Now,
+let's kick this off, but I'll be back in
+a tick. Um, I'm going to go check
+Twitter if there's any questions you
+might have while I'm here. I will take
+the opportunity to answer them just like
+reply to the broadcast tweet. Um
+otherwise I'm going to wrap up early.
+I'm tired. It's been a very long week
+folks. Very long way.
+All right.
+Welcome back. Let's have a look what
+it's doing. Let's scroll the way back.
+So, we got my first loop. I told it to
+pick one off the list. We want to put
+the entire system under test as in not
+isolate or whatever. It's the entire
+damn system.
+Um we've given permission to deploy the
+server.
+We're not serving users right now and I
+I haven't integrated in the feature flag
+and the stage roll out deployments
+that's coming so soon. What I'll do is
+I'll change that prompt to say hey you
+need to use the skill or what else have
+you to roll out these features
+uh automatically but like in a feature
+flag and then you turn on and off and
+some other lever is controlling that
+that aspect.
+I told it they should look at the logs
+before it makes a change and after a
+change. So that way it's got permission
+to deploy, to troubleshoot, but when it
+will be troubleshooting, it will just be
+adding extra logs. Because what we're
+doing here is a ra flip not to actually
+fix the problems. It's to refine and
+create a another plan.
+And in when we got that final plan, when
+we know what's actually broken, then we
+take a different approach on how we
+actually going to do a rough loop to
+actually fix those problems. I'm going
+to sit down. I'm going to have a look at
+the class of problems. I'll look at the
+code that's broken and I will come up
+with a plan to target maybe just one or
+two. Maybe there's some commonality.
+Maybe there's some like module design is
+wrong or what have you and I'll target
+just that. I'll kick off a plan just for
+that. Same way I was uh if I was
+developing product specifications, I'd
+pin the context or the model the idea of
+model first company.
+And once that context is pinned, the end
+outcome is I can then run a loop and set
+it on a task and goal to do something.
+And that do something would be over. We
+don't need to do investigation.
+But what we can do now is a resolution
+loop. So let's have a look. It's found
+the credentials. Sees my token. I don't
+care. There's nothing on the server. Use
+it. Congrats.
+Um,
+checking the MI end point.
+Cool.
+Little bit of hill climbing here. So, I
+could probably tune my prompt.
+I could tune my prompt a little bit
+more. I could tune my prompt a little
+bit more so I don't get cash misses.
+And It's going to try to create a
+thread. It's going to try to delete a
+thread. It's going to exercise curl.
+That way, we can isolate if it's an API
+error or it's a client implementation
+error.
+Cool. It's running, running, running,
+running, running, running.
+We got a status. So, these things are
+now working. So, now we've got actually
+an automated way to do system
+verification tests. There is no reason
+why this is this can't be a continually
+running thing in the background. Maybe
+this type of approach replaces CI or
+maybe it replaces a lot of the manual
+scripting that we used to do for testing
+endpoints and what happened. But maybe
+it's just like property based tests or
+like snapshots like VCR type tests,
+integration tests, unit tests, whatever.
+Like we're engineers. We pick the right
+thing for the right job.
+Cool. It's tested. It's working. It's
+working. It's working.
+And it's more integrated than I
+expected.
+Health endpoints working. Um threads
+thread search is working. Key finding
+There's a bug here.
+There's a bug here. So,
+this is uh this is telling me this is an
+opportunity to tune uh my harness
+prompt.
+This is actually something I really
+can't do because I'm using cord code.
+So, I'd have to put in my agent MD. But
+in loom itself, I'd be tuning this
+aspect to get rid of like multi-line
+bashes and etc. Just do separate tool
+pulse. Um that's it for now. It's a long
+stream. It's still very early days. It's
+very fresh. But the idea of uh running
+thousands and thousands of agents with a
+single task in goal backed by some
+specifications is what Loom's all about.
+Um and it's not just like a GitHub. It's
+I'm not even sure what it is because I
+it's it's moving into the product space
+and essentially like a loom is really
+cool but like the idea of autonomous
+software factory
+is much cooler. Anyway, see you folks.

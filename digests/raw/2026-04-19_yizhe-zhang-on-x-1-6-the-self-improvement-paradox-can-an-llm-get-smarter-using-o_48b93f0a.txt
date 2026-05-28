@@ -1,0 +1,17 @@
+X thread capture
+
+## Post
+
+## Conversation
+
+1/6 The "Self-Improvement" Paradox Can an LLM get smarter using only its own raw, unverified outputs? No verifiers. No teachers. No RL. We found the answer is an emphatic YES. Introducing SimpleSD: Embarrassingly Simple Self-Distillation. By simply sampling solutions from a model with specific temperature and truncation settings and then fine tuning the model on those exact samples, Qwen3-30B jumped from 42.4% to 55.3% (30% improvement) on LiveCodeBench v6 just by training on its own samples!  The gain is universal across different model sizes (4B, 8B, 30B) and model families (Llama, Qwen). The harder the problem is, the larger the gain.  Kudos to my amazing colleagues
+
+,
+
+,
+
+, Navdeep Jaitly,
+
+. Check out the paper and code below!  paper: arxiv.org/abs/2604.01193 code: github.com/apple/ml-ssd HF models: huggingface.co/collections/ap
+
+[](https://x.com/YizheZhangNLP/status/2041590447106355323/photo/1)

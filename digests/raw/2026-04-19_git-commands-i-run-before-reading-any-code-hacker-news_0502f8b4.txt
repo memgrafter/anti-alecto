@@ -1,0 +1,129 @@
+Hacker News thread capture
+
+Thread URL: https://news.ycombinator.com/item?id=47687273
+Item ID: 47687273
+Title: Git commands I run before reading any code
+Author: grepsedawk
+Points: 2333
+Linked URL: https://piechowski.io/post/git-commands-before-reading-code/
+Top-level comments captured: 4
+Total comments captured: 180
+
+## Top comment (highest-score top-level, verbatim)
+u/gherkinnn (0): These are some helpful heuristics, thanks.This list is also one of many arguments for maintaining good Git discipline.
+
+## Prominent viewpoints (top-level comments)
+1. (0) u/gherkinnn: These are some helpful heuristics, thanks.This list is also one of many arguments for maintaining good Git discipline.
+2. (0) u/pzmarzly: Jujutsu equivalents, if anyone is curious:What Changes the Most jj log --no-graph -r 'ancestors(trunk()) & committer_date(after:"1 year ago")' \
+ -T 'self.diff().files().map(|f| f.path() ++ "\n").join("")' \
+ | sort | uniq -c | sort -nr | head -20
+ 
+Who Built This jj log --no-graph -r 'ancestors(trunk()) & ~merges()' \
+ -T 'self.author().name() ++ "\n"' \
+ | sort | uniq -c | sort -nr
+ 
+Where Do Bugs Cluster jj log --no-graph -r 'ancestors(trunk()) & description(regex:"(?i)fix|bug|broken")' \
+ -T 'self.diff().files().map(|f| f.path() ++ "\n").join("")' \
+ | sort | uniq -c | sort -nr | head -20
+ 
+Is This Project Accelerating or Dying jj log --no-graph -r 'ancestors(trunk())' \
+ -T 'self.committer().timestamp().format("%Y-%m") ++ "\n"' \
+ | sort | uniq -c
+ 
+How Often Is the Team Firefighting jj log --no-graph \
+ -r 'ancestors(trunk()) & committer_date(after:"1 year ago") & description(regex
+3. (0) u/ramon156: > The 20 most-changed files in the last year. The file at the top is almost always the one people warn me about. “Oh yeah, that file. Everyone’s afraid to touch it.”The most changed file is the one people are afraid of touching?
+4. (0) u/seba_dos1: > If the team squashes every PR into a single commit, this output reflects who merged, not who wrote.Squash-merge workflows are stupid (you lose information without gaining anything in return as it was easily filterable at retrieval anyway) and only useful as a workaround for people not knowing how to use git, but git stores the author and committer names separately, so it doesn't matter who merged, but rather whether the squashed patchset consisted of commits with multiple authors (and even then you could store it with Co-authored-by trailers, but that's harder to use in such oneliners).
+
+## Thread discussion sample
+- (0) u/gherkinnn: These are some helpful heuristics, thanks.This list is also one of many arguments for maintaining good Git discipline.
+- (0) u/pzmarzly: Jujutsu equivalents, if anyone is curious:What Changes the Most jj log --no-graph -r 'ancestors(trunk()) & committer_date(after:"1 year ago")' \
+ -T 'self.diff().files().map(|f| f.path() ++ "\n").join("")' \
+ | sort | uniq -c | sort -nr | head -20
+ 
+Who Built This jj log --no-graph -r 'ancestors(trunk()) & ~merges()' \
+ -T 'self.author().name() ++ "\n"' \
+ | sort | uniq -c | sort -nr
+ 
+Where Do Bugs Cluster jj log --no-graph -r 'ancestors(trunk()) & description(regex:"(?i)fix|bug|broken")' \
+ -T 'self.diff().files().map(|f| f.path() ++ "\n").join("")' \
+ | sort | uniq -c | sort -nr | head -20
+ 
+Is This Project Accelerating or Dying jj log --no-graph -r 'ancestors(trunk())' \
+ -T 'self.commit
+  - (0) u/palata: To me, it makes jujutsu look like the Nix of VCSes.Not meaning to offend anyone: Nix is cool, but adds complexity. And as a disclaimer: I used jujutsu for a few months and went back to git. Mostly because git is wired in my fingers, and git is everywhere. Those examples of what jujutsu can do and not git sound nice, but in those few months I never remotely had a need for them, so it felt overkill for me.
+    - (0) u/Jenk: Tbf you wouldn't use/switch to jj for (because of) those kind of commands, and are quite the outlier in the grand list of reasons to use jj. However the option to use the revset language in that manner is a high-ranking reason to use jj in my opinion.The most frequent "complex" command I use is to find commits in my name that are unsigned, and then sign them (this is owing to my workflow with agents that commit on my behalf but I'm not going to give agents my private key!) jj log -r 'mine() & ~signed()'
+
+ # or if yolo mode...
+
+ jj sign -r 'mine() & ~signed()'
+ 
+I hadn't even spared a moment to consider the git equivalent but I would humbly expect it to be quite obtuse.
+      - (0) u/palata: Actually, signing was one of the annoying parts of jujutsu for me: I sign with a security key, and the way jujutsu handled signing was very painful to me (I know it can be configured and I tried a few different ways, but it felt inherent to how jujutsu handles commits (revisions?)).
+      - (0) u/arccy: The only reasonable way to use signing in jj is with the sign-on-push config https://docs.jj-vcs.dev/latest/config/#automatically-signing... (https://docs.jj-vcs.dev/latest/config/#automatically-signing-commits) rather than as commits are made
+      - (0) u/Zambyte: Why? I have my signing behavior set to own and I haven't noticed any issues, but I don't actually rely on signatures for much.
+      - (0) u/singron: If you need to type in a password to unlock your keychain (e.g. default behavior for gpg-agent), then signing commits one at a time constantly is annoying.Does "own" try to sign working copy snapshot commits too? That would greatly increase the number and frequency of signatures.
+      - (0) u/Zambyte: Ah, I use my SSH key to sign my commits and I don't have a password on my SSH key.> Does "own" try to sign working copy snapshot commits too?Yes
+    - (0) u/mamcx: No, jj is super simple in daily use, in contrast with git that is a constant chore (and any sane person use alias). This include stuff that in git is a total mess of complexity like dealing with rebases. So not judge the tool for this odd case.
+      - (0) u/Exoristos: One rarely needs more from git than `git add -A && git commit -m`.
+      - (0) u/tcoff91: I rebase stacked diffs all the time so jj makes my life so much easier because its rebasing is much more ergonomic than git.
+      - (0) u/beanjuiceII: this seems very easy in git tho how much easier can it get, do you have an example of each of them?
+      - (0) u/dpatterbee: Git rebases don't work if there are conflicts, jj doesn't have this problem. Also idk if you can rebase onto multiple parents with git but jj can do it.
+      - (0) u/aidos: Can you explain how conflicts are not conflicts?If I change a line of code several times and rebase on to a branch that changed the same lines of code, how are you sure what the right one is?
+      - (0) u/sunnyps: JJ can save conflict related state with the change so that you don't need to resolve a conflict in the middle of a stack of changes for rebasing to continue for the remaining changes. Concretely, it uses a "conflict algebra" where it can track the impact of a conflict as it propagates through the stack of rebased changes: https://docs.jj-vcs.dev/latest/technical/conflicts/ (https://docs.jj-vcs.dev/latest/technical/conflicts/)
+      - (0) u/waisbrot: That sounds like https://git-scm.com/book/en/v2/Git-Tools-Rerere (https://git-scm.com/book/en/v2/Git-Tools-Rerere) ?
+      - (0) u/martinvonz: Not really very similar at all for the scenario discussed here. Rerere remembers how you have resolved a conflict before. It doesn't let you rebase a stack of commits that result in different conflicts. You will have to stop and resolve each conflict and then `git rebase --continue`.However, the conflict algebra does remove many common uses of rerere. See https://github.com/jj-vcs/jj/issues/175#issuecomment-1079831... (https://github.com/jj-vcs/jj/issues/175#issuecomment-1079831788) for a longer discussion.
+      - (0) u/account42: Avoiding manual conflict resolution isn't really a good thing though - conflicts are an indication that multiple different changes affect some code and you really should think hard about what the combination of them should be. Even what git does automatically already can be dangerous.
+      - (0) u/martinvonz: I agree, but that doesn't seem relevant. I did not say the jj automatically resolves conflicts.
+      - (0) u/palata: But what does that bring? Your code won't compile as long as you don't fix the conflicts, so anyway you have to fix them when you rebase, right?
+      - (0) u/compiler-guy: You have to fix them at some point, but not in the middle of doing other things. Right now. With no possible way to make progress elsewhere while deferring this decision.
+      - (0) u/rstuart4133: As someone else said, jj comes into its own when a reviewer insists you split your PR into many commits, because they don't want to review 13k lines in one chunk. In that case it is easier because there is no rebase. To change a PR commit in the middle of the stack you checkout a PR commit, edit it - and done. The rebase happened automagically.Notice I didn't say "edit it, commit, and done" because that's another thing you don't do in jj - commit. I know, `git commit` is just a few characters on the cli - but it's one of several git commands you will never have to type again because jj does it without having to be asked.If the rebase created a merge conflict (it could do so in any PR commit 
+      - (0) u/mi_lk: > That said, if you are starting out - I'd suggest starting with jj instead of gitThat wouldn't be my advice if you're going to work with other people. You can't know jj without knowing git well enough to fall back in general
+      - (0) u/account42: I prefer `git commit --patch` and having a full editor for commit messages rather than a command-line -m argument to encourage me to actually write something useful.
+      - (0) u/palata: > in contrast with git that is a constant chore (and any sane person use alias)I don't use aliases, I guess I'm insane?Also 99.9% of the time, git "just works" for me. If I need to do something special once a year, I can search for it. Like I would with jujutsu.
+    - (0) u/rjh29: It's the dvorak of git... Maybe more efficient but incompatible with everyone else and a very loud vocal minority.You can find this pattern again and again. How many redditors say 120fps is essential for gaming or absolutely require a mechanical keyboard?
+      - (0) u/SatvikBeri: It's totally compatible though, and that's a big selling point. I use jj and nobody else at my work uses it and that has never been an issue.
+      - (0) u/palata: I think the "incompatible" was more in the dvorak sense, which I believe is that whenever you are on another computer, it most likely won't have dvorak.For jujutsu, it's fine on your own computer, but you probably have to use git in the CI or on remote servers. And you probably started with git, so moving to jujutsu was an added effort (similar to dvorak).
+      - (0) u/shiroiuma: >I think the "incompatible" was more in the dvorak sense, which I believe is that whenever you are on another computer, it most likely won't have dvorak.That's not a problem, just switch to Qwerty when you use a different computer. For me at least, it's not hard at all to switch between Dvorak and Qwerty.
+      - (0) u/palata: > For me at least, it's not hard at all to switch between Dvorak and Qwerty.Sure, but you had to learn both. And what benefit did you get from learning Dvorak?I feel the same with jujutsu: I have to learn it on top of git , and I don't see a lot of benefits from knowing it.
+      - (0) u/johnmaguire: Yes - this puts it perfectly. I am a very fast typist - I can type ~156wpm in QWERTY. When I was a kid and learned about Dvorak, it was tempting - but I already typed so fast that learning another keyboard just seemed like it would cause "misfires" in my brain - and virtual keyboards are all QWERTY.Same deal with jj vs. git. I've learned git. I've used it for 15 years. I'm proficient with it. I'm sure jj is better - but I'm not sure it's better enough to be worthwhile.
+      - (0) u/shiroiuma: >And what benefit did you get from learning Dvorak?More comfortable typing, less wrist strain, etc. It's just a better layout.
+      - (0) u/FrankBooth: It doesn’t support submodules. So no, not totally compatible.
+      - (0) u/zhengyi13: That's a feature, not a bug /s
+      - (0) u/herewulf: Reminds me of how I started using Git when it was up and coming: It was the best Subversion client out there and no one knew I was using it!
+      - (0) u/RankingMember: I don't even like using "natural" keyboards despite the ergonomic advantage because it ruins my muscle memory when I'm on the (much more prevalent) "regular" keyboard.
+      - (0) u/deno: I mean let's not be hasty. Mechanical keyboards used to be just normal keyboards when computers were still computers.
+      - (0) u/rjh29: That is a fair argument. I don't know why they dropped out of favour - price? Noise?
+      - (0) u/lamasery: My guess would be price. Shoppers probably got more sensitive to the price of a keyboard as the price of computers dropped, and approximately none of them were choosing between two computer-bundles at the store with any regard for keyboard quality.
+      - (0) u/deno: Most people and companies just use the keyboard that shipped with the computer. I don't think noise is as much of an issue as people make it out be.Marketing made up this story about linear switches being for gamers. So now every mechanical keyboard needs to make unnecessary noise and offer extra resistance for harder bottom out or you're not a serious typist.But that's not inherent to the keyboard. Linear switches are not any louder than cheapo office high-profile membrane.
+      - (0) u/rjh29: I find the resistance to be a hindrance when typing. Fastest typing speed and comfort for me is my thinkpad keyboard which uses scissor switches with a very low profile - you need less effort per keystroke!
+      - (0) u/account42: Both noise and resistance is something where mechanical keyboards can provide all desired options with the right switch choice. Gaming-oriented mechanical keyboards tend to have particularly low activation forces.There really isn't any reason not to choose one except for price - and that's a fair consideration if you're fine with rubber domes or other alternatives.
+      - (0) u/deno: Right, that's why I recommend linear switches. But they're marketed as a gaming switch and they don't deserve this harmful reputation. They're simply the only non-stupid type of switch.Low profile scissors are a compromise. They are tactile but it's for once functional as it compensates for the obvious lack of travel. The result is a mediocre but still above average experience. You can type fast on them but with more fatigue than high-profile linear.Marketers want you to believe there's at least three different distinct switch types for different purposes because they want to sell you the same keyboard twice or thrice. But in reality there's linear and stupid. And some of them make unnecessa
+      - (0) u/shiroiuma: I'm not a gamer these days, but from what I've seen, the gamers like a different type of keyswitch than regular typists. Normal typists like a clicky keyswitch where it clicks with very little travel, and has plenty of travel after this to avoid bottoming out. (so, Cherry blue)Gamers want mechanical keyswitches with no click at all. (Cherry brown I think)
+      - (0) u/account42: Cherry browns are more like an average mechanical switch (and not in a bad way - they're a good middle ground if you use your keyboard for different things). Gaming oriented keyboards would use different ones.
+      - (0) u/deno: This is the marketing mythos I was talking about. The best typist keyboard is regular linear switch. Typing without bottom out is impossible. Clicking is just audio. Of course most mechanisms of producing clicking mean some degree of tactility (added resistance), but any tactility bump you have to overcome means you come out on the other side with more force which means harder bottom out. The way to reduce bottom out force is to not have any resistance, which is what linear switch is.The most popular type of switch is brown because it's essentially a linear switch that is not marketed towards gamers. It's just sad.
+      - (0) u/palata: Yeah I think that dvorak is a good example, too.I don't get the mechanical keyboard one, though. I am fine with any keyboard, I just like my mechanical keyboard at home. Just like I am fine with any chair, but ideally I would have a chair I like at home.120fps I have no experience with, but I would imagine it's closer to video quality. Once you're used to watching everything in 4K, probably it feels frustrating to watch a 1080p video. But when 4K did not exist, it was not a need. I actively try to not get used to 4K because I don't want to "create the need" for it :-).
+      - (0) u/account42: > 120fps I have no experience with, but I would imagine it's closer to video quality. Once you're used to watching everything in 4K, probably it feels frustrating to watch a 1080p video. But when 4K did not exist, it was not a need. I actively try to not get used to 4K because I don't want to "create the need" for it :-).I suggest not worrying too much about that - been using a big 4K TV with lots of 4K movies for a long time now and SD content is still as watchable as ever.For framerates, especially in an interactive context, this is what happens though in my experience. But it also really depends what happens on screen - more movement needs higher framerates to feel smooth.
+      - (0) u/alsetmusic: > Just like I am fine with any chair, but ideally I would have a chair I like at home.I love my Aeron chair. I've had it for fifteen years and it's still in great shape.I used to have chronic back pain. Getting good ergonomics at home really put that to bed.
+      - (0) u/bastardoperator: Looks like the Perl of Git too. Those commands are wild compared to vanilla git.
+      - (0) u/account42: > How many redditors say 120fps is essential for gaming or absolutely require a mechanical keyboard?Those don't fit the others - they don't really require the user to adapt or are more complex in any way but are just nicer versions of the standard.
+      - (0) u/alper: Pretty much everybody who does work at the real office where I am has a mechanical keyboard by now.
+    - (0) u/buu700: I don't know about jujutsu, but I've actually found that Nix removes a lot of complexity. It's essentially just npm for tooling.Managing a flake.nix can be a bit more complex than a package.json in practice, due to the flexibility of the format and some quirks around Nix's default caching behavior, but working with it is a breath of fresh air compared relying on globally installed tools. Having said that, you might want to check out Devbox. I haven't used it myself, but found it recently and thought it looked like a nice abstraction over raw Nix.
+    - (0) u/qudat: To be completely fair to JJ: you can still use git commands and any aliases with it. I daily JJ in all of my repos but I created these aliases inside of git. That's one of the great aspects of JJ: it's fully compatible with git.
+    - (0) u/alper: Nix does not really work in that even basic things are absurdly complicated and can take days of messing with poor libraries and documentation.That's not been my experience with jj which after the initial hurdle is a breeze.
+  - (0) u/faangguyindia: I can't remember all of this, does anyone know of any LLM model trained on CLI which can be run locally?
+    - (0) u/lamasery: If you copy those commands into a file and use that file to prompt the “sh” LLM.
+      - (0) u/stingraycharles: That works until you need a small variation of any of these commands and you’re lost.
+    - (0) u/esafak: Not a model, but a product: warp.dev
+    - (0) u/fainpul: Try https://cheat.sh/ (https://cheat.sh/)
+  - (0) u/gib444: Hah someone really looked at jq (?) and thought: "yes, more of this everywhere". I feel jq is like marmite (edit: aka vegemite, i.e. "you either love it or you hate it")
+    - (0) u/maleldil: It's really not that bad, although the jq comparison might be apt. You have such primitives you need to understand, and then everything just fits together nicely. I find this much easier to write and understand than git's cryptic format strings.Disclaimer: I love jq too :)
+    - (0) u/plandis: It doesn't seem any more egregious than something like:`git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue) %Creset' --abbrev-commit --`Which is something I see a lot of people alias in Git for viewing logs.
+      - (0) u/skydhash: > `git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue) %Creset' --abbrev-commit --`If you remove the rainbow specification, it should be git log --graph --pretty=format:'%h -%d %s (%cr) ' --abbrev-commit --
+ 
+And most programmers are used to C style formatting.
+  - (0) u/stingraycharles: I don’t understand how people can remember all these custom scripting languages. I can’t even remember most git flags, I’m ecstatic when I remember how to iterate over arrays in “jq”, I can’t fathom how people remember these types of syntaxes.
+    - (0) u/mgfist: Same, but now with AI I don't have to remember that anymore
+      - (0) u/awesome_dude: For now - the law of enshittification means that the free/cheap access to AI will be curtailed soon enough.
+      - (0) u/mgfist: Pretty much any OS locally runnable LLM can generate this stuff.
+    - (0) u/Cthulhu_: I don't, I will google things and fiddle, then put it in a git alias (with a comment on what it does and / or where I got it from) and push it to my private dotfiles repo, taking it with me between computers and projects.

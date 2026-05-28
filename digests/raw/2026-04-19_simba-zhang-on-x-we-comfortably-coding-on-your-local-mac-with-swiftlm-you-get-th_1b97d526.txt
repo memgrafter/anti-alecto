@@ -1,0 +1,19 @@
+X thread capture
+
+## Post
+
+## Conversation
+
+We comfortably Coding on your local Mac with SwiftLM, you get the absolute power of frontier models without melting your unified memory. We just benchmarked the massive 35-Billion parameter Qwen 3.6 model at 100K context depths using our new Hybrid Engine. github.com/SharpAI/SwiftLM 40K Context fits on a 24GB Mac squeezed a whopping 35B dense model fully inside a 23.2 GB footprint by aggressively streaming layer weights directly from NVMe SSDs and applying our custom TurboQuant KV cache compression. Speculative Decoding to the Rescue TurboQuant solves the memory footprint problem, but at massive contexts (40K+), cache lookups natively drag text generation down to 2.5 tok/s. The fix? Slapping a tiny 0.8B Speculative Draft Decoder over the engine restores speeds by 3x (7.4 tok/s) with near-zero extra memory. Shattering the 100K Context Memory Cliff Attempting to map out a 100K context on a 35B model natively locks your entire Mac M5 Pro's hardware limits (requesting 63.9 GB). Combining SSD streaming with TurboQuant drops that demand by ~60%, yielding a highly responsive 28.3 GB load on the machine. #LocalAI#AppleSilicon#LLMs#GenAI#MachineLearning#SwiftLM
+
+[](https://x.com/Simba_Zhang/status/2044846219101606215/photo/1)
+
+Quote
+
+Qwen
+
+@Alibaba_Qwen
+
+Apr 16
+
+[](https://x.com/Alibaba_Qwen/status/2044768734234243427/photo/1)

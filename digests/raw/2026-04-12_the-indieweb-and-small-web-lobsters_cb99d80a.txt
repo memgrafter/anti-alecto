@@ -1,0 +1,47 @@
+-
+-
+-
+The main problem I see with the IndieWeb is that is basically has zero traction. It doesn't need thousands of people, but it feels like several dozen and the standards and the tools always come from the same small group (which is fine) but every time you look at some implementation it has a last commit date of 10y ago.
+Guess I had been enthusiastic in the past, as I wrote a webmention lib in 2013 and have forgotten and rediscovered everything several times.
+I'm not saying it's hopeless, I've actually briefly played with IndieAuth this week...
+-
+I felt the same way when I started getting interested in the Indieweb/Smallweb/Smolweb, but I eventually realized I needed to change my expectation of what the movement was offering me. I'm wondering if you or others will have the same experience.
+I first touched a keyboard somewhere in the late 1980's and fell in love with what I could do with them. By the late 1990's, things had progressed so quickly that I was already having trouble keeping up. We were entering Darcy DiNucci's Fragmented Future. The capabilities and interconnectedness that the internet was bringing to our homes was exploding and messy and flawed and wonderful. Many of us saw so much hope in that, envisioning a future where people had an entirely new, instant and robust way of interacting with each other that seemed like the logical next step after radio and telephone. The speed at which all this evolved was incredible and ended up setting some standards by which we continued to measure technology movements for the next few decades up to the present time.
+The indieweb, or more arguably more decentralized small web movements are characterized by a slow pace, but for a good reason. I suspect a good portion, if not all of the people who are participating in it are there because they're disappointed with how things turned out on the grander scale, how we ended up with an Internet that stopped putting the users first and instead turned them into a commodity while simultaniously removing their autonomy.
+When I first looked at the indie/small communities, it rekindled that old sense of hope I had for the late 90's web, but I accidentally brought with me the expectation of fast-paced growth and mass adoption that the modern Internet has trained us all on. It took me a moment to realize that neither movement wanted that. It wasn't about pushing updates, making everything an SaaS and shoehorning AI into every nook and cranny. It wasn't even about doing anything new! It was about bringing the agency back to the users, letting users create and express themselves in accessible ways independent of some monolithic governance. Suddenly, things slowed down, like you had been on a 20 year road trip that only used expressways and just decided to get off at the next exit to take the back roads. The scenery wasn't whipping by, anymore, you could see each thing out the window, decide where to stop and for how long, etc. My expectation went from a rapid ADHD-like consumption to a slow, comfortable return to our roots. It felt like a relief, to be honest.
+I did a short write-up on it here if anyone is so inclined as to explore my admittedly amateur take a bit deeper.
+-
+Just for reference, I'm not talking "overwhelming success", or "winning at a protocol" level, my pessimistic take is that the amount of content (links+discussions) I see per day here on lobsters is more or the same level as the whole IndieWeb, and I think in this case I'd call us a niche invite-only community. (and maybe even somewhat of a non-commercial walled garden, but that's not the point, simply about traffic).
+-
+-
+IndieAuth is pretty neat! I use it to login to some services by signing messages with my pgp key, and it works because I have linked it and marked it as mine on my own website. Unfortunately the IndieAuth service that I use is in maintenance mode while the author moved on to re-implement it with a narrower feature set that PGP-based sign in is not a part of anymore iirc. It would feel better to have more independent implementations of the IndieWeb standards (and services).
+-
+-
+I just couple days ago joined tinkering with IndieWeb. The webmention system seems really fun, and I just finished creating my own "microblog" on my site. The whole thing has been fun indeed so far, I'll likely use my own website more from now on. :)
+-
+IndieWeb has motivated me to work more on my site, and you've reminded me that implementing webmention is still on my to-do list :-)
+-
+Every time in the past I've tried to figure out webmention I've gotten completely lost. Anybody have a good referencing for how to actually add webmentions to a static site?
+-
+There is https://webmention.io as a service that can receive them for you, and then some JS code to retrieve and format them on the page. It's what I use, but I don't ever get webmentions so it's kind of moot.
+-
+-
+-
+-
+Where are they? Where are the Yahoo style directories and RSS Reader type tools that bring it all together so I can use it as a user quickly and easily?
+I feel like the number of people actually using IndieWeb concepts has been constant for 10-15 years - it doesn't grow or catch fire. It's a nice concept, it makes perfect sense, it facilitates an alternative to the social dysfunction of the current web, but it gets no traction.
+It's another 'Linux on the desktop'. Next year will be its year.. next year
+-
+There's a ton happening in this space, but ad-driven social media steals so much attention. RSS readers like Feedly have millions of downloads and there's tons of other popular tools.
+Some times it's hard to get started. Kagi Small Web (per the article) has a great list. I maintain a blogroll based version (https://alexsci.com/rss-blogroll-network/). But I think these can be overwhelming. There's also starter packs (https://www.youneedfeeds.com/starter-packs), if you have a theme in mind.
+I've been working on an extension that collects feeds as you browse (https://github.com/robalexdev/blog-quest). There's a lot of active sites, especially if you're interested in tech.
+I don't think the small web needs to grow to succeed, it seems quite successful and useful as is. But I think it will continue to grow because it provides a valuable alternative to the commercialized web.
+-
+-
+I’m not particularly fond of either the IndieWeb or the so-called “Small Web.” While I do have Webmentions on my site, I’ve spent years trying to make the broader ecosystem work in a way that feels coherent and sustainable. In practice, the implementation burden is disproportionate: an almost irrational amount of template work is required just to embed the right microformats so that some far-end parser can successfully interpret a post.
+On top of that, a significant portion of what does work today relies on either a specific library or an entire service maintained by a single developer. Often IndieWebber Aaron Parecki. While I appreciate the work that’s gone into those tools, the unintended centralization feels at odds with the decentralization the IndieWeb claims to promote. I'm not a competent enough developer to build my own tools for this, let alone stand it up against the flood of garbage from the Internet.
+Finally, POSSE is such a weird take. Yes owning your content is great. However, I don't care much for the idea that I should be posting anywhere else. I don't use Twitter, Mastodon, et al. The most I write outside of my site is here or HN, and those are just comments. It feels weird to be capitulating to big social sites because "that's where the people are", but in doing so keeps those people on those platforms.
+-
+[Comment removed by author]
+-
+-

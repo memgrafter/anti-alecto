@@ -1,0 +1,93 @@
+Useful Lies
+Self-deception as strategy: the best liars believe themselves.
+Thematic links across books, automatically discovered by Claude Code.
+Read how it works in the explainer.
+Read how it works in the explainer.
+Self-deception as strategy: the best liars believe themselves.
+Blue lies Evolutionary psychology Self-deception
+Microscopic defects propagate silently until catastrophic failure.
+Brittle fracture Metal fatigue gradual change
+The hunt for words that stick
+Cybernetics naming Etymology Project naming Transistor naming
+Weak IP accelerates innovation through collaborative copying.
+Innovation spillover Japanese copying Open source
+Constraints in one part dictate the whole.
+Strait of Hormuz Throughput limitation Weakest link
+Absent fathers forged titan ambition through unmet longing.
+Childhood trauma Entrepreneurial ambition Father-son relationship
+Mega-projects orchestrate unreliable elements into coherent wholes.
+Computer reliability Design redundancy Failure analysis
+Desperation, not genius, drove transformative pivots.
+Hindsight bias Odeo reinvention Startup pivot
+Expertise defies formalization; conscious effort defeats itself.
+Intuition Mētis knowledge Tacit knowledge
+Why isolated groups lose knowledge and capabilities.
+Collective knowledge Critical mass Knowledge transmission
+Protected spaces insulated from interference enable breakthroughs.
+Hands-On Imperative Project isolation Protecting new ideas
+Practical knowledge defeats rationalized systems.
+Craftsmanship Intuition Procedural knowledge
+Rule-breaking as path to understanding.
+First-principles thinking Hacker motivation Questioning assumptions
+Ego-dissolution enables both transcendence and manipulation.
+Alcoholics Anonymous Flow state Letting go
+Imitation powers both learning and conformity.
+Cultural transmission Imitation Memes
+Winners eliminate competition; victory becomes permanent control.
+Coalition dynamics Dominance hierarchy Success feedback loop
+Every treasure becomes tomorrow's ordinary commodity.
+Creative destruction Red Queen races Temporary advantage
+Metrics become mirages when optimized directly.
+Incentives Objective function Perverse instantiation
+Rare signals drown in false positives.
+Base rate Nuclear early warning Outside view
+Silent agreements to avoid uncomfortable truths.
+Psychological denial Self-deception Unsayable truths
+Founders ousted through political power dynamics.
+Corporate politics Executive conflict Founder danger
+Mastery means bypassing conscious thought entirely.
+Expert intuition OODA Loop Pattern recognition
+Removing friction sometimes creates chaos.
+Clausewitz friction Cognitive friction Policy resistance
+Organizations minimize coalitions needed to maintain control.
+Concentrated power Power dynamics Selectorate theory
+Ripe ideas emerge independently across the world.
+Adjacent possible Invention inevitability Simultaneous discovery
+Copying forms without understanding structure guarantees failure.
+Blueprint copying Rules vs. habit Tacit knowledge
+Actions must be expensive to be believed.
+Conspicuous displays Handicap principle Potlatch festivals
+Gifts, moral debts, and technical debt share logic.
+Gift exchange Moral Accounting Technical debt
+Joy became more productive than efficiency optimization.
+Creative work efficiency Joy in work Playfulness
+Getting worse precedes getting better in skill.
+Conceptual breakthrough Error embracing learning plateau
+Large coordination emerges from small-scale trust.
+Managerial candor Pixar Braintrust Team building
+Standardization enables scale but destroys local knowledge.
+Central planning Decentralization Large-scale changes
+Method of creation shapes what is created.
+Conway's Law Embodied mind Physical constraints
+Open systems consolidate into monopoly, then repeat.
+Creative destruction Disruptive technology Monopoly capitalism
+Transforming vague concepts into testable frameworks.
+Clarification chain Fermi estimation Intuition pumps
+Building observability changes what you see.
+Hawthorne effect Observer bias System monitoring
+Decision-making speed determines conflict outcomes.
+Cyberstrike advantages OODA Loop Time delays
+Simplification enables breakthroughs or destroys value.
+System resilience Uniformity and creativity Utilitarian simplification
+Knowing what others don't creates competitive advantage.
+Competitive advantage Contrarian thinking Information asymmetry
+Precise measurement creates infrastructure for distant trust.
+Longitude measurement Medieval trade Standardization
+Container shipping remade global supply chains.
+Containerization Just-in-time manufacturing Labor displacement
+Pursuit of perfection prevents completion.
+Overengineering Shipping products Worse is Better
+Import order constantly or dissolve into disorder.
+Material decay Open systems Second Law
+Simplified models systematically fail in complex reality.
+Chaos theory Heuristics Mental models

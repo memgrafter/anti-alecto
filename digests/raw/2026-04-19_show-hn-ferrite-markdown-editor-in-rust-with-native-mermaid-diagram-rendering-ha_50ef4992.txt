@@ -1,0 +1,106 @@
+Hacker News thread capture
+
+Thread URL: https://news.ycombinator.com/item?id=46571980
+Item ID: 46571980
+Title: Show HN: Ferrite – Markdown editor in Rust with native Mermaid diagram rendering
+Author: OlaProis
+Points: 241
+Linked URL: https://github.com/OlaProeis/Ferrite
+Top-level comments captured: 33
+Total comments captured: 180
+
+## Original submission text
+Ferrite: Fast Markdown/Text/Code editor in Rust with native Mermaid diagramsBuilt a Markdown editor using Rust + egui. v0.2.1 just dropped with major Mermaid improvements:→ Native Mermaid diagrams - Flowcharts, sequence, state, ER, git graphs - pure Rust, no JS→ Split view - Raw + rendered side-by-side with sync scrolling→ Syntax highlighting - 40+ languages with large file optimization→ JSON/YAML/TOML tree viewer - Structured editing with expand/collapse→ Git integration - File tree shows modified/staged/untracked statusAlso: minimap, zen mode, auto-save, session restore, code folding indicators.~15MB binary, instant startup. Windows/Linux/macOS.GitHub: https://github.com/OlaProeis/Ferrite (https://github.com/OlaProeis/Ferrite)v0.2.2 coming soon with performance improvements for large files. Looking for feedback!
+
+## Top comment (highest-score top-level, verbatim)
+u/pbronez (0): Is mermaid rendering implemented in Rust, or are you running mermaid.js in a JS interpreter somewhere?On other systems I’ve run into challenges rendering markdown documents with many mermaid diagrams in them. It would be nice to have a more robust way to do this.
+
+## Prominent viewpoints (top-level comments)
+1. (0) u/pbronez: Is mermaid rendering implemented in Rust, or are you running mermaid.js in a JS interpreter somewhere?On other systems I’ve run into challenges rendering markdown documents with many mermaid diagrams in them. It would be nice to have a more robust way to do this.
+2. (0) u/Arubis: I happily paid money for Typora, which does roughly the same thing for just Markdown without support for JSON, Yaml (that I know of). This feels like a ripe space, especially with LLMs eagerly outputting reams of parseable text with embedded diagrams.
+3. (0) u/huevosabio: Nice to see an egui project that doesn't have super obvious egui aesthetics.How did you find working with egui?
+4. (0) u/Levitating: Made with egui, if anyones wondering.I love the new era of graphical applications in Rust.
+5. (0) u/khimaros: seems like a promising alternative to obsidian, but missing [[wikilinks]] and back references
+6. (0) u/adamnemecek: Consider adding support for Typst.
+7. (0) u/dmitrygr: For those who, like me, read this and thought "what the hell is a mermaid diagram?", apparently it is a method to describe simple flow diagrams using markdown-like text. More here: https://mermaid.js.org/ (https://mermaid.js.org/)
+8. (0) u/dhruv3006: Building an api client based on markdown as well - https://voiden.md (https://voiden.md)
+
+## Thread discussion sample
+- (0) u/pbronez: Is mermaid rendering implemented in Rust, or are you running mermaid.js in a JS interpreter somewhere?On other systems I’ve run into challenges rendering markdown documents with many mermaid diagrams in them. It would be nice to have a more robust way to do this.
+  - (0) u/lkschubert8: Looks like it’s currently a subset of mermaid natively in rust https://github.com/OlaProeis/Ferrite/blob/master/src/markdow... (https://github.com/OlaProeis/Ferrite/blob/master/src/markdown/mermaid.rs)
+  - (0) u/jasonjmcghee: (not associated, just looked at the code - no js interpreter)https://github.com/OlaProeis/Ferrite/blob/master/src/markdow... (https://github.com/OlaProeis/Ferrite/blob/master/src/markdown/mermaid.rs)
+  - (0) u/OlaProis: 100% pure Rust! No JS interpreter. Parses Mermaid syntax directly and renders via egui drawing primitives. Supports 11 diagram types: flowchart, sequence, state, class, ER, pie, mindmap, timeline, user journey, git graph, gantt. Much faster than spawning headless Chrome!
+- (0) u/Arubis: I happily paid money for Typora, which does roughly the same thing for just Markdown without support for JSON, Yaml (that I know of). This feels like a ripe space, especially with LLMs eagerly outputting reams of parseable text with embedded diagrams.
+  - (0) u/vunderba: +1 happy user of Typora. I really like its ability to auto-create a related assets folder for embedded media as it’s dragged into a doc.
+    - (0) u/danfoxley: I like the editor, but Typora’s lineage is opaque, which worries me.
+  - (0) u/gregman1: The $15 price tag for Typora seems a bit steep considering the fundamental features it provides.
+    - (0) u/swiftcoder: The price of a fancy burger doesn't seem all that unreasonable for a piece of software one finds even moderately useful (of course, depending on your local exchange rate that may be more or less true)
+    - (0) u/zen928: Sometimes you're a patron of the arts more than an engineer on these types of purchases, I think
+  - (0) u/OlaProis: Thanks! Typora is great - Ferrite aims for similar polish but with native Mermaid, structured data support (JSON/YAML/TOML tree viewer), and the pipeline feature for shell integration. And it's open source!
+- (0) u/huevosabio: Nice to see an egui project that doesn't have super obvious egui aesthetics.How did you find working with egui?
+  - (0) u/koakuma-chan: > How did you find working with egui?Claude Code would have preferred React.
+    - (0) u/GrowingSideways: How would this have worked outside of catering to browsers?
+      - (0) u/steezeburger: You can render React all over the place now!
+    - (0) u/echelon: Native code and speed will be a differentiator.If the value of JavaScript programming goes down, Rust programming will probably hold value a little bit longer.
+  - (0) u/OlaProis: egui is fantastic for rapid prototyping - immediate mode makes state management simple. Main limitation: TextEdit isn't designed for code editors (no multi-cursor, can't hide folded text). v0.3.0 will replace it with a custom widget. The default styling does scream "egui" - spent time on custom theming to avoid that
+- (0) u/Levitating: Made with egui, if anyones wondering.I love the new era of graphical applications in Rust.
+- (0) u/khimaros: seems like a promising alternative to obsidian, but missing [[wikilinks]] and back references
+  - (0) u/bthallplz: Yes! I was looking at it and hoping they had that feature already. I so want an Obsidian alternative to exist just in case .Thanks for posting the GitHub issue!
+  - (0) u/OlaProis: Not yet! [[wikilinks]] and backlinks are natural additions. I will add it to the Roadmap? Love community input on what Obsidian features matter most!
+- (0) u/adamnemecek: Consider adding support for Typst.
+  - (0) u/GrowingSideways: Or even better, TeX. I realize capital bought out even basic typesetting but let's not encourage this
+    - (0) u/regenschutz: Typst is open-source.
+      - (0) u/GrowingSideways: Open source doesn't mean relinquished from capital by any means. I also don't blame the author of typst. But TeX is truly free from capital, and that should mean far more than the aesthetics of a nicer interface.
+      - (0) u/adamnemecek: Integration with typst will be more straightforward than latex.
+      - (0) u/GrowingSideways: Yes, at the cost of dragging people into subscription software. Fuck off
+      - (0) u/adamnemecek: How?
+  - (0) u/OlaProis: Interesting idea! Typst is compelling (Rust-based too). Not on immediate roadmap but could be a future addition. TeX is heavier but possible via external tools + pipeline feature.
+- (0) u/dmitrygr: For those who, like me, read this and thought "what the hell is a mermaid diagram?", apparently it is a method to describe simple flow diagrams using markdown-like text. More here: https://mermaid.js.org/ (https://mermaid.js.org/)
+  - (0) u/chaboud: Next time you're vibe coding something, have the system generate a mermaid diagram to show its understanding. Though visual generation can be hard for models, structure/topology in formats like mermaid is pretty gettable.I've even found sonnet and opus to be quite capable of generating json describing nodes and edges. I had them generate directed acyclic processing graphs for a GUI LLM data flow editor that I built (also with Claude - https://nodecul.es/ (https://nodecul.es/) if curious)
+- (0) u/dhruv3006: Building an api client based on markdown as well - https://voiden.md (https://voiden.md)
+  - (0) u/random3: And what's the connection with the thread?
+- (0) u/WillAdams: Made the fan in my Windows 11 laptop spin up.
+  - (0) u/nurettin: This is why I prefer clunky hardware with heating cpus and a slow disk. You can easily feel that you wrote bad code from audio and tactile feedback.
+    - (0) u/corysama: I’ve heard of people doing ambient performance profiling by instrumenting their code to insert clicks into an audio buffer based on a high precision clock and piping it out a speaker.
+You get to learn the sound of your code at 44.1KHz
+      - (0) u/vunderba: This might be the most absurdly terrific thing I’ve read in a while - like a profiler equivalent of a Geiger counter.
+      - (0) u/bschwindHN: We did something like that for a hiring project once:https://github.com/tonarino/acoustic_profiler (https://github.com/tonarino/acoustic_profiler)
+      - (0) u/4k93n2: *vibe coding sounds* 
+"3.6 roentgen. not great, not terrible"
+  - (0) u/OlaProis: Which view/file caused this? v0.2.2 (coming soon) has significant performance optimizations for large files - deferred syntax highlighting, galley caching. If you can reproduce, please open an issue with details!
+    - (0) u/WillAdams: I launched the file, typed:>Now is the time for all good men to come to the aid of their party.
+>testand selected the last and made it bold using the formatting bar.
+      - (0) u/OlaProis: Thanks for the repro steps! This is helpful, formatting bar interaction shouldn't spin up the fan for such a small document. v0.2.2 has some performance improvements and is out, so it might be better, but this specific case might need investigation.
+- (0) u/bananaboy: Nice to see native markdown rendering rather than relying on spawning chromium and taking screenshots like some other libraries do!
+  - (0) u/quintu5: One major downside of native rendering is the lack of layout consistency if you’re editing natively and then sharing anywhere else where the diagram will be rendered by mermaid.js.
+    - (0) u/bananaboy: Yes that's true. For my use-case I want to render the diagram out to a png though and embed it in a confluence page.
+      - (0) u/OlaProis: This is a perfect use case! The v0.3.0 crate will have:
+ - parse() → AST
+ - layout() → positioned elements
+ - render_svg() → SVG string
+ - render_png() → via resvg (no browser needed)CLI usage would be something like:mermaid-rs diagram.mmd -o diagram.png> # or pipe from stdin> cat diagram.mmd | mermaid-rs --format svg > output.svg>For your mark integration, you'd be able to call it as a subprocess or use it as a Rust library directly if you're building in Rust.If you want to follow progress or have input on the API, feel free to open an issue on the repo!
+  - (0) u/OlaProis: Valid point! Native rendering won't be pixel-perfect with mermaid.js. The trade-off is speed and no JS runtime. For documents staying in Ferrite, it's great. For sharing, we're adding SVG export in v0.3.0 so you can use mermaid.js for final renders if needed.
+- (0) u/random3: This is cool. I was hoping to see progress coming from Zed (e.g. because Tree-sitter → https://github.com/tree-sitter-grammars/tree-sitter-markdown (https://github.com/tree-sitter-grammars/tree-sitter-markdown)) but it's exciting to see this. 
+I'm a heavy Obsidian user, and I love it, but I'd love to see real alternatives focused on foundations.It would be interesting to know more about the end-goal if any.Best of luck! I'll watch this.
+  - (0) u/echelon: What is Obsidian written in? Electron?
+    - (0) u/atlintots: Yes; it's also not open source.
+      - (0) u/echelon: I'm fine with that.Open source purity is problematic. The OSI was established by the hyperscalers, who are decidedly not open source either.Purely "OSI-approved open source" mandates having no non-commercial or non-compete clause, which means anyone can come in and bleed off profits and energy from the core contributors of open source projects. It prevents most forms of healthy companies from existing on top.We shouldn't be allergic to making money with the software we write - life is finite and it's more sustainable over the long term to maintain software as a job.The new "ethical source" / "fair source" licenses that have been popping up recently [1, 2] give customers 100% use of the code,
+      - (0) u/dvt: Fully agree that pushing OSI is just posturing. After all, Amazon/Google/Facebook have made literal billions by commercializing open source software. I release stuff on MIT all the time (for things I'm okay with people poaching) but I'd argue the only "pure" OSS license is GPL, which comes with its own problems (and, as we all know, it infects everything it touches).The problem with FSL is that it hasn't been tested in the courts yet (afaik), so it's a bit of a gamble to think it'll just "work" if some asshole does try to clone your repo and sell your work. Maybe it's a decent gamble for a funded startup with in-house counsel, but if you're just one guy, imo keep stuff you want to sell close
+      - (0) u/djvdq: I fully agree with you.I love the idea of open source, but we shouldn't say that something is bad just because it's closed source.
+    - (0) u/gregman1: It’s closed source but yeah - electron all the way.
+  - (0) u/kirubakaran: Since you're an Obsidian user, can I please get your feedback on https://hyperclast.com/ (https://hyperclast.com/) which I'm building?(I'm not quite ready to do a Show HN yet, so please don't post it, but I'm ready for some early feedback if you'll indulge me)
+    - (0) u/tomtom1337: You need something "more" on the website before you ask people to create an account. "Team workspace that stays fast" isn’t clear enough for me, at least. What is a workspace? What does the interface look like? Is it in the browser? Is it an app?People will go "what is this?", "huh, I’m not gonna make a user for this, can’t tell what it is". Those are my 2 cents.
+      - (0) u/kirubakaran: Thanks, I'll fix that.
+      - (0) u/lenova: +1 to that. As a user, I am tired of having to sign up for an account on a SaaS website or installing an app from Github, only to realize the UI isn't a good fit for me. This will usually result in me bouncing from the app website instead of trying it out.Suggestion: have a non-login demo available on your website, and high-res screenshots/animed gif of the app in action on your Github repo.
+      - (0) u/kirubakaran: Thanks to your feedback, I've added a non-login demo! https://hyperclast.com/demo/ (https://hyperclast.com/demo/)
+      - (0) u/lenova: Thanks for being receptive to the feedback :-) I actually checked out your demo now because it didn't require a login, and was impressed by what I saw. Nice work here!
+    - (0) u/maxbond: Disclaimer: I'm not your target audience, I don't care about collaboration or performance.- There's a heavy emphasis on performance. Are you sure customers care about that more than real time collaboration and self hosting? (I don't think they care about CRDTs.)- If I am experiencing pain because eg my Notion wiki is too big and is having serious performance issues, what I want to hear immediately is how you are going to help me migrate from Notion to your solution. Notion has a feature to export an entire workspace; can you ingest that and get me spun up with your product?- If I hear something is open source I expect to be able to try it out immediately without logging in. It looks like you
+      - (0) u/kirubakaran: Thank you!> There's a heavy emphasis on performance. Are you sure customers care about that more than real time collaboration and self hosting?- Good point, I'll find out> Notion has a feature to export an entire workspace; can you ingest that and get me spun up with your product?Yes, I'm almost done with this feature> If I hear something is open source I expect to be able to try it out immediately without logging in. It looks like you can do that but when you hit "Get Started" it puts you into a registration flow.I link to that elsewhere in the page: https://hyperclast.com/dev/ (https://hyperclast.com/dev/) I'll look into making this more prominent.> You might take a look at how Zed is mark
+      - (0) u/LocalPCGuy: FWIW re: performance, I love Obsidian, but performance is it's one main downside for me. I could care less about the real-time collaboration (they are my notes, not for team consumption, I'll share a file somewhere else for that) or self-hosting (sync so my notes exist wherever I am is more important to me than hosting them anywhere, again, my notes are private on purpose; obviously that isn't the case for everyone).Anyways, just a counter-point to the commenter you were replying to.
+      - (0) u/kirubakaran: Thank you so much, I've added a non-login demo to the main landing page: https://hyperclast.com/demo/ (https://hyperclast.com/demo/)
+      - (0) u/maxbond: That's dope. Congratulations on the fast turnaround
+    - (0) u/dboon: I use Obsidian a lot, but very few extra features or plugins. My first impression is that I don’t get what you’re making from the website. Any tool worth using in this space (which I vaguely understand to be using large collections of Markdown and/or realtime multiediting) is fast. Obsidian is fast. Zed is fast. It’s table stakes for the kind of person who would use this already.Is it just Zed + Obsidian? A good knowledge base that scales well and uses plain markdown, but has the fancy multi edit stuff?
+      - (0) u/kirubakaran: Thanks, I mentioned "fast" to differentiate it from Notion, which becomes super slow as you add more and more pages.Obsidian and Zed are desktop apps, whereas Hyperclast is web-based. Obsidian isn't multi-player, and not really meant for teams.
+      - (0) u/LoganDark: Obsidian is web-based, it just pretends not to be, but it's just Electron. Zed's the only truly native one
+    - (0) u/thegagne: I am aware of the current issues with open source licensing, but for my needs I don’t trust the elastic style licensing, especially when it claims to be open source but I can’t fork it to protect myself from a future rug pull situation.I currently use Dendron in VS Code. Dendron is basically abandonware at this point because it couldn’t be monetized, but because it’s Apache licensed, I can fork it if I want, and continue to use it until something better comes along, or even modify it for my own needs.It’s very hard to be successful financially in this space. Notion did it at the right time, but they are targeting enterprises who are willing to give their data to them, not individuals who wan
+    - (0) u/hashhar: The only thing I'll say is that it's great to see the feedback in this thread applied. It became very obvious to me what the tool is for and an abstract idea of what I can do with it.However as others have said:- A demo video would do a lot for your product.- nit: Real-time markdown -> change to something that emphasizes collaboration/collaborative editing. For two reason - it's a much more familiar term in the space you are building and it's easier to understand (I think) for more people.- A sample workspace (either public or a "starter workspace" that's available by default in a new account) that is non-trivial would be great to showcase your product. Look at obsidian using obsidian itself

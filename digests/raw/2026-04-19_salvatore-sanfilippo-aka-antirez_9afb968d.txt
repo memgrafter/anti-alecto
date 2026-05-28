@@ -1,0 +1,43 @@
+Salvatore Sanfilippo aka antirez
+Hi, I'm Salvatore Sanfilippo, also known as antirez, an Italian computer programmer based in Catania. I was born on March 7h, 1977 in Campobello di Licata.I spend most of my professional time writing code and fiction.
+My email address is
+I receive many emails: while I'm thankful, I'm not able to reply to every single one. I understand this sounds rough, but otherwise I would not work. If you don't get a reply the first time please try to resend your message if it is truly important.
+My social channels
+Sometimes I write on my blog at antirez.com.I use Twitter, my account is @antirez.
+I also have an Instagram account.
+I post very often, in Italian language, on Facebook, especially regarding my life and my activity as a writer. You don't need to ask me to be friend, the account isopen and you can just follow me.
+I constantly read (and often write comments) on Hacker News.
+WOHPE (2022)
+My first sci-fi novel, WOHPE, was published in Italy on July 15th, 2022 by Laurana Editore, and later translated in English by Bridget Pupillo.- English edition ebook.
+- Italian edition paperback and ebook.
+- UPDATE: Now you can read the first six chapters of WOHPE for free (ePub format).
+This is the book cover, designed by Simone Trovato Monastra.
+Tales of Illustrious Computer Scientists (2013/2014)
+In July 2023 I published the first short story that together with other similar short stories will compose my new book. I translated two with ChatGPT4, you can read the life of the fictional programmers Richard Andrew Fox and Iola Varga.
+Code
+I mainly write open source code. You can find most of my code on Github.The most notable piece of code I wrote is, likely, the Redis data structures server. My wife claims I wrote it mostly while sitting on the WC for the first years, on a MacBook Air 11. Would be nice to tell she is wrong, but she happens to be perfectly right about the matter. Yet, regardless of its not noble origins, Redis managed to become one of the most used system software in recent times. I designed, implemented and handled its community for 11 years, then I resigned to do other stuff.
+Other software projects I'm happy I wrote:
+- Dump1090, a Mode-S decoder.
+- The Linenoise line editing library.
+- Kilo, a very simple text editor that became a well known C programming example.
+- Load81, a programming environment for children.
+- The Disque message queue. I abandoned it later, but its design is one of the things I'm most proud of.
+- The Jim Tcl interpreter. Writing it I understood vital things that later I used in Redis design.
+- Hping was cool in 1998.
+Flipper Zero
+I'm currently active in the Flipper Zero development community.- ProtoView is a RF protocol analyzer and decoder tool.
+- Asteroids for Flipper is a port of the classic game Asteroids.
+Security
+Starting from 1988, for a few years I was active in the field of computer security, invented a scanning technique called idle scan (implemented by nmap) and wrote the hping network security utiltiy.Conferences slides
+Starting from 2023 I'll upload here the slides I use when attending conferences.- October 2023, Codemotion Milan. Slides of the LoRa / FreakWAN talk.
+Fundamental things I believe about society and life
+- Fixing (if still possible) the climate change issues should be the main goal of humanity right now. We don't have enough information, so we should move as if the worst forecasts will become true.
+- Redistribution of wealth is one of the main goals of society. People in economical struggle should be helped using money from taxes and other public resources.
+- There is a systematic bias against women, even in very developed countries.
+- Life is too short to work like crazy for most of its part.
+- Intelligence is positively correlated with being nice to others.
+- God likely does not exist, but there is no way to prove it.
+- Arts are one of the few things worth life's best efforts. Programming is art, if done in certain ways.
+- Modern programming is becoming complex, uninteresting, full of layers that just need to be glued. It is losing most of its beauty. In that sense, most programming is no longer art nor high engineering (most programs written at big and small corporations are trivial: coders just need to understand certain ad-hoc abstractions, and write some logic and glue code). Only very few programmers are facing the artistic face of programming. Only very few programmers are facing high engineering in programming.
+- Artificial Intelligence will completely reshape our society very soon. If a universal income is not provided in a timely fashion (as AI makes many workers no longer relevant) we are going to be in big trouble.
+EOF

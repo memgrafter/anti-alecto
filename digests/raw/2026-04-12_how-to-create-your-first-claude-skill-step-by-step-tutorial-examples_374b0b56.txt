@@ -1,0 +1,206 @@
+Creating a Claude Skill is the fastest way to turn a repeatable workflow into something Claude can reliably do on demand—without pasting the same long prompt every time. As Anthropic explains in its October 2025 launch, Skills are portable folders Claude can load when relevant, so you can “create once, use everywhere” across Claude.ai, Claude Code, and the API, not just a single chat window (see Anthropic’s 2025 announcement in Claude Skills: Customize AI for your workflows and the docs overview in Agent Skills overview).
+
+Difficulty: Beginner-friendly Time required: 30–60 minutes You’ll build a working Skill, test it, and leave with two copy‑paste examples you can adapt.
+
+What you’ll need (prerequisites)
+An Anthropic account and access to Claude (web, Claude Code, or API)
+A text editor (VS Code, Sublime, or similar)
+Basic familiarity with Markdown and YAML
+
+Heads‑up: The minimal Skill only needs one file named SKILL.md. According to the current docs, the frontmatter supports two fields—name and description—so we’ll keep things lean and compatible (see the 2025 guidance in Skill authoring best practices).
+
+Step 1 — Set up your Skill folder
+Create a new folder named after your skill. Example: Standardized-Report-Generator/
+Inside it, create a file named SKILL.md (all caps).
+Paste the minimal YAML frontmatter and a simple heading:
+---
+name: "Standardized Report Generator"
+description: "Create a structured, branded report with specific sections; use when the user asks for a standardized report."
+---
+
+# Standardized Report Generator
+
+
+Checkpoints:
+
+The file starts with three dashes and ends the frontmatter with three dashes.
+Only two fields in the frontmatter: name and description. Quotation marks are fine and help avoid parsing issues if you include punctuation.
+
+Why this matters: Per the 2025 docs, these two fields are what Claude uses for lightweight discovery before deciding to load your full Skill (see Skill authoring best practices).
+
+Step 2 — Write clear, actionable instructions
+
+Below the heading, add brief, testable instructions. Think of “variables” as plain-language placeholders you will mention consistently—there’s no special templating syntax; you’re just describing the inputs you expect.
+
+## Instructions
+- Collect inputs from the user: report_title, audience, required_sections, and page_length.
+- Follow brand rules: formal tone, AP style, inclusive language.
+- Always include sections: Executive Summary, Findings, Recommendations, Appendix.
+- Keep within the requested page_length.
+
+## Example
+- Input: “Draft a 2-page Q3 marketing performance report for executives.”
+- Output: A report with the sections above and concise bullet recommendations.
+
+
+Tips:
+
+Be explicit about when to use the Skill: the description should match the situations you want it to trigger for.
+Name your inputs in a stable way (e.g., report_title) so you can reuse them consistently in examples and tests.
+Step 3 — Quick local validation
+Ensure SKILL.md is at the root of the Skill folder.
+Confirm the frontmatter fences (---) are in place and indented with spaces (not tabs).
+If you want extra confidence, run the frontmatter through a YAML checker. If it parses cleanly and your file opens normally, you’re good to proceed.
+
+Expected result: No syntax errors, and your file tree looks like:
+
+Standardized-Report-Generator/
+└── SKILL.md
+
+Step 4 — Create and upload with the API (most precise today)
+
+While you can use Skills across Claude’s products, the API flow is currently the most explicitly documented for creating, versioning, and testing custom Skills. Anthropic’s 2025 API guide shows how to upload a skill folder and reference it from your messages (see Using Agent Skills with the API).
+
+Below is a simplified Python example patterned after the official guidance. It assumes you’ve set ANTHROPIC_API_KEY and installed the official SDK.
+
+from anthropic import Anthropic
+from anthropic.resources.beta import Beta
+
+client = Anthropic()
+
+# Upload the folder as a new Skill version
+with open("Standardized-Report-Generator/SKILL.md", "rb") as f:
+    skill = client.beta.skills.create(
+        display_title="Standardized Report Generator",
+        files=[{"path": "SKILL.md", "content": f.read()}]
+    )
+
+# Use the skill in a conversation container
+container = client.beta.messages.create_container(
+    skills={skill.id: "latest"}  # or pin a specific version id
+)
+
+resp = client.beta.messages.create(
+    container_id=container.id,
+    messages=[{"role": "user", "content": "Draft a 2-page Q3 marketing performance report for executives."}]
+)
+
+print(resp.content)
+
+
+Notes:
+
+You can reference “latest” during iteration, then pin a specific version for stability later; versioning is supported for both Anthropic-managed and custom Skills (2025) per the API guide in Using Agent Skills with the API.
+If you maintain multiple files, upload them within the same folder structure and keep references self-contained.
+Step 5 — Test activation and iterate quickly
+
+How Claude decides to use a Skill: As Anthropic’s engineering post (2025) describes, Claude keeps only lightweight metadata (name/description) in mind at the start. When your request seems relevant, it loads the full SKILL.md and any referenced files—this “progressive disclosure” saves tokens and speeds things up (see Equipping agents for the real world with Agent Skills).
+
+Practical testing tips:
+
+Mirror your Skill’s name/description in your prompt: “Use the Standardized Report Generator to…”
+Keep the request obviously in-scope (e.g., “standardized report,” “include Executive Summary/Findings/Recommendations/Appendix”).
+If it doesn’t seem to trigger, tighten the description or be more explicit in your request.
+
+Success check: The output should follow your sections and tone rules. If it doesn’t, revise SKILL.md and re-upload to create a new version, then re-run the test.
+
+Step 6 — Manage versions and visibility
+Versioning: Create a new version whenever you change SKILL.md or add files. You can pin a specific version for production or rely on “latest” during development, as documented in the 2025 API guide (see Using Agent Skills with the API).
+Visibility and sharing: As of 2025, custom Skills you create are private by default; you’ll generally distribute and manage them via the Console/API within your account or organization. Anthropic’s support materials discuss where users see their skills within Claude products (see 2025 guidance in Using Skills in Claude).
+Step 7 — Add supporting materials (optional)
+
+For more complex workflows, you can include reference files (like examples.md or style guides) or even scripts, keeping everything inside the same folder. The official examples illustrate both minimal single-file skills and multi-file workflows (browse the public repo in anthropics/skills examples).
+
+Guideline: Keep your Skill self-contained, document when to use it and what it expects, and avoid bundling anything sensitive.
+
+Practical example A — Standardized Report Generator (copy‑paste)
+
+Paste this into SKILL.md of a fresh folder named Standardized-Report-Generator/.
+
+---
+name: "Standardized Report Generator"
+description: "Create a structured, branded report with Executive Summary, Findings, Recommendations, and Appendix; use when the user asks for a standardized report."
+---
+
+# Standardized Report Generator
+
+## Instructions
+- Collect inputs: report_title, audience, required_sections, page_length.
+- Follow brand rules: formal tone, AP style, inclusive language.
+- Always include sections: Executive Summary, Findings, Recommendations, Appendix.
+- Keep within page_length.
+
+## Example
+- Input: “Draft a 2-page Q3 marketing performance report for executives.”
+- Output: A report with those sections, concise bullets, and clear recommendations.
+
+
+Test prompt in Claude or via the API: “Use the Standardized Report Generator to draft a 2‑page Q3 marketing performance report for executives. Include the required sections.”
+
+If you want to turn the generated draft into a polished document or slide deck, you can hand it off to your document tool of choice. Disclosure: Skywork AI is our product. For a deeper walkthrough on producing finished documents, see our guide to Document Mode for structured writing.
+
+Practical example B — Branded Slide Maker (copy‑paste)
+
+Create a folder named Branded-Slide-Maker/ and add SKILL.md with:
+
+---
+name: "Branded Slide Maker"
+description: "Create short slide outlines with title, agenda, 4–8 content slides, and a closing; use when the user requests a small branded deck."
+---
+
+# Branded Slide Maker
+
+## Instructions
+- Collect inputs: deck_title, audience, purpose, slide_count (4–8).
+- Style: crisp headlines, concise bullets (max 5 per slide), consistent brand voice.
+- Structure: Title slide, Agenda, slides 1–N with headings + bullets, Closing with next steps.
+
+## Example
+- Input: “Create a 6-slide deck for a product update to internal stakeholders.”
+- Output: A 6-slide outline with clear headings and tight bullets.
+
+
+Test prompt: “Use the Branded Slide Maker to outline a 6-slide deck for our Q4 product update to internal stakeholders.”
+
+Troubleshooting checklist
+
+YAML frontmatter error
+
+Symptom: Upload fails or the Skill is ignored.
+Fix: Ensure frontmatter starts and ends with --- and contains only name and description. Quote any values containing punctuation or colons. See the 2025 doc guidance in Skill authoring best practices.
+
+Wrong file structure
+
+Symptom: Claude doesn’t find your Skill content.
+Fix: SKILL.md must be at the root of the Skill folder. Keep any referenced files in the same folder tree (examples show this in anthropics/skills examples).
+
+Skill not triggering
+
+Symptom: Output ignores your sections or the Skill’s logic.
+Fix: Make your description crisply state when to use the Skill. In your test prompt, explicitly mention the Skill name and the conditions it was designed for. Anthropic’s 2025 engineering post explains relevance-based loading in Equipping agents for the real world with Agent Skills.
+
+Upload/versioning confusion (API)
+
+Symptom: Changes don’t appear.
+Fix: Create a new version after edits and reference “latest” during testing, then pin a version for stability—see 2025 API details in Using Agent Skills with the API.
+
+Large or binary files
+
+Symptom: Upload limits or slow loads.
+Fix: Keep Skills lean; include only what’s necessary. Consider linking to data sources at runtime rather than bundling heavy assets.
+Security and safety basics
+Treat third‑party Skills like software dependencies: audit instructions and any scripts before installing or using them in sensitive contexts. Anthropic emphasizes this in its 2025 engineering guidance (see Equipping agents for the real world with Agent Skills).
+Least privilege and clarity: Build narrowly scoped Skills with clear intent; expand capabilities gradually.
+Sensitive data: Don’t embed secrets in SKILL.md or bundled files; prefer environment variables or secured stores managed outside the Skill folder.
+Where to go next
+If you want research to precede your Skill’s drafting step, explore our overview of an AI Research Assistant workflow.
+If you’re building multi-agent or tool-chaining pipelines, this developer explainer on the Super Agents MCP server shows how larger workflows can orchestrate document generation.
+Browse official patterns in the public anthropics/skills examples to see minimal and advanced Skill layouts.
+Why Skills are worth it (quick recap)
+Portability: One Skill works across Claude.ai, Claude Code, and the API, per Anthropic’s 2025 coverage in Claude Skills: Customize AI for your workflows and the Agent Skills overview.
+Reliability: Instead of long, fragile prompts, your instructions live in a versioned artifact.
+Composability: You can layer multiple Skills and supporting files, following the progressive disclosure model described in Anthropic’s 2025 engineering post Equipping agents for the real world with Agent Skills.
+
+You now have a working understanding of the minimal structure (a folder with SKILL.md), how to author clear instructions, how to upload and test via the API, and how to iterate safely.
+
+Post Views: 2,959

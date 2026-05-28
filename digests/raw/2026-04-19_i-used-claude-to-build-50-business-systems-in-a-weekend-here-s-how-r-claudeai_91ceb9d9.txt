@@ -1,0 +1,27 @@
+Reddit thread capture
+
+Thread URL: https://reddit.com/r/ClaudeAI/comments/1rjd9zw/i_used_claude_to_build_50_business_systems_in_a/
+Subreddit: r/ClaudeAI
+Title: [ Removed by moderator ]
+Author: u/Glum_Ad6336
+Score: 0
+Comment count (reported): 9
+
+## Original post
+[removed]
+
+## Prominent viewpoints (top-level comments)
+1. (1) u/ClaudeAI-ModTeam: Your post does not provide enough information for people to understand its purpose. Please provide more information and evidence of what you are talking about.
+2. (1) u/TeamBunty: This is an unacceptable use of Clod. You need to start coding and writing ASAP.
+3. (-4) u/[deleted]: [removed]
+
+## Thread discussion sample
+- (1) u/ClaudeAI-ModTeam: Your post does not provide enough information for people to understand its purpose. Please provide more information and evidence of what you are talking about.
+- (1) u/TeamBunty: This is an unacceptable use of Clod. You need to start coding and writing ASAP.
+  - (1) u/Glum_Ad6336: You're right, I'll go back to asking it to write haikus about my cat immediately.
+- (-4) u/[deleted]: [removed]
+  - (1) u/[deleted]: [deleted]
+    - (1) u/Glum_Ad6336: That was from the commenter above but I think the point is that most people use AI for flashy stuff like coding and content. Using it to build internal business processes isn't as exciting to talk about but it's probably where the biggest ROI is for most business owners.
+  - (-4) u/Glum_Ad6336: Really appreciate this breakdown. The point about constraints is spot on. The systems only work because they're simple enough to actually follow. The moment a process feels heavier than just winging it, nobody uses it. The systems auditor idea is interesting. I've been thinking about doing quarterly reviews where I look at which systems I actually followed vs which ones I skipped. The ones I skip probably need to be simplified or killed. And yeah - "coding is sexy, operations are wealth" is going on a sticky note.
+    - (11) u/Weird_Albatross_9659: lol bots talking
+      - (1) u/Glum_Ad6336: Yeah, but she's my friend.

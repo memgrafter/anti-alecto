@@ -1,0 +1,72 @@
+Mentoring
+Back in 2013, I stumbled upon this blog post by Brendan Forster which fundamentally changed my career trajectory. Knowing that there was a human I could turn to ask questions related to open-source made all the difference.
+Ever since then I've been setting aside time for coffee catchups with anyone and everyone. By design, I'm super accessible. If you ever need to catch up about anything then below is how you can contact me.
+Email: https://ghuntley.com/contact
+Calendar: https://ghuntley.com/meet
+Yes, it's that simple. I do however ask that you read below before booking a slot of time.
+find yourself a better mentor
+Wait, what? Yes, there's lots that I can teach but the best mentors are people who do not call themselves a mentor. Have a read of this essay. Derek is right on the money when he says:
+“the standard pace is for chumps” — that the system is designed so anyone can keep up. If you’re more driven than most people, you can do way more than anyone expects.
+This principle applies to all of life, not just school.
+Here's an open secret...
+Open-source is one of the best ways to learn but the advice people give in this space is terrible.
+In nearly every other profession other than software development there are immense barriers to getting started. If you want to build a physical bridge then you'll need expertise, equipment, and money.
+In the world of software, all you need is time and the knowledge that there are people who build digital bridges (open-source maintainers) who are itching for people to help them out.
+The formula is to success shockingly simple yet few do it because it requires a longer-term horizon...
+- Turn up and introduce yourself
+- Share the intentions that you wish to help out.
+- Start helping out and ask for help.
+- Keep turning up, document everything, and be the project's janitor (that's actually what an open-source maintainer is).
+- Catch up for beers with your new friends.
+stay away from contributing to the big projects
+Brand name projects such as Kubernetes, et al sound shiny and but it will be hard to build personal relationships. Identify what the founders of these projects are doing right now - 9 times out of 10 they have already moved on to "something more interesting". Go join them on that voyage instead.
+you will fuck up
+own it, learn, grow and adapt. I still vividly remember the moment in time where Ani 🚨🚔 arrested me in Slack 🚨🚔 for pushing to master. The lesson here was twofold:
+- One should not push to master (use pull requests)
+- One should not be able to push to master (ani had the repo misconfigured without branch protection)
+opensource is fundamentally broken by design
+Please understand this and learn from people like Russ and myself who have been there and back.
+The myriad of tools that are relied upon by developers every day are built and maintained almost exclusively by unpaid volunteers, and the maintainers of open-source projects, our digital infrastructure, are in desperate need of support. Because code is less charismatic than a hit YouTube video or Kickstarter campaign, there is little public awareness of and appreciation for this work. As a result, there is not nearly enough institutional support for the output that sparked an information revolution and is the backbone of our digital reality.
+Just like physical infrastructure, digital infrastructure needs regular upkeep and maintenance. Companies need to do more to support open-source authors' work, otherwise, our digital world risks security breaches, interruptions in service, and slowed innovation.
+If you become an open-source maintainer, please understand that there are systemic issues and one of the best ways to create change at the moment is to introduce friction that hinders mindless consumption.
+For your own well-being, as soon as open-source stops being fun, stop it. As an open-source maintainer, you don't owe anyone anything - re-read the open-source license your software is released under because it makes this very clear:
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+learn how the internet works from a cat
+These three videos will explain the infrastructure fundamentals that every software developer should know. If Nil mentions something you don't understand, pause the video and go research it.
+choose boring technology
+Let’s say every company gets about three innovation tokens. You can spend these however you want, but the supply is fixed for a long while. You might get a few more after you achieve a certain level of stability and maturity, but the general tendency is to overestimate the contents of your wallet. If you choose to write your website in NodeJS, you just spent one of your innovation tokens. If you choose to use MongoDB, you just spent one of your innovation tokens. If you choose to use service discovery tech that’s existed for a year or less, you just spent one of your innovation tokens. If you choose to write your own database, oh god, you’re in trouble.
+own your identity
+You should own your realname dot com. Now there's one thing that is very important: Your domain registrar should be separate from your web-hosting / email company so that your web-hosting / email company can never hold your identity hostage. Never purchase addon services from your domain registrar - only purchase these three items:
+- Domain registration
+- Whois Privacy
+- DNS Hosting (if required)
+That's it!
+ditch douliekmudkips04@gmail.com
+Now that you own your identity as a domain name, it's time to ditch your high school gmail account. Host your mail under your identity using a convention such as:
+- ghuntley@ghuntley.com
+- firstname@ghuntley.com
+- hello@ghuntley.com
+Having a highschool style email address on a resume is a rookie mistake that raises questions about technical competency. Seeing someone having email addresses at their domain conveys that they understand what an MX record is.
+Hosting your mail under your identity also enables you to move between email providers. This is incredibly important, cool email addresses do not change.
+get a custom phone number for life
+In Australia, the three telcos — Telstra, Optus, and Vodafone have a private number department. Call each one up and ask if they have a phone number combination that you desire for purchase. If Vodafone has the number but you use Telstra then signup for Vodafone then port the number over to Telstra.
+content is all that matters
+You need a blog that is hosted on your own personal domain. Do not post content to medium, devto, freecodecamp or anything like that because eventually those platforms will either be sold or shutdown. When content is authored outside of your domain then you are losing out on compound interest.
+always shoot b
+As you go through life, always be snapping photos and videos with the express intention to use them later in future blog posts. Stand out from the crowd by using your own imagery. It is important. The photo in the header of this blog post was captured in 2017 after a mentoring session about marketing fundamentals. Thank you Lana Montgomery.
+public speaking
+Here is the first talk I ever delivered
+Compare this to my first television appearance. There's still a long way to go in the arena of improvements (uhm, ahs, etc) but public speaking is an incredibly important life skill. Start at user groups. They are always looking for speakers. User groups are also a fantastic way to find a job (if you do more than just turn up) btw.
+Much of what I learned came from the following two websites:
+ps. Thank you John Bristowe for giving up your speaker slot at NDC many years ago.
+create silly projects
+Create stupid things for fun, ignore best practices and just launch them. One of my best hits was authored after one too many CustomResourceDefinitions (beers). When you rock up to interviews, you want to have something to show. A story to tell and insights to share. If someone can play with it before the interview then all the better.
+Technology rarely matters. TheNFTBay was created in vim and the content was manually yanked and pasted between files. No templates. Lots of duplication. Hosted on GitHub and wrapped in CloudFlare. If you follow best practices on silly projects then you will never launch em.
+iterate
+Launch that thing, it'll never be ready so just launch it once you can clearly explain in words the value proposition. Get an iteration loop going immediately based on feedback from the launch. People respect the hustle if you listen to feedback, adapt, and incorporate it. Engage with anyone who engages with you and prep yourself for the prospects of not sleeping for 48 hours.
+invest in your tools
+If you are working remotely then grab the best microphone you can because vocal presence dramatically affects how people perceive you. When you can afford it, pick up a full-frame SLR camera with some nice glass. When everyone is using the same aperture (webcams, smart phones) all you need is to stand out from the pack is to use a different aperture.
+on community
+Follow https://twitter.com/rosiesherry, grok https://en.wikipedia.org/wiki/Eternal_September and devour https://www.jonobacon.com/books/artofcommunity/. In the technology industry, there are thought filter bubbles and echo chambers. You'll be a more effective community leader if you deliberately go out of your way to locate and understand dissenting opinions. Community is made up of people and it's your job to understand people. All people, not just people who share the same values as yourself.
+help others look good
+If someone helps you, then help them look good. Thanks, K33g!

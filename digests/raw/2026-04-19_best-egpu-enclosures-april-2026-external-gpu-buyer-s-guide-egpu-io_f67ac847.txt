@@ -1,0 +1,1292 @@
+Compare our community’s most popular Thunderbolt 5, 3 & USB4 eGPU enclosures based on 6-monthly builds tally with linked hands-on reviews from our regularly update guide below. Read our Thunderbolt 5, 3 & USB4 external GPU enclosure overview to learn more about eGFX features, performance and setup. Support eGPU.io by purchasing your selected eGPU enclosure from the affiliate links [Amazon & Aliexpress]. Last but not least, visit our forum to seek help and advice from other enthusiasts on the best eGPU enclosure that fits your needs.
+GPU AOOSTAR Minisforum Razer Gigabyte AORUS Gigabyte AORUS AOOSTAR AG02 Razer ADT-Link UT3G Sonnet 50 Lenovo Legion RX560 2xDP, 2xHDMI, Cooler Master Sonnet RX560 45W Netstor GPU
+Rank
+6moEnclosure
+Design
+Included
+GPU1Price
+US$
+Review
+User
+buildsUser
+builds
+macOSEncoder2
+Size (L)
+compare
+Weight
+(kg/lb)PSU
+type3
+PSU
+max
+powerPower
+delivery
+(PD)4
+GPU
+max
+power5
+GPU max
+length
+(in/cm)
+portsI/O ports
+bandwidth6USB-C
+ports7
+& ctrlslots
+@widthUpdated
+firmware8Cable
+cm9Vendor
+page
+new
+EXP GDC
+TH5P4
+✖
+$220
++ caseunbox
+link
+link
+2024 JHL9480
+PCIe4x4 to TB5GPU
+??
+fATX, SFX
+or ATXnolimit
+100W+30W
+nolimit
+nolimit
+✖
+10Gbps
+2 & TI83
+1@x4
+??
+50
+link
+new
+EG02
+✖
+$300
+discuss
+link
+link
+2024 JHL9580
+PCIe4x4 to TB51.03
+1.50/3.30
+ATX or SFX
+nolimit
+140W+27W
+nolimit
+nolimit
+(<3-slot)✖
+✖
+2 & TI83
+1@x4
+??
+80
+link
+new
+DEG2
+✖
+$300
+discuss
+link
+link
+2024 JHL9480
+PCIe4x4 to TB51.89
+1.40/3.09
+ATX or SFX
+nolimit
+140W+30W
+nolimit
+nolimit
+✖
+10Gbps
+2 & TI83
+1@x4
+??
+80
+link
+new
+Core X V2
+✖
+$350
+unbox
+link
+link
+2024 JHL9480
+PCIe4x4 to TB517.91
+3.90/8.64
+ATX-int
+(not included)nolimit
+140W
+nolimit
+14.27/36.2
+✖
+✖
+1 & TI83
+1@x4
+??
+100
+link
+new
+AI BOX
+RTX 5060 Ti
+$700
+unbox
+link
+link
+2024 JHL9480
+PCIe4x4 to TB51.36
+0.95/2.09
+AC-ext
+330W
+100W+30W
+180W
+N/A
+3xDP,
+HDMI10Gbps
+2 & TI83
+1@x4
+??
+80
+link
+new
+AI BOX
+RTX 5090
+$3700
+unbox
+link
+link
+2024 JHL9480
+PCIe4x4 to TB59.82
+5.40/11.88
+SFX-int
+850W
+100W+30W
+600W
+N/A
+3xDP,
+HDMI10Gbps
+3 & TI83
+1@x4
+??
+100
+link
+#1
+GTBOX G-DOCK
+✖
+discuss
+link
+link
+2023 ASM2464PD
+PCIe4x4 to USB4v1
+GPU
+1.50/3.30
+fATX-int
+800W
+100W
+650W
+nolimit
+✖
+✖
+1
+1@x4
+35.35 ✔
+50
+link
+#2
+EXP GDC
+TH3P4G3
+✖
+$120
++ caselink
+link
+link
+2018 JHL7440
+PCIe3x4 to TB3GPU
+0.23/0.51
+ATX-ext
+or AC-ext nolimit
+85W
+nolimit
+nolimit
+✖
+5Gbps
+2 & TI83
+1@x4
+??
+50
+link
+#3
+Core X
+✖
+$300
+link
+link
+link
+2015 DSL6540
+PCIe3x4 to TB314.45
+6.48/14.29
+ATX-int
+650W
+100W
+500W
+12.99/33.0
+✖
+✖
+1 & TI83
+1@x4
+33.1 ✔
+50
+link
+#4
+Wikingoo
+eGPU
+✖
+$115
+link
+link
+link
+2015 JHL6340
+PCIe3x4 to TB3< 9.1
+??
+ATX-ext
+nolimit
+15W
+nolimit
+nolimit
+✖
+✖
+1 & TI83
+1@x4
+??
+50
+link
+#5
+UT4G
+✖
+discuss
+link
+link
+2023 ASM2464PD
+PCIe4x4 to USB4v1
+GPU
+0.1/0.22
+ATX-ext
+nolimit
+15W
+nolimit
+nolimit
+✖
+✖
+1
+1@x4
+35.35 ✔
+80
+link
+#6
+Breakaway
+350|550
+650|750
+750ex
+✖
+✖
+✖
+✖
+✖
+$199
+$250
+$300
+$300
+$350
+link
+link
+DSL6540
+DSL6540
+DSL6540
+JHL6540
+JHL6540+
+JHL6240
+12.71
+3.20/7.10
+SFX-int
+SFX-int
+SFX-int
+ATX-int
+ATX-int
+350W
+550W
+650W
+750W
+750W
+15W
+87W
+87W
+85W
+85W
+300W
+375W
+475W
+475W
+475W
+12.20/31.0
+✖
+✖
+✖
+✖
+✖
+5Gbps
+1 & TI83
+1@x4
+25.2 ✔
+50
+50
+70
+70
+link
+#6
+Sapphire
+GearBox
+✖
+$259
+link
+link
+link
+2015 DSL6540
+PCIe3x4 to TB38.45
+3.30/7.30
+fATX-int
+500W
+60W
+300W
+10.50/26.6
+✖
+5Gbps
+1 & TI83
+1@x4
+41.41 ✔
+50
+link
+#6
+ASUS XG
+Station Pro
+✖
+$330
+link
+link
+link
+2015 DSL6540
+PCIe3x4 to TB38.23
+2.95 /6.50
+AC-ext
+330W
+15W
+300W
+12.24/31.1
+✖
+10Gbps
+1 & TI83
+1@x4
+29.1 ✔
+150
+link
+#6
+AORUS RTX
+Gaming Box
+RTX2080Ti
+RTX3080
+RTX3080Ti
+RTX3090
+$1500
+$2000
+$2500
+$3000link
+unboxlink
+2015 JHL6340 x2
+PCIe3x4 to TB37.26
+3.79/8.34
+3.83/8.42
+3.83/8.42
+3.83/8.42
+fATX-int
+450W
+550W
+550W
+550W
+100W
+300W
+375W
+375W
+375W
+12.60/32.0
+3xDP,
+HDMI,
+USB-C8Gbps
+1 & TI83
+1@x4
+44.44 ✔
+50
+link
+link
+link
+link
+-
+ADT-Link
+R43SG-TB3
+✖
+$140
++ stand
+discuss
+equiv
+equiv
+2015 DSL6540
+PCIe3x4 to TB3GPU
+0.1/0.22
+ATX-ext
+or AC-ext
+nolimit
+15W
+nolimit
+nolimit
+✖
+✖
+1 & TI83
+1@x4
+??
+30
+link
+-
+Highpoint
+Rocketstor 6661A
+✖
+$175
+preview
+link
+link
+2015 DSL6540
+PCIe3x4 to TB32.40
+5.18/11.40
+AC-ext
+60W
+15W
+25W
+8.20/20.8
+✖
+10Gbps
+2 & TI83
+1@x4
+??
+50
+link
+-
+AKiTiO
+Node Lite
+✖
+$190
+✖
+link
+link link
+link 2015 DSL6540
+PCIe3x4 to TB32.64
+2.00/4.39
+AC-ext
+72W
+15W
+25W
+7.87/20.0
+✖
+10Gbps
+2 & TI83
+1@x4
+B1-25✔
+50
+link
+-
+AKiTiO
+Node
+✖
+$200
+link
+link
+link
+2015 DSL6540
+PCIe3x4 to TB314.09
+4.90/10.78
+SFX-int
+400W
+15W
+375W
+12.60/32.0
+✖
+✖
+1 & TI83
+1@x4
+25.1 ✔
+50
+link
+-
+OWC Mercury
+Helios 3
+✖
+$200
+user
+✖
+✖
+2015 DSL6540
+PCIe3x4 to TB32.69
+1.40/3.08
+AC-ext
+90W
+15W
+25W
+7.75/19.6
+✖
+10Gbps
+2 & TI83
+1@x4
+✖
+50
+link
+-
+Zotac AMP
+Box Mini
+✖
+$220
+link
+link
+link
+2015 DSL6540
+PCIe3x4 to TB34.17
+0.85/1.87
+AC-ext
+180W
+15W
+150W
+7.87/20.0
+✖
+5Gbps
+1 & TI83
+1@x4
+26.1 ✔
+50
+link
+-
+BoostStation
+✖
+$230
+discuss
+link
+link
+2016 PCIe 3.0
+JHL6540+
+JHL624013.31
+8.50/18.74
+ATX-int
+500W
+100W
+300W
+12.60/32.0
+✖
+8Gbps x2
+1 & TI83
+1@x4
+??
+70
+link
+-
+PowerColor
+Gaming Station
+✖
+$250
+✖
+link
+link
+2015 DSL6540
+PCIe3x4 to TB313.71
+3.60/7.92
+SFX-int
+550W
+87W
+375W
+12.20/31.0
+✖
+5Gbps
+1 & TI83
+1@x4
+??
+50
+link
+-
+AKiTiO
+Thunder3
+✖
+$250
+✖
+link
+linklink
+link2015 DSL6540
+PCIe3x4 to TB32.64
+2.00/4.39
+AC-ext
+72W
+15W
+25W
+7.87/20.0
+✖
+10Gbps
+2 & TI82
+1@x4
+✖
+50
+link
+-
+Mantiz
+Saturn Pro
+✖
+$299
+link
+link
+link
+2016 PCIe3x4
+JHL6540+
+JHL624014.57
+5.70/12.54
+ATX-int
+750W
+100W
+550W
+12.99/33.0
+✖
+5Gbps
+1 & TI83
+1@x4
+44.4 ✔
+70
+link
+-
+Razer Core
+X Chroma
+✖
+$300
+link
+link
+link
+2016 JHL6540 x2
+PCIe3x4 to TB314.45
+6.91/15.23
+ATX-int
+700W
+100W
+500W
+12.99/33.0
+✖
+5Gbps
+1 & TI83
+1@x4
+40.1 ✔
+70
+link
+-
+PowerColor
+Devil Box
+✖
+$300
+user
+link
+link
+2015 DSL6540
+PCIe3x4 to TB316.65
+3.60/7.92
+fATX-int
+500W
+60W
+375W
+12.20/31.0
+✖
+5Gbps
+1 & TI83
+1@x4
+25.101 ✔
+50
+link
+-
+HP Omen
+Accelerator
+✖
+$300
+link
+link
+link
+2015 DSL6540
+PCIe3x4 to TB316.00
+5.50/12.10
+ATX-int
+500W
+60W
+300W
+11.42/29.0
+✖
+5Gbps
+1 & TI83
+1@x4
+25.25 ✔
+50
+link
+-
+Lenovo TB3
+Graphics Dock
+GTX1050
+$325
+link
+link
+link
+2015 DSL6540
+PCIe3x4 to TB30.74
+0.69 / 1.51
+AC-ext
+170W
+65W
+-
+-
+2xDP,HDMI
+5Gbps
+1 & TI83
+1@x4
+v003 ✔
+50
+link
+-
+AKiTiO
+Node Titan
+✖
+RX580
+RX5700XT
+RPW5700
+$330
+$550
+$750
+$1300
+discuss
+link
+link
+2018 JHL7440
+PCIe3x4 to TB312.82
+3.50/7.72
+SFX-int
+650W
+85W
+500W
+12.60/32.0
+✖
+2xDP,2xHDMI,DVI-D
+3xDP,HDMI
+5xDP,USB-C✖
+1 & TI83
+1@x4
+??
+50
+link
+-
+AKiTiO
+Node Pro
+✖
+$349
+link
+link
+link
+2015 DSL6540
+PCIe3x4 to TB312.82
+3.40/7.40
+SFX-int
+500W
+60W x2
+400W
+12.60/32.0
+✖
+10Gbps
+2 & TI83
+1@x4
+23.1 ✔
+50
+link
+-
+PowerColor/
+VisionTek
+mini
+RX570
+$350
+$480
+link
+link
+link
+2016 PCIe3x4
+JHL6540+
+JHL62402.30
+0.85/1.90
+AC-ext
+240W
+45W
+150W
+6.89/17.5
+DVI-D
+5Gbps
+1 & TI83
+1@x4
+40.1 ✔
+50
+link
+-
+MasterCase EG200
+✖
+$350
+unbox
+link
+link
+2018 JHL7440
+PCIe3x4 to TB39.7
+5.20/11.50
+SFX-int
+550W
+60W
+375W
+12.79/32.5
+✖
+5Gbps
+1 & TI83
+1@x4
+59.1 ✔
+50
+link
+-
+AKiTiO
+Node Duo
+✖
+$370
+link
+link
+link
+2015 DSL6540
+PCIe3x4 to TB310.54
+5.00/11.00
+AC-ext
+150W
+60W+15W
+25W x2
+8.66/22.0
+✖
+10Gbps
+2 & TI83x2
+2@x2
+33.3 ✔
+200
+link
+-
+Breakaway Puck
+RX570
+RX5500XT
+RX5700
+$399
+$499
+$600
+$900 link
+link
+link
+2015 DSL6540
+PCIe3x4 to TB31.01
+2.38/5.25
+AC-ext
+160W
+220W
+220W
+220W
+45W
+60W
+60W
+-
+-
+3xDP,HDMI
+3xDP,HDMI
+DP,HDMI
+DP,HDMI
+✖
+✖
+5Gbps
+5Gbps
+1 & TI83
+2 &
+TI83
+1@x4
+25.1 ✔
+50
+link
+link
+link
+link
+-
+AORUS/
+Gigabyte
+Gaming Box
+RX580
+GTX1070
+GTX1080
+RTX2070$420
+$500
+$670
+$650link
+link
+link
+unboxlink
+link
+2015 DSL6540
+PCIe3x4 to TB33.30
+2.35/5.19
+fATX-int
+450W
+100W
+225W
+6.65/16.9
+AMD:3xDP,HDMI
+Nvidia:DP,HDMI,
+2xDVI-D,
+USB-C (RTX)5Gbps
+1 & TI83
+1@x4
+F1.1 ✔
+F1.0 ✔
+F1.0 ✔
+F1.0 ✔50
+link
+link
+link
+link
+-
+HL23T-Plus
+✖
+$429
+link
+link
+link
+2015 DSL6540
+PCIe3x4 to TB38.98
+3.40/7.40
+fATX-int
+400W
+15W
+350W
+12.60/32.0
+✖
+✖
+1 & TI83
+1@x4
+33.1 ✔
+50
+link
+-
+Netstor
+Hercules HL23T
+✖
+$435
+link
+link
+link
+2015 DSL6540
+PCIe3x4 to TB38.16
+2.70/5.94
+fATX-int
+300W
+15W
+300W
+12.60/32.0
+✖
+10Gbps
+2 & TI83
+1@x4
+25.1 ✔
+100
+link
+-
+Razer
+Core V2
+✖
+$500
+link
+link
+link
+2015 PCIe3x4
+DSL6540 x2
+7.65
+4.95/10.89
+fATX-int
+500W
+65W
+375W
+11.81/30.0
+✖
+5Gbps
+1 & TI83
+1@x4
+26.1 ✔
+50
+link
+-
+ASUS ROG
+XG Station 2
+✖
+$550
+link
+link
+link
+2015 DSL6540
+PCIe3x4 to TB320.03
+5.10/11.22
+fATX-int
+680W
+100W
+500W
+12.20/31.0
+✖
+5Gbps
+1 & TI83
+1@x4
+v25 ✔
+50
+link
+-
+Blackmagic
+eGPU | Pro
+RP580
+Vega56
+$699
+$1199
+link
+link
+link
+2018 JHL7540
+PCIe3x4 to TB39.64
+4.60/10.20
+custom-int
+400W
+85W
+✖
+✖
+HDMI
+TB3/USB-C
+5Gbps
+2 & TI83x2
+1@x4
+26.3 ✔
+50
+link
+link
+N/A
+Mantiz
+Venus
+✖
+ended
+link
+link
+link
+2015 DSL6540
+PCIe3x4 to TB311.56
+3.60/7.92
+SFX-int
+550W
+87W
+375W
+13.00/33.0
+✖
+5Gbps
+1 & TI83
+1@x4
+25.1 ✔
+50
+link
+Rank
+6moEnclosure
+Design
+Included
+GPU1Price
+US$
+Review
+User
+buildsUser
+builds
+macOS Encoder2
+Size (L)
+compare
+Weight
+(kg/lb)PSU
+type3
+PSU
+max
+powerPower
+delivery
+(PD)4
+GPU
+max
+power5
+GPU max
+length
+(in/cm)
+portsI/O ports
+bandwidth6USB-C
+ports7
+& ctrlslots
+@widthUpdated
+firmware8Cable
+cm9Vendor
+page
+1 For macOS ≥ 10.13.4: AMD RX480/580 & these are supported. Nvidia 10.13.x support can be added with purge-wrangler.
+2USB-based enclosure I/O ports exhibit flaky behavior under load as described, except those using a 2nd TB3 controller to host I/O ports.
+7 2018 Titan Ridge (JHL7xxx) as found in EXP GDC TH3P4G3, AKiTiO Node Titan, CM MasterCase EG200 and others gives ~10% more PCIe bandwidth than older 2015 Alpine Ridge (DSL6xxx/JSL6xxx) though has a negligible affect on game FPS as discussed.
+7 Titan Ridge (JHL7540) allows internal routing of onboard GPU DisplayPort signals for Thunderbolt 3 monitor output. Alpine Ridge (DSL6xxx/JHL6xxx) does not.
+3 Flex-ATX (fATX) PSUs have a tiny 40mm high RPM cooling fan that is noisy under load. Separate external-AC PSUs are not included in product’s size.
+4 Meet or exceed your TB3 notebook’s charger wattage for the TB3 enclosure to be a single-cable solution that includes charging. eg Macbook USB-C chargers.
+5 Meet or exceed your intended video card’s peak power requirements. See TechPowerUp card reviews, eg: GTX1080Ti to find this.
+6 If used on a TB2/1 system via a US$49 Apple TB3-TB2 adapter, USB ports are not visible in Windows (inc AORUS’ fan control). They do appear in macOS. Ref: theitsage.
+6 2nd TB3 port can be DP, USB-C or daisy-chain TB3. Note: Intel often disallows a 2nd TB3 port on eGFX enclosures.
+7 ports’ use reduces eGPU bandwidth by up to 31.2% @10Gbps, 15.6% @5Gbps. Except for (i) Displayport devices (ii) XG Station 2 that hosts ports off a separate USB-B cable.
+8 Allows eGPU detection in Windows for systems reporting “external GPUs supported: no” in the Intel Thunderbolt software.
+9 If require a longer TB3 cable, consider these: US$50 AKiTiO 200cm, $50 Cable Matters 100cm.
+9 USB4 systems have stricter USB4-certified cable requirements where these are confirmed to give full performance: Anker 515 1m USB4 cable, Belkin Connect USB4 cable, Cable Matters 40Gbps USB4 cable, Orico 2m active TB3, Satechi USB4 Pro cable, Spigen 0.8m USB4 cable, SKY USB4 4k 240w cable, Ultunite USB4 cable.
+Reference material
+here ◄ Q: What do the ‘eGPU port’ acronyms like 32Gbps-TB3 mean and what are their ranked & measured bandwidths?
+Best eGPU for Mac: Sonnet Breakaway 750ex, Mantiz Saturn Pro, Razer Core X Chroma and ASUS XG Station Pro
+Most portable / smallest eGPU: Gigabyte AORUS Gaming Box, PowerColor Mini eGFX and Sonnet Breakaway Puck
+Best value / cheapest eGPU: ADT-Link R43SG-TB3, EXP GDC TH3P4G3, Wikingoo eGPU, Sonnet Breakaway 350 and Razer Core X
+Most customizable / DIY eGPU: ADT-Link R43SG-TB3, EXP GDC TH3P4G3 and Wikingoo eGPU
+Most performant on AMD Ryzen USB4v1 systems: ADT-Link UT3G
+Thunderbolt 3 & 4 External GPU Enclosure Overview
+External graphics card adapter or external GPU enclosure is an ever-developing solution for laptop users who need more power (than integrated graphics) for gaming, AR/VR development, AI/machine learning, and many other high demand computing tasks. Thunderbolt 3 & 4 can now be integrated to the same physical port as USB-C. Flexibility and convenience is Thunderbolt 3 & 4’s best selling point so it became the chosen standard input/output for external graphics solution. A single laptop that’s highly portable for daily use would transform into a capable gaming machine or workstation thanks to the power of an external graphics card.
+External GPU Components
+There are more than a dozen of Thunderbolt 3 external graphics solutions (eGFX) currently available. They share the same core components to enable external GPU for laptop with a Thunderbolt 3 & 4 connection. In this buying guide we focus on the eGPU boxes rather than the main host computer. We have also written an ultrabook laptop buying guide if you’d like to learn more about the other end of the equation.
+An Intel-certified Thunderbolt 3 external GPU enclosure must have these four components:
+- Thunderbolt 3 Controller – Alpine Ridge is most popular while the newer Titan Ridge also works with USB/C systems (non-eGFX use).
+- USB-C Controller – Texas Instrument TPS65983 chipset has the best compatibility with host systems and regulates power delivery.
+- Power Supply – Internal PSU for all-in-one eGPU dock or external power adapter for smaller footprint/quieter & cooler operation.
+- Enclosure/Case – This component pays for R&D and therefore no Thunderbolt-3-mainboard-only solution is available for DIYers.
+External GPU Features
+External graphics card for laptop is what a sidecar is to a motorcycle; it adds capacity and utility only when needed while also remaining mobile. The convenient plug-and-play connectivity allows hot-plug and surprise removal. Besides the graphics performance boost, there are several note-worthy features some Thunderbolt 3 external graphics card enclosures provide.
+- Power Delivery – Standard 15W for downstream bus-powered devices and up to 100W for upstream charging for Thunderbolt 3/USB-C laptops.
+- Expansion I/O – A wide host of connectivity protocols ranging from Ethernet and USB 3.0 ports to SATA drive and Audio IN/OUT.
+- Daisy-Chain – Up to six devices can connect to the host system through a single Thunderbolt 3 cable via the dual port eGPU case.
+External GPU Performance
+The actual performance of your laptop + external graphics card depends on many variables. Beginning with Intel 6th generation U and H processors, many laptops have Thunderbolt 3 connectivity. Appropriate pairing of processor and external graphics card would prevent CPU-bottlenecking during use. Generally speaking, an external graphics card performs at best 80% of desktop-level when gaming. External GPUs perform much better in computing tasks with many scenarios seeing very marginal loss or none at all when the application is designed to take advantage of an external graphics card.
+- CPU Architecture – Quad-core CPU helps minimize performance loss. A laptop with Intel 8th gen and newer CPU is recommended.
+- PCIe Lane – x4 PCIe connection over Thunderbolt 3 provides optimal bandwidth. Direct CPU attachment on H-CPU systems for best performance.
+- Cooling System – Proper cooling for external GPU enclosure as well as Thunderbolt 3 connection through the system PCH & CPU.
+- Thunderbolt 3 Cable – A passive .5m provides full 40Gbps bandwith and 100W PD. Active cable provides same bandwidth in longer sizes.
+- Application Design – Well-optimized software and games deliver the best eGPU experience.
+External GPU Setup
+Windows is the most mature operating system with external graphics support. Most Thunderbolt 3 Windows systems requires no manual setup. Once connected, Windows can detect and configure appropriate drivers for the external graphics enclosure enclosure and the installed graphics card. Recent Linux distros have great support for Thunderbolt 3 as well. The main issue is driver installation and screen output configuration. Apple has been improving eGFX support in macOS. Unfortunately AMD is the only choice starting with Mojave 10.14. Boot Camp mode to run Windows on a Mac also lacks official external GPU support. At eGPU.io, we have built a community of external graphics card enthusiasts who provide creative solutions for non-officially supported configurations.
+- Windows: Error 12 solutions and Boot Camp solutions to set up external graphics card on Mac computers.
+- macOS: kryptonite, Purge-Wrangler and automate-eGPU EFI to enable Mac external GPU through Thunderbolt 1/2, and older AMD Radeon cards/Nvidia GeForce GTX cards.
+- Linux: Xorg config, easy-to-setup script, and primary display script to facilitate external graphics card configuration.
+Best External GPU enclosures
+Our community has reviewed every external GPU enclosure available today. We have also worked with Thunderbolt 3 vendors to provide consumer feedback so that next generation eGPU enclosures improve in usability and performance. Below are their build popularity ranking and review conclusions. Click an item to read the full eGPU enclosure review.
+2. EXP GDC TH3P4G2 / TH3P4G3 Thunderbolt GPU Dock Review
+3. Razer Core X Review – Thick and Juicy
+4. Wikingoo eGPU Review – DIY Thunderbolt 3 External GPU
+6. Sonnet Breakaway Box Review – It’s cool to be quiet
+6. ASUS XG Station Pro Review – Cool, Calm and Collected
+6. Sapphire GearBox Review – Loud and Clunky
+6. AORUS RTX 2080 Ti Gaming Box Review – Cooler than Cool
+| Thunderbolt 2 Enclosures | AKiTiO Thunder2 | HighPoint RS6361A | Sonnet Echo Express SE 1 |
+OWC Mercury Helios |
+Sonnet Echo Express III-D |
+Netstor NA211TB |
+| Appearance | ||||||
+| Price US$ |
+$215 | $239 | $229 | $220 | $760 | $849 |
+| Max PCIe bandwidth | 16Gbps | 16Gbps | 16Gbps | 16Gbps | 16Gbps | 16Gbps |
+| PSU max power-location |
+60W-external |
+50W-external |
+60W-external |
+120W-external |
+300W-internal | 300W-internal |
+| Graphics max power | 25W | 25W | 25W | 75W | 150W | ~290W |
+| Daisy chaining | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |
+| Size (in/mm) |
+9.17 x 2.99 x 5.87 233 x 76 x 149 |
+10.29 x 2.28 x 6.49 261 x 58 x 165 |
+8.63 x 5.63 x 3.50 220 x 143 x 885 |
+9.21 x 4.53 x 2.9 234 x 115 x 74 |
+15.94 x 3.82 x 10.20 405 x 97 x 259 |
+14.60 x 4.33 x 7.87 371 x 110 x 200 |
+| Release date | Q3-2014 | Q3-2014 | Q3-2014 | Q1-2015 | Q4-2013 | Q1-2014 |
+| Vendor page | link | link | link | link | link | ✖ |
+| User builds | link & link | link | ✖ | ✖ | ✖ | ✖ |
+| User builds macOS | link & link | link | ✖ | ✖ | ✖ | ✖ |
+Note: better value Thunderbolt 3 enclosures work with TB2/TB1 Macs in macOS and with PC notebooks via a US$49 Apple TB3 (USB-C) to TB2 adapter. See examples.
+Reference material
+here ◄ Q: What do the 'eGPU port' acronyms like 32Gbps-TB3 mean and what are their ranked & measured bandwidths?
+here ◄ TB3, TB2 or TB1 eGPU candidate notebook list
+| M.2/NGFF adapter | ADT-Link K43SG | JHH-Link Dock-8 | JHH-Link Dock | PCE164P-N06 |
+| Appearance | ||||
+| Price US$ | $55 (x4 NVMe) | $60 (x4 NVMe) | US$55 (x4 NVMe) US$52 (x1 NGFF) | $7 (x1 NVMe) |
+| Max PCIe bandwidth | 64Gbps – PCIe 4.0 x4 (12th gen i-core or Ryzen 6000 CPU or newer) | |||
+| Input PSU source | ATX or Dell DA-2 | ATX or Dell DA-2 | ATX, Dell DA-2 or DC jack | ATX |
+| Cable type | soldered | soldered | socketted | socketted |
+| BIOS defeating switches | ✔ | ✔ | ✔ | ✖ |
+| PCIe 4.0 (Gen4) reliable | ✔ | ✔ | ✖ | ✖ |
+| PCIe 3.0 (Gen3) reliable | ✔ | ✔ | ✔ | ?? |
+| Rewiring adapter | x1 NGFF ⋅ mPCIe | x1 NGFF ⋅ mPCIe | x1 NGFF ⋅ mPCIe | mPCIe ⋅ extension |
+| Stand | ✔ 🛈 | ✔ | ✔ 🛈 | ✖ |
+| Vendor page | ADT-Link | ✖ | ✖ | eGPU.io (discuss) |
+| User builds | x4/x2 NVMe | x1 NGFF/NVMe |
+Differences between a M.2 NGFF and M.2 NVMe connector
+See here where left: M.2 NGFF WLAN card and right: M.2 NVMe SSD card.
+Pros
+- a x1 M.2 NGFF port is commonly used to host a WLAN card in the latest notebooks
+- a x4 M.2 NVME port is used to host NVMe SSDs in the latest notebooks
+- a 32Gbps-M.2×4 eGPU NVMe eGPU outperforms a 32Gbps-TB3 eGPU by over 20% as seen here
+- suggested tabled eGPU adapters all have a 12V->3.3V voltage regulator, insurance against overcurrent damage to your host system’s precious M.2 NVMe or M.2 NGFF slot and so are costlier than basic PCIe risers without it
+Cons
+- use of a x4 M.2 NVMe port for eGPU use is often impractical unless have a secondary drive slot/port. 2 or more M.2 NVMe slots are limited to only a few notebooks and NUC systems.
+- requires cumbersome underside system M.2 port access though emerging OCuLink-cabled M.2 NVMe adapters are attempting to correct this
+- M.2 port can be whitelisted, deactivated or cause Windows boot issues by BIOS when no vendor certified device is detected. Can prototype test for this using a low cost M.2 NVMe to PCIe adapter like used here.
+Known Issues
+here ◄ [GUIDE] error 12/43 & other detection, bootup and stability problems
+Reference Material
+here ◄ Q: What do the ‘eGPU port’ acronyms like 32Gbps-TB3 mean and what are their ranked & measured bandwidths?
+| mini PCIe adapter | JHH-Link | EXP GDC Beast 8.4d | PCE164P-N03 |
+| Appearance | |||
+| Price | US$45 | US$23 | US$5 & |
+| Max PCIe bandwidth | 8Gbps – PCIe 3.0 x1 (6th gen i-core CPU or newer) 4Gbps – PCIe 2.0 x1 (2nd-5th gen i-core CPU) 2Gbps – PCIe 1.10 x1 (1st gen i-core CPU or older) | ||
+| Input PSU | ATX, Dell DA-2 or DC jack | ATX, Dell DA-2 or DC jack | ATX, PCIe or DC jack |
+| Cable type | socketted | socketted | socketted |
+| Static insulated | ✔ | ❌ | ✔ |
+| USB port1 | ✖ | ✔ | ✖ |
+| Spare cable | mPCIe NGFF NVMe PCIe | mPCIe ⋅ EC ⋅ NGFF | mPCIe ⋅ cable extender |
+| Stand | ✔ 🛈 | ✖ | |
+| Vendor page | ✖ | Cloud Hero (CN) | eGPU.io (discuss) |
+| User builds | link |
+Pros
+mPCIe is a common interface used to host a WLAN card which here is used to host an eGPU instead
+Cons
+- requires cumbersome underside system mPCIe port access
+- mPCIe port can be whitelisted or deactivated by BIOS when no certified WLAN card is detected
+- requires an additional USB WLAN product to then have concurrent WLAN functionality
+Note: M.2 NVMe/NGFF eGPU adapters can be used as Gen2 mPCIe adapters via adapters listed AND offer future connectivity to M.2 NVMe/NGFF SSD/wifi slots in newer systems.
+1 Notebook mPCIe WLAN ports often do not have the USB port wired, making this a non-feature.
+Known Issues
+here ◄ [GUIDE] error 12/43 & other detection, bootup and stability problems
+Reference Material
+here ◄ Q: What do the ‘eGPU port’ acronyms like 32Gbps-TB3 mean and what are their ranked & measured bandwidths?
+mPCIe external GPU implementation videos
+| Expresscard 2.0 adapter | PCE164P-N03 + DIY EC adapter | EXP GDC Beast 8.4d | BPlus PE4C-EC060A 3.0 |
+| Appearance | |||
+| Price | US$5 & + US$5 | US$25 | US$78 |
+| Max PCIe bandwidth | 8Gbps – PCIe 3.0 x1 (6th gen i-core CPU or newer) 4Gbps – PCIe 2.0 x1 (2nd-5th gen i-core CPU) 2Gbps – PCIe 1.10 x1(1st gen i-core CPU or older) | ||
+| Input PSU | ATX, PCIe or DC jack | ATX, Dell DA-2 or DC jack | ATX, Dell DA-2 or DC jack |
+| Cable type | socketted | socketted | soldered |
+| Static insulated | ✔ | ❌ | ✔ |
+| USB port | ✖ | ✔ | ✖ |
+| Spare cable | mPCIe ⋅ extension | mPCIe ⋅ EC ⋅ NGFF | ✖ |
+| Stand | ✖ | ✔ 🛈 | ✖ |
+| Vendor page | eGPU.io (discuss) | Cloud Hero (CN) | BPlus (TW) |
+| User builds | link |
+Compatibility references
+here ◄ Expresscard 2.0 external GPUs – pros, cons and candidate notebooks
+Known Issues
+here ◄ [GUIDE] error 12/43 & other detection, bootup and stability problems
+Reference Material
+here ◄ Q: What do the ‘eGPU port’ acronyms like 32Gbps-TB3 mean and what are their ranked & measured bandwidths?
+Related Articles

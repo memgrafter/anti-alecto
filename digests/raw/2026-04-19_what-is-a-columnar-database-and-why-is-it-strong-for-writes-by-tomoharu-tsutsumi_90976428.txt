@@ -1,0 +1,400 @@
+Title: What is a Columnar Database and Why is it Strong for Writes?
+
+URL Source: http://tomoharutsutsumi.medium.com/what-is-a-columnar-database-and-why-is-it-strong-for-writes-012bf9c032a3
+
+Published Time: 2024-12-22T23:52:54Z
+
+Markdown Content:
+# What is a Columnar Database and Why is it Strong for Writes? | by Tomoharu Tsutsumi | Medium
+
+[Sitemap](http://tomoharutsutsumi.medium.com/sitemap/sitemap.xml)
+
+[Open in app](https://play.google.com/store/apps/details?id=com.medium.reader&referrer=utm_source%3DmobileNavBar&source=post_page---top_nav_layout_nav-----------------------------------------)
+
+Sign up
+
+[Sign in](https://medium.com/m/signin?operation=login&redirect=https%3A%2F%2Ftomoharutsutsumi.medium.com%2Fwhat-is-a-columnar-database-and-why-is-it-strong-for-writes-012bf9c032a3&source=post_page---top_nav_layout_nav-----------------------global_nav------------------)
+
+[](https://medium.com/?source=post_page---top_nav_layout_nav-----------------------------------------)
+
+Get app
+
+[Write](https://medium.com/m/signin?operation=register&redirect=https%3A%2F%2Fmedium.com%2Fnew-story&source=---top_nav_layout_nav-----------------------new_post_topnav------------------)
+
+[Search](https://medium.com/search?source=post_page---top_nav_layout_nav-----------------------------------------)
+
+Sign up
+
+[Sign in](https://medium.com/m/signin?operation=login&redirect=https%3A%2F%2Ftomoharutsutsumi.medium.com%2Fwhat-is-a-columnar-database-and-why-is-it-strong-for-writes-012bf9c032a3&source=post_page---top_nav_layout_nav-----------------------global_nav------------------)
+
+![Image 3](https://miro.medium.com/v2/resize:fill:32:32/1*dmbNkD5D-u45r44go_cf0g.png)
+
+Press enter or click to view image in full size
+
+![Image 4](https://miro.medium.com/v2/resize:fit:700/1*gHqsYEvWx7GGc9nBW0NWzw.jpeg)
+
+# What is a Columnar Database and Why is it Strong for Writes?
+
+[![Image 5: Tomoharu Tsutsumi](https://miro.medium.com/v2/resize:fill:32:32/1*d801ZEUDK4XchMzj4ZnLHQ.png)](http://tomoharutsutsumi.medium.com/?source=post_page---byline--012bf9c032a3---------------------------------------)
+
+[Tomoharu Tsutsumi](http://tomoharutsutsumi.medium.com/?source=post_page---byline--012bf9c032a3---------------------------------------)
+
+Follow
+
+4 min read
+
+·
+
+Dec 22, 2024
+
+[](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fvote%2Fp%2F012bf9c032a3&operation=register&redirect=https%3A%2F%2Ftomoharutsutsumi.medium.com%2Fwhat-is-a-columnar-database-and-why-is-it-strong-for-writes-012bf9c032a3&user=Tomoharu+Tsutsumi&userId=1512d7702c9a&source=---header_actions--012bf9c032a3---------------------clap_footer------------------)
+
+1
+
+[](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2F012bf9c032a3&operation=register&redirect=https%3A%2F%2Ftomoharutsutsumi.medium.com%2Fwhat-is-a-columnar-database-and-why-is-it-strong-for-writes-012bf9c032a3&source=---header_actions--012bf9c032a3---------------------bookmark_footer------------------)
+
+[Listen](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2Fplans%3Fdimension%3Dpost_audio_button%26postId%3D012bf9c032a3&operation=register&redirect=https%3A%2F%2Ftomoharutsutsumi.medium.com%2Fwhat-is-a-columnar-database-and-why-is-it-strong-for-writes-012bf9c032a3&source=---header_actions--012bf9c032a3---------------------post_audio_button------------------)
+
+Share
+
+A **columnar database** is a type of database that stores data by columns rather than rows. Unlike traditional row-oriented databases (such as MySQL or PostgreSQL), which organize data row by row, columnar databases group all the values of a specific column together. This approach has significant implications for performance, particularly in analytics and write-heavy workloads.
+
+## How a Columnar Database Works
+
+In a row-oriented database, data for a table is stored sequentially by row. For example, consider a table with the following structure:
+
+ID Name Age City 1 Alice 30 New York 2 Bob 25 Chicago
+
+In a row-oriented database, the storage would look like this:
+
+1, Alice, 30, New York; 2, Bob, 25, Chicago
+In a columnar database, the same data would be stored by column:
+
+ID: 1, 2; Name: Alice, Bob; Age: 30, 25; City: New York, Chicago
+This column-oriented structure drastically changes how data is read, written, and processed, making columnar databases uniquely suited for specific use cases.
+
+## Why Columnar Databases Are Strong for Writes
+
+### 1. Efficient Batch Writes
+
+Columnar databases handle data writes efficiently by appending values to columns in batches. When new data is inserted, the system writes it column by column rather than row by row. This batching reduces overhead and allows for high-throughput writes.
+
+**Example**: In a scenario where new log entries are continuously added, a columnar database can append values to the “Timestamp” and “Log Message” columns independently, avoiding unnecessary operations on unrelated columns.
+
+### 2. Reduced I/O Overhead
+
+Writing data in a columnar format minimizes the amount of disk I/O. Instead of accessing and modifying entire rows, only the relevant columns are updated or appended. This optimization reduces the volume of data written to disk, which is especially beneficial for large datasets.
+
+**Benefit**: Lower I/O requirements lead to faster write operations and better scalability for write-heavy applications.
+
+### 3. High Compression Ratios
+
+Columnar databases achieve high levels of compression because values in a single column often share similar data types and patterns. This reduces the storage space required and accelerates write operations by minimizing the amount of data that needs to be physically written.
+
+**Example**: A “Gender” column with values “M” and “F” can be compressed efficiently, even for millions of records.
+
+### 4. Parallel Writes
+
+Columnar databases often support parallelism, enabling multiple columns to be written to simultaneously. This makes them highly effective for handling large-scale, concurrent data ingestion scenarios.
+
+## Get Tomoharu Tsutsumi’s stories in your inbox
+
+Join Medium for free to get updates from this writer.
+
+Subscribe
+
+Subscribe
+
+- [x] 
+
+Remember me for faster sign in
+
+ 
+
+**Example**: In an IoT application collecting sensor readings, parallel writes allow different sensor data (e.g., temperature, humidity, pressure) to be ingested simultaneously into their respective columns.
+
+### 5. Write-Ahead Logging (WAL) and Batching
+
+Many columnar databases implement write-ahead logging (WAL) or similar techniques to ensure data integrity during writes. Data is initially stored in memory and then committed to disk in batches, reducing the overhead of frequent writes and ensuring consistency.
+
+**Benefit**: This approach balances fast write performance with reliable data storage.
+
+### 6. Optimized for Append-Only Workloads
+
+Columnar databases excel in append-only scenarios, where new data is continually added rather than frequently updated or deleted. This is common in applications like logging, analytics, and time-series data.
+
+**Example**: A financial system recording stock prices can append new prices to the “Price” column without altering historical data.
+
+## Use Cases for Columnar Databases in Write-Heavy Scenarios
+
+**Real-Time Analytics**
+
+*   Columnar databases handle the rapid ingestion of data for real-time dashboards and reporting tools.
+*   **Example**: Clickstream data analysis for e-commerce platforms.
+
+**Time-Series Data**
+
+*   Time-series databases like InfluxDB, which use a columnar structure, excel at storing continuous data streams such as IoT sensor readings or log data.
+
+**Data Warehousing**
+
+*   Columnar databases like Amazon Redshift and Google BigQuery are designed for fast data loading and analytics, making them ideal for ETL (Extract, Transform, Load) processes.
+
+## Limitations of Columnar Databases for Writes
+
+While columnar databases are strong in write-heavy scenarios, they are not universally ideal. For example:
+
+*   **Transactional Workloads**: Frequent updates or deletes to individual rows can be inefficient due to the columnar structure.
+*   **Complex Joins**: While excellent for aggregations and analytics, columnar databases may underperform for queries requiring complex joins compared to row-oriented databases.
+
+## Conclusion
+
+Columnar databases are a powerful choice for write-heavy applications that require high-throughput data ingestion, such as real-time analytics, time-series data, and large-scale data warehousing. Their ability to handle efficient batch writes, reduce I/O, compress data, and support parallelism makes them an essential tool for modern data-driven workloads. However, understanding their limitations ensures they are applied to the right scenarios, maximizing their strengths in write performance.
+
+### Feel free to reach out to me on LinkedIn, which you can find below. Looking forward to connecting!
+
+### [https://www.linkedin.com/in/tomoharu-tsutsumi-56051a126/](https://www.linkedin.com/in/tomoharu-tsutsumi-56051a126/)
+
+[Distributed Systems](https://medium.com/tag/distributed-systems?source=post_page-----012bf9c032a3---------------------------------------)
+
+[System Design Interview](https://medium.com/tag/system-design-interview?source=post_page-----012bf9c032a3---------------------------------------)
+
+[](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fvote%2Fp%2F012bf9c032a3&operation=register&redirect=https%3A%2F%2Ftomoharutsutsumi.medium.com%2Fwhat-is-a-columnar-database-and-why-is-it-strong-for-writes-012bf9c032a3&user=Tomoharu+Tsutsumi&userId=1512d7702c9a&source=---footer_actions--012bf9c032a3---------------------clap_footer------------------)
+
+1
+
+[](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fvote%2Fp%2F012bf9c032a3&operation=register&redirect=https%3A%2F%2Ftomoharutsutsumi.medium.com%2Fwhat-is-a-columnar-database-and-why-is-it-strong-for-writes-012bf9c032a3&user=Tomoharu+Tsutsumi&userId=1512d7702c9a&source=---footer_actions--012bf9c032a3---------------------clap_footer------------------)
+
+1
+
+[](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2F012bf9c032a3&operation=register&redirect=https%3A%2F%2Ftomoharutsutsumi.medium.com%2Fwhat-is-a-columnar-database-and-why-is-it-strong-for-writes-012bf9c032a3&source=---footer_actions--012bf9c032a3---------------------bookmark_footer------------------)
+
+[![Image 6: Tomoharu Tsutsumi](https://miro.medium.com/v2/resize:fill:48:48/1*d801ZEUDK4XchMzj4ZnLHQ.png)](http://tomoharutsutsumi.medium.com/?source=post_page---post_author_info--012bf9c032a3---------------------------------------)
+
+[![Image 7: Tomoharu Tsutsumi](https://miro.medium.com/v2/resize:fill:64:64/1*d801ZEUDK4XchMzj4ZnLHQ.png)](http://tomoharutsutsumi.medium.com/?source=post_page---post_author_info--012bf9c032a3---------------------------------------)
+
+Follow
+
+## [Written by Tomoharu Tsutsumi](http://tomoharutsutsumi.medium.com/?source=post_page---post_author_info--012bf9c032a3---------------------------------------)
+
+[65 followers](http://tomoharutsutsumi.medium.com/followers?source=post_page---post_author_info--012bf9c032a3---------------------------------------)
+
+·[65 following](http://tomoharutsutsumi.medium.com/following?source=post_page---post_author_info--012bf9c032a3---------------------------------------)
+
+6+ years SWE (Ruby, Go, Python, TypeScript, JavaScript) | Applied AI Engineer
+
+Follow
+
+## No responses yet
+
+[](https://policy.medium.com/medium-rules-30e5502c4eb4?source=post_page---post_responses--012bf9c032a3---------------------------------------)
+
+![Image 8](https://miro.medium.com/v2/resize:fill:32:32/1*dmbNkD5D-u45r44go_cf0g.png)
+
+Write a response
+
+[What are your thoughts?](https://medium.com/m/signin?operation=register&redirect=https%3A%2F%2Ftomoharutsutsumi.medium.com%2Fwhat-is-a-columnar-database-and-why-is-it-strong-for-writes-012bf9c032a3&source=---post_responses--012bf9c032a3---------------------respond_sidebar------------------)
+
+Cancel
+
+Respond
+
+## More from Tomoharu Tsutsumi
+
+![Image 9: Foundations of Linear Algebra for Machine Learning Beginners](https://miro.medium.com/v2/resize:fit:679/format:webp/1*gHqsYEvWx7GGc9nBW0NWzw.jpeg)
+
+[![Image 10: Tomoharu Tsutsumi](https://miro.medium.com/v2/resize:fill:20:20/1*d801ZEUDK4XchMzj4ZnLHQ.png)](http://tomoharutsutsumi.medium.com/?source=post_page---author_recirc--012bf9c032a3----0---------------------759e6ef9_85d5_47a0_9f1c_f4a4c9ada72d--------------)
+
+[Tomoharu Tsutsumi](http://tomoharutsutsumi.medium.com/?source=post_page---author_recirc--012bf9c032a3----0---------------------759e6ef9_85d5_47a0_9f1c_f4a4c9ada72d--------------)
+
+## [The Over-Optimization Trap: Why I Uninstalled My AI Token Optimizer ### Don’t Guess, Measure: How a 4.5MB "Chaos Test" proved that native AI CLI safeguards beat third-party compression.](http://tomoharutsutsumi.medium.com/the-over-optimization-trap-why-i-uninstalled-my-ai-token-optimizer-399fb68c5f7e?source=post_page---author_recirc--012bf9c032a3----0---------------------759e6ef9_85d5_47a0_9f1c_f4a4c9ada72d--------------)
+
+Apr 7
+
+[5](http://tomoharutsutsumi.medium.com/the-over-optimization-trap-why-i-uninstalled-my-ai-token-optimizer-399fb68c5f7e?source=post_page---author_recirc--012bf9c032a3----0---------------------759e6ef9_85d5_47a0_9f1c_f4a4c9ada72d--------------)
+
+[](https://medium.com/m/signin?operation=register&redirect=https%3A%2F%2Ftomoharutsutsumi.medium.com%2Fwhat-is-a-columnar-database-and-why-is-it-strong-for-writes-012bf9c032a3&source=---author_recirc--012bf9c032a3----0-----------------explicit_signal----759e6ef9_85d5_47a0_9f1c_f4a4c9ada72d--------------)
+
+[](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2F399fb68c5f7e&operation=register&redirect=https%3A%2F%2Ftomoharutsutsumi.medium.com%2Fthe-over-optimization-trap-why-i-uninstalled-my-ai-token-optimizer-399fb68c5f7e&source=---author_recirc--012bf9c032a3----0-----------------bookmark_preview----759e6ef9_85d5_47a0_9f1c_f4a4c9ada72d--------------)
+
+![Image 11: B-tree Indexes, the Left-Most Rule, and Why Postgres 18’s Skip Scan Is a Big Deal](https://miro.medium.com/v2/resize:fit:679/format:webp/1*6IeLDvx2K1JsGgQ8Um-nbQ.png)
+
+[![Image 12: Tomoharu Tsutsumi](https://miro.medium.com/v2/resize:fill:20:20/1*d801ZEUDK4XchMzj4ZnLHQ.png)](http://tomoharutsutsumi.medium.com/?source=post_page---author_recirc--012bf9c032a3----1---------------------759e6ef9_85d5_47a0_9f1c_f4a4c9ada72d--------------)
+
+[Tomoharu Tsutsumi](http://tomoharutsutsumi.medium.com/?source=post_page---author_recirc--012bf9c032a3----1---------------------759e6ef9_85d5_47a0_9f1c_f4a4c9ada72d--------------)
+
+## [B-tree Indexes, the Left-Most Rule, and Why Postgres 18’s Skip Scan Is a Big Deal ### TL;DR: A multicolumn B-tree is physically ordered by its left-most prefix (e.g., (col1, col2, col3) sorts by col1 → col2 → col3). Before…](http://tomoharutsutsumi.medium.com/b-tree-indexes-the-left-most-rule-and-why-postgres-18s-skip-scan-is-a-big-deal-885f42467d08?source=post_page---author_recirc--012bf9c032a3----1---------------------759e6ef9_85d5_47a0_9f1c_f4a4c9ada72d--------------)
+
+Sep 24, 2025
+
+[2](http://tomoharutsutsumi.medium.com/b-tree-indexes-the-left-most-rule-and-why-postgres-18s-skip-scan-is-a-big-deal-885f42467d08?source=post_page---author_recirc--012bf9c032a3----1---------------------759e6ef9_85d5_47a0_9f1c_f4a4c9ada72d--------------)
+
+[](https://medium.com/m/signin?operation=register&redirect=https%3A%2F%2Ftomoharutsutsumi.medium.com%2Fwhat-is-a-columnar-database-and-why-is-it-strong-for-writes-012bf9c032a3&source=---author_recirc--012bf9c032a3----1-----------------explicit_signal----759e6ef9_85d5_47a0_9f1c_f4a4c9ada72d--------------)
+
+[](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2F885f42467d08&operation=register&redirect=https%3A%2F%2Ftomoharutsutsumi.medium.com%2Fb-tree-indexes-the-left-most-rule-and-why-postgres-18s-skip-scan-is-a-big-deal-885f42467d08&source=---author_recirc--012bf9c032a3----1-----------------bookmark_preview----759e6ef9_85d5_47a0_9f1c_f4a4c9ada72d--------------)
+
+![Image 13: You must use “git mv” when you change a file name](https://miro.medium.com/v2/resize:fit:679/format:webp/1*TOKPCFkzcOxUemntQxt-nQ.png)
+
+[![Image 14: Tomoharu Tsutsumi](https://miro.medium.com/v2/resize:fill:20:20/1*d801ZEUDK4XchMzj4ZnLHQ.png)](http://tomoharutsutsumi.medium.com/?source=post_page---author_recirc--012bf9c032a3----2---------------------759e6ef9_85d5_47a0_9f1c_f4a4c9ada72d--------------)
+
+[Tomoharu Tsutsumi](http://tomoharutsutsumi.medium.com/?source=post_page---author_recirc--012bf9c032a3----2---------------------759e6ef9_85d5_47a0_9f1c_f4a4c9ada72d--------------)
+
+## [You must use “git mv” when you change a file name ### When you changed a file name, but it was not reflected to git, you should read this article.](http://tomoharutsutsumi.medium.com/you-must-use-git-mv-when-you-change-a-file-name-62f5f1e2f867?source=post_page---author_recirc--012bf9c032a3----2---------------------759e6ef9_85d5_47a0_9f1c_f4a4c9ada72d--------------)
+
+Dec 8, 2019
+
+[](http://tomoharutsutsumi.medium.com/you-must-use-git-mv-when-you-change-a-file-name-62f5f1e2f867?source=post_page---author_recirc--012bf9c032a3----2---------------------759e6ef9_85d5_47a0_9f1c_f4a4c9ada72d--------------)
+
+[](https://medium.com/m/signin?operation=register&redirect=https%3A%2F%2Ftomoharutsutsumi.medium.com%2Fwhat-is-a-columnar-database-and-why-is-it-strong-for-writes-012bf9c032a3&source=---author_recirc--012bf9c032a3----2-----------------explicit_signal----759e6ef9_85d5_47a0_9f1c_f4a4c9ada72d--------------)
+
+[](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2F62f5f1e2f867&operation=register&redirect=https%3A%2F%2Ftomoharutsutsumi.medium.com%2Fyou-must-use-git-mv-when-you-change-a-file-name-62f5f1e2f867&source=---author_recirc--012bf9c032a3----2-----------------bookmark_preview----759e6ef9_85d5_47a0_9f1c_f4a4c9ada72d--------------)
+
+![Image 15: Foundations of Linear Algebra for Machine Learning Beginners](https://miro.medium.com/v2/resize:fit:679/format:webp/1*gHqsYEvWx7GGc9nBW0NWzw.jpeg)
+
+[![Image 16: Tomoharu Tsutsumi](https://miro.medium.com/v2/resize:fill:20:20/1*d801ZEUDK4XchMzj4ZnLHQ.png)](http://tomoharutsutsumi.medium.com/?source=post_page---author_recirc--012bf9c032a3----3---------------------759e6ef9_85d5_47a0_9f1c_f4a4c9ada72d--------------)
+
+[Tomoharu Tsutsumi](http://tomoharutsutsumi.medium.com/?source=post_page---author_recirc--012bf9c032a3----3---------------------759e6ef9_85d5_47a0_9f1c_f4a4c9ada72d--------------)
+
+## [Foundations of Linear Algebra for Machine Learning Beginners ### Demystifying vectors, matrices, and linear transformations for aspiring machine learning practitioners](http://tomoharutsutsumi.medium.com/foundations-of-linear-algebra-for-machine-learning-beginners-7397ea5f376f?source=post_page---author_recirc--012bf9c032a3----3---------------------759e6ef9_85d5_47a0_9f1c_f4a4c9ada72d--------------)
+
+Jul 14, 2025
+
+[5](http://tomoharutsutsumi.medium.com/foundations-of-linear-algebra-for-machine-learning-beginners-7397ea5f376f?source=post_page---author_recirc--012bf9c032a3----3---------------------759e6ef9_85d5_47a0_9f1c_f4a4c9ada72d--------------)
+
+[](https://medium.com/m/signin?operation=register&redirect=https%3A%2F%2Ftomoharutsutsumi.medium.com%2Fwhat-is-a-columnar-database-and-why-is-it-strong-for-writes-012bf9c032a3&source=---author_recirc--012bf9c032a3----3-----------------explicit_signal----759e6ef9_85d5_47a0_9f1c_f4a4c9ada72d--------------)
+
+[](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2F7397ea5f376f&operation=register&redirect=https%3A%2F%2Ftomoharutsutsumi.medium.com%2Ffoundations-of-linear-algebra-for-machine-learning-beginners-7397ea5f376f&source=---author_recirc--012bf9c032a3----3-----------------bookmark_preview----759e6ef9_85d5_47a0_9f1c_f4a4c9ada72d--------------)
+
+[See all from Tomoharu Tsutsumi](http://tomoharutsutsumi.medium.com/?source=post_page---author_recirc--012bf9c032a3---------------------------------------)
+
+## Recommended from Medium
+
+![Image 17: Building a Ticketing System: Concurrency, Locks, and Race Conditions](https://miro.medium.com/v2/resize:fit:679/format:webp/1*kHmNBOqo5a14TpOC7A119w.png)
+
+[![Image 18: Arvind Kumar](https://miro.medium.com/v2/resize:fill:20:20/1*qLgT62h04Vn1WA1vdYL9lg.png)](https://codefarm0.medium.com/?source=post_page---read_next_recirc--012bf9c032a3----0---------------------d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+[Arvind Kumar](https://codefarm0.medium.com/?source=post_page---read_next_recirc--012bf9c032a3----0---------------------d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+## [Building a Ticketing System: Concurrency, Locks, and Race Conditions ### What happens when 100,000 fans try to book the same concert ticket at exactly 10:00 AM? Let’s design a ticketing system that prevents…](https://codefarm0.medium.com/building-a-ticketing-system-concurrency-locks-and-race-conditions-182e0932d962?source=post_page---read_next_recirc--012bf9c032a3----0---------------------d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+Oct 30, 2025
+
+[2.2K 24](https://codefarm0.medium.com/building-a-ticketing-system-concurrency-locks-and-race-conditions-182e0932d962?source=post_page---read_next_recirc--012bf9c032a3----0---------------------d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+[](https://medium.com/m/signin?operation=register&redirect=https%3A%2F%2Ftomoharutsutsumi.medium.com%2Fwhat-is-a-columnar-database-and-why-is-it-strong-for-writes-012bf9c032a3&source=---read_next_recirc--012bf9c032a3----0-----------------explicit_signal----d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+[](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2F182e0932d962&operation=register&redirect=https%3A%2F%2Fcodefarm0.medium.com%2Fbuilding-a-ticketing-system-concurrency-locks-and-race-conditions-182e0932d962&source=---read_next_recirc--012bf9c032a3----0-----------------bookmark_preview----d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+![Image 19: Stop Memorizing Design Patterns: Use This Decision Tree Instead](https://miro.medium.com/v2/resize:fit:679/format:webp/1*xfboC-sVIT2hzWkgQZT_7w.png)
+
+[![Image 20: Women in Technology](https://miro.medium.com/v2/resize:fill:20:20/1*kd0DvPkLdn59Emtg_rnsqg.png)](https://medium.com/womenintechnology?source=post_page---read_next_recirc--012bf9c032a3----1---------------------d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+In
+
+[Women in Technology](https://medium.com/womenintechnology?source=post_page---read_next_recirc--012bf9c032a3----1---------------------d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+by
+
+[Alina Kovtun✨](https://medium.com/@akovtun?source=post_page---read_next_recirc--012bf9c032a3----1---------------------d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+## [Stop Memorizing Design Patterns: Use This Decision Tree Instead ### Choose design patterns based on pain points: apply the right pattern with minimal over-engineering in any OO language.](https://medium.com/@akovtun/stop-memorizing-design-patterns-use-this-decision-tree-instead-e84f22fca9fa?source=post_page---read_next_recirc--012bf9c032a3----1---------------------d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+Jan 29
+
+[7.5K 80](https://medium.com/@akovtun/stop-memorizing-design-patterns-use-this-decision-tree-instead-e84f22fca9fa?source=post_page---read_next_recirc--012bf9c032a3----1---------------------d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+[](https://medium.com/m/signin?operation=register&redirect=https%3A%2F%2Ftomoharutsutsumi.medium.com%2Fwhat-is-a-columnar-database-and-why-is-it-strong-for-writes-012bf9c032a3&source=---read_next_recirc--012bf9c032a3----1-----------------explicit_signal----d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+[](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2Fe84f22fca9fa&operation=register&redirect=https%3A%2F%2Fmedium.com%2Fwomenintechnology%2Fstop-memorizing-design-patterns-use-this-decision-tree-instead-e84f22fca9fa&source=---read_next_recirc--012bf9c032a3----1-----------------bookmark_preview----d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+![Image 21: LinkedIn Is Replacing Kafka — Here’s Why the Streaming Giant is Moving On](https://miro.medium.com/v2/resize:fit:679/format:webp/1*C0uiWyOndIvcr3x6SMiavw.jpeg)
+
+[![Image 22: Cloud With Azeem](https://miro.medium.com/v2/resize:fill:20:20/1*oJWwUx75Cf5oGoEfAefJpw.png)](https://cloudwithazeem.medium.com/?source=post_page---read_next_recirc--012bf9c032a3----0---------------------d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+[Cloud With Azeem](https://cloudwithazeem.medium.com/?source=post_page---read_next_recirc--012bf9c032a3----0---------------------d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+## [LinkedIn Is Replacing Kafka — Here’s Why the Streaming Giant is Moving On ### Inside LinkedIn’s Bold Move to a New Data Pipeline That Could Change the Future of Real-Time Streaming](https://cloudwithazeem.medium.com/linkedin-kafka-replacement-new-streaming-system-76e56073eb97?source=post_page---read_next_recirc--012bf9c032a3----0---------------------d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+Jan 3
+
+[1.3K 28](https://cloudwithazeem.medium.com/linkedin-kafka-replacement-new-streaming-system-76e56073eb97?source=post_page---read_next_recirc--012bf9c032a3----0---------------------d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+[](https://medium.com/m/signin?operation=register&redirect=https%3A%2F%2Ftomoharutsutsumi.medium.com%2Fwhat-is-a-columnar-database-and-why-is-it-strong-for-writes-012bf9c032a3&source=---read_next_recirc--012bf9c032a3----0-----------------explicit_signal----d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+[](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2F76e56073eb97&operation=register&redirect=https%3A%2F%2Fcloudwithazeem.medium.com%2Flinkedin-kafka-replacement-new-streaming-system-76e56073eb97&source=---read_next_recirc--012bf9c032a3----0-----------------bookmark_preview----d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+![Image 23: I Failed 47 System Design Interviews — Then One Netflix Engineer Changed Everything](https://miro.medium.com/v2/resize:fit:679/format:webp/1*ZT2SRcl-B_zZuZ0qC5EpxA.png)
+
+[![Image 24: Beyond Localhost](https://miro.medium.com/v2/resize:fill:20:20/1*Epip3TbXmKn3C-fXKNDebw.png)](https://medium.com/beyond-localhost?source=post_page---read_next_recirc--012bf9c032a3----1---------------------d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+In
+
+[Beyond Localhost](https://medium.com/beyond-localhost?source=post_page---read_next_recirc--012bf9c032a3----1---------------------d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+by
+
+[The Speedcraft Lab](https://medium.com/@speedcraft21?source=post_page---read_next_recirc--012bf9c032a3----1---------------------d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+## [I Failed 47 System Design Interviews — Then One Netflix Engineer Changed Everything ### A single shift in how I framed scalability turned rejection into three competing offers in thirty days.](https://medium.com/@speedcraft21/i-failed-47-system-design-interviews-then-one-netflix-engineer-changed-everything-f1a44709eb86?source=post_page---read_next_recirc--012bf9c032a3----1---------------------d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+Nov 5, 2025
+
+[4K 85](https://medium.com/@speedcraft21/i-failed-47-system-design-interviews-then-one-netflix-engineer-changed-everything-f1a44709eb86?source=post_page---read_next_recirc--012bf9c032a3----1---------------------d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+[](https://medium.com/m/signin?operation=register&redirect=https%3A%2F%2Ftomoharutsutsumi.medium.com%2Fwhat-is-a-columnar-database-and-why-is-it-strong-for-writes-012bf9c032a3&source=---read_next_recirc--012bf9c032a3----1-----------------explicit_signal----d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+[](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2Ff1a44709eb86&operation=register&redirect=https%3A%2F%2Fmedium.com%2Fbeyond-localhost%2Fi-failed-47-system-design-interviews-then-one-netflix-engineer-changed-everything-f1a44709eb86&source=---read_next_recirc--012bf9c032a3----1-----------------bookmark_preview----d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+![Image 25: I Failed Uber’s System Design Interview Last Month. Here’s Every Question They Asked.](https://miro.medium.com/v2/resize:fit:679/format:webp/1*qsLQ4rhh17G52gAwXbP4ww.png)
+
+[![Image 26: Emily](https://miro.medium.com/v2/resize:fill:20:20/1*vUnVpbjypEdq0szgnzikkA.png)](https://medium.com/@emilyhustlenyc?source=post_page---read_next_recirc--012bf9c032a3----2---------------------d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+[Emily](https://medium.com/@emilyhustlenyc?source=post_page---read_next_recirc--012bf9c032a3----2---------------------d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+## [I Failed Uber’s System Design Interview Last Month. Here’s Every Question They Asked. ### It was much harder and the rejection email taught me more than any LeetCode grind ever could.](https://medium.com/@emilyhustlenyc/i-failed-ubers-system-design-interview-last-month-here-s-every-question-they-asked-bdaf1bd6e64b?source=post_page---read_next_recirc--012bf9c032a3----2---------------------d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+Feb 20
+
+[2K 46](https://medium.com/@emilyhustlenyc/i-failed-ubers-system-design-interview-last-month-here-s-every-question-they-asked-bdaf1bd6e64b?source=post_page---read_next_recirc--012bf9c032a3----2---------------------d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+[](https://medium.com/m/signin?operation=register&redirect=https%3A%2F%2Ftomoharutsutsumi.medium.com%2Fwhat-is-a-columnar-database-and-why-is-it-strong-for-writes-012bf9c032a3&source=---read_next_recirc--012bf9c032a3----2-----------------explicit_signal----d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+[](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2Fbdaf1bd6e64b&operation=register&redirect=https%3A%2F%2Fmedium.com%2F%40emilyhustlenyc%2Fi-failed-ubers-system-design-interview-last-month-here-s-every-question-they-asked-bdaf1bd6e64b&source=---read_next_recirc--012bf9c032a3----2-----------------bookmark_preview----d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+![Image 27: Common Interview Questions for a Senior Backend Engineer Role](https://miro.medium.com/v2/resize:fit:679/format:webp/0*w5m2eWu-cTAbXOlO)
+
+[![Image 28: Kancer (Nilay) Gökırmak](https://miro.medium.com/v2/resize:fill:20:20/1*xnt9RXDQUNeaZmOydwLuWA.jpeg)](https://kancergokirmak.medium.com/?source=post_page---read_next_recirc--012bf9c032a3----3---------------------d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+[Kancer (Nilay) Gökırmak](https://kancergokirmak.medium.com/?source=post_page---read_next_recirc--012bf9c032a3----3---------------------d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+## [Common Interview Questions for a Senior Backend Engineer Role ### A year ago, while I was job hunting, I prepared a set of questions to prepare myself for interviews. I used ChatGPT (of course!). None of…](https://kancergokirmak.medium.com/common-interview-questions-for-a-senior-backend-engineer-role-8259c175bd4a?source=post_page---read_next_recirc--012bf9c032a3----3---------------------d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+Oct 20, 2025
+
+[3 1](https://kancergokirmak.medium.com/common-interview-questions-for-a-senior-backend-engineer-role-8259c175bd4a?source=post_page---read_next_recirc--012bf9c032a3----3---------------------d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+[](https://medium.com/m/signin?operation=register&redirect=https%3A%2F%2Ftomoharutsutsumi.medium.com%2Fwhat-is-a-columnar-database-and-why-is-it-strong-for-writes-012bf9c032a3&source=---read_next_recirc--012bf9c032a3----3-----------------explicit_signal----d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+[](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2F8259c175bd4a&operation=register&redirect=https%3A%2F%2Fkancergokirmak.medium.com%2Fcommon-interview-questions-for-a-senior-backend-engineer-role-8259c175bd4a&source=---read_next_recirc--012bf9c032a3----3-----------------bookmark_preview----d6a624a7_8ce9_470d_8bd2_28335b41f5f6--------------)
+
+[See more recommendations](https://medium.com/?source=post_page---read_next_recirc--012bf9c032a3---------------------------------------)
+
+[Help](https://help.medium.com/hc/en-us?source=post_page-----012bf9c032a3---------------------------------------)
+
+[Status](https://status.medium.com/?source=post_page-----012bf9c032a3---------------------------------------)
+
+[About](https://medium.com/about?autoplay=1&source=post_page-----012bf9c032a3---------------------------------------)
+
+[Careers](https://medium.com/jobs-at-medium/work-at-medium-959d1a85284e?source=post_page-----012bf9c032a3---------------------------------------)
+
+[Press](mailto:pressinquiries@medium.com)
+
+[Blog](https://blog.medium.com/?source=post_page-----012bf9c032a3---------------------------------------)
+
+[Privacy](https://policy.medium.com/medium-privacy-policy-f03bf92035c9?source=post_page-----012bf9c032a3---------------------------------------)
+
+[Rules](https://policy.medium.com/medium-rules-30e5502c4eb4?source=post_page-----012bf9c032a3---------------------------------------)
+
+[Terms](https://policy.medium.com/medium-terms-of-service-9db0094a1e0f?source=post_page-----012bf9c032a3---------------------------------------)
+
+[Text to speech](https://speechify.com/medium?source=post_page-----012bf9c032a3---------------------------------------)

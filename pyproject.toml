@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "anti-alecto"
+version = "0.1.0"
+description = "Tame the tab fury — capture, triage, scrape, and store browser tabs"
+requires-python = ">=3.11"
+dependencies = [
+    "flatagents>=2.0.0,<3.0.0",
+    "flatmachines>=2.0.0,<3.0.0",
+    "litellm>=1.0.0",
+    "playwright>=1.40.0",
+    "trafilatura>=1.6.0",
+    "pyyaml>=6.0",
+]
+
+[project.scripts]
+aa = "anti_alecto.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["anti_alecto*"]

@@ -1,0 +1,86 @@
+# Using Terminal Coding Agents from Emacs
+
+I have been using terminal coding agents from Emacs, mostly through `vterm`.
+This setup has been tested with Claude and Codex, though in practice I use Codex more.
+This repo is a small record of the pieces that made that setup workable for me:
+
+- a `bubblewrap` launcher so each project gets its own writable sandbox
+- a GPU-enabled variant of the same launcher
+
+This is not meant to be a full product guide. It is just the setup I found useful.
+
+## Why Emacs and `vterm`
+
+The main benefit is that I can stay in the editor while still talking to terminal-first tools.
+That gives me:
+
+- normal Emacs editing, search, and window management
+- a real terminal for agent CLIs
+- easy movement between source buffers and the agent session
+
+For this kind of workflow, `vterm` is a much better fit than trying to fake a shell inside an ordinary Emacs buffer.
+
+## Why I wanted a sandbox
+
+Terminal coding agents are useful precisely because they can inspect and modify a repo.
+That also means they should not run in my full login environment by default.
+
+What I wanted was:
+
+- the current project mounted read-write
+- a private project-local home directory
+- access to the host-installed CLI tools
+- shared login state for the agents, but not shared per-project caches and history
+
+That is what `bub.sh` is doing.
+
+## `bub.sh`
+
+[`bub.sh`](./bub.sh) launches a shell inside `bubblewrap` with:
+
+- `/workspace` bound to the current repo
+- `/home/sandbox` bound to a project-local `.bwrap-home`
+- most of the host OS mounted read-only
+- capabilities dropped
+- Codex and Claude auth files shared from the real home directory
+- other agent state left project-local
+
+The key idea is that authentication is shared, but operational state is isolated per repo.
+That makes it much easier to use both tools across multiple projects without having them step on each other's local state.
+
+Typical usage is just:
+
+```bash
+cd my-repo
+bub.sh
+```
+
+and then starting the agent CLI from inside that shell.
+
+## `bub-gpu.sh`
+
+[`bub-gpu.sh`](./bub-gpu.sh) is the same basic idea, but with NVIDIA device nodes bound into the sandbox.
+
+I only need this variant when the project or tooling wants GPU visibility.
+If not, the plain version is simpler and slightly tighter.
+
+## What I like about this setup
+
+- I can stay inside Emacs
+- the agent still runs in a real terminal
+- each repo gets its own writable state
+- my login/auth state does not need to be recreated for every project
+
+## Caveats
+
+- This is still a convenience sandbox, not a formal security boundary
+- terminal focus and paste behavior still matter
+- some tools behave differently on Wayland vs X11
+- GPU passthrough needs the dedicated wrapper
+
+## Files
+
+- [`bub.sh`](./bub.sh)
+- [`bub-gpu.sh`](./bub-gpu.sh)
+
+If you already live in Emacs and prefer terminal-based coding agents, this is a practical place to start.

@@ -1,0 +1,28 @@
+×
+Open review
+Collaborative reading
+Get involved
+Shape the academic review process of our time: open, social, collaborative
+Tackle the paper onslaught with your peers
+Read, rate, and comment. And join the conversation
+| Comments |
+|---|
+|
+|
+- About |
+- Getting started |
+- Blog |
+x
+About PaperRater.org
+Programming by Peter Melchior
+If you are interested in the project and want to help, contact me on Twitter or at
+.
+CSS library: Bootstrap
+JS frameworks: jQuery and Knockout.js
+Client-side navigation: Sammy.js
+LaTeX math rendering: MathJax
+PaperRater font: Yanone Kaffeesatz
+Icons: Glyphicons and IconDock
+x
+You need to login...
+...to participate in the discussions on PaperRater.org. It's free and will always be.

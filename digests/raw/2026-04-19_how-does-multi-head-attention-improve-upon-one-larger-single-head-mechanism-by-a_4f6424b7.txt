@@ -1,0 +1,202 @@
+Title: How does multi-head attention improve upon one larger single-head mechanism?
+
+URL Source: http://ameer-saleem.medium.com/how-does-multi-head-attention-improve-upon-one-larger-single-head-mechanism-674858597d36
+
+Published Time: 2026-02-01T16:14:44Z
+
+Markdown Content:
+[![Image 1: AmeerSaleem](https://miro.medium.com/v2/resize:fill:32:32/1*YF_QspzpcY2utljXymYe7A.png)](https://ameer-saleem.medium.com/?source=post_page---byline--674858597d36---------------------------------------)
+
+9 min read
+
+Feb 1, 2026
+
+_Originally published_[_here_](https://ameersaleem.substack.com/p/multi-head-attention-why-one-head?r=276bjr)_!_
+
+Press enter or click to view image in full size
+
+![Image 2](https://miro.medium.com/v2/resize:fit:700/0*2J0-0QfmsK5eWlHx.png)
+
+Hello fellow machine learners,
+
+[Last week](https://ameersaleem.substack.com/p/queries-keys-and-values-in-attention?r=276bjr), we began our discussion of the Transformer architecture described by the famous “Attention is all you need” (2017) paper. We talked about the researchers’ scaled dot-product attention mechanism end-to-end, including all the juicy maths that helps it work. It was essentially a bunch of dot products and matrix multiplications, but don’t let that fool you into thinking that it’s a simple mechanism; I had to read through the paper’s contents, alongside other relevant material, multiple times to get my head around it all.
+
+I’d strongly recommend you at least have a read of that article before this one, as we’ll be picking up right from where we left off: [link](https://ameersaleem.substack.com/p/queries-keys-and-values-in-attention)
+
+This time, we’ll begin by introducing multi-head attention, an extension of what we’ve seen so far. We’ll also go about explaining _why_ the attention mechanism as a whole is so useful in the first place, especially compared to what came before it. We’ll also do a deep-dive (maybe a bit too deep?) on a footnote from the paper.
+
+Let’s get to unpacking!
+
+## Multi-head attention
+
+The previous article described how the whole Q, K, V thing works. But it did not describe _why_ this is better than, say, the LSTM-based [Sequence-to-Sequence model from 2014](https://arxiv.org/abs/1409.3215).
+
+One benefit of the scaled dot-product attention mechanism is that it can be **parallelised**. What we’ve discussed so far is referred to as a single attention “head” in the paper. This “head” is able to (hopefully) capture how the words in the sentence are related to each other.
+
+Rather than running one large attention head, the final model from the paper splits this into a set of h=8 smaller attention heads that can be operated at the same time. What does this mean? Well, recall the matrices Q, K and V that we used to compute self-attention before:
+
+Press enter or click to view image in full size
+
+![Image 3](https://miro.medium.com/v2/resize:fit:700/0*yKuPDSYklbcZwJw8.png)
+
+For our sentence “you should subscribe to my substack”, the expression Attention(Q, K, V) represents n=6 self-attention values, each corresponding to one of the sentence’s words.
+
+For multi-head attention, we extend this by creating h=8 independent Query, Key and Value matrices, hence creating the 8 different self-attention values for each of the n=6 words in the sentence, so 48 self-attention values in total for our example. Mathematically, we can represent each attention head as
+
+Press enter or click to view image in full size
+
+![Image 4](https://miro.medium.com/v2/resize:fit:700/0*dNd6qsDyxZBbcQCf.png)
+
+These separate heads (matrices) can be concatenated together into one larger matrix. You can think of this forming a new matrix with the heads arranged side by side:
+
+Press enter or click to view image in full size
+
+![Image 5](https://miro.medium.com/v2/resize:fit:700/0*NfQraq4acmYRO_Sk.png)
+
+The argument (Q, K, V) refers to the matrices used for the original single-head attention.
+
+Note: the paper differs slightly here in its representation, explicitly stating the matrices that carry the weights for all the Queries, Keys and Values. I have not included them in this discussion just to keep the notation simpler, but it’s worth pointing out that the weights need to be incorporated in all of this in reality.
+
+Anyway, the paper provides a nice visual summary of the differences between single-head and multi-head mechanisms:
+
+Press enter or click to view image in full size
+
+![Image 6](https://miro.medium.com/v2/resize:fit:700/0*9oyK_SlVmMe4W129.png)
+
+Implementation of h=8 attention heads running at the same time (i.e. in parallel). [Source](https://arxiv.org/abs/1706.03762)
+
+Interestingly, this parallelisation had a similar computational cost to that of the original single-head attention mechanism.
+
+Wait, hang on: the multi-head version takes just as long to train? Then what was the point of doing all this?
+
+By running multiple heads at once, we allow the transformer the ability to pick up on many different patterns in the training data simultaneously. What does this mean in context? For our exemplar sentence “you should subscribe to my substack”, we might want to pick out multiple intra-sentential relationships at once:
+
+💬 The word ‘subscribe’ refers to the ‘substack’ in question. Also, ‘you’ are the one who is being advised to ‘subscribe’, while the word ‘my’ tells us who the ‘substack’ belongs to.
+
+💬 One could extract the key call-to-action from the sentence as “you… should… subscribe”.
+
+💬 Word types: ‘you’ is a personal pronoun, ‘should’ and ‘subscribe’ are verbs, ‘to’ is an adverb, ‘my’ is a determiner and ‘substack’ is a noun.
+
+In an ideal scenario, each separate attention head would “attend” to each of these relationships. But remember, as always, that deep learning is inherently a black-box science. That is, we have no guarantee that the heads will pick up on these relationships in the ways we expect/hope. Additionally, this sentence is quite simple and short on its own, so it’s possible that multiple attention heads may attend to the same patterns, which is something we wouldn’t want in practice.
+
+NB the paper’s appendix provides some visualisations of the patterns that were actually picked up by their model- I recommend checking it out if you’re interested.
+
+## Comparison to other architectures
+
+Ok fine, that explains the purpose of the multi-head approach. But it doesn’t yet explain why the transformer is better than previous architectures like, say, the LSTM-based [Sequence-to-Sequence model from 2014](https://arxiv.org/abs/1409.3215). What’s the big deal?
+
+Well, for one thing, each LSTM requires the full output from the previous LSTM cell. Namely, we cannot process multiple components of the pipeline at the same time due to dependencies across cells. Conversely, each attention head can work to learn its own set of patterns, with the independent outputs concatenated after.
+
+Another benefit of multi-head attention over traditional recurrent/convolutional techniques is the **reduction of necessary compute power for training**. For sequence length n and representation dimension d (i.e. the size of the embedding layer, size of encoder output, etc.), the paper notes the complexity of a self-attention layer as O(n 2· d), compared to that of a recurrent layer at O(n · d 2). If you haven’t seen this sort of thing before, it’s called **Big-O notation**. It provides a clean way for us to compare the runtimes of algorithms. At a high level, self-attention complexity increases quadratically with respect to sentence length, while recurrence complexity increases quadratically with respect to the representation dimension. In practice, representation dimension typically far exceeds sentence length, hence why self-attention is less computationally demanding.
+
+## Get AmeerSaleem’s stories in your inbox
+
+Join Medium for free to get updates from this writer.
+
+Remember me for faster sign in
+
+And of course, the paper provides performance metrics to back up its claims. We won’t delve into those details here, however. (But let me know if you want me to for next week 👉🏼 👈🏼)
+
+## Extra: footnote hypothesis from the paper
+
+The incredible [Neural Foundry](https://open.substack.com/users/307819638-neural-foundry?utm_source=mentions) kindly left a comment on last week’s article regarding about the √d_k normalisation and a follow-up from a footnote in the paper. Here’s what the footnote says:
+
+Press enter or click to view image in full size
+
+![Image 7](https://miro.medium.com/v2/resize:fit:700/0*zKFKRALa_un7pv3S.png)
+
+Let’s see if we can prove the claim made in the footnote. Suppose that we set up **q** and **k** as described. Recall that **q** and **k** are both d k-dimensional vectors, but considering them now as _independent,random_ vectors (each with independent constituents):
+
+Press enter or click to view image in full size
+
+![Image 8](https://miro.medium.com/v2/resize:fit:700/0*wgdfeVeG82w5JLp7.png)
+
+Our goal is to prove that the scalar random variable defined as their dot product has mean 0 and variance d k. Let’s start with the mean, which is the easier of the two to evaluate. By linearity, we can distribute the expectation over the sum. Then by the (assumed) independence of **q** and **k**, we can distribute the expectation over q_i k_i as well:
+
+Press enter or click to view image in full size
+
+![Image 9](https://miro.medium.com/v2/resize:fit:700/0*mUgNd2nf4cf0W94t.png)
+
+The bad news is that the variance is a bit more complicated. The good news, though, is that the zero mean property will be quite useful. Recall the formula for variance:
+
+Press enter or click to view image in full size
+
+![Image 10](https://miro.medium.com/v2/resize:fit:700/0*QIn6VfIGENTTYlti.png)
+
+Since the mean of the dot product is zero, we can ignore the second term. This means that the variance of **q**· **k** is in fact equal to the second moment of **q**· **k**. For the first term, we need to consider the square of the whole summation. This means that each q_i k_i term is multiplied with each q_j k_j term. Mathematically, this looks like:
+
+Press enter or click to view image in full size
+
+![Image 11](https://miro.medium.com/v2/resize:fit:700/0*ZtVDAXKPFTsfhpdm.png)
+
+To understand this part better, I think it helps to arrange the product in a grid as follows:
+
+Press enter or click to view image in full size
+
+![Image 12](https://miro.medium.com/v2/resize:fit:700/0*sw0qg_f30DRPmIBZ.png)
+
+You can think of the (i,j)th entry as the product of the ith and jth elements.
+
+There is a useful pattern here: **the diagonal elements are unique, whereas all other elements are repeated once**. For example, (q_1k_1)^2 only appears once, while q_1k_1q_2k_2 appears in the two slots next to the (q_1k_1)2 term. I have highlighted this below as an example:
+
+Press enter or click to view image in full size
+
+![Image 13](https://miro.medium.com/v2/resize:fit:700/0*I1t0266fZpCbwQ5A.png)
+
+We can consider the overall product accordingly:
+
+Press enter or click to view image in full size
+
+![Image 14](https://miro.medium.com/v2/resize:fit:700/0*gTGRb6N2G9bt3AC3.png)
+
+Why is this useful? Well, when the indices align, we can invoke the variances of **q** and **k** to help us out. We’re told in the paper that **q** and **k** each have variance 1, which I assume refers to the d_k x d_k identity matrix. The main diagonal of the variance matrix for **q** give us the variance of each element of **q** (namely, 1 in this case) and the same goes for **k**. Additionally, the mean of each vector is **0** and so all terms have mean 0. Therefore, we know the following:
+
+Press enter or click to view image in full size
+
+![Image 15](https://miro.medium.com/v2/resize:fit:700/0*EmVdYCt_6_yDNwI5.png)
+
+This will be useful in a bit. For now, let’s look at the quantity we’re interested in, the second moment of **q**· **k**:
+
+Press enter or click to view image in full size
+
+![Image 16](https://miro.medium.com/v2/resize:fit:700/0*uRGpe5UyBmYNR-ee.png)
+
+For the first term, we can appeal to the independence of the components of **q** and **k**:
+
+Press enter or click to view image in full size
+
+![Image 17](https://miro.medium.com/v2/resize:fit:700/0*A6ASZwnAo-oxGWbQ.png)
+
+As for the second, a similar independence argument can be invoked, followed by the zero mean property:
+
+Press enter or click to view image in full size
+
+![Image 18](https://miro.medium.com/v2/resize:fit:700/0*zjpCNSkd4B-jHPUG.png)
+
+And this yields the desired result, as shown below:
+
+Press enter or click to view image in full size
+
+![Image 19](https://miro.medium.com/v2/resize:fit:700/0*5ZJX4PspraALW0sp.png)
+
+And we’re done! I think it’s always a useful exercise to verify these sorts of claims. It’s also a great opportunity for me to check that I haven’t forgotten how to work with statsy proofs. I’m hoping there aren’t any glaring errors in this, but give me a shout if you spot anything.
+
+## Packing it all up
+
+That covers the main components of the multi-head attention mechanism, as well as a few other bits and pieces. Now for the usual summary:
+
+📦 A key benefit of the scaled dot-product attention mechanism is that it can be parallelised. The 2017 researcher decomposed the overall single-head mechanism into a set of 8 smaller attention heads that could operate simultaneously.
+
+📦 Although the multi-head mechanism of smaller heads had a similar computational cost to the larger single-head version, there is still benefit to the parallelised process. By running multiple heads at once, we allow the transformer the ability to pick up on many different patterns in the training data at once. The hope is that each head learns a unique pattern, the likes of which is not possible for a single-head mechanism.
+
+📦 As for something like the 2014 model, each LSTM requires the full output from the previous LSTM cell. Namely, we cannot process multiple components of the pipeline at the same time due to dependencies across cells. Conversely, each attention head can work to learn its own set of patterns, with the independent outputs concatenated after.
+
+## Training complete!
+
+I hope you enjoyed reading as much as I enjoyed writing 😁
+
+Do leave a comment if you’re unsure about anything, if you think I’ve made a mistake somewhere, or if you have a suggestion for what we should learn about next 😎
+
+Until next Sunday,
+
+Ameer

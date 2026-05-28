@@ -1,0 +1,33 @@
+TensorZero is used by companies ranging from frontier AI startups to the Fortune 10 and fuels ~1% of global LLM API spend today.
+What is TensorZero Autopilot?
+Think of it like Claude Code for LLM engineering.
+It dramatically improves the performance of LLM agents across diverse tasks:
+For example, it can:
+- Analyze millions of inferences to surface error patterns and optimization opportunities
+- Set up evaluations, prevent regressions, and align LLM judges to real-world scenarios
+- Recommend models and inference strategies to improve quality, cost, and latency
+- Generate and refine prompts based on human feedback, metrics, and evaluations
+- Drive optimization workflows like fine-tuning, reinforcement learning, and distillation
+- Run A/B tests to validate changes, identify winners, and close the feedback loop
+Learn more → Schedule a demo →
+What is the TensorZero Stack?
+TensorZero Stack is an
+- Gateway: access every LLM provider through a unified API (<1ms p99 latency)
+- Observability: monitor your LLM systems, programmatically or with a UI
+- Evaluation: benchmark individual inferences or end-to-end workflows
+- Optimization: optimize your prompts, models, and inference strategies
+- Experimentation: deploy with built-in A/B testing, fallbacks, etc.
+You can take what you need, adopt incrementally, and complement with other tools. It plays nicely with the OpenAI SDK, OpenTelemetry, and every major LLM provider.
+Our Quick Start shows how to set up a production-ready LLM application with observability and fine-tuning in just 5 minutes.
+How can I ask questions or share feedback?
+Reach out on
+Who is building TensorZero?
+- Aaron Hill: Rust compiler maintainer, OSS contributor (Rust, Lean), Svix, AWS
+- Alan Mishler: VP at J.P. Morgan AI Research, CMU PhD (stats), 1.3k+ citations
+- Andrew Jesson: Columbia postdoc and Oxford PhD (LLMs), 4k+ citations
+- Antoine Toussaint: staff SWE, quant, Stanford math professor, Princeton PhD
+- Gabriel Bianconi (CEO): CPO at Ondo Finance (DeFi decacorn), Stanford BS & MS
+- Michelle Hui: ML + product + community (Wing / Alphabet, UN), Cornell BS & MS
+- Viraj Mehta (CTO): CMU PhD (reinforcement learning), Stanford BS & MS
+We’re backed by FirstMark, Bessemer, Bedrock, and dozens of angels. See our $7.3M seed round announcement and coverage from VentureBeat.
+We’re also hiring in NYC.

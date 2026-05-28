@@ -1,0 +1,243 @@
+# GitHub issue: TheTom/llama-cpp-turboquant#45
+Title: feat: TQ4_1S weight compression (Metal only, needs CUDA port)
+State: closed
+Author: TheTom
+URL: https://github.com/TheTom/llama-cpp-turboquant/pull/45
+
+## Body
+## Summary
+
+- TQ3_1S (3-bit, 4.0 BPW) and TQ4_1S (4-bit, 5.0 BPW) weight quantization using WHT rotation + Lloyd-Max centroids
+- V2.1 fused Metal kernel: zero threadgroup memory, cooperative SIMD rotation via `simd_shuffle_xor`, NR0=8
+- Post-training quantization — no retraining, calibration data, or model modification required
+- Quantize via `llama-quantize --allow-requantize --tensor-type-file config.txt`
+
+## Tested Models
+
+| Model | Config | Size Reduction | PPL Delta | Decode | NIAH |
+|-------|--------|---------------|-----------|--------|------|
+| Qwen2.5-1.5B | Config I | -27% | +1.9% | 96% | 6/6 |
+| Qwen3.5-27B | Config I | -28% | +1.3% | 99% | 3/3 |
+| Qwen3.5-35B MoE | Config I | -37% | +1.4% | 102% | — |
+| Qwen2.5-72B | Config I | -38% | +3.9% | 95% | 3/3 |
+| Phi-4 14B | Config I | -36% | +1.0% | 254% | 3/3 |
+| Llama 3.1 70B | Premium | -29% | +5.8% | fast | 3/3 |
+| Llama 3.1 70B | Hybrid | -42% | +16% | 133% | 3/3 |
+
+## Llama Note
+
+Llama-family models show 6-8x higher per-layer error amplification with WHT-rotated FFN tensors. Use Hybrid (TQ4 attn + Q4_K FFN) or Premium (TQ4 attn + Q5_K/Q6_K FFN) configs. Both beat Q4_K_M in quality and speed at similar size. Full investigation in the [paper](https://github.com/TheTom/turboquant_plus/blob/main/docs/papers/weight-compression-tq4.md).
+
+## What's needed before merge
+
+- [ ] CUDA port of V2.1 kernel (calling @signalnine 👀)
+- [ ] HIP/ROCm testing
+- [ ] Regression tests on existing TurboQuant KV functionality
+- [ ] Community validation on untested model families
+
+## Metal only
+
+The quantization step (`llama-quantize`) works on any platform. The runtime dequant kernels are Metal-specific. Compressed GGUFs will **not run correctly** on CUDA/HIP until those backends are ported.
+
+Paper: https://github.com/TheTom/turboquant_plus/blob/main/docs/papers/weight-compression-tq4.md
+Getting started: https://github.com/TheTom/turboquant_plus/blob/main/docs/getting-started.md
+
+🤖 Generated with [Claude Code](https://claude.com/claude-code)
+
+## Top comments
+- TheTom: ## Regression Test Results — PR #45
+
+Verified that the TQ4_1S weight compression PR does NOT break existing TurboQuant KV cache functionality or standard inference on non-compressed models.
+
+**Hardware:** M5 Max (128GB) + Mac Mini M2 Pro (32GB)
+**Branch:** `pr/tq4-weight-compression` (commit 6c3e503)
+
+### Speed — No Regressions
+
+| Model | Hardware | Config | pp512 | tg128 |
+|-------|----------|--------|-------|-------|
+| Qwen2.5-1.5B Q8_0 | M5 Max | q8_0/q8_0 | 10,787 | 198 |
+| Qwen2.5-1.5B Q8_0 | M5 Max | q8_0/turbo4 | 10,460 | 141 |
+| Qwen2.5-1.5B Q8_0 | M5 Max | q8_0/turbo3 | 10,468 | 138 |
+| Phi-4 14B Q8_0 | M5 Max | q8_0/q8_0 | 1,052 | 33.7 |
+| Phi-4 14B Q8_0 | M5 Max | q8_0/turbo4 | 1,051 | 30.9 |
+| Qwen3.5-27B Q8_0 | M5 Max | q8_0/q8_0 | 408 | 17.6 |
+| Qwen3.5-27B Q8_0 | M5 Max | q8_0/turbo4 | 497 | 17.1 |
+| Qwen3.5-27B Q8_0 | M5 Max | q8_0/turbo3 | 487 | 17.0 |
+| Qwen3.5-35B MoE Q8_0 | M5 Max | q8_0/q8_0 | 2,920 | 76.6 |
+| Qwen3.5-35B MoE Q8_0 | M5 Max | q8_0/turbo4 | 2,878 | 69.6 |
+| Qwen2.5-7B Q4_K_M | M2 Pro | q8_0/q8_0 | 352 | 34.9 |
+| Qwen2.5-7B Q4_K_M | M2 Pro | q8_0/turbo4 | 351 | 30.8 |
+| Qwen2.5-7B Q4_K_M | M2 Pro | q8_0/turbo3 | 350 | 30.0 |
+| Qwen2.5-7B Q4_K_M | 
+- TheTom: ## Update: Rebased on upstream master + regression test
+
+Branch force-pushed. Now rebased on latest `ggml-org/llama.cpp` master (106 upstream commits). 3 commits on top:
+
+1. `187a2c1` feat: TQ3_1S + TQ4_1S weight quantization with V2.1 fused Metal kernels
+2. `9aaa054` fix: add post-unrotate memory barrier for in-layer mixing safety
+3. `cb8bddc` fix: disable upstream attn rotation by default (conflicts with TurboQuant)
+
+### Upstream conflict: activation rotation (commit 744c0c7)
+
+Upstream added graph-level Hadamard rotation for KV cache quantization (`llama : rotate activations for better quantization`). This feature:
+- Crashes on Phi-4 (graph hash table overflow from extra rotation nodes)
+- Is redundant with our kernel-level WHT rotation (which is more efficient — no extra graph nodes)
+
+Fix: disabled upstream rotation by default in our fork. Users can re-enable with `LLAMA_ATTN_ROT_DISABLE=0`. Our TurboQuant KV rotation is unaffected.
+
+### Regression test (M5 Max, rebased branch cb8bddc)
+
+| Test | What | Result | Status |
+|------|------|--------|--------|
+| Config I quantize + speed | Qwen 1.5B, 202 tg/s | Matches expected | ✅ |
+| Config I PPL | Qwen 1.5B, 10.77 (8ch) | Within nois
+- signalnine: CUDA port available on our branch: [signalnine/llama-cpp-turboquant `feature/tq4-weight-cuda`](https://github.com/signalnine/llama-cpp-turboquant/tree/feature/tq4-weight-cuda)
+
+What's implemented:
+- CUDA dequant for TQ4_1S/TQ3_1S (convert path + cuBLAS MUL_MAT)
+- Fused mul_mat_vec kernel with pre-rotated activations (warp shuffle WHT)
+- mmvq exclusion for fused dispatch path
+- llama-quantize registration for TQ4_1S/TQ3_1S types
+
+Results (Qwen2.5-7B TQ4_1S, RTX 5090):
+
+| Metric | cuBLAS path | Fused kernel |
+|--------|:-----------:|:------------:|
+| Decode tg128 | 20 t/s | **69 t/s** |
+| vs q8_0 (177 t/s) | 11% | **39%** |
+| PPL | 8.82 | 8.82 |
+
+The fused kernel pre-rotates the activation vector once per mul_mat via `__shfl_xor_sync` (5 butterfly stages, 32-element blocks), then the mmvq kernel just does `centroid[idx] × scale` with no per-block WHT. 13 kernel variants tested — the gap to q4_0 (275 t/s) is from dp4a integer intrinsics that TQ4_1S can't use (centroid lookup requires float). The gap to your Metal (85-99% of q8_0) is from Apple Silicon's cooperative SIMD efficiency.
+
+Happy to iterate on this if you have ideas for closing the CUDA gap further.
+- TheTom: This is great work, thank you for turning this around so fast. PPL matching between cuBLAS and fused confirms correctness.
+
+One question before we merge: can you confirm that uncompressed models (q8_0, q4_0, etc.) show no decode regression on this branch? i.e. the new code paths only activate for TQ4_1S/TQ3_1S and existing quant types run at the same speed as before the PR.
+- TheTom: ## CUDA kernel review — performance improvement opportunities
+
+Nice work on the V8 pre-rotation approach. PPL matching confirms correctness. Here's what I see for closing the gap from 39% to 70-85% of q8_0:
+
+### High priority (biggest decode wins)
+
+1. **NR0 multi-row CTA with shared activation reuse** — Currently each warp handles one row independently, re-reading `vy_rot` from global memory. On Metal, NR0=8 (8 rows sharing one activation tile) was the single biggest optimization (decode went from 70% to 99% of baseline). On CUDA the benefit is shared reuse of `vy_rot` across rows per CTA. Realistic target: 69 → 110-140 t/s.
+
+2. **Hot loop load dedup** — `d0`/`d1` are loaded per-lane but only have 2 unique values per block. Broadcast via `__shfl_sync` once per half-warp. Similarly, `qs[lane/2]` is loaded by both even and odd lanes — load once, broadcast to partner.
+
+3. **`__restrict__` qualifiers + vectorized loads** — The kernel pointers lack `__restrict__` (compiler can't prove no aliasing). Adding it enables better instruction scheduling. Also consider `float4` loads for the pre-rotated activation to hit 128-bit memory transactions.
+
+### Medium priority
+
+4. **Small-batch kernels
+- TheTom: ## Full Regression Test — PR #45 (cb8bddc)
+
+### Hardware
+- M5 Max 128GB (Apple Silicon)
+- Mac Mini M2 Pro 32GB (Apple Silicon)
+
+### Quantize tool verification
+
+| Format | Quantize | Loads | Generates | Status |
+|--------|----------|-------|-----------|--------|
+| TQ4_1S Config I | 1312 MiB (6.20 BPW) | ✅ | ✅ 198 tg | ✅ |
+| TQ3_1S attn-only | 1730 MiB (8.17 BPW) | ✅ | ✅ | ✅ |
+| Q4_K_M (standard) | 1060 MiB (5.00 BPW) | ✅ | ✅ | ✅ |
+
+---
+
+### M5 Max — Uncompressed weights + TurboQuant KV
+
+#### Qwen2.5-1.5B Q8_0
+
+| Config | pp512 | tg128 | PPL (full) |
+|--------|-------|-------|------------|
+| q8_0/q8_0 | 10,742 | 209 | 10.31 |
+| q8_0/turbo4 | 10,604 | 148 | 10.45 |
+| q8_0/turbo3 | 10,537 | 141 | 10.55 |
+
+#### Phi-4 14B Q8_0 (crash fix verification)
+
+| Config | pp512 | tg128 | PPL (full) |
+|--------|-------|-------|------------|
+| q8_0/q8_0 | 1,083 | 34.0 | 6.54 |
+| q8_0/turbo4 | 1,088 | 31.1 | 6.55 |
+
+**No crash.** Upstream attn_rot disabled by default (commit cb8bddc).
+
+#### Qwen3.5-27B Q8_0
+
+| Config | pp512 | tg128 | PPL (full) |
+|--------|-------|-------|------------|
+| q8_0/q8_0 | 554 | 17.5 | 6.87 |
+| q8_0/turbo4 | 498 | 16.9 | 6.89 |
+| q8_0/turbo3 | 501 | 16.0 | — |
+
+#### Qwen3
+- signalnine: **Regression check: zero impact on standard quant types.**
+
+Benchmarked Q2_K and Q4_0 on this branch vs upstream baseline (Qwen2.5-7B, RTX 5090, llama-bench pp512/tg128, 3 runs):
+
+| Type | Upstream tg128 | This branch tg128 | Delta |
+|------|:--------------:|:------------------:|:-----:|
+| Q2_K | 307.4 t/s | 306.7 t/s | -0.2% |
+| Q4_0 | 274.5 t/s | 275.1 t/s | +0.2% |
+
+All within measurement noise. The TQ4_1S/TQ3_1S code paths only activate for those specific types — no changes to the existing mmvq, mmq, or cuBLAS dispatch for standard quant types.
+
+Also fixed a MoE compatibility issue: TQ4_1S on Qwen3.5-35B (MoE) was crashing because `MUL_MAT_ID` expert routing calls `cudaStreamSynchronize` during CUDA graph capture. Fixed by disabling graph capture for TQ weight types in `MUL_MAT_ID` nodes. Qwen3.5-35B TQ4_1S now runs at 47 t/s decode.
+
+Thanks for the perf improvement suggestions btw, will investigate tomorrow
+- TheTom: @signalnine Can you please pull TOT and test this change? https://github.com/TheTom/llama-cpp-turboquant/commit/aa7c82a
+
+V12 replaces the two-phase global memory approach with a single-phase kernel where all 8 warps cooperatively WHT-rotate the activation into shared memory, then each warp processes one row reading from shmem (broadcast reads). No global scratch buffer, no separate kernel launch, no CUDA graph incompatibility.
+
+The key difference from V3/V11 (which regressed): the single `__syncthreads` is between the rotation and dot product phases, not inside the inner loop.
+
+I tested on a 1080 Ti (Pascal sm_61) and the kernel is bandwidth-bound there. All optimization experiments hit the same ~20 t/s ceiling:
+
+| Config | PP512 | TG128 | vs Q8_0 |
+|--------|-------|-------|---------|
+| Q8_0 baseline | 954.6 | 36.34 | - |
+| KV asymmetric q8_0/turbo4 | 1107.4 | 36.09 | pp+16% tg-0.7% |
+| KV symmetric turbo3/turbo3 | 1094.1 | 35.53 | pp+15% tg-2.2% |
+| TQ4_1S Config I | 601.9 | 20.15 | pp-37% tg-44.6% |
+| TQ4_1S + KV turbo4 | 592.7 | 19.92 | pp-38% tg-45.2% |
+
+Pascal is capped at ~55% of Q8_0 due to pure memory bandwidth (5.16G model x 20 t/s = ~103 GB/s effective, 2
+- TheTom: First CUDA community benchmark on PR #45. Thank you Mario Tomic on X.
+
+**Hardware:** 2x NVIDIA RTX 4090 (49 GB VRAM total), CUDA, `-fa 1 -ngl 99`
+**Model:** Qwen3.5-27B (64 layers)
+**Build:** aa7c82a (8754)
+
+| Config | Size | BPW | PP512 (t/s) | TG128 (t/s) | vs Q8_0 TG |
+|--------|------|-----|-------------|-------------|------------|
+| Q8_0 baseline | 26.62 GiB | 8.50 | 2244 | 29.23 | - |
+| Config I | 19.13 GiB | 6.11 | 1808 | 20.63 | 70.6% |
+| Config I + KV turbo4 | 19.13 GiB | 6.11 | 1804 | 20.51 | 70.1% |
+
+28% smaller model, 70.6% decode speed on dual 4090. KV turbo stacking works with no additional penalty. Prefill at 80.6% of Q8_0.
+
+This is on V12 (shmem activation kernel). For comparison, signalnine measured 39% of Q8_0 on a single 5090 with V8 (two-phase global memory). V12 should improve that further. @signalnine would be great to get your numbers on TOT.
+- TheTom: AMD HIP/ROCm support added. Commit 03b11e9.
+
+5 files changed, 36 insertions, 13 deletions. No kernel changes needed. signalnine's fused mmvq-tq kernel uses `__shfl_xor_sync` which maps directly to HIP warp shuffle on RDNA 4 (wave size 32).
+
+Changes:
+- `vendors/hip.h`: missing CUDA->HIP stream capture API mappings
+- `turbo-innerq.cuh/cu`: TURBO_IQ_API macro for cross-DLL symbol visibility
+- `llama-kv-cache.cpp`: TURBO_IQ_IMPORT for Windows DLL boundary
+- `common/common.cpp`: fileno/isatty POSIX compat for clang on Windows
+
+All changes are no-ops on CUDA and Metal. Build verified clean on Mac/Metal with regression test.
+
+**AMD benchmark (RX 9070 XT, gfx1201, RDNA 4, 16 GB VRAM):**
+Model: Qwen2.5-1.5B-Instruct
+
+| Config | Size | BPW | PPL | PP512 (t/s) | TG128 (t/s) | vs Q8_0 TG |
+|--------|------|-----|-----|-------------|-------------|------------|
+| F16 | 3.31 GiB | 16.0 | 11.109 | 3,703 | 47 | 45% |
+| Q8_0 baseline | 1.76 GiB | 8.5 | 11.119 | 6,835 | 104 | - |
+| Config I | 1.28 GiB | 6.2 | 11.316 | 7,134 | 135 | **+30%** |
+
+Config I is **30% faster** than Q8_0 on RDNA 4. The smaller model (27% reduction) means less bandwidth, and RDNA 4 benefits directly. PPL

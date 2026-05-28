@@ -1,0 +1,113 @@
+Hacker News thread capture
+
+Thread URL: https://news.ycombinator.com/item?id=46684958
+Item ID: 46684958
+Title: Nanolang: A tiny experimental language designed to be targeted by coding LLMs
+Author: Scramblejams
+Points: 232
+Linked URL: https://github.com/jordanhubbard/nanolang
+Top-level comments captured: 25
+Total comments captured: 180
+
+## Top comment (highest-score top-level, verbatim)
+u/JamesTRexx (0): So, then if I want to use a certain terminal text editor to create a clone of it in nanolang, I'd end up typing nano nano.nano on the command line.I might accidentally summon a certain person from Ork.
+
+## Prominent viewpoints (top-level comments)
+1. (0) u/JamesTRexx: So, then if I want to use a certain terminal text editor to create a clone of it in nanolang, I'd end up typing nano nano.nano on the command line.I might accidentally summon a certain person from Ork.
+2. (0) u/spicybright: One novel part here is every function is required to have tests that run at compile time.I'm still skeptical of the value add having to teaching a custom language to an LLM instead of using something like lua or python and applying constraints like test requirements onto that.
+3. (0) u/prngl: Looks nice!
+4. (0) u/abraxas: It seems that something that does away with human friendly syntax and leans more towards a pure AST representation would be even better? Basically a Lisp but with very strict typing might do the trick. And most LLMs are probably trained on lots of Lisps already.
+5. (0) u/thorum: Developed by Jordan Hubbard of NVIDIA (and FreeBSD).My understanding/experience is that LLM performance in a language scales with how well the language is represented in the training data.From that assumption, we might expect LLMs to actually do better with an existing language for which more training code is available, even if that language is more complex and seems like it should be “harder” to understand.
+6. (0) u/boutell: I feel like the time for this was two years ago, and LLMs are now less bothered by remembering syntax than I am. It's a nice lisp-y syntax though.
+7. (0) u/simonw: I went looking for a single Markdown file I could dump into an LLM to "teach" it the language and found this one:https://github.com/jordanhubbard/nanolang/blob/main/MEMORY.m... (https://github.com/jordanhubbard/nanolang/blob/main/MEMORY.md)Optimistically I dumped the whole thing into Claude Opus 4.5 as a system prompt to see if it could generate a one-shot program from it: llm -m claude-opus-4.5 \
+ -s https://raw.githubusercontent.com/jordanhubbard/nanolang/refs/heads/main/MEMORY.md \
+ 'Build me a mandelbrot fractal CLI tool in this language' 
+ > /tmp/fractal.nano
+ 
+Here's the transcript for that. The code didn't work: https://gist.github.com/simonw/7847f022566d11629ec2139f1d109... (https://gist.github.com/simonw/7847f022566d11629ec2139f1d109fb8)So I fired up Claude Code inside a checkout of the nanolang and told it how to run the compiler and let it fix the problems... which DID work. H
+8. (0) u/sheepscreek: Really clean language where the design decisions have led to fewer traps (cond is a good choice).It’s peculiar to see s-expressions mixed together with imperative style. I’ve been experimenting along similar lines - mixing s-expressions with ML style in the same dialect (for a project).Having an agentic partner toiling away with the lexer/parser/implementation details is truly liberating. It frees the human to explore crazy ideas that would not have been feasible for a side/toy/hobby project earlier.
+
+## Thread discussion sample
+- (0) u/JamesTRexx: So, then if I want to use a certain terminal text editor to create a clone of it in nanolang, I'd end up typing nano nano.nano on the command line.I might accidentally summon a certain person from Ork.
+  - (0) u/jll29: Make sure to create a "Getting Started" video with Nano Banana.
+- (0) u/spicybright: One novel part here is every function is required to have tests that run at compile time.I'm still skeptical of the value add having to teaching a custom language to an LLM instead of using something like lua or python and applying constraints like test requirements onto that.
+  - (0) u/sinuhe69: Pyret, a teaching language for CS, in the vein of Racket, does require testing by writing functions.https://pyret.org/docs/latest/testing.html (https://pyret.org/docs/latest/testing.html)
+  - (0) u/pmontra: I'm not sure that it's novel but I'm skeptical about the noise to signal ratio for anything that is not an example.I think that a real world file of source code will be either completely polluted by tests (they are way longer than the actual code they test) or become fn process_order {
+ ... 
+ } 
+ shadow process_order {
+ assert test_process_order
+ }
+ 
+and the test code will be written in another file, and every function in the test code will have its own shadow function asserting true, to please the compiler.
+- (0) u/prngl: Looks nice!
+- (0) u/abraxas: It seems that something that does away with human friendly syntax and leans more towards a pure AST representation would be even better? Basically a Lisp but with very strict typing might do the trick. And most LLMs are probably trained on lots of Lisps already.
+  - (0) u/verdverm: Generally seems a bad idea to have your LLM write languages you do not understand or write yourself
+    - (0) u/catlifeonmars: Doesn’t that apply to the OP as well?
+      - (0) u/verdverm: Yes, I'm not going to fill my precious context with documentation for a programming languageThis seems like a research dead end to me, the fundamentals are not there
+      - (0) u/catlifeonmars: It seems kind of silly that you can’t teach an LLM new tricks though, doesn’t it? This doesn’t sound like an intrinsic limitation and more an artifact of how we produce model weights today.
+      - (0) u/verdverm: getting tricks embedded into the weights is expensive, it doesn't happen in a single passthey's why we teach them new tricks on the fly (in-context learning) with instruction files
+      - (0) u/catlifeonmars: Right, it sounds like an artificial limitation.
+      - (0) u/verdverm: it's more a mathematical / algorithmic limitation
+      - (0) u/catlifeonmars: I’ll counter it’s an architectural issue
+      - (0) u/verdverm: I would put that under the umbrella of algo/math, i.e. the structure of the LLM is part of the algo, which is itself governed by mathFor example, DeepSeek has done some interesting things with attention, via changes to the structures / algos, but all this is still optimized by gradient descent, which is why models do not learn facts and such from a single pass. It takes many to refine the weights that go into the math formulas
+      - (0) u/catlifeonmars: > I would put that under the umbrella of algo/math, i.e. the structure of the LLM is part of the algo, which is itself governed by mathYes you’re right. I misspoke.I’m curious if there are ways to get around the monolithic nature of today’s models. There have to be architectures where a generalized model can coordinate specialized models which are cheaper to train, for example. E.g calling into a tool which is actually another model. Pre-LLM this was called boosting or “ensemble of experts” (I’m sure I’m butchering some nuance there).
+- (0) u/thorum: Developed by Jordan Hubbard of NVIDIA (and FreeBSD).My understanding/experience is that LLM performance in a language scales with how well the language is represented in the training data.From that assumption, we might expect LLMs to actually do better with an existing language for which more training code is available, even if that language is more complex and seems like it should be “harder” to understand.
+  - (0) u/whimsicalism: easy enough to solve with RL probably
+    - (0) u/measurablefunc: There is no RL for programming languages. Especially ones w/ no significant amount of code.
+      - (0) u/whimsicalism: not even wrong
+      - (0) u/measurablefunc: Exactly.
+      - (0) u/nl: I guess the op was implying that is something fixable fairly easily?(Which is true - it's easy to prompt your LLM with the language grammar, have it generate code and then RL on that)Easy in the sense of "it is only having enough GPUs to RL a coding capable LLM" anyway.
+      - (0) u/measurablefunc: If you can generate code from the grammar then what exactly are you RLing? The point was to generate code in the first place so what does backpropagation get you here?
+      - (0) u/nl: Post RL you won't need to put the grammar in the prompt anymore.
+      - (0) u/measurablefunc: The grammar of this language is no more than a few hundred tokens (thousands at worst) & current LLMs support context windows in the millions of tokens.
+      - (0) u/nl: Sure.The point is that your statement about the ability to do RL is wrong.Additionally your response to the Deepseek paper in the other subthread shows profound and deliberate ignorance.
+      - (0) u/measurablefunc: Theorycrafting is very easy. Not a single person in this thread has shown any code to do what they're suggesting. You have access to the best models & yet you still haven't managed to prompt it to give you the code to prove your point so spare me any further theoretical responses. Either show the code to do exactly what you're saying is possible or admit you lack the relevant understanding to back up your claims.
+      - (0) u/nl: > You have access to the best models & yet you still haven't managed to prompt it to give you the code to prove your point so spare me any further theoretical responses. Either show the code to do exactly what you're saying is possibleGPU poor here though...To quote someone (you...) on the internet:> More generally, don't ask random people on the internet to do work for you for free.https://news.ycombinator.com/item?id=46689232 (https://news.ycombinator.com/item?id=46689232)
+      - (0) u/measurablefunc: Claims require evidence & if you are unwilling to present it then admit you do not have any evidence to support your claims. It's not complicated. Either RL works & you have evidence or you do not know & can not claim that it works w/o first doing the required due diligence which (shockingly) actually requires work instead of empty theory crafting & hand waving.
+      - (0) u/thorum: Go read the DeepSeek R1 paper
+      - (0) u/measurablefunc: Why would I do that? If you know something then quote the relevant passage & equation that says you can train code generators w/ RL on a novel language w/ little to no code to train on. More generally, don't ask random people on the internet to do work for you for free.
+      - (0) u/thorum: Your other comment sounded like you were interested in learning about how AI labs are applying RL to improve programming capability. If so, the DeepSeek R1 paper is a good introduction to the topic (maybe a bit out of date at this point, but very approachable). RL training works fine for low resource languages as long as you have tooling to verify outputs and enough compute to throw at the problem.
+      - (0) u/whimsicalism: imo generally not worth it to keep going when you encounter this sort of HN archetype
+      - (0) u/measurablefunc: So you should have no problem bringing up the exact passages & equations they use for their policies.
+      - (0) u/whimsicalism: well, that’s one way to react to being provided with interesting reading material.
+      - (0) u/measurablefunc: Bring up passage that supports your claim. I'll wait.
+      - (0) u/nl: Not exactly sure what you are looking for here.That GRPO works?> Group Relative Policy Optimization (GRPO), a variant reinforcement learning (RL) algorithm of Proximal Policy Optimization (PPO) (Schulman et al., 2017).
+GRPO foregoes the critic model, instead estimating the baseline from group scores, significantly
+reducing training resources. By solely using a subset of English instruction tuning data, GRPO
+obtains a substantial improvement over the strong DeepSeekMath-Instruct, including both
+in-domain (GSM8K: 82.9% → 88.2%, MATH: 46.8% → 51.7%) and out-of-domain mathematical
+tasks (e.g., CMATH: 84.6% → 88.8%) during the reinforcement learning phasePage 2 of https://arxiv.org/pdf/2402.03300
+      - (0) u/measurablefunc: None of those are novel domains w/ their own novel syntax & semantic validators, not to mention the dearth of readily available sources of examples for sampling the baselines. So again, where does it say it works for a programming language with nothing but a grammar & a compiler?
+      - (0) u/nl: To quote you:> here is no RL for programming languages.and> Either RL works & you have evidenceThis is just so completely wrong, and here is the evidence.I think everyone in this thread is just surprised you don't seem to know this.Haven't you seen the hundreds of job ads for people to write code for LLMs to train on?
+      - (0) u/measurablefunc: You're not going to get less confused by doubling down. None of your claims are valid & this is because you haven't actually tried to do what you're suggesting. Taking a grammar & compiler & RLing will get you nowhere.
+  - (0) u/nxobject: I think it's depressingly true of any novel language/framework at this point, especially if they have novel ideas.
+  - (0) u/vessenes: A lot of this depends on your workflow. A language with great typing, type checking and good compiler errors will work better in a loop than one with a large surface overhead and syntax complexity, even if it's well represented. This is the instinct behind, e.g. https://github.com/toon-format/toon (https://github.com/toon-format/toon), a json alternative format. They test LLM accuracy with the format against JSON, (and are generally slightly ahead of JSON).Additionally just the ability to put an entire language into context for an LLM - a single document explaining everything - is also likely to close the gap.I was skimming some nano files and while I can't say I loved how it looked, it did 
+    - (0) u/btown: Thanks for sharing this! A question I've grappled with is "how do you make the DOM of a rendered webpage optimal for complex retrieval in both accuracy and tokens?" This could be a really useful transformation to throw in the mix!
+  - (0) u/Zigurd: It's not just how well the language is represented. Obscure-ish APIs can trip up LLMs. I've been using Antigravity for a Flutter project that uses ATProto. Gemini is very strong at Dart coding, which makes picking up my 17th managed language a breeze. It's also very good at Flutter UI elements. It was noticeably less good at ATProto and its Dart API.The characteristics of failures have been interesting: As I anticipated it might be, an over ambitious refactoring was a train wreck, easily reverted. But something as simple as regenerating Android launcher icons in a Flutter project was a total blind spot. I had to Google that like some kind of naked savage running through the jungle.
+    - (0) u/nl: I have a vibe coded fantasy console. Getting Doom running on it was easy.Getting the Doom sound working on it involved me setting there typing "No I can't hear anything" over and over until it magically worked...Maybe I should have written a helper program to listen using the microphone or something.
+      - (0) u/nxobject: I was reading an Ars article by someone who'd hacked up Apple II and Atari 2600 emulators to provide state introspection/reproducible input via MCP, sockets, file I/O - would that work?https://github.com/benj-edwards/atari800-ai (https://github.com/benj-edwards/atari800-ai)
+https://github.com/benj-edwards/bobbin (https://github.com/benj-edwards/bobbin)
+      - (0) u/nl: wow I love it.
+  - (0) u/cmrdporcupine: Not my experience, honestly. With a good code base for it to explore and good tooling, and a really good prompt I've had excellent results with frankly quite obscure things, including homegrown languages.As others said, the key is feedback and prompting. In a model with long context, it'll figure it out.
+    - (0) u/rocha: But isn't this inefficient since the agent has to "bootstrap" its knowledge of the new language every time it's context window is reset?
+      - (0) u/adastra22: No, it gets it “for free” just by looking around when it is figuring out how to solve whatever problem it is working on.
+    - (0) u/vidarh: Yeah, I've had Claude work on my buggy, incomplete Ruby compiler written (mostly) in Ruby, which uses an s-expression like syntax with a custom "mini language" to implement low-level features that can't be done (or is impractical to do) in pure Ruby, and it only had minor problems with the s-expression language that was mostly fixed with a handful of lines in CLAUDE.md (and were, frankly, mostly my fault for making the language itself somewhat inconsistent) and e.g. when it write a bigint implementation, I had to "tell it off" for too readily resorting to the s-expression syntax since it seemed to "prefer it" over writing high-level code in Ruby.
+      - (0) u/cmrdporcupine: Even 3 years ago, GH Copilot, hardly the most intelligent of LLMs was suggesting/writing bytecode in my custom VM, writing full programs in bytecode for a custom VM just by looking at a couple examples.That's when I smelled that things were getting a little crazy.
+  - (0) u/adastra22: I don’t think that assumption holds. For example, only recently have agents started getting Rust code right on the first try, but that hasn’t mattered in the past because the rust compiler and linters give such good feedback that it immediately fixes whatever goof it made.This does fill up context a little faster, (1) not as much as debugging the problem would have in a dynamic language, and (2) better agentic frameworks are coming that “rewrite” context history for dynamic on the fly context compression.
+    - (0) u/root_axis: > that hasn’t mattered in the past because the rust compiler and linters give such good feedback that it immediately fixes whatever goof it made. This isn't even true today. Source: heavy user of claude code and gemini with rust for almost 2 years now.
+      - (0) u/adastra22: I have no problems with rust and Claude Code, and I use it on a daily basis.
+      - (0) u/ekidd: Yeah, I have zero problem getting Opus 4.5 to write high-quality Rust code. And I'm picky.
+    - (0) u/PunchyHamster: so you're saying... the assumption actually holds
+      - (0) u/adastra22: No, it’s the exact opposite of the assumption. It doesn’t matter how represented the language is in the training data, so long as the surrounding infrastructure is good.
+    - (0) u/bevr1337: > because the rust compiler and linters give such good feedback that it immediately fixes whatever goof it made.I still experience agents slipping in a `todo!` and other hacks to get code to compile, lint, and pass tests.The loop with tests and doc tests are really nice, agreed, but it'll still shit out bad code.
+      - (0) u/adastra22: What agents, using what models?
+      - (0) u/bevr1337: Whatever work is paying for on a given day. We've rotated through a few offerings. It's a work truck not a personal vehicle, for me.I manage a team of interns and I don't have the energy to babysit an agent too. For me, gpt and gemini yield the best talk-it-through approach. For example, dropping a research paper into the chat and describing details until the implementation is clarified.We also use Claude and Cursor, and that was an exceptionally disruptive experience. Huge, sweeping, wrong changes all over. Gyah! If I bitch about todo! macros, this is where they came from.For hobby projects, I sometimes use whatever free agent microsoft is shilling via VS Code (and me selling my data) that 
+    - (0) u/GrowingSideways: > only recently have agents started getting Rust code right on the first tryThis is such a silly thing to say. Either you set the bar so low that "hello world" qualifies or you expect LLMs to be able to reason about lifetimes, which they clearly cannot. But LLMs were never very good at full-program reasoning in any language.I don't see this language fixing this, but it's not trying to—it just seems to be removing cruft
+      - (0) u/adastra22: I have had no issue with Claude writing code that uses lifetimes. It seems to be able to reason about them just fine.I don't know what to say. May experience does not match yours.
+  - (0) u/NewsaHackO: I wonder if there is a way to create a sort of 'transpilation' layer to a new language like this for existing languages, so that it would be able to use all of the available training from other languages. Something that's like AST to AST. Though I wonder if it would only work in the initial training or fine-tuning stage.
+  - (0) u/nl: > My understanding/experience is that LLM performance in a language scales with how well the language is represented in the training data.This isn't really true. LLMs understand grammars really really well. If you have a grammar for your language the LLM can one-shot perfect code.What they don't know is the tooling around the language. But again, this is pretty easily fixed - they are good at exploring cli tools.
+  - (0) u/nemo1618: Blackpill is that, for this reason, the mainstream languages we have today will be the final (human-designed) languages to be relevant on a global scale.Eventually AIs will create their own languages. And humans will, of course, continue designing hobbyist languages for fun. But in terms of influence, there will not be another human language that takes the programming world by storm. There simply is not enough time left.
+    - (0) u/rzmmm: My impression is that AI models need large amounts of quality training data. "Data contamination", i.e. AI output in the training data set has been a problem for years.
+  - (0) u/vidarh: I mostly agree, and I think a combination of good representation and tooling that lets it self-correct quickly will do better than new language in the short term.In the long term I expect it won't matter - already GPT3.5 was able to reason about the basic semantics of programs in languages "synthesised" zero-shot in context by just describing it as a combination of existing languages (e.g. "Ruby with INTERCAL's COME FROM") or by providing a grammar (e.g. simple EBNF plus some notes on new/different constructs) reasonably well and could explain what a program written in a franken-language it had not seen before was likely to do.I think long before there is enough training data for a new langu
+  - (0) u/boxed: Claude is very good with Elm, which there should be quite little training data.

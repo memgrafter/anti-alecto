@@ -1,0 +1,227 @@
+Summary
+Image and video generation are among the most expensive API calls you can make. A single image render costs $0.02-0.20+, and video generation can cost dollars per clip. Before triggering these renders, generate a cheap ASCII art preview (for images) or an ASCII storyboard sequence with text descriptions (for video). Show these to the human for approval. This extracts a human-in-the-loop checkpoint at near-zero cost, preventing wasted renders on misunderstood intent.
+The Problem
+Generative media calls are expensive and slow. When an agent or workflow produces an image or video that misses the user’s intent, the cost is already sunk. The user says “no, I wanted the logo on the left” and you burn another render. Three rounds of this and you’ve spent $1-5+ on a single asset that could have been validated for fractions of a cent with text tokens.
+Round 1: Generate image → $0.08 → "Wrong layout"
+Round 2: Generate image → $0.08 → "Close, but wrong colors"
+Round 3: Generate image → $0.08 → "Perfect"
+Total: $0.24 + latency of 3 full renders
+Compare with the preview-first approach:
+Round 1: ASCII preview → ~$0.001 → "Wrong layout"
+Round 2: ASCII preview → ~$0.001 → "Close, but wrong colors"
+Round 3: ASCII preview → ~$0.001 → "Perfect"
+Round 4: Generate image → $0.08 → Done
+Total: $0.083 + only 1 full render waited on
+The savings multiply with video, where each render is far more expensive and slower.
+The Pattern
+Insert a cheap text-based preview step before any expensive generative call. The preview uses only language model tokens (the cheapest resource in your stack) to approximate what the final render will look like.
+┌──────────────┐ ┌──────────────────┐ ┌─────────────┐
+│ User Intent │────>│ ASCII Preview │────>│ Human │
+│ (prompt) │ │ + Description │ │ Approval │
+└──────────────┘ └──────────────────┘ └──────┬──────┘
+│
+┌───────────┴───────────┐
+│ │
+"Looks good" "Change X"
+│ │
+v v
+┌─────────────┐ ┌──────────────────┐
+│ Expensive │ │ Revise Preview │
+│ Render │ │ (cheap loop) │
+└─────────────┘ └──────────────────┘
+For Images: Single ASCII Diagram
+Generate an ASCII layout that captures composition, element placement, and spatial relationships. Pair it with a text description covering color, style, and mood.
+Prompt: "A landing page hero image with a rocket launching
+from a laptop screen, dark gradient background"
+Preview:
+┌─────────────────────────────────────┐
+│ . * . * . * . * . │
+│ . * * . │
+│ /\ │
+│ / \ │
+│ / .. \ │
+│ /______\ │
+│ | || | │
+│ ~~~||~~~ │
+│ ┌─────────────────┐ │
+│ │ ┌───────────┐ │ │
+│ │ │ < / > │ │ │
+│ │ │ code │ │ │
+│ │ └───────────┘ │ │
+│ └─────────────────┘ │
+│ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │
+└─────────────────────────────────────┘
+Colors: Dark navy-to-black gradient background.
+Rocket has orange/red exhaust flames.
+Laptop is silver/grey with a code editor on screen.
+Stars are small white dots scattered across the top third.
+Style: Flat illustration, modern SaaS aesthetic.
+The human can now say “move the rocket to the left third” or “make the laptop bigger” before a single pixel is rendered.
+For Video: ASCII Storyboard Sequence
+For video, produce a series of keyframe ASCII diagrams with timestamps, descriptions, and transition notes.
+Prompt: "15-second product demo showing a user dragging
+a widget onto a dashboard"
+Storyboard:
+[0s - 3s] WIDE SHOT: Empty dashboard
+┌────────────────────────────────┐
+│ Dashboard [+] [?] │
+│ ┌────┐ ┌────┐ ┌────┐ │
+│ │ │ │ │ │ │ │
+│ │ .. │ │ .. │ │ .. │ │
+│ └────┘ └────┘ └────┘ │
+│ │
+│ │
+└────────────────────────────────┘
+Camera: Static. Clean dashboard with 3 existing widgets.
+Transition: None (opening frame).
+[3s - 7s] SIDEBAR OPENS: Widget panel slides in
+┌────────────────────────────────┐
+│ Dashboard [+] [?] │
+│ ┌──────┐ ┌────┐ ┌────┐ │
+│ │Widget│ │ │ │ │ │
+│ │Panel │ │ .. │ │ .. │ │
+│ │ │ └────┘ └────┘ │
+│ │ [A] │ │
+│ │ [B] │ ← cursor here │
+│ │ [C] │ │
+│ └──────┘ │
+└────────────────────────────────┘
+Camera: Static. Sidebar slides in from left (200ms ease).
+Action: Cursor moves to widget [B].
+[7s - 12s] DRAG: Widget being dragged into position
+┌────────────────────────────────┐
+│ Dashboard [+] [?] │
+│ ┌──────┐ ┌────┐ ┌────┐ │
+│ │Widget│ │ │ │ │ │
+│ │Panel │ │ .. │ │ .. │ │
+│ │ │ └────┘ └────┘ │
+│ │ [A] │ ┌─ ─ ─ ┐ │
+│ │ │ │ [B] │ ← drag │
+│ │ [C] │ └─ ─ ─ ┘ │
+│ └──────┘ │
+└────────────────────────────────┘
+Camera: Slight zoom to drag area.
+Action: Widget [B] follows cursor with drop-shadow.
+Ghost outline shows drop target.
+[12s - 15s] DROP: Widget snaps into grid
+┌────────────────────────────────┐
+│ Dashboard [+] [?] │
+│ ┌────┐ ┌────┐ ┌────┐ │
+│ │ │ │ │ │ │ │
+│ │ .. │ │ .. │ │ .. │ │
+│ └────┘ └────┘ └────┘ │
+│ ┌────────────────────┐ │
+│ │ Widget B │ │
+│ │ ████████░░░░ 75% │ │
+│ └────────────────────┘ │
+└────────────────────────────────┘
+Camera: Zoom back out to full dashboard.
+Action: Widget snaps into grid with spring animation.
+Sidebar closes. Success checkmark flashes briefly.
+The human reviews composition, pacing, and narrative flow. Adjustments happen in the cheap text domain before any frames are generated.
+Implementation
+Basic Preview Gate
+interface RenderRequest {
+type: "image" | "video";
+prompt: string;
+params: Record<string, unknown>;
+}
+interface Preview {
+ascii: string; // ASCII art representation
+description: string; // Text description of visual details
+estimatedCost: number; // What the render would cost
+}
+async function renderWithPreview(
+request: RenderRequest,
+onPreview: (preview: Preview) => Promise<boolean>
+): Promise<RenderResult> {
+// Step 1: Generate cheap preview (~$0.001)
+const preview = await generatePreview(request);
+// Step 2: Human reviews
+const approved = await onPreview(preview);
+if (!approved) {
+return { status: "rejected", preview };
+}
+// Step 3: Only now trigger the expensive render
+return await executeRender(request);
+}
+async function generatePreview(request: RenderRequest): Promise<Preview> {
+const systemPrompt =
+request.type === "image"
+? IMAGE_PREVIEW_PROMPT
+: VIDEO_STORYBOARD_PROMPT;
+const response = await llm.complete({
+model: "claude-haiku-4-5-20251001", // Cheapest model is fine here
+max_tokens: 2048,
+system: systemPrompt,
+messages: [{ role: "user", content: request.prompt }],
+});
+return parsePreview(response);
+}
+System Prompts
+const IMAGE_PREVIEW_PROMPT = `You are a visual layout previewer. Given an image
+generation prompt, produce:
+1. An ASCII art diagram (max 40 lines) showing the spatial layout, element
+placement, and composition of the intended image.
+2. A text description covering: colors, style, mood, lighting, and any details
+that ASCII cannot convey.
+Use box-drawing characters for structure. Use letters/symbols for elements.
+The goal is for a human to approve the composition before an expensive render.`;
+const VIDEO_STORYBOARD_PROMPT = `You are a video storyboard previewer. Given a
+video generation prompt, produce a sequence of keyframe ASCII diagrams with:
+1. Timestamp ranges for each keyframe
+2. ASCII art (max 20 lines each) showing the scene composition
+3. Camera notes (static, pan, zoom)
+4. Action descriptions (what moves, how)
+5. Transition notes between frames
+Aim for 3-6 keyframes depending on video length.
+The goal is for a human to approve pacing and composition before an expensive render.`;
+Cost Comparison
+| Operation | Cost per call | Tokens used | Latency |
+|---|---|---|---|
+| ASCII preview (Haiku) | ~$0.001 | ~1K in, ~1K out | <1s |
+| Image generation (DALL-E 3) | $0.04-0.12 | N/A | 10-20s |
+| Image generation (GPT Image) | $0.02-0.19 | N/A | 10-30s |
+| Video generation (Sora/Runway) | $0.50-5.00 | N/A | 30s-5min |
+A single wasted video render can pay for hundreds of ASCII previews.
+When to Use This Pattern
+Use previews when:
+- Image or video generation costs > $0.05 per call
+- The prompt is ambiguous or complex (spatial layout, multiple elements)
+- The user has not provided a reference image
+- You are in an iterative refinement loop
+- Batch generation (10+ images) where one bad prompt wastes the whole batch
+Skip previews when:
+- The prompt is simple and well-tested (e.g., “a red circle on white background”)
+- You are regenerating with minor parameter tweaks (seed, style strength)
+- The user explicitly asks to skip preview
+- Cost per render is negligible for the use case
+Extensions
+Structured Preview Data
+Instead of pure ASCII, return structured data that a frontend can render as a wireframe:
+interface StructuredPreview {
+canvas: { width: number; height: number };
+elements: Array<{
+type: "text" | "shape" | "image-region";
+label: string;
+position: { x: number; y: number; width: number; height: number };
+style?: { color?: string; opacity?: number };
+}>;
+description: string;
+colorPalette: string[];
+}
+Batch Preview for Video
+For video, preview the full storyboard in one pass, then let the user approve/reject individual keyframes before rendering only the approved segments.
+Progressive Refinement
+ASCII preview → approve layout
+SVG wireframe → approve proportions (still cheap)
+Low-res render → approve colors/style
+Full render → final output
+Each step is progressively more expensive but catches different classes of errors. Most issues get caught at the cheapest levels.
+Related
+- AI Cost Protection & Timeouts – Budget controls for expensive operations
+- Human-in-the-Loop Patterns – Approval workflows for agent actions
+- Model Switching Strategy – Use cheap models for preview, expensive for render
+- Evaluation-Driven Development – AI vision for qualitative evaluation
+Key Takeaway
+The cheapest render is the one you never make. ASCII previews convert expensive trial-and-error into cheap text-domain iteration. For any workflow involving generative media, insert a text preview gate before the render call. The cost is negligible, the latency savings are significant, and you get human alignment before committing resources.

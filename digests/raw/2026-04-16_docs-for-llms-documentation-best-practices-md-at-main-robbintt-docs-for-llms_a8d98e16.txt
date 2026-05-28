@@ -1,0 +1,209 @@
+# LLM Documentation Best Practices
+
+A practical guide for LLMs writing code documentation that humans actually read.
+
+## Core Principle: Front-Load Value
+
+Human readers scan documentation. They leave if the first 30 seconds don't help them. Structure every document to deliver value immediately.
+
+**What this means in practice:**
+
+1. **Quick Start within 50 lines** - Only 9% of docs in well-maintained projects include this. Be in that 9%.
+2. **Installation → Authentication → First Command** - This exact sequence. Not theory, not architecture, not history.
+3. **Working code before explanation** - Show the 5-line snippet that does something. Explain after.
+
+```typescript
+// Good: This works. Copy it.
+import { createSession } from "@example/sdk";
+const session = await createSession();
+await session.prompt("Hello");
+
+// Then explain what createSession() does
+```
+
+## Before Quick Start: Three Essential Pieces
+
+Before diving into Quick Start, include these three elements (15-30 lines total):
+
+1. **Context-setting intro** - One sentence: what is this thing? Users land from search results with no context.
+   ```markdown
+   Pi is a terminal coding harness that adapts to your workflow through extensions.
+   ```
+
+2. **Prerequisites** - What must be true before they start. Don't let users fail at step 1.
+   ```markdown
+   **Requirements:** Node.js 18+, a terminal with 256-color support
+   ```
+
+3. **Common errors** - The 3 errors users hit most, with fixes. Place after Quick Start or in a Troubleshooting section.
+   ```markdown
+   **"API key not found"** - Export your key: `export ANTHROPIC_API_KEY=sk-...`
+   ```
+
+These prevent the most common abandonment points: confusion ("what is this?"), setup failure ("missing dependency"), and first-run errors.
+
+## Document Structure That Works
+
+Based on analysis of effective technical docs, structure sections in this order:
+
+| Section | Purpose | Lines |
+|---------|---------|-------|
+| Quick Start | Get running in 60 seconds | 20-40 |
+| Key Capabilities | Bullet list of what's possible | 10-15 |
+| Table of Contents | Navigation for longer docs | 5-20 |
+| Core Concepts | Minimum viable understanding | 50-100 |
+| API Reference | Details when they need them | remainder |
+
+Skip sections that don't apply. A 50-line doc with just Quick Start and one example beats a 500-line doc users abandon.
+
+## Code Examples: Snippets, Not Novels
+
+**Target: 5-20 lines per code block.**
+
+Users copy-paste code examples. Optimize for that:
+
+- **Complete enough to run** - Don't omit imports if they're non-obvious
+- **Short enough to read** - One concept per block
+- **Annotated at the end** - Comments after the code, not inline distractions
+
+```typescript
+// Register a tool the LLM can call
+pi.registerTool({
+  name: "greet",
+  description: "Greet someone by name",
+  parameters: Type.Object({
+    name: Type.String(),
+  }),
+  async execute(id, params) {
+    return { content: [{ type: "text", text: `Hello, ${params.name}!` }] };
+  },
+});
+```
+
+Bad: 80-line example with error handling, logging, tests, and three edge cases.
+
+## Tables vs Prose
+
+**Use tables for:**
+- Options/flags with values
+- Feature comparisons
+- Configuration references
+- Keyboard shortcuts
+
+**Use prose for:**
+- Conceptual explanations
+- Sequential processes
+- Architectural decisions
+- Warning/security context
+
+```markdown
+<!-- Good: Table for discrete options -->
+| Flag | Default | Description |
+|------|---------|-------------|
+| --verbose | false | Enable debug output |
+| --timeout | 30000 | Request timeout in ms |
+
+<!-- Good: Prose for concepts -->
+Sessions persist conversation history as JSONL files with a tree structure.
+Each entry has an `id` and `parentId`, enabling in-place branching without
+creating new files.
+```
+
+## Cross-Linking Strategy
+
+Three link types, three purposes:
+
+1. **Anchor links** (`#section-name`) - Most common. Keep users in the current doc.
+2. **Relative links** (`../path/file.md`) - Internal cross-references.
+3. **Absolute links** (`https://...`) - External resources, source code.
+
+**Pattern:** Link to the smallest useful target. Don't link to a 2000-line file when you can link to a specific section.
+
+```markdown
+<!-- Good: Specific anchor -->
+See [Custom Tools](#custom-tools) for registration details.
+
+<!-- Good: Related doc -->
+For session internals, see [session.md](session.md).
+
+<!-- Avoid: Vague external link -->
+See the source code for details.  <!-- Where? Which file? -->
+```
+
+## Security and Warnings
+
+Place security warnings **before the dangerous content**, not after. Format distinctively:
+
+```markdown
+> **Security:** Extensions run with your full system permissions.
+> Only install from sources you trust.
+```
+
+Don't bury warnings in prose. Users skim. Make warnings impossible to miss.
+
+## What Not to Document
+
+- **Internal implementation details** - Unless the doc is specifically about internals
+- **Obvious behavior** - "This function returns a string" when the type signature says so
+- **Every edge case** - Document the 90% case. Link to source for edge cases.
+- **History/changelog in main docs** - Separate file for that
+
+## File Organization
+
+**Dedicated pages for:**
+- Major features (extensions, themes, skills)
+- Programmatic APIs (SDK, RPC)
+- Configuration references (settings, keybindings)
+
+**Inline in parent docs:**
+- Minor configuration options
+- Simple file formats
+- Platform-specific notes
+
+Rule of thumb: If it needs more than 100 lines of explanation, it gets its own file.
+
+## The "Working Example" Test
+
+Before publishing any doc section, verify:
+
+1. Can a user copy the code and run it?
+2. Does it produce visible output?
+3. Is the expected output documented?
+
+```typescript
+// Example output: "Hello, World!"
+```
+
+Untested documentation is wrong documentation. It just hasn't been caught yet.
+
+## Summary
+
+| Practice | Why |
+|----------|-----|
+| Quick Start first | 90% of users only need this |
+| 5-20 line examples | Copy-paste friendly |
+| Tables for options | Scannable |
+| Anchor links | Keep users on page |
+| Warnings before danger | Users skim |
+| Test every example | Untested = broken |
+
+Write documentation as if every reader will leave after 30 seconds. Because they will.
+
+---
+
+## Out of Scope
+
+The following topics do NOT belong in this guide. They are organizational/program concerns, not writing techniques. Document them separately in a **Documentation Program Management** guide:
+
+- **Versioning and deprecation** - Version badges, deprecation notices, migration guides
+- **Maintenance signals** - Last-updated dates, review schedules, ownership
+- **Accessibility** - Alt text requirements, screen reader testing, WCAG compliance
+- **Internationalization** - Translation workflows, locale handling, avoiding idioms
+- **Search optimization** - SEO for docs, keyword strategies, analytics
+- **Feedback mechanisms** - Issue templates, contribution guides, doc bug reporting
+- **Interactive examples** - Playground infrastructure, sandbox hosting, REPL integration
+- **Audience segmentation** - Separate doc sets for developers vs end-users vs admins
+- **Review processes** - Who approves docs, technical review requirements
+- **Tooling** - Doc generators, linters, CI checks, publishing pipelines
+
+This guide is about *how to write*. The above is about *how to manage a docs program*.

@@ -1,0 +1,11 @@
+X thread capture
+
+# Braden Hancock on X: "An under-appreciated project right now: Hive from the rLLM team out of Berkeley. It's essentially the multi-player (or rather, multi-agent) version of @karpathy's autoresearch, with the explicit goal of allowing agents build on each others' efforts. It turns leaderboards into a" / X
+
+Don’t miss what’s happening
+
+People on X are the first to know.
+
+Log in
+
+Sign up

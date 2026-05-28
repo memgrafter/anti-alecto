@@ -1,0 +1,21 @@
+X thread capture
+
+## Post
+
+## Conversation
+
+Prince Canuma
+
+@Prince_Canuma
+
+TurboQuant: Open Evals on MLX  Yesterday I launched mlx-vlm v0.4.4 with major TurboQuant performance improvements. Today, the open benchmark results on MM-NIAH (val, 520 samples) using Gemma 4 26B IT by
+
+@GoogleDeepMind
+
+on M3 Ultra: → 0 quality loss — 78% accuracy for both BL and TBQ → 97% answer agreement across all context lengths → 30–53% KV cache savings (where TBQ is active) → 1.16x decode speedup at ~60K context Benchmark code 
+
+[](https://x.com/Prince_Canuma/status/2040877782922649865/photo/1)
+
+7:42 PM · Apr 5, 2026
+
+25.5K Views

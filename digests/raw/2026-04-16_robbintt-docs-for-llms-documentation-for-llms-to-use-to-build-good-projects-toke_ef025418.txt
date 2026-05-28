@@ -1,0 +1,12 @@
+# Docs for LLMs
+
+Begin centralizing docs LLMs need to write good software projects.
+
+## Sections
+
+TODO
+
+
+## Resources
+
+- TODO

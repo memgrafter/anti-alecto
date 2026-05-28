@@ -1,0 +1,1793 @@
+How familiar are you with call stacks?
+>> Remember when I said don't lie?
+>> I am familiar WITH CALL STACKS.
+>> NO. [screaming]
+>> HOW DO HOW HOW do you compromise speed
+for for safety and trust with uh with a
+product?
+>> We never compromise on safety.
+>> By the way, I replicated this entire
+problem on getcre.io. You can try it for
+free. It currently only has a 15%
+success rate. You can also skip to
+around the 4-minute mark if you don't
+care about the background to this and
+just care about watching the interview.
+It's really strange because this person
+on their YouTube channel posted like
+dozens, maybe not dozens, like half a
+dozen interviews at companies like Jump
+Trading, Anthropic, Bloomberg, etc. And
+he posted his resume. He posted the
+entire conversation that he's had. He's
+posted his live coding assessment. And
+somebody in my Discord community, we
+have a pretty cracked Discord community,
+posted the video. And the video only had
+like 500 views. So, I don't know how
+this person found it, but they're like,
+"Oh, this is interesting. You should
+check it out." So, I decided to take a
+look and I noticed like, "Wow, this
+guy's channel is like pretty fresh,
+pretty new. He's just posting himself
+like in doing these interviews. Let's
+take a look." So, I took a look and the
+anthropic one to me stood out in
+particular. It stood out because he made
+almost every mistake that I tell you
+guys not to make. And so I want to use
+this example not as a dog pile on this
+person example, but as a how do we learn
+from this and how do we become better
+software engineers and how do we become
+more proficient software engineers? And
+I actually think that the interviewer
+here did an incredible job at being
+patient and professional. Now I left a
+comment on this person's channel giving
+him advice on how to improve with
+timestamps and then 3 hours later he
+deleted his YouTube channel. correction.
+He deleted all his videos. Now, I knew
+he'd do that cuz I know that people
+online can't take the heat, but I've
+been online for the past 5 years, so I
+know how these things work. So, I
+downloaded the video before leaving the
+comment. So, that's why I have this
+video. His name might get leaked
+throughout the course of this video. To
+be frank, I don't really care because he
+posted this video for the entire world
+to see. And just to be extremely clear,
+the candidate made no effort to censor
+his name in his resume in the video
+interview tab. So if he doesn't care,
+then I don't care either. He filmed it,
+posted it. It was online for weeks until
+somebody found it. So this guy works at
+bite dance and he's been doing C++,
+Golang, Python, React. 10 years of
+experience in C++, builds and maintains
+large scale distributed systems and
+cryptographic infrastructure handling
+billions of requests per hour. four plus
+years designing cloudnative applications
+on AWS to support hundreds of thousands
+of customers experienced in driving
+cross teamam troubleshooting and live
+incident recovery across a global scale
+system under real world pressure. So
+just keep that in mind. Now what I also
+want to state guys is that everybody has
+bad interviews. Okay, this is a bad
+interview. I'm going to be straight up
+with you guys. This is a horrible
+interview and it's largely horrible
+because of the way that the candidate
+approached it. Right? We're going to be
+learning from his experience so that you
+guys can improve yourselves. Maybe he
+has great interview experiences in other
+companies, in other places, in other
+times, right? I'm not going to write him
+off as a candidate and say he's a
+horrible person, whatever. No, that's
+not the case. I have bad interviews,
+okay? I try to minimize the amount of
+bad interviews I have, but you know,
+sometimes I get tripped up.
+>> And then share your screen a window, not
+just a tab in case you need to Google
+something.
+>> Uh, sorry. You wanted me to
+>> open the link I just sent and then share
+your screen or window.
+>> Sure. Which screen? I have uh two
+screens.
+>> The screen that you're coding on.
+>> Okay. Right off the bat, like which
+screen do I share? I have two screens.
+Obviously, you share the screen that
+you're coding on, right?
+>> Oh, okay. You want me to share my screen
+through Google?
+>> Yeah.
+>> This is actually worse than just nerves,
+by the way.
+He'll he's going to make the code a
+little larger.
+>> Share one screen. By the way, I can't
+share two. I have another screen I use
+for uh uh drawing pad.
+>> Uh sure. I mean, I don't care. Just
+whatever you do in this interview, you
+should do on one screen so that I can
+see like how you look things up and how
+you search things if you run into issues
+and so on.
+>> Okay. And I'm assuming AI is common.
+>> Uh yes. So, you can feel free to use
+Google and seclow. Just don't use any AI
+tools.
+You might want to close the pan on.
+>> That's really interesting. At an AI
+company, you're not allowed to use AI
+tools.
+Before we get into the question, I went
+ahead and I added this question to Get
+Cracked. This question we're going to be
+reviewing is on Get Cracked for free.
+For free. You just need an account. So,
+for free, everybody, rich, poor, sick,
+old, young, you can go do this problem
+uh whenever you want. Okay. full
+explanation, full samples, full example,
+full hints.
+>> Um, cool. So, I'll of course be taking
+doing a bunch of typing. And the task is
+to write a tool for a sampling profiler.
+Do you know what a sampling profiler is?
+>> Pause.
+Pause.
+What did the interviewer just ask, chat?
+Let's go back.
+>> Do you know what a sampling profiler is?
+>> Pause. If you don't know what a sampling
+profiler is, what is the only right
+answer?
+The only right answer is no.
+Right? That's the only right answer. The
+only right answer is no is because if
+you say yes, the interviewer is going to
+emit key information
+that might be useful to you. If you
+don't have a foundation in what a
+sampling profiler is, he'll assume you
+already know what it is. Why will he
+assume? because you told him you know
+what it is. If you tell him that you
+don't know what it is, he might spend
+extra time explaining it to you so that
+you're crystal clear before you continue
+to do the problem. Right? So listen to
+what this candidate says.
+It's not a decisive answer. And then see
+how the performance of this candidate
+deteriorates as the interviewer as the
+interview continues simply because he
+does not know what a sampling profiler
+is and he does not know what a call
+stack is and he does not understand
+either the interviewer's explanation the
+explanation in the comments on the code
+here and I think a lot of it's
+attributed to the fact that he didn't
+just straight up admit that he doesn't
+know what it is. So let let's continue.
+Well, it says sampling profilers are a
+performance analysis tool for finding
+the slow parts of your code by
+periodically sampling the entire call
+stack. So, he didn't he didn't answer.
+He didn't say yes or no. He said, well,
+over here, this is what it says. Okay,
+but do you understand what it says?
+Yeah, why are you reading it? Do you
+understand what this says? He didn't ask
+you, can you read what's on the screen?
+He asked you, do you know what a
+sampling profiler is?
+Have you ever used one before?
+>> That's a yes or no answer.
+Now, do you think he's going to answer
+with yes or no? See, candidates are so
+afraid to just say I don't know. There's
+nothing wrong with saying you don't
+know. He He does not expect you to know.
+If you have 10 years of C++ experience,
+you should know. You should. And I think
+that's why the candidate's so nervous
+and maybe feels a bit ashamed that he's
+in an interview where he doesn't know
+something that he should. But still, if
+the interviewer is if you if the
+interviewer works at a company that you
+want to work at, he will still explain
+it to you. He will still explain it to
+you. If the interviewer works at a
+company you don't want to work at, he'll
+be a dick about it.
+>> Uh, no, I don't use uh not for like
+code, not for code. I use it for the
+databases. So I work on primarily
+>> Sure. Okay. So yeah, like you mentioned
+a sampling and like it says a sampling
+profiler occasionally
+uh snapshots the entire call stack.
+>> So it sees what's running at this point
+in time and uses that to construct
+usually construct an image like the one
+that you can see if you click the folder
+icon in the top left.
+>> Top left.
+Yeah, the folder icon.
+>> Yep. And then click example trace.png.
+So it uses that to green like this where
+you can see what's running at what point
+in time, when things started and ended,
+and so on.
+>> Yeah. Gotcha.
+>> Have you seen something like this
+before?
+>> Have you seen something like this
+before? If you've done any profiling in
+even in like C, C and Visual Studio has
+a built-in profiler. It's amazing.
+and it will give you a visual that looks
+something like this. It won't be exact.
+All right. But if you say yes, you
+should you should not need to think
+twice about what a call stack is.
+>> Yeah. I mean, this is uh this is almost
+kind of uh Yeah. Yeah. I've seen this
+use this uh
+during
+so when I was working at Bloomberg, I
+used uh something similar to this, but
+yeah.
+typically I guess are you asking about
+my experience with using
+um
+>> No, I just want to get your idea get an
+impression of like how familiar you are
+with this to see if you understand the
+problem or not.
+>> Yeah, it's Yeah. Yeah, I understand.
+>> Um have you ever coded anything for
+sampling profilers before? I assume not,
+right?
+>> No, I've we don't Yeah. No, I've not uh
+>> Sounds good. Uh feel free to read over
+the rest of the problem and let me know
+if you have any questions.
+>> Problems.
+>> I'm going to read out the problem as
+well so you guys can see like what it
+says. Converting stack samples to a
+trace.
+Sampling profilers are a performance
+analysis tool for finding the slow parts
+of your code by periodically sampling
+the entire call stack. Lots of code
+might run between samples. In our
+program, in our problem, the samples
+will be a vector of samples of a float
+time stamp and a vector of function
+names in order of time stamp in order
+chronological order. So we have our time
+stamp that's our sample of the and this
+is our snapshot of stack frames, right?
+That's our snapshot of functions that
+that are currently running. Sometimes
+it's nice to visualize these samples on
+a chronologically time on a
+chronological timeline of the call stack
+using trace visualization visualizer UI.
+To do this, we need to convert the
+samples into a list of start and end
+events for each function call. Sample
+stack contains every function that is
+currently executing. The stack are in
+order from the outermost function like
+main to the innermost currently
+executing function. And a limited amount
+of execution changes can happen between
+samples. We don't have all the function
+calls that happen, just some samples we
+want to visualize. The returned events
+should be in a list order, properly
+nested as if they were recorded. For
+example, a nested function calls start
+event calls start event is after the one
+from the enclosing function and the
+nested calls
+end event is before the enclosing calls
+end end event. That makes sense.
+It's like last in first out semantics,
+right? Outer inner. So outer starts,
+inner starts, inner ends, outer ends.
+Finding slow parts of the coa periodic
+sample call.
+So the event that needs to be emitted
+has three fields. Remember this. This is
+important. It's going to come up later.
+The kind, the kind is start or end, the
+timestamp from the sample, and then the
+name. So this is the name of the method,
+outer or inner.
+Okay. So sample. So what is sampling?
+Sample is a TS time stamp. I assume this
+is time stamp and it's got the stack. So
+it's sampling. It's by calling the
+function and it's creating what the
+stack of strings. screens are I suppose
+these are
+>> stacks of functions and the time time
+stamp is the uh when the fun when when
+the sample started
+yeah so the question is
+>> listen to the question because it's
+clear he doesn't know what a call stack
+this is this is the first moment you
+understand where he doesn't understand
+the question
+>> okay so you have the struck sample right
+so ts is when the strruct is when the
+sample started And stacks are what the
+functions are that are being sampled. Is
+that correct?
+>> Uh, yep. There's an example at the
+bottom.
+>> Example at the bottom bottom there here.
+>> Uh, no. So, if you scroll to the very
+bottom, this is an example input and
+this is the example output for that
+input.
+>> Okay. So, sometimes it's nice to
+visualize.
+>> Scroll down to the scroll down to the
+bottom.
+>> Okay. Maybe just say the line number.
+>> So, this is the example output. This is
+the example input.
+So sample.
+>> So this is the input that should be
+transformed to this output.
+>> Sure. Um okay. And when so start 7.5 let
+me see. So sample stack contains
+>> and these are the samples that you're
+talking about which have a time stamp
+and the list of what's currently running
+at that point in time.
+>> Okay. So sample stack contains every
+function that is currently executing the
+functions. The stacks are in order from
+L most function but the most function
+unlimited amount of between sample we
+don't have all the function
+samples
+okay so sample here is all the functions
+that we want to visualize so we want to
+go so we start with main and then we go
+into the second function which is my
+funk
+>> uh okay
+and what is this start and end let's see
+by the way how How much time do I have
+for this uh important question?
+>> Uh what do you mean?
+>> Uh in half an hour, an hour.
+>> We're coming from the interview. However
+fast you do it is how fast you do it.
+>> Okay.
+The return events should be in at least
+order properly nested. By the way, I I
+feel like you're you're um Okay. Yeah.
+Uh the return events,
+>> huh?
+You said, by the way, you feel like
+>> Yeah, let's let's let's let's read the
+let's read the question here. The return
+events should be in a list.
+>> I I don't know what that was about. Um I
+don't I actually don't know what he
+wanted to say there. I think at this
+point, so do you know how on election
+night back in 2016, there was like a
+Hillary Trump
+like probability that started moving and
+it was like 96% chance Hillary would
+win. So this is like imagine we start
+with a 96% chance that the candidate is
+going to pass the interview.
+I think now we're probably around
+40 in the interviewer's mind.
+You you don't say things like, "Can you
+just tell me what line number, bro?"
+Like, that's how it kind of came off as.
+He said, "Scroll to the bottom. There's
+an example." And then the guy was just
+like,
+"Just tell me the line number, bro." And
+then this guy's also like, "I feel like
+you're" And then he's like, "Oh, never
+mind." I don't know what he was getting
+out there. Like these small things,
+guys, as a candidate,
+sometimes sometimes the best
+communication is just being quiet and
+letting the other person finish and then
+saying, "Sorry, I I still don't see it.
+Can you point me in the right
+direction?" Not just like, "Yo, bro,
+just tell me the line number."
+So, this is okay to ask like, "Listen, I
+need some clarification here. I'm not
+entirely sure." What I would do in this
+point is I'd say, "This is my
+understanding. Here is the input. Here
+is the example output. Is that correct?
+where if it's not correct, how can I
+reconcile this right? That's what I
+would do. So in my I ideally would
+scroll to the bottom, go to the example
+and give them an additional example and
+say is my understanding correct? Right?
+Because worst case you have an
+additional test case now to test your
+code against right. That's like the
+worst case. You just made an additional
+test case which is cool.
+>> Current events should be in a list order
+properly nested as if they were
+recorded.
+>> Sure. So um so if we scroll to the
+bottom again.
+>> Yeah.
+>> Uh
+so if you see something like this,
+what what should the expected output be
+for this? Can you add extra lines in the
+expected output for what do you think it
+should be?
+>> I would expect something like this. Um
+so event only has one name, right?
+So you can't start two functions in one
+event. Each event is only for
+one function.
+>> I mean shouldn't should it be like this?
+>> No.
+>> Okay. Notice event has three fields.
+Kind time stamp name. But here the
+candidates placed event start timestamp
+function name function name function
+name. Just read the event strct bro like
+I don't know what you're doing.
+>> So event is a strct of this type right?
+>> Yeah.
+>> So this has five fields. This has three
+fields.
+Right? You can't construct a strct with
+three fields with five fields. You can't
+pass in five things to a constructor to
+only
+>> I I I understand. Um
+yeah, but how how do you
+Okay. So, okay. So, I see. Um
+right, because it's only got kind But if
+you print this out, shouldn't it be
+something else? Uh I mean the print
+statement should be something like this,
+right? Time and then ts
+and then name
+>> uh
+>> like that, right? So what what would the
+output be here? Convert to trace.
+>> Um sorry, I'm confused about what you
+mean by this. You're just copying what
+the print debug is saying, right?
+>> Right. It's It sounds to me like you you
+want me to write out what the print
+debug variables would be. Is that
+correct?
+>> No. No. I want you to print I want you
+to write out what the expected output
+should be for the change. So this is the
+correct output for if there's no my
+function too.
+So
+uh scroll down scroll down to keep all
+the code in context. So this is the
+correct output. or if it if there's no
+my function to but when I add a my
+function to
+what should the expected output change
+to become?
+That's what I want you to answer.
+>> I really like David's approach because
+he's not giving him the answer. He's
+showing patience.
+Um I can tell he's a little frustrated.
+I would be too. But he's doing a good
+job to show patience
+and at the same time
+um
+he's asking like probing questions to
+get the candidate to think. He's not
+just giving the candidate the answer. I
+kind of operate the same way. I would
+rather sit down with you for an this
+entire interview and explain how the
+problem works if you still don't get it
+in three 32 different ways.
+But I do not want to give you the the
+answer because if you can't think
+through the problem the the problem
+statement, you're never going to be able
+to solve the problem.
+>> Most function in in the sample two is
+main and the innermost function is my
+function too.
+>> Yep.
+>> An unlimited amount of execution change
+can happen between samples. What does
+that mean? So in this case, you didn't
+just go from main to main and my
+function and then main and my function
+two, right? So you could have imagined
+that only one function changes at a
+time. But that's not true. What happens
+is here two functions started. So we
+didn't see the first function start. We
+just saw two functions running.
+>> How do we just how do we only see two? I
+I didn't I didn't follow that actually.
+I didn't follow Um, so at this point in
+time there's one function running,
+>> right?
+>> Yeah.
+>> At this point in time there's three
+functions running in the call stack,
+right?
+>> Uh, doesn't so my doesn't main call my
+function and then my function call my
+function too.
+Sequential.
+>> Yeah. So there's three functions
+currently in the call stack,
+>> right? Once it finishes, there'll be
+three functions in the call stack,
+>> right?
+>> Uh, no. Once it finishes, there'll be
+zero functions in the call stack because
+there's no more functions in the call
+stack.
+There are currently three functions in
+the call stack
+at the point of time when sample 2
+happens, right?
+>> Okay.
+>> How familiar are you with call stacks?
+>> Remember when I said don't lie?
+Don't lie. Just tell say the truth. Say
+you're not familiar. Say you don't know.
+If he just said, "I have no idea what
+what the f a call stack was at t equals
+0 in this interviewer in this
+interview." I guarantee you he would not
+be as confused 12 minutes in. He didn't
+even start coding.
+The interviewer knows, but he can't say,
+"Dude, you don't know what a call stack
+is. Let me teach you." He can't do that.
+He needs to either push the candidate to
+give him to the right answer and then
+maybe
+we can get through this impass
+or he just needs to relent to the
+candidate pretending that he knows what
+it is and at the end of the hour say
+sorry no hire.
+I am familiar with
+>> okay
+>> no
+>> HELLO [screaming]
+>> so at this point in time there's three
+functions in the call stack right
+>> why why is there this point like how
+does how does sample even represent the
+call stack
+>> how he just says he's familiar with the
+call stack and in the next 10 seconds he
+shows the interviewer he has no idea
+what a call stack is
+>> how familiar are you with call stacks.
+>> I am familiar with call stacks.
+>> Okay.
+>> So at this point in time there's three
+functions in the call stack, right?
+>> Why why is there this point like how
+does how does sample even represent the
+call stack? I'm not getting the
+relationship.
+>> So uh it's a sample of the call stack at
+a point in time.
+So
+>> there's three things in the call stack
+because we ran a sampler and it checked
+what's currently in memory and it saw
+that there's three things.
+>> Okay. So the 9.2 what it means is that
+it took 9.2 seconds to run all three
+functions.
+>> Nope. 9.2 is a time stamp.
+>> This is a sample. It's a snapshot in
+time. It's it was clear in the question.
+It was clear in the picture. It was
+clear everywhere. Why would you say that
+it takes 9.2 two seconds to run these
+three functions. And 30 seconds ago, you
+said you understood what a call stack
+was.
+I think he has more than 10 years of
+experience. I don't know if it's all in
+C++, but he listed C++ as his first
+language under his experience in bite
+dense.
+>> Okay. So, it started at 9.2.
+>> Yeah.
+>> And it's running three functions.
+>> I don't like that wording either. What
+do you mean it started at 9.2? Does that
+mean you think main started at 9.2? It's
+a snapshot at 9.2.
+>> What do you mean started at 9.2? Nothing
+started.
+>> See, David picks up on it. Me and David
+are in sync. I've only watched until
+like pre-watched until like 12:38. I
+knew I was about to crash out. I I did
+the pre-crash out crash out. Okay. Me
+and David are in sync moving forward.
+>> Okay. So, what does the time stamp mean?
+What does
+>> When the temple is taken? when this
+>> at time 9.2 three functions were
+running.
+>> Okay.
+>> Three functions were in the call stack.
+>> By the way, how are we looking on time
+with regard to talking?
+>> Uh this is the only problem that we'll
+be covering in the interview.
+>> Okay. Okay. Um
+All right.
+>> So wait, does that make sense? So at
+time 9.2, three functions were running.
+>> Yeah, that that makes sense. Yes.
+>> Okay. So,
+um, do you know how to change this?
+Since I added my function too, the list
+of start and end events should change.
+Right.
+Right. But I'm trying to figure out what
+what is it that we're actually trying to
+change here. Um, the return events
+should be in a list
+order properly nested as as if they're
+recorded. For example, a nested function
+call start event is after the one from
+the enclosing function and the nested
+call end event is before the calls
+end event. Okay. So in this case in
+sample two the begin event is main and
+the end event is my fun two.
+>> Uh no
+because at 9.2
+my function two has not ended. Why do
+you think my function 2 has ended?
+At 9.2 you see it currently running.
+What makes you think it's ended?
+>> Okay. So the return event should be in a
+list order properly nested as if they
+were reporting.
+What can you explain what the statement
+means? I'm I'm not understanding.
+>> Sure.
+>> Let me just show you what the correct
+answer for this is then.
+>> All right. So let's let's let's
+pre-think of the correct answer. So main
+starts at 7.5. We have that right at
+sample 9.2. We don't we don't know when
+my funk actually started. My funk
+started between 7.5 and 9.2 not
+inclusive of 7.5. If my if my funk
+started at 7.5, it would be in that list
+of sample one. Right? So we have sample
+one begin main at 7.5. We have my
+function begin at 9.2. My function 2
+begin at 9.2. Then we have my function
+to end at 10.7. It could have ended
+earlier than 10.7.
+It could have ended earlier. But the
+only data point we have is this sample 3
+snapshot. So sometime
+or before 10.7. So we just use 10.7. So
+my function 2 ended at 10.7 and my
+function ended at 10.7 as well. Main is
+still running. So we leave that
+unchanged. There's no end main event. So
+these extra two lines are the two lines
+that are added when I added my function
+2 because you see main has started at
+7.5 because that's the first time you
+see main. So you in issue a start event
+for main. At 9.2 you now see my function
+and my function two are running.
+>> Okay. you issue a start event for my
+function and then a start event for my
+function too because you see they're
+both running here. And then at uh 10.7
+you see that these two are no longer
+running. So you have to say this has
+ended and this has ended.
+>> Okay, I see. So
+okay, I I see. So my function
+so it wouldn't be something like this
+then. Uh so you start a 9.2 my function.
+It wouldn't be like this.
+>> No,
+>> because I wouldn't they happen in
+sequential. So M started.
+>> So So Maine starts also at 9.2.
+>> Yep.
+>> Right. But it doesn't look
+>> No, no, no. I think I Maine does not
+start at 9.2.
+Maine is still running at 9.2.
+So, we're seven 16 minutes in and after
+three explanations, still no
+understanding of what's going on. Now,
+at this point, as an interviewer,
+because we're not here to rag on this
+person. We're here to take this as a
+learning opportunity. As an interviewer,
+I don't know what I how I would proceed
+because I think I've taught this person.
+I' I've explained enough. At this point,
+as an interviewer, I'm sitting back and
+I'm just answering this person's
+questions because I think that I've
+given as much information as I can
+without giving the person the answer.
+Right? Short of telling them how to code
+the solution, I've given them enough
+information to be able to solve this
+problem. If they're still confused,
+there's a skill issue at this point.
+>> Look, there's start for main here. So,
+wouldn't it be like this by by your by
+your logic?
+>> Uh, no. Maine has already started. So
+let's go back. Can you go to the image
+example trace.png?
+Yep. So see here when one function calls
+another function that function is still
+considered to be running, right?
+>> Uh which sorry which uh
+>> um so let's like what do you mean which
+like every one of these functions like
+main is running throughout the entire
+duration of the program,
+right? core hash fund is it just seems
+to be running this at least this 127661
+it's only running at this this slice
+but in
+like at the very top start calls lip
+start main calls main calls camel
+startup calls camel startup commen calls
+camel startup program calls core not the
+entry calls core identifiable function
+and so on.
+>> Yeah.
+So when it calls when one function calls
+another function, the parent is still
+running.
+It hasn't started or ended. It's still
+running because it's still in the call
+stack.
+So now he's explaining to him how like
+basic program functions work. Like this
+is this is CS 101, is it not? Like if
+you even write hello world in C++, you
+should know like what's what's going on.
+So Mang is you're saying Mang is still
+running.
+>> Yeah.
+>> Even though it's gone down. Yeah. Yeah.
+Yes. Yeah. That that's true. Yes. It's
+it's in between in between function.
+Yeah.
+>> Okay.
+>> So
+>> if we go back to code like
+>> we don't see main started again because
+it is still running.
+>> I see. I see. So main never ended
+basically because
+>> yes main has never ended. Main started
+but never ended.
+>> If we do sample S4 and say 12. Yeah.
+>> And then there's nothing.
+>> Yes.
+Then me would then then ch uh how would
+the expected output change?
+>> So see I like what he did. He said
+instead of giving the answer he said
+well okay given your new revelation
+how would the expected output change? He
+kind of David kind of stopped himself
+instead of just giving him a yes or no
+and telling him the answer. But listen
+the candidate actually made a mistake
+because now he has an empty string. Now
+he has an empty string in there. I don't
+know why he popped that in there. It was
+right when it was empty, but now he has
+an a function that has no name.
+So main ended, but now there's like
+another unnamed function that is just
+joined.
+>> So
+>> it's not
+>> Yeah.
+>> So then David just corrected him.
+>> Just add main to end to
+>> Yeah, that's correct.
+So, we're 20 minutes in. This candidate
+has said, "Yeah, I know what a call
+stack is." At 12:38, he's said that he
+knows what a call stack is. At the
+beginning of the interview, um, and this
+whole 20 minutes or 18 minutes was him
+proving that he has no idea what a call
+stack is.
+I think now he gets it. Let's see what
+Let's see what happens next.
+>> Okay.
+>> Does that make sense?
+>> Yeah. Yeah.
+It's good that David got confirmation
+like, "Okay, have we reached the
+checkpoint? We're playing a video game.
+Have we reached level one? Have we
+reached the end of level one? Can you
+start level two?" Level two is coding.
+So, he's he's making mental notes as to
+whether or not the candidate has
+progressed.
+>> And what what would the output look
+like? Just a vector of events. Looks
+like Yeah, vector of events.
+>> Okay.
+>> I didn't really get that question. Like,
+what do you mean?
+What's what's the outcome look like?
+It's it's on line 55. That's the output.
+>> It looks like we'll be using
+and I'm I'm going to guess that we get
+the sample in chronological order. So,
+the problem
+>> it doesn't say in the uh I don't think
+it says in the requirements, but I mean
+if you're doing sampling, all the
+samples should come in.
+>> Are you sure it doesn't say in the
+requirements?
+>> Oh, yeah. Yeah, it does. Sometimes it's
+>> uh sorry I mean like the order that you
+receive them
+>> does it say what order you receive them
+in the requirements
+>> line 12
+>> it says sample non chronological time so
+the order of events
+>> uh in particular here it says you'll
+receive them in order by time stamp
+>> yeah I'm I'm just I'm reading line
+>> yeah but this is this was answer to your
+Yeah.
+>> Now I can already think of an approach
+because well not not only have I written
+the problem on get cracked and written
+the explanation and the solution and
+added test cases
+but like you should be able to think of
+the approach here. If you understand how
+a call stack works you should be able to
+think of the approach right?
+>> I think I'm going to use something with
+a stack
+and a vector. So uh in my first event
+7.5
+I see that mang is the first time we we
+we see this event. So in my hash table
+I'll add main as the key and then I'll
+add the value 7.5 as the start
+and then I'll push main to a stack.
+Next I'll next I will see uh my funk
+uh my function
+and I'll see the new start time
+uh the start time is uh 9.2 two and my
+bunk two. Uh, another question here is,
+uh, so in sample two, how do we know for
+sure that my fun started at 9.2? We
+don't know that it started at 9.2,
+right? We just know that it's being
+sampled at 9.2.
+>> Yep. So, we don't know necessarily when
+it started, but uh, so we assume that it
+started there because that's all we have
+evidence for.
+>> Okay.
+Yep. So the hash table sees two new
+keys. My funk 9.2 and
+uh my fun 2 9.2. And then we'll add it
+to the stack.
+>> Mhm. My funk and then my fun
+two.
+In the third one, I will see that uh
+oh u you but
+>> yep
+>> I need to know how when they end it
+because in the third one I'll see I will
+only see main.
+>> Yeah. So what one way of looking at this
+problem is you can output any set of
+start and end events that is consistent
+with what you observe. You want to
+output like a simple set of start and
+end events that are consistent with you
+what you observe. So really you can use
+whatever time stamps you want to think
+as long as they're consistent with your
+observations.
+>> What what what do you mean use any time
+stamp like that? So like you don't have
+to say
+um if it is easier for you, you don't
+have to say they started this started at
+8.2. You can say this started at any
+time between 7.5 and 9.2 because that's
+entire
+>> Yeah. Right.
+>> exclusive of 7.5 though.
+>> I Yeah,
+>> the end event. You can also say the end
+events were anytime between 10.7 and 12.
+>> That's stupid. Why would Why would
+>> you know that mean ended sometime
+between 10? I would not code it where I
+just guess where in between 10.7 and 12
+it ended.
+>> 11 and 12.
+>> You either you pick I would pick just
+12.
+>> Uh the thing that I see here
+so on the third event I only see May.
+>> We need to figure out a way to say okay
+my funk and my funk 2 has already ended.
+So I guess the way we would do uh uh do
+this is by instead of putting it into a
+vector instead of putting it into a
+stack we can put into a vector and then
+as we get each sample we iterate through
+this vector of actively
+uh running uh functions
+and then if we don't see these active
+running functions in the new event we
+can say that these actively running
+functions have ended at this new temp.
+So, so let's say in sample one we see
+that there's main and then we add main
+to the actively running sample
+uh vector and then in the second one we
+see that main my funk uh my funk 2 m is
+currently in my funk. So then we only
+add my funk and my funk 2. And then when
+sample three we see that we we iterate
+through our uh set and we see that my
+funk on my funk 2 is no longer in sample
+three. Then we remove uh then then we
+say my fun my funk 2 has ended at time
+sample three and then we we we do it.
+>> Sure that sounds fine. However you want
+to solve the problem that's fine.
+There's a lot of different ways of doing
+it.
+>> Okay.
+>> I don't understand why he needs extra
+space at all. you have you have the
+vector of stack frames in the sample.
+Why do you need to allocate another
+vector and start pushing things into
+there? I mean the key to understanding
+this is that you only need to care about
+the differences between the two, right?
+So this is the this is a hint. Close
+your ears if you don't want to hear a
+hint.
+All you need to understand is what is
+the mismatch between these two vectors
+of strings.
+C++ has a function called stood mismatch
+to check where two vectors differ. And
+everything that isn't
+in the first vector but is in the second
+has been added. Everything that is in
+the first but isn't in the second
+because there's a mismatch has been
+removed. And that that's why when people
+ask me this is trivia. Knowing this,
+knowing the standard algorithms, knowing
+standard algorithms in C++ is trivia.
+No, it's not. It comes in handy in these
+sorts of situations. You know how to
+solve the problem without needing to
+allocate a map and a vector and a stack
+and push this onto here. If all you knew
+is that there's an algorithm in the
+standard template library that can help
+you here. But all the copers in chat
+want to say that's trivia. That's I'll
+just look it up. You think this guy's
+looking up looking that up right now?
+No. He's sweating balls.
+Most of what you want to implement in
+C++ somebody's already done it for you.
+Okay. Okay. [laughter]
+When I see this, this is not rage bait.
+This is legit. When I see you write a
+for loop like this with no spaces
+between your four and your bracket and
+no spaces between the equal and the zero
+and no spaces between i and less than, I
+know it's over. He could have skipped
+the 18minute explanation
+about this problem and just started
+writing a for loop. I could have started
+this video asking this candidate. If I
+was David Choy, I would have asked him,
+"Hey dude, can you write a for loop for
+me real quick?"
+And then he sees this for loop written
+like this. I've been okay bro uh
+interview's over
+man like guys just so you know what I'm
+talking about you guys should at le if
+you're writing C++ before 23 just write
+it like that
+no implicit conversion between int and
+size t we brace initialize the i to zero
+it's just
+you're tapped in if you write it like
+that if you write it like that like this
+like this candidate's doing. I know you
+I know you've just finished the Hello
+World tutorial and learned CPP.
+Okay. Uh, by the way, take a look at
+this. Quant firms will knock you for
+this. AI firms will knock you for this.
+Line 67. What's wrong with line 67,
+chat?
+What's wrong with line 67?
+Okay. Uh, the only guy that works in
+quant actually got the answer right. Uh,
+copy potentially. He's making a copy of
+a sample. Why are you doing that? The
+subscript operator returns a reference.
+Imagine sample has a list of a million
+strings.
+Why? Why are you doing that? Just take
+const reference. The actual sample
+object is not going to change. Be
+expressive in your code and use const.
+>> Okay. So there's actively running
+functions
+and functions that is it possible that
+we can get something
+uh like
+okay so we can also have something like
+this right
+um
+like this can we do
+>> that's okay as well okay
+>> y um also
+so
+you recursion exists
+This is also something that can happen,
+right?
+Function names are not necessarily
+unique,
+>> right?
+>> Functions can call themselves.
+This point, if you code this problem
+correctly, this actually doesn't even
+matter. Recursion gets taken care of
+because the only thing that matters is
+when these two lists start to differ.
+>> But if if functions call themselves,
+then do we
+>> then a new function started? So we issue
+a new start and end event for it.
+>> Then it should have its own start and
+end event.
+>> Yep. Because it's a different instance
+of the function. And if you look at it
+from like a profiling perspective, you'd
+want to know that a new function is
+started because you want to understand
+what's happening to your program.
+>> Okay. So in this case I think using the
+the uh simple kind of patch on the
+>> chat would you rather be work at bite
+dance for 5 years changing configs and
+writing if statements or would you
+rather work at like some no-name quant
+firm that people [ __ ] on because it's
+nobody's heard of it but everybody's
+cracked out of their mind running the
+latest and greatest C++ and they know
+all the inner workings of everything and
+they're actually building from the
+ground up and they're actually like
+you're actually like having meaningful
+impacts
+>> sets is
+not sufficient because it doesn't take
+in consideration the recursionness
+of the uh yeah so maybe on order an
+unordered
+uh set with the name and a vector
+of starting time
+>> bro why do you need that
+>> uh actively running functions
+>> wait Isn't this the same? So, sample
+two, they both have the same start time,
+right?
+>> Yes. But we can also have something like
+like this, right? Uh so their start time
+is this. And what if we have something
+like
+>> But what's what's the issue? What's
+what's stopping the program from you
+know finishing the main and then later
+coming back to my bunk?
+>> Nothing
+>> and then doing the same loop all over.
+>> Nothing but you should open them again.
+So in this case you would say like main
+has started at 7.5.
+>> I told you me and David are insane
+>> function have all you have three start
+events at 9.2 then they've all ended at
+10.7 right then they've all started
+again at 12.2.
+>> Okay. Yeah.
+>> Okay. Uh let me try to come up with the
+uh data structure that we can use to
+>> you don't need any other data structure.
+Dude, this question is as a loop.
+It's one for loop and then an STL
+algorithm.
+>> All right. The only thing it's it's not
+taking in consideration
+uh the recursion
+the algorithm would work. Uh okay. So
+maybe I right. So yeah, use on order set
+and then keep a count. But if I keep a
+count, um,
+>> let me see if I can show you guys one of
+my text test cases.
+>> I think you can probably just compare
+the current sample with the last sample,
+right?
+>> Current sample with the last sample.
+>> Yep. And let's see what new things have
+started or ended.
+>> So he just gave him the answer. Wait,
+wait. He just gave him the answer. David
+literally just leaked the answer. Let's
+see if he picks up on it.
+>> I think you can probably just compare
+the current sample with the last sample,
+right?
+>> Current sample with the last sample.
+>> Yep. And let's see. What new things have
+started or ended?
+>> Does he pick up on it or does he ignore
+it?
+>> Yeah.
+>> Does he pick up on it or does he ignore
+it, chat?
+>> Okay. So, if I compare with the last
+body, I still need to uh use some kind
+of
+data structure. I guess we can do vector
+comparison loop
+>> loop through
+>> or I was thinking using a
+unordered map. We can do a comparison
+>> by doing a count or we or we can just do
+a loop through.
+Think
+>> doing a loop through would probably be
+simpler.
+>> Don't loop, dude. Use a standard
+algorithm.
+See, the thing is at the beginning of
+this interview, David told him that you
+can use Google. So, my first my first
+go-to would be to like, wait, there has
+to be a standard algorithm that does
+this that finds where two vectors
+differ. There has to be. There's over
+like I think a hundred standard
+algorithms. Let me search it up. Hey,
+Google. Um, which algorithm can I find
+in C++ STL
+>> that compares two vectors and tells me
+where they differ? Bam.
+>> So if you're comparing one sample with
+another, you just need one loop, right?
+I and I minus one.
+But you also have to you also have to
+handle the special case we just talked
+about where the sample is only of size
+one.
+So what's the point of samples vec? Why
+can't you just compare with the previous
+sample?
+You already have the samples you need.
+You don't need to construct a new s data
+structure to that's just a copy, right?
+>> Yeah.
+Um
+>> you can just do samples I do
+stack, right?
+Wait, where's the comparison? Do you
+guys notice that?
+There's no comparison here. Samples I
+stack size.
+So for J, J J J J J J J J J J J J J J J
+J J J J J J J J J J J J J J J J J J J J
+J J J J J is going to go J is going to
+iterate into infinity here. There's no
+termination condition for that loop.
+J will go. Okay, this is this is
+actually a little interesting. Um,
+people sometimes ask me why in my code
+I'd prefer to use at instead of
+subscript.
+Okay, it's for these exact cases. At
+does a check for out of bounds indices
+and it'll throw if something's out of
+bounds. It'll throw an exception.
+Subscript doesn't. If you subscript
+outside of the bounds of an array,
+then you'll have undefined behavior. So
+what's going to happen is if if he was
+to run this code, he'd he'd never he'd
+never break and he'd go he'd wrap around
+to z he'd wrap around. We'd have signed
+integer overflow and signed integer
+overflow is undefined behavior. So we
+have one count of undefined behavior
+here which is why I told you to use size
+t. This is an amateur move right here
+using int. It would overflow which is
+one undefined behavior.
+And bas based off the standard its
+undefined behavior. Some compilers might
+protect you, but based off the standard,
+it's undefined behavior. On the
+architecture level, I believe if you're
+using x86, you're still protected, but
+still the on the standard, it's
+undefined behavior. And then he's going
+to be index indexing into an array that
+into a negative bounds or into some
+bounds that's extremely large that
+passes the size of his array. And that's
+undefined behavior as well. So we have
+double undefined behavior.
+So, I'm perfectly fine with adding a
+little runtime cost with the bounce
+check to prevent myself from doing
+undefined behavior by accident and
+actually throw an exception and making
+my debugging a lot easier.
+Once again, once again, copies. Copies
+everywhere. Copies.
+People ding you for this stuff, guys.
+I'm serious.
+>> Oh, why are you doing S4? How do you
+want to compare them?
+>> I'm just comparing each element in the
+vector. If if the if this element
+appears in in uh in the previous vector
+then we don't
+then there's nothing to to add. If uh
+the vector Yeah.
+>> But let's say for example it was I'm
+going to change the sample input to
+this.
+So here um what would the output be for
+this? You see my function and it's still
+there but a new one has started right.
+>> So this would be main begins my funk
+begins my funk begins
+with the respective time stamps. Let's
+see what let's see what our friend here
+says.
+>> So you need to start both of them.
+>> Oh what you had in mind?
+>> No. So then the only way to do this is
+by putting this pushing this to a hash
+table and then just compare the hash
+table. values.
+>> Um putting pushing what to a hash table?
+>> Putting so putting so the key will be
+main and the value will be just one
+because it appear once and then we
+compare so we we build a hash table for
+the first one then we build a hash table
+for the second one and then we
+>> do check that way.
+>> Yeah.
+>> So then what about this?
+In this case, they've switched order, so
+they must have ended and then started it
+again.
+>> Yeah, that's a that's really that's a
+really good uh retort by David because
+at this point, S1 s these two S2s like
+he should name it these two lines,
+right? These two samples, they'll give
+you the exact same hash table,
+but there's a massive difference because
+by 9.2, two. My funk 2 has ended. My
+funk one has ended. My funk two has
+started. My funk one has started.
+>> Yeah. Uh switch orders.
+Uh is that
+>> right? I guess because Yeah. Okay, that
+makes sense.
+>> There's no other explanation for the
+switching orders other than they've
+ended and then started again.
+>> Yeah, that makes sense.
+Um, so how would you find the So I think
+really what you want to do instead of
+this is to find the point where they
+differ. Find the first point of
+difference and then everything after
+that must have ended and everything
+after that must have started.
+>> So he just gave him the answer just
+right there. That was the answer and he
+hinted at that answer like 10 minutes
+prior,
+>> right?
+>> Everything right? Everything after the
+first one must have everything.
+>> Yeah. So if you find the point where the
+current and last samples are different
+then everything after that and the last
+sample must have ended. Everything after
+that and the new sample must have
+started.
+>> This is why the job market is not cooked
+because the candidate pool is massive
+but
+finding a high quality C++ candidate the
+type of people I'm trying to train up
+with get cracked is difficult.
+Yeah. Honestly, interviews are stressful
+and that can mess people up. And that's
+why I said at the beginning of this
+video, guys, like everybody has bad
+interviews, but like this was atrocious
+because the candidate made it even worse
+for themselves
+by deceiving themselves and lying to the
+interviewer based off what they know and
+what they don't know.
+>> That's funny.
+>> Yeah, [laughter]
+>> bro. Okay, let's see how he debugs.
+That's actually critical information for
+an interviewer.
+But like look redefin like address all
+the errors dude.
+Yeah. Don't ever do this by the way.
+Where are the spaces like
+Wait, where's the body?
+Where's the constructor? Okay, there you
+go.
+Oh, A is not initialized. So, this is
+undefined behavior.
+That's right there. Here's another
+undefined behavior. Reading from A
+without initializing it. A has junk.
+Just read the error, bro. Come on. You
+got it. You got it.
+Dude, you can define them both on the
+same line. You didn't need to do That's
+just fine. You didn't need to do that.
+Spaces do not hike latency,
+dude. Dude, wait. Wait, guys. What else?
+There's another massive problem. There's
+another blatant problem. I don't know
+why he needed to call run again. What's
+the What's the other There's There's one
+more problem.
+What's the other problem,
+chat? What's the other problem?
+S2. That's right. The S2. He's the He's
+redefining the same variable.
+All right. Let's see what the output is.
+Okay. Look at the J. Remember the J that
+I talked about
+this infinite for loop?
+>> Nothing printed out.
+Just
+>> What do you mean nothing printed out?
+Read your code, dude.
+>> Yep.
+>> Line 69 going wrong. looking at it. Um,
+zero
+starts.
+>> The program never ended. Did it end? Did
+it get killed? Yeah, I think it got
+killed.
+This is his program right now.
+HELLO. [screaming]
+>> RIGHT. SO, it's only going into
+>> Bro, it's stuck in that loop.
+>> Uh, it's probably secting
+with minus one.
+You're probably invalid memory.
+>> Yep. You're accessing invalid memory.
+>> I don't see any uh
+uh out of memory.
+>> Um,
+>> what do you mean you don't see any out
+of memory?
+>> If it's if you access invalid memory, it
+just crashes.
+Unfortunately,
+>> line 70. Bro, you're so close.
+You're not going to You're going to get
+into there one. You're not going to get
+there, dude. Cuz in int i starts at
+zero,
+dude. The code is so slop at this point.
+So for example on line 87 and line 91
+there it shouldn't index into a and b
+right
+you just want to compare it to prep dot
+size and current on size
+>> this shouldn't be here right
+>> yeah why are you indexing he's oh he was
+doing prev size which gets the size of
+the string
+but but the interviewer I think is
+missing line 70
+>> probably something else that I
+>> line 70 pull through. Pull through,
+David. Is David going to pull through?
+>> Yeah. So, it crashes before getting to
+this.
+>> Yeah. Oh, David. David's debugging hard
+>> this.
+>> Go David. Go David.
+>> Um, in fact, looks like it crashes.
+>> Yes. Yes.
+>> David's cracked.
+>> Wait, but did the candidate get it or
+he's still kind of confused?
+Wait, why samples? Oh, no. Samples.
+What did he
+>> Bro, look at your the You're never going
+to get there, dude. It's going to seg
+fold.
+>> Uh, for some, right? For some reason, I
+feel like this some lag.
+>> Um, shouldn't this be Jay's less than or
+equal? Yes.
+>> Size.
+>> David pulls through.
+>> Cool. Yeah, that looks correct for that
+test case. Except it's in the wrong
+order. But
+>> except it's in the wrong order. Savage.
+>> For for what's been what's been removed,
+you have to iterate backwards, right?
+Cuz if you understand what a call stack
+is at this point, the innermost one
+returns to the outermost one. So from
+the inner to the outer you go backwards
+and then when what's added you go
+forwards from the outer to the inner.
+Let's see if he understands what a call
+stack is
+>> started 9.1
+my phone started two then ended my phone
+does it so it has to end my phone two
+first before it ends my phone.
+It needs to reverse everything from a to
+the end of the back. So something
+[groaning and screaming]
+>> sure
+agorithm,
+[screaming and groaning]
+not algorithms.
+There we go. But that's just trivia.
+Um, I don't have the run button.
+>> Um, I think you closed it somehow. You
+might. Yeah,
+>> there.
+>> Okay, cool. That looks good. Um,
+>> actually, I I actually I actually still
+think this doesn't look good, but I
+think David's fatigued cuz there is no
+way that my function 2 ends and starts
+at the same time stamp. My function 2
+has to end after 9.1 inclusive of 10.7.
+But David's just tired at this point.
+We'll give him a break.
+>> We're out of time. So that's a good
+place to stop.
+Um to leave you any time for any
+questions you might have. So yeah. Yeah,
+I'm happy to answer any question you
+might have to introduce myself. I'm
+David. I'm a researcher on the
+pre-training team. Looks like you're
+interviewing for imprints. Cool.
+>> Yeah. Uh what is the Can can you tell me
+a little bit more about the
+>> I can infer that he probably didn't pass
+this interview.
+>> Uh but I'm not on the inference team.
+>> Inference team
+>> works on inference models. So they are
+the ones that try to do the surving of
+the models. Um I'm not sure exactly what
+you're looking for in terms of what they
+do, but like do you have any more
+specific questions?
+>> Yeah, don't don't do that. Don't say
+what is the team I'm interviewing.
+>> Talk about performance. They are
+>> like hey I'm about to join the AI
+infancy team at anthropic. Yeah. By the
+way, what do you guys do? Where am I?
+Like that's the vibe it gives.
+>> They currently doing a lot of stuff in
+Rust. They Yeah. Sing problem.
+>> Maybe what kind of what what kind of
+work? What's the complexity? Uh
+yeah. What kind of work are they doing?
+What's the complexity? uh you know how
+does it fit into the big picture with
+that drop?
+>> Sure. So the the work varies a lot. They
+have to like maintain the existing
+infrastructure, make sure our models
+stay up. Uh they need to deploy new
+models. When new models come out, they
+need to do a lot of optimizations. It's
+pretty high complexity most of the time
+I think.
+>> So in terms of speed versus execution
+versus quality, well execution speed
+versus quality at Enthropic, what do you
+guys care about more? care about where
+is it a is it a balance
+for example
+>> yes
+>> I think it depends a lot on what exactly
+is going on if we need to get a model
+deployment up as fast as possible then
+speed matters um if we need to like if
+we're not in urgent point then we need
+to like do various refactors and make
+sure things are better for the long term
+um we have our the mission of the
+company and we all try to optimize for
+what we think would best achieve that
+mission But depends on what's currently
+going on to decide what the balance is
+exactly.
+>> And how's the how's the work pace? Uh
+are are you are you uh do do you feel
+like it's a very high pace, high
+performance uh type of team that
+>> bro? Okay. Wait, wait, wait. You're
+interviewing
+for one of the most tip of the spear
+companies in the most difficult
+industry, literally revolutionizing the
+entire human race.
+No, it's slow. It's slow. We're not, you
+know, it's not fast-paced. We're just
+lazy. We talk about our pink fluffy
+socks every day. Like, what are these
+questions? These are not the sorts of
+questions you want to be asking.
+Best case, you come off as lazy because
+you're asking about work life balance at
+a company that's like literally
+iterating every day.
+And worst case, you just sound not
+ready, unprepared, not tapped in. Like
+you've you've not you've not read the
+job requirements like by the way like
+what what's the complexity of the work?
+What does that even mean?
+>> And in terms of I I know anthropic is
+really big on uh safety. Uh how how do
+how how do you compromise speed for for
+safety and trust with uh with the
+product?
+>> We never compromise on safety. There are
+no compromises on safety whatsoever.
+Safety as our main mission.
+>> Okay. Right. Safety is the main mission.
+So you you compromise on speed or
+>> Yes. We don't care about speed or money
+or like we if the company failed but it
+would make AI a little bit more safe, we
+would be to locate that. If all our
+stock went to zero and made AI is more
+safe, we'd be okay with that.
+>> Okay,
+>> that's really respectable. He's not just
+like, "Oh yeah, bro, we're here for the
+money and we're like, we just want to
+print and you know, we want to produce
+stuff." Like, you can tell he's
+invested. You can tell he like really
+wants to make this work. And that's the
+sort of employee you want to have at a
+company. Like that's a Chad answer
+through and through.
+I'm here to build the safest AI, even if
+it's marginally better, but the entire
+company explodes. Like, you can tell
+this guy's in it. He's like part of a
+mission, you know? He's he's on the ship
+and he's going down with the captain if
+he needs to
+like that. That's that's that's that's
+sick. And you can tell that was from the
+heart.
+>> Got it. So there there's there's there's
+ste there's safety and then there is uh
+quality.
+Safety above all and then quality is
+next and then a ste. Is that correct?
+>> No. Safety above all. We don't care
+about anything else. Everything else is
+in service of safety. Everything else is
+in service of our mission.
+>> So whatever would be best for our
+mission in terms of safety is what we
+would do for speed and quality.
+>> Okay.
+>> And that's always a balance.
+>> But because of safety, do you do you
+feel that there's a lot of internal
+regulations in the company that you have
+to either work around you know
+>> those would be good for safety. Our
+safety is like we have to make sure that
+we have the correct impact to do that.
+We have to make sure that we do like
+having good models and being a lead
+leading AI model provider and having the
+best models in the world is important
+for safety because it means we can
+influence policy more. It means we can
+influence social norms with how these
+models are used. It means we can
+influence other labs to be more safe. So
+speed is in service of safety because it
+means we have more impact
+>> or policym.
+But the but there are a lot of uh the
+reason why I'm asking this is because
+Tik Tok also stressed on safety but
+because of you know the the safetyness
+of uh Tik Tok uh a lot of things are red
+taped so developers are barred engineers
+are barred from uh performing for to to
+build certain things in the name of you
+know safety because our infrastructure
+is hosted on highly regular regulated
+uh environments.
+>> Sure. So you're talking about
+regulations which I don't think have
+much or anything to do with safety.
+Often times I think these are like often
+counterproductive for safety. So we take
+the view that whatever is best for AI
+safety as a whole is what we do.
+Whatever is best for AI development as a
+whole is what we do. Uh which means we
+want less regulations because that would
+slow us down and mean we have less
+abilities to be safe.
+>> Got it. Yeah, that sounds like a sounds
+like a great mission. Um, yeah, cool.
+Got it.
+>> Cool. Yeah. Anything else?
+>> Uh, no, that's that's all. Thanks for
+the uh thanks thanks for your time.
+Thanks for the interview.
+>> Thanks for taking time to interview.
+Hope you have a good rest of your day.
+See you.
+>> Yeah. Thanks, David. See you.
+>> All right, let's summarize, chat. The
+MVP here is David. He really won me over
+with that last explanation at the end.
+um candidate lied himself through the
+first 20 minutes which shot himself in
+the foot. He didn't pick up on the
+instructions. His debugging was a bit
+subpar that needs to be improved. And
+the code, people are going to dog on me
+for this, but the code formatting wasn't
+there. And the knowledge of STL wasn't
+there. If you're 10 years in C++, like
+it should be.
+It should be. Now, why did the candidate
+post this? I don't know, but I left a
+comment giving him advice and then he
+just nuked his whole channel. And the
+candidate also, I think, asked bad
+questions. What's the complexity of the
+work? What does the team do? You should
+you should be researching this stuff.
+Like, you should know this. Maybe a
+better question would be, can you tell
+me a recent project that the team has
+completed? That's something you can't
+Google. You can't Google inference team.
+What's what project have they done?
+That's a much better question than
+what's the team do? I know a bunch of
+people in my community that would be
+perfect fits for anthropic. Anthropic
+recruiters, reach out to me. The coding
+Jesus at getcrack.io. I know a bunch of
+really solid C++ developers that would
+love to work for you and that would be a
+great fit for your company. If you don't
+want to reach out, that's totally fine.

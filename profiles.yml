@@ -1,0 +1,40 @@
+spec: flatprofiles
+spec_version: "2.5.0"
+
+data:
+  model_profiles:
+    default:
+      provider: openai-codex
+      backend: codex
+      name: gpt-5.3-codex
+      oauth:
+        provider: openai-codex
+        auth_file: ~/.pi/agent/auth.json
+        refresh: true
+    summarizer:
+      provider: openai-codex
+      backend: codex
+      name: gpt-5.3-codex
+      oauth:
+        provider: openai-codex
+        auth_file: ~/.pi/agent/auth.json
+        refresh: true
+    judge:
+      provider: openai-codex
+      backend: codex
+      name: gpt-5.3-codex
+      oauth:
+        provider: openai-codex
+        auth_file: ~/.pi/agent/auth.json
+        refresh: true
+    cheap:
+      provider: openai-codex
+      backend: codex
+      name: gpt-5.4-mini
+      oauth:
+        provider: openai-codex
+        auth_file: ~/.pi/agent/auth.json
+        refresh: true
+
+  default: default
+  override: cheap

@@ -1,0 +1,189 @@
+Title: Unlocking Efficiency: A Practical Guide to Claude Prompt Caching
+
+URL Source: http://medium.com/@mcraddock/unlocking-efficiency-a-practical-guide-to-claude-prompt-caching-3185805c0eef
+
+Published Time: 2024-08-23T07:49:19Z
+
+Markdown Content:
+[![Image 1: Mark Craddock](https://miro.medium.com/v2/resize:fill:64:64/1*B4iCjaWO1YFUwiq-cCV1bw.png)](https://medium.com/@mcraddock?source=post_page---byline--3185805c0eef---------------------------------------)
+
+5 min read
+
+Aug 23, 2024
+
+--
+
+Anthropic’s Claude AI has introduced a game-changing feature that promises to revolutionise how developers interact with large language models: Prompt Caching. This article will delve into the practical aspects of this feature, helping you understand how to implement it and reap its benefits.
+
+## What is Prompt Caching?
+
+Prompt Caching is a powerful optimisation technique that allows developers to reuse large portions of their prompts across multiple API calls. This feature is particularly useful for applications that require consistent context, instructions, or background information across different interactions.
+
+## Key Benefits
+
+1.   **Cost Reduction**: Cached prompts can reduce input token costs by up to 90%.
+2.   **Improved Latency**: Response times can be cut by up to 85% for long prompts.
+3.   **Enhanced Performance**: Allows for inclusion of more context and examples without performance penalties.
+
+## When to Use Prompt Caching
+
+Prompt Caching shines in scenarios where you need to:
+
+*   Maintain extended conversations with long instructions or uploaded documents
+*   Improve coding assistants by keeping summarised codebase information in the prompt
+*   Process large documents, including images, without increased latency
+*   Provide detailed instruction sets with numerous examples
+*   Implement agentic search and tool use with multiple rounds of interaction
+*   Create interactive experiences with long-form content like books, papers, or transcripts
+
+## How to Implement Prompt Caching
+
+To use Prompt Caching in your Claude API calls:
+
+1.   Structure your prompt with static content (instructions, context, examples) at the beginning.
+2.   Mark the end of reusable content using the `cache_control` parameter.
+3.   Make sure your cacheable prompt meets the minimum length requirements:
+
+*   1024 tokens for Claude 3.5 Sonnet and Claude 3 Opus
+*   2048 tokens for Claude 3 Haiku
+
+Here’s a simple Python example:
+
+import anthropic
+client = anthropic.Anthropic()
+
+response = client.beta.prompt_caching.messages.create(
+
+ model="claude-3-5-sonnet-20240620",
+
+ max_tokens=1024,
+
+ system=[
+
+ {
+
+ "type": "text", 
+
+ "text": "You are an AI assistant tasked with analyzing literary works.",
+
+ "cache_control": {"type": "ephemeral"}
+
+ },
+
+ {
+
+ "type": "text", 
+
+ "text": "<full text of a literary work>",
+
+ "cache_control": {"type": "ephemeral"}
+
+ }
+
+ ],
+
+ messages=[{"role": "user", "content": "Analyze the major themes in this work."}],
+
+)
+
+print(response)
+
+## Pricing and Performance Monitoring
+
+Prompt Caching introduces a new pricing structure:
+
+*   Cache writes cost 25% more than base input tokens
+*   Cache reads cost 90% less than base input tokens
+
+To monitor cache performance, check these fields in the API response:
+
+*   `cache_creation_input_tokens`: Tokens written to the cache
+*   `cache_read_input_tokens`: Tokens retrieved from the cache
+
+## Cost Calculation
+
+To help developers estimate the potential cost savings of implementing Prompt Caching, I have created a detailed spreadsheet. This spreadsheet allows for precise calculations of token usage and associated costs across various scenarios. It takes into account factors such as input tokens (both system and user), output tokens, cached input, cache writes, and cache reads.
+
+The spreadsheet demonstrates how costs can vary depending on the number of API calls made within the 5-minute cache lifetime. It provides calculations for up to 8 hours of continuous usage, allowing developers to see how the cost benefits of Prompt Caching accumulate over time.
+
+By using this tool, developers can:
+
+1.   Input their specific token counts for system instructions, user messages, and expected outputs.
+2.   See a breakdown of costs with and without caching enabled.
+3.   Understand how the cost savings scale as the number of API calls increases.
+4.   Make informed decisions about when and how to implement Prompt Caching in their applications.
+
+This cost calculation tool is an invaluable resource for optimising API usage and maximising the benefits of the Prompt Caching feature.
+
+Here is a [**sheet**](https://github.com/tractorjuice/automated_wardley_reports/blob/main/Prompt%20Caching%20Costs%20-%20Sonnet.xlsx)**[updated 28/08/2024].**
+
+## Tracking Usage in the Console
+
+To track your Prompt Caching usage, you can use the Anthropic console. As shown in the provided image:
+
+1.   Navigate to the “Usage” section in your Anthropic dashboard.
+2.   Set the “Group by” dropdown to “token type”.
+3.   The graph will now display different colours for various token types:
+
+*   Beige: Output tokens
+*   Light orange: Prompt caching read tokens
+*   Orange: Prompt caching write tokens
+*   Red: Input tokens
+
+This visualisation allows you to easily track how much you’re benefiting from Prompt Caching and adjust your strategy accordingly.
+
+Press enter or click to view image in full size
+
+## Best Practices
+
+1.   Cache stable, reusable content like system instructions and background information.
+2.   Place cached content at the beginning of your prompt for optimal performance.
+3.   Use cache breakpoints strategically to separate different cacheable sections.
+4.   Regularly analyse cache hit rates and adjust your strategy as needed.
+5.   Remember that the cache has a 5-minute lifetime, refreshed with each use.
+
+## Frequently Asked Questions
+
+### What is the cache lifetime?
+
+The cache has a lifetime (TTL) of about 5 minutes. This lifetime is refreshed each time the cached content is used.
+
+### How many cache breakpoints can I use?
+
+You can define up to 4 cache breakpoints in your prompt.
+
+### Is Prompt Caching available for all models?
+
+No, Prompt Caching is currently only available for Claude 3.5 Sonnet, Claude 3 Haiku, and Claude 3 Opus.
+
+### How do I enable Prompt Caching?
+
+To enable Prompt Caching, include the `anthropic-beta: prompt-caching-2024-07-31` header in your API requests.
+
+### Can I use Prompt Caching with other API features?
+
+Yes, Prompt Caching can be used alongside other API features like tool use and vision capabilities. However, changing whether there are images in a prompt or modifying tool use settings will break the cache.
+
+### Can I manually clear the cache?
+
+Currently, there’s no way to manually clear the cache. Cached prefixes automatically expire after 5 minutes of inactivity.
+
+### What can break the cache?
+
+Changes that can break the cache include modifying any content, changing whether there are any images (anywhere in the prompt), and altering `tool_choice.type`. These changes will require creating a new cache entry.
+
+### How does Prompt Caching handle privacy and data separation?
+
+Prompt Caching is designed with strong privacy and data separation measures:
+
+1.   Cache keys are generated using a cryptographic hash of the prompts up to the cache control point.
+2.   Caches are organisation-specific and not shared across different organisations.
+3.   The caching mechanism maintains the integrity and privacy of each unique conversation or context.
+4.   It’s safe to use `cache_control` anywhere in your prompts, but for cost efficiency, it's better to exclude highly variable parts from caching.
+
+## Can I use Prompt Caching at the same time as other betas?
+
+Yes! The `anthropic-beta` header takes a comma-separated list. For example:
+
+anthropic-beta: prompt-caching-2024-07-31,max-tokens-3-5-sonnet-2024-07-15
+By implementing Prompt Caching effectively, you can significantly improve the efficiency and cost-effectiveness of your Claude-powered applications. Start experimenting with this feature today to unlock its full potential in your AI workflows.

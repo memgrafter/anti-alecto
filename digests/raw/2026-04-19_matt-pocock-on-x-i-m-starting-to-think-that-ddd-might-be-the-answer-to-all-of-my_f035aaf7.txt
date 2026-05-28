@@ -1,0 +1,15 @@
+X thread capture
+
+## Post
+
+## Conversation
+
+Matt Pocock
+
+@mattpocockuk
+
+I'm starting to think that DDD might be the answer to all of my problems - Model not doing what you want? Shared language - Can't navigate a massive codebase? Bounded contexts with global mapping - Don't know why a decision was made? ADR's It's just so freaking elegant
+
+10:25 AM · Apr 16, 2026
+
+171.8K Views

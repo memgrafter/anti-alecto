@@ -1,0 +1,54 @@
+# anti-alecto configuration
+
+skip_patterns:
+  - "^https?://(www\\.)?youtube\\.com/(@|feed/|results\\?|playlist\\?|channel/|c/|user/)"
+  - "^https?://((www|canary|ptb)\\.)?discord\\.com"
+  - "^https?://(www\\.)?discordapp\\.com"
+  - "^https?://discord\\.gg/"
+  - "^https?://(www\\.)?x\\.com/(home|explore|search|messages|notifications|settings|compose|i/|intent/|login|signup)($|[/?#])"
+  - "^https?://(www\\.)?x\\.com/[^/\\?]+/?$"
+  - "^https?://(www\\.)?twitter\\.com"
+  - "^https?://.*\\.google\\.com/(chrome|search)"
+  - "^https?://mail\\.google\\.com"
+  - "^https?://console\\."
+  - "^https?://gemini\\.google\\.com/app/"
+  - "^https?://claude\\.ai/(login|chat|new)"
+  - "^https?://app\\.devin\\.ai/"
+  - "^https?://cloud\\.digitalocean\\.com/account/"
+  - "^https?://openrouter\\.ai/activity"
+  - "^https?://docs\\.google\\.com/document/.+/edit"
+  - "^chrome-extension://"
+  - "^chrome://"
+  - "^about:"
+
+tracking_params:
+  - utm_source
+  - utm_medium
+  - utm_campaign
+  - utm_term
+  - utm_content
+  - fbclid
+  - gclid
+  - ref
+  - share_id
+  - sca_esv
+  - sxsrf
+
+triage:
+  batch_size: 30
+  interest_profile: |
+    Software engineering, developer tools, AI/ML, programming languages,
+    systems programming, open source projects, CLI tools, Nix/NixOS,
+    agent frameworks, LLM infrastructure, productivity systems.
+    Less interested in: gaming, crypto, social media drama, celebrity news,
+    generic marketing, paywalled content without substance.
+
+scrape:
+  timeout_seconds: 30
+  max_concurrent: 3
+  playwright_wait_ms: 3000
+  min_content_length: 200
+  cache_ttl_hours: 24
+
+jina:
+  enabled: false

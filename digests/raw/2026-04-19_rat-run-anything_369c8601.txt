@@ -1,0 +1,22 @@
+One binary. Every REPL. Shared namespace.
+rat wraps language runtimes as MCP servers. Start a Python kernel in your terminal — then connect from Claude Desktop, VS Code, Cursor, or any MCP client. Same variables. Same session. Zero glue code.
+One curl. One install command. Done.
+Full IPython with syntax highlighting, tab completion, and magic commands.
+Open Claude Desktop. “Analyze the dataframe I just loaded.” It sees the same df
+.
+Four tools. That’s the whole API.
+| Tool | What it does |
+|---|---|
+run | Execute code or provide input |
+look | Inspect variables, complete code, see state |
+tail | Recent activity log |
+ctl | Reset, cancel, restart |
+Same four tools for every language. Same four tools whether you’re a human in a terminal, an LLM, or a notebook app.
+Why rat
+Your terminal, Claude, VS Code, and Cursor all see the same variables. Load data once, use it everywhere.
+rat py
+in ~/project-a
+is separate from ~/project-b
+. Automatic isolation, no configuration.
+Python, R, bash, pi agent built in. Add any language with a YAML file and a kernel script — no Go code.
+Every kernel is an MCP server. Works with Claude Desktop, Cursor, and any MCP client out of the box.

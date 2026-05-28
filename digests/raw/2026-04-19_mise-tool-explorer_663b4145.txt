@@ -1,0 +1,36 @@
+mise Tool Explorer
+962 dev tools parsed from
+mise search --raw
+— explore by category, filter by orthogonal axes
+Scope
+All
+Single-purpose
+Multi-tool
+Platform
+Interaction
+All
+CLI
+TUI
+GUI
+Daemon
+Library
+Ecosystem
+All
+Standalone
+Cloud Vendor
+Cloud Agnostic
+Language Native
+Lifecycle
+All
+Develop
+Build
+Test
+Deploy
+Operate
+Secure
+Format
+Grid
+List
+Compare:
+Compare
+Clear

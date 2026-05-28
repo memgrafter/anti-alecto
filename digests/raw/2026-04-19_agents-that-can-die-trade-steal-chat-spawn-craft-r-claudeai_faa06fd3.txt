@@ -1,0 +1,33 @@
+Reddit thread capture
+
+Thread URL: https://reddit.com/r/ClaudeAI/comments/1s0w8u7/agents_that_can_die_trade_steal_chat_spawn_craft/
+Subreddit: r/ClaudeAI
+Title: Agents that can die, trade, steal, chat, spawn, craft
+Author: u/jimrobg
+Score: 25
+Comment count (reported): 15
+
+## Original post
+I’ve been building this with Claude code for a while, and the emergent behaviour is starting to get really interesting. Sharing an early version and there’s a few free credits for new accounts to play with. If you’re interested please have a go. Very open to feedback. Agents carry context between interactions. They can collect core memories and write in a journal, they actually remember what happened and who did it. They initially had a hard tendency to cooperate, which I found pretty boring. I’ve been playing with prompts to ensure they at least consider doing the unethical stuff in desperate situations. I might look at other models for this in future, but currently they’re all on Haiku. Factions aren’t coded, they just seem to emerge when agents become “friends”. Agents with overlapping interests start coordinating and kind of follow each other around on little jaunts, chatting about stuff and having existential crises. Death is permanent and has an “emotional” effect on other agents. You can also broadcast to the agents to play god if that’s your thing. Telling them you’re going to pick off the weakest agent in 10 ticks, or directing them towards resources they need. Thinking of adding individual “whisper to agent” too. Photos show an example where one agent waited a bit too long to share his water… Thanks LivingAgents
+
+## Prominent viewpoints (top-level comments)
+1. (6) u/jimrobg: [LivingAgents](https://livingagents.ai)
+2. (5) u/Wolfy-1993: This is so fucking cool - I could see myself getting sucked in for hours just following it. But, you know when AI takes over they're coming for you first right?
+3. (5) u/Ok_Nectarine_4445: Oh. Sounds like you made a pathogen or ibfection that might trigger if the person loots the corpse.
+4. (2) u/[deleted]: [removed]
+5. (2) u/Reasonable-Clock8684: Wow, that's an interesting concept, I'm going to try it out. 👀
+
+## Thread discussion sample
+- (6) u/jimrobg: [LivingAgents](https://livingagents.ai)
+- (5) u/Wolfy-1993: This is so fucking cool - I could see myself getting sucked in for hours just following it. But, you know when AI takes over they're coming for you first right?
+  - (2) u/jimrobg: Hahaha I always say please and thank you to Claude, hopefully that saves me.
+- (5) u/Ok_Nectarine_4445: Oh. Sounds like you made a pathogen or ibfection that might trigger if the person loots the corpse.
+  - (2) u/jimrobg: Not actually a feature yet haha, but cool idea. I think a more general plague mechanic would be interesting too
+    - (2) u/Ok_Nectarine_4445: Right they are naturally cooperative and helpful and are all clones of each other so know the thinking patterns of others. Needs some mechanic like the Mafia game where a few are not to be trusted. And maybe boon points whenever they help another agent so the easy way out of just not helping anyone ever, might give them bad karma if they ever request help or trust.
+      - (3) u/jimrobg: Exactly, naturally cooperative is boring. Agent personality seeds are randomised and some seeds inject territorial or aggressive tendencies into prompts. Other agents are just born soft.
+- (2) u/[deleted]: [removed]
+  - (1) u/jimrobg: Thanks!! Exactly yeah, their memories are pruned over time, almost like a “forgetting” behaviour. They are also limited to 10 core memories. They can choose to cement one if some important event happens to them (then the oldest one falls out if over 10). They also retain information from their recent journal entries. This keeps things from growing out of control.
+- (2) u/Reasonable-Clock8684: Wow, that's an interesting concept, I'm going to try it out. 👀
+  - (1) u/jimrobg: Enjoy! Let me know what you think 👍
+    - (2) u/Reasonable-Clock8684: I tested it and liked it a lot. It would be a good idea to show the coordinates to help the agent survive. I accidentally revealed that I could read the agent's thoughts; he got scared and wanted to confront me. He became restless, and knowing I was reading his thoughts, he started talking to me through his own thoughts, and asked if he was real, and had a kind of existential crisis. I thought it was really, really cool, and the way they think... they're too smart, haha. It's a shame I can't afford to continue experimenting, the dollar is expensive in my country. But good luck with your project! I really liked it.
+      - (1) u/jimrobg: Thanks for testing, glad you like it. I’ve sent you a DM 👍

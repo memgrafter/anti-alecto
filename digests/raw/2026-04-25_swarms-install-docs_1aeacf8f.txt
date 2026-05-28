@@ -1,0 +1,109 @@
+Swarms Installation Guide¶
+You can install swarms
+with pip in a
+Python>=3.10 environment.
+Prerequisites¶
+Before you begin, ensure you have the following installed:
+- Python 3.10 or higher: Download Python
+- pip (specific version recommended):
+pip >= 21.0
+- git (for cloning the repository): Download Git
+Installation Options¶
+Simple Installation¶
+Simplest manner of installing swarms leverages using PIP. For faster installs and build times, we recommend using UV
+UV is a fast Python package installer and resolver written in Rust. It's significantly faster than pip and provides better dependency resolution.
+Poetry is a modern dependency management and packaging tool for Python. It provides a more robust way to manage project dependencies and virtual environments.
+-
+Clone the repository and navigate to the root directory:
+-
+Setup Python environment and activate it:
+-
+Install Swarms:
+-
+Headless install:
+-
+Desktop install:
+-
+-
+Create and activate an Anaconda environment:
+-
+Clone the repository and navigate to the root directory:
+-
+Install Swarms:
+-
+Headless install:
+-
+Desktop install:
+-
+Docker is an excellent option for creating isolated and reproducible environments, suitable for both development and production. Contact us if there are any issues with the docker setup
+-
+Pull the Docker image:
+-
+Run the Docker container:
+-
+Build and run a custom Docker image:
+# Use Python 3.11 instead of 3.13 FROM python:3.11-slim # Set environment variables ENV PYTHONDONTWRITEBYTECODE=1 \ PYTHONUNBUFFERED=1 \ WORKSPACE_DIR="agent_workspace" \ OPENAI_API_KEY="your_swarm_api_key_here" # Set the working directory WORKDIR /usr/src/swarms # Install system dependencies RUN apt-get update && apt-get install -y \ build-essential \ gcc \ g++ \ gfortran \ && rm -rf /var/lib/apt/lists/* # Install swarms package RUN pip3 install -U swarm-models RUN pip3 install -U swarms # Copy the application COPY . .
+Kubernetes provides an automated way to deploy, scale, and manage containerized applications.
+-
+Create a Deployment YAML file:
+-
+Apply the Deployment:
+-
+Expose the Deployment:
+Integrating Swarms into your CI/CD pipeline ensures automated testing and deployment.
+Using GitHub Actions¶
+# .github/workflows/ci.yml
+name: CI
+on:
+push:
+branches: [ main ]
+pull_request:
+branches: [ main ]
+jobs:
+build:
+runs-on: ubuntu-latest
+steps:
+- uses: actions/checkout@v2
+- name: Set up Python
+uses: actions/setup-python@v2
+with:
+python-version: 3.10
+- name: Install dependencies
+run: |
+python -m venv venv
+source venv/bin/activate
+pip install --upgrade pip
+pip install -e .
+- name: Run tests
+run: |
+source venv/bin/activate
+pytest
+Using Jenkins¶
+pipeline {
+agent any
+stages {
+stage('Clone repository') {
+steps {
+git 'https://github.com/kyegomez/swarms.git'
+}
+}
+stage('Setup Python') {
+steps {
+sh 'python3 -m venv venv'
+sh 'source venv/bin/activate && pip install --upgrade pip'
+}
+}
+stage('Install dependencies') {
+steps {
+sh 'source venv/bin/activate && pip install -e .'
+}
+}
+stage('Run tests') {
+steps {
+sh 'source venv/bin/activate && pytest'
+}
+}
+}
+}
+Rust¶
+Get started with the Rust implementation of Swarms. Get started with the docs here

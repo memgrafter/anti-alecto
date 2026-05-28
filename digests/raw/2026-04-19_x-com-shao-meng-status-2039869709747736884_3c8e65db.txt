@@ -1,0 +1,59 @@
+X thread capture
+
+# meng shao on X: "AutoHarness [Aha]：面向 AI Agent 的轻量级治理框架 来自 AIMING Lab，团队认为：Agent = Model + Harness 模型负责推理，框架负责其余一切（上下文管理、工具治理、成本控制、可观测性、会话持久化等） 技术架构 - 三层治理模式 · Core：6步，轻量级治理 · Standard：8步，生产级 Agent · https://t.co/6v4eG3sfau" / X
+
+Don’t miss what’s happening
+
+People on X are the first to know.
+
+Log in
+
+Sign up
+
+# [](http://x.com/)
+
+## Post
+
+See new posts
+
+# Conversation
+
+[](http://x.com/shao__meng)
+
+meng shao
+
+@shao__meng
+
+Show translation
+
+AutoHarness [Aha]：面向 AI Agent 的轻量级治理框架 来自 AIMING Lab，团队认为：Agent = Model + Harness 模型负责推理，框架负责其余一切（上下文管理、工具治理、成本控制、可观测性、会话持久化等） 技术架构 - 三层治理模式 · Core：6步，轻量级治理 · Standard：8步，生产级 Agent · Enhanced：14步，最大治理强度 其中 Enhanced 模式的架构决策部分参考了 Claude Code 源代码，上下文工程实践参考了 Codex 开源代码。 关键特性 - 开箱即用的治理能力 · 风险模式匹配：内置危险操作、密钥暴露、路径遍历等检测 · Token 预算管理：自动截断防止上下文爆炸 · 单次调用成本归因：模型感知的定价追踪 · 分层验证：输入护栏 → 执行 → 输出护栏 · JSONL 审计日志：完整溯源，满足合规要求 · 多智能体配置：基于角色的差异化治理 开源地址：https://github.com/aiming-lab/Aut oHarness…
+
+[](http://x.com/shao__meng/status/2039869709747736884/photo/1)
+
+Quote
+
+Huaxiu Yao
+
+@HuaxiuYaoML
+
+·
+
+Apr 2
+
+ Introducing AutoHarness (「Aha」) — automated harness engineering for AI agents. In LLM training, the aha moment is when a model learns to reason. For agents, it's when a better harness makes the same model shine. Agent = Model + Harness. The model reasons. The harness does
+
+[](http://x.com/HuaxiuYaoML/status/2039556952707977374/photo/1)
+
+12:56 AM · Apr 3, 2026
+
+·
+
+12.3K Views
+
+4
+
+20
+
+80
+
+104

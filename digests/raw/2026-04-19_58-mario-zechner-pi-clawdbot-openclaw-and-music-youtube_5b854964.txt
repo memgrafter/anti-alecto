@@ -1,0 +1,1423 @@
+All right. Hello, Mario. Uh, could you
+please introduce yourself and what you
+do?
+>> Sure. Well, thanks for having me. My
+name is Mario. I hail from Austria,
+somewhere deep inside of Europe. I used
+to do a lot of stuff and I still do a
+lot of stuff. Started my career in
+applied science, mostly machine learning
+stuff and visualization and information
+retrieval stuff. Did a short stint in
+San Francisco to work on mobile games.
+came back, became a manager, got bored,
+did a startup with two friends, sold
+that to Samarind/ Microsoft, and then
+joined my best friend with some game
+development shovel shovels that we sell
+to game development companies and Emma
+free spirit who can do pretty much
+whatever he wants to do with his time.
+>> That's a very good intro. Uh, I know you
+from the internet mainly. Uh, I know you
+through PI, which is the CLI agent that
+you have been building. I found it to be
+like super unique like from my personal
+usage I use a lot of them. What are you
+doing like these days? What's got your
+attention?
+>> Well, now that there's the holidays, my
+attention is mostly focused on pie and
+family.
+Uh so I'm trying to use those two weeks
+uh to just make pie stable enough so
+people can enjoy it. Although that's not
+the main cause why I built Pi. Pi is
+mostly for me because I got a little bit
+let's say disappointed with the tools of
+the trade like cloud code and codeex and
+Gemini CLI and all that stuff and I'm a
+simple boy so I need simple tools so I
+built a simple tool for myself. Yeah.
+And before that I spent most of the year
+getting agents coding agents to work on
+brownfield projects. Um that is big old
+legacy code bases. Well maybe not legacy
+but big old code bases that weren't
+created during the era of agents so to
+speak. And so I spent a lot of the early
+uh 2025 figuring out how to make agents
+work in brownfield projects and that
+basically resulted in my in all the
+learnings that I applied to pi. Keep
+things simple. That that's the thing
+that works the best for me at least.
+>> I have just a whole bunch of questions
+around that. like uh I I mean I I
+started coding before all this happened
+about like 3 or 4 years before at least
+it got into like the public and I even
+started earlier than that but I was a
+like amateur or teenager things have
+changed a lot I feel and also like very
+little I see some people it's like
+different classes I guess of developers
+the people that are like really it's
+it's hard to say but those people that
+are like traditionally seen as very
+intelligent smart you know uh dedicated
+engineers tend to like not like AI or
+feel like it's not uh good uh at a lot
+of things. And I I'm just very curious
+about like what you think of it cuz I I
+get so many contradicting opinions given
+that you you know you had a stint in uh
+uh ML and you're actually building these
+kinds of tools. Uh what are your
+thoughts about this?
+>> Well, so I've been programming for about
+30 years now. [laughter] So my view
+might be a little different uh than than
+yours. and I would actually be
+interested in your view as well, but I'm
+not sure if that's the format you want
+to have on the podcast. Anyways, um
+yeah, I I think a lot of old people like
+me are very set in their ways that comes
+with age. Um so adapting new tools when
+you spend a full career honing [snorts]
+your skills and getting to a point where
+you're like super streamlined and
+efficient with the tools you had before,
+it can be kind of scary to jump into a
+new thing and basically rework all the
+things that you did over the past 10,
+20, 30 years. So I I get where those
+people are coming from. And the other
+thing I also get is that LLMs aren't
+magic. Like they can [ __ ] out code real
+well, but that code is mostly bad. At
+least if you apply standards that you're
+used to from before agents. So I think
+that's where some of the push back is
+coming from. But I've also seen like I
+have a lot of other old programmer
+friends and I probably was one of the
+first in that circle that started using
+those things back in 2023.
+Not for programming as we do now but you
+know the copy and paste thing go to JGPT
+web uh paste in a function ask for a
+thing get a new function out stuff like
+that. Um, so I've been in this game for
+quite a while, but and they haven't. So
+they also don't know what's available
+there and how it works and how to apply
+it. So every time I introduce one of my
+old programmer friends to these tools, I
+do it in an ad hoc kind of learning by
+doing way sit down, we grab one of their
+repositories and we see if we can
+implement a feature, implement a buck.
+And as soon as they actually get to
+experience the whole workflow, they kind
+of warm up to the idea. not for
+everything especially not architecture
+and and and more deep thinking work but
+for menial tasks they actually start
+using it so I think it's mostly a matter
+of introducing them to the tools in a
+way that makes sense for their workflows
+for their existing things showing them
+how they can slot it in in their
+existing workflows
+>> I did not code for that long before
+these things came in I mean I had like
+some professional experience at that
+point and uh I was making a living
+coding as a as a contractor or whatever
+like a freelancer I I would say and um
+at least in my personal career
+experience it's not total accuracy that
+is the point it's like we have an idea
+we've saved money up or we've gotten an
+investment and we want to execute on
+this and then get it in front of people
+and then get feedback and iterate uh and
+then get to a point where we could sell.
+So like that's kind of like the mindset
+that my clients interact with me from.
+And so they actually prefer like you
+know just like the AI le let's call it
+slop because a lot of it is slop like it
+does this thing where it's kind of like
+a psychedelic in a way where it it shows
+you like a picture of like something
+that kind of works but whenever you zoom
+in on any specific piece it just like
+goes away like it it falls apart, right?
+any specific pieces is like inaccurate
+in many different ways, but the whole
+picture somehow works. And I think for
+people that are like um systems isn't
+the right word, but like they're
+building like foundational tools, so
+foundational tools or uh like ffmpeg or
+networking software. I feel like those
+people, they rightfully so don't see the
+value in it because it's it's probably
+going to be able to get a lot of code
+out and features out, but it's not
+precise and specific enough for their um
+for the world that they work in. So,
+what was the work that you did mainly
+like? What's the theme of the work that
+you did over your career?
+>> Actually, before I answer that, might I
+just jump back in and like a back and
+forth? So, I totally get that like for
+green field projects and spitting
+something out for a client, maybe just
+an MVP or whatever. It's perfect. I love
+it and I do that myself all the time.
+Like I don't have clients in the in the
+in the usual sense because I'm
+financially independent now, but I do a
+lot of how should I put it public good
+work just building little dashboards,
+little tools to illustrate political
+points to illustrate economical points
+to a general audience that's not
+technical, right? And for that kind of
+stuff that those one-off projects that
+take like one or two nights, it's
+amazing. I love it and I don't care if
+it's slop. I also think that this works
+for startups um that haven't gone to
+market yet. Perfect. Like you accelerate
+so much by just using these tools and
+getting something out. Bam, bam, bam.
+That's awesome. Where it falls apart is
+when you have a brownfield project
+that's already existing, then those
+tools don't work uh like they do in in
+in the cases that you described. At
+least it needs a lot of work to get them
+to work that way. And the other thing is
+once you have your green field project
+out in the open, eventually it becomes a
+brownfield project. and my experience
+with the tools so far. I've built a
+bunch of projects that are quite sizable
+just using agents and there's a specific
+point a specific level of complexity to
+a project where the agent just stops
+working because context gathering is too
+hard for them. They cannot keep even an
+overview of the system in context to be
+effective anymore and then it starts
+getting bad. then it starts you just
+build up slop and slop and slop and
+depth and you can't agent your work uh
+yourself out of that like no agent's
+going to help you at that point.
+>> I wanted to touch on that. So like I uh
+I'm making like a visual right now that
+I'm going to post later which is the
+various model types and their strengths
+and weaknesses cuz claude is like this
+uh surface level machine right it just
+it can throw out code it can make
+anything work it can like pretty much do
+any action that you ask it like any goal
+that you give it it will reach it does
+it reach it in a way that's like uh
+long-term scalable no way like claude
+has this problem but it can make things
+work so setting up projects like uh if I
+am coming to a new brownfield project
+which I I work on a few um like okay I
+need to get this set up I need docker I
+need all this stuff cloud code is great
+with that like hey just go figure it out
+I don't care with GPT it it's like this
+drilling machine so like one of them is
+like a horizontal like surface level uh
+machine and the other one is like a a
+vertical like dig in machine now I
+personally have not run into a
+limitation where I feel like I can't use
+them anymore. But I also have not worked
+on like the types of like Titan
+repositories that uh I would say maybe
+like a Microsoft acquisition would would
+would have, right? Like acquiring
+something that's probably like already
+been through the market and and
+experienced many different like phases
+in its life cycle. Does that does that
+make sense?
+>> Yeah, that makes sense. Like I agree
+that cloud is like the agentic machine
+that you can use for general computer
+use stuff like fix my sets HRC file or
+go spin up that docker container or ssh
+into my server and figure out why kett
+is blowing up. Perfect. Um but yeah it's
+very shallow and it's very lazy. Uh it
+doesn't drill down as you say and it
+doesn't like to gather a lot of context
+like it will it will not read the full
+file ever. it will first grab for
+something that it thinks is in the file
+and then read 50 lines of that file and
+think all I need and that's where the
+slop mostly comes from at least with
+cloud. Uh so GPT codeex I have to be
+honest I haven't tried 5.2 yet and I
+agree that it's amazing at drilling down
+and finding really complex bugs but it's
+so inefficient at uh computer use that
+when it comes time to implement things
+it's just it doesn't work for my
+workflow. I need quick iterations and
+GPT is just a slow pig.
+>> So, so the thing is I I pay for both,
+right? Like I use both and like I have
+the max like pro and max uh and I have
+like two two max and the reason is like
+I like there's so uh the way I work
+which is like I think it's insane. I
+don't I don't know if anybody else works
+like this uh you know like a lot of
+people they restart a project after a
+certain level of complexity. So I'll get
+it to like a v1 we have a v1 project. uh
+instead of iterating on that, I make a
+new directory and I say here's an
+example of what I want, but I want to do
+it with like 30% less code example. And
+then I'll basically have them rebuild
+the project and then I just like shift
+the git around. So they're not iterating
+on a single project. They're just
+rebuilding the same thing up until the
+point where I feel like it's efficient
+enough or like safe enough or what
+whatever. Uh which is again pretty
+crazy. But I have like I go through
+phases. So Claude get it working and
+then GPT get it like implemented or get
+me the plans and then uh Claude get it
+working right and go between them back
+and forth. Uh I have like I think Oh,
+how was the shift from pre Oopus and pre
+like maybe GPT5. So you you don't you
+you haven't used that much but how's the
+shift of um pre and post opus been for
+you? I think the biggest step change was
+between Sonnet 3.7 and Sonnet 4.5. That
+was noticeable in terms of quality.
+Between Sonnet 4.5 and Opus, I
+I don't feel like the step change was
+that big comparatively. With 4.5, I
+could actually trust the model to do
+specific tasks. Uh with 3.7, not so
+much. With 4.5 opus, it can probably
+crack a few harder problems. Like what
+models are really bad at is concurrency.
+any kind of concurrency they suck at. Uh
+they also have troubles understanding
+complex state machines. Um which kind of
+makes sense. Uh especially state
+machines that aren't located in a single
+piece of code but distributed over a
+more complex system. Um [snorts] and I
+feel like Opus has a bit of a better
+handle on these. Uh but other than that,
+I I haven't seen uh [snorts] that
+improvement that you would guess was
+there if you just read Twitter.
+But it's al probably also depends on the
+domain. like my domains are very
+specialized and coming just back uh to
+to the the other point about brownfield
+projects and so on and so forth and what
+you said about ffmpeg so people that
+work on things like ffmpe they do deep
+tech they don't do crowd applications
+crowd applications are perfect for lms
+those are well trotten paths everybody
+knows how they work there's plenty of
+examples on the internet building a
+decoder encoder pair or de moxer like in
+ffmpeg that's not in a training set
+that's out of distrib distribution and
+you will not get help with that from an
+LLM at the level that makes sense. They
+can spit out some assembly code for all
+kinds of CPU architectures, but it will
+suck really bad.
+And in my line of work, um, so the thing
+I'm earning money with still is uh
+called Spine. It's a 2D skeleton
+animation software. Think of it like
+Photoshop for animations. And that's not
+deep tech per se. It's not complex code.
+Um, but it's a lot of it and multi-
+language, right? So the way it works,
+you have a you have an editor and you
+export your animations and then you have
+a game engine, be it Unity, Unreal,
+Kocco, whatever, monogame, and you load
+those animations back into the game. And
+for loading and rendering within a
+specific uh engine, uh you need a
+runtime that can do all that inside the
+engine. So we have runtimes for Java, C,
+C++, C, Swift, uh, Dart, TypeScript,
+and I probably forget to h
+so bunch of languages like it's a huge
+polyglot repository, but each runtime is
+only like 30 to 45,000
+lines of code. So not humongous, you can
+actually read an entire runtime into
+context, even into Opus context. So
+early when I when I try to integrate
+agents into this brownfield project I a
+common task is we have a reference
+implementation in Java if that changes
+that needs to be ported to all the other
+languages right and you would think that
+that's the perfect thing for an LLM and
+to this day every time a new model comes
+out none of them can do it none not even
+codecs
+they just suck and it's a trivial task
+it's the the the runtimes are super
+aligned in terms of structure file names
+classes, interfaces, type shapes, and so
+on. They suck. They can't do it.
+>> So, there was this uh like one of the
+Andre Carpathy videos where he goes over
+like what is an LLM? And one thing he
+showed is that like they write Python
+scripts that basically take the like
+original input and then like get you the
+output in a non like you're not doing it
+within the context of the LLM. You're
+doing it essentially within like a
+system. So, it builds a file and then
+uses the file to port everything. I
+don't know if that would work, right? So
+like this is the kind of mindset that
+I've had recently with problem solving
+is like okay what is the what is the
+limit which I again like it could be
+very stupid I could be like really going
+down like the wrong path
+>> actually like I wrote about this on my
+blog uh in June props are code JSON and
+MD files are state and this is exactly
+what I did back then I I basically
+serialized out state into JSON and MD
+files and had the model you can read it
+up
+>> I will read it up I will
+>> I did this 6 months ago for this
+specific problem and I made it work, but
+it's still not something where it can
+say, "Hey, dear model, just do my work."
+It doesn't work.
+>> Yeah, you have to be in the loop
+constantly for it.
+>> Not necessarily in the loop. There's a
+lot of uh things that it could do
+autonomously, but you have to be in the
+loop eventually to check on the work
+>> because it's definitely going to be
+wrong and broken.
+>> How about like from a validation and
+testing? And so, this is something that
+I adopted like pre and post. Another one
+of the things that like changed for me
+is now everything has tests. Most of the
+tests are crap, but they, you know,
+they're also LLM generated most of the
+time. Uh, or I get somebody to do it for
+me at this point. Like if if it's really
+tough and I set those up and like
+obviously they can do things where they
+can like mock data or like Claude loves
+that. Claude loves that a lot. Like they
+Claude loves to just take like a thing
+that you're supposed to be doing and
+then turn it into a mock and say, "Yeah,
+it's it's done." Right? And uh that's
+one of the things I really dislike for
+me. Opus does not do that as often as
+Sumat 4.5 does that a lot and it like
+spits out markdown files constantly and
+so I preferred the Chinese models like
+when uh before Opus 4.5 like I canceled
+my subscription and I was just using the
+Chinese models because I found them to
+be less like annoying with that. But h
+how have you implemented this like
+validation testing uh linting?
+What's your strategy here?
+>> So most of my projects nowadays are
+typescript nodebased. So I just have a
+pre-commit hook that runs full type
+checking and linting. I'm just using t T
+T T T T T T T T T T T T T T T T T T T Go
+the the Go based TypeScript compiler
+which is really fast and biome for
+linting which is also really fast and
+that works. I don't need to remind my
+model or agent to do this. Uh every time
+it commits it's going to get screamed at
+if something is broken which for me is
+the perfect place in an agent run for it
+to check its work. So um it can't commit
+if it doesn't doesn't fix all the
+things. So this works brilliantly. This
+also works for other languages. Uh in
+spine uh in the spine runtimes they also
+have a bunch of pre-commit hooks that do
+exactly the same. The other thing is
+while the model works so not at the end
+of its turn so to speak but while it
+works it also needs a way to verify its
+work. And as you said models can write a
+lot of tests but most of them are
+garbage. And it's not just that the that
+the tests they write are garbage. Uh
+it's also that if there are existing
+tests and they fail, I've seen opens do
+it as well, but Sonnet does it more
+here, right? U it will just disable
+asserts, it will just go in and say,
+"Ah, I don't think we need that assert.
+Let's just disable it and then my
+checks, my tests pass, and I can
+commit." So yeah, for that I haven't
+really found a solution yet other than
+restricting right access to tests.
+>> Yeah. Well, I think there's like this
+whole nent like side of the field of
+like how do you give it permissions so
+that you can walk away from it without
+like letting it like damage itself or
+also the computer is like one is okay
+it'll just go and change the the test
+files to make them uh pass. So you can't
+really review it once and then decide
+okay it everything's passing or it'll
+mock stuff. uh or two is just going to
+like I I had recently like a month ago I
+have a like an AI server here that that
+I'm running and uh I had a a mount and
+it went and just like deleted the whole
+thing. there's like 3 TB of data just
+got but like I have redundancy on things
+and like it's fine and but that was like
+a big wakeup call for me and the thing
+is I still haven't turned off by like
+bypass permissions because it's just too
+timeconuming like if I have to just keep
+going back to it it's like every 2
+minutes I need to go back into the loop
+when I could set it up and let it run
+for an hour and then go do other setups
+and let them run. So, uh the one that I
+found like the the the harness that I
+found that does this really well is uh
+what's it called? Droid like Droid has a
+very good permission system and like
+they have like uh none low, medium and
+high and plan with plan is just read
+only everything. Uh with the refs I
+don't know like it's not very I think
+you can configure it probably but um
+remove RF not going to not going to work
+for them uh if you have it on media but
+everything else works right. um or like
+deleting or uh like you can decide what
+uh I haven't done too much of that. Uh
+how are you thinking about this
+specifically because you're building one
+of these things and this is a big
+problem.
+>> Yeah. And that is why pi out of the box
+is yolo mode because I found that um
+existing permission modes work for some
+things but they don't work for other
+things. Like as we just uh talked about
+for a specific task I don't want the
+model to be able to modify any of the
+test files. It should only have read
+access, right? I can't and and otherwise
+it should have full access to
+everything. This is just for this one
+task. I don't want it to have read uh
+write access to the test files. I can't
+build that with any harness at the
+moment. The the harnesses are either
+super fine grains, specify a bunch of
+patterns to uh that are allowed or
+disallowed. That doesn't work or lock it
+fully down or open it up fully. And so
+in Pi, I just made an extension system
+where you can plug in your own hook real
+quick for your specific project for that
+specific task to allow only the things
+you want to be allowed to be allowed.
+>> Um, and and that works for me. But
+there's multiple layers to this. Like
+there's task specific restrictions I
+want to have, then there's project
+specific restrictions, and then there's
+machine level restrictions, right? And I
+personally think like I run all my agent
+harnesses irrespective of whether it's
+pi or cloud code or whatever uh in yolo
+mode on my machine just because my
+machine uh is basically ephemeral. If
+something [ __ ] up it takes me 5 minutes
+to get everything back more or less.
+That works for me that won't work for
+other people. The only way to kind of
+counteract that is virtualize things.
+Use a docker container pot uh podman.
+What's it called? Yeah, pman I think
+it's called. use that and and just uh
+isolate the agent in a container and
+that's the only way to keep your machine
+safe if you really need that. Then
+there's also the question of of
+credentials which makes it even harder.
+I use a GitHub CLI a lot so the agent
+has access to that with that. It can
+extract any kind of token it it needs to
+[ __ ] [ __ ] up or excfiltrate it to a
+third party. In that case it doesn't
+matter if you put it in a container or
+not. If it needs that tool then it has
+access to the token. And for that
+specific problem, I haven't found a
+solution yet. MCP might be actually one
+which I hate to say, but that's one
+layer of isolation where you can expose
+a tool to the agent without also
+exposing exposing credentials to it. But
+that only works if it's not a bash
+accessible to it.
+>> Yeah. If it's bash, yeah. Yeah. Can do
+whatever it wants. So there is a harness
+root code. I I don't know if you've
+tried it or not. Like if you try like
+every time I go and try it like it looks
+like it's out ofd and old and like I
+don't know like just I don't like the
+fact that it's like a VS Code plugin
+only maybe they have a CLA I don't know
+[snorts] but um Root Code actually has
+like a lot of solutions that are way way
+ahead of everybody else that nobody
+really looks at the they built the
+browser into the like Root Code
+extension thing. The only option for
+this is like Trey and Cursel. Like a
+full ID. They have it. Uh but then you
+have to pay like a lot of money for
+them. I think I spent like $60 in a day
+just doing uh uh what's it called? Uh
+Opus for 45 minutes, which is crazy. You
+know, I could I could get that same
+thing, but I wanted the browser, but
+real code had it in there already. like
+they uh they have um I am really into
+the like idea and I think the the way to
+go forward is like the orchestration
+layer of having one that manages like
+like think of all of these extensions
+we're talking about is like tools that
+it can manage like it it doesn't do any
+of the stuff itself but it just fires
+off like a a tool version of itself that
+can go and do the thing and then you
+have a bunch of different like cuz okay
+testing you want to run tests, you don't
+need to let the main model know, but you
+can have like a testing agent and then
+that testing agent can't edit the tests
+and it spawns only once and it gives
+like warnings um just just as an example
+to the to the main runner and you have
+like the context isolation but it's comp
+complicated all of it is like very bad
+user experience I think like everything
+that we're talking about that's beyond
+just prompting is a bad user experience.
+>> Exactly. That was my that was my
+realization as well. After months of of
+trying things out like sub agents, I
+understand why people use them. I
+stopped using them entirely because my
+use case for a sub agent has mostly
+boiled down to find me the information I
+need so I can start laying out a plan.
+So research basically go through the
+codebase ingest all the things you can
+and filter out what we need for the task
+at hand. And for that I don't need a sub
+agent. I start a new session. I let the
+agent explore the codebase and then just
+[ __ ] out whatever it found into a
+markdown file. Perfect. I now have state
+on disk which I can version which I can
+maybe reuse for other tasks. I don't
+need a sub agent for that. So once I
+have that markdown file, I start a new
+session, let the agent read the markdown
+file and away we go. That to me is a
+much easier mental model working with
+these agents than creating 10 different
+sub aents all with their own personality
+and putting them in an agents folder and
+then having a specific set of tools that
+they're allowed to use and blah blah
+blah blah. I don't care. I don't want to
+mess with this kind of setup because
+it's I'm probably not smart enough for
+to keep it all in my head.
+>> I I think I see what you're saying. So
+like here here's like just one argument
+that's based on your personal workflows
+when you have like the agent the the the
+main thread that goes and like ingests
+everything and now it has like 130,000
+uh lines of context like or tokens and
+context and um it want like you are
+using it to produce now this readme or
+like a markdown file like plan MD that
+then is going to be ingested by another
+model. So when you are killing one and
+like turning the other on, right? Uh
+that context like it's still accessible
+if you do like session then you have the
+cache thing like the whole cash read and
+the cost of of that it it's not a
+problem but what if we could have them
+just sit on like they're a service. It's
+like they're a server that is providing
+like what is needed to the main thread
+like this cuz the way sub agents is done
+in claude that I don't like is that it's
+kind of something that you don't see
+like it just spawns it and it's like a
+hidden process but if having it on as a
+server it's like okay expend like put
+these API points uh produce plan
+whatever like this is kind of how I'm
+thinking of it is like instead of having
+these deterministic like servers uh that
+are running we have like an AI that can
+access context and sit and stay alive
+and then take questions.
+>> I I understand where you want to go. But
+but here's the thing. Um so the problem
+is twofold. You have an information
+retrieval problem. That is even if you
+have a server, a magical oracle that
+your main agent can ask for additional
+information to be plugged into its
+context. The main agent needs to know
+how to write the queries for that. And
+the oracle that gives you that
+information needs to know how to fetch
+information based on that query. Humans
+are really bad at that. LM are really
+bad at that. Like my early work in my
+career was information retrieval.
+Nothing has changed. Information
+retrieval that is given a query, get the
+most relevant parts from some data
+source is still an unsolved problem.
+Knowing that for implementing a specific
+task with an agent, I need the
+appropriate specifics, the appropriate
+information, and it needs to be exact
+for the agent to be effective. I don't
+want to rely on a on a fussy information
+retrieval uh engine. um where I again
+like you said it's not visible it's not
+observable where I have no control over
+what actually gets into the context and
+that's my problem with all those memory
+systems and all of that stuff that pop
+up now this is just magic fairy dust
+where I don't get to see what what
+actually gets injected into the context
+and I don't work like that I need to
+know exactly what's in the context I
+need control over that so with my
+workflow where I have one session
+together the context the benefit is I
+can then take that markdown file and
+manually edit it or edit it together
+with an agent until it's perfect until
+it has the exact information in the
+exact length that I want for the new
+session for the new agent to see. Um
+that's why I don't use these systems.
+And the second problem is context
+transfer. Uh this is basically I have a
+main agent and a spawn a sub agent. How
+do I get the information from the sub
+agent back into the main agent? Right?
+Uh I haven't seen a single system yet
+where this is actually good and it boils
+down again to as you said earlier
+observability. If a sub agent returns
+some information back to my main agent,
+I need to know what got injected in
+cloud code. I don't think you can see
+that
+>> in R code going so specific in R code.
+They have like this is the first time I
+I I came across this with the like the
+orchestrator system. It's in root code
+it was called boomerang test. So you
+have like the the main agent doesn't
+write anything. It just writes a
+specification based on your prompt and
+then sends it out to an agent to do
+something. And so when it does that like
+the main agent kind of hides the the the
+new agent comes in and then it's doing
+this stuff and then it like it calls a
+tool called like a respond to main
+thread. And so that that tool has like
+the the the markdown. They literally do
+it in markdown that it can that can be
+sent back but you are in the editor with
+sub agent. So but this is what what this
+does is like there's no uh async
+>> so it's just synchronous. So it's just
+like breaking it down into a workflow
+that is predictable and that like
+follows the same steps every time. Uh
+which you know like again it's like
+there's a lot of time setting it up into
+it's kind of like tweaking your co
+coding environment where you just have
+like you have a you have a hammer and
+clot and you just do whatever you need
+to do like if you like to spend time
+tweaking your environment which I love.
+I love like the like um minmaxing
+things. Uh did like I I I loved playing
+uh the the from software games like Dark
+Souls, Elden Ring. So I love those games
+because they let you just like minmax
+like every single detail in the game
+which is so fun for me. So I guess this
+is part of like the developer experience
+then.
+>> Yeah I I think so like I like I or
+Armena
+we are more on the we like to see all
+the things side. Other people like Peter
+Steinberger are on the I don't want to
+see my code anymore. I don't care. And I
+think both approaches can work. Um, and
+with that different tool sets like
+orchestrating frameworks or what have
+you work for you or they don't. I I
+honestly don't feel like anybody has a
+good handle on what's the best way to
+achieve things yet. So, we're all just
+throwing [ __ ] at the wall and hoping so.
+>> We are, but it's working. All of it is
+like that's the surprising thing is like
+it just works now. The this is okay.
+It's it's imperfect. It's like, you
+know, it makes huge mistakes, but the
+fact that it works in general, I think
+is something that still hasn't like
+really hit most people. Like maybe maybe
+me I'm like a little like crazy about it
+but I think most people they don't
+really see the connection between like
+okay you go onto the chat GPT app and
+you send like some messages versus you
+can take anything in your life right and
+no matter how you want to do it like
+visibility no visibility you can
+automate it to a certain level make it
+better I all my finances go through like
+my local one I I run them through my
+local like here's all my um bank
+statements all the [ __ ] like get me how
+much money did I spend where what was
+the worst expense, how do I fix it? And
+it it's very helpful. I wanted to like
+ask you a few questions about PI and
+like why did you create it and what was
+the like I've read the readme and like
+I'm using it and I see but I think you
+know for a lot of people they just hear
+okay there's clawed code and codecs and
+they don't really realize that each one
+actually has like its own workflow style
+and like the the pros and cons of using
+it. So yeah, if you could just tell me a
+bit about PI and what it is.
+>> Sure. So I prefaced this with a little
+bit of history. I was a heavy cloud code
+user and before that a heavy cursor
+user. So 2024 was my cursor year mostly
+with uh tab completions and then
+eventually they had composer whatever
+which was more like almost an enchanting
+thing and then when cloud code came out
+in April 25 I was using that heavily for
+months and I like to reverse engineer
+things although calling it reverse
+engineering if you look at the NodeJS
+app or a bun app it's not really reverse
+engineering at least not the way I'm
+used to. So I started reverse
+engineering cloud code and it turned out
+it did a bunch of stupid things at least
+stupid in my opinion which doesn't
+matter much like if you had a bash
+command it would actually call out into
+highQ and u ask is this bash command uh
+dangerous and irrespective of whether
+that works or not it doesn't it also
+introduces a lot of latency so your
+agent becomes slower and I hate that I
+want quick iteration uh on my on my
+things and with every new release of
+cloud code they added more and more and
+more and more of that kind of stuff
+which makes the agent slower. So I set
+out to build a thing that replaces cloud
+code for me uh which is as fast as it
+can be minus the slowness of the model.
+Um and I also wanted it to be multimodel
+um because in the middle of the year I
+started playing with deploying uh open
+weights models especially the Chinese
+ones which I really really like to data
+crunch. So I have an escape hatch. I
+hate being dependent on the labs to
+provide me. I bought eight GPUs for this
+reason and because I I can see that this
+is not going to stay at the price it is
+right now.
+>> No. Like the two even the $200 a month
+like
+>> even $2,000.
+>> Yeah. No. So I I want to be prepared for
+the moment where [ __ ] hits the fan and
+the VCs no longer want to sponsor our
+golden age of agents for cheap. Um so I
+experiment experimentmentmented with uh
+self-hosting a lot and I think I tried
+open code and there was another harness.
+Oh yeah right crush. Yeah. So that were
+also multi-provider multi multimodel
+meaning you can plug in whatever thing
+you want as long as it speaks openi
+completions or responses or whatever
+protocol and I found them to be lacking.
+Uh open code didn't work with local
+models at all back then. Spec
+specifically tool calling was broken for
+everything. I haven't used it since. So
+I just built this myself uh and made
+sure it works with local models or
+models hosted on GPU clusters like on
+data crunch or what have you. And I
+wanted something that fits my workflow
+which is very minimalist. So I stripped
+away all the things I don't need like
+MCP and sub agents and blah blah. But I
+made it extensible so you can have those
+things if you want to have them. I don't
+I'm happy if you use pi and there you
+go. You can extend it but don't bother
+me with that [ __ ] I don't need it. So
+it's not going to be in core. And that's
+basically the principle I've followed
+here. Build the thing I like to use make
+it work for me and if other like it too
+make it extensible enough so they can
+make it their own.
+>> My favorite thing about it like that
+well I look any any one that lets me do
+multiple models without being like I
+don't know you could do it with cloud
+code but it's just insane like what you
+have to do to do that like use the cloud
+code router or like have like a copy and
+it's just too complicated. Codeex lets
+you do it as well but also very
+complicated.
+>> Gemini CLI too.
+>> Gemini. Yeah. I like I like the I like
+pi and I like open code the new version.
+So there's like an old open code and a
+new one because I tried the old one. I
+did not like it. The new one now
+specifically. I tried it a few times
+over the last months. Uh it's very
+visually pleasing. It shows everything
+like the context and what where it's at
+in the steps in the sidebar and then it
+has like the main thread and has a lot
+of extendable features which is like you
+know you can you can tweak it. Uh I like
+the fact that your uh system has uh the
+hold in like immediate mode for uh the
+message that I found that to be very
+tasteful because uh I use codecs when I
+want to like when before I go leave for
+my day I'll write like an 1 hour scope
+make 10 tasks and then have codeex like
+uh loop because you could just send it
+messages in a queue and it'll do the
+thing pretty accurately. So I I like
+that. It's it's a great feature. I also
+like that it works with Claud. When I
+tried Claudis, it wasn't Claudius. It
+was something else. It was like another
+name. I forgot the name of the repo.
+>> Um, was it like a Slackbot thing or like
+more personal assistant kind of thing?
+>> Yeah, it was owned by Peter. It It's
+called Claus now, but it wasn't called
+Claus.
+>> Oh, yeah. It was called something else.
+You're right. Yeah.
+>> So, when I when I set that up, Pi was
+the only option. And so, that I
+installed that and I've I've been using
+it since it's been pretty good. Like
+maybe 20% of my usage. Where where do
+you want to take it from here? like or
+do you feel like it's kind of like in a
+stable?
+>> No, actually it's I spent the past uh 5
+days refactoring and I'm still not done.
+Basically, I I wanted to be a thing that
+is my main driver and it has been for 2
+months. But I also want it to be a thing
+that allows other people to experiment
+with aentic coding. So I the refactor
+has a big focus on making really every
+part of the pipeline extensible or uh
+swappable. So you can now build your own
+compaction if you want. Uh we now have a
+session tree format. Um so not linear
+conversations but actually a tree where
+you can branch from and to uh including
+uh compaction or summarization of
+branches you're leaving to be injected
+into uh a new branch you're moving to
+all within the same session file all
+with full observability and all that
+stuff. And I also made it so you can
+easily create your own UI inside of PI
+in the CLI agent in the CLI in the TUI 2
+version of PI. And I think if I get this
+right and not too cumbersome and
+agentfriendly, so an agent immediately
+knows how to write a new hook to do
+compaction or a new UI element that
+maybe like works like cloud code has
+this funny feature where you where the
+agent gets a tool to ask you questions.
+I don't think it's very good. It works
+for very simple things, but most things
+aren't simple. So, uh, Armen actually
+yesterday built or showed a thing that
+he built on top of Pi that's kind of
+like that, just lots more free form and
+it works perfectly well. Yeah, stuff
+like that. So, my goals with Pi going
+forward are basically keep it minimal so
+I don't get flooded with with stuff that
+I don't understand anymore. Uh, and keep
+it working for myself mostly. uh make it
+extensible so I myself can easily
+experiment with new things without
+breaking the core and have other people
+use it and extend it and maybe um build
+a little ecosystem where people can
+share their extensions more easily.
+>> I like that. I like that. I I'm going to
+try to like build something on top of it
+in the next few weeks. It's like an
+extension or something. I wanted to like
+there's there's like a topic that I want
+to talk about guitars a bit. I see you
+have guitars and like that seems to be a
+big part of your life. Uh but real quick
+so we can close this like what do you
+think about these Chinese models from
+your experience now? Like how uh how
+good are they?
+>> So my first contact with was with Quen
+Coder 3 I think was the first model that
+I actually found to be interesting
+because the 20B version or was it 32B? I
+don't remember that works locally on my
+Mac actually was useful for Gentics
+computer use things not necessarily
+coding but computer use things. And I
+think I personally would love more edge
+models that I can run on smaller devices
+just for simple tasks. And I think
+that's where Chinese models shine a lot
+of them. And recently I found GLM to be
+amazing. Though that's not a Chinese
+model if I remember correctly. It's also
+from the Asian side of the planet, but
+not Chinese. In any case, I think that's
+the future. I hope it's the future
+because I hate nothing more than being
+dependent on closed source proprietary
+[ __ ] for my own coding work. That
+sucks.
+And they're getting there. I think next
+year we might have models that are
+probably on par with OPOS 4.5 now. And
+if we get there, I am super [ __ ]
+happy. I don't need more in my life.
+>> Yeah. Yeah. I I I I fully agree. I mean,
+there's one uh American. So like
+Numatron 30, it's based off the Quinn.
+But I tried that and cuz I have like my
+own benchmarks for everything like how
+how good. So like I took all of my
+conversations from my computer like with
+AI agents and all that that that stuff
+and got it and then build benchmarks
+based on like what I think is like
+relevant for my my personal career and
+it just topped Neatron 8B very small.
+You can run it on a phone and the 32B
+one is even better. It like very very
+high scores. I don't know how they did
+it. Probably a lot of like specifically
+for, you know, coding and stuff, but it
+was excellent. Let's let's talk a bit
+about guitars. Like what how long have
+you been playing? And I see you have
+three of them just there. There's
+probably more.
+>> That's more
+once missing and somewhere else. Uh
+yeah, I I think I started playing the
+guitar the same time I started
+programming at the tender age of 12. Uh,
+which was great because the guitar was
+kind of the social thing and the
+computer was like the sit in a dark room
+at night and hear your sister snore in
+the same room because we shared one. We
+were poor. Uh, while you type some
+QBasic uh into a blue IDE and modify
+nibbles.bass or whatever. [snorts] Yeah,
+guitars are great. I got a bunch of
+custommade ones. A seven uh
+12 string one and a baritone one. And
+the Veriton one is [ __ ] amazing. It's
+like uh I I forgot what key it's in, but
+it's very awesome. Yeah. Other than
+that, it's been part of my life since
+forever. I also did did a lot of singing
+in my life and playing on stage and
+stuff. So, that was fun, but eventually
+you get old and it's kind of silly to
+stand in front of a crowd of 20 year
+olds when you're like approaching 40. It
+just doesn't work for me. [laughter] So
+nowadays, I I mostly pray for myself. a
+record for myself, put up some German
+language stuff on on YouTube maybe, and
+I'm happy with that. My wild years are
+gone. So, what about you? Are you uh
+>> I got one right there. Yeah, I I play I
+play. So, I started around a similar
+age. I was going to music school. I like
+learned how to read it and learned how
+to play guitar. Um, but I just kept
+taking breaks throughout my life for
+like I I spent like I think 4 years just
+moving every 6 months uh over Europe
+like uh digital nomad life kind of and
+it was just like hard to keep up with
+it. So I know like a bunch of songs. I
+could play a bunch of songs but when it
+comes to like doing anything that's not
+a copy I I don't really I don't really
+have that skill. Although I could
+probably develop it. I debate it all the
+time. I love I love guitar. I love the
+the Spanish music, the Mexican music,
+like the uh I forgot what it's called,
+like you know, they pluck the uh
+>> ding ding ding ding.
+>> Yeah. Yeah.
+>> Uh and I love um like Radio Head and
+like this like progressive rock, I think
+is the is the name. Like the the music
+that changes over the song throughout
+the life. I I love that. It's very
+beautiful to my ears. Uh how have you
+stayed consistent with it? I mean, you
+probably have had a very busy life. So
+I'm I don't do quantis quantified self.
+I I hate that. Uh everything that's not
+computer is feeling. Um so I I don't
+have goals with guitar playing. I I just
+play. I actually cannot read notes. I
+learned it by
+having a lot of friends that were
+musicians in my circle of friends who
+showed me stuff and eventually you
+develop a feeling for how things fit
+together without knowing the theory too
+much. I eventually learned some theory
+but honestly I don't apply it. Doesn't
+matter. Uh so consistency I don't know
+it was a lot of practice like I can
+become what's it called compulsively
+obsessed with a thing. So the first two
+years of guitar playing was basically me
+just pleading from my fingertips all the
+time because I played so much. Um just
+learning the songs of the bands I love
+until I got that nailed down and also
+learning how to sing those things. And
+after that it was mostly an emotional
+thing. Um, like if I felt like writing a
+song, I wrote a song. And if I didn't
+feel like writing a song for a year, I
+didn't touch the guitar and it was fine,
+too. Um, I I don't have goals with that.
+I don't I just want it to be a nice
+thing I can do when I feel like it.
+>> I just my interests shift a lot and I
+think there's just so much in this world
+that I want to do and I don't have much
+time to do it realistically. This is
+like my biggest like this is kind of why
+I want to go all in on this tech
+technology is if I could figure out how
+to cultivate a working system that could
+earn me a living outside of like
+actually uh selling a company and having
+stock like I I I try to do that. I'm
+still young. But I just like look
+financially I don't think we're in a
+good place. I don't think it's going to
+get better. I don't think it's also
+going to pop, right? like the like it's
+not going to explode and that we have to
+rebuild in in my lifetime. I don't think
+it's I could be wrong.
+>> Let me put it that way. Most of the
+experiences I made in my life was when I
+was dirt poor and had a regular job.
+>> Yeah. Yeah, my my my keys to success was
+just never working more than 30 hours a
+week. And all of a sudden, you have a
+lot of time for things that actually
+interest you. And with that, I could do
+all of these things. And and that has
+worked for me. And since I am
+financially independent, I obviously saw
+a lot of nice things. Um, but I I
+wouldn't say I made more or better
+experiences just because of that. So,
+uh, financial independence does not
+necessarily mean you get to experience
+more of life. It's what you make of it.
+which sounds [ __ ] terrible and
+pathetic but
+>> yeah
+it's I h
+like in as a percentage of the world I'm
+in like a very high percent but when it
+like cuz okay so when you're a high
+percent like earner and you are living
+in a city you're around other high
+percent earners and so like you you guys
+are all driving up the price of like
+stupid stuff to like you know if I were
+living in um in a place that was like
+quiet uh countryside. Uh I would
+definitely feel like I have more time.
+Uh but now I have to compete because I'm
+in a place that requires that to to like
+live and things are just getting
+expensive. It's hard to like buy uh hard
+assets and maintain them. So
+everything's like a 30-year contract.
+You can't even go with cash really
+unless you have a lot and say I want to
+buy a house. You have to do this whole
+song and dance. I I could start ranting
+about this forever like angry at the
+government.
+>> No, I get you. I I totally get you. Um,
+so while we are filthy rich, we have a
+son and I don't want him to think we are
+rich. So we settled down in a a normal
+neighborhood, uh, not cheap, not
+expensive. And this works for us. We are
+not missing anything. We could buy a
+McMansion somewhere up on a hill, but
+that wouldn't make us happy. And I
+totally get what you're saying about uh,
+gentrification basically. Uh, yeah, just
+move, man.
+It's not where you live. It's it's it's
+it's
+>> I think I think you might be I mean I
+like interesting people. That's like one
+of my favorite things is like I want to
+find people that I think are like and
+that gets harder and harder as you find
+more interesting people because like
+okay you already know all of them. So
+how do you get better ones and then you
+start think I think Warsaw is too small
+for me. I don't mean this in like an
+egotistical ways like realistically I've
+been to every meetup, every event. I
+know everybody. I know all the
+companies. So, it's like I've outgrown
+it and I can't go to the countryside and
+also have that without really shattering
+my life. I'm not arguing with you. I'm
+just like saying how I'm thinking about
+it.
+>> Like I totally get that and if I was
+your age, I would do I I actually did
+that basically uh when I was your age.
+So,
+>> you do you, man. Just you have a very
+Pokemon kind of mindset.
+>> You want to catch them all like ways of
+life like guitar playing, computing,
+meeting people, meetups, living
+whatever. I think that's awesome. and
+and just keep doing that until you get
+uh bored of it and want to settle down.
+[laughter]
+>> You have a son?
+>> Yeah.
+>> So, I also have one son. I almost have a
+daughter on the way as well. So, that's
+like another thing that takes up so much
+time,
+>> but it's the best thing. It's the like
+uh I I will ask you about how you
+balance it like just the to to comment
+like I think there's nothing in my life
+that I've ever experienced that's like
+whenever I'm spending time with him,
+there's like something so mentally like
+it gets boring, right? like you get
+bored of everything. So, but there is
+something like uh emotional about it
+that is just unnatural or like to an act
+I don't know natural unnatural. It it it
+doesn't you don't have that experience
+elsewhere.
+>> Yeah. Something biochemically overrides
+your desire to do something that
+actually interests you while the little
+one is just picking his nose or doing
+something really stupid. I I totally get
+that. But I I have to be honest with
+you, when he was early uh when when he
+was really young, I did get bored as
+[ __ ] on. Like I hate it. So, it really
+just sticking around and and nothing
+happens. But as it gets older, it
+becomes more interesting. Like now we
+can go ice skating. Now we can go
+bouldering. Now we can go whatever the
+[ __ ] we want. Like there's a wood right
+over there. We just step out 10 m and we
+have the biggest adventure ground you
+can imagine. And yeah, it's awesome. I I
+I love it. In terms of balancing it with
+everything else, the keys to success is
+once he's asleep, don't waste your time
+watching TV, but just do some
+interesting things. That's at least
+that's what works for me, which is
+easier said than done.
+>> I think I think that I mean I think that
+makes a lot of sense. When when he was 6
+months old, I didn't feel anything
+towards him and like it was just weird
+because like I'd never get anything
+back. So it's like uh but I saw that my
+wife would get something back from like
+like you know just the relationship type
+is different. But now that he's like
+over 2 years old, it's just so fun. He's
+so fun. Like even if he's doing silly
+things is like it's ridic they do it in
+a ridiculous way. their personalities
+are very captivating. Anything else
+about your life that you feel Yeah.
+Yeah. that you'd like to share like and
+you've had a very long complicated many
+stages in your life. Um what's been the
+like constant thing around all of it?
+>> Not taking anything seriously. That's
+the only thing that keeps you sane
+really. If you take something too
+serious, it can destroy you. And I've
+been down that road and it sucks. Do it.
+It's just a game. you have one life and
+you see my t-shirt [laughter] that's
+basically like yeah ju just don't take
+anything seriously it all doesn't matter
+in the end you're going to become
+stardust again so just I don't know I
+just see people making goals and trying
+to reach them and breaking while trying
+to reach those goals and I think that's
+stupid like yeah I I don't have any good
+philosophies to share really I think we
+should stop here before it gets really
+>> no worries no worries No, I mean I very
+fascinating like especially the tech
+stuff. I'm gonna have all of it uh as
+links in the description. Yeah, I've
+been like one of you and uh Stify I I I
+just know his Twitter user. Yeah, he is
+uh like the very fascinating builders
+like it's like a new age of builders
+that I see very unique work and like
+doing it in the public in the open. Uh
+it's very cool. So thank you for Yeah,
+thank you for that. It's a lot to learn
+from. Yeah. Thank you for having me. And
+don't take your elders too seriously
+either. I
+>> I don't I don't. We're all silly.
+>> All right. Hopefully we'll talk again.

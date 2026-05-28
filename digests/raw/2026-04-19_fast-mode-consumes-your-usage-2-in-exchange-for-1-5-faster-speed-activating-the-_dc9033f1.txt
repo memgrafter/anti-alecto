@@ -1,0 +1,38 @@
+Reddit thread capture
+
+Thread URL: https://reddit.com/r/codex/comments/1rlvxtd/fast_mode_consumes_your_usage_2_in_exchange_for/
+Subreddit: r/codex
+Title: Fast mode consumes your usage 2× in exchange for 1.5× faster speed. Activating the 1-million-token context consumes 2× your usage. Be careful so your Codex limits don’t run out quickly.
+Author: u/Distinct_Fox_6358
+Score: 38
+Comment count (reported): 18
+
+## Prominent viewpoints (top-level comments)
+1. (4) u/Avidium18: If I use 1.5x and 1M context together does it consume 4x usage??
+2. (3) u/wk513: In the native CodeX app, I was offered to enable Fast mode for version 5.4. I enabled it, tried it, didn't notice much speed improvement, and tried to turn it off, but there is no off button for Fast mode. Has anyone solved this problem? What should I do in this situation?
+3. (2) u/TheAuthorBTLG_: where is the 1m setting?
+4. (2) u/immortalsol: wait, it's not based on how much tokens in the 1M context that was used? so if i use under the 270k token window from the original limit, but have 1M context activated, it will still use 2x my usage? or is it based on how much tokens in the context window? like if i am using 500k of the 1M, it will cost more? also, what if you set the context only to 500k instead of 1M? because you can set the limit up to 1M i believe.
+5. (1) u/Glittering-Call8746: Yes but if u have a large context would u rather it retries after compact only to have context drift then u go back to step 0.5 (optimistically). These are options but yes kudos for pointing it out.
+6. (1) u/Da_ha3ker: Great if you never use your limits or are nearing the end of the week and have a bunch of usage left over I guess? If you regularly hit limits then not for you though. Gotta say, will be nice once they figure out how to get larger models on cerebras though. I would do double usage for 10x the speed..
+7. (1) u/alexcanton: Isn't this a bit of a scam? If it is the same but faster why isn't that the default?
+8. (1) u/getpodapp: Might make sense for people on the pro plan.
+
+## Thread discussion sample
+- (4) u/Avidium18: If I use 1.5x and 1M context together does it consume 4x usage??
+  - (5) u/Distinct_Fox_6358: I haven’t tried it, but it should be like that.
+  - (2) u/Flat_Association_820: 1M token context window is not worth it, 120k\~250k tokens context size is the sweet spot for better accuracy, more than that and you get a sloppy downfall.
+  - (0) u/dckill97: 1.5\*2=3 not 4
+    - (1) u/Avidium18: 1.5x is the speed. Usage consumption is still 2x for both I think.
+- (3) u/wk513: In the native CodeX app, I was offered to enable Fast mode for version 5.4. I enabled it, tried it, didn't notice much speed improvement, and tried to turn it off, but there is no off button for Fast mode. Has anyone solved this problem? What should I do in this situation?
+  - (2) u/irismishka: just write "/" without quotes
+    - (1) u/wk513: God save the king and you.
+  - (2) u/tflbbl: Either type / in chat or click the + button
+- (2) u/TheAuthorBTLG_: where is the 1m setting?
+- (2) u/immortalsol: wait, it's not based on how much tokens in the 1M context that was used? so if i use under the 270k token window from the original limit, but have 1M context activated, it will still use 2x my usage? or is it based on how much tokens in the context window? like if i am using 500k of the 1M, it will cost more? also, what if you set the context only to 500k instead of 1M? because you can set the limit up to 1M i believe.
+  - (5) u/Distinct_Fox_6358: It only consumes 2× credits when usage exceeds 270k tokens.
+- (1) u/Glittering-Call8746: Yes but if u have a large context would u rather it retries after compact only to have context drift then u go back to step 0.5 (optimistically). These are options but yes kudos for pointing it out.
+  - (1) u/ThrowAway1330: Bold of you to assume I would retry anything without a revert button 😂
+- (1) u/Da_ha3ker: Great if you never use your limits or are nearing the end of the week and have a bunch of usage left over I guess? If you regularly hit limits then not for you though. Gotta say, will be nice once they figure out how to get larger models on cerebras though. I would do double usage for 10x the speed..
+- (1) u/alexcanton: Isn't this a bit of a scam? If it is the same but faster why isn't that the default?
+  - (1) u/MrTroxyOfficial: Because it runs on faster servers, wich cost more to operate
+- (1) u/getpodapp: Might make sense for people on the pro plan.

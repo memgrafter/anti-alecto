@@ -1,0 +1,199 @@
+Every third-party table you depend on is a join you’ll pay for forever. When agents reason over your domain, the schema IS the context. Split it across systems and you split their ability to think.
+The Pattern
+You adopt a SaaS tool for a specific capability. Tracing, CRM, project management, analytics. The tool works well. It stores data in its own tables, behind its own API, with its own schema.
+Then you need to answer a question that spans your business logic and the tool’s data. “Which customer’s workflow failed and what did it cost us?” “Which deals closed this quarter that originated from a campaign we ran?” “How many agent runs exceeded our cost threshold per team?”
+Now you’re stitching. You pull data from the third-party API, match it against your internal tables by some shared identifier (if you’re lucky enough to have one), and reconcile the two models. This isn’t a one-time integration. It’s a permanent tax on every question that crosses the boundary.
+This was always expensive. It’s becoming untenable.
+Why Agents Change the Calculus
+Humans tolerate fragmented data because they bring contextual knowledge to the stitching process. They know which fields map to what, which IDs are stale, which API quirks to work around. They absorb the impedance mismatch through experience.
+Agents reason over schema. That’s it. If the schema is clean, coherent, and lives in one place, the agent can answer complex questions in a single pass. If the schema is fragmented across systems, the agent has to:
+- Discover what lives where (which system owns which primitive)
+- Fetch from multiple sources with different auth, pagination, and rate limits
+- Reconcile mismatched identifiers, timestamps, and naming conventions
+- Stitch the results into a unified view before it can even start reasoning
+Each of those steps burns context window, increases latency, and introduces failure modes. The agent spends its reasoning budget on plumbing instead of insight. Accuracy drops not because the model is worse, but because the data environment is hostile to the way agents work.
+A human can hold the mapping between two systems in their head. An agent has to hold it in its context window, and every token spent on plumbing is a token not spent on your actual question.
+Examples
+LLM Tracing
+You adopt a tracing tool (LangSmith, Langfuse, Braintrust). It captures traces, spans, token counts, latencies, evaluation scores. All stored in the tool’s database, accessible through its API.
+Your business data lives elsewhere. Customer IDs, team IDs, credit balances, subscription tiers, workflow configurations. All in your own PostgreSQL.
+Now you want to answer: “Which teams are burning through credits fastest, and which specific agent runs are driving the cost?”
+Simple question. Here’s what the stitching code looks like when you don’t own the tables:
+async function getTeamCostBreakdown(teamId: string) {
+// Step 1: Get team info from your database
+const team = await db.query.teams.findFirst({
+where: eq(teams.id, teamId),
+with: { organization: true },
+});
+// Step 2: Fetch runs from the tracing provider's API
+const runs = await tracingClient.listRuns({
+filter: `has(tags, "team:${teamId}")`, // hope you tagged consistently
+startTime: thirtyDaysAgo,
+});
+// Step 3: Paginate through all results (their API, their rate limits)
+let allRuns = runs.results;
+let cursor = runs.next_cursor;
+while (cursor) {
+const page = await tracingClient.listRuns({ cursor });
+allRuns = allRuns.concat(page.results);
+cursor = page.next_cursor;
+}
+// Step 4: Reconcile their model with yours
+const costByWorkflow = allRuns.reduce((acc, run) => {
+// Their "total_tokens" vs your credit model? Manual mapping.
+const creditCost = convertTokensToCredits(
+run.total_tokens,
+run.model_name // hope they track this consistently
+);
+const workflow = run.tags?.find(t => t.startsWith("workflow:"))
+?.replace("workflow:", "") ?? "unknown";
+acc[workflow] = (acc[workflow] ?? 0) + creditCost;
+return acc;
+}, {} as Record<string, number>);
+return { team: team.name, costByWorkflow };
+}
+Multiple API calls, pagination, tag-based filtering that breaks if anyone forgets to tag a run, manual token-to-credit conversion. The agent has to understand two systems, two auth models, and a brittle tagging convention just to answer one question.
+Now here’s the same question when you own the tables:
+SELECT
+t.name AS team_name,
+ar.workflow_type,
+COUNT(*) AS total_runs,
+SUM(ar.credit_cost) AS total_credits,
+SUM(ar.credit_cost) / 10000.0 AS total_usd
+FROM agent_runs ar
+JOIN teams t ON t.id = ar.team_id
+WHERE ar.team_id = $1
+AND ar.created_at > NOW() - INTERVAL '30 days'
+GROUP BY t.name, ar.workflow_type
+ORDER BY total_credits DESC;
+One query. No API calls, no pagination, no reconciliation. The foreign key from agent_runs.team_id
+to teams.id
+is doing all the work that the stitching code was doing manually. An agent with database access answers this in seconds.
+The schema that makes this possible:
+CREATE TABLE agent_runs (
+id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+team_id UUID NOT NULL REFERENCES teams(id),
+workflow_type TEXT NOT NULL,
+model TEXT NOT NULL,
+input_tokens INTEGER NOT NULL DEFAULT 0,
+output_tokens INTEGER NOT NULL DEFAULT 0,
+credit_cost BIGINT NOT NULL DEFAULT 0,
+latency_ms INTEGER,
+status TEXT NOT NULL DEFAULT 'completed',
+error_message TEXT,
+metadata JSONB DEFAULT '{}',
+created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+CREATE INDEX idx_agent_runs_team_created
+ON agent_runs(team_id, created_at DESC);
+CREATE INDEX idx_agent_runs_workflow
+ON agent_runs(workflow_type);
+Notice what’s happening here. team_id
+is a real foreign key, not a tag string you hope someone propagated. credit_cost
+is stored in your own unit (decimillicents), not derived from the provider’s token count. workflow_type
+is a first-class column, not metadata buried in a tags array. The schema expresses your domain, not the tracing vendor’s.
+You can still forward this data to LangSmith or Langfuse for their visualization UI. But they’re consuming your data, not owning it.
+CRM
+Your sales pipeline lives in HubSpot or Salesforce. Your product usage data lives in your own database. “Which customers on the enterprise plan haven’t used feature X in 30 days?” requires stitching CRM deal data against your product tables. An agent with access to both systems needs to authenticate to two APIs, understand two schemas, and reconcile two different notions of what a “customer” even is.
+When you own the table, the same question is a single join:
+SELECT
+c.name,
+c.email,
+c.plan_tier,
+MAX(fe.created_at) AS last_feature_x_usage
+FROM customers c
+LEFT JOIN feature_events fe
+ON fe.customer_id = c.id
+AND fe.feature = 'feature_x'
+AND fe.created_at > NOW() - INTERVAL '30 days'
+WHERE c.plan_tier = 'enterprise'
+GROUP BY c.id, c.name, c.email, c.plan_tier
+HAVING MAX(fe.created_at) IS NULL;
+No HubSpot API. No contact-to-customer ID reconciliation. No rate limit throttling in the middle of an agent’s reasoning loop.
+Project Management
+Tasks live in Linear or Jira. Code changes live in GitHub. Deployment data lives in your CI system. “Which tickets shipped last sprint and how did they affect error rates?” is a three-system join. Every system has its own ID space, its own timestamps, its own data model.
+Analytics
+Event data lives in Mixpanel or Amplitude. Billing data lives in Stripe. Customer data lives in your database. “What’s the conversion rate from trial to paid for users who hit feature X more than 5 times?” requires reconciling user identities across three systems with three different ID schemes.
+The Core Problem
+Each of these examples shares the same structure: the data needed to answer a business question is split across systems that don’t share a schema. For humans, this is annoying but manageable. For agents, it’s structurally hostile.
+The cost of outsourcing a table is proportional to how often you need to join it against your own data. For truly peripheral concerns (uptime monitoring, error alerting), the join is rare and the cost is low. For core domain primitives (traces, customers, tasks, events), the join is constant and the cost compounds.
+Here’s the test: if an agent operating your system would need this table to answer routine questions, you should own it.
+“Routine” is the key word. Every SaaS tool is fine for its own dashboard. The problem surfaces when the data it holds becomes load-bearing for decisions that span your domain. At that point, you’ve outsourced a piece of your ability to reason about your own business.
+What Ownership Looks Like
+Owning the table doesn’t mean building everything from scratch. It means:
+-
+The canonical record lives in your database. Your
+agent_runs
+table, yourtraces
+table, yourdeals
+table. With your schema, your naming, your foreign keys pointing at your domain objects. -
+Third-party tools become optional views. You can still send data to LangSmith for its UI or sync deals to HubSpot for the sales team. But they are consumers of your data, not owners. If you rip one out tomorrow, you lose a dashboard, not your operational history.
+-
+Agents query one system. When your agent needs to correlate traces with customers with costs, it hits one database with one coherent schema. No stitching, no reconciliation, no wasted context.
+The contrast is stark when you look at what an agent tool looks like in both worlds. Here’s the outsourced version, where the agent needs a tool that stitches across systems:
+// Anti-pattern: agent tool that stitches across systems
+const getTeamInsights = tool({
+description: "Get cost and performance insights for a team",
+parameters: z.object({ teamId: z.string().uuid() }),
+execute: async ({ teamId }) => {
+// Hit your DB for team info
+const team = await db.query.teams.findFirst({
+where: eq(teams.id, teamId),
+with: { organization: true, members: true },
+});
+// Hit tracing provider API for run data
+const runs = await tracingClient.listRuns({
+filter: `has(tags, "team:${teamId}")`,
+startTime: subDays(new Date(), 30),
+});
+// Hit Stripe API for billing data
+const subscription = await stripe.subscriptions.retrieve(
+team.organization.stripeSubscriptionId
+);
+// Now stitch it all together in application code
+const totalCost = runs.results.reduce(
+(sum, r) => sum + convertTokensToCredits(r.total_tokens, r.model_name),
+0
+);
+const budgetRemaining = subscription.items.data[0].quantity - totalCost;
+return { team: team.name, totalCost, budgetRemaining, runCount: runs.results.length };
+},
+});
+Three API calls, three auth systems, three failure modes, and a manual reconciliation step. If any provider changes their API, this breaks silently.
+Here’s the same tool when you own the tables:
+// Native ownership: agent tool that queries one database
+const getTeamInsights = tool({
+description: "Get cost and performance insights for a team",
+parameters: z.object({ teamId: z.string().uuid() }),
+execute: async ({ teamId }) => {
+const result = await db.execute(sql`
+SELECT
+t.name AS team_name,
+COUNT(ar.id) AS run_count,
+SUM(ar.credit_cost) AS total_credits,
+o.credit_balance AS remaining_credits,
+SUM(ar.credit_cost) / 10000.0 AS total_usd
+FROM teams t
+JOIN organizations o ON o.id = t.organization_id
+LEFT JOIN agent_runs ar
+ON ar.team_id = t.id
+AND ar.created_at > NOW() - INTERVAL '30 days'
+WHERE t.id = ${teamId}
+GROUP BY t.name, o.credit_balance
+`);
+return result.rows[0];
+},
+});
+One query, one system, no stitching. The agent calls this tool and gets a complete answer. No tokens wasted on understanding which system to query for which piece of the puzzle.
+The upfront cost is real. You’re building tables, writing ingestion logic, maintaining schemas. But the ongoing cost is lower because every query, every agent task, every analytical question becomes a single-system operation.
+The Compounding Effect
+This connects to the broader argument in Own Your Control Plane. When you own the primitives, everything built on top of them gets cheaper over time. When you rent them, every new capability that crosses the boundary gets more expensive.
+The MCP Abstraction Tax makes the same point at the protocol layer: every abstraction between an agent’s intent and the data loses fidelity. Outsourced tables are the data layer equivalent. The abstraction isn’t a protocol. It’s a system boundary with different auth, different schemas, different availability guarantees, and different rate limits.
+For agents specifically, schema coherence is context efficiency. Every table you own and co-locate with your domain model is one less system the agent needs to understand, authenticate against, and reconcile. That’s not just engineering convenience. It’s the difference between an agent that answers questions in one pass and one that burns half its context window on data plumbing.
+When Renting Is Fine
+Not every table needs to be owned. Rent when:
+- The data is peripheral to your domain (uptime monitoring, error alerting)
+- You never join it against your own tables in routine operations
+- The tool’s value is entirely in its own UI, not in the underlying data
+- No agent will ever need to correlate it with your business objects
+The moment a rented table becomes something you query programmatically, join against, or expect an agent to reason over, start planning the migration inward.

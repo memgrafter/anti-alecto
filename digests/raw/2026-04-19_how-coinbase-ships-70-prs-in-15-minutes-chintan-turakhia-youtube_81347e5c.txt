@@ -1,0 +1,1514 @@
+People are skeptical that large
+established, highly technical, highly
+capable engineering organizations can
+deploy AI at scale and get any effect.
+But I think you've proven it's possible.
+>> It's not only possible, it's adapt or
+die. It's just been such a huge
+superpower for the team.
+>> How many engineers are we talking about
+here?
+>> Thousand plus.
+>> So we're not messing around here.
+>> The company tried to adopt other AI
+tools and we saw this uptick in
+adoption. People opened it up, checked
+the box, did kind of like a hello world
+thing, but it didn't stick. My biggest
+thing is, how do I make this damn thing
+stick? Because there's something here.
+>> I do think that it's really important
+when you're doing this organizational
+transformation that you have a single
+person with incredible conviction at the
+leadership level who is also hands on
+the metal.
+>> Show the engineers, not just tell. And
+the worst thing any leader could do is
+just be like, I decree you must use AI.
+Come on, no one's going to listen to
+you.
+Welcome back to How I AI. I'm Claire
+Bell, product leader and AI obsessive
+here on a mission to help you build
+better with these new tools. Today we
+have Chinten Therakia, senior director
+of engineering at Coinbase. And he's
+going to show us, yes, it is possible to
+drive AI adoption and higher velocity in
+an engineering organization of thousands
+of engineers. He's also going to show us
+the new expectations for engineering
+managers and engineering leaders, which
+is less meetings and more code. Let's
+get to it. This episode is brought to
+you by work OS. AI has already changed
+how we work. Tools are helping teams
+write better code, analyze customer
+data, and even handle support tickets
+automatically. But there's a catch.
+These tools only work well when they
+have deep access to company systems.
+Your co-pilot needs to see your entire
+codebase. Your chatbot needs to search
+across internal docs. And for enterprise
+buyers, that raises serious security
+concerns. That's why these apps face
+intense IT scrutiny from day one. To
+pass, they need secure authentication,
+access controls, audit logs, the whole
+suite of enterprise features. Building
+all that from scratch, it's a massive
+lift. That's where Work OS comes in.
+Work OS gives you drop-in APIs for
+enterprise features so your app can
+become enterprise ready and scale up
+market faster. Think of it like Stripe
+for enterprise features. OpenAI,
+Perplexity, and Cursor are already using
+work OS to move faster and meet
+enterprise demands. Join them and
+hundreds of other industry leaders at
+workos.com.
+Start building today. Chinton, thank you
+so much for joining. What I love about
+what we're going to talk about today is
+we spend so much time talking about the
+individual vibe coder or the
+non-technical person becoming a software
+engineer and still people are skeptical
+that large established highly technical,
+highly capable engineering organizations
+can deploy AI at scale and get any
+effect. There's still so much
+skepticism, but I think you've proven
+it's possible and you're hopefully going
+to show us the way.
+>> I I think it's uh not only possible,
+it's, you know, adapt or die. Um like it
+it's uh it's just been such a huge
+superpower for the team and we've gotten
+so much efficiency out it and and
+there's just like ways to approach it.
+Um, I was I think I was reading a tweet
+yesterday uh just about a very very long
+story at Microsoft and or someone like
+pulling co-pilot in to their
+organization and it was like just a fun
+tweet of just like yep we're going to
+make graph go up and to the right but
+like the actual adoption wasn't good and
+and so like I've been spending the last
+year just absolutely obsessing about it
+and you can do it people can do it. So,
+how how can you do it? Because, you
+know, how many engineers are we we
+talking about here?
+>> A thousand plus.
+>> Yeah. So, we're not we're not messing
+around here. This is messing around.
+This is a real this is a real team
+working on real products who know what
+they're doing, who have built great
+software. And so, where did you start
+either culturally, from a product
+perspective, from a tools perspective?
+>> So, I think a lot of it actually just
+started around this time last year. um
+we had some changes uh to align like the
+product I'm responsible for and a big
+part of that was effectively like
+rewriting the entire product from
+scratch uh from uh turning it from a
+self-custody wallet to actually a social
+consumer app that just happens to use
+crypto and you know we're using React
+Native um but we made a lot of decisions
+for a self-custody wallet but to become
+a consumer app you got to like rethink
+everything that was one, two, we needed
+to do it in like 6 to9 months. So, we
+were going headto-head with like the big
+social players out there that have
+multi,000 person teams uh that have a
+10-year head start. And we were really
+trying to just do something big and new
+and crazy, like absolutely just crazy.
+And and uh a big part of this is like
+how do we rewrite the app
+so that it is the best possible app out
+there like consumer grade and do it in
+this insane timeline. And the team is
+cracked. They're amazing. But like you
+know we we be we became a smaller team
+as a result of of some of these changes.
+And so I started just looking at like
+ways to accelerate and and you know like
+I don't know my my team knows me well
+and if if you know me like I obsess
+about efficiency uh and I think that's
+like so critical to like make teams
+accelerate their velocity um but in in
+in ways that make sense uh for tool and
+using the tool so around this time I
+think cursor had come out with their
+sort of initial release it was around
+like November of last year we we all
+tried it right 2020 24 and it kind of
+sucked. And it it's not like I love
+cursor. I love cursor. Uh the models
+weren't there. The just the models
+weren't there. Like they the models
+couldn't even you know really write a
+unit test. Right. Well, and you know
+you're an engineer. Um
+and you understand like once once an
+engineer tries a tool and and they're
+like h this is not so good like it's
+very quickly and very easy to write it
+off, right? It happens. And so we we
+kind of went through this like trough of
+sorrow of just like okay god damn it AI
+tools are not here the models aren't
+ready what are we going to do and you
+know for even a year prior to this event
+like the company tried to adopt other AI
+tools like GitHub copilot and we saw
+this like uptick in adoption like people
+opened it up checked the box did kind of
+like a hello world thing but it didn't
+stick, right? And and like my my biggest
+thing is how do I make this damn thing
+stick, right? Because there's something
+here, right? And my mental model was
+just always
+the models will the foundational LLM
+will always get better and it's like
+going to the gym. You need to go and
+build your reps and try it and that's
+okay. And the cost of doing it is like
+nothing. It's just a little bit of waste
+of time. We're not worried about compute
+right now because it's so early. And so
+like from basically January all the way
+to like March or April of 2025,
+I just changed the the mindset and the
+mentality. I I was like in cursor every
+single day, every single hour of the
+day. And I was like, how do I make this
+work, right? Like
+you know, it was great because I was
+writing code again. It was great because
+you know it was unlocking all these like
+use cases like we were doing interviews
+like interviewing candidates and and
+just like I don't want to necessarily
+write up all the notes right that takes
+a long time but I intuitively I like I
+know I've assessed right so I would use
+it for like tactical day-to-day
+paperwork kind of things to accelerate
+me uh but also from like a coding
+perspective just pick up bugs and be
+like hey let's try this right what's
+going to happen what can I learn what
+are the tips and tricks to like show the
+engineers, not just tell. And the worst
+thing any leader could do is just be
+like, I decree you must use AI. Like
+come on, no one's going to listen to
+you. I have to empathize with this
+because I also running a large like
+multiund person engineering organization
+you know was experiencing even early
+versions of these tools and had such
+innate conviction
+>> that it would of course transform how we
+did work like that was very obvious to
+me I don't know it's obvious because of
+experience or obvious because it was
+just obvious but
+>> but then you know you just had these
+experiences as leaders especially in the
+you know maybe 12 months ago, one
+engineer tries it, doesn't work. It's
+not just that engineer throws it away.
+It's everybody else says, "Well, I
+think, you know, I trust their opinion
+and if they say it's not going to work,
+>> it's not going to work for me." And I do
+think that it's really important when
+you're doing this organizational
+transformation that you have a single
+person with incredible conviction at the
+leadership level who is also hands on
+the metal. Because until you can say,
+"Well, I understand it didn't work for
+that, but it worked for these three
+things." Or I actually figured out how
+to make it work for that because we
+tried A, B, and C. I think it's just the
+only way. You cannot be in philosophy.
+You cannot be in, you know, someday in
+the future you figure it out. You have
+to actually get back to it. And then I
+think like bonus points, so many of us
+in engineering leadership have like been
+pushed away from from coding.
+>> I know. I have to get back in it. And
+I'm like, I just want to code again.
+Like, give me some joy. Give me some
+time.
+>> Yeah. And so I think that's a benefit as
+well.
+>> And you you have to show not tell. And
+and so I did. And like I think what I
+learned very quickly is like, okay,
+there's something here. There's there's
+a there, right? And then we just started
+picking off like one or two use cases
+and and the best way to get to an
+engineer is just give them the tools so
+they stop doing the work and so
+that they can build the stuff they love.
+Right. Right. And so like we would just
+like pick off unit tests. We'd pick off
+like linting, all these like little
+things that just like paper cut and suck
+the soul out of you as a builder, but
+the engineers and you know like the team
+just wants to move faster. The team
+wants to build better things. And so we
+started leaning into like cursor rules
+for some of these things. Even the
+simplest thing I I remember like I think
+I remember my aha moment which was like
+popping in some bug report working
+through it and then I didn't think about
+it. I just did it. I was like just
+create a draft PR. Here's the ticket.
+Here's kind of the PR like and you know
+here's the PR description I want. And I
+just did it and I was like I never need
+to remember get status get rebase. Like
+why is anyone doing this anymore? like
+what are we doing? And it took the funny
+thing is it took some convincing of me
+to the the team like guys just type
+create draft a PR like create a draft PR
+and it'll be done for you and like like
+well you know I kind of have my
+workflow. It's like cool cool I get your
+workflow you can modify you can use
+cursor rules it's okay.
+>> Like no one's getting bonus points for
+memorizing git commands.
+>> Exactly. Exactly. And and so like we
+chipped away and we put in a bunch of
+rules like cursor rules and that that
+helps so much. And then like we had I I
+was like sensing I was like okay I have
+I have enough like folks on the team
+that are like yep this is unlocking
+stuff. And they would post in the team
+channel like look what we had literally
+a channel called cursor wins. And like
+everyone was just posting in the channel
+like I just did like you know 20 unit
+tests and then went and had a coffee.
+This was great. like I love it. And so
+people started seeing it in action and
+then we hit this like point. I was like,
+"Okay, how do I speedrun now the whole
+team? There's a there's a little bit of
+conviction here." So I just and I
+remember this like I think I had landed
+I was going to the east coast. I landed
+um for my flight, got into an Uber,
+hopped on like an entire team all hands
+like speedrun we call it. It was like
+basically cursor speedrun. And I was in
+the Uber using cursor putting up a PR.
+And the goal of the speedrun was every
+single person would just pick up the
+most trivial thing. It could be like
+copy change, a bug, whatever, and just
+put up the PR. And we ended up, I think
+in 15 minutes, I think a 100 people had
+joined. In 15 minutes, we ended up
+putting up like 70 PRs. And we broke
+GitHub, too, which was cool because we
+learned like our infrastructure needed
+improvement. So I want to I want to
+pause real quick because again how I AI
+a little bit about tactical techniques
+and you've used a couple that I have
+used which is like one high conviction
+leader with hands on the metal that just
+says like we just got to do this access
+to tools focus on toil and is very
+important. You called out linting you
+called out tests. Another one I would
+call out is like design debt where you
+know front end engineers or designers
+have just lived with parts of the app
+they hate.
+>> Yes. Um, that is another really great
+one. But and then and then a a shared
+Slack channel. And one like, you know,
+riff I would make on your cursor wins
+channel is we made ours wins and losses.
+And so we were very clear like just post
+what you did and when it worked and when
+it didn't
+>> because when it didn't, people would be
+like, "Oh yeah, but you could try XYZ or
+I have a cursor rule for you or
+whatever." But what I haven't heard that
+I want people to just like perk their
+ears on and pay attention to is this
+like idea of a PR speedrun which is like
+do a time down time everybody boot up
+whatever tool and just speedrun some
+fixes because how much conviction does
+an or have to get going from look I've
+been there like the the doldrums of like
+quarterly planning and this will be in
+four months and blah blah blah blah blah
+to just like we just got 70 PRs that
+we've sitting on out out the door in in
+30 minutes. I just that has to be such a
+transformational moment for an edge
+team.
+>> You know, there was a success rate on
+those on uh merging those PRs and like
+it was just like this is possible
+there like everyone's eyes lit up
+>> and it was really sort of a death to
+status updates long live building
+moment,
+>> right?
+>> Yeah. And and this is the other thing I
+want to call out because I think you all
+have a really special culture there. But
+so often we in product engineering
+design orgs get like really wrapped
+around the axle on like the rules of
+engagement like well I'm not allowed to
+build it unless the product manager says
+it's important or like I can't really
+make that decision about what color that
+button is because design hasn't weighed
+in. And like I do think these moments
+where you just break all the rules and
+you're like guess what remember you can
+just
+>> ship code. who can just
+>> you can just ship them both like put AI
+aside. AI maybe enables it and makes it
+like a much less costly you know um
+expense but like just doing that is so
+powerful for velocity and for I also
+think for quality like people just take
+more radical ownership of things. Um so
+I'm going to 100% steal this.
+>> You I mean I want everyone to steal it
+like you know I I really like the way
+you just put it right. This is a moment
+where we should be breaking the rules
+because AI is breaking the rules for us
+and if we don't adapt to how like we can
+use it, we're toast, right? And and we
+is like a very collective like whoever's
+not adapting is going to fall behind
+kind of thing, right? And what all of
+this like ends up unlocking is
+is like the reduction in coordination
+overhead. So like one thing I've been
+obsessing about a lot, it's like, okay,
+cool, great, good job on the speedrun.
+Yes, we got a lot of stuff done. We
+started then seeing those wins more and
+more people adopted. Brian then, you
+know, you were sharing some information
+with Brian like how adoption is going
+and then we just did a companywide
+speedrun. And at that moment, like there
+were like 800 engineers on the call and
+we ended up pushing up for like 3 400
+PRs in 30 minutes. And yes, again, we
+broke GitHub and that's fine. That's
+good. Like this is pressure testing. We
+should be designing ourselves to break
+the rules, right? But the thing I've
+been obsessing about is like how do you
+how do you measure any of this like in
+terms of output, right? There's there's
+this like tension where okay the more AI
+we use well does that count as a
+replacement for people and like I'm in
+the camp of absolutely not. AI is an
+accelerant, right? AI is an accelerant
+because there will always be more work
+to like to do, right? And so the way I
+think about it, at least for for my team
+and and what I'm pushing across the
+board is really like
+time from ticket to when the change
+lands to the user. Like that actually
+encompasses every single piece you need,
+right? And today like even if you go
+from like
+ticket backlogs and stuff like that,
+like there's oh do I should I like like
+you said, should I prioritize this? Is
+this important? Let me ask my PM or let
+me ask the pro the pro program product
+manager, project manager, whatever. And
+now the whole team like fast forward
+from back then to now, we just see
+someone give us feedback and literally
+within like seconds we're like clock
+like we built this internal bot. I'm
+excited to show you. And within seconds
+like the PR is being authored, right? an
+agent picks it up and within seconds
+that feedback is like acted on. And so
+we crunch the time to action, the time
+then from ticket to the the PR being
+ready for review. Then the review time
+like all my dubs complain review times
+take too long. We found some solutions
+actually. I think we were doing average
+of like
+150 hours like was the cycle time for a
+PR review because there was so much. We
+reduced it by 10x down to like 15 hours
+or so roughly. And then the last piece
+is like from that merge, how do you do
+like that OTAA update and you squeeze
+that whole cycle again and then the team
+is like just literally unlocked with
+sheer velocity.
+>> Yeah.
+>> And then you get stuff in front of
+customers. Yes.
+>> And then you have the velocity of like
+actual market ideas.
+>> Yes. And you get that feedback and like
+the the we're obsessing also about how
+fast can we take like in real life
+feedback.
+>> Yeah.
+>> And then actually just fix it right then
+and there. I think I think there was
+another aha moment. I was on a call with
+with like a user of our product, right?
+And they're like, "Hey, it'd be cool if
+you like changed X, Y, and Z." And like
+literally while I was on the call, I
+just put up a PR and pushed it. And
+they're like before the call ended, it
+was 30 minutes. I was like just you know
+reload it's fixed.
+>> Okay before we quer this into an hour of
+you know like two two end product
+leaders being like just ship really fast
+we'll go into the merits of reducing PR
+cycle time all that fun stuff. Let's
+actually show a couple things you built
+because I think the kind of meta
+commentary on like you can do this in
+engineering organizations. There are
+steps to it. There are measures you can
+take I think are things that everyone
+can learn from but you also have been
+building. So let's talk about how you
+used actually cursor to drive how you
+drove this into the organization and
+understand adoption of AI.
+>> Yeah, for sure. Um, I think a lot of it
+just comes like from honest curiosity
+and figuring out um, where the
+bottlenecks are like why aren't folks
+adopting, how are people using it, etc.,
+etc. I want to show you like I think the
+the kind of crazy thing I'm about to
+walk you through is like I just got this
+hairbrained idea. Cursor has like great
+analytics, right? And so you go to the
+admin panel, you look at the analytics
+and a you know awesomely they let you
+download it into CSV. I was like, what
+if I just use cursor to figure out what
+my team is doing in terms of using
+cursor but not in just like from a
+vanity metric point of view of like
+lines of code committed by AI. I think
+that's like kind of misleading actually
+digging more into um how they're using
+cursor and how do we sort of like
+replicate power users. So let's see uh
+we have some some data. It's in this
+file here. Uh, and it's just like a
+standard CSV from Cursor that you can
+like download from their their site. Um,
+like your admin panel. And then there's
+also here a bunch of different sort of
+fields. Um, so like accepted lines, chat
+lines, chat lines deleted, um, various
+like data elements. But you know, one
+thing like I just sort of started with I
+want to understand the usage of cursor,
+right?
+And I already know um we have like light
+users all the way to power users. And
+one of the things I really wanted to
+figure out was like what are the natural
+clusters of usage? Can you find them
+across the team? What is the best way to
+cohort them?
+Right? And I'm just going to pick up the
+standard analytics file here. Maybe pop
+in another one here. And then I love
+Opus High. I also love plan mode because
+it gives you a chance to like see what
+it's thinking through. So we can let
+this cook and see what it comes back
+with. And what I want to call out here
+for engineering managers or engineering
+leaders is this is the kind of
+quantitative analysis that we would all
+have loved to be able to do across a
+bunch of engineering metrics at at some
+point, right? Like how often do we get
+asked by the board or our boss like
+what's velocity, what cycle time, which
+of our engineers are super, you know,
+like our are really on the far edge of
+the curve in terms of efficiency, how
+are our junior engineers ramping into
+the repo, all that kind of stuff. And
+that kind of analysis is actually really
+ownorous and hard to get at because of
+the structure of the data and the nature
+of the analysis. And so what I love
+about just LLMs in general and in
+particular using something like cursor
+is you can get to really nuanced
+cohorting analysis on human behavior and
+human analytics as a manager in a way
+that I think has been really challenging
+to do before.
+>> Yeah, I totally agree. And like the
+beautiful thing is now with MCPs with
+data accessibility
+like I think of tools like cursor as
+just my daily operating system. If I
+have a question, it doesn't matter if
+it's technical or not. I just go into
+cursor and ask it. Um, and so it's like
+super super powerful that way. Okay, so
+it's asking me a little bit about like
+what outputs do I want? I do want to
+enrich CSV. Um, just it makes it easier.
+I do want a static dashboard just for
+fun. Like I'm not really trying to
+create a brand new dashboard right now.
+But my main goal here is just honestly
+honestly like find natural cohorts,
+right? Um, and so it's going to kind of
+try to do light, moderate, active,
+power, super user. It's going to look at
+line suggested, so volume,
+sophistication, agent mode, model
+preference, acceptance rate, and breath.
+What features are they using? I'll spit
+out, you know, a CSV dashboard. It'll
+likely generate a Python script, too,
+that I can reuse. So, I'm just going to
+kick off build mode. While that's
+cooking, I do want to just maybe bop
+over to like it's going to create all
+this stuff in Python, create the scripts
+for me. Awesome. But we can look here at
+some of the the information, right? So
+like this is all sort of random made up
+data. It's like sample data. But what it
+did was in a previous run it looked at
+all the data, generated the Python
+script, which is great, super simple.
+And it sort of just did some like
+highlevel status metrics like AI code
+percentage again on all this madeup
+data, AI lines per week, composer lines.
+This is when you're using the agent mode
+in cursor or tab lines, right? When
+you're hitting tab. Uh one one of my
+team members actually got the cool
+cursor tab award, which is which is
+great. Great. And so it sort of breaks
+all this down. And then what it really
+segmented around was like agentheavy
+users, which is folks who really lean
+into agent usage. There's also tab heavy
+users. This is like a different cohort.
+they just lean into tab usage and they
+they maybe want really just a bit more
+control and maybe haven't gotten yet
+used to like how to let go with an
+agent. Uh you have balance users that
+try both and then you have sort of like
+maybe cursor curious or maybe not cursor
+pill or you know llm pled right now and
+so I generated this whole script. It's
+great. And now let me show you sort of a
+bit more analysis I want to do here. So
+let's do this. Run the analysis on I
+have um a sample user set
+and generate the HTML as well and let's
+we're actually like this is sort of the
+output of the analysis script that was
+generated in Python which is already
+cooking in parallel.
+>> Got it. So what you've done here is
+you've taken some raw data from cursor.
+you've asked one kind of agent to do a
+cohort-based analysis and generate a
+enriched CSV essentially with some data
+and then you're kicking off another
+agent to actually do the analysis on
+that and generate sort of an HTML view
+of it so you can visualize the data.
+>> That's right. That's right. What it did
+was the Python script that was
+generated, right? It found these natural
+cohorts, these natural cohorts of super
+user, regular user, power user, light
+inactive. Again, this is just honestly
+sample data um but based on like real
+information, real schema, real cursor um
+data fields. And it came up with like
+70% are agent heavy in the sample data,
+20% are minimal, 4% are balanced. We
+have some room to improve here on the
+sample, right? Like not enough people
+are using it. Um, and so it does a bit
+of a breakdown which I kind of like, you
+know, kind of a recap of metrics. Yeah,
+we have a lot of lines of code in this
+data. We have 520 power users. Again,
+madeup names, but like this person is
+crushing it. I want to know what this
+madeup person, Gabriel Diaz, is doing,
+right? Awesome thing here. It generated
+a little uh visual dashboard. Nothing
+fancy. something just really simple to
+look at, right? Total lines, composer
+lines, tap completion, a little bit of
+breakdown,
+some structuring on the tiers and usage,
+right? But what I really kind of want to
+understand is like what is Gabriel Diaz
+doing, right? This madeup user who's
+just like crushing it.
+>> Yep. How about based on the data
+generate guidance for each user cohort
+what you know they should do to advance
+and graduate to super user I'm looking
+for explicit guidance effectively like I
+want to turn this into some type of
+playbook right so let's let this cook
+and then in parallel what I also want to
+do is I like visuals and there's
+something intuitive here where like as
+we look at the data itself
+right We we know that the like the path
+to this super user over here. It's it's
+not like you go inactive to light to
+regular to power to super. We know it's
+not linear like that. Right. Right.
+There may be like forks from light to
+straight to power user. Regular user
+seems to be like balanced on the taring,
+but what I want to know is like what are
+the special things these folks are doing
+and how do I sort of shift the curve,
+right? And so I'm also going to throw
+another question in parallel like create
+a mermaid diagram uh for all the
+different sort of paths a user can take
+from light to power. And it's I'm
+assuming it's not linear. And let's just
+see what this cooks up to.
+Okay. This is really working hard.
+Really working hard.
+>> Opus 4 five.
+>> Yeah. Opus is Opus is really working
+hard on this. But um yeah, let's let's
+see where it goes. Well, you know what's
+really interesting? I'll give you a a a
+shorter hack on this one. So, I think
+what this is generating is like an HTML
+playbook that you could share out that
+has has things. I will tell you what I
+would do in this use case and I've done
+this a couple times um with c like
+customer QBRs is I say write a slack
+post that I can put in my engineering
+channel on a couple of these stats and
+you know how we can get people to move
+from A to B and it'll write me like a a
+short little Slack post. So, I I love
+this idea of going from something like a
+CSV to a really deep analysis to an HTML
+like visualization to like three bullet
+points I can send in Slack. Yeah.
+>> And as a manager, each one of those
+steps would have taken just forever to
+do. And now you can get them all done in
+cursor.
+>> Yeah. You know, that is that's like kind
+of the awesome thing is the power of
+something like a workflow markdown file.
+>> Yeah.
+>> Is huge. It's absolutely huge. And it ex
+it's exactly like the thing you're
+describing here.
+>> Meet Rovo, your AI teammate, connecting
+knowledge, people, and workflows so
+teams can work smarter and move faster.
+It helps people find answers, make
+decisions, and automate work securely
+and with context through search, chat,
+agents, and studio. Rovo runs on the
+teamwork graph, Atlassian's intelligent
+layer that unifies data across your
+first and third party apps, so no
+knowledge gets left behind. And you
+always get personalized AI insights from
+day one. And the best news, it's already
+built into Jira Confluence and Jira
+Service Management paid subscriptions.
+So the power of Robo is already at your
+fingertips. Know the feeling when AI
+turns from tool to teammate? If you
+robo, you know. Discover Robo. AI that
+knows your business. Powered by
+Atlassian. Get started at rovo.com.
+That's rov as in victory o.com.
+>> Let's see. Let's see what it came up
+with. Right. And like you know the the
+thing is like no one should expect all
+this information is going to be perfect.
+Like if anyone is thinking oh wow what
+is going to be my job as a leader if
+cursor can do all all of this it's like
+well your job as a leader is to lead
+right and to make change and and impact
+and this accelerates them so inactive
+users like yeah kind of true you haven't
+installed you haven't really used AI
+features yet the hardest part is getting
+started so I kind of like this it gives
+like just some very simple prompts try
+the agent mode for your next task
+something very very simple. Something
+like wait try a tab completion flow. I
+kind of feel like the the LLM really
+wanted to just turn this into a game
+like a little like a little quest or
+something.
+>> Yeah, it's gified a little bit.
+>> Yeah, it is. It is a bit gified and it's
+kind of fun.
+>> All right, so this is cool. It's kind of
+given me like this would be my Slack
+post. TLDDR
+>> 16x more AI line super users versus
+other users. Let me zoom in just a bit
+more. More agent requests for super
+users. I love this. Stop typing. Start
+shipping.
+>> It's dark mode, so the engineers will
+just love it.
+>> Yes. Right. Um, it's kind of perfect.
+And then
+you installed cursor, but you haven't
+used AI yet. We talked about this.
+That's cool. Light mode. Okay. I, you
+know, this like resonates. Stop saying
+fix this bug. Actually like talk to it
+like you would maybe a junior engineer,
+>> right?
+>> Um, cursor just did release bug bots. I
+love Bugbot.
+>> Cursor. I love I love Bugbot.
+>> Agent isn't for heart stuff, it's for
+everything. These are like motivational
+quotes now, but I think like we should
+just make posters for and put them up on
+the wall. Um, write unit tests, actually
+read the comments. Okay, cool. Now,
+power users, you're good to be great,
+think bigger, and to have harder.
+>> Okay, there. If cursor is listening, I
+think this is like gonna be your new
+merch line, guys.
+>> I need a hat that says tab harder.
+>> Yes.
+>> Okay. So, just to just to recap again,
+we're doing we're doing uh free free
+product work for cursor here. We we took
+you know your ultimate problem was like
+how do I drive up adoption in these
+tools? And you're like of course I'm
+going to use the tool to understand
+adoption and then figure out ways to
+drive drive adoption. We did analysis.
+We created a visualization of the um the
+data itself. You identified cohorts and
+power users which would have been very
+tedious to do if you were going to do
+manually.
+>> Yeah.
+>> And then you created a
+hosted playbook. Um, as well as a series
+of motivational statements which we can
+either give to our friends at Cursor for
+free or trademark right now and make a
+little a little money. Um, agent
+everything tab without thinking bugbot
+always on iterate prompts. Love it.
+>> And this, you know, again what I think
+is fun, let me talk about what I think
+is fun about this one.
+Everybody who has been in engineering
+leadership knows this is the kind of
+stuff you get asked to put in a board
+meeting. You get asked by your boss like
+what percentage of our engineers are
+using cursor? Do we have power users?
+Are we actually getting value? And we're
+talking about an AI use case right now.
+But again across management there are
+actually measurable things you can do
+about the performance and efficiency of
+your team.
+>> Yes. And
+>> I think it been so impossible to get
+before. Two,
+it would be no fun if you didn't get to
+do it with code, which you get to you
+get to do with code.
+>> Actually, that is solve problems with
+just code now, right? You can just do
+things. I I you know, you're so right.
+Like I I think this I underappreciated
+what exactly what you're saying right
+now and and I just want to repeat it
+because normally you would be asked this
+and then you would have to go pull an IC
+to do that and like what what
+>> like come on like no you can just do
+things right now.
+>> Well and and again it's like not I I I
+think people underappreciate the
+velocity creation of a fun task.
+>> Yeah. which is like at the end of the
+day like this is silly but also the like
+little fun bits of it you're like great
+I want to go to the next level cuz I got
+like a little dopamine hit from this
+dark mode playbook that's kind of funny
+and I I think people underappreciate
+like that iteration speed that can just
+come with like a fast feedback loop
+>> when you're building something and the
+fast feedback loop when you're building
+something that has high quality against
+it which like something designed like
+this does is so much more fun to look at
+than a Google doc. Yeah.
+>> Or a spreadsheet or a dashboard. So, we
+we did it. We did it. We again, you and
+I are twin stars, I think, here. And so,
+we can probably go all day on the things
+that we find fun. But, let's go to a
+second use case that I think people are
+going to see. And let's see how fast we
+can do this use case, which is you were
+talking about the speed of feedback to
+feature. And you you said some fighting
+words out there. You're like, we're
+really compressing the time from
+feedback to feature. So, how does that
+actually work?
+>> Those were those were some fighting
+words. Um, and
+you know, I think you know this, right?
+You want you want to build this for your
+users, right? And you want to create the
+best damn product out there as fast as
+possible. And the way to like make that
+cycle work really well is genuinely how
+fast you can move on feedback. Okay. But
+I want to start from how does like
+feedback even normally come in, right?
+So you you know normal like teams and
+and culturally like you'll have dog
+fooding or bug bash sessions, right?
+You'll get on a meet or get in a room,
+keep using the product, blah blah blah,
+all that jazz and then someone has to
+like collect the bugs in a Google doc
+and then take those bugs in a Google doc
+and put them into a ticket system,
+right?
+>> Uh okay. And then there's a whole
+discussion around
+is this important, is this not
+important? Okay, should we pick it up in
+this sprint? Should we wait for another
+sprint? And by that time, your user has
+turned out. They're like, you guys
+didn't fix this. I kind of hate it.
+Moving on, right? Everyone's attention
+is like so so so short. And right now,
+like the whole team, uh, we're all
+preparing for a big launch. Um and we
+wanted to get together and do this thing
+called a surge. And this is where we
+like just bring the team together and we
+do very very long days um using all this
+AI and just shipping like massive
+amounts of code. Uh and fun fact like
+during these surges we end up shipping
+like more than three to 4x more PR
+volume in the same time. But the other
+thing we wanted to do was bring people
+into the office and we set up this thing
+called like a feedback cafe. So we'd
+invite externals, internals, etc. And we
+dog food with them and we'd show them
+the app and like here's just like a
+couple seconds of, you know, what it
+looks like. We're just standing there
+collecting information doing all this
+like live dog fooding. And the hard part
+though is especially in real life. How
+do you actually capture that
+information? Because it's voice, it's
+video. How do you translate it into a
+system? Okay. So, I just spent like half
+a weekend and built a tool to capture
+feedback live. Let's just pick
+something. I'm gonna pick I'm gonna I'm
+gonna pick a new thing. How I AI testing
+with Claire.
+Awesome. So, let's do that. It's going
+to create a little session. Perfect.
+Very simple. And we have two modes. You
+can like you can use this on your mobile
+phone. That's what the team did uh when
+they were in real life. But for this,
+I'm just going to like capture some
+audio. And let's see what's what's
+actually maybe I can just hear from you
+like a fun little bug or something uh of
+a product that you you think you want to
+fix. So we're going to start capturing
+audio.
+There is a AI chatbot that I use where
+my account when switched to business
+account forces me to clear all my chats.
+And I think we should fix that bug so
+that I can access my existing chats.
+>> We're gonna start capturing audio. We're
+gonna Okay, cool. We captured it. It's
+basically taking the audio.
+>> I did a system prompt. Sends it to an
+LLM. Um, and then what we do is it the
+prompt is basically saying go and
+identify the bugs. Yep.
+>> Right. And then it'll create it. I'm
+going to do one while it's processing.
+>> Right now, I'm using the app. I'm on the
+trade tab and I'm clicking the from
+field and I'm typing in numbers, but the
+numbers are not showing up. So that's
+not letting me make a trade. So I think
+in our first example, the audio is a
+little hard to capture through the
+system. But let's look at the second
+example.
+>> It calls it out really clearly. On trade
+tab, typing into from field does not
+display enter numbers. User cannot
+initiate a trade. Cool. Really, really
+clean.
+>> Yep.
+>> I hit create linear ticket. It even
+gives like a suggested title.
+The user journey I care about for this
+is trade. Boom. I create the ticket
+itself.
+Awesome. I hop over.
+The ticket is all here. The file is
+there. Linear is a incredible tool. It's
+doing some triaging. But the thing I
+want to now hop over to is we're going
+to just create the PR. So we have this
+tool we built inhouse. We call it
+Cloudbot. It's actually like using all
+sorts of underlying models. Uh it's not
+something that is specific to to to
+Claude. Um, so Cloudbot create PR. I
+know the repo for this is wallet mobile.
+And here's the ticket.
+>> Oh, that's not the ticket.
+>> The ticket is boom. Here. Great.
+Cool. So, I just went from
+a bug report to ticket
+>> to a PR
+>> to the PR is cooking.
+>> Okay. So, I have to pause because if you
+um are new to how I AI, you have not
+seen my signature move when I really
+love something, which is this. And I was
+doing this because I was just thinking
+about this this little micro app that
+you have on the left side, which is, you
+know, live user feedback,
+totally unstructured, right? Video or
+audio. Run a little baby LLM on it. get
+not only a summary of the issue but a
+good recommendation on how you might fix
+it. Very quick beep boop to linear. We
+love our friends at linear. I think it's
+a great platform for agents. And then a
+little custom agent in your Slack that
+can read those linear tickets and just
+execute on them. And again so
+traumatized by the past maybe which is
+like this process would have been you
+know somebody
+manually summarizing
+>> Yep.
+>> what came out of a research session.
+>> Y
+>> some document being written somebody
+actually making explicit decisions about
+what to include and not include. I think
+>> the decision making is gone.
+>> Yeah.
+>> Like no filter anymore. You don't get
+that like, well, you know, if I make
+this five pages long, no one's going to
+read it. So, I'm really going to focus
+on the top 10 things. It's like, let's
+capture everything and then just burn
+through it. And then I have to ask you,
+why did you all build your own little
+bot to do this? What was the advantage
+of of building the bot?
+>> So, this this is like in-house. Um, and
+we built it, you know, it all started um
+around like middle of this year. I
+created this like I I was just obsessing
+so much about AI and I was like how do I
+how do I create better tooling for the
+team for the company so everyone can be
+accelerated. So I invented actually like
+I put a call out on Twitter I invented
+this role called superb builder and the
+single job single most important job of
+a super builder is to create more superb
+builders. So we we hired our first
+superb builder and they um we we talked
+about some ideas and one of the biggest
+things because most of our company uses
+Slack. We're all in Slack and Slack, you
+know, I'm like strong believer it's just
+a bunch of humans pretending to be
+systems, right? And the cost of writing
+something in Slack is zero, but the cost
+of answering something in Slack is
+enormous and most of it is noise, right?
+And so one of the things was just like
+how do we bring the workflows that we
+are all so used to
+um and how do we like sort of capture
+that and then add AI on top of it. So we
+had like various reasons we know like
+lots of companies have background agents
+cursor etc etc. Uh we just have like
+different sort of security requirements
+right now that we just couldn't launch
+with it and that's fine. So we we built
+this in house and we have these like
+feedback channels, right? Hey, there's a
+bug here, there's a bug here. And so now
+all we just do is like cloudbot go and
+do something with that. Or if someone is
+um like, hey, we just got out of this
+meeting. Here's a summarized transcript.
+We're like, awesome at linear agent, go
+break this down into tickets. Then just
+like you know, you know the look you you
+showed like right like everyone is just
+doing that emoji of like the head
+exploding, right? Because then now we
+have like 20 tickets and then we do fun
+things like this which is just go like
+bonkers
+where we just fire off
+tons and tons of calls
+right to just
+and so we we built this plan mode. So,
+this bot has a create PR, which I'm it's
+cooking. Um, it has a and also the cool
+thing about create PR is when it's done,
+it will respond back, it will show you a
+link to like the cursor branch using
+cursors deep link. And when then the
+oneoff build is ready, it will show the
+QR code. So, you can just scan and start
+playing with the fix, right? There's a
+plan mode which is very much like
+cursors plan mode. It just comes up with
+like a plan. And then we also have um
+explain as well where it's like oh I
+want to debug something. So like um why
+is
+Chinten's app not working right now? Um
+Chintton.base.
+As an example, right? and it has like
+all the skills all the MCPS and so
+the thing the thing I realized is
+context is the most important thing. So
+the place where we capture all of our
+context is linear and then you this
+agent that we built um we added skills
+and MCPS. So if we can capture context
+through linear then we can trigger the
+agent uh using all the context from
+linear and then it goes off into all the
+MCPS like data dog sentry amplitude um
+our internal snowflake databases etc and
+it has the ability to pull context from
+the rest of the company and it can work
+across multiple code bases and then boom
+like
+it's it's like a it's a it's it's a
+superb builder.
+>> This is this is awesome. And so before
+we move move on, I think what I want to
+call it here are a couple things that I
+hope people didn't miss. One is right
+now if I can give people career advice.
+>> You want to be like the the top three
+most AI pill in your engineering
+organization. I'm sorry. I just have to
+say it like I you know I whenever I you
+know pulled an engineering leader aside
+or someone aside who's like maybe a
+little AI skeptical and I said like I
+want you to lead this. I wasn't doing
+it. Yes, of course I want to do it
+because I think it has high impact on
+the company, but I felt like I was doing
+people a career favor by giving them
+this role. And so, if you can find
+companies that are hiring superb
+builders that will put you in the role
+of driving AI across an organization
+where you can learn these skills, I tell
+you it is a incredible benefit to your
+overall career. And I don't think people
+appreciate how much that is pretty still
+rare right now. So if you can find it, I
+would just beline directly directly to
+it. I think the other thing and we've
+seen this a couple times. We saw this
+Amplitude actually did it. Building your
+own agents is not impossible for
+organizations. And so if you do have
+security compliance, data access
+restrictions, you can't use cloud
+agents, you can't use these things, it
+is not impossible to build these things
+yourself. And there are lots of like
+really great SDKs out there too that you
+can use um to do so. And then you know
+three like I do think some of these
+platforms linear and slack are just
+friction reducers to access to AI. And
+so if you are thinking about driving AI
+adoption in your organization like
+figure out how you can get the right
+platforms in place that can unlock
+access to agents because if you ask
+somebody to open or learn a new tool
+it's just going to create too much
+friction um to to move forward. I think
+there's like one super important thing
+like this. This is a channel where we
+call Cloudbot Playground. And I'm
+scrolling through fast just to show you
+like how much people are using. This was
+one night. I was up at like 1:00 a.m.
+just pushing this. We got like 200 bugs,
+right, from this tool I showed you.
+>> And I just kicked them all off in like
+one solid go just to get things cooking.
+And like it was great. Uh let's see if a
+plan came out here. Yeah. So like
+there's a there's a plan that comes it
+actually creates the plan in the linear
+ticket.
+>> Yep.
+>> This the trick here. Why Slack is
+because Slack is how things go viral
+within your company.
+>> Totally.
+>> If you have pulled out the magic into
+some separate tool that others can't
+see.
+>> Yep.
+>> It doesn't happen. And so by getting
+things into Slack,
+>> people just like, "Holy this is
+possible. Let's go. And it's like it's
+really cool.
+>> I I completely agree. Okay. So, we have
+just seen about everything I wanted to
+see from the engineering side. But
+before we get out of here, I want you to
+spend just a couple minutes on a
+personal use case.
+>> Okay, let's go. I I think the one that
+resonates probably for everyone is
+getting if you have kids, getting the
+school emails that it's like, oh, here
+are 50 events that are about to land. Uh
+here are the dates. I've just started
+taking a picture of it and then throw it
+into chat GPD and say create the
+calendar invites
+>> 100%.
+>> Right. It's like it's the dumbest thing,
+but oh my god. And then the shared
+calendar dance happens and it's like
+it's so great. Another thing though,
+like I love food and wine. I really do.
+And like um I've done like Somalia
+training, etc., etc. And I and I
+realized like, you know, I went to New
+York recently with my one of my buddies.
+He's uh he's learning about AI, but he's
+like what what are some of the real use
+cases that would resonate with me? And I
+was like, well, like one of the biggest
+sort of anxieties people have is when
+they go to a restaurant, they're handed
+the wine menu, right? And they're like,
+what do I pick? What if I pick the wrong
+thing? So, uh, with my friend in New
+York, we went to some, uh, like
+champagne tasting. And so, like, I just
+took notes. There's like this whole
+hour ago. And I was like, "Oh, here's a
+great producer. Single star means like,
+yeah, it's good." And then here's
+another one. Oh, see I wrote amazing by
+like this is someone I've actually never
+tried before, but I loved loved their
+champagne. Let's see. It was just super
+yummy. Here's another one. Right.
+Effectively, then I just like popped
+this right in and I said, "Here are a
+bunch of champagnes that I tasted.
+Figure out from my notes like what are
+my taste preferences."
+>> Really simple. Because you know like
+when I when I did like Somalia classes
+the biggest thing that it teaches you is
+the vocabulary to describe the stuff you
+like right and then so I just took the
+images it figured out the producers and
+this is actually like spoton the fun
+thing I did with my friend while I was
+in New York was like we were just he was
+he's he actually is the real life
+version of chat GPT and it's it's what
+inspired me to do this which is he's
+always trying to figure out my taste
+preferences and so you know this is like
+my strongest signal. I I love like these
+wines that have very little sugar that
+are like really ripering acidic. I love
+some aging. I love growers, right?
+Grower champagne, not like the big
+houses that are like very sweet. It even
+went into like a certain subcategory
+of like, you know, the chalky style.
+This is specific producer that I wrote
+amazing by for. And it also called out
+something I learned in real life, which
+is like I do like Pinoet, but only like
+with this sort of characteristic, right?
+Kind of crazy. All right, fine. And so
+then it came up with like a little bit
+of like a champagne profile.
+Cool. And if I'm buying stuff, you know,
+here's here's what I would buy. All of
+that's fine. Okay. Like why on earth
+would anyone do this, right? Like like
+people must be listening and be like,
+"Okay, maybe just drink a little less
+champagne, dude." But like the fun thing
+is let's say you took you went to a
+restaurant, right? And I just did this
+for this like example here. And you just
+like dropped in took a picture of uh the
+wine menu, right? And it's like a big
+old menu. Some of them are like size of
+a dictionary. Some of them are simple,
+but like you don't want to make a
+choice, especially you just want to be
+with like talking to the company that's
+in front of you and not like staring at
+the wine bible. You drop it in and boom,
+what it actually comes out with. And and
+I think the prompt I asked is what would
+I like from this list? What are good
+values? And it kind of just went through
+this really fast based on my preferences
+like and it's right like I would love
+this. I have I have had it and it's
+great and it's fun. It shares the price.
+Absolute no-brainer. Another example.
+Another example. And then it kind of
+gets into a bit more detail like
+categorically like look if you want a
+value one and just like want a bunch of
+bottles go for this. Like everyone's
+going to love it. If you want something
+a bit like more splurgy, try these,
+right? Um and very much like it kind of
+talks about what why you'll like it.
+What I love the most though says this is
+the stuff just to stay away from, right?
+And you know if it's a big night then
+just go get these six bottles and and
+call it a day. And so like that's the
+fun thing here for me.
+>> So what I have to call out for folks is
+we've actually seen not this particular
+use case but this flow before which is
+like how do you reverse engineer your
+own taste. So we saw Hillary at Whoop
+show how to reverse engineer her own
+taste on slides. Um we saw I forget
+somebody else reverse engineered
+photographic styles. um Ravi uh reverse
+engineered photographic styles and said
+like here's a photo like tell me explain
+to me how to how to describe this but
+you are the first person that has
+reverse engineered their own taste in
+wines and I love this and now you can
+>> pick yummy stuff to get for and you know
+what six bottle cart I'm going out with
+you next time
+>> I know we'll we'll we'll celebrate AI
+adoption or something like that
+>> this has been so great I have one uh two
+lightning round questions for you. We'll
+keep them very short and then we'll get
+you out of here. My first one is if you
+look back two years ago to now at work,
+how are you how are you spending your
+time differently? Like how has all this
+changed how you personally spend your
+time?
+>> My calendar is empty.
+>> Like almost empty. And the reason why is
+cuz the coordination overhead of like,
+hey, let's prioritize this, let's change
+this, let's change the road map. No, you
+just do things. That's one. two, I'm
+writing way more code. The team knows
+like uh if their contributions fall
+below mine, like that's that's we we got
+to like help on the AI, but like look
+like I'm also jumping in. The team is
+doing incredibly hard work. I am
+spending way more time in the code base,
+fixing bugs, trying things, coming up
+with like technical approaches. I am not
+a replacement for like the insane amount
+of talented cracked engineers on my
+team, but I'm able to move things
+forward much faster and cut through the
+>> If if AI has done anything for us,
+cancelling meetings would be would be
+the gift that that I want. Okay, my last
+question is when AI is not listening to
+you, when it gives you a really dumb
+playbook for your engineers, what is
+your prompting technique? It depends on
+like how many tries times I've tried to
+convince it. But generally, it's like,
+okay, one, you're clearly not listening
+to me. This is what I said. Two, yeah, I
+know I'm absolutely right, but like,
+stop being stupid. I need your help. And
+three, I I like the nuclear option is I
+threaten it and I say, um, Claude, if
+I'm using like Claude Opus 4.5 high,
+like, okay, I'm going to stop using you,
+Claude, and going to switch to Gemini.
+And then it gets its together.
+I love it. I don't know what that says
+about either parenting or management
+effective. Well, this has been great.
+Where can we find you, your team, and
+how can we be helpful?
+>> Yes. Um, so I'm on Twitter, Chintanakia.
+We are building the base app. It used to
+be known as uh Coinbase wallet. And I
+think by the time that when this uh
+episode airs, it will be live to the
+general public. Use it. It is a consumer
+social app that happens to use crypto
+and it's enabling creators to earn and
+be valued. Um, and we're excited to
+launch it and we think it's like a real
+big paradigm shift in crypto consumer
+apps. So give us a feedback, give it a
+shot, post uh see the magic happen. And
+we are hiring two uh cracked frontend
+backend design engineers ML engineers
+builders
+>> super builders I have two super builders
+happy to bring in a third one but like
+it is it is really really fun uh to work
+here on this team and and it it it'll be
+it'll be awesome. So come
+>> well thanks for joining us.
+>> Thank you. This um this was such a a
+great way to cap off the week.
+Thanks so much for watching. If you
+enjoyed this show, please like and
+subscribe here on YouTube, or even
+better, leave us a comment with your
+thoughts. You can also find this podcast
+on Apple Podcasts, Spotify, or your
+favorite podcast app. Please consider
+leaving us a rating and review, which
+will help others find the show. You can
+see all our episodes and learn more
+about the show at howiipod.com.
+See you next time.

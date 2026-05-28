@@ -1,0 +1,241 @@
+Title: Thinking Mode - Overview - Z.AI DEVELOPER DOCUMENT
+
+URL Source: http://docs.z.ai/guides/capabilities/thinking-mode
+
+Markdown Content:
+# Thinking Mode - Overview - Z.AI DEVELOPER DOCUMENT
+
+[Skip to main content](http://docs.z.ai/guides/capabilities/thinking-mode#content-area)
+
+[Overview - Z.AI DEVELOPER DOCUMENT home page![Image 1: light logo](https://mintcdn.com/zhipu-32152247/B_E8wI-eiNa1QlPV/logo/dark.svg?fit=max&auto=format&n=B_E8wI-eiNa1QlPV&q=85&s=75deefa9dea5bdbc84d4da68885c267f)![Image 2: dark logo](https://mintcdn.com/zhipu-32152247/B_E8wI-eiNa1QlPV/logo/light.svg?fit=max&auto=format&n=B_E8wI-eiNa1QlPV&q=85&s=c1ecf1af358fa8eeab8c06052337f8f6)](https://z.ai/model-api)
+
+English
+
+Search...
+
+⌘K
+
+*   [API Keys](https://z.ai/manage-apikey/apikey-list)
+*   [Payment Method](https://z.ai/manage-apikey/billing)
+
+Search...
+
+Navigation
+
+Capabilities
+
+Thinking Mode
+
+[Guides](http://docs.z.ai/guides/overview/quick-start)[API Reference](http://docs.z.ai/api-reference/introduction)[Scenario Example](http://docs.z.ai/scenario-example/develop-tools/claude)[Coding Plan](http://docs.z.ai/devpack/overview)[Released Notes](http://docs.z.ai/release-notes/new-released)[Terms and Policy](http://docs.z.ai/legal-agreement/privacy-policy)[Help Center](http://docs.z.ai/help/faq)
+
+##### Get Started
+
+*   [Quick Start](http://docs.z.ai/guides/overview/quick-start)
+*   [Overview](http://docs.z.ai/guides/overview/overview)
+*   [Pricing](http://docs.z.ai/guides/overview/pricing)
+*   [Core Parameters](http://docs.z.ai/guides/overview/concept-param)
+*   SDKs Guide  
+*   [Migrate to GLM-5.1](http://docs.z.ai/guides/overview/migrate-to-glm-new)
+
+##### Language Models
+
+*   [GLM-5.1](http://docs.z.ai/guides/llm/glm-5.1)
+*   [GLM-5](http://docs.z.ai/guides/llm/glm-5)
+*   [GLM-5-Turbo](http://docs.z.ai/guides/llm/glm-5-turbo)
+*   [GLM-4.7](http://docs.z.ai/guides/llm/glm-4.7)
+*   [GLM-4.6](http://docs.z.ai/guides/llm/glm-4.6)
+*   [GLM-4.5](http://docs.z.ai/guides/llm/glm-4.5)
+*   [GLM-4-32B-0414-128K](http://docs.z.ai/guides/llm/glm-4-32b-0414-128k)
+
+##### Vision Language Models
+
+*   [GLM-5V-Turbo](http://docs.z.ai/guides/vlm/glm-5v-turbo)
+*   [GLM-4.6V](http://docs.z.ai/guides/vlm/glm-4.6v)
+*   [GLM-OCR](http://docs.z.ai/guides/vlm/glm-ocr)
+*   [AutoGLM-Phone-Multilingual](http://docs.z.ai/guides/vlm/autoglm-phone-multilingual)
+*   [GLM-4.5V](http://docs.z.ai/guides/vlm/glm-4.5v)
+
+##### Image Generation Models
+
+*   [GLM-Image](http://docs.z.ai/guides/image/glm-image)
+*   [CogView-4](http://docs.z.ai/guides/image/cogview-4)
+
+##### Video Generation Models
+
+*   [CogVideoX-3](http://docs.z.ai/guides/video/cogvideox-3)
+*   [Vidu Q1](http://docs.z.ai/guides/video/vidu-q1)
+*   [Vidu 2](http://docs.z.ai/guides/video/vidu2)
+
+##### Image Generation Models
+
+*   [CogView-4](http://docs.z.ai/guides/image/cogview-4)
+
+##### Audio Models
+
+*   [GLM-ASR-2512](http://docs.z.ai/guides/audio/glm-asr-2512)
+
+##### Capabilities
+
+*   [Thinking Mode](http://docs.z.ai/guides/capabilities/thinking-mode)
+*   [Deep Thinking](http://docs.z.ai/guides/capabilities/thinking)
+*   [Streaming Messages](http://docs.z.ai/guides/capabilities/streaming)
+*   [Tool Streaming Output](http://docs.z.ai/guides/capabilities/stream-tool)
+*   [Function Calling](http://docs.z.ai/guides/capabilities/function-calling)
+*   [Context Caching](http://docs.z.ai/guides/capabilities/cache)
+*   [Structured Output](http://docs.z.ai/guides/capabilities/struct-output)
+
+##### Tools
+
+*   [Web Search](http://docs.z.ai/guides/tools/web-search)
+*   [Stream Tool Call](http://docs.z.ai/guides/tools/stream-tool)
+
+##### Agents
+
+*   [GLM Slide/Poster Agent(beta)](http://docs.z.ai/guides/agents/slide)
+*   [Translation Agent](http://docs.z.ai/guides/agents/translation)
+*   [Video Effect Template Agent](http://docs.z.ai/guides/agents/video-template)
+
+On this page
+
+*   [Default Thinking Behaviour](http://docs.z.ai/guides/capabilities/thinking-mode#default-thinking-behaviour)
+*   [Interleaved thinking](http://docs.z.ai/guides/capabilities/thinking-mode#interleaved-thinking)
+*   [Preserved thinking](http://docs.z.ai/guides/capabilities/thinking-mode#preserved-thinking)
+*   [Turn-level Thinking](http://docs.z.ai/guides/capabilities/thinking-mode#turn-level-thinking)
+*   [Example Usage](http://docs.z.ai/guides/capabilities/thinking-mode#example-usage)
+
+Capabilities
+
+# Thinking Mode
+
+Copy page
+
+GLM offers multiple thinking modes for different scenarios. The sections below explain how to enable each mode, key considerations, and example usage.
+
+Copy page
+
+## [​](http://docs.z.ai/guides/capabilities/thinking-mode#default-thinking-behaviour)
+
+**Default Thinking Behaviour**
+
+Thinking is activated by default in GLM-5 GLM-4.7, different from the default hybrid thinking in GLM-4.6.
+> If you want to disable thinking, use:
+
+```
+"thinking": {
+    "type": "disabled"
+}
+```
+
+## [​](http://docs.z.ai/guides/capabilities/thinking-mode#interleaved-thinking)
+
+**Interleaved thinking**
+
+We support **interleaved thinking** by default (supported since GLM-4.5), allowing GLM to think between tool calls and after receiving tool results. This enables more complex, step-by-step reasoning: interpreting each tool output before deciding what to do next, chaining multiple tool calls with reasoning steps, and making finer-grained decisions based on intermediate results.
+
+When using interleaved thinking with tools, **thinking blocks should be explicitly preserved and returned together with the tool results.**
+
+The detailed interleaved thinking process is as follows.![Image 3: Description](https://cdn.bigmodel.cn/markdown/1766025484368img_v3_02t3_4677ac48-b748-44d8-a56f-8cbd599b51ag.jpg?attname=img_v3_02t3_4677ac48-b748-44d8-a56f-8cbd599b51ag.jpg)
+## [​](http://docs.z.ai/guides/capabilities/thinking-mode#preserved-thinking)
+
+**Preserved thinking**
+
+**GLM-5 and GLM-4.7 introduces a new capability**in coding scenarios: the model can retain**reasoning content from previous assistant turns**in the context. This helps preserve reasoning continuity and conversation integrity, improves model performance, and increases cache hit rates—saving tokens in real tasks.
+
+This capability is **enabled by default** on the **Coding Plan endpoint** and **disabled by default** on the **standard API endpoint**. If you want to enable **Preserved Thinking** in your product (primarily recommended for coding/agent scenarios), you can turn it on for the API endpoint by setting **“clear_thinking”: false**, and **you must return the complete**, unmodified reasoning_content back to the API.All consecutive reasoning_content blocks must **exactly match the original sequence** generated by the model during the initial request. Do not reorder or edit these blocks; otherwise, performance may degrade and cache hit rates may be affected.
+
+The detailed Preserved thinking process is as follows.![Image 4: Description](https://cdn.bigmodel.cn/markdown/176641919972020251222-235942.jpeg?attname=20251222-235942.jpeg)
+## [​](http://docs.z.ai/guides/capabilities/thinking-mode#turn-level-thinking)
+
+Turn-level Thinking
+
+“Turn-level Thinking” is a capability that **lets you control reasoning computation on a per-turn basis**: within the same session, each request can independently choose to enable or disable thinking. This is a new capability introduced in GLM-4.7, with the following advantages:
+*   **More flexible cost/latency control:** For lightweight turns like “asking a fact” or “tweaking wording,” you can disable thinking to get faster responses; for heavier tasks like “complex planning,” “multi-constraint reasoning,” or “code debugging,” you can enable thinking to improve accuracy and stability.
+*   **Smoother multi-turn experience:** The thinking switch can be toggled at any point within a session. The model stays coherent across turns and keeps a consistent output style, making it feel “smarter when things are hard, faster when things are simple.”
+*   **Better for agent/tool-use scenarios:** On turns that require quick tool execution, you can reduce reasoning overhead; on turns that require making decisions based on tool results, you can turn on deeper thinking—dynamically balancing efficiency and quality.
+
+## [​](http://docs.z.ai/guides/capabilities/thinking-mode#example-usage)
+
+Example Usage
+
+This applies to both **Interleaved Thinking** and **Preserved Thinking**—no manual differentiation is required. **Remember to return the historical**`reasoning_content`**to keep the reasoning coherent.**
+
+```
+""""Interleaved Thinking + Tool Calling Example"""
+
+import json
+from openai import OpenAI
+
+client = OpenAI(
+    api_key="YOUR_API_KEY",
+    base_url="https://api.z.ai/api/paas/v4/",
+)
+
+tools = [{"type": "function", "function": {
+    "name": "get_weather",
+    "description": "Get weather information",
+    "parameters": {"type": "object", "properties": {"city": {"type": "string"}}, "required": ["city"]},
+}}]
+
+messages = [
+    {"role": "system", "content": "You are an assistant"},
+    {"role": "user", "content": "What's the weather like in Beijing?"},
+]
+
+# Round 1: the model reasons and then calls a tool
+response = client.chat.completions.create(model="glm-4.7", messages=messages, tools=tools, stream=True, extra_body={
+        "thinking":{
+        "type":"enabled",
+        "clear_thinking": False  # False for Preserved Thinking
+    }})
+reasoning, content, tool_calls = "", "", []
+for chunk in response:
+    delta = chunk.choices[0].delta
+    if hasattr(delta, "reasoning_content") and delta.reasoning_content:
+        reasoning += delta.reasoning_content
+    if hasattr(delta, "content") and delta.content:
+        content += delta.content
+    if hasattr(delta, "tool_calls") and delta.tool_calls:
+        for tc in delta.tool_calls:
+            if tc.index >= len(tool_calls):
+                tool_calls.append({"id": tc.id, "function": {"name": "", "arguments": ""}})
+            if tc.function.name:
+                tool_calls[tc.index]["function"]["name"] = tc.function.name
+            if tc.function.arguments:
+                tool_calls[tc.index]["function"]["arguments"] += tc.function.arguments
+
+print(f"Reasoning: {reasoning}\nTool calls: {tool_calls}")
+
+# Key: return reasoning_content to keep the reasoning coherent
+messages.append({"role": "assistant", "content": content, "reasoning_content": reasoning,
+                 "tool_calls": [{"id": tc["id"], "type": "function", "function": tc["function"]} for tc in tool_calls]})
+messages.append({"role": "tool", "tool_call_id": tool_calls[0]["id"],
+                 "content": json.dumps({"weather": "Sunny", "temp": "25°C"})})
+
+# Round 2: the model continues reasoning based on the tool result and responds
+response = client.chat.completions.create(model="glm-4.7", messages=messages, tools=tools, stream=True, extra_body={
+        "thinking":{
+        "type":"enabled",
+        "clear_thinking": False # False for Preserved Thinking
+    }})
+reasoning, content = "", ""
+for chunk in response:
+    delta = chunk.choices[0].delta
+    if hasattr(delta, "reasoning_content") and delta.reasoning_content:
+        reasoning += delta.reasoning_content
+    if hasattr(delta, "content") and delta.content:
+        content += delta.content
+
+print(f"Reasoning: {reasoning}\nReply: {content}")
+```
+
+Was this page helpful?
+
+Yes No
+
+[GLM-ASR-2512](http://docs.z.ai/guides/audio/glm-asr-2512)[Deep Thinking](http://docs.z.ai/guides/capabilities/thinking)
+
+⌘I
+
+[x](https://x.com/Zai_org)[github](https://github.com/zai-org)[discord](https://discord.gg/QR7SARHRxK)[linkedin](https://www.linkedin.com/company/zdotai)
+
+[Powered by This documentation is built and hosted on Mintlify, a developer documentation platform](https://www.mintlify.com/?utm_campaign=poweredBy&utm_medium=referral&utm_source=zhipu-32152247)

@@ -1,0 +1,73 @@
+Read this and then set it up for me nicely with a document in this folder called GUIDE_TO_ENCRYPTED_GH_ISSUES.md : ```suppose someone wants to post github issues for my project publicly but with encrypted messages and then they send to me out of band the decryption key. Then I would have my coding agents (using codex running on ubuntu) check the gh issues and detect when an issue is encrypted and use the decryption key. What’s the best, easiest to use, off-the-shelf open source way to do this using ECC? || The best practical answer is age.
+It is the easiest off-the-shelf open-source option for this on Ubuntu, it is modern, simple, CLI-friendly, and built around X25519 recipient keys rather than the much heavier PGP/GPG model. The age project describes itself as “a simple, modern and secure encryption tool” with small keys and Unix-style composability, and SOPS explicitly recommends using age over PGP when possible. (GitHub)
+For your use case, I would structure it this way:
+- You generate one long-term age keypair.
+- Anyone who wants to post you a secret issue body encrypts to your public key.
+- They paste the ciphertext into the GitHub issue.
+- Your Ubuntu agent scans issues, detects the armor/header, and decrypts locally with your private key.
+That is cleaner than having the sender transmit a decryption key out of band, because with age’s normal public-key mode they only need your public recipient key. The corresponding decryption key never leaves your machine. age supports recipient-based encryption with age recipients, and tooling around it is already common enough that other projects like SOPS integrate it directly. (GitHub)
+Why this is the best fit
+Your requirements seem to be:
+- public GitHub issues
+- encrypted payloads embedded in text
+- easy for non-experts to use
+- easy to automate from Codex agents on Ubuntu
+- ECC-based
+- open source
+age fits unusually well because it avoids most of the UX disaster of GPG while still giving you modern public-key encryption. Its core recipient type is age/X25519, which is exactly the ECC flavor you want. (GitHub)
+What I would not recommend
+GPG / OpenPGP It can do this, but it is much more fragile operationally and much worse for “paste something into an issue and let agents decrypt it” workflows. Even current SOPS docs recommend age over PGP where possible. (GitHub)
+minisign Not suitable for encryption. minisign is for signing and verification, using Ed25519 signatures; it is not an encryption tool. (GitHub)
+Rolling your own ECC using libsodium or NaCl box Possible, but not the easiest off-the-shelf workflow. Good primitives exist, but you would be designing a custom message format, detection convention, and CLI behavior yourself.
+Best design choice
+You mentioned “they send me the decryption key out of band.” I would actually avoid that unless you have a very specific reason.
+There are really two models:
+Recommended: recipient public-key encryption
+- Sender uses your public age key
+- No out-of-band secret needed
+- Agent just uses your private key file locally
+Second-best: passphrase encryption
+- Sender encrypts with a passphrase and sends the passphrase OOB
+- Easier for ad hoc one-offs, but weaker operationally because humans now handle secret material directly
+If your goal is “public issue, secret content, automation on my side,” the first model is better.
+Concrete issue format
+Have senders post something like:
+[enc:age]
+-----BEGIN AGE ENCRYPTED FILE-----
+...
+-----END AGE ENCRYPTED FILE-----
+[/enc:age]
+Your agent can scan issue titles/bodies/comments for BEGIN AGE ENCRYPTED FILE
+and then pipe that block into age -d -i /path/to/key.txt
+.
+Ubuntu-side workflow
+Install age on Ubuntu and keep your private key somewhere like:
+~/.config/age/issuebot.key
+Then agent logic is roughly:
+if issue_body contains "-----BEGIN AGE ENCRYPTED FILE-----"
+then
+extract armored block
+age -d -i ~/.config/age/issuebot.key
+fi
+Sender workflow
+You publish your public key once, for example in your repo README:
+age1...
+Then a sender does:
+age -a -r age1yourpublickeyhere -o secret.age.txt plaintext.txt
+The -a
+armored mode makes it easy to paste into a GitHub issue.
+Authentication caveat
+Encryption alone does not prove who wrote the message. age itself is focused on encryption, and signing is a separate concern. If you care about sender authenticity, pair the encrypted blob with a detached signature or have the sender sign the plaintext/ciphertext separately using something like minisign or SSH signing. age has had explicit discussion that signing is not its core built-in function. (GitHub)
+So the strongest version is:
+- age for encryption
+- minisign or SSH signatures for authenticity
+Bottom line
+Use age with X25519 recipient keys.
+It is the best combination of:
+- modern ECC
+- open source
+- easy CLI on Ubuntu
+- easy automation for agents
+- much simpler than GPG
+- safe to paste into public GitHub issues in armored form (GitHub)
+If you want, I can sketch the exact GitHub-issue message format plus a small Ubuntu shell or Python watcher that detects and decrypts age-encrypted issues.
