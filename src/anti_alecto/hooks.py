@@ -134,8 +134,24 @@ class ScrapeHooks(MachineHooks):
 
         return context
 
+    def _extract_title_from_summary(self, context: dict) -> dict:
+        """Extract TITLE: line from summarizer output if present.
+        Always prefer LLM-generated title over URL-based fallback."""
+        summary = context.get("summary", "")
+        m = re.search(r"^TITLE:\s*(.+)$", summary, re.MULTILINE)
+        if m:
+            title = m.group(1).strip()
+            if title:
+                context["title"] = title
+                # Remove the TITLE line and any leading whitespace-only lines
+                context["summary"] = re.sub(
+                    r"^TITLE:\s*.+$(\n\s*)*", "", summary, count=1, flags=re.MULTILINE
+                )
+        return context
+
     def _validate_summary(self, context: dict) -> dict:
         """Validate summary has required sections."""
+        context = self._extract_title_from_summary(context)
         summary = context.get("summary", "")
         errors = []
 

@@ -130,6 +130,14 @@ class Store:
         )
         self._conn.commit()
 
+    def update_url_title(self, url_id: int, title: str) -> None:
+        """Update the title for a URL."""
+        self._conn.execute(
+            "UPDATE urls SET title = ?, updated_at = strftime('%Y-%m-%dT%H:%M:%SZ', 'now') WHERE id = ?",
+            (title, url_id),
+        )
+        self._conn.commit()
+
     def get_urls_by_status(self, status: str, limit: int | None = None) -> list[dict]:
         """Get URLs with given status."""
         sql = "SELECT * FROM urls WHERE status = ? ORDER BY added_at"

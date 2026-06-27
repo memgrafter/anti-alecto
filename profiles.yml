@@ -4,37 +4,25 @@ spec_version: "2.5.0"
 data:
   model_profiles:
     default:
-      provider: openai-codex
-      backend: codex
-      name: gpt-5.3-codex
-      oauth:
-        provider: openai-codex
-        auth_file: ~/.pi/agent/auth.json
-        refresh: true
+      provider: openai
+      backend: litellm
+      name: openai/Qwopus3.6-27B-v2-MTP-Q4_K_M
+      base_url: http://stardart:8081/v1
     summarizer:
-      provider: openai-codex
-      backend: codex
-      name: gpt-5.3-codex
-      oauth:
-        provider: openai-codex
-        auth_file: ~/.pi/agent/auth.json
-        refresh: true
+      provider: openai
+      backend: litellm
+      name: openai/Qwopus3.6-27B-v2-MTP-Q4_K_M
+      base_url: http://stardart:8081/v1
     judge:
-      provider: openai-codex
-      backend: codex
-      name: gpt-5.3-codex
-      oauth:
-        provider: openai-codex
-        auth_file: ~/.pi/agent/auth.json
-        refresh: true
+      provider: openai
+      backend: litellm
+      name: openai/Qwopus3.6-27B-v2-MTP-Q4_K_M
+      base_url: http://stardart:8081/v1
     cheap:
-      provider: openai-codex
-      backend: codex
-      name: gpt-5.4-mini
-      oauth:
-        provider: openai-codex
-        auth_file: ~/.pi/agent/auth.json
-        refresh: true
+      provider: openai
+      backend: litellm
+      name: openai/Qwopus3.6-27B-v2-MTP-Q4_K_M
+      base_url: http://stardart:8081/v1
 
   default: default
   override: cheap

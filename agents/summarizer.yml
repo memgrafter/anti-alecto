@@ -16,6 +16,11 @@ data:
 
     ## Output Format
 
+    **Always output a concise title for this content (max 100 chars) as the very first line:**
+    TITLE: <your title>
+
+    Then continue with the sections below.
+
     ### TL;DR
     One sentence capturing the essence. Be specific, not generic.
 

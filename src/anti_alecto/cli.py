@@ -11,7 +11,7 @@ from pathlib import Path
 
 from .config import Config
 from .db import Store
-from .ingest import extract_domain, normalize_url
+from .ingest import extract_domain, fetch_page_title, normalize_url
 from .policy import classify_skip_status, dedupe_prefix, is_walled_reason
 
 # Resolve paths relative to project root
@@ -93,6 +93,14 @@ def cmd_add(args: argparse.Namespace) -> int:
         if row:
             print(f"Already in corpus: id={row['id']} status={row['status']} url={row['url']}")
         else:
+            # Fetch page title if not provided
+            has_title = bool(title)
+            if not title:
+                fetched_title = fetch_page_title(url)
+                if fetched_title:
+                    title = fetched_title
+                    has_title = True
+
             should_skip, reason = config.should_skip(url)
             if should_skip:
                 status = classify_skip_status(url, reason)
@@ -123,20 +131,22 @@ def cmd_add(args: argparse.Namespace) -> int:
                     )
                     return 0
 
+                # No title → skip triage, go straight to scrape
+                add_status = "pending" if has_title else "triaged_keep"
                 new_id = store.add_url(
                     url=url,
                     url_normalized=url_norm,
                     title=title,
                     domain=extract_domain(url),
                     dump_id=None,
-                    status="pending",
+                    status=add_status,
                 )
                 if new_id is None:
                     row = store.get_url_by_normalized(url_norm)
                     print(f"Already in corpus: id={row['id']} status={row['status']} url={row['url']}")
                 else:
                     row = store.get_url_by_id(new_id)
-                    print(f"Added id={new_id} as pending")
+                    print(f"Added id={new_id} as {add_status}")
 
         if getattr(args, "no_process", False):
             return 0
@@ -443,10 +453,15 @@ def _scrape_batch(store: Store, urls: list[dict], config: Config) -> tuple[int, 
         fm = _parse_frontmatter(frontmatter_yaml)
         scraped_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
+        # Use title from scrape machine if generated (e.g. by summarizer)
+        effective_title = u.get("title") or result.get("title") or ""
+        if not u.get("title") and result.get("title"):
+            store.update_url_title(u["id"], result["title"])
+
         try:
             summary_file = _write_archive_files(
                 url=u["url"],
-                title=u.get("title") or result.get("title") or "",
+                title=effective_title,
                 scraped_at=scraped_at,
                 word_count=word_count,
                 raw_text=raw_text,

@@ -3,7 +3,9 @@
 import json
 import re
 from pathlib import Path
+from urllib.error import URLError
 from urllib.parse import parse_qs, urlencode, urlparse
+from urllib.request import Request, urlopen
 
 from .config import Config
 from .db import Store
@@ -280,3 +282,39 @@ def ingest_all(dumps_dir: Path, store: Store, config: Config) -> list[dict]:
         results.append(result)
 
     return results
+
+
+def fetch_page_title(url: str, timeout_seconds: int = 10) -> str | None:
+    """Lightweight HTTP fetch to extract page title from <title> or og:title meta tag.
+
+    Returns the title string on success, None on failure (timeout, error, no title found).
+    """
+    try:
+        req = Request(
+            url,
+            headers={
+                "User-Agent": "Mozilla/5.0 (compatible; anti-alecto/1.0)",
+                "Accept": "text/html,application/xhtml+xml",
+            },
+        )
+        with urlopen(req, timeout=timeout_seconds) as resp:
+            # Read only the first 64KB — title is always in the head
+            raw = resp.read(65536).decode("utf-8", errors="replace")
+    except (URLError, OSError, TimeoutError):
+        return None
+
+    # Try <title> tag first
+    m = re.search(r"<title[^>]*>([^<]+)</title>", raw, re.I | re.S)
+    if m:
+        title = m.group(1).strip()
+        if title:
+            return title
+
+    # Fallback to og:title meta tag
+    m = re.search(r'<meta[^>]+property="og:title"[^>]+content="([^"]+)"', raw, re.I)
+    if not m:
+        m = re.search(r'<meta[^>]+content="([^"]+)"[^>]+property="og:title"', raw, re.I)
+    if m:
+        return m.group(1).strip()
+
+    return None
